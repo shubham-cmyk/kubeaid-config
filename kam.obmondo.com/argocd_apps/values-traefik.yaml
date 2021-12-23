@@ -1,0 +1,16 @@
+traefik:
+  deployment:
+    kind: DaemonSet
+  ports:
+    websecure:
+      hostPort: 443
+    web:
+      hostPort: 80
+  service:
+    type: NodePort
+    externalIPs:
+      - 176.9.67.43
+  additionalArguments:
+    - '--providers.kubernetesingress.ingressclass=traefik-cert-manager'
+    - '--entrypoints.websecure.http.tls'
+    - '--metrics.prometheus=true'
