@@ -12,12 +12,12 @@ spec:
   project: default
   source:
     path: argocd-helm-charts/metallb
-    repoURL: 'ssh://git@gitlab.enableit.dk:2223/kubernetes/argocd-apps.git'
+    repoURL: 'https://gitlab.enableit.dk/kubernetes/kubernetes-config-enableit.git'
     targetRevision: HEAD
     helm:
       valueFiles:
       - values.yaml
-      - ../../argocd-clusters-managed/htzfsn1-kam/values-metallb.yaml
+      - ../../kam.obmondo.com/argocd_apps/values-metallb.yaml
   syncPolicy:
     syncOptions:
     - ApplyOutOfSyncOnly=true

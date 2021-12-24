@@ -17,7 +17,7 @@ spec:
     helm:
       valueFiles:
         - values.yaml
-        - kam.obmondo.com/argocd_apps/values-argo-cd.yaml
+        - ../../kam.obmondo.com/argocd_apps/values-argo-cd.yaml
   syncPolicy:
     syncOptions:
       - ApplyOutOfSyncOnly=true
