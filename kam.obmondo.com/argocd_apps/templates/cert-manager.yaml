@@ -10,12 +10,12 @@ spec:
   project: default
   source:
     path: argocd-helm-charts/cert-manager
-    repoURL: ssh://git@gitlab.enableit.dk:2223/kubernetes/argocd-apps.git
+    repoURL: https://gitlab.enableit.dk/kubernetes/kubernetes-config-enableit.git
     targetRevision: HEAD
     helm:
       valueFiles:
       - values.yaml
-      - ../../argocd-clusters-managed/htzfsn1-kam/values-cert-manager.yaml
+      - ../../kam.obmondo.com/argocd_apps/values-cert-manager.yaml
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
