@@ -1,0 +1,6 @@
+dependencies:
+- name: metrics-server
+  repository: oci://ghcr.io/Obmondo
+  version: 3.2.2
+digest: sha256:8a624d3f0f1df5f69ebe8d19fd4eef18f5535dcc7b17a6766fda8ca9db8124f6
+generated: "2021-05-21T15:59:29.842664435+05:30"

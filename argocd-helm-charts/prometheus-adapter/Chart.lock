@@ -1,0 +1,6 @@
+dependencies:
+- name: prometheus-adapter
+  repository: oci://ghcr.io/Obmondo
+  version: 2.12.1
+digest: sha256:aab720f0d7ff803bbea02ab57ec2dd362d18b502fb5c0f2461eefd699e169fbb
+generated: "2021-05-17T15:28:46.047579819+05:30"
