@@ -90,10 +90,10 @@ argo-cd:
           enableOci: true
           usernameSecret:
             key: username
-            name: helm-repo-cache
+            name: helm-repos-cache
           passwordSecret:
             key: password
-            name: helm-repo-cache
+            name: helm-repos-cache
 
     ingress:
       enabled: true
