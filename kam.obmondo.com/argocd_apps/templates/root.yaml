@@ -11,8 +11,8 @@ spec:
     namespace: argocd
   project: default
   source:
-    path: argocd-clusters-managed/htzfsn1-kam
-    repoURL: https://gitlab.enableit.dk/kubernetes/argocd-apps.git
+    path: kam.obmondo.com/argocd_apps
+    repoURL: https://gitlab.enableit.dk/kubernetes/kubernetes-config-enableit.git
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
