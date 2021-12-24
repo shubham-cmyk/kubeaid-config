@@ -1,0 +1,6 @@
+dependencies:
+- name: kube2iam
+  repository: oci://ghcr.io/Obmondo
+  version: 2.6.0
+digest: sha256:80d9dd0f42aa19e82360ec62ae825b4e825b774b5217fd5195f5d7323ab6d26a
+generated: "2021-05-17T15:28:18.805946124+05:30"
