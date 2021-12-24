@@ -74,16 +74,6 @@ argo-cd:
         - type: helm
           name: teleport
           url: https://charts.releases.teleport.dev
-        - type: git
-          url: ssh://git@gitlab.enableit.dk:2223/kubernetes/argocd-apps.git
-          sshPrivateKeySecret:
-            name: argo-cd-enableit-gitlab-ssh
-            key: ssh-privatekey
-        - type: git
-          url: ssh://git@gitlab.enableit.dk:2223/kubernetes/k8s-secrets/enableit.git
-          sshPrivateKeySecret:
-            name: argo-cd-enableit-gitlab-ssh
-            key: ssh-privatekey
         - name: obmondo-registry
           type: helm
           url: ghcr.io/Obmondo
