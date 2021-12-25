@@ -2,6 +2,10 @@
 argo-cd:
   dex:
     enabled: false
+  repoServer:
+    replicas: 1
+    autoscaling:
+      enabled: false
   configs:
     secret:
       createSecret: false #managed by sealed-secrets now
