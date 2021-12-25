@@ -1,6 +1,6 @@
 dependencies:
 - name: cert-manager
   repository: oci://ghcr.io/Obmondo
-  version: v1.3.1
-digest: sha256:6628145829f0f2ad3b0ed974f104d6cfab74483667ef4a7bdab0d3f7aa5b737b
-generated: "2021-05-25T18:53:52.06176106+05:30"
+  version: v1.6.1
+digest: sha256:3f9415caf5518a19b83ebd429548a794614d4bf77192c2700ceb754b402b8a48
+generated: "2021-12-26T01:44:54.245932486+05:30"
