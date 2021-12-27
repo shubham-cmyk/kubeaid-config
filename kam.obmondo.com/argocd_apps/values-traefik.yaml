@@ -14,3 +14,8 @@ traefik:
     - '--providers.kubernetesingress.ingressclass=traefik-cert-manager'
     - '--entrypoints.websecure.http.tls'
     - '--metrics.prometheus=true'
+  # https://github.com/argoproj/argo-cd/issues/1704#issuecomment-904741817
+  providers:
+    kubernetesIngress:
+      publishedService:
+        enabled: true

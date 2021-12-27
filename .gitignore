@@ -1,0 +1,5 @@
+.python-version
+*.swp
+*.tgz
+defaults
+.idea
