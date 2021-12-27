@@ -1,6 +1,6 @@
 dependencies:
 - name: keycloak
   repository: oci://ghcr.io/Obmondo
-  version: 10.3.0
-digest: sha256:cdffe74d77cb64c8577cf32af45640ed9827c9b1996067814ed5771ec074059d
-generated: "2021-05-25T19:05:02.36050711+05:30"
+  version: 16.0.5
+digest: sha256:a859cb587b1649b1579dae5f8e85cdda0a20d1e7fd0c68c880cda0743433bf0b
+generated: "2021-12-27T23:42:35.719498924+05:30"
