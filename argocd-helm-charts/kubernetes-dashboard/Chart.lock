@@ -1,6 +1,0 @@
-dependencies:
-- name: kubernetes-dashboard
-  repository: oci://ghcr.io/Obmondo
-  version: 5.0.4
-digest: sha256:990ca54bb8d31385022fe5d1c01a347799e39c5d0696428ef7976287e2ae6ef8
-generated: "2021-12-24T15:51:18.160500661+05:30"

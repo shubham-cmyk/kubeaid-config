@@ -1,6 +1,0 @@
-dependencies:
-- name: opensearch
-  repository: oci://ghcr.io/blackwoodseven
-  version: 1.5.4
-digest: sha256:ae14d39cb20a6f65c30ef933c8a278a5e6d021a9f9c17d88ec2ef951ea6cd970
-generated: "2021-12-14T13:33:39.114006625Z"

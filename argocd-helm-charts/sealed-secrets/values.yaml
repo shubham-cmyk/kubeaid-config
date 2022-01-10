@@ -1,5 +1,0 @@
-sealed-secrets:
-  namespace: system
-  #should be default from v1.17 - fixes "progressing" hanging in argocd 'secrets' applications
-  commandArgs:
-  - --update-status

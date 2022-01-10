@@ -1,6 +1,0 @@
-dependencies:
-- name: cluster-autoscaler
-  repository: oci://ghcr.io/Obmondo
-  version: 9.4.0
-digest: sha256:b59c7f9fcb3aec9a2f8b2af1469f7a09572b805f7f62fbadb65df1fc18cc7dab
-generated: "2021-05-17T15:27:35.561341501+05:30"
