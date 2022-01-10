@@ -5,7 +5,7 @@ argo-cd:
   secret:
     createSecret: false
   repo:
-    url: https://gitlab.enableit.dk/kubernetes/kubernetes-config-enableit.git
+    url: https://gitlab.enableit.dk/kubernetes/argocd-apps.git
     oci: oci://ghcr.io/Obmondo
     name: kbm-internal-k8s
     auth:
