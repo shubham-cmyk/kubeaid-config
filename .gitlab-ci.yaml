@@ -1,0 +1,8 @@
+stages:
+  - lint
+
+lint:yaml:
+  stage: lint
+  image: registry.obmondo.com/obmondo/dockerfiles/yamllint:1624992623
+  script:
+    - yamllint -c .yamllint .
