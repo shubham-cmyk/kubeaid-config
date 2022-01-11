@@ -17,7 +17,7 @@ spec:
     helm:
       valueFiles:
       - values.yaml
-      - /tmp/https___gitlab.enableit.dk_kubernetes_kubernetes_config_enableit/argocd-clusters-managed/k8s.ops.blackwoodseven.com/values-kubernetes-dashboard.yaml
+      - /tmp/https___gitlab.enableit.dk_kubernetes_kubernetes-config-enableit/argocd-clusters-managed/k8s.ops.blackwoodseven.com/values-kubernetes-dashboard.yaml
   syncPolicy:
     syncOptions:
     - ApplyOutOfSyncOnly=true
