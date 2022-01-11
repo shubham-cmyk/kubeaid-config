@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rook-ceph
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: rook-ceph
+  project: default
+  source:
+    path: argocd-helm-charts/rook-ceph
+    repoURL: https://gitlab.enableit.dk/kubernetes/argocd-apps.git
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+      - values.yaml
+      - /tmp/https___gitlab.enableit.dk_kubernetes_kubernetes_config_enableit/kam.obmondo.com/argocd-apps/values-rook-ceph.yaml
+  syncPolicy:
+    syncOptions:
+    - ApplyOutOfSyncOnly=true
+    - CreateNamespace=true

@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: argocd
+spec:
+  destination:
+    namespace: cert-manager
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: argocd-helm-charts/cert-manager
+    repoURL: https://gitlab.enableit.dk/kubernetes/argocd-apps.git
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+      - values.yaml
+      - /tmp/https___gitlab.enableit.dk_kubernetes_kubernetes_config_enableit/kam.obmondo.com/argocd-apps/values-cert-manager.yaml
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true

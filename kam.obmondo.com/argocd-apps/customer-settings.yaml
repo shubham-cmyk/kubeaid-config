@@ -1,6 +1,6 @@
 ---
 cluster:
-  name: kbm.obmondo.com
+  name: kam.obmondo.com
 argo-cd:
   secret:
     createSecret: false
@@ -10,6 +10,6 @@ argo-cd:
     # leaving this for now
     url: https://gitlab.enableit.dk/kubernetes/kubernetes-config-enableit.git
     oci: oci://ghcr.io/Obmondo
-    name: kbm-internal-k8s
+    name: kam-internal-k8s
     auth:
       git: https

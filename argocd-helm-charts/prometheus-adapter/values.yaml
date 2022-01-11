@@ -1,3 +1,0 @@
-prometheus-adapter:
-  prometheus:
-    url: kube-prometheus-stack-prometheus.monitoring.svc

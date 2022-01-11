@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitlab-runner
+  namespace: argocd
+spec:
+  destination:
+    namespace: gitlab
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: argocd-helm-charts/gitlab-runner
+    repoURL: https://gitlab.enableit.dk/kubernetes/argocd-apps.git
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+      - values.yaml
+      - /tmp/https___gitlab.enableit.dk_kubernetes_kubernetes_config_enableit/kam.obmondo.com/argocd-apps/values-gitlab-runner.yaml
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    - ApplyOutOfSyncOnly=true
