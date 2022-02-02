@@ -2,10 +2,10 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: postgres-operator
+  namespace: argocd
 spec:
   destination:
-    name: ''
-    namespace: sonarqube
+    namespace: system
     server: 'https://kubernetes.default.svc'
   source:
     path: argocd-helm-charts/postgres-operator
@@ -14,6 +14,7 @@ spec:
     helm:
       valueFiles:
         - values.yaml
+        - /tmp/https___gitlab.enableit.dk_kubernetes_kubernetes-config-enableit/kam.obmondo.com/argocd-apps/values-postgres-operator.yaml
   project: default
   syncPolicy:
     automated: null
