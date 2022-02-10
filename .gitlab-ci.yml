@@ -1,0 +1,18 @@
+stages:
+  - lint
+
+lint:markdown:
+  stage: lint
+  image: registry.obmondo.com/obmondo/dockerfiles/markdownlint:latest
+  script:
+    - markdownlint --config .markdownlint .
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+lint_yamllint:
+  stage: lint
+  image: registry.obmondo.com/obmondo/dockerfiles/yamllint:latest
+  script:
+    - yamllint --strict --config-file .yamllint .
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'

@@ -1,3 +1,3 @@
-# Kubernetes-config
+# `kubernetes-config`
 
-customer specific files for kubernetes clusters
+Customer specific files for kubernetes clusters.

@@ -22,4 +22,3 @@ spec:
         argocd.argoproj.io/secret-type: repository
       name: obmondo-argocd-common-repo
       namespace: argocd
-

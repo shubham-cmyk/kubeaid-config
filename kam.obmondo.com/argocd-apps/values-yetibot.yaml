@@ -1,12 +1,12 @@
 # See options here: https://github.com/yetibot/core/blob/master/config/sample.env and in chart itself
-yetibot: 
+yetibot:
   yetibot:
     env:
       YB_ADAPTERS_MYMATTERMOST_TYPE: "mattermost"
       YB_ADAPTERS_MYMATTERMOST_HOST: "chat.obmondo.com"
-      # This is delivered by sealed-secrets 
-      #YB_ADAPTERS_MYMATTERMOST_TOKEN: ""
-      YB_ADAPTERS_MYMATTERMOST_SECURE: "true" # true by default
+      # This is delivered by sealed-secrets
+      # YB_ADAPTERS_MYMATTERMOST_TOKEN: ""
+      YB_ADAPTERS_MYMATTERMOST_SECURE: "true"  # true by default
 
   ingress:
     enabled: false
@@ -18,4 +18,3 @@ yetibot:
     - secretName: yetibot.kam.obmondo.com-cert
       hosts:
       - yetibot.kam.obmondo.com
- 
