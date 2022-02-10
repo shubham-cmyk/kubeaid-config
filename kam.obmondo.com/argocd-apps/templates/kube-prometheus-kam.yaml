@@ -10,9 +10,9 @@ spec:
     server: https://kubernetes.default.svc
     namespace: monitoring
   project: default
-source: 
+source:
   path: k8s/kam.obmondo.com/kube-prometheus
-  repoURL: https://gitlab.enableit.dk/kubernetes/kubernetes-config-enableit.git 
+  repoURL: https://gitlab.enableit.dk/kubernetes/kubernetes-config-enableit.git
   targetRevision: HEAD
   syncPolicy:
     syncOptions:
