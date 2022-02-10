@@ -1,23 +1,24 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: traefik
+  name: kubernetes-dashboard
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: traefik
+    namespace: graylog
   project: default
   source:
-    path: argocd-helm-charts/traefik
+    path: argocd-helm-charts/kubernetes-dashboard
     repoURL: https://gitlab.enableit.dk/kubernetes/argocd-apps.git
     targetRevision: HEAD
     helm:
       valueFiles:
       - values.yaml
-      - /tmp/https___gitlab.enableit.dk_kubernetes_kubernetes-config-enableit/kam.obmondo.com/argocd-apps/values-traefik.yaml
+      - /tmp/https___gitlab.enableit.dk_kubernetes_kubernetes-config-enableit/k8s/kbm.obmondo.com/argocd-apps/values-kubernetes-dashboard.yaml
   syncPolicy:
     syncOptions:
+    - ApplyOutOfSyncOnly=true
     - CreateNamespace=true
