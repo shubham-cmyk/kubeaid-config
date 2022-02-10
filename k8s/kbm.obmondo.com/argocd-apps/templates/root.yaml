@@ -11,7 +11,7 @@ spec:
     namespace: argocd
   project: default
   source:
-    path: kbm.obmondo.com/argocd-apps
+    path: k8s/kbm.obmondo.com/argocd-apps
     repoURL: https://gitlab.enableit.dk/kubernetes/kubernetes-config-enableit.git
     targetRevision: HEAD
   syncPolicy:
