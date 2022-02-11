@@ -1,7 +1,7 @@
 {
   platform: 'kubeadm',
   extra_configs: true,
-  'blackbox-exporter': true,
+  'blackbox-exporter': false,
 
   grafana_keycloak_enable: false,
   grafana_root_url: 'https://grafana.kam.obmondo.com',
