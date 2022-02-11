@@ -21,16 +21,15 @@ spec:
       app.kubernetes.io/name: alertmanager
       app.kubernetes.io/part-of: kube-prometheus
       app.kubernetes.io/version: 0.23.0
-  replicas: 3
+  replicas: 1
   resources:
     limits:
-      cpu: 100m
       memory: 50Mi
     requests:
       cpu: 10m
       memory: 20Mi
   secrets:
-  - obmondo-clientcert
+  - obmondo-alertmanager
   securityContext:
     fsGroup: 2000
     runAsNonRoot: true
