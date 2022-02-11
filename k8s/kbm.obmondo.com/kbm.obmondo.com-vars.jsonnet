@@ -3,6 +3,7 @@
   extra_configs: true,
   'blackbox-exporter': false,
 
+  grafana_keycloak_enable: false,
   grafana_root_url: 'https://grafana.kbm.obmondo.com',
   grafana_signout_redirect_url: 'https://keycloak.kbm.obmondo.com/auth/realms/devops/protocol/openid-connect/logout?redirect_uri=https://grafana.kbm.obmondo.com',
   grafana_auth_url: 'https://keycloak.kbm.obmondo.com/auth/realms/devops/protocol/openid-connect/auth',
