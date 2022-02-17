@@ -1,3 +1,11 @@
 gitlab-runner:
   replicas: 3
   gitlabUrl: https://gitlab.enableit.dk/
+
+runner:
+  nameSpace:
+    create: true
+    name: obmondo-ci
+  serviceAccount:
+    create: true
+    name: obmondo-gitlab-ci
