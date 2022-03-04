@@ -25,6 +25,7 @@ spec:
         app.kubernetes.io/part-of: kube-prometheus
         app.kubernetes.io/version: 2.3.0
     spec:
+      automountServiceAccountToken: true
       containers:
       - args:
         - --host=127.0.0.1
@@ -41,6 +42,11 @@ spec:
             cpu: 10m
             memory: 190Mi
         securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
           runAsUser: 65534
       - args:
         - --logtostderr
@@ -54,12 +60,17 @@ spec:
           name: https-main
         resources:
           limits:
-            cpu: 40m
+            cpu: 80m
             memory: 40Mi
           requests:
             cpu: 20m
             memory: 20Mi
         securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
           runAsGroup: 65532
           runAsNonRoot: true
           runAsUser: 65532
@@ -81,6 +92,11 @@ spec:
             cpu: 10m
             memory: 20Mi
         securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
           runAsGroup: 65532
           runAsNonRoot: true
           runAsUser: 65532
