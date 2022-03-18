@@ -1,5 +1,14 @@
 haproxy:
+  name: haproxy
   kind: DaemonSet
+  daemonset:
+    useHostNetwork: true
+  containerEnv:
+    - name: NODE_IP
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: status.hostIP
   containerPorts:
     http: null
     https: null
@@ -7,8 +16,6 @@ haproxy:
     kube-ctrl-mgr: 10257
     kube-scheduler: 10259
     etcd: 2381
-  daemonset:
-    useHostNetwork: true
   config: |
     defaults
       mode http
