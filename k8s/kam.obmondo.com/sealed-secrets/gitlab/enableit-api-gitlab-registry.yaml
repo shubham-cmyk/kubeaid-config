@@ -14,4 +14,3 @@ spec:
       name: enableit-api-gitlab-registry
       namespace: obmondo-ci
     type: kubernetes.io/dockerconfigjson
-
