@@ -10,10 +10,10 @@ opensearch:
 
   resources:
     limits:
-      memory: 500Mb
+      memory: 500M
     requests:
       cpu: 200m
-      memory: 200Mb
+      memory: 200M
 
   persistence:
     enabled: true
