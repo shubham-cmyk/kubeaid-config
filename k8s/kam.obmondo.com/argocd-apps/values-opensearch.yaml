@@ -1,5 +1,5 @@
 opensearch:
-  opensearchJavaOpts: "-Xms4g -Xmx4g"
+  opensearchJavaOpts: "-Xms256m -Xmx256m"
   replicas: 3
 
   rbac:
