@@ -10,7 +10,7 @@ opensearch:
 
   resources:
     limits:
-      memory: 500M
+      memory: 1.5Gi
     requests:
       cpu: 200m
       memory: 200M
