@@ -1,19 +1,17 @@
-enableit-api:
-  namespace: obmondo-website
-  replicaCount: 2
-  image:
-    tag: latest
-    pullPolicy: Always
-  api:
-    website: https://beta.obmondo.com
-    domain: beta.obmondo.com
-  ingress:
-    hosts:
-      - host: beta.obmondo.com
-        paths:
-          - path: /api
-            pathType: ImplementationSpecific
-    tls:
-      - secretName: beta-obmondo-com-tls
-        hosts:
-          - beta.obmondo.com
+namespace: obmondo-website
+image:
+  tag: latest
+  pullPolicy: Always
+api:
+  website: https://beta.obmondo.com
+  domain: beta.obmondo.com
+ingress:
+  hosts:
+    - host: beta.obmondo.com
+      paths:
+        - path: /api
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: beta-obmondo-com-tls
+      hosts:
+        - beta.obmondo.com

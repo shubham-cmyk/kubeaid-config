@@ -1,15 +1,14 @@
-obmondo-web-app:
-  replicaCount: 2
-  image:
-    tag: latest
-    pullPolicy: Always
-  ingress:
-    hosts:
-      - host: beta.obmondo.com
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
-    tls:
-      - secretName: beta-obmondo-com-tls
-        hosts:
-          - beta.obmondo.com
+replicaCount: 1
+image:
+  tag: latest
+  pullPolicy: Always
+ingress:
+  hosts:
+    - host: beta.obmondo.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: beta-obmondo-com-tls
+      hosts:
+        - beta.obmondo.com
