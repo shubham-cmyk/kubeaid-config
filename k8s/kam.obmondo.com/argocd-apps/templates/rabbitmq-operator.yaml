@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rabbitmq-operator
+  namespace: argocd
+spec:
+  destination:
+    namespace: system
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: argocd-helm-charts/rabbit-operator
+    repoURL: 'https://gitlab.enableit.dk/kubernetes/argocd-apps.git'
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+  project: default
+  syncPolicy:
+    automated: null
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
