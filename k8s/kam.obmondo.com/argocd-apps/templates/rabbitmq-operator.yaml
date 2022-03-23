@@ -8,7 +8,7 @@ spec:
     namespace: system
     server: 'https://kubernetes.default.svc'
   source:
-    path: argocd-helm-charts/rabbit-operator
+    path: argocd-helm-charts/rabbitmq-operator
     repoURL: 'https://gitlab.enableit.dk/kubernetes/argocd-apps.git'
     targetRevision: HEAD
     helm:
