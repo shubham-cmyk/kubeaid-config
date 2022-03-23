@@ -1,6 +1,6 @@
 opensearch:
   opensearchJavaOpts: "-Xms256m -Xmx256m"
-  replicas: 3
+  replicas: 4
 
   rbac:
     create: true
