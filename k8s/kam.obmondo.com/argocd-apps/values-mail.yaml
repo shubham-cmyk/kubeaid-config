@@ -3,4 +3,4 @@ mail:
         general:
             TZ: 'Europe/Copenhagen'
             ALLOWED_SENDER_DOMAINS: 'kam.obmondo.com'
-            LOG_FORMAT: 'plain' # Change to JSON to get json log output
+            LOG_FORMAT: 'plain'  # Change to JSON to get json log output
