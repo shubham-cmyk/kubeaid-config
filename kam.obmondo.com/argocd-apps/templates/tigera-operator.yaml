@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tigera-operator
+spec:
+  destination:
+    name: ''
+    namespace: calico-system
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: argocd-helm-charts/tigera-operator/
+    repoURL: 'https://gitlab.enableit.dk/kubernetes/argocd-apps.git'
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
