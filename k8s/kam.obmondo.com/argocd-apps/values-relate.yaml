@@ -40,4 +40,3 @@ relate:
     extraHosts:
       - name: relate.obmondo.com
         path: /
-
