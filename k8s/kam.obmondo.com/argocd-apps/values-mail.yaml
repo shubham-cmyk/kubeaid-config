@@ -3,5 +3,5 @@ mail:
         general:
             TZ: 'Europe/Copenhagen'
             RELAYHOST: 'kolab.enableit.dk'
-            ALLOWED_SENDER_DOMAINS: 'kam.obmondo.com'
+            ALLOWED_SENDER_DOMAINS: 'obmondo.com'
             LOG_FORMAT: 'plain'  # Change to JSON to get json log output
