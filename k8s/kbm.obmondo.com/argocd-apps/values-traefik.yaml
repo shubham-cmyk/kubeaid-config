@@ -1,0 +1,21 @@
+traefik:
+  deployment:
+    kind: DaemonSet
+  ports:
+    websecure:
+      hostPort: 443
+    web:
+      hostPort: 80
+  service:
+    type: NodePort
+    externalIPs:
+      - 95.216.30.44
+  additionalArguments:
+    - '--providers.kubernetesingress.ingressclass=traefik-cert-manager'
+    - '--entrypoints.websecure.http.tls'
+    - '--metrics.prometheus=true'
+  # https://github.com/argoproj/argo-cd/issues/1704#issuecomment-904741817
+  providers:
+    kubernetesIngress:
+      publishedService:
+        enabled: true
