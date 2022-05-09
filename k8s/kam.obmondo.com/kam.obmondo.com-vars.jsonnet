@@ -12,15 +12,15 @@
   grafana_ingress_host: 'grafana.kam.obmondo.com',
   kube_prometheus_version: 'main',
 
-  prometheus_operator_resources: {
+  prometheus_operator_resources+: {
     limits: { memory: '80Mi' },
     requests: { cpu: '10m', memory: '30Mi' },
   },
-  alertmanager_resources: {
+  alertmanager_resources+: {
     limits: { memory: '50Mi' },
     requests: { cpu: '10m', memory: '20Mi' },
   },
-  prometheus_resources: {
+  prometheus_resources+: {
     limits: { memory: '4Gi' },
     requests: { cpu: '800m', memory: '200Mi' },
   },
