@@ -3,4 +3,4 @@ teleport-kube-agent:
   roles: kube
   kubeClusterName: kbm.obmondo.com
   proxyAddr: teleport.obmondo.com:443
-  labels: {'env': 'dev'}
+  labels: {'env': 'enableit-dev'}
