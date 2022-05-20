@@ -41,4 +41,3 @@ spec:
     metadata:
       name: alertmanager-main
       namespace: monitoring
-    type: kubernetes.io/tls
