@@ -33,8 +33,8 @@ spec:
             http_config:
               tls_config:
                 server_name: alerts.obmondo.com
-                cert_file: '/etc/alertmanager/secrets/obmondo-alertmanager/tls.crt'
-                key_file: '/etc/alertmanager/secrets/obmondo-alertmanager/tls.key'
+                cert_file: '/etc/alertmanager/secrets/obmondo-clientcert/tls.crt'
+                key_file: '/etc/alertmanager/secrets/obmondo-clientcert/tls.key'
                 insecure_skip_verify: false
         templates:
         - /etc/alertmanager/config/*.tmpl
