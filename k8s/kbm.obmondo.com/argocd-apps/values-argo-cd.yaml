@@ -16,10 +16,10 @@ argo-cd:
     extraArgs:
       - --insecure
     config:
-      url: https://argocd.kbm.obmondo.com
+      url: https://argocd.kam.obmondo.com
       oidc.config: |
         name: Keycloak
-        issuer: https://keycloak.kbm.obmondo.com/auth/realms/devops
+        issuer: https://keycloak.kam.obmondo.com/auth/realms/devops
         clientID: argocd
         clientSecret: $oidc.keycloak.clientSecret
         requestedScopes: ["openid", "profile", "email", "groups"]
