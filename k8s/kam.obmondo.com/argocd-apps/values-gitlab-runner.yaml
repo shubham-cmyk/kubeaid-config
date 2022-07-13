@@ -1,11 +1,9 @@
 gitlab-runner:
   replicas: 3
   gitlabUrl: https://gitlab.enableit.dk/
-  podLabels:
-    cluster_tag: kam.obmondo.com
   envVars:
-    - name: CLUSTER_TAG
-      value: kam.obmondo.com
+    name: RUNNER_TAG_LIST
+    value: kam.obmondo.com, kam
 
 runner:
   nameSpace:
