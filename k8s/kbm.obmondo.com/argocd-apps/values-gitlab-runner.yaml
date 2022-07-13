@@ -1,6 +1,11 @@
 gitlab-runner:
   replicas: 3
   gitlabUrl: https://gitlab.enableit.dk/
+  podLabels:
+    cluster_tag: kbm.obmondo.com
+  envVars:
+    - name: CLUSTER_TAG
+      value: kbm.obmondo.com
 
 runner:
   nameSpace:
