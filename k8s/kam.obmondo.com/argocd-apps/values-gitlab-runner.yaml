@@ -1,9 +1,8 @@
 gitlab-runner:
   replicas: 6
   gitlabUrl: https://gitlab.enableit.dk/
-  envVars:
-    name: RUNNER_TAG_LIST
-    value: kam.obmondo.com, kam
+  runners:
+    tags: kam.obmondo.com, kam
 
 runner:
   nameSpace:
