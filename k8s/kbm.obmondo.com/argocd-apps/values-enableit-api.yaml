@@ -1,0 +1,17 @@
+namespace: obmondo-ci
+image:
+  tag: latest
+  pullPolicy: Always
+api:
+  website: https://beta.obmondo.com
+  domain: beta.obmondo.com
+ingress:
+  hosts:
+    - host: beta.obmondo.com
+      paths:
+        - path: /api
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: beta-obmondo-com-tls
+      hosts:
+        - beta.obmondo.com
