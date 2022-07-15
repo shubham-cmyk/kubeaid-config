@@ -3,15 +3,15 @@ image:
   tag: latest
   pullPolicy: Always
 api:
-  website: https://beta.obmondo.com
-  domain: beta.obmondo.com
+  website: https://beta.kbm.obmondo.com
+  domain: beta.kbm.obmondo.com
 ingress:
   hosts:
-    - host: beta.obmondo.com
+    - host: beta.kbm.obmondo.com
       paths:
         - path: /api
           pathType: ImplementationSpecific
   tls:
-    - secretName: beta-obmondo-com-tls
+    - secretName: beta-kbm-obmondo-com-tls
       hosts:
-        - beta.obmondo.com
+        - beta.kbm.obmondo.com
