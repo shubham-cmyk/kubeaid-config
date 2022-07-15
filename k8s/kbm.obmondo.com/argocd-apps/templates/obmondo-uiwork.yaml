@@ -9,7 +9,7 @@ spec:
     namespace: obmondo-uiwork
   project: default
   source:
-    path: helm/obmondo-ui
+    path: helm/obmondo-uiwork
     repoURL: https://gitlab.enableit.dk/obmondo/uiwork.git
     targetRevision: HEAD
     helm:
@@ -17,9 +17,6 @@ spec:
         - values.yaml
         - /tmp/https___gitlab.enableit.dk_kubernetes_kubernetes-config-enableit/k8s/kbm.obmondo.com/argocd-apps/values-obmondo-uiwork.yaml
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
     syncOptions:
       - CreateNamespace=true
       - ApplyOutOfSyncOnly=true
