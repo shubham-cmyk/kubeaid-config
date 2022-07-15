@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: enableit-website-gitlab-registry
+  namespace: enableit-website
+spec:
+  encryptedData:
+    .dockerconfigjson: AgAhMAmSdDpdTA0PBK9tUa1qA/s1LjS5nObR1AR6lXJopA64xY0jwVGgotAvy0AGB3FYltQHRpmudNb0GAxcE84qsi5u/UZE3VeLHsh9rPjh1z60UXagIyCtV4veooQLGrQrPgfTtquf+vyaUc7/JcSXICqnKO5HCet0HZWM/iYHmwjJBCmh4c3hPYOvmr1DOcaAIgeKBVRpV5QybxrkXMpw3JIweRb0vqEsy3c1M+sQPe+wczn0bhVMFL/gcY28sO5NgbkNgmcMMWszr7Xpke8GMFGQWgOzk+vWaYXCZLWtp5to7A7CsUp6KjcQ8P0f5r7hWESA59sht1D80k2G/zIe0rJPW7RM9Kv8Hj3+8I45lM+AfmwlwU/JPZQ8sEj9qrM7il+S1TzWJe0Ewt70DHm7Fmf9tNVTeRDXipCEneJ+WkRWwBsK8syUpU2c0ve1eIi4LjJwPgLGEf9TvYiJaDlYtPTqTINC1ldhkpZJibL5ZdItwng5hCGNfcorWKcjex14MgaezflRFKn8/3V7Iu/meJ9xHbfmi7+MZqKjGJtXz4aiiIqMkcOgW/GcS0LRq44VLcmuPl2F1xMOAB3BrG/67tYuRUbKet5rOfo9oCsLv5LbggVCLBPfZ1sLKdxn/wlgGhRuFOYUy/KRATFLsrOpyU0TeIYKtU9E7SKLENGjxLA4+8K9HkI+SIOPhIHIKf565YitOGAB96DGQumoBgd0b3iDrYG7S38rDEX8TpVQoxN3tQiTwBtZl5fuNUVJUUJ6qfUj1KzWioINJJvBOJiG5SDKDNOl9Ta7T3EspY0Oo/Msg/pqRJ2G/I3XcI4T00tf58rhqAy1BWK5qA0BjHZOFr7A/R0IJW1df1jcPOVc9Ooiiwtk7vju+p9+ZHtk8IYEcxSgNT5C1VXLlA3xOg2FweWwUbg/3XkZyfG5+zIW4g==
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: enableit-website-gitlab-registry
+      namespace: enableit-website
+    type: kubernetes.io/dockerconfigjson

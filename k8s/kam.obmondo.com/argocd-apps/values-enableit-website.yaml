@@ -1,0 +1,14 @@
+replicaCount: 1
+image:
+  tag: latest
+  pullPolicy: Always
+ingress:
+  hosts:
+    - host: enableit.kam.obmondo.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: enableit-kam-obmondo-com-tls
+      hosts:
+        - enableit.kam.obmondo.com
