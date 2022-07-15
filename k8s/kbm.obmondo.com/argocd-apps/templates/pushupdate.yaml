@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: argocd-helm-charts/k8id-pushupdate
-    repoURL: https://gitlab.enableit.dk/kubernetes/k8id-support-software.git
+    repoURL: https://gitlab.enableit.dk/kubernetes/kubernetes-config-enableit.git
     targetRevision: HEAD
     helm:
       valueFiles:
