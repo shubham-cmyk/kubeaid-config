@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: obmondo-uiwork-gitlab-registry
+  namespace: obmondo-uiwork
+spec:
+  encryptedData:
+    .dockerconfigjson: AgBeXm2sxzFZm5shJ8mcu9Yfex96IaeogRTeCgwUUEIPrGth4+T1k0aMCffJZSmN837VT6vVuO5jAJtqjyelDc07+IIjDdDHn5INsZ3UAcfYe2z1oQVwHzCs3+c8HG18TbJpGHPc8aSsULBexOD4tElmmgmuOlP5J26XbE9WFdnOYOGUcdSKhm8rvsfeBFadg5SnkwPonOv+tzegiPD+DTgvhH95n1WrsfB3dw60yR3G6ccsm1xsbvineTwF46erdNfF6Zf5xqvl7e4fbTfGpIS/R3CqM33lvAfdYq7EFQm8xY53azpd+UZR5kJeAeKKsR2pNDem6SA3fQLrxGeKSVIO+ltzPVJcjrR86/DjIyIJwjqmhfyg/DXegvvwSgP+5fx9+1oM5iEYb86WLKtrvelm/TVYY0v0PavvxNcyOOKHD51cp/v9+P/SVMbNO6b2hlGNYcOPGdvtcnsrNTVix5y2WcZg+qxKm3NXVyQ36oRUMNi+KHT4IYpd/2Hi+1rwr7v5njl4RO0EHF7Aotgtif5PukiLB9M8Wux6+l3EhhwKJvN0YxX1/apw5tH8wCw7w9T/ziB7tepjkZ9xhrNK2iweRzJJXO4vAzOxriaq0aC3cRewdFeEc5EJjrxvYAVvu8ojW6sOOjmR1lOo85EkytouMa4EuDG0bcpT6YdMUn0FgkM2fNISPcQ6V4RQpNb7qfAXmXvgOQ5qi7ys5GpB9eVd4oEEqcNohXXQrOU66cYAl4CZPW/frvilFKJKhp0Yg4BJmse/7qMH75qCfe0TTExC/dwlAAHb40yDQLYGAZi/1KE1ibnXMl5PY09Bvyo+5m54Xe09vPbQ4alF7IL9GVDScrzQC7lifbdYPo+82mzGfB1tjD9FIuHTPDK+WdPn+uCrtad8U9zAQy4ewzfMGCmn/uZ6S3pGvX9WGDX75onD4Q==
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: obmondo-uiwork-gitlab-registry
+      namespace: obmondo-uiwork
+    type: kubernetes.io/dockerconfigjson
