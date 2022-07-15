@@ -6,7 +6,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: obmondo-api
+    namespace: enableit-api
   project: default
   source:
     path: helm/enableit-api
