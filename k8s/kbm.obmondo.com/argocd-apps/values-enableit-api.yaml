@@ -1,0 +1,17 @@
+namespace: enableit-api
+image:
+  tag: latest
+  pullPolicy: Always
+api:
+  website: https://beta.kbm.obmondo.com
+  domain: beta.kbm.obmondo.com
+ingress:
+  hosts:
+    - host: beta.kbm.obmondo.com
+      paths:
+        - path: /api
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: beta-kbm-obmondo-com-tls
+      hosts:
+        - beta.kbm.obmondo.com
