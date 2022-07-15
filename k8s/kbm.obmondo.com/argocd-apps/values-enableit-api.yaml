@@ -1,4 +1,4 @@
-namespace: obmondo-ci
+namespace: obmondo-api
 image:
   tag: latest
   pullPolicy: Always
