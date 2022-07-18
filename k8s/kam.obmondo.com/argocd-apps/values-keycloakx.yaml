@@ -1,13 +1,5 @@
 ---
 keycloakx:
-  extraEnv: |
-    - name: PROXY_ADDRESS_FORWARDING
-      value: 'true'
-    - name: KEYCLOAK_USER
-      value: "admin"
-  extraEnvFrom: |
-    - secretRef:
-        name: keycloak-admin
   dbchecker:
     enabled: true
   ingress:
