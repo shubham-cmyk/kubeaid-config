@@ -16,7 +16,7 @@ argo-cd:
     extraArgs:
       - --insecure
     config:
-      url: https://argocd.kam.obmondo.com
+      url: https://argocd.kbm.obmondo.com
       oidc.config: |
         name: Keycloak
         issuer: https://keycloakx.kam.obmondo.com/auth/realms/Obmondo
