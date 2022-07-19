@@ -1,4 +1,4 @@
-namespace: enableit-api
+namespace: obmondo-website
 image:
   tag: latest
   pullPolicy: Always
@@ -15,3 +15,7 @@ ingress:
     - secretName: beta-kbm-obmondo-com-tls
       hosts:
         - beta.kbm.obmondo.com
+  annotations:
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        traefik.ingress.kubernetes.io/router.tls: "true"
+        traefik.ingress.kubernetes.io/router.tls.options: mtls
