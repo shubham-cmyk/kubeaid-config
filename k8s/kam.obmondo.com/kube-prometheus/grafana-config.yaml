@@ -5,7 +5,7 @@ metadata:
     app.kubernetes.io/component: grafana
     app.kubernetes.io/name: grafana
     app.kubernetes.io/part-of: kube-prometheus
-    app.kubernetes.io/version: 8.4.2
+    app.kubernetes.io/version: 8.5.5
   name: grafana-config
   namespace: monitoring
 stringData:
@@ -15,7 +15,7 @@ stringData:
     [auth]
     disable_login_form = false
     disable_signout_menu = false
-    signout_redirect_url = https://keycloak.kam.obmondo.com/auth/realms/devops/protocol/openid-connect/logout?redirect_uri=https://grafana.kam.obmondo.com
+    signout_redirect_url = https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/logout?redirect_uri=https://grafana.kam.obmondo.com
     [date_formats]
     default_timezone = UTC
     [server]
