@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: enableit-api-gitlab-registry
+  namespace: obmondo-website
+spec:
+  encryptedData:
+    .dockerconfigjson: AgBKEPk9Rbae/8dbJlaLgkZtmdFC9TiqW2Fbbfjc6+YVPsw2vAGQOKhF+mKTtliUE+Clyxu1Aict7O22GSFnSKVfttB+kJzWpswRKlrsUbpXhrxGJC56ScYUIuOYzovx1F4KO2FdnfEIUFmh/UNLPJh6p2jPsm039VRtn9aCo9Dkoo42cd23a1SYOb9iTjG2oWFL3Nu+EvWPavmC8VO7ZTReRcWfZRnMC8wPpKVWIqRHgBt4jJajfg4Hcnm9WCU5lJVhp+lJZ7y2unXrc34s+IOT7FF76yhYH+2lROwBlzdcP+kfTPUE6nvAtUK8meSA3PHRiG5RRzLkf0XXkJKBb2iqn14p80gIMBm10FRSuOTDvqsywK2pxeTc7n45PEg9r/EZJJFh39V8SZO8nJU+cHQmNlAnAk4tg4sKw0cd9gTaA9uP4kSqvlOi7Mu7lwIQ1dJk10kBU1ua91MLvQBBSZPwaFmgymBjp6ARg42AE54rJPQbol/hy5+6KxGwHDwwuZ8fTDYRevV6PsisnH1ScuCKpb7XaW5EM3AVv/qGg2Trs8yKytdMG1e6REjiFmDUbZaf6laf85ASlEx6133byZHpi44UKKLTVRcgue/LDvajzPICFzEYYDRzZZzJ4at8Mb6dPKW8NYSYXwb0MreQpnOg2bEa9RtgjXZHIZ/vhDXs915DRCpP/R4fkQ6h8jn0MtpZUmeuc91YpO6JegIBhd83ZVNqLHTgZy1MD7imCQLyEHyJnS4cxnlFzXPvYZQyUFc+zcJXP9ie7YOGy96/tFBq+1CLyBObBVsjZC5atoNjjvEOM0ce7PuFlLHpuH9LrNvzG/mppuRZeMdrdtmJsDUM/IIpmwtJthxEi1cq2J4/DGyjX06lOVJhnSn/8vbfj/yFBS4xU41AUCXlgdo2j/SABhEaumztNIAnJIcbY/5Xtw==
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: enableit-api-gitlab-registry
+      namespace: obmondo-website
+    type: kubernetes.io/dockerconfigjson
