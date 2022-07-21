@@ -18,4 +18,4 @@ ingress:
   annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: websecure
         traefik.ingress.kubernetes.io/router.tls: "true"
-        traefik.ingress.kubernetes.io/router.tls.options: mtls
+        traefik.ingress.kubernetes.io/router.tls.options: traefik-mtls@kubernetescrd
