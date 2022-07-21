@@ -4,14 +4,14 @@ traefik:
   ports:
     websecure:
       hostPort: 443
-      tls:
-        options:
-          mtls:
-            secretNames:
-              - puppetca-cert
-
     web:
       hostPort: 80
+  tlsOptions:
+    mtls:
+      clientAuth:
+        clientAuthType: RequireAndVerifyClientCert
+        secretNames:
+          - puppetca-cert
   service:
     type: NodePort
     externalIPs:
