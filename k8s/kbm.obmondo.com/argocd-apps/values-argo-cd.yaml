@@ -26,8 +26,9 @@ argo-cd:
     ingress:
       enabled: true
       annotations:
-        cert-manager.io/cluster-issuer: letsencrypt
         kubernetes.io/ingress.class: traefik-cert-manager
+        # necessary for bare-metal only - for unknown reason.
+        cert-manager.io/cluster-issuer: letsencrypt
       hosts:
       - argocd.kbm.obmondo.com
       tls:
