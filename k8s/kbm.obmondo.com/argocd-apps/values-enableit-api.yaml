@@ -1,4 +1,4 @@
-namespace: obmondo-website
+namespace: enableit-api
 image:
   tag: latest
   pullPolicy: Always
