@@ -9,4 +9,3 @@ ingress:
   - secretName: argocd-ssl
     hosts:
     - sonarqube.kam.obmondo.com
-  
