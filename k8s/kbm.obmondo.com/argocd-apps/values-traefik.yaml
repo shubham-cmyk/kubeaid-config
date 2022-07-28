@@ -9,7 +9,7 @@ traefik:
   tlsOptions:
     mtls:
       clientAuth:
-        clientAuthType: RequireAndVerifyClientCert
+        clientAuthType: VerifyClientCertIfGiven
         secretNames:
           - puppetca-cert
   service:
