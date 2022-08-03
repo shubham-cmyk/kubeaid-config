@@ -4,12 +4,16 @@ mattermost-team-edition:
     tag: 6.7.0@sha256:cf0c182aeff6553d93e33485858c3dd9de1c8dd73d140dda18d926721f8ff7a0
   ingress:
     enabled: true
+    path: /
     hosts:
       - mattermost.kbm.obmondo.com
     tls:
       - secretName: mattermost.kbm.obmondo.com
         hosts:
           - mattermost.kbm.obmondo.com
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
+      kubernetes.io/ingress.class: traefik-cert-manager
   config:
     MM_GITLABSETTINGS_USERAPIENDPOINT: "https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/userinfo"
     MM_GITLABSETTINGS_AUTHENDPOINT: "https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/auth"
