@@ -3,7 +3,7 @@ kind: PrometheusRule
 metadata:
   labels:
     prometheus: k8s
-  name: certmanager
+  name: cert-manager
   namespace: monitoring
 spec:
   groups:
