@@ -16,7 +16,7 @@ config_repo_path_k8id_config="/tmp/k8id_config"
 git config --global user.email "${GITLAB_USER_EMAIL}"
 git config --global user.name "${GITLAB_USER_NAME}"
 
-git clone "https://gitlab-ci-token:${CI_JOB_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}" "${config_repo_path_k8id_config}"
+git clone "https://oauth2:${KUBERNETES_K8ID_CONFIG_REPO_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}" "${config_repo_path_k8id_config}"
 
 git -C "${config_repo_path_k8id_config}" checkout -b "argocd-deploy" --track "origin/${deploy_target_branch}"
 
