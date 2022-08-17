@@ -1,5 +1,7 @@
 stages:
+  - diff
   - lint
+  - kube
 
 lint:markdown:
   stage: lint
@@ -16,3 +18,25 @@ lint_yamllint:
     - yamllint --strict --config-file .yamllint .
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+helm:diff:
+  stage: diff
+  image:
+    name: registry.obmondo.com/obmondo/dockerfiles/kubernetes-build:latest
+  script:
+    - "./bin/helm-diff.sh"
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+      changes:
+        - "k8s/**/argocd-apps/*"
+
+kube:build:
+  stage: kube
+  image:
+    name: registry.obmondo.com/obmondo/dockerfiles/kubernetes-build:latest
+  script:
+    - "./bin/build-kube-promtheus.sh"
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+      changes:
+        - "k8s/**/*.jsonnet"
