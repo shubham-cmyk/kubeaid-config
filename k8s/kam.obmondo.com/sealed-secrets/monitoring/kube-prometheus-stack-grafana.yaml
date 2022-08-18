@@ -13,4 +13,3 @@ spec:
       creationTimestamp: null
       name: kube-prometheus-stack-grafana
       namespace: monitoring
-
