@@ -11,6 +11,7 @@ metadata:
   namespace: monitoring
 spec:
   image: quay.io/prometheus/alertmanager:v0.24.0
+  logLevel: debug
   nodeSelector:
     kubernetes.io/os: linux
   podMetadata:
@@ -20,14 +21,17 @@ spec:
       app.kubernetes.io/name: alertmanager
       app.kubernetes.io/part-of: kube-prometheus
       app.kubernetes.io/version: 0.24.0
-  replicas: 3
+  replicas: 1
   resources:
     limits:
       cpu: 100m
-      memory: 100Mi
+      memory: 50Mi
     requests:
-      cpu: 4m
-      memory: 100Mi
+      cpu: 10m
+      memory: 20Mi
+  secrets:
+  - obmondo-clientcert
+  - alertmanager-main
   securityContext:
     fsGroup: 2000
     runAsNonRoot: true
