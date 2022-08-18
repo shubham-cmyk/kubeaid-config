@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: kube-prometheus-stack-grafana
+  namespace: monitoring
+spec:
+  encryptedData:
+    grafana-keycloak-secret: AgCjUJyeesRwafagXm1hauD4q/a8sa/1wJjAHsHjMnaPT1iJYGtnPycKYNRm4g+i1sLa4FDOfqw1lgPaGBLsklP+GCja428usdYW4foi8WZ9XJ/lhr1Py7YPyk+1zjiyeuAyePc/AnXHVcM0j0sVcG4fg/G3ajirESCzufaOxa9TFm+3uy46Y64KkLazrYI9g+/cDZm87cLr3jQPvtHTaZ2DlF/1ncDQBKd4AsP6Sf3G+2cpyrK3fnG79nf49N/cIEXJ1KfyFqR5koA9JwIqaVua+V6k6nLO6F3rtroX23VyjbTpRXotWuMc0sQWm/k14aISllHl2MmsqUEf5wIsmCEGDEJ+fxcQ0bi30+BhjZ9YbGQtByxMDkNCElwL/qq7Ece4fSjucKCzdX9W1F3ZL0+NTgj4yBxxxTBcevUrblYhgBD1byWv5LFADU2zyTnpI4vYjUwXU30cYtNhputlFLnSIWJ0uzgUHttj0GY8IR6ENgT2u1ZSMfKWVKMeF4kLh1gLV9fCI3T8xg4Zr7nbemXjFlHILq4MfMaVzGD87bup1T52K6AknCyCWvGhYjIa7xb4tDUCwNomJ7dlH6xWcwbVryGnAzp6/FBeGFPryHKIq6rEuFt5cGLdwv/Tzdj7WFITkj07txa7L0rfYzO1azR8oB5FIPR9XPRZ7zVZKgCmX2jddmOPJv+LJA2ye4NjxY2ygmU3+dGJqApSWipBcahLaE+ezfNSa9xJ3hlwBZh/sw==
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: kube-prometheus-stack-grafana
+      namespace: monitoring
+
