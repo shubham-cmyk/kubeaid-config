@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: accesstoken-4obmondoagentregistry-customer-enableit
+  namespace: obmondo
+spec:
+  encryptedData:
+    .dockerconfigjson: AgAW4X1KvMyme2s8bVhG7d5qdary7GTqDz/B18083I3YW5nBW8AevPA0Eekq7lv120em1qIUbM9La/IHagtJ8k/XLA1edsm4nDNMwtDXtHGSk+egbtIMrzGkJwGvAlJtbIAOucu0e3x8c2Av5eCwmq/YL8IIZsavpgjnCb1Z5Ison2j7IeO+nQQu7JeAtNcrkjZGYVSg4A/raktTkABJH+aceUvrP8Eo7BUcfDOvRAQqIMbSfTDuTvgG65rwf9hK+DvoQjQYO/kM6NWSCv8sXg3+gSdXItuNqb8Y/O116RP6hWtZPXm/0gMWjEgwq+Ptq58gfJjMv2x9Jxud9WqrRmdoPnkGgFCfSPt7Y4XTGdId38EndvA0sjDYYMXayQU7fz3mqamX8u0rqQE10hkOss9rRqbmfgrDQ1SJTVYoJMkZ0KuVlXxjN5S+k/J5/G8sv/go2qqDxrd2JCv4MISk0RgBYoYIEvDLUgsFsPuKzZzM464YDXufHPWjyCk2Gd3mrFIyStrft3qI/VYgNNkX4xgNKJF7RfHlXhX/8Yn8nOO+yXMKRlbNEHFG1huEVMv9rw1yb0RXB7w3Z9Yj02r2FecXijS1v6S8I0MHfOQpTbJBjEE566RcRxxoZbyTY9JNxcw1QUX73Xch1tbqZQsaOV0GdVeIyOIDRjyy/BGK8QdHSDvQlJRrptxUUIddlbRr5vvaXQ1D+5zLq26gHSFNbgJ6gx6MyE7g8fean204BRW1XJqfsVjwyeY70Jr4W/OH2tGdc1I4mv3AekdCabICGM7haiXuOkyh0b8PiN4mypxOdlqDZSQz95+AsZSTUNhG246UCjGLvDt1WkdrI+Zouw02NTmuNPeYre5Eemdq15L/X6ohOZqp8a6YMi1Xw7vkBi6MHVSnzr0=
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: accesstoken-4obmondoagentregistry-customer-enableit
+      namespace: obmondo
+    type: kubernetes.io/dockerconfigjson
