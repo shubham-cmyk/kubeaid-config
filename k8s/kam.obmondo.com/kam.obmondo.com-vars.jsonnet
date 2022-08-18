@@ -2,7 +2,7 @@
   platform: 'kubeadm',
   extra_configs: true,
   'blackbox-exporter': false,
-
+  connect_obmondo: true,
   grafana_keycloak_enable: true,
   grafana_root_url: 'https://grafana.kam.obmondo.com',
   grafana_signout_redirect_url: 'https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/logout?redirect_uri=https://grafana.kam.obmondo.com',
@@ -24,5 +24,7 @@
     limits: { memory: '4Gi' },
     requests: { cpu: '800m', memory: '200Mi' },
   },
-  alertmanager_cert: false,
+  grafana_ingress_annotations: {
+    'kubernetes.io/ingress.class': 'traefik-cert-manager',
+  },
 }
