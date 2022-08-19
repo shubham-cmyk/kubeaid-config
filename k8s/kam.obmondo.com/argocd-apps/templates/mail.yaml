@@ -9,7 +9,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     path: argocd-helm-charts/mail
-    repoURL: 'https://gitlab.enableit.dk/kubernetes/argocd-apps.git'
+    repoURL: https://gitlab.enableit.dk/kubernetes/k8id.git
     targetRevision: HEAD
     helm:
       valueFiles:
