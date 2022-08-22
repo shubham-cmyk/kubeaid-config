@@ -5,14 +5,16 @@
 replicaCount: 1
 
 image:
-  repository: nginx
-  pullPolicy: IfNotPresent
+  repository: registry.obmondo.com/kubernetes/k8id-support-software
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "latest"
 
-imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+imagePullSecrets:
+  - name: "k8id-support-software-registry-secret"
+
+nameOverride: "k8id-pushupdate"
+fullnameOverride: "k8id-pushupdate"
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -39,22 +41,28 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 80
+  targetPort: 8080
 
 ingress:
-  enabled: false
-  className: ""
-  annotations: {}
+  enabled: true
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    kubernetes.io/ingress.class: traefik-cert-manager
+
   # kubernetes.io/ingress.class: nginx
   # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: chart-example.local
+    - host: "pushupdate.kbm.obmondo.com"
       paths:
         - path: /
           pathType: ImplementationSpecific
-  tls: []
-#  - secretName: chart-example-tls
-#    hosts:
-#      - chart-example.local
+          backend:
+            serviceName: k8id-pushupdate
+            servicePort: 80
+  tls:
+    - secretName: pushupdate-obmondo-com-tls
+      hosts:
+        - "pushupdate.kbm.obmondo.com"
 
 resources: {}
 # We usually recommend not to specify default resources and to leave this as a conscious
@@ -80,3 +88,29 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+env:
+  - name: DEBUG
+    value: "true"
+  - name: PORT
+    value: "8080"
+  - name: K8ID_REPO_URL
+    valueFrom:
+      secretKeyRef:
+        name: k8id-pushupdate
+        key: k8id-repo-url
+  - name: K8ID_REPO_TOKEN
+    valueFrom:
+      secretKeyRef:
+        name: k8id-pushupdate
+        key: k8id-repo-token
+  - name: K8ID_REPO_DEFAULT_BRANCH
+    valueFrom:
+      secretKeyRef:
+        name: k8id-pushupdate
+        key: k8id-repo-default-branch
+  - name: K8ID_PUSHUPDATE_CUSTOMER_CONFIG
+    valueFrom:
+      secretKeyRef:
+        name: k8id-pushupdate
+        key: k8id-pushupdate-customer-config
