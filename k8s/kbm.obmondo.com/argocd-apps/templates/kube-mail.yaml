@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: kube-mail
+    namespace: system
     server: 'https://kubernetes.default.svc'
   source:
     path: argocd-helm-charts/kube-mail
