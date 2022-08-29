@@ -1,0 +1,13 @@
+redmine:
+  ingress:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
+      kubernetes.io/ingress.class: traefik-cert-manager
+    hosts:
+      - host: "redmine.kbm.obmondo.com"
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls: true
+    hostname: "redmine.kbm.obmondo.com" 
