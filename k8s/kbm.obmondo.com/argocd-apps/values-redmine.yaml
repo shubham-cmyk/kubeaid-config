@@ -10,4 +10,4 @@ redmine:
           - path: /
             pathType: ImplementationSpecific
     tls: true
-    hostname: "redmine.kbm.obmondo.com" 
+    hostname: "redmine.kbm.obmondo.com"
