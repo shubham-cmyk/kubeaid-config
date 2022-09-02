@@ -11,3 +11,9 @@ redmine:
             pathType: ImplementationSpecific
     tls: true
     hostname: "redmine.kbm.obmondo.com"
+
+  image:
+    registry: registry.obmondo.com
+    repository: obmondo/dockerfiles/redmine
+    pullPolicy: Always
+    tag: 5.0.2
