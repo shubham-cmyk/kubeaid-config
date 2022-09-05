@@ -35,10 +35,10 @@ spec:
   replicas: 1
   resources:
     limits:
-      memory: 1Gi
+      memory: 3Gi
     requests:
-      cpu: 100m
-      memory: 200Mi
+      cpu: 200m
+      memory: 1.5Gi
   ruleNamespaceSelector: {}
   ruleSelector: {}
   securityContext:
