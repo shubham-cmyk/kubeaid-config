@@ -9,7 +9,7 @@ whoami:
         hosts:
           - whoami.kbm.obmondo.com
     annotations:
-      traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-cn-header@kubernetescrd
+      traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-cn-header-enableit-api@kubernetescrd
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       traefik.ingress.kubernetes.io/router.tls: "true"
       traefik.ingress.kubernetes.io/router.tls.options: traefik-mtls@kubernetescrd
