@@ -1,5 +1,12 @@
 issuer:
   enabled: true
-  issuerEmail: klavs@obmondo.com  # this is required
+  issuerEmail: klavs@obmondo.com
   production: true
   secret: kbm-letsencrypt-key
+  solvers:
+    - type: dns
+      cloudProvider: cloudflare
+      cloudProviderSecret: cloudflare-api-token-secret
+      dnsNames:
+        - obmondo.com
+    - type: http
