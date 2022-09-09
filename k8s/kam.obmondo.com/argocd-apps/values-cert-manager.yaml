@@ -3,3 +3,10 @@ issuer:
   issuerEmail: klavs@obmondo.com  # this is required
   production: true
   secret: kam-letsencrypt-key
+  solvers:
+    - type: dns
+      cloudProvider: cloudflare
+      cloudProviderSecret: cloudflare-api-token-secret
+      dnsNames:
+        - obmondo.com
+    - type: http
