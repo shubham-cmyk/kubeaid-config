@@ -6,6 +6,12 @@ traefik:
       hostPort: 443
     web:
       hostPort: 80
+  tlsOptions:
+    tls-client-auth:
+      clientAuth:
+        clientAuthType: VerifyClientCertIfGiven
+        secretNames:
+          - puppetca-cert
   service:
     type: NodePort
     externalIPs:
