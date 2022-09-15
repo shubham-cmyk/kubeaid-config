@@ -23,6 +23,23 @@ argo-cd:
         clientID: argocd
         clientSecret: $oidc.keycloak.clientSecret
         requestedScopes: ["openid", "profile", "email", "groups"]
+      repositories:
+        - type: git
+          url: https://gitlab.enableit.dk/kubernetes/k8id.git
+          usernameSecret:
+            name: k8id-argocd
+            key: username
+          passwordSecret:
+            name: k8id-argocd
+            key: password
+        - type: git
+          url: https://gitlab.enableit.dk/kubernetes/kubernetes-config-enableit.git
+          usernameSecret:
+            name: k8id-config-argocd
+            key: username
+          passwordSecret:
+            name: k8id-config-argocd
+            key: password
     ingress:
       enabled: true
       annotations:
