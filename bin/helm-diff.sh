@@ -35,7 +35,7 @@ function helm_diff() {
   git -C "$K8ID_CONFIG_REPO" checkout "$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME"
 
   # Check if the helm chart exists in the feature branch
-  if test -d "$chart_path"; then
+  if test -d "$chart_path" && test -f "/tmp/k8id_config/$value_file"; then
     helm template "$chart_path" -f "${chart_path}/values.yaml" -f "/tmp/k8id_config/$value_file" > "/tmp/${chart_name}_local.yaml"
 
     any_diff=$(diff -u "/tmp/${chart_name}_master.yaml" "/tmp/${chart_name}_local.yaml" || true )
