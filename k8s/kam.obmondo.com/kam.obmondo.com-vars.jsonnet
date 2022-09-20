@@ -27,4 +27,7 @@
   grafana_ingress_annotations: {
     'kubernetes.io/ingress.class': 'traefik-cert-manager',
   },
+  prometheus_scrape_namespaces: [
+    'rook-ceph',
+  ],
 }
