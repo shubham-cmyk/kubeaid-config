@@ -7,7 +7,7 @@ traefik:
     web:
       hostPort: 80
   tlsOptions:
-    mtls:
+    tls-client-auth:
       clientAuth:
         clientAuthType: VerifyClientCertIfGiven
         secretNames:
