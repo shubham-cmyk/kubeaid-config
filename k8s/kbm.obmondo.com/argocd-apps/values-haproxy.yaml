@@ -1,0 +1,43 @@
+haproxy:
+  name: haproxy
+  kind: DaemonSet
+  daemonset:
+    useHostNetwork: true
+  containerEnv:
+    - name: NODE_IP
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: status.hostIP
+  containerPorts:
+    kube-ctrl-mgr: 10257
+    kube-scheduler: 10259
+    etcd: 2381
+  config: |
+    defaults
+      mode http
+      timeout connect 5000ms
+      timeout client 5000ms
+      timeout server 5000ms
+      default-server maxconn 10
+
+    frontend kube-controller-manager
+      bind ${NODE_IP}:10257
+      http-request deny if !{ path /metrics }
+      default_backend kube-controller-manager
+    backend kube-controller-manager
+      server kube-controller-manager 127.0.0.1:10257 ssl verify none
+
+    frontend kube-scheduler
+      bind ${NODE_IP}:10259
+      http-request deny if !{ path /metrics }
+      default_backend kube-scheduler
+    backend kube-scheduler
+      server kube-scheduler 127.0.0.1:10259 ssl verify none
+
+    frontend etcd
+      bind ${NODE_IP}:2381
+      http-request deny if !{ path /metrics }
+      default_backend etcd
+    backend etcd
+      server etcd 127.0.0.1:2381
