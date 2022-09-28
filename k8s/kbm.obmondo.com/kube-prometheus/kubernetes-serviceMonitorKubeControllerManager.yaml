@@ -48,7 +48,7 @@ spec:
       sourceLabels:
       - __name__
     port: https-metrics
-    scheme: https
+    scheme: http
     tlsConfig:
       insecureSkipVerify: true
   jobLabel: app.kubernetes.io/name
