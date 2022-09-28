@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: graylog
+  namespace: argocd
+spec:
+  destination:
+    namespace: graylog
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: argocd-helm-charts/graylog
+    repoURL: 'https://gitlab.enableit.dk/kubernetes/k8id.git'
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - values.yaml
+        - /tmp/https___gitlab.enableit.dk_kubernetes_kubernetes-config-enableit/k8s/kbm.obmondo.com/argocd-apps/values-graylog.yaml
+  project: default
+  syncPolicy:
+    automated: null
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
