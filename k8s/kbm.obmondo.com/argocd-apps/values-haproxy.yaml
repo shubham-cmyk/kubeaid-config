@@ -3,11 +3,14 @@ haproxy:
   kind: DaemonSet
   daemonset:
     useHostNetwork: true
-  containerEnv:
+    hostPorts:
+      kube-ctrl-mgr: 10257
+      kube-scheduler: 10259
+      etcd: 2381
+  extraEnvs:
     - name: NODE_IP
       valueFrom:
         fieldRef:
-          apiVersion: v1
           fieldPath: status.hostIP
   containerPorts:
     kube-ctrl-mgr: 10257
