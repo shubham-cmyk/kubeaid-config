@@ -58,7 +58,7 @@ ingress:
     cert-manager.io/cluster-issuer: letsencrypt
     kubernetes.io/ingress.class: traefik-cert-manager
   hosts:
-    - host:
+    - host: "api.kbm.obmondo.com"
       paths:
         - path: /
           pathType: ImplementationSpecific
