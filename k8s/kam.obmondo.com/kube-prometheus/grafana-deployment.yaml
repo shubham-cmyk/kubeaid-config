@@ -29,7 +29,14 @@ spec:
     spec:
       automountServiceAccountToken: false
       containers:
-      - env: []
+      - env:
+        - name: GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION
+          value: "true"
+        - name: GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: grafana-keycloak-secret
+              name: kube-prometheus-stack-grafana
         image: grafana/grafana:8.5.5
         name: grafana
         ports:
