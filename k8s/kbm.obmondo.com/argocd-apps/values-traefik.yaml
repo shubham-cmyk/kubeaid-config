@@ -35,7 +35,8 @@ traefik:
 middleware:
   jwt:
     enabled: true
-    public_key: -----BEGIN PUBLIC KEY-----
+    public_key: | 
+      -----BEGIN PUBLIC KEY-----
       MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAsRR1/Uje+xTmF9bXX29G
       FN0FyEuxanwjd0dgv/IU4htUtTC469QJmDiZoMK73evYEuklk3zZ929hst9ddHEK
       8YVhrJiaYYojTw/qc7X4++Vxya2Ao7x3NjxKGFHYy3q7s9I4BKEFYbAL3pCXRhsZ
