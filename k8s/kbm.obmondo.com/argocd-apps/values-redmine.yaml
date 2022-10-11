@@ -4,6 +4,7 @@ redmine:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt
       kubernetes.io/ingress.class: traefik-cert-manager
+      traefik.ingress.kubernetes.io/router.middlewares: traefik-jwt@kubernetescrd
     hosts:
       - host: "redmine.kbm.obmondo.com"
         paths:
