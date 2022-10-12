@@ -6,12 +6,12 @@ redmine:
       kubernetes.io/ingress.class: traefik-cert-manager
       traefik.ingress.kubernetes.io/router.middlewares: traefik-jwt@kubernetescrd
     hosts:
-      - host: "redmine.kbm.obmondo.com"
+      - host: "support2.obmondo.com"
         paths:
           - path: /
             pathType: ImplementationSpecific
     tls: true
-    hostname: "redmine.kbm.obmondo.com"
+    hostname: "support2.obmondo.com"
 
   image:
     registry: registry.obmondo.com
