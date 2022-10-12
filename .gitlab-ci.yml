@@ -26,7 +26,7 @@ helm:diff:
   script:
     - "./bin/helm-diff.sh"
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_COMMIT_MESSAGE !~ /^:no-diff/ || $CI_PIPELINE_SOURCE == "web" && $CI_COMMIT_MESSAGE !~ /^:no-diff/'
       changes:
         - "k8s/**/argocd-apps/*"
 
