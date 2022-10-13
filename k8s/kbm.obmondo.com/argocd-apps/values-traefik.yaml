@@ -23,7 +23,7 @@ traefik:
     - '--providers.kubernetesingress.ingressclass=traefik-cert-manager'
     - '--entrypoints.websecure.http.tls'
     - '--metrics.prometheus=true'
-    - '--experimental.plugins.jwt.moduleName=github.com/team-carepay/traefik-jwt-plugin'
+    - '--experimental.plugins.jwt.moduleName=github.com/Obmondo/traefik-jwt-plugin'
     - '--experimental.plugins.jwt.version=v0.0.13'
     - '--log.level=DEBUG'
   # https://github.com/argoproj/argo-cd/issues/1704#issuecomment-904741817
