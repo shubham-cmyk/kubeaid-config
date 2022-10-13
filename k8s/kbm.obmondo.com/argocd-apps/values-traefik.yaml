@@ -37,16 +37,11 @@ middleware:
     enabled: true
     public_key: |
       -----BEGIN PUBLIC KEY-----
-      MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAsRR1/Uje+xTmF9bXX29G
-      FN0FyEuxanwjd0dgv/IU4htUtTC469QJmDiZoMK73evYEuklk3zZ929hst9ddHEK
-      8YVhrJiaYYojTw/qc7X4++Vxya2Ao7x3NjxKGFHYy3q7s9I4BKEFYbAL3pCXRhsZ
-      +SZLZ3YSAKn0UfZ7hD538c++h58bQhSm/KHnP5gcWN4FJneZUtsdLH81a03YtSL1
-      Sv0UW2RWbt7PBMTFTxhMOU9w6kceJuUvsxb8R+zQ5vKhPjZo+jbLRBp8UEaLWrax
-      4/jbFyJA28RBcDkBnSliIqEFStJJacGP4PFXxDlB2PkGi69cn7pj4OdafhJKN58z
-      YOFbr7ulHQJcC/MlSPFxCDdd7Dr2T9admyrdYNSevEKC9yw1cZKn2YAYInB+ghUp
-      vA+0ElEt4kRGgijTKYtr0Gv4fwMO2AYTenEQv55z1yQh40sfzp461Ra3S+IoJFKq
-      vUckPOs3eyQdACTnmJbvVcIykOG7zOh8+xrchT7OxLeXQPBcjXKznYmqGShavVOg
-      VPx1dpz2JeYyjE722sdU+k2TpNqWWxcm8K+ejvrp9lptYIkgwn3SQuZ9q/aQs0eh
-      Ot+a/7zaanJoOyi2Z4QvAhaCximlJ99KyMrwVpDV/tPCSOUaFAmz668lcI4YUqS8
-      dPSNCPvcbwR3PxT+QuWQgCMCAwEAAQ==
+      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqOrZ8sVK6HuTImOpGjUp
+      fByvQoPmGYY8MkLhHXpVc3Avt9svBh+kZkF8dVHD7ufeSL1KFA6mTUJQutQq0Det
+      xu4JzaZl1T5/aQq2sH8B4L03amwlpwKjnBPc+YMrlmOXhYstWFFyDevPPuimgGbf
+      Rr2Kt7QMI53ZXlEj1HTBNRuNv79Cjl3holDGTsrqCz8kPFd0dc/pLZzDvqYDPZ0X
+      UB6+BQUtHeXvxnMiJ/IrwQWDVbxcPr2PbyIClJj1FxnZvqA2CuXWz0trqog72cYV
+      EQn+uJRX/KpfHWHIdIJQEe2dm4a9pc3/Uue/eFS5Bzb3fYyUgNrG+JN0Ki5ATFTy
+      DwIDAQAB
       -----END PUBLIC KEY-----
