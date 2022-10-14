@@ -4,18 +4,18 @@ image:
   tag: latest
   pullPolicy: Always
 api:
-  website: https://beta.kbm.obmondo.com
-  domain: beta.kbm.obmondo.com
+  website: https://beta.obmondo.com
+  domain: beta.obmondo.com
 ingress:
   hosts:
-    - host: beta.kbm.obmondo.com
+    - host: beta.obmondo.com
       paths:
         - path: /api
           pathType: ImplementationSpecific
   tls:
-    - secretName: beta-kbm-obmondo-com-tls
+    - secretName: beta-obmondo-com-tls
       hosts:
-        - beta.kbm.obmondo.com
+        - beta.obmondo.com
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     kubernetes.io/ingress.class: traefik-cert-manager
