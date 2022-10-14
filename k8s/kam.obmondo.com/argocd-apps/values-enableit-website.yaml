@@ -4,11 +4,11 @@ image:
   pullPolicy: Always
 ingress:
   hosts:
-    - host: enableit.kam.obmondo.com
+    - host: enableit.dk
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls:
-    - secretName: enableit-kam-obmondo-com-tls
+    - secretName: enableit-dk-tls
       hosts:
-        - enableit.kam.obmondo.com
+        - enableit.dk

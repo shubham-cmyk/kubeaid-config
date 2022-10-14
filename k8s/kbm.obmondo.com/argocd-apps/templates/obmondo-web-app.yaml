@@ -15,7 +15,7 @@ spec:
     helm:
       valueFiles:
         - values.yaml
-        - /tmp/https___gitlab.enableit.dk_kubernetes_kubernetes-config-enableit/k8s/kam.obmondo.com/argocd-apps/values-obmondo-web-app.yaml
+        - /tmp/https___gitlab.enableit.dk_kubernetes_kubernetes-config-enableit/k8s/kbm.obmondo.com/argocd-apps/values-obmondo-web-app.yaml
   syncPolicy:
     automated:
       prune: true
