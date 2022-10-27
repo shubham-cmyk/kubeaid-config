@@ -4,9 +4,4 @@ issuer:
   production: true
   secret: kam-letsencrypt-key
   solvers:
-    - type: dns
-      cloudProvider: cloudflare
-      cloudProviderSecret: cloudflare-api-token-secret
-      dnsNames:
-        - obmondo.com
     - type: http
