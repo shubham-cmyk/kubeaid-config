@@ -8,10 +8,15 @@ ingress:
       paths:
         - path: /
           pathType: ImplementationSpecific
+    - host: www.obmondo.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
   tls:
     - secretName: obmondo-com-tls
       hosts:
         - obmondo.com
+        - www.obmondo.com
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     kubernetes.io/ingress.class: traefik-cert-manager
