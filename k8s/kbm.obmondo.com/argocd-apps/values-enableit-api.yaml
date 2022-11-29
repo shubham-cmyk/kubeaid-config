@@ -24,5 +24,5 @@ ingress:
     traefik.ingress.kubernetes.io/router.tls.options: traefik-tls-client-auth@kubernetescrd
     traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-cn-header-enableit-api@kubernetescrd
 
-postgres:
+postgresql:
   access_secret: api-postgresql-postgres-pod-env

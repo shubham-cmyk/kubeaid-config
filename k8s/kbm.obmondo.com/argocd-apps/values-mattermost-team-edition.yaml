@@ -21,5 +21,5 @@ mattermost-team-edition:
     MM_TEAMSETTINGS_RESTRICTCREATIONTODOMAINS: "enableit.dk,obmondo.com,blackwoodseven.com,vsen.dk,gnhearing.com,gn.com, nresound.com,jabra.com,ks.kk.dk,kk.dk,ebillet.dk,kilroy.net,hobbii.dk"
     MM_SERVICESETTINGS_SITEURL: "https://mattermost.kbm.obmondo.com"
 
-postgres:
+postgresql:
   access_secret: mattermost-pgsql-postgres-pod-env
