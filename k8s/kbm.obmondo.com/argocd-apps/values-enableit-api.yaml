@@ -1,5 +1,7 @@
 ---
 namespace: obmondo-website
+trustedProxies:
+  - "0.0.0.0/0"
 image:
   tag: latest
   pullPolicy: Always
