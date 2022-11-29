@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: mattermost-pgsql-postgres-pod-env
+  namespace: obmondo-website
+spec:
+  encryptedData:
+    AWS_SECRET_ACCESS_KEY: AgB/3Uu0aHUKBLqwNIajK4U1zu/fgzJDvZOuMjbS3maygtNUCAkDWLva8X7XcnQZukyr3GSqsCDuH+oa5sftBQxdrW67wqxOpahPXOoICzHeYxa1QC/Vz9XRkDjmSxQyX8TzE+kV+AmgTjY0qRREisNHjdNatvsei4XjDDFmo5KGj/ilJRehkDiAvzmuqPGCG/GJXy4uvmhWp3diYBmNYzCK+xaQZ/r0CJGnRWocdaRxyv6IAMO3gA7QFZlBAiL4dzAtsLN5cdg60AmxlRhNUPahHWqd80Tdt6Kl9fTiHfMaF66foY78Qj46vM1g1ab/gcThRIf7p0YkDWGBOFFOrwYDDCfIrq133BAAoO2jhfz8EsLazdqn0tzRuLJhvrjSog3vQmTxujkaVY5CYizr81OLaZMELNaGaok+GPt2rfveJK27HmAZUJxKOOL8bc+oG8Etf5yYtoLNmKoGSDHMI0JHUecADusCWBVPXsH2SFQvcpnyyZp/NgD+KdtGZri74QggOgC0S+6yfKGjAlADiyI2wCUxaoDRiC3ICgR3cZzenXGfK/hlvVS5gAAie5JdPpDCr+BOYdBj4yYfkrmdhYb4xq6+RkL7KlTP65Ya5Yo3mrFkZ9gltv9lF3O+NeEKoFE3hTBkZgbsdPhpDdieNCX8PbhMKK7FXcwTYq5nyZbcURCmujux7KD30Mm3C4HFBjLjltzfEq0FTYpBUK600f5Re52DL0/2VPg=
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: mattermost-pgsql-postgres-pod-env
+      namespace: obmondo-website
+
