@@ -1,0 +1,7 @@
+postgres-operator:
+  configAwsOrGcp:
+    kube_iam_role: "arn:aws:iam::123456789977:root"
+s3:
+  bucket: kam-postgres-backups
+  endpoint: https://s3.obmondo.com
+  access_key_id: kam
