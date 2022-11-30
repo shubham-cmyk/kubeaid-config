@@ -13,4 +13,3 @@ spec:
       creationTimestamp: null
       name: mattermost-pgsql-postgres-pod-env
       namespace: mattermost
-
