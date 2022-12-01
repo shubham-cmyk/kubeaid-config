@@ -13,4 +13,3 @@ spec:
       creationTimestamp: null
       name: api-postgresql-postgres-pod-env
       namespace: obmondo-website
-
