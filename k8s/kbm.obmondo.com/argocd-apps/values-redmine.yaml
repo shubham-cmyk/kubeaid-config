@@ -19,4 +19,4 @@ redmine:
     pullPolicy: Always
     tag: 5.0.2
     pullSecrets:
-      - "obmondo-dockerfiles-registry-secret"
+      - "redmine-obmondo-dockerfiles-registry-secret"
