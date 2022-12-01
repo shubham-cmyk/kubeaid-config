@@ -47,6 +47,7 @@ spec:
           - receiver: 'null'
             matchers:
             - "namespace = testing"
+            - "namespace = obmondo-ci"
           - receiver: 'null'
             matchers:
             - "alertname = InfoInhibitor"

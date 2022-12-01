@@ -47,6 +47,7 @@ spec:
           - receiver: 'null'
             matchers:
             - "alertname = InfoInhibitor"
+            - "namespace = obmondo-ci"
           - receiver: obmondo
             continue: true
 
