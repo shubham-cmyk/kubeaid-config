@@ -46,8 +46,7 @@ spec:
             - "alertname = Watchdog"
           - receiver: 'null'
             matchers:
-            - "namespace = testing"
-            - "namespace = obmondo-ci"
+            - "namespace =~ testing|obmondo-ci"
           - receiver: 'null'
             matchers:
             - "alertname = InfoInhibitor"
