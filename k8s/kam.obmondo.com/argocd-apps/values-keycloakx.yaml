@@ -16,3 +16,6 @@ keycloakx:
       - secretName: keycloakx-kam-ssl
         hosts:
           - keycloakx.kam.obmondo.com
+
+postgresql:
+  access_secret: keycloakx-pgsql-postgres-pod-env
