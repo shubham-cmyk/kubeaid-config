@@ -63,4 +63,5 @@ ingress:
     traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-cn-header-enableit-api@kubernetescrd
 
 postgresql:
+  instances: 2
   access_secret: api-postgresql-postgres-pod-env
