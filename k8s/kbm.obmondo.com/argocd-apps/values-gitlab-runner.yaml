@@ -1,5 +1,5 @@
 gitlab-runner:
-  replicas: 6
+  replicas: 12
   gitlabUrl: https://gitlab.enableit.dk/
   runners:
     tags: kbm.obmondo.com, kbm
