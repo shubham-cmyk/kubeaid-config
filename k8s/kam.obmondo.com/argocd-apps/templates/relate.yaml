@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: system
+    namespace: relate
     server: 'https://kubernetes.default.svc'
   source:
     path: argocd-helm-charts/relate
