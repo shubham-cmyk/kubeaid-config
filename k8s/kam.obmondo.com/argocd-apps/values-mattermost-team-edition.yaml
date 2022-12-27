@@ -6,11 +6,11 @@ mattermost-team-edition:
     enabled: true
     path: /
     hosts:
-      - mattermost.kam.obmondo.com
+      - chat.obmondo.com
     tls:
-      - secretName: mattermost.kam.obmondo.com
+      - secretName: chat.obmondo.com
         hosts:
-          - mattermost.kam.obmondo.com
+          - chat.obmondo.com
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt
       kubernetes.io/ingress.class: traefik-cert-manager
