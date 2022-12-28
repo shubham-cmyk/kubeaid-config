@@ -1,7 +1,7 @@
 mattermost-team-edition:
   image:
     repository: mattermost/mattermost-team-edition
-    tag: 6.7.0@sha256:cf0c182aeff6553d93e33485858c3dd9de1c8dd73d140dda18d926721f8ff7a0
+    tag: 7.5.2@sha256:fb9cf6722f9c21bae5a26f65aca6c84f816edf922658cafdbd475fa8b1a4d5cf
   ingress:
     enabled: true
     path: /
