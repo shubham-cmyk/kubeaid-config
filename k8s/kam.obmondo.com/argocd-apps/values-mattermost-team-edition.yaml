@@ -20,6 +20,8 @@ mattermost-team-edition:
     MM_GITLABSETTINGS_TOKENENDPOINT: "https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/token"
     MM_TEAMSETTINGS_RESTRICTCREATIONTODOMAINS: "enableit.dk,obmondo.com,blackwoodseven.com,vsen.dk,gnhearing.com,gn.com, nresound.com,jabra.com,ks.kk.dk,kk.dk,ebillet.dk,kilroy.net,hobbii.dk"
     MM_SERVICESETTINGS_SITEURL: "https://chat.obmondo.com"
-
+    MM_SERVICESETTINGS_COLLAPSEDTHREADS: "default_off"
+    MM_SERVICESETTINGS_THREADAUTOFOLLOW: "true"
+    MM_PLUGINSETTINGS_ENABLE: "true"
 postgresql:
   access_secret: mattermost-pgsql-postgres-pod-env
