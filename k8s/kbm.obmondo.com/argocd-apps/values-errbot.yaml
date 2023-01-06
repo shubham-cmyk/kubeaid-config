@@ -1,0 +1,24 @@
+image:
+  repository: registry.obmondo.com/anchit/errbot  # TODO push this somewhere
+  pullPolicy: Always
+  tag: "latest"
+
+imagePullSecrets:
+  - name: "errbot-registry-secret"  # TODO: create once I have the token
+
+env:
+  - name: BOT_TOKEN
+    valueFrom:
+      secretKeyRef:  # TODO: create once I have the token
+        name: errbot-secrets
+        key: bot-token
+  - name: BOT_SERVER
+    value: "chat.obmondo.com"
+  - name: BOT_PORT
+    value: "443"
+  - name: BOT_SCHEME
+    value: "https"
+  - name: BOT_TEAM
+    value: "obmondo"
+  - name: BOT_ADMINS
+    value: "@klavsklavsen,"
