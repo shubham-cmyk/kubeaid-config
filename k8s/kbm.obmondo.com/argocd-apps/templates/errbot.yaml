@@ -11,7 +11,7 @@ spec:
   source:
     path: argocd-helm-charts/errbot
     repoURL: https://gitlab.enableit.dk/kubernetes/k8id.git
-    targetRevision: errbot
+    targetRevision: HEAD
     helm:
       valueFiles:
       - values.yaml

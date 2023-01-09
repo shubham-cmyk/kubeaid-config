@@ -1,16 +1,11 @@
-image:
-  repository: registry.obmondo.com/anchit/errbot  # TODO push this somewhere
-  pullPolicy: Always
-  tag: "latest"
-
 imagePullSecrets:
-  - name: "errbot-registry-secret"  # TODO: create once I have the token
+  - name: errbot-obmondo-dockerfiles-registry-secret
 
 env:
   - name: BOT_TOKEN
     valueFrom:
-      secretKeyRef:  # TODO: create once I have the token
-        name: errbot-secrets
+      secretKeyRef:
+        name: errbot-mattermost-secrets
         key: bot-token
   - name: BOT_SERVER
     value: "chat.obmondo.com"
@@ -19,6 +14,6 @@ env:
   - name: BOT_SCHEME
     value: "https"
   - name: BOT_TEAM
-    value: "obmondo"
+    value: "Obmondo"
   - name: BOT_ADMINS
-    value: "@klavsklavsen,"
+    value: "@klavsklavsen,@ashish,@aman0"
