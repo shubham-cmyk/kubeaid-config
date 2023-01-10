@@ -1,0 +1,19 @@
+imagePullSecrets:
+  - name: errbot-obmondo-dockerfiles-registry-secret
+
+env:
+  - name: BOT_TOKEN
+    valueFrom:
+      secretKeyRef:
+        name: errbot-mattermost-secrets
+        key: bot-token
+  - name: BOT_SERVER
+    value: "chat.obmondo.com"
+  - name: BOT_PORT
+    value: "443"
+  - name: BOT_SCHEME
+    value: "https"
+  - name: BOT_TEAM
+    value: "Obmondo"
+  - name: BOT_ADMINS
+    value: "@klavsklavsen,@ashish,@aman0"
