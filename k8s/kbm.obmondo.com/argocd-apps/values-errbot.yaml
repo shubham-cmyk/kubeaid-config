@@ -1,6 +1,8 @@
 imagePullSecrets:
   - name: errbot-obmondo-dockerfiles-registry-secret
 
+initContainerCmd: "chown -R 1000:1000 /home/errbot/data"
+
 env:
   - name: BOT_TOKEN
     valueFrom:
