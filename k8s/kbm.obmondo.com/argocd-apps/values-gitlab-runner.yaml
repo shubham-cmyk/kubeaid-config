@@ -11,3 +11,7 @@ runner:
   serviceAccount:
     create: true
     name: obmondo-gitlab-ci
+
+envVars:
+  - name: KUBERNETES_POLL_TIMEOUT
+    value: "1800"  # default is 180
