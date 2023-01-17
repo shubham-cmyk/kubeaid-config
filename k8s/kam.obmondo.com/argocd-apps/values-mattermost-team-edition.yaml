@@ -7,13 +7,23 @@ mattermost-team-edition:
     path: /
     hosts:
       - chat.obmondo.com
+    extraHosts:
+      - host: webchat.obmondo.com
+        servicePort: 8989
     tls:
       - secretName: chat.obmondo.com
         hosts:
           - chat.obmondo.com
+      - secretName: webchat.obmondo.com
+        hosts:
+          - webchat.obmondo.com
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt
       kubernetes.io/ingress.class: traefik-cert-manager
+  extraPorts:
+    - name: matternelle
+      port: 8989
+      protocol: TCP
   config:
     MM_GITLABSETTINGS_USERAPIENDPOINT: "https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/userinfo"
     MM_GITLABSETTINGS_AUTHENDPOINT: "https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/auth"
