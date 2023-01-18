@@ -4,6 +4,10 @@ gitlab-runner:
   runners:
     tags: kbm.obmondo.com, kbm
 
+  envVars:
+    - name: KUBERNETES_POLL_TIMEOUT
+      value: "900"  # default is 180
+
 runner:
   nameSpace:
     create: true
@@ -11,7 +15,3 @@ runner:
   serviceAccount:
     create: true
     name: obmondo-gitlab-ci
-
-envVars:
-  - name: KUBERNETES_POLL_TIMEOUT
-    value: "1800"  # default is 180
