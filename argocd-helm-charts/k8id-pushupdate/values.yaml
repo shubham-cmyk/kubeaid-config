@@ -9,6 +9,9 @@ image:
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
+  volumeMounts:
+  - mountPath: "/opt/pushupdate/config"
+    name: config
 
 imagePullSecrets:
   - name: "k8id-support-software-registry-secret"
@@ -89,23 +92,10 @@ env:
     value: "true"
   - name: PORT
     value: "8080"
-  - name: K8ID_REPO_URL
-    valueFrom:
-      secretKeyRef:
-        name: k8id-pushupdate
-        key: k8id-repo-url
-  - name: K8ID_REPO_TOKEN
-    valueFrom:
-      secretKeyRef:
-        name: k8id-pushupdate
-        key: k8id-repo-token
-  - name: K8ID_REPO_DEFAULT_BRANCH
-    valueFrom:
-      secretKeyRef:
-        name: k8id-pushupdate
-        key: k8id-repo-default-branch
-  - name: K8ID_PUSHUPDATE_CUSTOMER_CONFIG
-    valueFrom:
-      secretKeyRef:
-        name: k8id-pushupdate
-        key: k8id-pushupdate-customer-config
+  - name: PUSHUPDATE_CONFIG_PATH
+    value: "/opt/pushupdate/config/pushupdate-config.yaml"
+
+volumes:
+  - name: config
+    secret:
+      secretName: vivek-k8id-pushupdate
