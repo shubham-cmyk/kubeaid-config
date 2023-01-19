@@ -35,6 +35,10 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
           {{- toYaml .Values.env | nindent 12 }}
+          {{- with .Values.image.volumeMounts}}
+          volumeMounts:
+            {{- toYaml . | nindent 12}}
+          {{- end }}
           ports:
             - name: http
               containerPort: 80
@@ -51,6 +55,10 @@ spec:
               port: 8080
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.volumes }}
+      volumes:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
