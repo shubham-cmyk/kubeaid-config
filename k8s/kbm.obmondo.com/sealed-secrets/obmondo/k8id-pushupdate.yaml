@@ -11,11 +11,11 @@ spec:
   template:
   data:
     pushupdate-config.yaml: |
-      repo_url: https://gitlab.com/viveksahu26/test-service
+      repo_url: https://gitlab.com/viveksahu26/test-service.git
       token: {{ index . "vivek-repo-token" }}
       branch: main
       customer_repo_config:
-        customer-token-bw7:
+        customer-token-vivek:
           repo_url: https://gitlab.com/RiteshAldak1302/test-service.git
           token: {{ index . "customer-ritesh-repo-access-token" }}
           default_branch: main
