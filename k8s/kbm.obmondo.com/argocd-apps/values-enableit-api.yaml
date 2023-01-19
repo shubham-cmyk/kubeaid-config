@@ -9,6 +9,8 @@ api:
   domain: api-beta.obmondo.com
 pgdump:
   enabled: true
+  image:
+    repository: registry.obmondo.com/enableit/enableit-api/pgdump:latest
 ingress:
   hosts:
     - host: api-beta.obmondo.com
