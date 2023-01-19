@@ -98,4 +98,4 @@ env:
 volumes:
   - name: config
     secret:
-      secretName: vivek-k8id-pushupdate
+      secretName: k8id-pushupdate
