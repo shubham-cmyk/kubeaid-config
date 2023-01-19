@@ -1,7 +1,5 @@
 ---
 namespace: obmondo-website
-trustedProxies:
-  - 10.96.0.0/12
 admins:
   - "klavs@obmondo.com"
   - "klavs@enableit.dk"
@@ -17,25 +15,45 @@ admins:
   - "suwarna@obmondo.com"
 # Need to add service and pod CIDR here
 internalIpRanges:
-  - 192.168.0.0/16
+  - "10.0.3.54"
+  - "10.10.10.34"
+  - "10.199.199.1/24"
+  - "135.181.21.167"
+  - "135.181.21.154"
+  - "135.181.21.153"
+  - "135.181.223.235"
+  - "65.21.130.86"
+  - "65.21.130.85"
+  - "78.46.72.21"
+  - "176.9.124.207"
+  - "85.10.211.48"
+persistence:
+    enabled: true
+    accessMode: ReadWriteOnce
+    size: 1Gi
 image:
   tag: latest
   pullPolicy: Always
 api:
-  website: https://api-beta.obmondo.com
-  domain: api-beta.obmondo.com
-pgdump:
-  enabled: true
+  website: https://obmondo.com
+  domain: api.kam.obmondo.com
+extraEnv:
+  - name: OVERVIEW_EMAIL
+    value: klavs.klavsen@enableit.dk
+  - name: INFO_EMAIL
+    value: info@obmondo.com
+  - name: COOKIE_DOMAIN
+    value: obmondo.com
 ingress:
   hosts:
-    - host: api-beta.obmondo.com
+    - host: api.kam.obmondo.com
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls:
-    - secretName: api-beta-obmondo-com-tls
+    - secretName: api-kam-obmondo-com-tls
       hosts:
-        - api-beta.obmondo.com
+        - api.kam.obmondo.com
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     kubernetes.io/ingress.class: traefik-cert-manager
@@ -45,4 +63,5 @@ ingress:
     traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-cn-header-enableit-api@kubernetescrd
 
 postgresql:
+  instances: 2
   access_secret: api-postgresql-postgres-pod-env
