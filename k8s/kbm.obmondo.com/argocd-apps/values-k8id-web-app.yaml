@@ -1,0 +1,17 @@
+replicaCount: 1
+image:
+  tag: latest
+  pullPolicy: Always
+ingress:
+  hosts:
+    - host: beta.k8id.io
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: beta-obmondo-com-tls
+      hosts:
+        - beta.k8id.io
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    kubernetes.io/ingress.class: traefik-cert-manager
