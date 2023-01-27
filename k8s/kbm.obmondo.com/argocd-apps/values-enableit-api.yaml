@@ -4,7 +4,6 @@ trustedProxies:
   - 10.96.0.0/12
 admins:
   - "klavs@obmondo.com"
-  - "klavs@enableit.dk"
   - "ashish@obmondo.com"
   - "aman@obmondo.com"
   - "emilhp@obmondo.com"
