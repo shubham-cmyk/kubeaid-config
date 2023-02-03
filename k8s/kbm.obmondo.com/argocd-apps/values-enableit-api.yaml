@@ -29,6 +29,18 @@ ingress:
   hosts:
     - host: api-beta.obmondo.com
       paths:
+        - path: /api/ping
+          pathType: Prefix
+          serviceName: enableit-go-api
+          servicePort: 80
+        - path: /api/notify
+          pathType: Prefix
+          serviceName: enableit-go-api
+          servicePort: 80
+        - path: /api/user-location
+          pathType: Prefix
+          serviceName: enableit-go-api
+          servicePort: 80
         - path: /
           pathType: ImplementationSpecific
   tls:
@@ -45,3 +57,6 @@ ingress:
 
 postgresql:
   access_secret: api-postgresql-postgres-pod-env
+
+chat:
+  teamid: 'cnuya58yz7njpxweab87aq7uth'

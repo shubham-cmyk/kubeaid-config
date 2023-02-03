@@ -1,0 +1,15 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: go-api-tokens
+  namespace: obmondo-website
+spec:
+  encryptedData:
+    chat: AgCZVWFWrcdW5gb81CXOP4uMGQAomMjdbdRreA0PF+uk3Kuw2EomUKloQl1B17qhArJzak/117p9gT1j4g6vp/ik2XcUj5F+LoF8XcLsAABDT+o05Tp61m0hOlJ9t+cQkhHmX+u8AY6PVcOT/Ey5z4dXLkKw/VYa1kT2NbPh+HGinvwq5AxrJZPQW9pS25lPsHW5DiUn6irT+NqC4hFckFg6GgScQYfGOOM3ro+uUCbTcfBNpcS5UfXas5WmFsbw+ln2df2cAUUjPLeCmfXLzVvm5sD4KVJW3Ueyv5GnasiCo1pdWYK952jZelseeMS0ckn9eZVA5G8kp6j/bCSz0+Qy9hvUaQMvgbDxzELH/w1ztbA/Q7VOAHjWp+iNTe7wU0hUJmBqw2wxDBnNtIZe6cCgSZ+CAZ56BNCZcIZtAWCah0jTFQI2FJx1/J3ZcwpXFk9CWdfhRVt5V+1WVakmDlt9zXAiWEJlaWxD0PRncYDNbx92/VmU3GnoGEjg+uyzKhwJ1S2LtQs2//nvLkiiNbzDOa/igaghcGxCIm0mbgYy5hNv7Sm2wmPUNMs0d8Qo3LcuRY0uDMVZ0yMDXnF5tBaG9JltLQH1jgQlvPrCx5PVublk39o2TyjgHmWWOMhyzpnz4qALO+adetKC8LzcPNe1+Az3dOop97KBtuTuKtP5Ao7grv9CPVv9tug4O2OBPDercXUB+QRiswWEjYSlh2b8TnztyY7z7D0CaA==
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: go-api-tokens
+      namespace: obmondo-website
