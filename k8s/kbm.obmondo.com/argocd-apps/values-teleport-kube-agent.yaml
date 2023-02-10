@@ -6,6 +6,7 @@ teleport-kube-agent:
   labels: {'env': 'enableit-dev'}
   resources:
     limits:
+      cpu: null
       memory: "200Mi"
     requests:
       cpu: "200m"
