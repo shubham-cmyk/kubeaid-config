@@ -12,7 +12,8 @@ argo-cd:
   server:
     rbacConfig:
       policy.csv: |
-        g, SRE, role:admin
+        g, ArgoCDAdmins, role:admin
+        g, ArgoCDDevs, role:readonly
     extraArgs:
       - --insecure
     config:
