@@ -1,0 +1,25 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: totp-enableit-api
+  namespace: obmondo-website
+spec:
+  encryptedData:
+    k8id: AgAwYG8lAofRuZjXhW5sopyQw9DzjGCplXEHfv2OO6uVLV4KtYcd4Pgh5QwZH39gdSteydkhgjGW/rsbnM3VFUEOctdaySscZBdclXZ3r2+K/1VKYa6nvA4tGAHejNJYiR2vmJ8tQ1/Xd5CTSEhsDS+DZo6NamNP0uHBFrrqEE8EfWRTLpr2yJlet7+BnrFs8MvUEQI46zhnOYnl6Mt9p5410D+CSrMAPyy9UFlfGQwjRaMh6PWi/HJ/zgaHK9eeFSuR0v15teGA+Y2nRrdEdBacj/B8bjZ4k8oUVAslsRDekAz3K93Ng4sbn4obp7rYbEFM0GvdTdCwOfb1AIiZZEq96dqBcUlt0bNP+GchcGs5qybRcQehIzWH1xxNmSXdNKWyaMgV8mKH9rnZDHbA0ROOjyTOreDWjcd2psMxOg+TpyB9mjHujxZRPtxd4cwPP26tVaT1Ux6ULVAl5tzB310G/Pc278FZAPyYyV+wswKwJ43IaZnaYja4J3PoHwVDso2c++ki3C4Qjd04NHYrelr8g6IqsxT4RMzOT69QGlc5MnsUo/PgaophQtFL9PkPSB0OodP90ELyieMpZ5+xMxlgLsJoYi3CWixidnTUuRBM6WNTvr7H8a6JoQWTeZgO2VdSf2Vwk2NCK/VEgucoQou8dloP7C9gyc4rVAk3E1pU0B2rBnDtR4hWXQr6xM/08swWK7SMh0s/CyUoAirMLNrg2X3cqnwwP9YI1FQSYM+wu8yLb9JRTulh
+    obmondo: AgCgjfaxwsMPqIqBv7MD8T0k5Du61zUySlfXoSTM1E58f8YuWrYrTikdlthTRG09a5ICSGbijgl5bpVs9EwEEFTom5+n9M7ZC+GSyhMzulqvXLHfm0kLgGxkKocpmqGlR64y4c3h28uhIFfzKw4tihKf8CltZetT2AOr8g+kB+BTMy874ppcq5tp71mx+G/nMR/41AOigBdWatUCYUHR+1BXbBL2fT/gRzfnTEEieNF0vQm2dWijICS4iyj6Dp07nHBrToebKBXrAcyTuMDwdK7dM6YeCmLi3s8QZy6rc5yKqwdQkEOiqgWXkqmxEGrNUxLey60XrujCj5ZRdrRsLryLyGpEhQa1Ev/IM5wvGubRNw5ukcj4Gww7kYRJDzmTxdzI29+8tNFCRSI7a/Wfu8cbrBXzVO+iUdkZZ05uNqfRsm33l2JQVEkDZV7TzyBXeeQXv45rGRv4DNYwqhjGFlm3MBJY5JC1ayR63TBYI4UXZr9Ts1qd2Puw7JBePqcoI+ngfTJYtUUTsKMAs4RI1otBPfjzyUlkAOY9bncnnyA9FnY3nHtBSEhzbz+rlv7z+zjCPgO3tvXRhSypi/WCfKnDAUx5w72a94aV+ed18cXWqNJG6HgYyfmq2RC8m1WdQMOPNMLcPY27GV4MAGSJPbJ9mMWWBkd7pc/3L83QCMn8MDXx8yrOWqkAeUCfcqzrg+YatafxLF0SYI+qdsBaB+mB4uh5VMwXBqNLtAGf1hZJV2+UQbDcRGnb
+  template:
+    metadata:
+      creationTimestamp: null
+      name: totp-enableit-api
+      namespace: obmondo-website
+
+# kubectl create secret generic totp-enableit-api\
+#  --dry-run=client \
+#  --namespace obmondo-website \
+#  --from-literal=k8id="SECRET" \
+#  --from-literal=obmondo="SECRET" -o yaml | \
+#  kubeseal \
+#  --controller-namespace system \
+#  --controller-name sealed-secrets \
+#  --namespace obmondo-website -o yaml > totp-enableit-api.yaml
