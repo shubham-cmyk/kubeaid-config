@@ -25,7 +25,7 @@ mattermost-team-edition:
       port: 8989
       protocol: TCP
   config:
-    MM_GITLABSETTINGS_SCOPE: "openid profile email"
+    MM_GITLABSETTINGS_SCOPE: "read_user"
     MM_GITLABSETTINGS_USERAPIENDPOINT: "https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/userinfo"
     MM_GITLABSETTINGS_AUTHENDPOINT: "https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/auth"
     MM_GITLABSETTINGS_TOKENENDPOINT: "https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/token"
