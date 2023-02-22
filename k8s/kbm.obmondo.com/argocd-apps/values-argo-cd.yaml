@@ -14,6 +14,11 @@ argo-cd:
       policy.csv: |
         g, ArgoCDAdmins, role:admin
         g, ArgoCDDevs, role:readonly
+        g, deepak@obmondo.com, role:admin
+        g, divyam@obmondo.com, role:admin
+        g, akshat@obmondo.com, role:admin
+        g, vivek@obmondo.com, role:admin
+      scopes: '[groups, email]'
     extraArgs:
       - --insecure
     config:
