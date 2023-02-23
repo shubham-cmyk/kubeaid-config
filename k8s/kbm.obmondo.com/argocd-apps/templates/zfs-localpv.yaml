@@ -7,14 +7,16 @@ spec:
   destination:
     namespace: zfs-localpv
     server: 'https://kubernetes.default.svc'
-  source:
-    path: argocd-helm-charts/zfs-localpv
-    repoURL: 'https://gitlab.enableit.dk/kubernetes/k8id.git'
-    targetRevision: HEAD
-    helm:
-      valueFiles:
-        - values.yaml
-        - /tmp/https___gitlab.enableit.dk_kubernetes_kubernetes-config-enableit/k8s/kbm.obmondo.com/argocd-apps/values-zfs-localpv.yaml
+  sources:
+    - repoURL: https://gitlab.enableit.dk/kubernetes/k8id.git
+      path: argocd-helm-charts/zfs-localpv
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+          - $values/k8s/kbm.obmondo.com/argocd-apps/values-zfs-localpv.yaml
+    - repoURL: https://gitlab.enableit.dk/kubernetes/kubernetes-config-enableit.git
+      targetRevision: HEAD
+      ref: values
   project: default
   syncPolicy:
     automated: null
