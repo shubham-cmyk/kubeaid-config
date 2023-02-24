@@ -9,8 +9,8 @@ spec:
     namespace: obmondo-website
   project: default
   sources:
-    - repoURL: https://gitlab.enableit.dk/kubernetes/k8id.git
-      path: argocd-helm-charts/enableit-api
+    - repoURL: https://gitlab.enableit.dk/enableit/enableit-api.git
+      path: helm/enableit-api
       targetRevision: HEAD
       helm:
         valueFiles:
