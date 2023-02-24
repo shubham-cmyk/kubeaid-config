@@ -9,8 +9,8 @@ spec:
     namespace: enableit-website
   project: default
   sources:
-    - repoURL: https://gitlab.enableit.dk/kubernetes/k8id.git
-      path: argocd-helm-charts/enableit-website
+    - repoURL: https://gitlab.enableit.dk/enableit/enableit-website.git
+      path: helm/enableit-website
       targetRevision: HEAD
       helm:
         valueFiles:
