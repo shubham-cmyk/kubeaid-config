@@ -1,0 +1,41 @@
+networkpolicies: false
+LoadCustomCRDs: true
+schedule:
+  daily: true
+  weekly: true
+  sixhourly: true
+velero:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+  configuration:
+    provider: aws
+    backupStorageLocation:
+      provider: aws
+      bucket: velero-kbm-obmondo-com
+      config:
+        region: "eu-west-1"
+        s3Url: https://s3.obmondo.com
+    volumeSnapshotLocation:
+      provider: aws
+      name: default
+      config:
+        region: "eu-west-1"
+    features: EnableCSI
+  initContainers:
+  - name: velero-plugin-for-csi
+    image: 'velero/velero-plugin-for-csi:v0.3.1'
+    imagePullPolicy: IfNotPresent
+    volumeMounts:
+    - mountPath: /target
+      name: plugins
+  - name: velero-velero-plugin-for-aws
+    image: 'velero/velero-plugin-for-aws:v1.5.1'
+    imagePullPolicy: IfNotPresent
+    volumeMounts:
+    - mountPath: /target
+      name: plugins
+  credentials:
+    useSecret: true
+    name: cloud-credentials
