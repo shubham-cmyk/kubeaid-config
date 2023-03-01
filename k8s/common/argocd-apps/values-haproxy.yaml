@@ -1,0 +1,7 @@
+haproxy:
+  # This is necessary to clear the default ports.
+  # You must include this values.yaml even though you set the ports in cluster values
+  containerPorts:
+    http: null
+    https: null
+    stat: null
