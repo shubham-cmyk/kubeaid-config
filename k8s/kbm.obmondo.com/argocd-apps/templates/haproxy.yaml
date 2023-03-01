@@ -16,7 +16,7 @@ spec:
       targetRevision: HEAD
       helm:
         valueFiles:
-          - values.yaml
+          - $values/k8s/common/argocd-apps/values-haproxy.yaml
           - $values/k8s/kbm.obmondo.com/argocd-apps/values-haproxy.yaml
     - repoURL: https://gitlab.enableit.dk/kubernetes/kubernetes-config-enableit.git
       targetRevision: HEAD
