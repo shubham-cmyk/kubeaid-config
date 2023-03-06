@@ -8,7 +8,6 @@ spec:
   encryptedData:
     AWS_SECRET_ACCESS_KEY: AgBI5FvloBDCFwoEwPo1jvKEsaHOdpnVuQs0kXAwyUxZP7mnqLLNPJY3mVIqumr1GHDdiQ2grKPNox3ld5d2l6mGrz982aSrtiS/W8EGY03KVGUwh+H898n8N9t/Ygi8PwW/okdf7iSSJmmF+H/cA1v9xTzIwJYA4+1uHFZxYC4iwHbehYmOuSJXAUM77QmzC1bGp+Br2O4Ye7TlXNHTiGh4YZaSS2ZpfQXQL+p+o7tesBrvMLSGryx6xfvNal6Oi/v55JdWMB4prDwqC181IigKtonMjCSBe2YfVPERFSsCj3lP/86lHQnedTgPU1L51b4TMll+3Cuit0c4wvNIiNCwPXFUoMsRUTVnB1d+WEJXyagfqXW9SuTkz7koNvNmOczvS4qFh3fk2W9Ru/VE22SH7BlU2Kt5tx8tskvK1F9qMZhyoPUDPBa0iAt9icHSVNMwm/hywOm4nPV97d23mk5WbJNe4joWB87PppdJ/4AD7HuHo4B1ZiebTy9Gbypwjr8UaqI+swfJpVVGf/8AityauqXVHDISt844VhoX1hKR+622/jJx6p+zN38UkWnhq1pMIVgJ6oLhAjis7ZBdwKu7VWYVA76gI0EI8WCnCRh1lgYlm9MCOp6NPn6YrRkRQth/iPgPswMrEP+FhsG2vIiyxpJ6JVWS2njiKenusAVAluo14z9vKTDjG4Cw3wRh7PRyPp7zFxwfDtbFe+7ADxN8dvfYJY191RY=
   template:
-    data: null
     metadata:
       creationTimestamp: null
       name: api-postgresql-postgres-pod-env

@@ -19,8 +19,7 @@
           "managed-by": "argocd.argoproj.io",
           "sealedsecrets.bitnami.com/managed": "true"
         }
-      },
-      "data": null
+      }
     },
     "encryptedData": {
       "name": "AgAf10k3z6V1tQb7/Y2wWyetRthVxhmi7RSwo3y7xn79LSLKVeTbdWbzsnibwg0XVRCsoCK/8SDQMqPre3vDu4qXjtaRKQLKM8pMF5ndRMDLR/8p0q4VczRlCXaC4zWRxwJgz8Znq+Uh9qnsgvYzfYmfAyR9k0g+MNSTfqXrqW1vIdGb/L6O3vjPKo+oqTVkhXE4VLDlorRnjHfoom6iRtctoROjpZA6RKNLig+W0xcydEThHnpzqB95IGPXsPTxWO8r7ADawKCe2o8ljLohJIT7C/QzuFbwq5UzuM2z/yvlE/ukzOfWFrkPg/rGqFdENbwh1I0loo1jagqq6lR+MaiYR7bgSvEiI0yE67Yb+gXXI9Yb+5RX3e2Bss0OYYso0ZQwj13XVPhxhKknuXrRLsF0DCz2bpwlCdMip8gkj7a6srEV3ms0a9tLitrRgObclcgo9sqIFWuTxegsO8BEmo60lMlVCwQR6tvJgIOOQXFjP6UHB/qqCU0zQckzlkdoFaXBQHap9KTMkroGy7tMJa9VSFDiWE8uick0V/gYpbuUZJRNbkS81yV/pI4mhrSX7EIbf//DJjTeGlxhm1QbNQ586SC1KY0s0AjKTcggFRGgzznMcK/u8m04D8dvaksWAInBBtnmTkyLH7k7O2PrEE+lEzAVsCkUlm7Nq9KhoXP2gxeRCsHTNqc6abAlewnOApdn+n7dk8qph+LFoVTOqofu",
