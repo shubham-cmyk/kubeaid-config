@@ -1,6 +1,7 @@
 haproxy:
-  # This is necessary to clear the default ports.
-  # You must include this values.yaml even though you set the ports in cluster values
+  # This is currently done in haproxy chart in k8id (i.e. this file in unused).
+  # Once this bug is fixed we can move it here:
+  # https://github.com/helm/helm/issues/9027
   containerPorts:
     http: null
     https: null
