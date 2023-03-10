@@ -10,16 +10,15 @@ spec:
     namespace: obmondo
     server: 'https://kubernetes.default.svc'
   project: default
-  sources:
+  source:
     - repoURL: https://gitlab.enableit.dk/kubernetes/kubernetes-config-enableit.git
       path: argocd-helm-charts/k8id-pushupdate
       targetRevision: HEAD
       helm:
+        ignoreMissingValueFiles: true
         valueFiles:
-          - $values/k8s/kbm.obmondo.com/argocd-apps/values-k8id-pushupdate.yaml
-    - repoURL: https://gitlab.enableit.dk/kubernetes/kubernetes-config-enableit.git
-      targetRevision: HEAD
-      ref: values
+          - values.yaml
+          - ../../k8s/kbm.obmondo.com/argocd-apps/values-k8id-pushupdate.yaml
   syncPolicy:
     syncOptions:
       - ApplyOutOfSyncOnly=true
