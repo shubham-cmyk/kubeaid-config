@@ -8,7 +8,6 @@ spec:
   encryptedData:
     AWS_SECRET_ACCESS_KEY: AgAMv+K0Zb10Os/pdZSmyaX5yeKydNaiewQhGus00XtZW8QkPDIwX5yNuRwX+jt1hHJkKXvszC0rOE2NcYJT9CTacO4EkwOsFZWCTUB0GdFSOEH+pcHODwQYfp8oY8BOMXQyYQipUw+KmYd0bdxZ4ex+3DWXjjV5Z0f3bjgBATsB9NUV6dFmlAsNc35p2AscpCrUSAr5Sqa5Jnel+X9ANXsgCk6nponxV2r6MREcmm+/LDg6TNNRog1EmQ4OnYGjaA7qfBOEmpR+1Frrf87j9nfwMJ1vTUGPIkRp5+hgKdwJaLk/Cb3WTIzFtVCpO5PGdvLIfrLc6WJRl2GGm+dc8/sdQGZt4vZB3byePRt2+mG02pWfWgJEYX97pO2NI0l4l8l9fwDHNHu+hQ5I+XsgVUeqbY9vl+wUO9v8mLRwuPD6fukUkgsk/bsJWm8XmqCw9Pho97YOnFm+q+EIP9Nqm5lG5S8almXLHEHyv0iFgfNQDPQwSToB1e6615/1Sxl0MSYA30HQoLrJdhwf169nU8IUFSJ6woxqR9gJwG7t5C/0TMP3Jgl/FEc0H46o2xl2QdToGYGagRg5hnWdzT3YwzuRTJFYKhAQ2/HQhhtxkRZxDEUcAOfW1+1+IxiTuXaEdjCQ7C2mm+1L/DlSSeMiYY3nOLBLv+mmrjJRX6gQq3cymLrLmsm9bVFoi45c8dxRm8mFIQXguPDupi3sl72XohQhj7n8YVELOQk=
   template:
-    data: null
     metadata:
       creationTimestamp: null
       name: keycloakx-pgsql-postgres-pod-env

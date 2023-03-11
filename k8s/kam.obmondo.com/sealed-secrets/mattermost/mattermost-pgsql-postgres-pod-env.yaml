@@ -8,7 +8,6 @@ spec:
   encryptedData:
     AWS_SECRET_ACCESS_KEY: AgCB3NNu1tIx8HDHL8CynczNZXpQd+kkyQB/iV58JNFGGCDLHwOADFRW2uUw2fZd1mAX2rrPTXXJ+0D5fHqiw+3AuJyuRftxYF5th6GhR6EUL3kl9bOjl/p2xMzvqsaAhK0vOByfkNu9yeoI7wjZdeCUbPkaUYdjGj/YvI5j0pSbCA2vOzznhMvUC1Rit5rssPYtcBvLz2thAi0FAADnz+oreQIeix9Jj7w4WYOWKXFSURUcAlcVMgvEE+K2iqpLA064+BdMqXRce6Qhak7sw0S0TiNQcg6RTxJS7mDPAwhmEndFAN8vFXUBYc+4uSqJwmO1AyCbzuCT/+AgMf8pd4tovlOh8sgzLvbyyeFTLKENF1kCSXXvmrBHvfb/BP2G4qB+cF5Y9/Xa6Y2npHySwHRLdecuIdDN+CqS73w0jSDCJ+2MHn4YraJ7HzWuHExqbWnpiobcfCi1OlYC/qmBpMLyy9d/sKLLquryE/1ZrPnKVib0rpmKv731Y4G6PM/6huoftAH6U8o2h8eVCtLOuoksH/KCjoGbnaeGpAiPYxJRUmN+1fyiZ04dW5oZ7dlsqRUbj1G0zQHsWwqNHRX119ll2wag3o8+ryPe9NcfbV9o7FQ2LqkQkcbMFsH8kxQZ1Un2A0arMrTYPFU86RdkuG+TuXh15oZGMSCypDId/lsUAF8u2yjqXuZrCBy6x7r1An0QjlHoMHXrl16YPNZ7lJdclKG0UcB5HHlK
   template:
-    data: null
     metadata:
       creationTimestamp: null
       name: mattermost-pgsql-postgres-pod-env

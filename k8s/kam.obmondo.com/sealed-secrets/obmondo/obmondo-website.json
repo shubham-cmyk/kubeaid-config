@@ -13,8 +13,7 @@
         "namespace": "default",
         "creationTimestamp": null
       },
-      "type": "kubernetes.io/dockerconfigjson",
-      "data": null
+      "type": "kubernetes.io/dockerconfigjson"
     },
     "encryptedData": {
       ".dockerconfigjson": "AgCpXUmOnk773O2+JZOw7Z/Xj8XL9GatrEclUOARtiBGZNgkgZ/u7Ajp6ZxQMFYlLazYZPFGijHohUuZkngpyMPdQWu4zUulfQlUcjhADdWr3KhU7YmgE0SO38JsQJvea5licWCT4J41fmwocMR3w872FjGjYwrJ0Sr7nkzHP+zyRlKADraZ+f8CNkYmnQLoyjuzYlMZmqXDa6ZtwlLjbMw89oFUSRWGpfi3HoGdTRRU0u9G/oiT4H5E8IMrYd/UU4V4cd9YU8RvMUnG5+e83rgda2IkpkxrO+SFU5sRwsyFG0Q3RHw/6QDTMKiJeUrYeFAsuDNNcuVDxz2eBkzSlvyl53a/LzguBpL54YiRUNxJ+gFVEy+RrJZ3Dt6t8vC1YBpq4vG0Wy8jSg9iPPXpQv3dUC4aB0WiH3qpGA9X9yvOqA9JluEkSYH7e1XR90ol9E0BNpmmV6ibHgLxoveRaPUfnDNtjo90lltoI/R/2qyja2/SU6vJ8uNacJoG6rMfUWaFWNm0eCSGg04wbLnCsgR9WFPxml27XXBOxcTUUtU3DoK1hukdTTyih316w4xmDJEOE1nRpo1J1VmzlihP59MinZwshY71luHKNoI0tMR2HfFRbl/nfGquv78wogq3djS0UG6gIADjLJqJepBbFwcvNelCEsrH6mEt1hU5DgXDbE2Sq2fU/lK5FHskK3lHPOX0HwSqVRfbjaYsQJ0s9xNgrNWjovw8ahx1HQ3Rb81qo1l+XupNc3rIN+/VTBSMkRwDpC/0EYGKZjVI11e/JqGThzOjdaA97lAhrDCzGJfqHCnqgK+rZzMbnJML57wenHwTsureAlTDyk0z50neHuWWiyvVFuIdVS2D8HUl/C960SC114iqb7TCO7tt7unkqLmTc4cAHbNyM2j5DB4RYMMDYDaE+Sp2okA2tPA="

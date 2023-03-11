@@ -15,8 +15,7 @@
         "labels": {
           "argocd.argoproj.io/instance": "secrets"
         }
-      },
-      "data": null
+      }
     },
     "encryptedData": {
       "password": "AgCn4PHuPQ3G9xoQCV5o+l9rwjtgGrw1xM74+EBYMYBQZYdQeAKDfl0HagiySPm4tOarCxmQzSVan6EibsMxBGDZIKIySBBPgaxfXu8hUfGEthk/sZyTy6k0bBQPBuTECQNkmpx6048Bh0+oMsJpTctpsBZOniJQ7jtKy1sKOnewPmkPDLwlS566S3vDRhaO6b9Tm8WadyjfUfhcaWPr8oBRWlJGzEsHwo8svppGvUuU+aSO5RXFFAMA5oRyNenbf5hTrH0TVYfVyFZdEeh1qUtNrMFKFbtJ3pCSNjL0gxJLR1tRhT+kLGzi9ndIivRwCcIkg0G6HnDOhLEycYjkVYRUsrNYmNe9Jifatd0zVNw5w2606Bp72Y8UZydETHWzyeUKr9X+orMUrvklUOBxO0BdBdo7J7/77ILRqJI1OdMklwbFwt+Eh3L2mbOLkYuJjbYnsVHVXaYFnhyMZjT8Yvppg58zuL2jFfLutVZP9ooqCQzjSRHBKOQ+R7+gykKFhq6dpc46AdBmNc6AfRXoZPJp0UjfWWPMJOAX6wFoAeY8TV1ZRSbx4cV+YcCylEzn+AI94KXqhPYQ3o7HLg7d/njZxryQwc+CiXZiFHM+f/LcUui7nHMs7SBGr6pR8BiUUz/1/wZzIQULVxZvY3GlzX6+8h5l9RyeatqPh7cAkRh+w9sOoltLNPzKtjowuIBCoyRRB6310Ho4RPqGximYSj5hyPnyDp7Mq6aVG7SocO4EVZyfUa1jsV3y",
