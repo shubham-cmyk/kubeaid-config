@@ -18,6 +18,15 @@ spec:
   project: default
   syncPolicy:
     automated: null
+    managedNamespaceMetadata:
+      labels:
+        kubernetes.io/metadata.name: system
+        pod-security.kubernetes.io/audit: restricted
+        pod-security.kubernetes.io/audit-version: latest
+        pod-security.kubernetes.io/enforce: baseline
+        pod-security.kubernetes.io/enforce-version: v1.24
+        pod-security.kubernetes.io/warn: baseline
+        pod-security.kubernetes.io/warn-version: latest
     syncOptions:
       - CreateNamespace=true
       - ApplyOutOfSyncOnly=true
