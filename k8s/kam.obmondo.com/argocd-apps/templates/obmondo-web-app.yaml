@@ -9,7 +9,7 @@ spec:
     namespace: obmondo-website
   project: default
   source:
-    path: helm/obmondo-web-app
+    path: .helm/obmondo-web-app
     repoURL: https://gitlab.enableit.dk/obmondo/obmondo-web-app.git
     targetRevision: HEAD
     helm:
