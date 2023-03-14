@@ -8,14 +8,16 @@ spec:
     server: https://kubernetes.default.svc
     namespace: system
   project: default
-  source:
-    path: argocd-helm-charts/kube-iptables-tailer
-    repoURL: https://gitlab.enableit.dk/kubernetes/k8id.git
-    targetRevision: HEAD
-    helm:
-      valueFiles:
-        - values.yaml
-        - /tmp/https___gitlab.enableit.dk_kubernetes_kubernetes-config-enableit/k8s/kam.obmondo.com/argocd-apps/values-kube-iptables-tailer.yaml
+  sources:
+    - repoURL: https://gitlab.enableit.dk/kubernetes/k8id.git
+      path: argocd-helm-charts/kube-iptables-tailer
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+          - $values/k8s/kam.obmondo.com/argocd-apps/values-kube-iptables-tailer.yaml
+    - repoURL: https://gitlab.enableit.dk/kubernetes/k8s-config-enableit.git
+      targetRevision: HEAD
+      ref: values
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

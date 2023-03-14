@@ -8,14 +8,16 @@ spec:
     server: https://kubernetes.default.svc
     namespace: obmondo-website
   project: default
-  source:
-    path: .helm/obmondo-web-app
-    repoURL: https://gitlab.enableit.dk/obmondo/obmondo-web-app.git
-    targetRevision: HEAD
-    helm:
-      valueFiles:
-        - values.yaml
-        - /tmp/https___gitlab.enableit.dk_kubernetes_kubernetes-config-enableit/k8s/kam.obmondo.com/argocd-apps/values-obmondo-web-app.yaml
+  sources:
+    - repoURL: https://gitlab.enableit.dk/obmondo/obmondo-web-app.git
+      path: .helm/obmondo-web-app
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+          - $values/k8s/kam.obmondo.com/argocd-apps/values-obmondo-web-app.yaml
+    - repoURL: https://gitlab.enableit.dk/kubernetes/k8s-config-enableit.git
+      targetRevision: HEAD
+      ref: values
   syncPolicy:
     automated: null
     syncOptions:
