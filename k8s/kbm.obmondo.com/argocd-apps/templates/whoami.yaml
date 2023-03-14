@@ -9,7 +9,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: whoami
-  project: system
+  project: default
   sources:
     - repoURL: https://gitlab.enableit.dk/kubernetes/k8id.git
       path: argocd-helm-charts/whoami
