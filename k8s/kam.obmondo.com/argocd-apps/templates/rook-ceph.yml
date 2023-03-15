@@ -17,7 +17,7 @@ spec:
       helm:
         valueFiles:
           - $values/k8s/kam.obmondo.com/argocd-apps/values-rook-ceph.yaml
-    - repoURL: https://gitlab.enableit.dk/kubernetes/k8s-config-enableit.git
+    - repoURL: https://gitlab.enableit.dk/kubernetes/kubernetes-config-enableit.git
       targetRevision: HEAD
       ref: values
   syncPolicy:
