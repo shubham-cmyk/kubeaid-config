@@ -10,14 +10,16 @@ spec:
     namespace: keycloakx
     server: 'https://kubernetes.default.svc'
   project: default
-  source:
-    path: argocd-helm-charts/keycloakx
-    repoURL: https://gitlab.enableit.dk/kubernetes/k8id.git
-    targetRevision: v1.0.0
-    helm:
-      valueFiles:
-      - values.yaml
-      - /tmp/https___gitlab.enableit.dk_kubernetes_kubernetes-config-enableit/k8s/kam.obmondo.com/argocd-apps/values-keycloakx.yaml
+  sources:
+    - repoURL: https://gitlab.enableit.dk/kubernetes/k8id.git
+      path: argocd-helm-charts/keycloakx
+      targetRevision: v1.0.0
+      helm:
+        valueFiles:
+          - $values/k8s/kam.obmondo.com/argocd-apps/values-keycloakx.yaml
+    - repoURL: https://gitlab.enableit.dk/kubernetes/kubernetes-config-enableit.git
+      targetRevision: HEAD
+      ref: values
   syncPolicy:
     syncOptions:
     - ApplyOutOfSyncOnly=true
