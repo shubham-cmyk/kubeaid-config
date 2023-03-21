@@ -15,13 +15,15 @@ velero:
       provider: aws
       bucket: velero-kbm-obmondo-com
       config:
-        region: "eu-west-1"
+        region: "atat"
+        s3ForcePathStyle: true
         s3Url: https://s3.obmondo.com
     volumeSnapshotLocation:
       provider: aws
       name: default
       config:
-        region: "eu-west-1"
+        region: "atat"
+        profile: "default"
     features: EnableCSI
   initContainers:
   - name: velero-plugin-for-csi
