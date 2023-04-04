@@ -1,0 +1,22 @@
+{
+  "kind": "SealedSecret",
+  "apiVersion": "bitnami.com/v1alpha1",
+  "metadata": {
+    "name": "mattermost-stats-exporter",
+    "namespace": "mattermost",
+    "creationTimestamp": null
+  },
+  "spec": {
+    "template": {
+      "metadata": {
+        "name": "mattermost-stats-exporter",
+        "namespace": "mattermost",
+        "creationTimestamp": null
+      },
+      "type": "Opaque"
+    },
+    "encryptedData": {
+      "bot-token": "AgAT0qYNS3OcO/ZPiNaDHEwIWbRFppWIGE9KDvwkt0aLun6Tn4g4fLdcLhwP5/VaqhPbnrxUAnbvcYz0gqScuKpjzi4XZEqpOY05aMqWupjsooQEdboAt7AFOAiP07MVpb8EfOmX5cn9Uzdz17zhXMG62XLkdklT8wAs5rCLB0gfdXvPY1PF2OvH2XSsKtN8JYHaaV+EWGK42KLlObTohiLZyGu2yAIP/ay+K07SMmJCbtXELtnU2A+oG4LSOv0GLA/XmUzqGTnHP72OUZrXyYyN6xp+nMvPGRGNEBZcjcJ/s9QYfhG/HdWw4Jf9ZVvUKwZBwomM8IyGJo1Id+RmOOt/UP0AOL4WmkPig8+FGYJAxflJ9fUrxJ1BsvzPq/Xh7Atz8ebHYGT4A5tgVUtG3V7bJpPvEn7eCYlLMkNIpW/a/C7EcPuZhwvdwrl0+oUEbqknv6DW0tIZrrzhNs+6VTvKwhbWYYPVC9uvRDhRGKU/a6WODV4CrZdLZw2mVl2NsCfGb1hUadHbqKMVgKjqxAno30zB/qSrxWS6U7zp8DQIERkuAyWyNYenOJPzJf88HhHQxqZDvFlqe/jdZxzI+oS0rFWEqHL7+wVPGMtd+ZG3xDwJCsP3i/Z1bN1j4laYDZEsoEhLAMHK+q7okoQ5fgK17YV+Ez5UXPpek8hJMltvqkXeITA9uCZFdzJemQfReUoNJhmHpBRmUzmy1hcLgxZPIkgyJDQcvFh6Eg=="
+    }
+  }
+}
