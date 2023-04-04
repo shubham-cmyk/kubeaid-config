@@ -1,0 +1,16 @@
+imagePullSecrets:
+  - name: mattermost-obmondo-registry-secret
+
+env:
+  - name: MATTERMOST_TEAM
+    value: "obmondo"
+  - name: MATTERMOST_TOKEN
+    valueFrom:
+      secretKeyRef:
+        name: mattermost-stats-exporter
+        key: bot-token
+  - name: MATTERMOST_SERVER
+    value: "https://chat.obmondo.com"
+
+serviceMonitor:
+  enabled: true
