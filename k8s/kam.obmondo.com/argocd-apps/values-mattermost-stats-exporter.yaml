@@ -1,6 +1,8 @@
 imagePullSecrets:
   - name: mattermost-obmondo-registry-secret
 
+initContainerCmd: "chown -R 1000:1000 /home/exporter"
+
 env:
   - name: MATTERMOST_TEAM
     value: "obmondo"
