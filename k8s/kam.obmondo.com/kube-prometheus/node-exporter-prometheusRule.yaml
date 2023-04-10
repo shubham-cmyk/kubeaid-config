@@ -140,7 +140,7 @@ spec:
         runbook_url: https://runbooks.prometheus-operator.dev/runbooks/node/nodesmemoryfillingup
         summary: Average nodes memory utilization is greater than 80%.
       expr: |
-        ((Sum(node_memory_MemTotal_bytes) - Sum(node_memory_MemAvailable_bytes)) / Sum(node_memory_MemAvailable_bytes) * 100) > 80
+        ((Sum(node_memory_MemTotal_bytes) - Sum(node_memory_MemAvailable_bytes)) / Sum(node_memory_MemTotal_bytes) * 100) > 80
       for: 15m
       labels:
         severity: warning
@@ -150,7 +150,7 @@ spec:
         runbook_url: https://runbooks.prometheus-operator.dev/runbooks/node/nodesmemoryfillingup
         summary: Average nodes memory utilization is greater than 90%.
       expr: |
-        ((Sum(node_memory_MemTotal_bytes) - Sum(node_memory_MemAvailable_bytes)) / Sum(node_memory_MemAvailable_bytes) * 100) > 90
+        ((Sum(node_memory_MemTotal_bytes) - Sum(node_memory_MemAvailable_bytes)) / Sum(node_memory_MemTotal_bytes) * 100) > 90
       for: 15m
       labels:
         severity: critical
