@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: tigera-operator
+  namespace: argocd
+spec:
+  destination:
+    namespace: tigera-operator
+    server: 'https://kubernetes.default.svc'
+  sources:
+    - repoURL: https://gitlab.enableit.dk/kubernetes/k8id.git
+      path: argocd-helm-charts/tigera-operator
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+          - $values/k8s/kbm.obmondo.com/argocd-apps/values-tigera-operator.yaml
+    - repoURL: https://gitlab.enableit.dk/kubernetes/kubernetes-config-enableit.git
+      targetRevision: HEAD
+      ref: values
+  project: default
+  syncPolicy:
+    automated: null
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
