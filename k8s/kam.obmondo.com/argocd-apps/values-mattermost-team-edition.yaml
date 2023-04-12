@@ -7,16 +7,10 @@ mattermost-team-edition:
     path: /
     hosts:
       - chat.obmondo.com
-    extraHosts:
-      - host: webchat.obmondo.com
-        servicePort: 8989
     tls:
       - secretName: chat.obmondo.com
         hosts:
           - chat.obmondo.com
-      - secretName: webchat.obmondo.com
-        hosts:
-          - webchat.obmondo.com
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt
       kubernetes.io/ingress.class: traefik-cert-manager
@@ -43,3 +37,5 @@ mattermost-team-edition:
 postgresql:
   access_secret: mattermost-pgsql-postgres-pod-env
   instance: 1
+matternelle:
+  domain: webchat.obmondo.com
