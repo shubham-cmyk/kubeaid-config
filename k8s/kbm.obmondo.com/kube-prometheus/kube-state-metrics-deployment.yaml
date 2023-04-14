@@ -62,7 +62,7 @@ spec:
           limits:
             memory: 40Mi
           requests:
-            cpu: 20m
+            cpu: 1m
             memory: 40Mi
         securityContext:
           allowPrivilegeEscalation: false
@@ -87,7 +87,7 @@ spec:
           limits:
             memory: 40Mi
           requests:
-            cpu: 20m
+            cpu: 1m
             memory: 40Mi
         securityContext:
           allowPrivilegeEscalation: false
