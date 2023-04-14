@@ -9,7 +9,7 @@ spec:
     namespace: obmondo-website
   project: default
   sources:
-    - repoURL: https://gitlab.enableit.dk/kubernetes/k8id.git
+    - repoURL: https://gitlab.enableit.dk/obmondo/obmondo-web-app.git
       path: argocd-helm-charts/obmondo-web-app
       targetRevision: HEAD
       helm:
