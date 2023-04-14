@@ -42,3 +42,4 @@ mattermost-team-edition:
 postgresql:
   access_secret: mattermost-pgsql-postgres-pod-env
   instance: 1
+  logicalBackup: "false"
