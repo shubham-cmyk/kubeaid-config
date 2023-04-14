@@ -57,6 +57,7 @@ ingress:
 
 postgresql:
   access_secret: api-postgresql-postgres-pod-env
+  logicalBackup: "false"
 
 chat:
   teamid: 'cnuya58yz7njpxweab87aq7uth'
