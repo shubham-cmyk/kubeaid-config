@@ -37,6 +37,14 @@ ingress:
           pathType: Prefix
           serviceName: enableit-go-api
           servicePort: 80
+        - path: /api/window
+          pathType: Prefix
+          serviceName: enableit-go-api
+          servicePort: 80
+        - path: /api/tag
+          pathType: Prefix
+          serviceName: enableit-go-api
+          servicePort: 80
         - path: /api/user-location
           pathType: Prefix
           serviceName: enableit-go-api
