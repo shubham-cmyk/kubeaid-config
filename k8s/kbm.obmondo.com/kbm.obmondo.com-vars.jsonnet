@@ -31,4 +31,11 @@
     'rook-ceph',
     'logging',
   ],
+  prometheus+: {
+    storage: {
+      size: '30Gi',
+      classname: 'rook-ceph-block',
+    },
+    retention: '15d',
+  },
 }
