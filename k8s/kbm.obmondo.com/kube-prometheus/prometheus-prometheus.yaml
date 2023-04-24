@@ -39,7 +39,7 @@ spec:
     requests:
       cpu: 200m
       memory: 1.5Gi
-  retention: 30d
+  retention: 15d
   ruleNamespaceSelector: {}
   ruleSelector: {}
   securityContext:
@@ -58,6 +58,6 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 20Gi
+            storage: 30Gi
         storageClassName: rook-ceph-block
   version: 2.36.1
