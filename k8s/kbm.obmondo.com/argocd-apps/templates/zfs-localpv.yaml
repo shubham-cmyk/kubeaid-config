@@ -1,3 +1,4 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -14,7 +15,7 @@ spec:
       helm:
         valueFiles:
           - $values/k8s/kbm.obmondo.com/argocd-apps/values-zfs-localpv.yaml
-    - repoURL: https://gitlab.enableit.dk/kubernetes/kubernetes-config-enableit.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubernetes-config-enableit.git
       targetRevision: HEAD
       ref: values
   project: default

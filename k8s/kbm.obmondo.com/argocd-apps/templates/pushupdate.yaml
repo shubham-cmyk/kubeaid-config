@@ -11,7 +11,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   source:
-    - repoURL: https://gitlab.enableit.dk/kubernetes/kubernetes-config-enableit.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubernetes-config-enableit.git
       path: argocd-helm-charts/k8id-pushupdate
       targetRevision: HEAD
       helm:
