@@ -4,6 +4,9 @@ haproxy:
   daemonset:
     useHostNetwork: true
     hostPorts:
+      http: null
+      https: null
+      stat: null
       kube-ctrl-mgr: 10257
       kube-scheduler: 10259
       etcd: 2381
