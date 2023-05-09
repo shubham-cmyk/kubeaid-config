@@ -8,14 +8,16 @@ spec:
     server: https://kubernetes.default.svc
     namespace: enableit-website
   project: default
-  source:
-    path: helm/enableit-website
-    repoURL: https://gitlab.enableit.dk/enableit/enableit-website.git
-    targetRevision: HEAD
-    helm:
-      valueFiles:
-        - values.yaml
-        - /tmp/https___gitlab.enableit.dk_kubernetes_kubernetes-config-enableit/k8s/kam.obmondo.com/argocd-apps/values-enableit-website.yaml
+  sources:
+    - repoURL: https://gitlab.enableit.dk/enableit/enableit-website.git
+      path: helm/enableit-website
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+          - $values/k8s/kam.obmondo.com/argocd-apps/values-enableit-website.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubernetes-config-enableit.git
+      targetRevision: HEAD
+      ref: values
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
