@@ -2,10 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: tigera-operator
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    name: ''
-    namespace: calico-system
+    namespace: tigera-operator
     server: 'https://kubernetes.default.svc'
   source:
     path: argocd-helm-charts/tigera-operator/
