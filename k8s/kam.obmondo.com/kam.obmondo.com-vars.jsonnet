@@ -10,7 +10,7 @@
   grafana_token_url: 'https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/token',
   grafana_api_url: 'https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/userinfo',
   grafana_ingress_host: 'grafana.kam.obmondo.com',
-  kube_prometheus_version: 'v0.11.0',
+  kube_prometheus_version: '2a955da550e33f75e3a7ecf30d45e8fd19dc6c31',
 
   prometheus_operator_resources+: {
     limits: { memory: '80Mi' },
