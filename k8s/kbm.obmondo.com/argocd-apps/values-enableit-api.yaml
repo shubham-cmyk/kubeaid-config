@@ -31,23 +31,23 @@ ingress:
       paths:
         - path: /api/ping
           pathType: Prefix
-          serviceName: enableit-go-api
+          serviceName: enableit-go-api-enableit-api
           servicePort: 80
         - path: /api/notify
           pathType: Prefix
-          serviceName: enableit-go-api
+          serviceName: enableit-go-api-enableit-api
           servicePort: 80
         - path: /api/window
           pathType: Prefix
-          serviceName: enableit-go-api
+          serviceName: enableit-go-api-enableit-api
           servicePort: 80
         - path: /api/tag
           pathType: Prefix
-          serviceName: enableit-go-api
+          serviceName: enableit-go-api-enableit-api
           servicePort: 80
         - path: /api/user-location
           pathType: Prefix
-          serviceName: enableit-go-api
+          serviceName: enableit-go-api-enableit-api
           servicePort: 80
         - path: /
           pathType: ImplementationSpecific
