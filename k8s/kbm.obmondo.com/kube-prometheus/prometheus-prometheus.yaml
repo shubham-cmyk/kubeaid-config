@@ -35,10 +35,10 @@ spec:
   replicas: 1
   resources:
     limits:
-      memory: 3Gi
+      memory: 5Gi
     requests:
       cpu: 200m
-      memory: 1.5Gi
+      memory: 3Gi
   retention: 15d
   ruleNamespaceSelector: {}
   ruleSelector: {}
