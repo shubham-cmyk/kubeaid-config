@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: keda
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  project: default
+  sources:
+    - repoURL: https://gitlab.enableit.dk/kubernetes/k8id.git
+      path: argocd-helm-charts/keda
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+          - $values/k8s/kbm.obmondo.com/argocd-apps/values-keda.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubernetes-config-enableit.git
+      targetRevision: HEAD
+      ref: values
+  syncPolicy:
+    automated: null
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
