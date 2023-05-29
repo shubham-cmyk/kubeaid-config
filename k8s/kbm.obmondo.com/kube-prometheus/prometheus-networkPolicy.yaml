@@ -53,6 +53,13 @@ spec:
     ports:
     - port: 9090
       protocol: TCP
+  - from:
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/part-of: keda-operator
+    ports:
+    - port: 9090
+      protocol: TCP
   podSelector:
     matchLabels:
       app.kubernetes.io/component: prometheus
