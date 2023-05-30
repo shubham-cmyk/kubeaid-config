@@ -58,6 +58,7 @@ data:
             "pod":
               "resource": "pod"
       "window": "5m"
+    "rules": []
 kind: ConfigMap
 metadata:
   labels:
