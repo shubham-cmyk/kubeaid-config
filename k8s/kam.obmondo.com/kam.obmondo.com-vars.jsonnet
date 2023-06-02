@@ -30,6 +30,5 @@
   prometheus_scrape_namespaces: [
     'rook-ceph',
     'mattermost',
-    'obmondo-website',
   ],
 }
