@@ -32,6 +32,7 @@
   prometheus_scrape_namespaces: [
     'rook-ceph',
     'logging',
+    'obmondo-website',
   ],
   prometheus+: {
     storage: {
