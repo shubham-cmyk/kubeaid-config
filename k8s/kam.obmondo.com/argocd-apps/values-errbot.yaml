@@ -1,7 +1,12 @@
 imagePullSecrets:
-  - name: mattermost-obmondo-registry-secret
+  - name: errbot-obmondo-dockerfiles-registry-secret
 
 initContainerCmd: "chown -R 1000:1000 /home/errbot/data"
+
+image:
+  repository: registry.obmondo.com/obmondo/dockerfiles/errbot
+  pullPolicy: Always
+  tag: "latest"
 
 additionalLabels:
   k8id.io/permissions: "allow-prometheus"

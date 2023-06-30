@@ -44,6 +44,13 @@ spec:
     - port: 9090
       protocol: TCP
   - from:
+    - podSelector:
+        matchLabels:
+          k8id.io/permissions: allow-prometheus
+    ports:
+    - port: 9090
+      protocol: TCP
+  - from:
     - namespaceSelector:
         matchLabels:
           kubernetes.io/metadata.name: obmondo
