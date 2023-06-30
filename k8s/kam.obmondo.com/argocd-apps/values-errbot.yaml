@@ -3,6 +3,14 @@ imagePullSecrets:
 
 initContainerCmd: "chown -R 1000:1000 /home/errbot/data"
 
+image:
+  repository: registry.obmondo.com/obmondo/dockerfiles/errbot
+  pullPolicy: Always
+  tag: "latest"
+
+additionalLabels:
+  k8id.io/permissions: "allow-prometheus"
+
 env:
   - name: BOT_TOKEN
     valueFrom:
@@ -17,5 +25,6 @@ env:
     value: "https"
   - name: BOT_TEAM
     value: "Obmondo"
+    # only bot admins are allowed to change bot configuration
   - name: BOT_ADMINS
-    value: "@klavsklavsen,@ashish,@aman0"
+    value: "@klavs,@ajaiswal,@aman0,@megh,@anchit"
