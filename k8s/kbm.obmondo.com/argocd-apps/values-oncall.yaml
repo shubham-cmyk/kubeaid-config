@@ -1,0 +1,8 @@
+oncall:
+  base_url: oncall.kbm.obmondo.com
+  ingress:
+    enabled: true
+    className: traefik-cert-manager
+    annotations:
+      kubernetes.io/ingress.class: traefik-cert-manager
+      cert-manager.io/cluster-issuer: letsencrypt

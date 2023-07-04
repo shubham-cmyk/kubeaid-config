@@ -37,6 +37,8 @@ spec:
             secretKeyRef:
               key: grafana-keycloak-secret
               name: kube-prometheus-stack-grafana
+        - name: GF_INSTALL_PLUGINS
+          value: grafana-oncall-app
         image: grafana/grafana:9.5.1
         name: grafana
         ports:
