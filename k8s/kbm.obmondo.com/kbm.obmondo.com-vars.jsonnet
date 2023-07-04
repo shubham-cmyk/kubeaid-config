@@ -4,6 +4,9 @@
   'blackbox-exporter': false,
   connect_obmondo: true,
   connect_keda: true,
+  grafana_plugins: [
+    'grafana-oncall-app',
+  ],
   grafana_keycloak_enable: true,
   grafana_root_url: 'https://grafana.kbm.obmondo.com',
   grafana_signout_redirect_url: 'https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/logout?redirect_uri=https://grafana.kbm.obmondo.com',
