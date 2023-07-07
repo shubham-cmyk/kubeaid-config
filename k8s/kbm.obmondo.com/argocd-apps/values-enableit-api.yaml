@@ -49,6 +49,10 @@ ingress:
           pathType: Prefix
           serviceName: enableit-go-api-enableit-api
           servicePort: 80
+        - path: /swagger/go
+          pathType: Prefix
+          serviceName: enableit-go-api-enableit-api
+          servicePort: 80
         - path: /
           pathType: ImplementationSpecific
   tls:
