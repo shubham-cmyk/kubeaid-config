@@ -1,10 +1,12 @@
 apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
-  annotations:
+  creationTimestamp: null
   name: alertmanager-main
   namespace: monitoring
 spec:
+  encryptedData:
+    oncall-url: AgChTLCQ/fhwvsZicJtEiw1xRoOTBCZ6hS8UHr5iEiJJbgDzChtVclgp5Junylmj79GgBxtHsVutHjA4jU4fW9Cn8HgOo2/pZcZaHiyo6A3pTwVP1T9xNzTr/t0m3yWGbox+h2ht5pbtepGmcRQeDjCXK217hAVW9lJgauJ76P0qV9ItVqeQbUGIxTDTfu6GWJcB7yuroT5O4d1X7U7aHHdhp3hXF6LU+b2l9DU8/04FG5N7KoKR2w3H5i52BVW9QFR1Xb6yMv6kqxUxVclzyXs0kQdgI6/S8E6rksuUHcdDGStHHnbbcWynPeRi05FnTxjC1ZuCSxOsYKltu3Ga2Bd5gjnv7xT6YrqLn689LYvYEcvFXtBai9EE1clHzdEQL2ui+SXmPr1CfRi+oVd4noRH6hBPdpiZqzM8wC5Ti9YJdoBl89rMnAMTSe8/LXNlinTBimGVm6pRyeSr/QC0JmYWVg4nQ7KTi098QiyfCf6TZHKZoq1hQlxX53wewL/8vSMOTxBGreuD4msQSd8EqMpS1nrg0V5BWSvIXVNv9jSoCXyJH+G3sTIIDnR/hXajKphfgjq8IdH2OobOAhZQsdxqcXQyvgPkp3VA09cajYl2+h4qqFRTY3gZMPQsLwI2FZwpF88b7j6x8qJvd1r8tfYe8QCVtuZGlOE9OYac1RcgQjaRbx+nl7zaCQlZjGydMipMtjdPaDly+GuygtpFj5T/3cw4sdtCr69WYAIfMdIieS/ei5YYEnCCL2hRQDLh3tkhAgFMqWYaabS3/2Nm0sxm/T0RUuMmaOj/oJSuNjP24qNdkUKNzw==
   template:
     data:
       alertmanager.yaml: |
@@ -60,7 +62,7 @@ spec:
           - name: "null"
           - name: oncall
             webhook_configs:
-              - url: https://oncall.kbm.obmondo.com/integrations/v1/alertmanager/IFgcONAHlTOB3Mjmo1WXxPVG4/
+              - url: {{ index . "oncall-url" }}
                 send_resolved: true
                 max_alerts: 300
           - name: obmondo
@@ -77,5 +79,6 @@ spec:
         templates:
         - /etc/alertmanager/config/*.tmpl
     metadata:
+      creationTimestamp: null
       name: alertmanager-main
       namespace: monitoring
