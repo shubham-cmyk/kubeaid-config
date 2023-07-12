@@ -50,11 +50,19 @@ spec:
           - receiver: 'null'
             matchers:
             - "alertname = InfoInhibitor"
+          - receiver: oncall
+            group_by: [alertname, datacenter, app]
+            continue: true
           - receiver: obmondo
             continue: true
 
         receivers:
           - name: "null"
+          - name: oncall
+            webhook_configs:
+              - url: https://oncall.kbm.obmondo.com/integrations/v1/alertmanager/IFgcONAHlTOB3Mjmo1WXxPVG4/
+                send_resolved: true
+                max_alerts: 300
           - name: obmondo
             webhook_configs:
               - url: https://alerts.obmondo.com/hooks/alertmanager
