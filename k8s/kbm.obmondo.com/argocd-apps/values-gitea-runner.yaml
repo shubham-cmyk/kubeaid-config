@@ -1,7 +1,7 @@
 act-runner:
   act_runner:
     existingToken: gitea-runner-token
-    storageclass: "default"
+    storageclass: rook-ceph-block
     instance: "https://gitea.obmondo.com"
     labels:
       - "ubuntu-latest:docker://node:16-bullseye"
