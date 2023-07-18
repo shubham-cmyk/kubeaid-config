@@ -1,0 +1,9 @@
+act-runner:
+  act_runner:
+    existingToken: gitea-runner-token
+    storageclass: "default"
+    instance: "https://gitea.obmondo.com"
+    labels:
+      - "ubuntu-latest:docker://node:16-bullseye"
+      - "ubuntu-22.04:docker://node:16-bullseye"
+      - "ubuntu-20.04:docker://node:16-bullseye"
