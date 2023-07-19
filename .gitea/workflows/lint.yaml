@@ -1,0 +1,25 @@
+name: K8id config lint pipeline
+run-name: Lint CI
+
+on:  # yamllint disable-line rule:truthy
+  - pull_request
+
+jobs:
+  markdownlint:
+    runs-on: ubuntu-latest
+    name: Markdown Lint
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+      - run: npm install -g markdownlint-cli
+      - run: markdownlint --config .markdownlint .
+
+  yamllint:
+    runs-on: ubuntu-latest
+    name: Yaml Lint
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install yamllint
+        run: apt-get update && apt-get install -y yamllint
+      - run: yamllint --strict --config-file .yamllint .
