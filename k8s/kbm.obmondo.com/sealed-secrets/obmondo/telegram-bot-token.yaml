@@ -1,0 +1,14 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: telegram-bot-token
+  namespace: obmondo
+spec:
+  encryptedData:
+    telegram-token: AgCSNcWdyEU4p3/1nAEVIaWtSYn0coRKsp3z6IC5ekG+m2dYJe3qUYVMB6Gjq5NNiQOo6oPAJlrz3vPk9UIcRi8lN1PqZkCIs1nCjKWiEyNGJ4qyD6rZ/l4DA8cm78kS1u8HPrB8WzI1ykJXYrT1IA29WZDknhyrXg3Mgq9fed9Bd74ZTDaI6cfn5tZEnjlChFwdX62rvtI+Ccroh6zSoKqTtCP3XLkgnlBaM7zMVWJsZn+mHyrcpO3XvV0ZmAyRgJKX6dy3MXtBzZ3zj1+0b0Ck3uk1AjSYlgJI6Pb71xqY0ZJHq1B53WobAvYoIHNqaL0g/CMyqztzdnpQPHUQzz+HYTeIpKIE4ecXkxL4HorlWf0Cf5mg6xPa0oKI7YM2CLQKlTPrEWSuWiUomE6H5CPby+FoXvWhVKdT/d9295zNkzfMhDYkltIIkUjM+XBIfbxDl/aaB0Z9M8IVRXPyfQyx6bwFL4bMKXQYKGJ9MJ/+ra93e0gFn4WAmyTOlJnZeszZikzCJDT/fTJAiqG7M54xRAlXKK5N1Gbk7TTZkOwDEvetEbDGe7qbW6UGIFzRSLhTmNywho2aolNY44EV298Nwwgaf3RVHk06lG9bMhot89ZzGoGD7K3V90dncWiRJHrvicuR4uI5tB4YqD+easn/9MNTTqSDgy1aaZvBlblp5F0Z9TKjuGwu7yXjT7hGvMPAXKPGe7b3fL+TFFb7FCxSy7S9MRv5vNHr4u/otoT4wBDjqFZukUrPhMrhtUHd
+  template:
+    metadata:
+      creationTimestamp: null
+      name: telegram-bot-token
+      namespace: obmondo

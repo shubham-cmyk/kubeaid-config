@@ -1,5 +1,15 @@
 oncall:
   base_url: oncall.kbm.obmondo.com
+  image:
+    tag: 1.3.20
+  externalGrafana:
+    url: https://grafana.kbm.obmondo.com
+  oncall:
+    telegram:
+      enabled: true
+      webhookUrl: https://grafana.kbm.obmondo.com
+      existingSecret: telegram-bot-token
+      tokenKey: telegram-token
   ingress:
     enabled: true
     className: traefik-cert-manager
