@@ -7,7 +7,7 @@ oncall:
   oncall:
     telegram:
       enabled: true
-      webhookUrl: https://grafana.kbm.obmondo.com
+      webhookUrl: https://oncall.kbm.obmondo.com
       existingSecret: telegram-bot-token
       tokenKey: telegram-token
   ingress:
