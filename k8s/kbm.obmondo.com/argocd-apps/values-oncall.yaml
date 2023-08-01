@@ -16,3 +16,6 @@ oncall:
     annotations:
       kubernetes.io/ingress.class: traefik-cert-manager
       cert-manager.io/cluster-issuer: letsencrypt
+  backup:
+    cloud: "aws"
+    destinationPath: https://s3.obmondo.com/kbm-oncall-postgres-backups
