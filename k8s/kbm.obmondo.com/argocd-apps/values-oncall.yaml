@@ -18,4 +18,5 @@ oncall:
       cert-manager.io/cluster-issuer: letsencrypt
   backup:
     cloud: "aws"
-    destinationPath: https://s3.obmondo.com/kbm-oncall-postgres-backups
+    destinationPath: s3://kbm-oncall-postgres-backups
+    endpointURL: https://s3.obmondo.com
