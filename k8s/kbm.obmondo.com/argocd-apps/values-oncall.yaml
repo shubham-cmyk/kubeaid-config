@@ -9,11 +9,11 @@ oncall:
         check_for_updates: true
       server:
         domain: oncall.kbm.obmondo.com
-        root_url: 'https://oncall.kbm.obmondo.com'
+        root_url: https://oncall.kbm.obmondo.com/grafana
       auth:
         disable_login_form: false
         disable_signout_menu: false
-        signout_redirect_url: 'https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/logout?redirect_uri=https://oncall.kbm.obmondo.com'
+        signout_redirect_url: 'https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/logout?redirect_uri=https://oncall.kbm.obmondo.com/grafana'
       auth.generic_oauth:
         enabled: true
         allow_sign_up: true
