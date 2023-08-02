@@ -46,6 +46,16 @@ spec:
   - from:
     - namespaceSelector:
         matchLabels:
+          kubernetes.io/metadata.name: mattermost
+      podSelector:
+        matchLabels:
+          k8id.io/permissions: allow-prometheus
+    ports:
+    - port: 9090
+      protocol: TCP
+  - from:
+    - namespaceSelector:
+        matchLabels:
           kubernetes.io/metadata.name: obmondo
       podSelector:
         matchLabels:
