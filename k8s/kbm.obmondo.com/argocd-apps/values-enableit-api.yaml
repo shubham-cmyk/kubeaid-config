@@ -11,9 +11,12 @@ admins:
   - "ketan@obmondo.com"
   - "faizan@obmondo.com"
   - "divyam@obmondo.com"
-  - "swapnil@obmondo.com"
-  - "medet@obmondo.com"
   - "suwarna@obmondo.com"
+  - "rishikesh@obmondo.com"
+  - "basit@obmondo.com"
+  - "ditesh@obmonod.com"
+  - "hritik@obmondo.com"
+  - "soham@obmondo.com"
 # Need to add service and pod CIDR here
 internalIpRanges:
   - 192.168.0.0/16
