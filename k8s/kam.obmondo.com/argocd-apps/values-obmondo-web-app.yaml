@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  tag: v2.0.8
+  tag: v2.0.9
   pullPolicy: Always
 ingress:
   hosts:
