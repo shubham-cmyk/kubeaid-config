@@ -13,7 +13,9 @@
   grafana_ingress_host: 'grafana.kbm.obmondo.com',
   kube_prometheus_version: '2a955da550e33f75e3a7ecf30d45e8fd19dc6c31',
   enable_custom_metrics_apiservice: true,
-
+ addMixins: {
+    velero: true,
+  },
   prometheus_operator_resources+: {
     limits: { memory: '80Mi' },
     requests: { cpu: '10m', memory: '30Mi' },
@@ -33,6 +35,7 @@
     'rook-ceph',
     'logging',
     'obmondo-website',
+    'velero',
   ],
   prometheus+: {
     storage: {
