@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: matomo
+  namespace: matomo
+spec:
+  destination:
+    namespace: matomo
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+    - repoURL: https://gitlab.enableit.dk/kubernetes/k8id.git
+      path: argocd-helm-charts/matomo
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+          - $values/k8s/kbm.obmondo.com/argocd-apps/values-matomo.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubernetes-config-enableit.git
+      targetRevision: HEAD
+      ref: values
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    - ApplyOutOfSyncOnly=true
