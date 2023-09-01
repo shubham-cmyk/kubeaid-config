@@ -14,7 +14,7 @@ spec:
         description: Velero backup was not successful for {{ $labels.schedule }}.
         summary: Velero backup for schedule {{ $labels.schedule }} was unsuccessful.
       expr: |
-        (velero_backup_last_status == 0)
+        (velero_backup_last_status{schedule != ""} == 0)
       for: 15m
       labels:
         severity: warning
