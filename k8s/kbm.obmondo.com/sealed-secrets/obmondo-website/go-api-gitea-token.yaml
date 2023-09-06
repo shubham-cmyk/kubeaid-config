@@ -1,0 +1,14 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: go-api-gitea-token
+  namespace: obmondo-website
+spec:
+  encryptedData:
+    gitea: AgB4lnA4rJp2Va3sX2jIPDAMV5LyAmKjnujEalUih65QCWYI1kmqsl9jaqUObZS57KuGssH65+Ze0Ws8lsZNluYk+qMebF/f6VL1daaFFd1gYrk7S4t6Ca402TTFD8fZAuFDLn2jfUYXO+BFJlrA200HdS33sICdCJVAh9l0cXluX5KVsSQUvni8EwwSziq99JFFJI27XEtTGNdtQacsCo1+YqNdwkwRi7EzTXKz2A07KhI26szZJbeqOFXelYhKrAkKimGQ6tEWHI/ENTPiPfwCsfpXyH6HCvhDQF4eHS8ivzXeJewNA0Qu2QdUFVlRF8WDw+SyoJI9l1pu5p1pY86qbenaUFnMvE77UCR4ykLB1PAUChq7MpCk1hfxFVAurFZZv5s6Bo+lY5vhmQI+Fb0/9dqSt11X4YcXxXEAIzPD1Bma5xhV/25QOCsNAjJUY37K7fsc4Ywadb98h0ImhKr4hi0sa6rEEPw4Bw1PAh+466VkXRNc/WS2MPO4G/33uORW1kZ5YSHlZatI6C+LK9iVbA1LA0mdVhPxMz3FuYFcovpJtGS+ktHNQKSlQ8PPg2mAOOauARWcVoL0dCYPGthFcxPm69Zud16Kj8chttm1d4lZt3izou8vmEGJtQGfoqh4Cbix7rnMCKRKJShq+kdd53Hhf8qaBuPkwnJ0NiZZ45JC0mOluC8rKGEBb/ELGOm11F7U0w0HR/wOF/1v4HuemTbTEZQYwmgiUV7vfXABoSt+YD4REeQR
+  template:
+    metadata:
+      creationTimestamp: null
+      name: go-api-gitea-token
+      namespace: obmondo-website
