@@ -15,16 +15,20 @@ stringData:
     [auth]
     disable_login_form = false
     disable_signout_menu = false
-    signout_redirect_url = https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/logout?redirect_uri=https://grafana.kbm.obmondo.com
+    signout_redirect_url = https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/logout?post_logout_redirect_uri=https://grafana.kbm.obmondo.com/login&client_id=grafana
     [auth.generic_oauth]
     allow_sign_up = true
     api_url = https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/userinfo
     auth_url = https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/auth
     client_id = grafana
+    email_attribute_path = email
     enabled = true
+    groups_attribute_path = groups
+    login_attribute_path = username
     name = Keycloak
-    role_attribute_path = contains(not_null(roles[*],''), 'Admin') && 'Admin' || contains(not_null(roles[*],''), 'Editor') && 'Editor' || contains(not_null(roles[*],''), 'Viewer') && 'Viewer'|| ''
-    scopes = openid profile email
+    name_attribute_path = full_name
+    role_attribute_path = contains(roles[*], 'Admin') && 'Admin' || contains(roles[*], 'Editor') && 'Editor' || 'Viewer'
+    scopes = openid email profile offline_access roles
     token_url = https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/token
     [date_formats]
     default_timezone = UTC

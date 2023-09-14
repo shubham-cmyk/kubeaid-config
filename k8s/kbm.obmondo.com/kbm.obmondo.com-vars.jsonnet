@@ -6,14 +6,12 @@
   connect_keda: true,
   grafana_keycloak_enable: true,
   grafana_root_url: 'https://grafana.kbm.obmondo.com',
-  grafana_signout_redirect_url: 'https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/logout?redirect_uri=https://grafana.kbm.obmondo.com',
-  grafana_auth_url: 'https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/auth',
-  grafana_token_url: 'https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/token',
-  grafana_api_url: 'https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/userinfo',
+  grafana_keycloak_url: 'https://keycloakx.kam.obmondo.com',
+  grafana_keycloak_realm: 'Obmondo',
   grafana_ingress_host: 'grafana.kbm.obmondo.com',
   kube_prometheus_version: '2a955da550e33f75e3a7ecf30d45e8fd19dc6c31',
   enable_custom_metrics_apiservice: true,
- addMixins: {
+  addMixins: {
     velero: true,
   },
   prometheus_operator_resources+: {
