@@ -1,20 +1,9 @@
 matomo:
   mariadb:
     enabled: false
-  externalDB:
-    # when mariadb enabled is false we have to provide external db params
-    # enabled: true
-    host: ""
+  externalDatabase:
+    host: matomo-mariadb
     port: 3306
-    user: bn_matomo
-    password: "test"
-    database: bitnami_matomo
-    existingSecret: ""
-
-mariadb:
-  host: ""
-  port: 3306
-  user: bn_matomo
-  password: "test"
-  database: bitnami_matomo
-  existingSecret: ""
+    user: user
+    database: matomo
+    existingSecret: mariadb-secret
