@@ -1,6 +1,11 @@
 matomo:
   mariadb:
     enabled: false
+    storage: 1Gi
+    requests_cpu: 100m
+    requests_memory: 128Mi
+    limits_cpu: 300m
+    limits_memory: 512Mi
   externalDatabase:
     host: matomo-mariadb
     port: 3306
