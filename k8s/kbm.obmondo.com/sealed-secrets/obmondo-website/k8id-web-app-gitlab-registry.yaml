@@ -2,7 +2,7 @@ apiVersion: bitnami.com/v1alpha1
 kind: SealedSecret
 metadata:
   creationTimestamp: null
-  name: k8id-web-app-gitlab-registry
+  name: obmondo-web-app-gitlab-registry
   namespace: obmondo-website
 spec:
   encryptedData:
@@ -10,6 +10,6 @@ spec:
   template:
     metadata:
       creationTimestamp: null
-      name: k8id-web-app-gitlab-registry
+      name: obmondo-web-app-gitlab-registry
       namespace: obmondo-website
     type: kubernetes.io/dockerconfigjson
