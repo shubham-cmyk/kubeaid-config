@@ -14,7 +14,7 @@ admins:
   - "suwarna@obmondo.com"
   - "rishikesh@obmondo.com"
   - "basit@obmondo.com"
-  - "ditesh@obmonod.com"
+  - "ditesh@obmondo.com"
   - "hritik@obmondo.com"
   - "soham@obmondo.com"
 # Need to add service and pod CIDR here
