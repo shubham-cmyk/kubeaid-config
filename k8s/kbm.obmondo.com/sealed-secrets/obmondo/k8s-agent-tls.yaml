@@ -14,4 +14,3 @@ spec:
       name: k8s-agent-tls
       namespace: obmondo
     type: kubernetes.io/tls
-
