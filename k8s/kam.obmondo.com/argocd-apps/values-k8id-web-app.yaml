@@ -1,7 +1,7 @@
 replicaCount: 1
 namespace: obmondo-website
 image:
-  tag: k8id-v2.1.9
+  tag: k8id-v2.2.0
   pullPolicy: Always
 ingress:
   hosts:
