@@ -6,7 +6,7 @@ initContainerCmd: "chown -R 1000:1000 /home/errbot/data"
 image:
   repository: registry.obmondo.com/obmondo/dockerfiles/errbot
   pullPolicy: Always
-  tag: "latest"
+  tag: "6.1.10"
 
 additionalLabels:
   k8id.io/permissions: "allow-prometheus"
