@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  tag: k8id-v2.2.0
+  tag: k8id-v2.2.1
   pullPolicy: Always
 ingress:
   hosts:
