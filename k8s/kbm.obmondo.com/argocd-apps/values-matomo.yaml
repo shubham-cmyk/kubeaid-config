@@ -7,6 +7,13 @@ matomo:
     user: matomo
     database: matomo
     existingSecret: mariadb-secret
+  ingress:
+    enabled: true
+    hostname: matomo.kbm.obmondo.com
+    path: /
+    annotations:
+        cert-manager.io/cluster-issuer: letsencrypt
+        kubernetes.io/ingress.class: traefik-cert-manager
 
 mariadb:
   image:
