@@ -2,7 +2,7 @@ matomo:
   mariadb:
     enabled: false
   externalDatabase:
-    host: matomo-mariadb
+    host: mariadb
     port: 3306
     user: matomo
     database: matomo
@@ -29,4 +29,3 @@ mariadb:
     limits:
       cpu: 300m
       memory: 512Mi
-  
