@@ -61,6 +61,10 @@ ingress:
           pathType: Prefix
           serviceName: enableit-go-api-enableit-api
           servicePort: 80
+        - path: /api/report/error
+          pathType: Prefix
+          serviceName: enableit-go-api-enableit-api
+          servicePort: 80
         - path: /
           pathType: ImplementationSpecific
   tls:
