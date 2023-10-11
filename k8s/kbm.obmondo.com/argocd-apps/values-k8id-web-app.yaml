@@ -17,4 +17,4 @@ ingress:
     kubernetes.io/ingress.class: traefik-cert-manager
     traefik.http.middlewares.add-context.redirectregex.regex: ^https://(beta\.)?(kube-aid|k8id).io(.*)
     traefik.http.middlewares.add-context.redirectregex.replacement: https://www.google.com${3}
-    traefik.http.middlewares.add-context.redirectregex.permanent: true
+    traefik.http.middlewares.add-context.redirectregex.permanent: 'true'
