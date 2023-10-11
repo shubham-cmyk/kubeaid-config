@@ -15,3 +15,5 @@ ingress:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     kubernetes.io/ingress.class: traefik-cert-manager
+    traefik.http.middlewares.add-context.redirectregex.regex: ^https://(beta\.)?(kube-aid|k8id).io(.*)
+    traefik.http.middlewares.add-context.redirectregex.replacement: https://www.google.com${3}
