@@ -1,0 +1,14 @@
+harbor:
+  expose:
+    tls:
+      certSource: secret
+      secret:
+        secretName: harbor-cert
+    ingress:
+      hosts:
+        core: harbor.kbm.obmondo.com
+      className: "traefik-cert-manager"
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
+
+  externalURL: https://harbor.kbm.obmondo.com
