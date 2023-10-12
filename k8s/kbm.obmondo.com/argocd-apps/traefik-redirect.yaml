@@ -1,9 +1,0 @@
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: traefik-redirect
-  namespace: obmondo-website
-spec:
-  redirectRegex:
-    regex: ^https://(beta\\.)?(kube-aid|k8id).io(.*)$
-    replacement: https://www.google.com${3}
