@@ -3,6 +3,7 @@ namespace: obmondo-website
 image:
   tag: k8id-v2.2.4
   pullPolicy: Always
+middleware: true
 ingress:
   hosts:
     - host: k8id.io
@@ -13,11 +14,22 @@ ingress:
       paths:
         - path: /
           pathType: ImplementationSpecific
+    - host: kube-aid.io
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+    - host: kubeaid.io
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
   tls:
     - secretName: k8id-io-tls
       hosts:
         - k8id.io
         - www.k8id.io
+        - kubeaid.io
+        - kube-aid.io
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     kubernetes.io/ingress.class: traefik-cert-manager
+    traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-k8id-redirect@kubernetescrd
