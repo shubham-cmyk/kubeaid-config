@@ -3,8 +3,6 @@ namespace: obmondo-website
 trustedProxies:
   - 10.96.0.0/12
 admins:
-  - "klavs@obmondo.com"
-  - "ashish@obmondo.com"
   - "aman@obmondo.com"
   - "emilhp@obmondo.com"
   - "deepak@obmondo.com"
@@ -18,6 +16,9 @@ admins:
   - "hritik@obmondo.com"
   - "soham@obmondo.com"
   - "nitish@obmondo.com"
+masters:
+  - "klavs@obmondo.com"
+  - "ashish@obmondo.com"
 # Need to add service and pod CIDR here
 internalIpRanges:
   - 192.168.0.0/16

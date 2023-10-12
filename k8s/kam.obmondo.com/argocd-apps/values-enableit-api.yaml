@@ -1,8 +1,6 @@
 ---
 namespace: obmondo-website
 admins:
-  - "klavs@obmondo.com"
-  - "ashish@obmondo.com"
   - "aman@obmondo.com"
   - "emilhp@obmondo.com"
   - "deepak@obmondo.com"
@@ -12,6 +10,9 @@ admins:
   - "swapnil@obmondo.com"
   - "medet@obmondo.com"
   - "suwarna@obmondo.com"
+masters:
+  - "klavs@obmondo.com"
+  - "ashish@obmondo.com"
 # Need to add service and pod CIDR here
 internalIpRanges:
   - "10.0.3.54"
