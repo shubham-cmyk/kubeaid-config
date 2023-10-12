@@ -6,9 +6,9 @@ harbor:
         secretName: harbor-cert
     ingress:
       hosts:
-        core: harbor.kbm.obmondo.com
+        core: harbor.obmondo.com
       className: "traefik-cert-manager"
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt
 
-  externalURL: https://harbor.kbm.obmondo.com
+  externalURL: https://harbor.obmondo.com
