@@ -7,8 +7,9 @@ harbor:
     ingress:
       hosts:
         core: harbor.obmondo.com
-      className: "traefik-cert-manager"
-    annotations:
-      cert-manager.io/cluster-issuer: letsencrypt
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt
+        kubernetes.io/ingress.class: traefik-cert-manager
+
 
   externalURL: https://harbor.obmondo.com
