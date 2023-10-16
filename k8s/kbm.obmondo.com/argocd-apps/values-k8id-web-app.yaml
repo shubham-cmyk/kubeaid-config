@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  tag: k8id-beta-v2.2.8
+  tag: k8id-beta-v2.2.9
   pullPolicy: Always
 middleware: true
 ingress:
