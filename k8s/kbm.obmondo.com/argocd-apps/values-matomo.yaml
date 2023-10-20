@@ -2,7 +2,7 @@ matomo:
   mariadb:
     enabled: false
   externalDatabase:
-    host: mariadb
+    host: matomo
     port: 3306
     user: matomo
     database: matomo
@@ -12,12 +12,10 @@ matomo:
     hostname: matomo.kbm.obmondo.com
     path: /
     annotations:
-        cert-manager.io/cluster-issuer: letsencrypt
-        kubernetes.io/ingress.class: traefik-cert-manager
+      cert-manager.io/cluster-issuer: letsencrypt
+      kubernetes.io/ingress.class: traefik-cert-manager
 
 mariadb:
-  image:
-    tag: "11.0.3"
   volumeClaimTemplate:
     resources:
       requests:
