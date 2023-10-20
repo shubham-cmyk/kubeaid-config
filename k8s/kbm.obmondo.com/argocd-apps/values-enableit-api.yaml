@@ -68,6 +68,10 @@ ingress:
           pathType: Prefix
           serviceName: enableit-go-api-enableit-api
           servicePort: 80
+        - path: /api/invoice/
+          pathType: Prefix
+          serviceName: enableit-go-api-enableit-api
+          servicePort: 80
         - path: /
           pathType: ImplementationSpecific
   tls:
