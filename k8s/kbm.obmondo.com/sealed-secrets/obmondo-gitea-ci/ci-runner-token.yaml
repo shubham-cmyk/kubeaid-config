@@ -1,0 +1,15 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: ci-runner-token
+  namespace: obmondo-gitea-ci
+spec:
+  encryptedData:
+    password: AgANZt9HfRyiepDHWLyItkjVpo7f1H+dUGU9A3GdT0zmYvuLqk77Xg5eqAYbKw3WgW9Q32H7iUMH3br+QQhoI2WiZakNMjpK3qvj8/i5p0XCiXIJiZ3+HjmF/mvtz3EDTHGRKSQuUeZ4dh+AUPgx1lkppKjYOZqe0nQ6gofeaPGUyq6RfKrRtDGMgrcmZ+vlceNP25zrVpnP2hxGo1IhNLalbXc5Kc5etqQdBWomIdbdDaj0gt4OqPM1sbAHRolW1H64KhyqWflYVeRZTcFV/5sLEKv8katsPSXiN+UtCGcU2L+2obIWgwbBRmfPTdR+53ixEIseKCC+UHJDYwaaXx13EzkKqbzuU3tYFj7jNVCKJvZXqql4VmHsmkl3b7uUSIxb2wbK0biXK0llQK6wqFqS/JA69CQGFjjbEmKu9+p3N8c3+85A3ukEGaPP4gjipySKG0nj169mjekg2FwuDIQdhh36AT2z3fJGCQSG9bqWIKfYLwlWWbGfujnyNfbrfQ7p+xzxufJSjBfGo9zYQnZltmYE0/hWZofs3cfNcvQLld8YrCw17/V7bAOJsCW6NeJxFhe4fuvjEePVINIT+hdavQrdXv9Y+hCdG/dNmV0c533GrDpTP9+2eC8BXX2pWrjr7UP3Ot3X5W7JcwoTvI3kVD6KAvP18oFzNbFzYPRRD8Hvx7EjF/niL+/q3WqyF7N+xglB5Xc3Hskavv2pXW7Blz8P0VLoMEmSjmPFY0cF5d98SX09SKlt
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: ci-runner-token
+      namespace: obmondo-gitea-ci
