@@ -11,8 +11,8 @@ spec:
     rules:
     - alert: WhiteListedApplicationOutOfSync
       annotations:
-        description: The application **{{ .Labels.argocd_application_name }}**/**{{ .Labels.application_namespace }}** has been out of sync for more than 30 minutes.
-        summary: Kubernetes version is close to end of support
+        description: ArgoCD WhiteListed Application **{{ .Labels.argocd_application_name }}**/**{{ .Labels.application_namespace }}** is out of sync.
+        summary: The application **{{ .Labels.argocd_application_name }}**/**{{ .Labels.application_namespace }}** has been out of sync for more than 30 minutes.
       expr: argocd_application_sync_state{argocd_application_name!="", application_namespace!="", whitelisted="true", result="waiting"} == 1
       for: 30m
       labels:
