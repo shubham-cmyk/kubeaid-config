@@ -1,6 +1,6 @@
 act-runner:
   act_runner:
-    token: gitea-runner-token
+    existingToken: gitea-runner-token
     storageclass: rook-ceph-block
     instance: "https://gitea.obmondo.com"
     labels:
