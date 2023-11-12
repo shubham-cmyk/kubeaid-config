@@ -3,7 +3,7 @@ oncall:
   grafana:
     persistence:
       enabled: true
-      size: 1Gi
+      size: 2Gi
     grafana.ini:
       analytics:
         check_for_updates: true
@@ -47,3 +47,6 @@ oncall:
     cloud: "aws"
     destinationPath: s3://kbm-oncall-postgres-backups
     endpointURL: https://s3.obmondo.com
+
+postgresql:
+  size: 4Gi
