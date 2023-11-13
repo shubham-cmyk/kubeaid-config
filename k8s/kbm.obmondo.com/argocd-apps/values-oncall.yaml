@@ -47,7 +47,7 @@ oncall:
     cloud: "aws"
     destinationPath: s3://kbm-oncall-postgres-backups
     endpointURL: https://s3.obmondo.com
-  recover: true
+  recover: false
 
 postgresql:
   size: 4Gi
