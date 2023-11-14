@@ -4,6 +4,8 @@ oncall:
     persistence:
       enabled: true
       size: 2Gi
+    plugins:
+      - https://grafana.com/api/plugins/grafana-oncall-app/versions/1.3.21/download;grafana-oncall-app
     grafana.ini:
       analytics:
         check_for_updates: true
@@ -47,7 +49,7 @@ oncall:
     cloud: "aws"
     destinationPath: s3://kbm-oncall-postgres-backups
     endpointURL: https://s3.obmondo.com
-  recover: true
+  recover: false
 
 postgresql:
   size: 4Gi
