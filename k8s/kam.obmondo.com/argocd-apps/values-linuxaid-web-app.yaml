@@ -1,0 +1,29 @@
+replicaCount: 1
+image:
+  tag: linuxaid-v2.4.3
+  pullPolicy: Always
+middleware: true
+ingress:
+  hosts:
+    - host: linuxaid.io
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+    - host: linux-aid.io
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+    - host: linux-aid.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: linuxaid-io-tls
+      hosts:
+        - linuxaid.io
+        - linux-aid.io
+        - linux-aid.com
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    kubernetes.io/ingress.class: traefik-cert-manager
+    traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-linuxaid-web-app-redirect@kubernetescrd
