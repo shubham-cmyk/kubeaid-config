@@ -1,17 +1,19 @@
 replicaCount: 1
 image:
-  tag: obmondo-beta-v2.4.3
+  tag: linuxaid-beta-v2.4.3
   pullPolicy: Always
+middleware: true
 ingress:
   hosts:
-    - host: beta.obmondo.com
+    - host: beta.linuxaid.io
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls:
-    - secretName: beta-obmondo-com-tls
+    - secretName: beta-linuxaid-io-tls
       hosts:
-        - beta.obmondo.com
+        - beta.linuxaid.io
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     kubernetes.io/ingress.class: traefik-cert-manager
+    traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-linuxaid-web-app-redirect@kubernetescrd
