@@ -10,7 +10,7 @@ spec:
   project: default
   sources:
     - repoURL: https://gitlab.enableit.dk/obmondo/obmondo-web-app.git
-      path: .helm/obmondo-web-app
+      path: .helm/web-app
       targetRevision: HEAD
       helm:
         valueFiles:
