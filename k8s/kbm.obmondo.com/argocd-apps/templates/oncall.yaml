@@ -11,7 +11,7 @@ spec:
     namespace: obmondo
   project: default
   sources:
-    - repoURL: https://gitlab.enableit.dk/kubernetes/k8id.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
       path: argocd-helm-charts/oncall
       targetRevision: HEAD
       helm:

@@ -11,7 +11,7 @@ spec:
     namespace: whoami
   project: default
   sources:
-    - repoURL: https://gitlab.enableit.dk/kubernetes/k8id.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
       path: argocd-helm-charts/whoami
       targetRevision: 7132-test-TLS-on-KAM
       helm:
