@@ -9,7 +9,7 @@ spec:
     namespace: obmondo-website
   project: default
   sources:
-    - repoURL: https://gitlab.enableit.dk/obmondo/obmondo-web-app.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
       path: .helm/web-app
       targetRevision: HEAD
       helm:

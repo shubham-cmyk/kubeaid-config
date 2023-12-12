@@ -11,7 +11,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   sources:
-    - repoURL: https://gitlab.enableit.dk/kubernetes/k8id.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
       path: argocd-helm-charts/teleport-cluster
       targetRevision: HEAD
       helm:

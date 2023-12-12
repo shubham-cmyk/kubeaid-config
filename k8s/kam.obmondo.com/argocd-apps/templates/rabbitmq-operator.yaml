@@ -9,7 +9,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     path: argocd-helm-charts/rabbitmq-operator
-    repoURL: https://gitlab.enableit.dk/kubernetes/k8id.git
+    repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
     targetRevision: HEAD
     helm:
       valueFiles:

@@ -9,7 +9,7 @@ spec:
     namespace: zfs-localpv
     server: 'https://kubernetes.default.svc'
   sources:
-    - repoURL: https://gitlab.enableit.dk/kubernetes/k8id.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
       path: argocd-helm-charts/zfs-localpv
       targetRevision: HEAD
       helm:
