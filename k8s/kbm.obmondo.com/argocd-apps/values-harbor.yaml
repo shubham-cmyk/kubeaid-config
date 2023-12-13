@@ -10,6 +10,8 @@ harbor:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt
         kubernetes.io/ingress.class: traefik-cert-manager
-
-
   externalURL: https://harbor.obmondo.com
+  persistence:
+    persistentVolumeClaim:
+      registry:
+        size: 50Gi
