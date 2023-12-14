@@ -5,7 +5,7 @@ act-runner:
     storage:
       size: 100Gi
     instance: "https://gitea.obmondo.com"
-    parallel_jobs: 10
+    parallel_jobs: "10"
     labels:
       # upstream link: https://hub.docker.com/r/gitea/gitea
       - "gitea:docker://gitea/gitea:1.20.5"
