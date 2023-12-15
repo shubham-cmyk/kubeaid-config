@@ -9,7 +9,7 @@
   grafana_keycloak_url: 'https://keycloakx.kam.obmondo.com',
   grafana_keycloak_realm: 'Obmondo',
   grafana_ingress_host: 'grafana.kbm.obmondo.com',
-  kube_prometheus_version: '2a955da550e33f75e3a7ecf30d45e8fd19dc6c31',
+  kube_prometheus_version: 'v0.13.0',
   enable_custom_metrics_apiservice: true,
   addMixins: {
     velero: true,
