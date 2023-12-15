@@ -3,16 +3,16 @@ kind: PrometheusRule
 metadata:
   labels:
     prometheus: k8s
-  name: argocd-sync-state
+  name: argoCD-sync-state
   namespace: monitoring
 spec:
   groups:
-  - name: argocd-sync-state
+  - name: argoCD-sync-state
     rules:
     - alert: WhiteListedApplicationOutOfSync
       annotations:
-        description: ArgoCD WhiteListed Application **{{ .Labels.argocd_application_name }}**/**{{ .Labels.application_namespace }}** is out of sync.
-        summary: The application **{{ .Labels.argocd_application_name }}**/**{{ .Labels.application_namespace }}** has been out of sync for more than 30 minutes.
+        description: The application **{{ Labels.argocd_application_name }}**/**{{ Labels.application_namespace }}** has been out of sync for more than 30 minutes.
+        summary: Kubernetes version is close to end of support
       expr: argocd_application_sync_state{argocd_application_name!="", application_namespace!="", whitelisted="true", result="waiting"} == 1
       for: 30m
       labels:
@@ -20,8 +20,8 @@ spec:
         severity: critical
     - alert: CronSyncFailed
       annotations:
-        description: ArgoCD WhiteListed Application **{{ .Labels.argocd_application_name }}**/**{{ .Labels.application_namespace }}** sync failed.
-        summary: The application**{{ .Labels.argocd_application_name }}**/**{{ .Labels.application_namespace }}** has been out of sync for more than 15 minutes.
+        description: ArgoCD WhiteListed Application **{{ Labels.argocd_application_name }}**/**{{ Labels.application_namespace }}** sync failed.
+        summary: The application**{{ Labels.argocd_application_name }}**/**{{ Labels.application_namespace }}** has been out of sync for more than 15 minutes.
       expr: argocd_application_sync_state{argocd_application_name!="", application_namespace!="", whitelisted="true", result="failed"} == 1
       for: 15m
       labels:
