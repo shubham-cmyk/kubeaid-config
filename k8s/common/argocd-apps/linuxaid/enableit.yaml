@@ -1,0 +1,52 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  labels:
+    app.kubernetes.io/component: prometheus
+    app.kubernetes.io/instance: k8s
+    app.kubernetes.io/name: prometheus
+    app.kubernetes.io/part-of: kube-prometheus
+    app.kubernetes.io/version: 2.43.0
+    argocd.argoproj.io/instance: kube-prometheus
+  name: enableit
+  namespace: monitoring
+spec:
+  evaluationInterval: 30s
+  image: quay.io/prometheus/prometheus:v2.43.0
+  nodeSelector:
+    kubernetes.io/os: linux
+  podMetadata:
+    labels:
+      app.kubernetes.io/component: prometheus
+      app.kubernetes.io/instance: k8s
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 2.43.0
+  portName: web
+  replicas: 1
+  resources:
+    limits:
+      memory: 5Gi
+    requests:
+      cpu: 200m
+      memory: 3Gi
+  retention: 30d
+  scrapeInterval: 30s
+  securityContext:
+    fsGroup: 2000
+    runAsNonRoot: true
+    runAsUser: 1000
+  serviceAccountName: prometheus-k8s
+  storage:
+    volumeClaimTemplate:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 30Gi
+        storageClassName: rook-ceph-block
+  version: 2.43.0
+  enableRemoteWriteReceiver: true

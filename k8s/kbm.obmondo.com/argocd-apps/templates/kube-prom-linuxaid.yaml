@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-prom-linuxaid
+  namespace: argocd
+spec:
+  destination:
+    namespace: monitoring
+    server: 'https://kubernetes.default.svc'
+  source:
+    repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
+    path: k8s/common/argocd-apps/linuxaid
+    targetRevision: migrate_to_new_prom_setup
+    ref: values
+  project: default
+  syncPolicy:
+    automated: null
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
