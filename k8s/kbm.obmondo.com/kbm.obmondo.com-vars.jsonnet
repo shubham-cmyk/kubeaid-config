@@ -23,8 +23,8 @@
     requests: { cpu: '10m', memory: '20Mi' },
   },
   prometheus_resources+: {
-    limits: { memory: '5Gi' },
-    requests: { cpu: '200m', memory: '3Gi' },
+    limits: { memory: '7Gi' },
+    requests: { cpu: '200m', memory: '5Gi' },
   },
   grafana_ingress_annotations: {
     'kubernetes.io/ingress.class': 'traefik-cert-manager',
