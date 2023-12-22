@@ -14,7 +14,7 @@ spec:
       helm:
         valueFiles:
           - $values/k8s/kbm.obmondo.com/argocd-apps/values-cloudnative-pg.yaml
-    - repoURL: https://gitea.obmondo.com/EnableIT/kubernetes-config-enableit.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
   project: default
