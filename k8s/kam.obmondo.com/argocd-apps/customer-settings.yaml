@@ -8,7 +8,7 @@ argo-cd:
     # the last bit in this repo `enableit` should be pass as customer-id
     # OR should I assume this part and take care it in the script ?
     # leaving this for now
-    url: https://gitlab.enableit.dk/kubernetes/kubernetes-config-enableit.git
+    url: https://gitlab.enableit.dk/kubernetes/kubeaid-config-enableit.git
     oci: oci://ghcr.io/Obmondo
     name: kam-internal-k8s
     auth:
