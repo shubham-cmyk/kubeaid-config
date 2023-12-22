@@ -1,5 +1,5 @@
 apiVersion: v2
-name: prom-linuxaid
+name: kube-prom-linuxaid
 description: A Helm chart for monitoring linux server, which are subscribed on Obmondo
 type: application
 version: 0.1.0
