@@ -8,7 +8,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
-    path: argocd-helm-charts/prom-linuxaid
+    path: argocd-helm-charts/kube-prom-linuxaid
     targetRevision: migrate_to_new_prom_setup
     helm:
       ignoreMissingValueFiles: true
