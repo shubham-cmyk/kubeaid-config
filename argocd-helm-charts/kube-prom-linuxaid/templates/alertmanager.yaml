@@ -4,7 +4,7 @@ metadata:
   name: {{ .Values.customerid }}
   namespace: monitoring-{{ .Values.customerid }}
 spec:
-  replicas: 3
+  replicas: 1
   resources:
     requests:
       memory: 400Mi
