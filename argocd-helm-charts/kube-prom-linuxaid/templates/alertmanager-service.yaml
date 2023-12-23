@@ -10,8 +10,5 @@ spec:
     port: 9093
     targetPort: web
   selector:
-    app.kubernetes.io/component: alert-router
-    app.kubernetes.io/instance: main
-    app.kubernetes.io/name: {{ .Values.customerid }}
-    app.kubernetes.io/part-of: kube-prometheus
+    app.kubernetes.io/name: prometheus
   sessionAffinity: ClientIP
