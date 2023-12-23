@@ -5,6 +5,7 @@ metadata:
   namespace: monitoring-{{ .Values.customerid }}
 spec:
   externalUrl: https://prometheus.obmondo.com/{{ .Values.customerid }}
+  routePrefix: '/'
   evaluationInterval: 30s
   portName: web
   replicas: 1
