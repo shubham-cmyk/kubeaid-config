@@ -1,7 +1,7 @@
 apiVersion: grafana.integreatly.org/v1beta1
 kind: Grafana
 metadata:
-  name: {{ .Values.customerid }}
+  name: {{ .Values.customerid }}-grafana
   namespace: monitoring-{{ .Values.customerid }}
   labels:
     dashboards: "grafana"

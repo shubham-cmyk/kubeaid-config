@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-main
+  namespace: monitoring-{{ .Values.customerid }}
+spec:
+  type: ClusterIP
+  ports:
+  - name: web
+    port: 9090
+    targetPort: web
+  selector:
+    app.kubernetes.io/component: prometheus
+    app.kubernetes.io/instance: k8s
+    app.kubernetes.io/name: {{ .Values.customerid }}
+    app.kubernetes.io/part-of: kube-prometheus
+  sessionAffinity: ClientIP
