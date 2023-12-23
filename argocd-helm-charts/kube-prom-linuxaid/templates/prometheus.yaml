@@ -5,7 +5,7 @@ metadata:
   namespace: monitoring-{{ .Values.customerid }}
 spec:
   externalUrl: /{{ .Values.customerid }}
-  routePrefix: '/'
+  routePrefix: /{{ .Values.customerid }}
   evaluationInterval: 30s
   portName: web
   replicas: 1
