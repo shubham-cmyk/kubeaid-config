@@ -18,3 +18,7 @@ spec:
             name: prometheus-main
             port:
               name: web
+  tls:
+  - hosts:
+    - prometheus.obmondo.com
+    secretName: prometheus-{{ .Values.customerid }}-tls
