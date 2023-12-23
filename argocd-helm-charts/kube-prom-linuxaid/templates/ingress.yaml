@@ -1,22 +1,20 @@
-apiVersion: extensions/v1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ .Values.customerid }}
   namespace: monitoring-{{ .Values.customerid }}
   annotations:
-    ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/16 # change this range to admin IPs
     kubernetes.io/ingress.class: traefik-cert-manager
     cert-manager.io/cluster-issuer: letsencrypt
-    # nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
-  - http:
+  - host: prometheus.obmondo.com
+    http:
       paths:
-      - backend:
-          serviceName: prometheus-main
-          servicePort: 9090
-        path: /prometheus(/|$)(.*)
-      - backend:
-          serviceName: alertmanager-main
-          servicePort: 9093
-        path: /alertmanager(/|$)(.*)
+      - pathType: Prefix
+        path: /{{ .Values.customerid }}
+        backend:
+          service:
+            name: prometheus-main
+            port:
+              name: web
