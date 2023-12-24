@@ -7,9 +7,11 @@ traefik:
     web:
       hostPort: 80
   tlsOptions:
-    tls-client-auth:
+    puppet-agent-auth:
+      maxVersion: VersionTLS13
+      minVersion: VersionTLS12
       clientAuth:
-        clientAuthType: VerifyClientCertIfGiven
+        clientAuthType: RequireAndVerifyClientCert
         secretNames:
           - puppetca-cert
   service:
