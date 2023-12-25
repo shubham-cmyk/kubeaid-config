@@ -1,0 +1,14 @@
+traefik-forward-auth:
+  traefikForwardAuth:
+    enabled: true
+    clientId: traefik-forward-auth
+    clientSecret:
+      valueFrom:
+        secretKeyRef:
+          key: graylog-keycloak-secret
+          name: traefik-forward-auth-keycloak
+    oidcUri: https://keycloak.ops.bw7.io/auth/realms/BlackwoodSeven
+    enableRBAC: false
+  replicaCount: 1
+middleware:
+  enabled: false
