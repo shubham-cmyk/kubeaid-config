@@ -12,10 +12,15 @@ keycloakx:
         paths:
           - path: /
             pathType: Prefix
+      - host: keycloakx.kam.obmondo.com
+        paths:
+          - path: /
+            pathType: Prefix
     tls:
       - secretName: keycloak-ssl
         hosts:
           - keycloak.obmondo.com
+          - keycloakx.kam.obmondo.com
 
 postgresql:
   access_secret: keycloakx-pgsql-postgres-pod-env
