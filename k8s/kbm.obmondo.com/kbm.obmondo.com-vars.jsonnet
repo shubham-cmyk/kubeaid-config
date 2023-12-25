@@ -6,7 +6,7 @@
   connect_keda: true,
   grafana_keycloak_enable: true,
   grafana_root_url: 'https://grafana.kbm.obmondo.com',
-  grafana_keycloak_url: 'https://keycloakx.kam.obmondo.com',
+  grafana_keycloak_url: 'https://keycloak.obmondo.com',
   grafana_keycloak_realm: 'Obmondo',
   grafana_ingress_host: 'grafana.kbm.obmondo.com',
   kube_prometheus_version: 'v0.13.0',

@@ -18,9 +18,7 @@ argo-cd:
         g, divyam@obmondo.com, role:admin
         g, rishikesh@obmondo.com, role:admin
         g, basit@obmondo.com, role:admin
-        g, ditesh@obmondo.com, role:admin
         g, sanskar@obmondo.com, role:admin
-        g, nitish@obmondo.com, role:admin
       scopes: '[groups, email]'
     extraArgs:
       - --insecure
@@ -28,7 +26,7 @@ argo-cd:
       url: https://argocd.kbm.obmondo.com
       oidc.config: |
         name: Keycloak
-        issuer: https://keycloakx.kam.obmondo.com/auth/realms/Obmondo
+        issuer: https://keycloak.obmondo.com/auth/realms/Obmondo
         clientID: argocd
         clientSecret: $oidc.keycloak.clientSecret
         requestedScopes: ["openid", "profile", "email", "groups"]

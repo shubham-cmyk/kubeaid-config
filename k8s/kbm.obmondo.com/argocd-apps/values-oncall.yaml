@@ -15,15 +15,15 @@ oncall:
       auth:
         disable_login_form: false
         disable_signout_menu: false
-        signout_redirect_url: 'https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/logout?redirect_uri=https://oncall.kbm.obmondo.com/grafana'
+        signout_redirect_url: 'https://keycloak.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/logout?redirect_uri=https://oncall.kbm.obmondo.com/grafana'
       auth.generic_oauth:
         enabled: true
         allow_sign_up: true
         scopes: 'openid profile email'
         name: 'Keycloak'
-        auth_url: 'https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/auth'
-        token_url: 'https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/token'
-        api_url: 'https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/userinfo'
+        auth_url: 'https://keycloak.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/auth'
+        token_url: 'https://keycloak.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/token'
+        api_url: 'https://keycloak.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/userinfo'
         client_id: 'grafana'
         role_attribute_path: "contains(not_null(roles[*],''), 'Admin') && 'Admin' || contains(not_null(roles[*],''), 'Editor') && 'Editor' || contains(not_null(roles[*],''), 'Viewer') && 'Viewer'|| ''"
     env:
