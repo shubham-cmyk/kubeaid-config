@@ -6,7 +6,7 @@
   grafana_keycloak_enable: true,
   grafana_root_url: 'https://grafana.kam.obmondo.com',
   grafana_ingress_host: 'grafana.kam.obmondo.com',
-  grafana_keycloak_url: 'https://keycloakx.kam.obmondo.com',
+  grafana_keycloak_url: 'https://keycloak.obmondo.com',
   grafana_keycloak_realm: 'Obmondo',
   kube_prometheus_version: '2a955da550e33f75e3a7ecf30d45e8fd19dc6c31',
 
