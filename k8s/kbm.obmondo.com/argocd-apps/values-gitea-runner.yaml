@@ -1,10 +1,9 @@
 act-runner:
   act_runner:
     existingToken: gitea-runner-token
-    # we need to run multiple runners - to offset any one k8s node going down as this SC binds it to one node
-    storageclass: zfs-localpv
+    storageclass: rook-ceph-block
     storage:
-      size: 100Gi
+      size: 80Gi
     instance: "https://gitea.obmondo.com"
     parallel_jobs: 10
     labels:
