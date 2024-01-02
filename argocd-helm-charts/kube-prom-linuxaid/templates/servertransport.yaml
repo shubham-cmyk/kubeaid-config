@@ -1,8 +1,0 @@
-apiVersion: traefik.io/v1alpha1
-kind: ServersTransport
-metadata:
-  name: puppet-agent-auth
-  namespace: traefik
-spec:
-  rootCAsSecrets:
-  - puppetca-cert

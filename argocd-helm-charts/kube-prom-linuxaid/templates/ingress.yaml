@@ -6,7 +6,8 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: traefik-cert-manager
     cert-manager.io/cluster-issuer: letsencrypt
-    traefik.ingress.kubernetes.io/service.serverstransport: traefik-puppet-agent-auth@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.tls.options: treafik-puppet-agent-auth@kubernetescrd
 spec:
   rules:
   - host: prometheus.obmondo.com
