@@ -8,14 +8,14 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt
     traefik.ingress.kubernetes.io/router.tls: "true"
     traefik.ingress.kubernetes.io/router.tls.domains.0.main: prometheus.obmondo.com
-    traefik.ingress.kubernetes.io/router.tls.options: traefik-puppet-agent-auth@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls.options: traefik-prometheus-puppet-agent-tls-auth@kubernetescrd
 spec:
   rules:
   - host: prometheus.obmondo.com
     http:
       paths:
       - pathType: Prefix
-        path: /{{ .Values.customerid }}
+        path: /{{ .Values.customerid }}/api/v1/write
         backend:
           service:
             name: prometheus-main
