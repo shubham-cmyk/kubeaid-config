@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
     path: argocd-helm-charts/kube-prom-linuxaid
-    targetRevision: migrate_to_new_prom_setup
+    targetRevision: HEAD
     helm:
       ignoreMissingValueFiles: true
       valueFiles:

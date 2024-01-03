@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kube-prom-linuxaid-enableit
+  name: kube-prom-linuxaid-ebillet
   namespace: argocd
 spec:
   destination:
@@ -14,7 +14,7 @@ spec:
       ignoreMissingValueFiles: true
       valueFiles:
         - values.yaml
-        - ../../k8s/kbm.obmondo.com/argocd-apps/values-kube-prom-linuxaid-enableit.yaml
+        - ../../k8s/kbm.obmondo.com/argocd-apps/values-kube-prom-linuxaid-ebillet.yaml
   project: default
   syncPolicy:
     automated: null
