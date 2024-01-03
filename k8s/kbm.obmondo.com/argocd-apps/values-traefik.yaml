@@ -6,8 +6,16 @@ traefik:
       hostPort: 443
     web:
       hostPort: 80
+  # https://doc.traefik.io/traefik/https/tls/#tls-options
   tlsOptions:
-    puppet-agent-auth:
+    api-puppet-agent-tls-auth:
+      maxVersion: VersionTLS13
+      minVersion: VersionTLS12
+      clientAuth:
+        clientAuthType: VerifyClientCertIfGiven
+        secretNames:
+          - puppetca-cert
+    prometheus-puppet-agent-tls-auth:
       maxVersion: VersionTLS13
       minVersion: VersionTLS12
       clientAuth:
