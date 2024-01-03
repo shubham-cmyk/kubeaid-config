@@ -1,0 +1,15 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: traefik-forward-auth-keycloak
+  namespace: traefik
+spec:
+  encryptedData:
+    keycloak-secret: AgB9yQdZAJCDjQ07pU9g/lplsGsTXco61Xvg4VmnQkTgyVS9CMBDL8067KZfGYux2Ejo1N8ZwQmnxJnBs4Kld9iwBFtw5ZFTBIaqCynXBK3SWeXvy7u2gFak9wjwoj8ni/4rueVSfS7NRRtiaUtkY8pXyvRm2NrOKbGvJoaa1Z+QTJqjpw8AWpfV50TNHVks/37GqURDcmGnH2yl2QpEVP5Skh8MCRH0U4FzBL75FfVbiL3xVrmtYUNl/kMCnv+tJpje7kWI0VkfpHMZorsRg2GTcGfKfxxSBhu8bcGOYfspvbRKlgW8rHYQkPJizqE6lxq3NOhl5kAyN6oB6xpyuentF5dubR/5MQzS4clmnIkcLFwNIqsznhtPfYk/sn2vgHFhQkmW7mqZVVHecfE6kXvvHf0OsB3RFGh4/REcPR9jAG7n3Cprh1TW2khU+DvFkZVNZdqE1BGeZw6cMDvTQBNDYo/afKoC0ZRGFP02WS/wMvWPYSY7Zj512LYE5I1Drtm+IxC5jEnXyMASuSPOIy2Et82PXlPPiOEe4xvseWIidkEjY/3ZOxce3PE3OLYdT4Y00/xn6WfmVkqnRLb3sxYMmdhn/tgn4Mv+MFtB+TPwldCXWjF26mMoEduIIB9MpqI4pyEDik1xj/SQRJJziS61L/7LN9MDcLLYbYg3SiaAZJdjC/s48R4fwV6jad+G3tpRUoLLUO7vuwX5ALubXPWboHrSlK/pVFSu0BF1pPBPGQ==
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: traefik-forward-auth-keycloak
+      namespace: traefik

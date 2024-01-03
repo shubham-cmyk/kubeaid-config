@@ -1,0 +1,14 @@
+traefik-forward-auth:
+  traefikForwardAuth:
+    enabled: true
+    clientId: traefik-forward-auth
+    clientSecret:
+      valueFrom:
+        secretKeyRef:
+          key: keycloak-secret
+          name: traefik-forward-auth-keycloak
+    oidcUri: https://keycloak.obmondo.com/auth/realms/Obmondo
+    enableRBAC: false
+  replicaCount: 1
+middleware:
+  enabled: false

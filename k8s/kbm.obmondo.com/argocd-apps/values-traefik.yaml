@@ -6,10 +6,20 @@ traefik:
       hostPort: 443
     web:
       hostPort: 80
+  # https://doc.traefik.io/traefik/https/tls/#tls-options
   tlsOptions:
-    tls-client-auth:
+    api-puppet-agent-tls-auth:
+      maxVersion: VersionTLS13
+      minVersion: VersionTLS12
       clientAuth:
         clientAuthType: VerifyClientCertIfGiven
+        secretNames:
+          - puppetca-cert
+    prometheus-puppet-agent-tls-auth:
+      maxVersion: VersionTLS13
+      minVersion: VersionTLS12
+      clientAuth:
+        clientAuthType: RequireAndVerifyClientCert
         secretNames:
           - puppetca-cert
   service:
@@ -18,14 +28,13 @@ traefik:
       - 95.216.30.44
   experimental:
     plugins:
-      enabled: true
+      jwt:
+        moduleName: github.com/Obmondo/traefik-jwt-plugin
+        version: v0.2.0
   additionalArguments:
     - '--providers.kubernetesingress.ingressclass=traefik-cert-manager'
     - '--entrypoints.websecure.http.tls'
     - '--metrics.prometheus=true'
-    - '--experimental.plugins.jwt.moduleName=github.com/Obmondo/traefik-jwt-plugin'
-    - '--experimental.plugins.jwt.version=v0.2.0'
-    - '--log.level=DEBUG'
   # https://github.com/argoproj/argo-cd/issues/1704#issuecomment-904741817
   providers:
     kubernetesIngress:
