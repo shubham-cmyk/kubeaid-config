@@ -14,4 +14,3 @@ spec:
       name: puppet-agent-tls-auth
       namespace: monitoring-enableit
     type: kubernetes.io/tls
-
