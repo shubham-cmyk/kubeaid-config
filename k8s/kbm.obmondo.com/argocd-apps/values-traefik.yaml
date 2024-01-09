@@ -37,6 +37,9 @@ traefik:
     - '--metrics.prometheus=true'
   # https://github.com/argoproj/argo-cd/issues/1704#issuecomment-904741817
   providers:
+    kubernetesCRD:
+      enabled: true
+      allowCrossNamespace: true
     kubernetesIngress:
       publishedService:
         enabled: true
