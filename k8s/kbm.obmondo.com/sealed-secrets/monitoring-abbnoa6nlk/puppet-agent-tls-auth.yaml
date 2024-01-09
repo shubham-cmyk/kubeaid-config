@@ -14,4 +14,3 @@ spec:
       name: puppet-agent-tls-auth
       namespace: monitoring-abbnoa6nlk
     type: kubernetes.io/tls
-
