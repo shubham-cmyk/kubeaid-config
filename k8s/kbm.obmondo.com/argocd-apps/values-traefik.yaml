@@ -6,6 +6,9 @@ traefik:
       hostPort: 443
     web:
       hostPort: 80
+  logs:
+    general:
+      level: INFO
   # https://doc.traefik.io/traefik/https/tls/#tls-options
   tlsOptions:
     api-puppet-agent-tls-auth:
@@ -30,7 +33,7 @@ traefik:
     plugins:
       jwt:
         moduleName: github.com/Obmondo/traefik-jwt-plugin
-        version: v0.2.0
+        version: v0.7.1
   additionalArguments:
     - '--providers.kubernetesingress.ingressclass=traefik-cert-manager'
     - '--entrypoints.websecure.http.tls'
