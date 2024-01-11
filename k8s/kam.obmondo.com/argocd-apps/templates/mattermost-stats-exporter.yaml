@@ -11,8 +11,8 @@ spec:
     namespace: mattermost
   project: default
   sources:
-    - repoURL: https://gitlab.enableit.dk/kubernetes/k8id-support-software
-      path: src/mattermost-stats-exporter/helm
+    - repoURL: https://gitea.obmondo.com/EnableIT/k8id-support-software.git
+      path: services/mattermost-stats-exporter/helm
       targetRevision: HEAD
       helm:
         valueFiles:
