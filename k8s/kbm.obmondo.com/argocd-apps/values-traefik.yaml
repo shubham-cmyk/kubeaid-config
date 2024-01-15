@@ -34,6 +34,9 @@ traefik:
       jwt:
         moduleName: github.com/Obmondo/traefik-jwt-plugin
         version: v0.7.1
+      headerauthentication:
+        moduleName: github.com/omar-shrbajy-arive/headerauthentication
+        version: v1.0.3
   additionalArguments:
     - '--providers.kubernetesingress.ingressclass=traefik-cert-manager'
     - '--entrypoints.websecure.http.tls'
@@ -52,7 +55,7 @@ middleware:
     enabled: true
     headers:
       X-Subject: sub
-      X-Obmondo-CustomerID:
+      X-Obmondo-Customerid:
         data: customer/id
     public_key: |
       -----BEGIN PUBLIC KEY-----
