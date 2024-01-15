@@ -3,7 +3,7 @@ act-runner:
     existingToken: gitea-runner-token
     storageclass: rook-ceph-block
     storage:
-      size: 80Gi
+      size: 100Gi
     instance: "https://gitea.obmondo.com"
     parallel_jobs: 10
     labels:
