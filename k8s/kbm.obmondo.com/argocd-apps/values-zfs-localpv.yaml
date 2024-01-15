@@ -20,3 +20,4 @@ zfs-localpv:
       name: zfs-csi-controller-critical
 storageClass:
   enabled: true
+  poolName: mypool
