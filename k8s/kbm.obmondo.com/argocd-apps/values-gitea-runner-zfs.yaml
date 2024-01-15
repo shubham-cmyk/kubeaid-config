@@ -1,0 +1,22 @@
+act-runner:
+  act_runner:
+    existingToken: gitea-runner-token
+    storageclass: zfs-localpv
+    storage:
+      size: 80Gi
+    instance: "https://gitea.obmondo.com"
+    parallel_jobs: 10
+    labels:
+      # upstream link: https://hub.docker.com/r/gitea/gitea
+      - "gitea:docker://gitea/gitea:1.21.3"
+      - "ubuntu-latest:docker://node:16-bullseye"
+      - "ubuntu-22.04:docker://node:16-bullseye"
+      - "ubuntu-20.04:docker://node:16-bullseye"
+
+runner:
+  nameSpace:
+    create: false
+    name: obmondo-gitea-ci
+  serviceAccount:
+    create: true
+    name: obmondo-gitea-ci
