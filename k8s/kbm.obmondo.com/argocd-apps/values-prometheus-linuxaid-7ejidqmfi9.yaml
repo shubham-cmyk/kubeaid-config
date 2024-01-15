@@ -1,1 +1,8 @@
 customerid: 7ejidqmfi9
+prometheus:
+  resources:
+    limits:
+      memory: 6Gi
+    requests:
+      cpu: 1500m
+      memory: 4Gi

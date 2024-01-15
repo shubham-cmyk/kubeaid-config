@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prometheus-linuxaid
+  namespace: monitoring
+  annotations:
+    kubernetes.io/ingress.class: traefik-cert-manager
+    cert-manager.io/cluster-issuer: letsencrypt
+    traefik.ingress.kubernetes.io/router.priority: "1"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.tls.domains.0.main: prometheus.obmondo.com
+    traefik.ingress.kubernetes.io/router.tls.options: traefik-prometheus-puppet-agent-tls-auth@kubernetescrd
+spec:
+spec:
+  rules:
+  - host: prometheus.obmondo.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: prometheus-k8s
+            port:
+              name: web
+  tls:
+  - hosts:
+    - prometheus.obmondo.com
+    secretName: prometheus-obmondo-com-tls
