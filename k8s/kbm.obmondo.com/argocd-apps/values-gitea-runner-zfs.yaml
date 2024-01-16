@@ -12,11 +12,9 @@ act-runner:
       - "ubuntu-latest:docker://node:16-bullseye"
       - "ubuntu-22.04:docker://node:16-bullseye"
       - "ubuntu-20.04:docker://node:16-bullseye"
-
-runner:
-  nameSpace:
-    create: false
-    name: obmondo-gitea-ci
-  serviceAccount:
-    create: true
-    name: obmondo-gitea-ci
+  resources:
+    limits:
+      memory: 3Gi
+    requests:
+      cpu: 500m
+      memory: 2Gi
