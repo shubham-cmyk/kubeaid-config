@@ -9,7 +9,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/go-opsmondo.git
-      path: helm/go-opsmondo
+      path: helm/goopsmondo
       targetRevision: 69-release-helmchart
       helm:
         valueFiles:
