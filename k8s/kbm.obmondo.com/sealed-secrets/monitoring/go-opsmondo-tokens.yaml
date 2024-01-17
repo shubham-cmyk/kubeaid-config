@@ -15,4 +15,3 @@ spec:
       creationTimestamp: null
       name: go-opsmondo-tokens
       namespace: monitoring
-
