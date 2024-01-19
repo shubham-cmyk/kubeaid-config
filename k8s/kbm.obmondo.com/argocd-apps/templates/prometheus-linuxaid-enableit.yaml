@@ -4,6 +4,8 @@ metadata:
   name: prometheus-linuxaid-enableit
   namespace: argocd
 spec:
+  syncPolicy:
+    automated: {}
   destination:
     server: 'https://kubernetes.default.svc'
   sources:
