@@ -10,6 +10,12 @@ argo-cd:
     secret:
       createSecret: false     # managed by sealed-secrets now
   server:
+    resources:
+      limits:
+        memory: 512Mi
+      requests:
+        cpu: 50m
+        memory: 256Mi
     rbacConfig:
       policy.csv: |
         g, ArgoCDAdmins, role:admin
