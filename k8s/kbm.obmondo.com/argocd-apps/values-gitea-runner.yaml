@@ -1,7 +1,8 @@
 act-runner:
+  replicaCount: 3
   act_runner:
     existingToken: gitea-runner-token
-    storageclass: rook-ceph-block
+    storageclass: ceph-filesystem
     storage:
       size: 100Gi
     instance: "https://gitea.obmondo.com"
