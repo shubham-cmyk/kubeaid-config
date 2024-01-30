@@ -10,12 +10,12 @@ spec:
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/go-opsmondo.git
       path: helm/goopsmondo
-      targetRevision: 69-release-helmchart
+      targetRevision: HEAD
       helm:
         valueFiles:
           - $values/k8s/kbm.obmondo.com/argocd-apps/values-go-opsmondo.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
-      targetRevision: go_opsmondo
+      targetRevision: HEAD
       ref: values
   project: default
   syncPolicy:
