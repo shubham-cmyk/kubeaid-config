@@ -1,12 +1,16 @@
 act-runner:
-  replicaCount: 3
+  replicaCount: 1
+  image:
+    repository: vegardit/gitea-act-runner
+    tag: dind-rootless-0.2.6
+    pullPolicy: Always
   act_runner:
     existingToken: gitea-runner-token
-    storageclass: ceph-filesystem
+    storageclass: zfs-localpv
     storage:
       size: 100Gi
     instance: "https://gitea.obmondo.com"
-    parallel_jobs: 10
+    parallel_jobs: 30
     labels:
       # upstream link: https://hub.docker.com/r/gitea/gitea
       - "gitea:docker://gitea/gitea:1.21.3"
