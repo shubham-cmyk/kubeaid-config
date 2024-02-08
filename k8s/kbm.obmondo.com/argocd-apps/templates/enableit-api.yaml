@@ -9,7 +9,7 @@ spec:
     namespace: obmondo-website
   project: default
   sources:
-    - repoURL: https://gitlab.enableit.dk/enableit/enableit-api.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/clojure-api.git
       path: helm/enableit-api
       targetRevision: HEAD
       helm:
