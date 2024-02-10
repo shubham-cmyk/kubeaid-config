@@ -24,7 +24,7 @@ jobs:
     name: Yaml Lint
     runs-on: ubuntu-latest
     container:
-      image: ${{ secrets.HARBOR_REGISTRY }}/${{ vars.KUBEAID_CI_IMAGE }}:${{ vars.KUBEAID_CI_TAG }}
+      image: harbor.obmondo.com/obmondo/kubeaid-ci:1.2.0
     steps:
     - name: checkout
       uses: actions/checkout@v2
