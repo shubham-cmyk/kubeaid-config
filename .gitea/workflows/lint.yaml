@@ -1,25 +1,34 @@
 name: K8id config lint pipeline
 run-name: Lint CI
-
-on:  # yamllint disable-line rule:truthy
-  - pull_request
+"on":
+  pull_request:
+    types:
+      - opened
+      - synchronize
 
 jobs:
   markdownlint:
     runs-on: ubuntu-latest
     name: Markdown Lint
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-      - run: npm install -g markdownlint-cli
-      - run: markdownlint --config .markdownlint .
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: markdownlint
+        uses: https://gitea.obmondo.com/Obmondo/gitea-actions/.gitea/actions/markdownlint-cli2-action@main
+        with:
+          config: .markdownlint-cli2.yaml
+          globs: '**/*.md'
 
   yamllint:
-    runs-on: ubuntu-latest
     name: Yaml Lint
+    runs-on: ubuntu-latest
+    container:
+      image: harbor.obmondo.com/obmondo/kubeaid-ci:1.2.0
     steps:
-      - uses: actions/checkout@v3
-      - name: Install yamllint
-        run: apt-get update && apt-get install -y yamllint
-      - run: yamllint --strict --config-file .yamllint .
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: yamllint
+      run: |
+        yamllint --strict --config-file .yamllint .
