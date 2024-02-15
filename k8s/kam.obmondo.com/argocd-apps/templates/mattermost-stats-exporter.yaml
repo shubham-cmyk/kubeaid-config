@@ -11,7 +11,7 @@ spec:
     namespace: mattermost
   project: default
   sources:
-    - repoURL: https://gitea.obmondo.com/EnableIT/k8id-support-software.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
       path: services/mattermost-stats-exporter/helm
       targetRevision: HEAD
       helm:
