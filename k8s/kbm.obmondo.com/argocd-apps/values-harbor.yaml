@@ -14,4 +14,4 @@ harbor:
   persistence:
     persistentVolumeClaim:
       registry:
-        size: 50Gi
+        size: 80Gi
