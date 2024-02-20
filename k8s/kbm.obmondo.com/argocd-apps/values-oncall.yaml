@@ -51,4 +51,4 @@ oncall:
   recover: false
 
 postgresql:
-  size: 40Gi
+  size: 50Gi
