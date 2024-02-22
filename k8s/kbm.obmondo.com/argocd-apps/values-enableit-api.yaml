@@ -92,3 +92,6 @@ postgresql:
 
 chat:
   teamid: 'cnuya58yz7njpxweab87aq7uth'
+
+serviceMonitor:
+  enabled: false
