@@ -3,7 +3,7 @@ kind: PrometheusRule
 metadata:
   labels:
     prometheus: k8s
-  name: argo-cd-sync-state
+  name: argo-cd
   namespace: monitoring
 spec:
   groups:
@@ -27,3 +27,19 @@ spec:
       labels:
         alert_id: CronSyncFailed
         severity: critical
+    - alert: ArgoCdAppOutOfSync
+      annotations:
+        description: Multiple application under {{ $labels.project }} is out of sync with the sync status {{ $labels.sync_status }} for the past 15m
+        summary: ArgoCD Application is Out Of Sync.
+      expr: sum by (job, dest_server, project, sync_status) (argocd_app_info{job=~".*",sync_status!="Synced"}) >= 1
+      for: 15m
+      labels:
+        severity: warning
+    - alert: ArgoCdAppUnhealthy
+      annotations:
+        description: Multiple application under {{ $labels.project }} is not healthy with the health status {{ $labels.health_status }} for the past 15m
+        summary: ArgoCD Application is not healthy.
+      expr: sum by (job, project, dest_server, health_status) (argocd_app_info{health_status!~"Healthy|Progressing"}) >= 1
+      for: 15m
+      labels:
+        severity: warning

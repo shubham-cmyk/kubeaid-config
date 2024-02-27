@@ -7,92 +7,39 @@ metadata:
   namespace: monitoring
 spec:
   groups:
-  - name: argo-cd
+  - name: argocd-sync-state
     rules:
+    - alert: WhiteListedApplicationOutOfSync
+      annotations:
+        description: The application **{{ Labels.argocd_application_name }}**/**{{ Labels.application_namespace }}** has been out of sync for more than 30 minutes.
+        summary: Kubernetes version is close to end of support
+      expr: argocd_application_sync_state{argocd_application_name!="", application_namespace!="", whitelisted="true", result="waiting"} == 1
+      for: 30m
+      labels:
+        alert_id: WhiteListedApplicationOutOfSync
+        severity: critical
+    - alert: CronSyncFailed
+      annotations:
+        description: Argo CD WhiteListed Application **{{ Labels.argocd_application_name }}**/**{{ Labels.application_namespace }}** sync failed.
+        summary: The application**{{ Labels.argocd_application_name }}**/**{{ Labels.application_namespace }}** has been out of sync for more than 15 minutes.
+      expr: argocd_application_sync_state{argocd_application_name!="", application_namespace!="", whitelisted="true", result="failed"} == 1
+      for: 15m
+      labels:
+        alert_id: CronSyncFailed
+        severity: critical
     - alert: ArgoCdAppOutOfSync
       annotations:
-        dashboard_url: https://grafana.com/d/argo-cd-application-overview-kask/argocd-application-overview?var-dest_server={{ $labels.dest_server }}&var-project={{ $labels.project }}&var-application={{ $labels.name }}
-        description: The application {{ $labels.dest_server }}/{{ $labels.project }}/{{ $labels.name }} is out of sync with the sync status {{ $labels.sync_status }} for the past 15m.
-        summary: An ArgoCD Application is Out Of Sync.
-      expr: |
-        sum(
-          argocd_app_info{
-            job=~".*",
-            sync_status!="Synced"
-          }
-        ) by (job, dest_server, project, name, sync_status)
-        > 0
+        description: Multiple application under {{ $labels.project }} is out of sync with the sync status {{ $labels.sync_status }} for the past 15m
+        summary: ArgoCD Application is Out Of Sync.
+      expr: sum by (job, dest_server, project, sync_status) (argocd_app_info{job=~".*",sync_status!="Synced"}) >= 1
       for: 15m
       labels:
         severity: warning
     - alert: ArgoCdAppUnhealthy
       annotations:
-        dashboard_url: https://grafana.com/d/argo-cd-application-overview-kask/argocd-application-overview?var-dest_server={{ $labels.dest_server }}&var-project={{ $labels.project }}&var-application={{ $labels.name }}
-        description: The application {{ $labels.dest_server }}/{{ $labels.project }}/{{ $labels.name }} is unhealthy with the health status {{ $labels.health_status }} for the past 15m.
-        summary: An ArgoCD Application is Unhealthy.
-      expr: |
-        sum(
-          argocd_app_info{
-            job=~".*",
-            health_status!~"Healthy|Progressing"
-          }
-        ) by (job, dest_server, project, name, health_status)
-        > 0
+        description: Multiple application under {{ $labels.project }} is not healthy with the health status {{ $labels.health_status }} for the past 15m
+        summary: ArgoCD Application is not healthy.
+      expr: sum by (job, project, dest_server, health_status) (argocd_app_info{health_status!~"Healthy|Progressing"}) >= 1
       for: 15m
-      labels:
-        severity: warning
-    - alert: ArgoCdAppAutoSyncDisabled
-      annotations:
-        dashboard_url: https://grafana.com/d/argo-cd-application-overview-kask/argocd-application-overview?var-dest_server={{ $labels.dest_server }}&var-project={{ $labels.project }}&var-application={{ $labels.name }}
-        description: The application {{ $labels.dest_server }}/{{ $labels.project }}/{{ $labels.name }} has autosync disabled for the past 2h.
-        summary: An ArgoCD Application has AutoSync Disabled.
-      expr: |
-        sum(
-          argocd_app_info{
-            job=~".*",
-            autosync_enabled!="true",
-            name!~""
-          }
-        ) by (job, dest_server, project, name, autosync_enabled)
-        > 0
-      for: 2h
-      labels:
-        severity: warning
-    - alert: ArgoCdAppSyncFailed
-      annotations:
-        dashboard_url: https://grafana.com/d/argo-cd-application-overview-kask/argocd-application-overview?var-dest_server={{ $labels.dest_server }}&var-project={{ $labels.project }}&var-application={{ $labels.name }}
-        description: The application {{ $labels.dest_server }}/{{ $labels.project }}/{{ $labels.name }} has failed to sync with the status {{ $labels.phase }} the past 10m.
-        summary: An ArgoCD Application has Failed to Sync.
-      expr: |
-        sum(
-          round(
-            increase(
-              argocd_app_sync_total{
-                job=~".*",
-                phase!="Succeeded"
-              }[10m]
-            )
-          )
-        ) by (job, dest_server, project, name, phase) > 0
-      for: 1m
-      labels:
-        severity: warning
-    - alert: ArgoCdNotificationDeliveryFailed
-      annotations:
-        dashboard_url: https://grafana.com/d/argo-cd-notifications-overview-kask/argocd-notifications-overview?var-job={{ $labels.job }}&var-exported_service={{ $labels.exported_service }}
-        description: The notification job {{ $labels.job }} has failed to deliver to {{ $labels.exported_service }} for the past 10m.
-        summary: ArgoCD Notification Delivery Failed.
-      expr: |
-        sum(
-          round(
-            increase(
-              argocd_notifications_deliveries_total{
-                job=~".*",
-                succeeded!="true"
-              }[10m]
-            )
-          )
-        ) by (job, exported_service, succeeded) > 0
-      for: 1m
       labels:
         severity: warning
