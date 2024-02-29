@@ -33,6 +33,8 @@
     'rook-ceph',
     'logging',
     'velero',
+    'traefik',
+    'monitoring'
   ],
   prometheus+: {
     storage: {
