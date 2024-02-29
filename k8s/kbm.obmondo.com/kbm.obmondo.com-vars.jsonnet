@@ -34,7 +34,8 @@
     'logging',
     'obmondo-website',
     'velero',
-    'traefik'
+    'traefik',
+    'monitoring'
   ],
   prometheus+: {
     storage: {
