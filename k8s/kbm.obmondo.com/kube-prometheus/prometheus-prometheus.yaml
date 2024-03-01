@@ -18,6 +18,7 @@ spec:
       port: web
   enableFeatures: []
   externalLabels: {}
+  externalUrl: ""
   image: quay.io/prometheus/prometheus:v2.46.0
   nodeSelector:
     kubernetes.io/os: linux
@@ -40,7 +41,7 @@ spec:
       cpu: 200m
       memory: 5Gi
   retention: 15d
-  ruleNamespaceSelector: {}
+  ruleNamespaceSelector: null
   ruleSelector: {}
   securityContext:
     fsGroup: 2000
