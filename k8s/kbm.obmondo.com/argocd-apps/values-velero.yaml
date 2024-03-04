@@ -25,6 +25,7 @@ velero:
         region: "atat"
         profile: "default"
     features: EnableCSI
+    defaultBackupTTL: 168h
   initContainers:
   - name: velero-plugin-for-csi
     image: 'velero/velero-plugin-for-csi:v0.3.1'

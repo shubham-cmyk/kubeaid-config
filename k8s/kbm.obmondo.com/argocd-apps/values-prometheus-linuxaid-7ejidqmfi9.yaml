@@ -1,10 +1,10 @@
 customerid: 7ejidqmfi9
 prometheus:
   storage:
-    size: 80Gi
+    size: 120Gi
   resources:
     limits:
       memory: 6Gi
     requests:
-      cpu: 1500m
+      cpu: 2500m
       memory: 4Gi

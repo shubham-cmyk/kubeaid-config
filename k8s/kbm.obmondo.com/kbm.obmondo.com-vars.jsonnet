@@ -32,7 +32,6 @@
   prometheus_scrape_namespaces: [
     'rook-ceph',
     'logging',
-    'obmondo-website',
     'velero',
     'monitoring'
   ],
