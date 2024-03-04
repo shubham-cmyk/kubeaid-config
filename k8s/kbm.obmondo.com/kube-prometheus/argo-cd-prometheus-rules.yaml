@@ -21,12 +21,20 @@ spec:
     - alert: CronSyncFailed
       annotations:
         description: Argo CD WhiteListed Application **{{ Labels.argocd_application_name }}**/**{{ Labels.application_namespace }}** sync failed.
-        summary: The application **{{ Labels.argocd_application_name }}**/**{{ Labels.application_namespace }}** has been out of sync for more than 15 minutes.
+        summary: The application**{{ Labels.argocd_application_name }}**/**{{ Labels.application_namespace }}** has been out of sync for more than 15 minutes.
       expr: argocd_application_sync_state{argocd_application_name!="", application_namespace!="", whitelisted="true", result="failed"} == 1
       for: 15m
       labels:
         alert_id: CronSyncFailed
         severity: critical
+    - alert: ArgoCdAppOutOfSync
+      annotations:
+        description: Multiple application under {{ $labels.project }} is out of sync with the sync status {{ $labels.sync_status }} for the past 15m
+        summary: ArgoCD Application is Out Of Sync.
+      expr: sum by (job, dest_server, project, sync_status) (argocd_app_info{job=~".*",sync_status!="Synced"}) >= 1
+      for: 15m
+      labels:
+        severity: warning
     - alert: ArgoCdAppUnhealthy
       annotations:
         description: Multiple application under {{ $labels.project }} is not healthy with the health status {{ $labels.health_status }} for the past 15m

@@ -50,15 +50,6 @@ traefik:
       publishedService:
         enabled: true
 
-  metrics:
-    prometheus:
-      serviceMonitor:
-        metricRelabelings: []
-        relabelings: []
-        jobLabel: traefik
-        interval: 10s
-        honorLabels: true
-
 middleware:
   jwt:
     enabled: true
