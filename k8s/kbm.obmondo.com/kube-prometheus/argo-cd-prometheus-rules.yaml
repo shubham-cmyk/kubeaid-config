@@ -29,7 +29,7 @@ spec:
         severity: critical
     - alert: ArgoCdAppOutOfSync
       annotations:
-        description: Multiple application under {{ $labels.project }} is out of sync with the sync status {{ $labels.sync_status }} for the past 15m
+        description: Multiple application under {{ Labels.project }} is out of sync with the sync status {{ Labels.sync_status }} for the past 15m
         summary: ArgoCD Application is Out Of Sync.
       expr: sum by (job, dest_server, project, sync_status) (argocd_app_info{job=~".*",sync_status!="Synced"}) >= 1
       for: 15m
@@ -37,7 +37,7 @@ spec:
         severity: warning
     - alert: ArgoCdAppUnhealthy
       annotations:
-        description: Multiple application under {{ $labels.project }} is not healthy with the health status {{ $labels.health_status }} for the past 15m
+        description: Multiple application under {{ Labels.project }} is not healthy with the health status {{ Labels.health_status }} for the past 15m
         summary: ArgoCD Application is not healthy.
       expr: sum by (job, project, dest_server, health_status) (argocd_app_info{health_status!~"Healthy|Progressing"}) >= 1
       for: 15m
