@@ -11,12 +11,12 @@ spec:
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/clojure-api.git
       path: helm/enableit-api
-      targetRevision: HEAD
+      targetRevision: api_on_kam
       helm:
         valueFiles:
           - $values/k8s/kam.obmondo.com/argocd-apps/values-enableit-api.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
-      targetRevision: HEAD
+      targetRevision: api_kam
       ref: values
   syncPolicy:
     syncOptions:
