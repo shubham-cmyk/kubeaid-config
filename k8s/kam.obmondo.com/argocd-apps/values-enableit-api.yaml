@@ -44,6 +44,9 @@ trustedProxies:
 image:
   pullPolicy: Always
 api:
+  start-schedular: true
+  add-dev-prefixes: false
+  allow_test_data: false
   website: https://api-kam.obmondo.com
   domain: api-kam.obmondo.com
   puppetdb:
@@ -55,9 +58,14 @@ api:
     channel: enableit
 logging:
   level: debug
+persistence:
+  enabled: true
+ci:
+  enabled: true
 
 pgdump:
-  enabled: true
+  enabled: false
+
 ingress:
   hosts:
     - host: api-kam.obmondo.com
