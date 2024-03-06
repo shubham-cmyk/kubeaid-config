@@ -21,4 +21,3 @@ spec:
         argocd.argoproj.io/secret-type: repository
       name: go-opsmondo-repo
       namespace: argocd
-
