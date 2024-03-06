@@ -56,6 +56,9 @@ api:
   mattermost:
     enable: true
     channel: enableit
+  chat:
+    teamid: iu94xkqsgjgj5ne4eeie1harcr
+    userid: dpg87od6hpy5zpnhjw99qhbw3r
 logging:
   level: debug
 persistence:
