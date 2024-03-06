@@ -13,9 +13,6 @@ haproxy:
         fieldRef:
           fieldPath: status.hostIP
   containerPorts:
-    http: null
-    https: null
-    stat: 1024
     kube-ctrl-mgr: 10257
     kube-scheduler: 10259
     etcd: 2381
