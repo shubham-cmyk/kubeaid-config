@@ -55,9 +55,6 @@ api:
   chat:
     teamid: iu94xkqsgjgj5ne4eeie1harcr
     userid: dpg87od6hpy5zpnhjw99qhbw3r
-  clojure:
-    logging:
-      level: ':debug'
 persistence:
   enabled: true
 ci:
