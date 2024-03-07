@@ -44,9 +44,6 @@ trustedProxies:
 image:
   pullPolicy: Always
 api:
-  start-schedular: true
-  add-dev-prefixes: false
-  allow_test_data: false
   website: https://api.kam.obmondo.com
   domain: api.kam.obmondo.com
   puppetdb:
@@ -54,7 +51,6 @@ api:
   puppetserver:
     url: 'http://puppet:8140'
   mattermost:
-    enable: true
     channel: enableit
   chat:
     teamid: iu94xkqsgjgj5ne4eeie1harcr
