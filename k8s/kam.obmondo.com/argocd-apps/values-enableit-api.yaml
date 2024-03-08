@@ -1,7 +1,5 @@
 ---
 namespace: obmondo-website
-trustedProxies:
-  - 10.96.0.0/12
 admins:
   - "klavs@obmondo.com"
   - "ashish@obmondo.com"
