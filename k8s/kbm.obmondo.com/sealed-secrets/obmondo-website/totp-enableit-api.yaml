@@ -13,13 +13,3 @@ spec:
       creationTimestamp: null
       name: totp-enableit-api
       namespace: obmondo-website
-
-# kubectl create secret generic totp-enableit-api\
-#  --dry-run=client \
-#  --namespace obmondo-website \
-#  --from-literal=k8id="SECRET" \
-#  --from-literal=obmondo="SECRET" -o yaml | \
-#  kubeseal \
-#  --controller-namespace system \
-#  --controller-name sealed-secrets \
-#  --namespace obmondo-website -o yaml > totp-enableit-api.yaml
