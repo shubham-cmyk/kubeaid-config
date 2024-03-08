@@ -111,6 +111,7 @@ ingress:
 
 postgresql:
   instances: 2
+  logicalBackup: true
 
 serviceMonitor:
   enabled: true
