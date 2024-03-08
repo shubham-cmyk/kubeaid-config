@@ -49,7 +49,7 @@ api:
   puppetdb:
     url: 'http://puppet.enableit.dk:58080'
   puppetserver:
-    url: 'http://puppet:8140'
+    url: 'https://puppet.enableit.dk'
   mattermost:
     channel: enableit
   chat:
