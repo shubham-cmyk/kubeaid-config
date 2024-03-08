@@ -111,7 +111,11 @@ ingress:
 
 postgresql:
   instances: 2
-  logicalBackup: true
+  logicalBackup:
+    enabled: true
+    s3bucket: kam-postgres-logical-backup
+    s3endpoint: https://s3.obmondo.com
+    s3accesskeyid: kam
 
 serviceMonitor:
   enabled: true
