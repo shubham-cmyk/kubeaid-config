@@ -5,8 +5,6 @@ trustedProxies:
 admins:
   - "klavs@obmondo.com"
   - "ashish@obmondo.com"
-  - "klavs@obmondo.com"
-  - "ashish@obmondo.com"
   - "aman@obmondo.com"
   - "emilhp@obmondo.com"
   - "deepak@obmondo.com"
@@ -40,7 +38,7 @@ internalIpRanges:
   - "176.9.124.207"
   - "85.10.211.48"
 trustedProxies:
-  - 192.168.0.0./16 # Verify
+  - 172.20.0.0/16
 image:
   pullPolicy: Always
 api:

@@ -23,7 +23,7 @@ masters:
   - "ashish@obmondo.com"
 # Need to add service and pod CIDR here
 internalIpRanges:
-  - 192.168.0.0/16
+  - 172.20.0.0/16
 image:
   pullPolicy: Always
 api:
