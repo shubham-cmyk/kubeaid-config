@@ -29,6 +29,16 @@ image:
 api:
   website: https://api-beta.obmondo.com
   domain: api-beta.obmondo.com
+  puppetdb:
+    url: 'http://puppet.enableit.dk:58080'
+  puppetserver:
+    url: 'https://puppet.enableit.dk'
+  mattermost:
+    channel: testing
+  chat:
+    teamid: iu94xkqsgjgj5ne4eeie1harcr
+    userid: dpg87od6hpy5zpnhjw99qhbw3r
+
 pgdump:
   enabled: true
 ingress:
@@ -37,46 +47,37 @@ ingress:
       paths:
         - path: /api/ping
           pathType: Prefix
-          serviceName: enableit-api
-          servicePort: 80
+          servicePort: 8080
         - path: /api/notify
           pathType: Prefix
-          serviceName: enableit-api
-          servicePort: 80
+          servicePort: 8080
         - path: /api/window
           pathType: Prefix
-          serviceName: enableit-api
-          servicePort: 80
+          servicePort: 8080
         - path: /api/tag
           pathType: Prefix
-          serviceName: enableit-api
-          servicePort: 80
+          servicePort: 8080
         - path: /api/user-location
           pathType: Prefix
-          serviceName: enableit-api
-          servicePort: 80
+          servicePort: 8080
         - path: /swagger/go
           pathType: Prefix
-          serviceName: enableit-api
-          servicePort: 80
+          servicePort: 8080
         - path: /api/timereg
           pathType: Prefix
-          serviceName: enableit-api
-          servicePort: 80
+          servicePort: 8080
         - path: /api/report/error
           pathType: Prefix
-          serviceName: enableit-api
-          servicePort: 80
+          servicePort: 8080
         - path: /api/invoice/
           pathType: Prefix
-          serviceName: enableit-api
-          servicePort: 80
+          servicePort: 8080
         - path: /Webtee
           pathType: Prefix
-          serviceName: enableit-api
-          servicePort: 80
+          servicePort: 8100
         - path: /
           pathType: ImplementationSpecific
+          servicePort: 8088
   tls:
     - secretName: api-beta-obmondo-com-tls
       hosts:
@@ -91,11 +92,7 @@ ingress:
     traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-cn-header-enableit-api@kubernetescrd
 
 postgresql:
-  access_secret: api-postgresql-postgres-pod-env
-  logicalBackup: "false"
-
-chat:
-  teamid: 'cnuya58yz7njpxweab87aq7uth'
+  instance: 2
 
 serviceMonitor:
   enabled: false
