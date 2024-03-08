@@ -37,39 +37,43 @@ ingress:
       paths:
         - path: /api/ping
           pathType: Prefix
-          serviceName: enableit-go-api-enableit-api
+          serviceName: enableit-api
           servicePort: 80
         - path: /api/notify
           pathType: Prefix
-          serviceName: enableit-go-api-enableit-api
+          serviceName: enableit-api
           servicePort: 80
         - path: /api/window
           pathType: Prefix
-          serviceName: enableit-go-api-enableit-api
+          serviceName: enableit-api
           servicePort: 80
         - path: /api/tag
           pathType: Prefix
-          serviceName: enableit-go-api-enableit-api
+          serviceName: enableit-api
           servicePort: 80
         - path: /api/user-location
           pathType: Prefix
-          serviceName: enableit-go-api-enableit-api
+          serviceName: enableit-api
           servicePort: 80
         - path: /swagger/go
           pathType: Prefix
-          serviceName: enableit-go-api-enableit-api
+          serviceName: enableit-api
           servicePort: 80
         - path: /api/timereg
           pathType: Prefix
-          serviceName: enableit-go-api-enableit-api
+          serviceName: enableit-api
           servicePort: 80
         - path: /api/report/error
           pathType: Prefix
-          serviceName: enableit-go-api-enableit-api
+          serviceName: enableit-api
           servicePort: 80
         - path: /api/invoice/
           pathType: Prefix
-          serviceName: enableit-go-api-enableit-api
+          serviceName: enableit-api
+          servicePort: 80
+        - path: /Webtee
+          pathType: Prefix
+          serviceName: enableit-api
           servicePort: 80
         - path: /
           pathType: ImplementationSpecific
@@ -82,6 +86,7 @@ ingress:
     kubernetes.io/ingress.class: traefik-cert-manager
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/service.serversscheme: h2c
     traefik.ingress.kubernetes.io/router.tls.options: traefik-api-puppet-agent-tls-auth@kubernetescrd
     traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-cn-header-enableit-api@kubernetescrd
 
