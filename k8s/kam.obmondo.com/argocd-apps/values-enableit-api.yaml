@@ -24,7 +24,6 @@ admins:
 masters:
   - "klavs@obmondo.com"
   - "ashish@obmondo.com"
-# Need to add service and pod CIDR here
 internalIpRanges:
   - "135.181.21.167"
   - "135.181.21.154"
@@ -54,8 +53,7 @@ api:
 persistence:
   enabled: true
 ci:
-  enabled: true
-
+  enabled: false
 pgdump:
   enabled: false
 

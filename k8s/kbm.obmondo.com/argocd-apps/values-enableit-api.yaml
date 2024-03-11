@@ -1,7 +1,5 @@
 ---
 namespace: obmondo-website
-trustedProxies:
-  - 10.96.0.0/12
 admins:
   - "aman@obmondo.com"
   - "emilhp@obmondo.com"
@@ -21,9 +19,10 @@ admins:
 masters:
   - "klavs@obmondo.com"
   - "ashish@obmondo.com"
-# Need to add service and pod CIDR here
 internalIpRanges:
   - 172.20.0.0/16
+trustedProxies:
+  - 10.96.0.0/12
 image:
   pullPolicy: Always
 api:
@@ -38,9 +37,12 @@ api:
   chat:
     teamid: iu94xkqsgjgj5ne4eeie1harcr
     userid: dpg87od6hpy5zpnhjw99qhbw3r
-
-pgdump:
+persistence:
   enabled: true
+ci:
+  enabled: false
+pgdump:
+  enabled: false
 ingress:
   hosts:
     - host: api-beta.obmondo.com
@@ -93,6 +95,8 @@ ingress:
 
 postgresql:
   instance: 2
+  logicalBackup:
+    enabled: false
 
 serviceMonitor:
   enabled: false
