@@ -117,6 +117,8 @@ postgresql:
     s3endpoint: https://s3.obmondo.com
     s3region: dummy
     s3accesskeyid: kam
+    s3accesssecretkey: aws-secret-token
+    retention: '7 days'
 
 serviceMonitor:
   enabled: true
