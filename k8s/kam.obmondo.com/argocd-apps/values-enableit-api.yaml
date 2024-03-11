@@ -24,7 +24,6 @@ admins:
 masters:
   - "klavs@obmondo.com"
   - "ashish@obmondo.com"
-# Need to add service and pod CIDR here
 internalIpRanges:
   - "135.181.21.167"
   - "135.181.21.154"
@@ -54,8 +53,7 @@ api:
 persistence:
   enabled: true
 ci:
-  enabled: true
-
+  enabled: false
 pgdump:
   enabled: false
 
@@ -111,7 +109,14 @@ ingress:
 
 postgresql:
   instances: 2
-  logicalBackup: true
+  logicalBackup:
+    enabled: true
+    s3bucket: kam-postgres-logical-backup
+    s3endpoint: https://s3.obmondo.com
+    s3region: dummy
+    s3accesskeyid: kam
+    s3accesssecretkey: aws-secret-token
+    retention: '7 days'
 
 serviceMonitor:
   enabled: true
