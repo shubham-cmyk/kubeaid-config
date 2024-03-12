@@ -39,8 +39,8 @@ trustedProxies:
 image:
   pullPolicy: Always
 api:
-  website: https://api.kam.obmondo.com
-  domain: api.kam.obmondo.com
+  website: https://api.obmondo.com
+  domain: api.obmondo.com
   puppetdb:
     url: 'http://puppet.enableit.dk:58080'
   puppetserver:
@@ -59,7 +59,7 @@ pgdump:
 
 ingress:
   hosts:
-    - host: api.kam.obmondo.com
+    - host: api.obmondo.com
       paths:
         - path: /api/ping
           pathType: Prefix
@@ -97,7 +97,7 @@ ingress:
   tls:
     - secretName: api-obmondo-com-tls
       hosts:
-        - api.kam.obmondo.com
+        - api.obmondo.com
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     kubernetes.io/ingress.class: traefik-cert-manager
