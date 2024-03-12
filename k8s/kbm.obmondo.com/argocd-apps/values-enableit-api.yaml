@@ -35,8 +35,8 @@ api:
   mattermost:
     channel: testing
   chat:
-    teamid: iu94xkqsgjgj5ne4eeie1harcr
-    userid: dpg87od6hpy5zpnhjw99qhbw3r
+    teamid: dummy
+    userid: dummy
 persistence:
   enabled: true
 ci:
