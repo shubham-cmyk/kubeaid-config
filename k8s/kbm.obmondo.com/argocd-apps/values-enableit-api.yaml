@@ -14,6 +14,7 @@ admins:
   - "swapnil@obmondo.com"
   - "medet@obmondo.com"
   - "suwarna@obmondo.com"
+  - "archisman@obmondo.com"
 # Need to add service and pod CIDR here
 internalIpRanges:
   - 192.168.0.0/16
