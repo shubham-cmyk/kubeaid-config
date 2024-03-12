@@ -1,0 +1,8 @@
+customerid: enableit
+prometheus:
+  resources:
+    limits:
+      memory: 4Gi
+    requests:
+      memory: 2Gi
+      cpu: 1500m

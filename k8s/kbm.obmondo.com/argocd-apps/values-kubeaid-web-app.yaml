@@ -1,0 +1,29 @@
+replicaCount: 1
+image:
+  tag: kubeaid-beta-v2.5.7
+  pullPolicy: Always
+middleware: true
+ingress:
+  hosts:
+    - host: beta.k8id.io
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+    - host: beta.kube-aid.io
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+    - host: beta.kubeaid.io
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: beta-k8id-io-tls
+      hosts:
+        - beta.kube-aid.io
+        - beta.kubeaid.io
+        - beta.k8id.io
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    kubernetes.io/ingress.class: traefik-cert-manager
+    traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-kubeaid-web-app-redirect@kubernetescrd

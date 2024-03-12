@@ -8,7 +8,7 @@ items:
       app.kubernetes.io/instance: k8s
       app.kubernetes.io/name: prometheus
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 2.36.1
+      app.kubernetes.io/version: 2.46.0
     name: prometheus-k8s
     namespace: default
   roleRef:
@@ -27,7 +27,7 @@ items:
       app.kubernetes.io/instance: k8s
       app.kubernetes.io/name: prometheus
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 2.36.1
+      app.kubernetes.io/version: 2.46.0
     name: prometheus-k8s
     namespace: kube-system
   roleRef:
@@ -46,7 +46,7 @@ items:
       app.kubernetes.io/instance: k8s
       app.kubernetes.io/name: prometheus
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 2.36.1
+      app.kubernetes.io/version: 2.46.0
     name: prometheus-k8s
     namespace: monitoring
   roleRef:
@@ -65,7 +65,7 @@ items:
       app.kubernetes.io/instance: k8s
       app.kubernetes.io/name: prometheus
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 2.36.1
+      app.kubernetes.io/version: 2.46.0
     name: prometheus-k8s
     namespace: argocd
   roleRef:
@@ -84,7 +84,7 @@ items:
       app.kubernetes.io/instance: k8s
       app.kubernetes.io/name: prometheus
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 2.36.1
+      app.kubernetes.io/version: 2.46.0
     name: prometheus-k8s
     namespace: cert-manager
   roleRef:
@@ -103,7 +103,7 @@ items:
       app.kubernetes.io/instance: k8s
       app.kubernetes.io/name: prometheus
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 2.36.1
+      app.kubernetes.io/version: 2.46.0
     name: prometheus-k8s
     namespace: logging
   roleRef:
@@ -122,7 +122,26 @@ items:
       app.kubernetes.io/instance: k8s
       app.kubernetes.io/name: prometheus
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 2.36.1
+      app.kubernetes.io/version: 2.46.0
+    name: prometheus-k8s
+    namespace: monitoring
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: Role
+    name: prometheus-k8s
+  subjects:
+  - kind: ServiceAccount
+    name: prometheus-k8s
+    namespace: monitoring
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    labels:
+      app.kubernetes.io/component: prometheus
+      app.kubernetes.io/instance: k8s
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 2.46.0
     name: prometheus-k8s
     namespace: obmondo
   roleRef:
@@ -141,7 +160,7 @@ items:
       app.kubernetes.io/instance: k8s
       app.kubernetes.io/name: prometheus
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 2.36.1
+      app.kubernetes.io/version: 2.46.0
     name: prometheus-k8s
     namespace: rook-ceph
   roleRef:
@@ -160,9 +179,47 @@ items:
       app.kubernetes.io/instance: k8s
       app.kubernetes.io/name: prometheus
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 2.36.1
+      app.kubernetes.io/version: 2.46.0
     name: prometheus-k8s
     namespace: system
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: Role
+    name: prometheus-k8s
+  subjects:
+  - kind: ServiceAccount
+    name: prometheus-k8s
+    namespace: monitoring
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    labels:
+      app.kubernetes.io/component: prometheus
+      app.kubernetes.io/instance: k8s
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 2.46.0
+    name: prometheus-k8s
+    namespace: traefik
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: Role
+    name: prometheus-k8s
+  subjects:
+  - kind: ServiceAccount
+    name: prometheus-k8s
+    namespace: monitoring
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    labels:
+      app.kubernetes.io/component: prometheus
+      app.kubernetes.io/instance: k8s
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 2.46.0
+    name: prometheus-k8s
+    namespace: velero
   roleRef:
     apiGroup: rbac.authorization.k8s.io
     kind: Role

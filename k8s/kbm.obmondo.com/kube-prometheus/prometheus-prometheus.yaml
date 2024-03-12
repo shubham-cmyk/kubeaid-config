@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/instance: k8s
     app.kubernetes.io/name: prometheus
     app.kubernetes.io/part-of: kube-prometheus
-    app.kubernetes.io/version: 2.36.1
+    app.kubernetes.io/version: 2.46.0
   name: k8s
   namespace: monitoring
 spec:
@@ -18,7 +18,8 @@ spec:
       port: web
   enableFeatures: []
   externalLabels: {}
-  image: quay.io/prometheus/prometheus:v2.36.1
+  externalUrl: ""
+  image: quay.io/prometheus/prometheus:v2.46.0
   nodeSelector:
     kubernetes.io/os: linux
   podMetadata:
@@ -27,7 +28,7 @@ spec:
       app.kubernetes.io/instance: k8s
       app.kubernetes.io/name: prometheus
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 2.36.1
+      app.kubernetes.io/version: 2.46.0
   podMonitorNamespaceSelector: {}
   podMonitorSelector: {}
   probeNamespaceSelector: {}
@@ -35,12 +36,12 @@ spec:
   replicas: 1
   resources:
     limits:
-      memory: 3Gi
+      memory: 7Gi
     requests:
       cpu: 200m
-      memory: 1.5Gi
+      memory: 5Gi
   retention: 15d
-  ruleNamespaceSelector: {}
+  ruleNamespaceSelector: null
   ruleSelector: {}
   securityContext:
     fsGroup: 2000
@@ -58,6 +59,6 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 30Gi
+            storage: 45Gi
         storageClassName: rook-ceph-block
-  version: 2.36.1
+  version: 2.46.0

@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: k8s/kbm.obmondo.com/argocd-apps
-    repoURL: https://gitea.obmondo.com/EnableIT/kubernetes-config-enableit.git
+    repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
     targetRevision: HEAD
   syncPolicy:
     syncOptions:

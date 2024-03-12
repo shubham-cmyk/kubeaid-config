@@ -11,13 +11,13 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   sources:
-    - repoURL: https://gitlab.enableit.dk/kubernetes/k8id.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
       path: argocd-helm-charts/metallb
       targetRevision: HEAD
       helm:
         valueFiles:
           - $values/k8s/kam.obmondo.com/argocd-apps/values-metallb.yaml
-    - repoURL: https://gitea.obmondo.com/EnableIT/kubernetes-config-enableit.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
   syncPolicy:

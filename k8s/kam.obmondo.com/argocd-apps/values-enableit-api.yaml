@@ -9,59 +9,118 @@ admins:
   - "ketan@obmondo.com"
   - "faizan@obmondo.com"
   - "divyam@obmondo.com"
-  - "swapnil@obmondo.com"
-  - "medet@obmondo.com"
   - "suwarna@obmondo.com"
+  - "rehan@obmondo.com"
+  - "basit@obmondo.com"
+  - "rishikesh@obmondo.com"
+  - "soham@obmondo.com"
+  - "mohammedyasin@obmondo.com"
+  - "hritik@obmondo.com"
+  - "victorine@obmondo.com"
+  - "sanskar@obmondo.com"
+  - "olayinka@obmondo.com"
+  - "shubham@obmondo.com"
+  - "anantharam@obmondo.com"
   - "archisman@obmondo.com"
-# Need to add service and pod CIDR here
+masters:
+  - "klavs@obmondo.com"
+  - "ashish@obmondo.com"
 internalIpRanges:
-  - "10.0.3.54"
-  - "10.10.10.34"
-  - "10.199.199.1/24"
-  - "135.181.21.167"
-  - "135.181.21.154"
-  - "135.181.21.153"
-  - "135.181.223.235"
-  - "65.21.130.86"
-  - "65.21.130.85"
-  - "78.46.72.21"
-  - "176.9.124.207"
-  - "85.10.211.48"
-persistence:
-    enabled: true
-    accessMode: ReadWriteOnce
-    size: 1Gi
+  - "135.181.21.167"   # kbm01
+  - "135.181.21.154"   # kbm02
+  - "135.181.21.153"   # kbm03
+  - "135.181.223.235"  # kbw01
+  - "65.21.130.86"     # kbw02
+  - "65.21.130.85"     # kbw03
+  - "78.46.72.21"      # kam01
+  - "176.9.124.207"    # kam02
+  - "85.10.211.48"     # kam03
+  - "138.201.82.121"   # kaw01
+  - "138.201.224.126"  # kaw02
+  - "172.20.0.0/16"    # Internal service ip range k8s
+trustedProxies:
+  - 172.20.0.0/16
 image:
-  tag: latest
   pullPolicy: Always
 api:
-  website: https://obmondo.com
-  domain: api.kam.obmondo.com
-extraEnv:
-  - name: OVERVIEW_EMAIL
-    value: klavs.klavsen@enableit.dk
-  - name: INFO_EMAIL
-    value: info@obmondo.com
-  - name: COOKIE_DOMAIN
-    value: obmondo.com
+  website: https://api.obmondo.com
+  domain: api.obmondo.com
+  puppetdb:
+    url: 'http://puppet.enableit.dk:58080'
+  puppetserver:
+    url: 'https://puppet.enableit.dk'
+  mattermost:
+    channel: enableit
+  chat:
+    teamid: iu94xkqsgjgj5ne4eeie1harcr
+    userid: dpg87od6hpy5zpnhjw99qhbw3r
+persistence:
+  enabled: true
+ci:
+  enabled: false
+pgdump:
+  enabled: false
+
 ingress:
   hosts:
-    - host: api.kam.obmondo.com
+    - host: api.obmondo.com
       paths:
+        - path: /api/ping
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/notify
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/window
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/tag
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/user-location
+          pathType: Prefix
+          servicePort: 8080
+        - path: /swagger/go
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/timereg
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/report/error
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/invoice/
+          pathType: Prefix
+          servicePort: 8080
+        - path: /Webtee
+          pathType: Prefix
+          servicePort: 8100
         - path: /
           pathType: ImplementationSpecific
+          servicePort: 8088
   tls:
-    - secretName: api-kam-obmondo-com-tls
+    - secretName: api-obmondo-com-tls
       hosts:
-        - api.kam.obmondo.com
+        - api.obmondo.com
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     kubernetes.io/ingress.class: traefik-cert-manager
+    traefik.ingress.kubernetes.io/service.serversscheme: h2c
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.ingress.kubernetes.io/router.tls.options: traefik-tls-client-auth@kubernetescrd
+    traefik.ingress.kubernetes.io/router.tls.options: traefik-api-puppet-agent-tls-auth@kubernetescrd
     traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-cn-header-enableit-api@kubernetescrd
 
 postgresql:
   instances: 2
-  access_secret: api-postgresql-postgres-pod-env
+  logicalBackup:
+    enabled: true
+    s3bucket: kam-postgres-logical-backup
+    s3endpoint: https://s3.obmondo.com
+    s3region: dummy
+    s3accesskeyid: kam
+    s3accesssecretkey: aws-secret-token
+    retention: '7 days'
+
+serviceMonitor:
+  enabled: true

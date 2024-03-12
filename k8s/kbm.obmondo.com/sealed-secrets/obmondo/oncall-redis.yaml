@@ -1,0 +1,14 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: oncall-redis
+  namespace: obmondo
+spec:
+  encryptedData:
+    redis-password: AgDD9juYeikh6ZmOXhgaLw2clB+9GtVLVakBxSE3+TZcM7gTEQzmIkvLk4BKxZMC8KbHL61GfPP7bUhmg0QPromm24xuJm1C8RRon+NqHz3euQTpFhhzvc5JlL6frh2lCmQBxA+ZEb2YrA1kG0pJHyai89DB+88AMoNQkm2OL6HUCUC19i6SaZ3Gkw57LJszkj6hHUtrTrASrZ9umgLloVZR/E7cV5frEHCpKeSgKbnNB1zHerIDSvzfPV6zyVNu8K/PzfckPlzrl6P1CUSMB4suepfzRa2JQ9YSD5OB0C/TKskQvCD4ldaKwLqctUEMdBzJ2PuueOjGrifJXYRE5MWlmN0w0YznKLLE7N8ZqsM1i6fqJTGHQm667m6zb8a6XOWGs8zciMy+kBUnCifzDObZgcNVHb72+dXPbv9qC1qsnPW6YPfb09OXClu1nu1/7+zx3oWM7YE4v6zfbG4apuQ5563xcXsPQTYHXlwsRPX3Z7iaq/vzDfc14sxfbjPcQ7ekZbzQAUrT4DgushWq1ZWsuQG3hsJkg7UGU+XMn3jtrsAcLkwTqkBDBNu6MGwnsYBH5jcpE/KzSLdlCSKEdjBURJ8rvpZwoh1uCZwY8p2DM2jfizBxpLM1FtAIcmHSPH3yUF22gV7nt0hT6T9t1VW2pC1J9uz7l+Ky+p0fgDJk/d6KbLmPoDyAGXTKn4ilZMl3dgqmlZtFFdE57pASBUdX
+  template:
+    metadata:
+      creationTimestamp: null
+      name: oncall-redis
+      namespace: obmondo

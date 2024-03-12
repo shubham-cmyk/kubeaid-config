@@ -1,0 +1,19 @@
+# TODO: Need to setup the env and change the helm-diff script as well
+# Have migrated the required variable from gitlab to gitea
+# name: K8id config diff pipeline
+# run-name: Diff CI
+#
+# on:
+#   pull_request:
+#
+# jobs:
+#   helm_template_diff:
+#     runs-on: ubuntu-latest
+#     if: "!contains(github.event.head_commit.message, ':no-diff')"
+#     name: Helm template diff
+#     steps:
+#       - uses: actions/checkout@v3
+#       - uses: azure/setup-helm@v3
+#         with:
+#           version: '3.12.0'
+#       - run: ./bin/helm-diff.sh

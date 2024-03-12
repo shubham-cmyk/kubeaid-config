@@ -24,3 +24,13 @@ rook-ceph-cluster:
   cephClusterSpec:
     storage:
       deviceFilter: '^sd[ab]4$'
+
+  cephBlockPoolsVolumeSnapshotClass:
+    enabled: true
+    name: velero-snapshot
+    isDefault: "true"
+    deletionPolicy: Retain
+    annotations:
+      snapshot.storage.kubernetes.io/is-default-class: "true"
+    labels:
+      velero.io/csi-volumesnapshot-class: "true"

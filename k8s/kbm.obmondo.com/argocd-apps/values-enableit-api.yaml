@@ -1,57 +1,86 @@
 ---
 namespace: obmondo-website
-trustedProxies:
-  - 10.96.0.0/12
 admins:
-  - "klavs@obmondo.com"
-  - "ashish@obmondo.com"
   - "aman@obmondo.com"
   - "emilhp@obmondo.com"
   - "deepak@obmondo.com"
   - "ketan@obmondo.com"
   - "faizan@obmondo.com"
   - "divyam@obmondo.com"
-  - "swapnil@obmondo.com"
-  - "medet@obmondo.com"
   - "suwarna@obmondo.com"
+  - "rishikesh@obmondo.com"
+  - "basit@obmondo.com"
+  - "ditesh@obmondo.com"
+  - "hritik@obmondo.com"
+  - "soham@obmondo.com"
+  - "nitish@obmondo.com"
+  - "klavs@obmondo.com"
+  - "ashish@obmondo.com"
   - "archisman@obmondo.com"
-# Need to add service and pod CIDR here
+masters:
+  - "klavs@obmondo.com"
+  - "ashish@obmondo.com"
 internalIpRanges:
-  - 192.168.0.0/16
+  - 172.20.0.0/16
+trustedProxies:
+  - 10.96.0.0/12
 image:
-  tag: latest
   pullPolicy: Always
 api:
   website: https://api-beta.obmondo.com
   domain: api-beta.obmondo.com
-pgdump:
+  puppetdb:
+    url: 'http://puppet.enableit.dk:58080'
+  puppetserver:
+    url: 'https://puppet.enableit.dk'
+  mattermost:
+    channel: testing
+  chat:
+    teamid: dummy
+    userid: dummy
+persistence:
   enabled: true
+ci:
+  enabled: false
+pgdump:
+  enabled: false
 ingress:
   hosts:
     - host: api-beta.obmondo.com
       paths:
         - path: /api/ping
           pathType: Prefix
-          serviceName: enableit-go-api
-          servicePort: 80
+          servicePort: 8080
         - path: /api/notify
           pathType: Prefix
-          serviceName: enableit-go-api
-          servicePort: 80
+          servicePort: 8080
         - path: /api/window
           pathType: Prefix
-          serviceName: enableit-go-api
-          servicePort: 80
+          servicePort: 8080
         - path: /api/tag
           pathType: Prefix
-          serviceName: enableit-go-api
-          servicePort: 80
+          servicePort: 8080
         - path: /api/user-location
           pathType: Prefix
-          serviceName: enableit-go-api
-          servicePort: 80
+          servicePort: 8080
+        - path: /swagger/go
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/timereg
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/report/error
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/invoice/
+          pathType: Prefix
+          servicePort: 8080
+        - path: /Webtee
+          pathType: Prefix
+          servicePort: 8100
         - path: /
           pathType: ImplementationSpecific
+          servicePort: 8088
   tls:
     - secretName: api-beta-obmondo-com-tls
       hosts:
@@ -61,12 +90,14 @@ ingress:
     kubernetes.io/ingress.class: traefik-cert-manager
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.ingress.kubernetes.io/router.tls.options: traefik-tls-client-auth@kubernetescrd
+    traefik.ingress.kubernetes.io/service.serversscheme: h2c
+    traefik.ingress.kubernetes.io/router.tls.options: traefik-api-puppet-agent-tls-auth@kubernetescrd
     traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-cn-header-enableit-api@kubernetescrd
 
 postgresql:
-  access_secret: api-postgresql-postgres-pod-env
-  logicalBackup: "false"
+  instance: 2
+  logicalBackup:
+    enabled: false
 
-chat:
-  teamid: 'cnuya58yz7njpxweab87aq7uth'
+serviceMonitor:
+  enabled: false

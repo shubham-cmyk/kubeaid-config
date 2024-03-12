@@ -1,0 +1,29 @@
+matomo:
+  mariadb:
+    enabled: false
+  externalDatabase:
+    host: matomo
+    port: 3306
+    user: matomo
+    database: matomo
+    existingSecret: mariadb-secret
+  ingress:
+    enabled: true
+    hostname: matomo.kbm.obmondo.com
+    path: /
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
+      kubernetes.io/ingress.class: traefik-cert-manager
+
+mariadb:
+  volumeClaimTemplate:
+    resources:
+      requests:
+        storage: 1Gi
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 300m
+      memory: 512Mi

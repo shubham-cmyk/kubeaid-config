@@ -11,13 +11,13 @@ spec:
     namespace: mattermost
   project: default
   sources:
-    - repoURL: https://gitlab.enableit.dk/kubernetes/k8id.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
       path: argocd-helm-charts/mattermost-team-edition
       targetRevision: HEAD
       helm:
         valueFiles:
           - $values/k8s/kam.obmondo.com/argocd-apps/values-mattermost-team-edition.yaml
-    - repoURL: https://gitea.obmondo.com/EnableIT/kubernetes-config-enableit.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
   syncPolicy:

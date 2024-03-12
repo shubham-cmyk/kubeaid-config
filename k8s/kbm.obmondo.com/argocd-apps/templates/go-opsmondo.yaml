@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: go-opsmondo
+  namespace: argocd
+spec:
+  destination:
+    namespace: monitoring
+    server: 'https://kubernetes.default.svc'
+  sources:
+    - repoURL: https://gitea.obmondo.com/EnableIT/go-opsmondo.git
+      path: helm/goopsmondo
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+          - $values/k8s/kbm.obmondo.com/argocd-apps/values-go-opsmondo.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
+      targetRevision: HEAD
+      ref: values
+  project: default
+  syncPolicy:
+    automated: null
+    syncOptions:
+      - ApplyOutOfSyncOnly=true

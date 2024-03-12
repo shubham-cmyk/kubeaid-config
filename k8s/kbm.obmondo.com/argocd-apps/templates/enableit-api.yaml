@@ -9,13 +9,13 @@ spec:
     namespace: obmondo-website
   project: default
   sources:
-    - repoURL: https://gitlab.enableit.dk/enableit/enableit-api.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/clojure-api.git
       path: helm/enableit-api
       targetRevision: HEAD
       helm:
         valueFiles:
           - $values/k8s/kbm.obmondo.com/argocd-apps/values-enableit-api.yaml
-    - repoURL: https://gitea.obmondo.com/EnableIT/kubernetes-config-enableit.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
   syncPolicy:

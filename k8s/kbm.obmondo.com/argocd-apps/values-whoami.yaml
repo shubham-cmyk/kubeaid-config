@@ -9,9 +9,9 @@ whoami:
         hosts:
           - whoami.kbm.obmondo.com
     annotations:
-      traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-cn-header-enableit-api@kubernetescrd
-      traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      traefik.ingress.kubernetes.io/router.tls: "true"
-      traefik.ingress.kubernetes.io/router.tls.options: traefik-tls-client-auth@kubernetescrd
       cert-manager.io/cluster-issuer: letsencrypt
       kubernetes.io/ingress.class: traefik-cert-manager
+      traefik.ingress.kubernetes.io/router.middlewares: monitoring-goopsmondo-go-opsmondo@kubernetescrd
+      traefik.ingress.kubernetes.io/router.tls: "true"
+      traefik.ingress.kubernetes.io/router.tls.domains.0.main: whoami.kbm.obmondo.com
+      traefik.ingress.kubernetes.io/router.tls.options: traefik-prometheus-puppet-agent-tls-auth@kubernetescrd

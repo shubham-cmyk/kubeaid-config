@@ -10,14 +10,23 @@ argo-cd:
     secret:
       createSecret: false     # managed by sealed-secrets now
   server:
+    resources:
+      limits:
+        memory: 512Mi
+      requests:
+        cpu: 50m
+        memory: 256Mi
     rbacConfig:
       policy.csv: |
         g, ArgoCDAdmins, role:admin
         g, ArgoCDDevs, role:readonly
         g, deepak@obmondo.com, role:admin
         g, divyam@obmondo.com, role:admin
-        g, akshat@obmondo.com, role:admin
-        g, vivek@obmondo.com, role:admin
+        g, rishikesh@obmondo.com, role:admin
+        g, basit@obmondo.com, role:admin
+        g, sanskar@obmondo.com, role:admin
+        g, shubham@obmondo.com, role:admin
+        g, archisman@obmondo.com, role:admin
       scopes: '[groups, email]'
     extraArgs:
       - --insecure
@@ -25,7 +34,7 @@ argo-cd:
       url: https://argocd.kbm.obmondo.com
       oidc.config: |
         name: Keycloak
-        issuer: https://keycloakx.kam.obmondo.com/auth/realms/Obmondo
+        issuer: https://keycloak.obmondo.com/auth/realms/Obmondo
         clientID: argocd
         clientSecret: $oidc.keycloak.clientSecret
         requestedScopes: ["openid", "profile", "email", "groups"]

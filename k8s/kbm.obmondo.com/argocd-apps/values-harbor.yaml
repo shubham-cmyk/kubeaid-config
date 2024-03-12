@@ -1,0 +1,17 @@
+harbor:
+  expose:
+    tls:
+      certSource: secret
+      secret:
+        secretName: harbor-cert
+    ingress:
+      hosts:
+        core: harbor.obmondo.com
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt
+        kubernetes.io/ingress.class: traefik-cert-manager
+  externalURL: https://harbor.obmondo.com
+  persistence:
+    persistentVolumeClaim:
+      registry:
+        size: 150Gi

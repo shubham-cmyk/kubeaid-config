@@ -5,12 +5,10 @@
   connect_obmondo: true,
   grafana_keycloak_enable: true,
   grafana_root_url: 'https://grafana.kam.obmondo.com',
-  grafana_signout_redirect_url: 'https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/logout?redirect_uri=https://grafana.kam.obmondo.com',
-  grafana_auth_url: 'https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/auth',
-  grafana_token_url: 'https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/token',
-  grafana_api_url: 'https://keycloakx.kam.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/userinfo',
   grafana_ingress_host: 'grafana.kam.obmondo.com',
-  kube_prometheus_version: 'v0.11.0',
+  grafana_keycloak_url: 'https://keycloak.obmondo.com',
+  grafana_keycloak_realm: 'Obmondo',
+  kube_prometheus_version: 'v0.13.0',
 
   prometheus_operator_resources+: {
     limits: { memory: '80Mi' },
@@ -22,7 +20,7 @@
   },
   prometheus_resources+: {
     limits: { memory: '4Gi' },
-    requests: { cpu: '800m', memory: '200Mi' },
+    requests: { cpu: '800m', memory: '2Gi' },
   },
   grafana_ingress_annotations: {
     'kubernetes.io/ingress.class': 'traefik-cert-manager',

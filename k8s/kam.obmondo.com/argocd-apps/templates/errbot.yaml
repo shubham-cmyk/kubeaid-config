@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: errbot
+  namespace: argocd
+spec:
+  destination:
+    namespace: mattermost
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+    - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
+      path: argocd-helm-charts/errbot
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+          - $values/k8s/kam.obmondo.com/argocd-apps/values-errbot.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
+      targetRevision: HEAD
+      ref: values
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+    automated:
+      prune: true
+      selfHeal: true

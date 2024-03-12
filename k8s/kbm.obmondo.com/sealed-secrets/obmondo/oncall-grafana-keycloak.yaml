@@ -1,0 +1,14 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: oncall-grafana-keycloak
+  namespace: obmondo
+spec:
+  encryptedData:
+    grafana-keycloak-secret: AgA8F53LFYoB8DB/dksN+mkVpVlTl124dLRd2ciwj+YD9xQIq+4pmJnVbmortzeWEEFWhNs5TXqlfBayVRrHHVYMvDojjrIvATPtxQHJSr95A1nlHa6Ev3YKxWI6xivt/CsPueWJVGUBqXbJ1xv8C/Ye1y7DXSkvCOmiPaTPRhT1lWmk6dTiy18zcffsPb+V9jmheBbMot/wUwAe3+s4iLDqObwO5E12JYOld1A9Kq1WdwMJsq6I2FN4cdSI9m+0I+rX0RRttJCx30GFkFBQkNaZPLwDpmSjZUvOiQa3znmZQ0YVXqjOBAbcuwqE092s8RVtsZmw13/9wm9Cy7iEPXk5HIKQMXCGiHypts68bec/3voXiFPInk8ACrTXiaEoGOBdByuIIVtIyAmc1SMzp9iDuah9RXuXy9Kf/xICDpBhh6gHuKuLn4qSBp1oeUYQjkpyWohhAb5HUadbKg96CmN3DWaYfG2phTlQo+fQEKb0+hrZiv7BqDSh4JHxtac3lpdVwB8Y3ieuPfKVb2y1joJMn/JQDDVUmHoECFBe28iz05PUtvBLGsg65ZjbCNW84TvYxlcA1Rtrw6vVphnXX42h5pecCwKlqIqVtj0/96h84cDkAP7ZPTWRgGbQszax4+sS0K9w+4F7odg+k8ckHnzwBjU435O35a3rdXSLjqcH67L0ZZXAfftUtNEIaEcvK8z2ygiMA+Z4racyr0qasH8rfMRTNCI/+LUOkHe5BnaLOg==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: oncall-grafana-keycloak
+      namespace: obmondo

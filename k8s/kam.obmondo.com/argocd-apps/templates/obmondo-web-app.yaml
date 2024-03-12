@@ -9,13 +9,13 @@ spec:
     namespace: obmondo-website
   project: default
   sources:
-    - repoURL: https://gitlab.enableit.dk/obmondo/obmondo-web-app.git
-      path: .helm/obmondo-web-app
+    - repoURL: https://gitea.obmondo.com/EnableIT/obmondo-web-app.git
+      path: .helm/web-app
       targetRevision: HEAD
       helm:
         valueFiles:
           - $values/k8s/kam.obmondo.com/argocd-apps/values-obmondo-web-app.yaml
-    - repoURL: https://gitea.obmondo.com/EnableIT/kubernetes-config-enableit.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
   syncPolicy:

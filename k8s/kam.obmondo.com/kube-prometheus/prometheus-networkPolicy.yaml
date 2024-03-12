@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/instance: k8s
     app.kubernetes.io/name: prometheus
     app.kubernetes.io/part-of: kube-prometheus
-    app.kubernetes.io/version: 2.36.1
+    app.kubernetes.io/version: 2.46.0
   name: prometheus-k8s
   namespace: monitoring
 spec:
@@ -25,6 +25,13 @@ spec:
   - from:
     - podSelector:
         matchLabels:
+          app.kubernetes.io/name: prometheus-adapter
+    ports:
+    - port: 9090
+      protocol: TCP
+  - from:
+    - podSelector:
+        matchLabels:
           app.kubernetes.io/name: grafana
     ports:
     - port: 9090
@@ -33,6 +40,26 @@ spec:
     - podSelector:
         matchLabels:
           app.kubernetes.io/name: prometheus-adapter
+    ports:
+    - port: 9090
+      protocol: TCP
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: mattermost
+      podSelector:
+        matchLabels:
+          k8id.io/permissions: allow-prometheus
+    ports:
+    - port: 9090
+      protocol: TCP
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: traefik
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: traefik
     ports:
     - port: 9090
       protocol: TCP

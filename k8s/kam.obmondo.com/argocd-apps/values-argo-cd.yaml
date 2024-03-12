@@ -20,7 +20,7 @@ argo-cd:
       url: https://argocd.kam.obmondo.com
       oidc.config: |
         name: Keycloak
-        issuer: https://keycloakx.kam.obmondo.com/auth/realms/Obmondo
+        issuer: https://keycloak.obmondo.com/auth/realms/Obmondo
         clientID: argocd
         clientSecret: $oidc.keycloak.clientSecret
         requestedScopes: ["openid", "profile", "email", "groups"]
