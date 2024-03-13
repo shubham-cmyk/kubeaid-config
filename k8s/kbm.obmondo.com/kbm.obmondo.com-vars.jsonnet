@@ -13,6 +13,7 @@
   enable_custom_metrics_apiservice: true,
   addMixins: {
     velero: true,
+    rabbitmq: true
   },
   prometheus_operator_resources+: {
     limits: { memory: '80Mi' },
@@ -33,7 +34,8 @@
     'rook-ceph',
     'logging',
     'velero',
-    'monitoring'
+    'monitoring',
+    'obmondo'
   ],
   prometheus+: {
     storage: {
