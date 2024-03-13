@@ -1,0 +1,47 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  labels:
+    prometheus: k8s
+  name: rabbitmq
+  namespace: monitoring
+spec:
+  groups:
+  - name: rabbitmq
+    rules:
+    - alert: RabbitmqTooManyMessagesInQueue
+      annotations:
+        dashboard_url: https://grafana.com/d/rabbitmq-queue-12mk4klgjweg/rabbitmq-queue
+        description: More than 100 messages in the queue {{ $labels.rabbitmq_cluster }}/{{ $labels.vhost }}/{{ $labels.queue }} for the past 2 minutes.
+        summary: RabbitMQ too many messages in queue.
+      expr: |
+        sum by (rabbitmq_cluster, instance, vhost, queue) (rabbitmq_detailed_queue_messages * on(instance) group_left(rabbitmq_cluster, rabbitmq_node) max(rabbitmq_identity_info) by (rabbitmq_cluster, instance, rabbitmq_node)) > 100
+      for: 2m
+      labels:
+        severity: warning
+    - alert: RabbitmqNoConsumer
+      annotations:
+        dashboard_url: https://grafana.com/d/rabbitmq-queue-12mk4klgjweg/rabbitmq-queue
+        description: The queue {{ $labels.rabbitmq_cluster }}/{{ $labels.vhost }}/{{ $labels.queue }} has 0 consumers for the past 2 minutes.
+        summary: RabbitMQ queue has no consumers.
+      expr: |
+        sum by (rabbitmq_cluster, instance, vhost, queue) (rabbitmq_detailed_queue_consumers{queue!~".*dlx.*"} * on(instance) group_left(rabbitmq_cluster, rabbitmq_node) max(rabbitmq_identity_info) by (rabbitmq_cluster, instance, rabbitmq_node)) == 0
+      for: 2m
+      labels:
+        severity: warning
+    - alert: RabbitmqUnroutableMessages
+      annotations:
+        dashboard_url: https://grafana.com/d/rabbitmq-queue-12mk4klgjweg/rabbitmq-queue
+        description: The Rabbitmq cluster {{ $labels.rabbitmq_cluster }} has unroutable messages for the past 2 minutes.
+        summary: The Rabbitmq cluster has unroutable messages.
+      expr: |
+        sum by(rabbitmq_node, rabbitmq_cluster) (rate(rabbitmq_channel_messages_unroutable_dropped_total[1m]) * on(instance) group_left(rabbitmq_cluster, rabbitmq_node) max(rabbitmq_identity_info) by (rabbitmq_cluster, instance, rabbitmq_node)) > 0 or
+        sum by(rabbitmq_node, rabbitmq_cluster) (rate(rabbitmq_channel_messages_unroutable_returned_total[1m]) * on(instance) group_left(rabbitmq_cluster, rabbitmq_node) max(rabbitmq_identity_info) by (rabbitmq_cluster, instance, rabbitmq_node)) > 0
+      for: 2m
+      labels:
+        severity: info
+  - name: rabbitmq.rules
+    rules:
+    - expr: |
+        rabbitmq_detailed_queue_consumers * on(instance) group_left(rabbitmq_cluster, rabbitmq_node) max(rabbitmq_identity_info) by (rabbitmq_cluster, instance, rabbitmq_node)
+      record: rabbitmq_queue_info
