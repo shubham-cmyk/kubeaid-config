@@ -29,15 +29,30 @@ image:
 api:
   website: https://api-beta.obmondo.com
   domain: api-beta.obmondo.com
+  config:
+    startSchedular: true
+    addDevPrefixes: false
+    allowTestData: false
   puppetdb:
     url: 'http://puppet.enableit.dk:58080'
   puppetserver:
     url: 'https://puppet.enableit.dk'
   mattermost:
     channel: testing
+    enabled: false
   chat:
     teamid: dummy
     userid: dummy
+  clojure:
+    image:
+      repository: harbor.obmondo.com/obmondo/clojure-api/api
+      pullPolicy: Always
+      tag: v3.0.18-xenial
+  go:
+    image:
+      repository: harbor.obmondo.com/obmondo/enableit-go-api
+      pullPolicy: Always
+      tag: v0.0.34
 persistence:
   enabled: true
 ci:
