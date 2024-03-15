@@ -112,6 +112,9 @@ ingress:
         - path: /Webtee
           pathType: Prefix
           servicePort: 8100
+        - path: /api/servers
+          pathType: Prefix
+          servicePort: 8080
         - path: /
           pathType: ImplementationSpecific
           servicePort: 8088
