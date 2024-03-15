@@ -58,7 +58,7 @@ persistence:
 ci:
   enabled: false
 pgdump:
-  enabled: false
+  enabled: true
 ingress:
   hosts:
     - host: api-beta.obmondo.com
