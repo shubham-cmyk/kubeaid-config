@@ -1,0 +1,17 @@
+replicaCount: 1
+image:
+  tag: finance-v2.7.1
+  pullPolicy: Always
+ingress:
+  hosts:
+    - host: finance.obmondo.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: finance-obmondo-com-tls
+      hosts:
+        - finance.obmondo.com
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    kubernetes.io/ingress.class: traefik-cert-manager
