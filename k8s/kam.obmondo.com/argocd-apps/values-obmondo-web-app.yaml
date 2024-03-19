@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  tag: obmondo-v2.7.0
+  tag: obmondo-v2.7.2
   pullPolicy: Always
 ingress:
   hosts:
