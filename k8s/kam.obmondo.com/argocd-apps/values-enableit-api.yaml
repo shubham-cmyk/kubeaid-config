@@ -114,6 +114,7 @@ ingress:
           servicePort: 8080
         - path: /Webtee
           pathType: Prefix
+          serviceName: enableit-api-grpc
           servicePort: 8100
         - path: /
           pathType: ImplementationSpecific
@@ -125,7 +126,6 @@ ingress:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     kubernetes.io/ingress.class: traefik-cert-manager
-    traefik.ingress.kubernetes.io/service.serversscheme: h2c
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
     traefik.ingress.kubernetes.io/router.tls.options: traefik-api-puppet-agent-tls-auth@kubernetescrd
