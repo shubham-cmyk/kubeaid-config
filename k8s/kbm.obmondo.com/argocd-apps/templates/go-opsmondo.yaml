@@ -8,7 +8,7 @@ spec:
     namespace: monitoring
     server: 'https://kubernetes.default.svc'
   sources:
-    - repoURL: https://gitea.obmondo.com/EnableIT/go-opsmondo.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/opsmondo.git
       path: helm/goopsmondo
       targetRevision: HEAD
       helm:
