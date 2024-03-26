@@ -25,7 +25,6 @@ argo-cd:
         g, rishikesh@obmondo.com, role:admin
         g, basit@obmondo.com, role:admin
         g, sanskar@obmondo.com, role:admin
-        g, shubham@obmondo.com, role:admin
         g, archisman@obmondo.com, role:admin
       scopes: '[groups, email]'
     extraArgs:
