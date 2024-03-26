@@ -1,0 +1,26 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hcloud-ccm
+  namespace: argocd
+spec:
+  destination:
+    namespace: hcloud-ccm
+    server: 'https://kubernetes.default.svc'
+  sources:
+    - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
+      path: argocd-helm-charts/hcloud-ccm
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+          - $values/k8s/kbm.obmondo.com/argocd-apps/values-hcloud-ccm.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
+      targetRevision: HEAD
+      ref: values
+  project: default
+  syncPolicy:
+    automated: null
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
