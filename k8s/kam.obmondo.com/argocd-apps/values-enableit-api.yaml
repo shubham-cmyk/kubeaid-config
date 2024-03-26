@@ -69,7 +69,7 @@ api:
     image:
       repository: harbor.obmondo.com/obmondo/enableit-go-api
       pullPolicy: Always
-      tag: v0.0.36
+      tag: v0.0.37
 
 persistence:
   enabled: true
