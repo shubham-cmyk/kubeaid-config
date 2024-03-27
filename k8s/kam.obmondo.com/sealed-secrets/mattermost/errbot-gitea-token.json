@@ -1,0 +1,22 @@
+{
+  "kind": "SealedSecret",
+  "apiVersion": "bitnami.com/v1alpha1",
+  "metadata": {
+    "name": "errbot-gitea-token",
+    "namespace": "mattermost",
+    "creationTimestamp": null
+  },
+  "spec": {
+    "template": {
+      "metadata": {
+        "name": "errbot-gitea-token",
+        "namespace": "mattermost",
+        "creationTimestamp": null
+      },
+      "data": null
+    },
+    "encryptedData": {
+      "token": "AgB1lHE0X268Ru9QjBU/kmlRPW5/0piRngnm40m6BckL7TyoOVWIUVVrRbryZXOvVA0lBJ1w+Cjg2HlvFo+KUZMKCQZ6LG3HJTJU9SSexwz6h4YmhIbUKUgPxPQnXYdwcxk0qEDZbTbjGtt9G6a2ApVXR+NE36489IGm6qgtP8GOVVqSMngV+6bGkxM3TSfakTqhXx+6IwatC5KTzTS1SoO+2xlt1Ead5uCJecaXUikHdyRUJ6frKRXu8GidVgOrdDmKFa5y7/VyNrYMw5733C1zffFjqV7cakx5V8LYaP3xWACSUTfAg2Xidp2mga1OVWoG2F9KxIbfZiMskgpArHJMtaFwH3hBBId/VyLIZOjHUS8It5inEqL9k2NNfzzGCHOPKIQoS/hFwEZ13tQgOEF1dbMLDPwc1aWmT1xWsVrPxo0KMRIRp3hIFVnJQQFb8vH5ebXqjE5iXVHEBHdGEwDuJLaAvaH9L4zh4ZjxFRNN2SB6SINK9P0ORl63JQcT43dlodh/x/dsfvMM1yii/w69jtL4wEMAEbEjEj4+bGsRdxIdpscsI0Qj6Cw/5BY6Cn3uTsJ+HZeP24oJDRKQLrI9RZMDpR/EBHMC6AzOTmxtgVEdy+nGVFGK2FhHT8Nyurep4FXcb+AQ59sYsFBGuJfZ2k6Q7QLB5gRFgC+SsSyuPnUMaztBMeaaoU597qgU4FLX2vYEX7dJyIfNBu5BuKHhq0KGwtZt4nWg4WsLGIz2IXNQ4SeV+znZ"
+    }
+  }
+}
