@@ -43,7 +43,7 @@ trustedProxies:
 image:
   pullPolicy: Always
 api:
-  website: https://api.obmondo.com
+  website: https://obmondo.com
   domain: api.obmondo.com
   config:
     startSchedular: true
