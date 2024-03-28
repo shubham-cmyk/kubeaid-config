@@ -12,6 +12,11 @@ additionalLabels:
   k8id.io/permissions: "allow-prometheus"
 
 env:
+  - name: GITEA_TOKEN
+    valueFrom:
+      secretKeyRef:
+        name: errbot-gitea-token
+        key: token
   - name: BOT_TOKEN
     valueFrom:
       secretKeyRef:
