@@ -121,3 +121,9 @@ postgresql:
 
 serviceMonitor:
   enabled: false
+
+extraEnv:
+  - name: PUPPET_API
+    value: http://puppet.enableit.dk:58080
+  - name: PUPPET_TIMEOUT
+    value: 30
