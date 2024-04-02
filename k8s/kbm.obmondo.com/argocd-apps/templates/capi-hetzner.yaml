@@ -6,17 +6,17 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: capi-system
+    namespace: caph-system
     server: 'https://kubernetes.default.svc'
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
       path: argocd-helm-charts/capi-hetzner
-      targetRevision: HEAD
+      targetRevision: hetzner_cluster_api
       helm:
         valueFiles:
           - $values/k8s/kbm.obmondo.com/argocd-apps/values-kcm-capi-hetzner.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
-      targetRevision: HEAD
+      targetRevision: hetzner_ccm
       ref: values
   project: default
   syncPolicy:
