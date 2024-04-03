@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ccm-hetzner
+  name: ccm
   namespace: argocd
 spec:
   destination:
@@ -11,12 +11,12 @@ spec:
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
       path: argocd-helm-charts/ccm
-      targetRevision: hetzner_cluster_api
+      targetRevision: HEAD
       helm:
         valueFiles:
           - $values/k8s/kbm.obmondo.com/argocd-apps/values-ccm.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
-      targetRevision: hetzner_ccm
+      targetRevision: HEAD
       ref: values
   project: default
   syncPolicy:
