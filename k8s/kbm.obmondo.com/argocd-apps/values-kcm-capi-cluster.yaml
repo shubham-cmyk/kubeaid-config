@@ -1,8 +1,10 @@
 provider:
   hetzner: true
 
+global:
+  clusterName: kcm
+
 hetzner:
-  name: kcm
   pods:
     cidrBlock: 10.244.0.0/16
   controlPlaneEndpoint:
