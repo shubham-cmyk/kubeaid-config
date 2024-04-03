@@ -10,13 +10,13 @@ spec:
     server: 'https://kubernetes.default.svc'
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
-      path: argocd-helm-charts/capi-clusters
-      targetRevision: hetzner_cluster_api
+      path: argocd-helm-charts/capi-cluster
+      targetRevision: HEAD
       helm:
         valueFiles:
           - $values/k8s/kbm.obmondo.com/argocd-apps/values-kcm-capi-cluster.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
-      targetRevision: hetzner_ccm
+      targetRevision: HEAD
       ref: values
   project: default
   syncPolicy:
