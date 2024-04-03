@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ccm-hetzner
+  name: kcm-capi-cluster
   namespace: argocd
 spec:
   destination:
@@ -10,11 +10,11 @@ spec:
     server: 'https://kubernetes.default.svc'
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
-      path: argocd-helm-charts/ccm-hetzner
+      path: argocd-helm-charts/capi-clusters
       targetRevision: hetzner_cluster_api
       helm:
         valueFiles:
-          - $values/k8s/kbm.obmondo.com/argocd-apps/values-ccm-hetzner.yaml
+          - $values/k8s/kbm.obmondo.com/argocd-apps/values-kcm-capi-cluster.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
       targetRevision: hetzner_ccm
       ref: values
