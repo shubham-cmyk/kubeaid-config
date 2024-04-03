@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ccm
+  name: cluster-api
   namespace: argocd
 spec:
   destination:
@@ -10,11 +10,11 @@ spec:
     server: 'https://kubernetes.default.svc'
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
-      path: argocd-helm-charts/ccm
+      path: argocd-helm-charts/cluster-api
       targetRevision: HEAD
       helm:
         valueFiles:
-          - $values/k8s/kbm.obmondo.com/argocd-apps/values-ccm.yaml
+          - $values/k8s/kbm.obmondo.com/argocd-apps/values-cluster-api.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
