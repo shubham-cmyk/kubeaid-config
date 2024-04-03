@@ -1,3 +1,3 @@
-hetzner:
-  robot:
-    enabled: true
+cluster-api:
+  infrastructure: hetzner:v1.0.0-beta.33
+  addon: helm
