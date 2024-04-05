@@ -1,7 +1,7 @@
 customerid: 7ejidqmfi9
 prometheus:
   storage:
-    size: 60Gi
+    size: 100Gi
     className: zfs-localpv
   resources:
     limits:
