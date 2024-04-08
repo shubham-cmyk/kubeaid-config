@@ -6,7 +6,7 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: caph-system
+    namespace: capi-cluster
     server: 'https://kubernetes.default.svc'
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
