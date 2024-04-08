@@ -4,7 +4,7 @@ provider:
 global:
   clusterName: kcm
   kubernetes:
-    version: v1.28.9
+    version: v1.28.6
 
 cluster:
   api:
