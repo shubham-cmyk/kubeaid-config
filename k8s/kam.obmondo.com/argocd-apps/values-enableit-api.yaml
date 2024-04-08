@@ -49,6 +49,8 @@ trustedProxies:
 image:
   pullPolicy: Always
 api:
+  email:
+    overview: ["klavs.klavsen@enableit.dk"]
   website: https://obmondo.com
   domain: api.obmondo.com
   config:
