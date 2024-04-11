@@ -97,6 +97,9 @@ ingress:
         - path: /api/invoice/
           pathType: Prefix
           servicePort: 8080
+        - path: /api/servers/tags
+          pathType: Prefix
+          servicePort: 8088
         - path: /api/servers/
           pathType: Prefix
           servicePort: 8080
