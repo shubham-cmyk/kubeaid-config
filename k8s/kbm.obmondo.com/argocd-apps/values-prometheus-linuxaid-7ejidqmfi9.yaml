@@ -1,11 +1,12 @@
 customerid: 7ejidqmfi9
 prometheus:
   storage:
-    size: 50Gi
+    size: 100Gi
     className: zfs-localpv
   resources:
     limits:
-      memory: 3Gi
+      memory: 5Gi
     requests:
-      cpu: 2500m
-      memory: 2Gi
+      cpu: 3000m
+      memory: 3Gi
+  retention: 10d
