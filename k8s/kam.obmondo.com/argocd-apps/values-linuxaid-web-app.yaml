@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  tag: linuxaid-v2.5.7
+  tag: linuxaid-v2.7.8
   pullPolicy: Always
 middleware: true
 ingress:
