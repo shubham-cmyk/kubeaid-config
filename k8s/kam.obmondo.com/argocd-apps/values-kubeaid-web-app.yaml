@@ -1,7 +1,7 @@
 replicaCount: 1
 namespace: obmondo-website
 image:
-  tag: kubeaid-v2.7.8
+  tag: kubeaid-v2.7.10
   pullPolicy: Always
 middleware: true
 ingress:
