@@ -16,6 +16,10 @@ argo-cd:
       requests:
         cpu: 50m
         memory: 256Mi
+  controller:
+    resources:
+      limits:
+        memory: 1280Mi
     rbacConfig:
       policy.csv: |
         g, ArgoCDAdmins, role:admin
