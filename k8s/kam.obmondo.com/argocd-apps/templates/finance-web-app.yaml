@@ -6,7 +6,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: obmondo-website
+    namespace: finance
   project: default
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/obmondo-web-app.git
