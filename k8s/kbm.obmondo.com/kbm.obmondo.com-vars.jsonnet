@@ -13,7 +13,8 @@
   enable_custom_metrics_apiservice: true,
   addMixins: {
     velero: true,
-    rabbitmq: true
+    rabbitmq: true,
+    monitoring: true,
   },
   prometheus_operator_resources+: {
     limits: { memory: '80Mi' },
