@@ -16,18 +16,6 @@
     rabbitmq: true,
     monitoring: true,
   },
-  prometheus_operator_resources+: {
-    limits: { memory: '80Mi' },
-    requests: { cpu: '10m', memory: '30Mi' },
-  },
-  alertmanager_resources+: {
-    limits: { memory: '50Mi' },
-    requests: { cpu: '10m', memory: '20Mi' },
-  },
-  prometheus_resources+: {
-    limits: { memory: '7Gi' },
-    requests: { cpu: '200m', memory: '5Gi' },
-  },
   grafana_ingress_annotations: {
     'kubernetes.io/ingress.class': 'traefik-cert-manager',
   },
