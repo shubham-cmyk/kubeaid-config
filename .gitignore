@@ -4,3 +4,4 @@
 defaults
 .idea
 *.~undo-tree~
+.DS_STORE
