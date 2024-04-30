@@ -77,61 +77,67 @@ ingress:
           pathType: Prefix
           serviceName: enableit-api-grpc
           servicePort: 8100
-        - path: /api/subscription/
+        - path: /api/subscription
           pathType: Prefix
           servicePort: 8088
-        - path: /api/server/
+        - path: /api/servers/csv/customer
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/server
           pathType: Prefix
           servicePort: 8088
-        - path: /api/customer/
+        - path: /api/customer
           pathType: Prefix
           servicePort: 8088
         - path: /api/order/
           pathType: Prefix
           servicePort: 8088
-        - path: /api/puppet/
+        - path: /api/puppet
           pathType: Prefix
           servicePort: 8088
-        - path: /api/invoice-pdf/
+        - path: /api/invoice-pdf
           pathType: Prefix
           servicePort: 8088
-        - path: /api/data/
+        - path: /api/data
           pathType: Prefix
           servicePort: 8088
-        - path: /api/contact/
+        - path: /api/contact
           pathType: Prefix
           servicePort: 8088
-        - path: /api/job/
+        - path: /api/job
           pathType: Prefix
           servicePort: 8088
-        - path: /api/products/
+        - path: /api/products
           pathType: Prefix
           servicePort: 8088
-        - path: /api/customers/
+        - path: /api/customers
           pathType: Prefix
           servicePort: 8088
-        - path: /api/mail-invoices/
+        - path: /api/mail-invoices
           pathType: Prefix
           servicePort: 8088
-        - path: /api/feedback/
+        - path: /api/feedback
           pathType: Prefix
           servicePort: 8088
-        - path: /api/facts/
+        - path: /api/facts
           pathType: Prefix
           servicePort: 8088
         - path: /api/user/
           pathType: Prefix
           servicePort: 8088
-        - path: /api/clusters/
+        - path: /api/users
           pathType: Prefix
           servicePort: 8088
-        - path: /api/cluster/
+        - path: /api/clusters
+          pathType: Prefix
+          servicePort: 8088
+        - path: /api/cluster
           pathType: Prefix
           servicePort: 8088
         - path: /api/auth
           pathType: Prefix
           servicePort: 8088
-        - path: /api/contacts/
+        - path: /api/contacts
           pathType: Prefix
           servicePort: 8088
         - path: /
