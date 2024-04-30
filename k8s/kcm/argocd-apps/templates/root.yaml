@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root
+  namespace: argo-cd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argo-cd
+  project: default
+  source:
+    path: k8s/kcm/argocd-apps
+    repoURL: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
