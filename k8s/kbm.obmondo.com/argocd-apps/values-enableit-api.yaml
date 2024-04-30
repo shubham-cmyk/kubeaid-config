@@ -128,7 +128,7 @@ ingress:
         - path: /api/cluster/
           pathType: Prefix
           servicePort: 8088
-        - path: /api/auth/
+        - path: /api/auth
           pathType: Prefix
           servicePort: 8088
         - path: /api/contacts/
