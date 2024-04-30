@@ -34,6 +34,7 @@ image:
 api:
   website: https://beta.obmondo.com
   domain: api-beta.obmondo.com
+  goApiUrl: '"https://api-beta.obmondo.com/api/"'
   config:
     startSchedular: true
     addDevPrefixes: false
