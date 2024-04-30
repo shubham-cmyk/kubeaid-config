@@ -53,6 +53,7 @@ api:
     overview: ["klavs.klavsen@enableit.dk"]
   website: https://obmondo.com
   domain: api.obmondo.com
+  goApiUrl: '"https://api.obmondo.com/api/"'
   config:
     startSchedular: true
     addDevPrefixes: false
