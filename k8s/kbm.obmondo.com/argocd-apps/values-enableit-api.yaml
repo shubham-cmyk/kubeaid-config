@@ -80,6 +80,9 @@ ingress:
         - path: /api/subscription
           pathType: Prefix
           servicePort: 8088
+        - path: /api/feature
+          pathType: Prefix
+          servicePort: 8080
         - path: /api/servers/csv/customer
           pathType: Prefix
           servicePort: 8080
