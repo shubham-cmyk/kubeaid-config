@@ -25,8 +25,8 @@ spec:
     limits:
       memory: 50Mi
     requests:
-      cpu: 1m
-      memory: 50Mi
+      cpu: 10m
+      memory: 20Mi
   secrets:
   - obmondo-clientcert
   - alertmanager-main
