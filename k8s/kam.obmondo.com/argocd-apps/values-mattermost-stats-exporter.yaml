@@ -1,7 +1,7 @@
 imagePullSecrets:
   - name: mattermost-obmondo-registry-secret
 image:
-  repository: harbor.obmondo.com/obmondo/k8id-support-software/mattermost-stats-exporter
+  repository: harbor.obmondo.com/obmondo/kubeaid-support-software/mattermost-stats-exporter
   pullPolicy: Always
   tag: 1.0.6
 
