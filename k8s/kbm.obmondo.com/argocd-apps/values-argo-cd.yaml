@@ -30,6 +30,7 @@ argo-cd:
         g, basit@obmondo.com, role:admin
         g, sanskar@obmondo.com, role:admin
         g, archisman@obmondo.com, role:admin
+        g, devesh@obmondo.com, role:admin
       scopes: '[groups, email]'
     extraArgs:
       - --insecure
