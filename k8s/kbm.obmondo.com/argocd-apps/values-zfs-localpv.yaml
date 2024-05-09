@@ -33,7 +33,7 @@ zfs-localpv:
       repository: obmondo/zfs_exporter
       pullPolicy: IfNotPresent
       # Overrides the image tag whose default is the chart appVersion.
-      tag: v2.3.4_1  # Need to replace
+      tag: v2.3.4_1   # Need to replace
     resources:
       limits:
         cpu: 100m
