@@ -16,7 +16,29 @@ keycloakx:
       - secretName: keycloak-ssl
         hosts:
           - keycloak.obmondo.com
+  extraEnv: |
+    - name: KC_DB_USERNAME
+      valueFrom:
+        secretKeyRef:
+          name: keycloak.keycloakx-pgsql.credentials.postgresql.acid.zalan.do
+          key: username
+    - name: KC_DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: keycloak.keycloakx-pgsql.credentials.postgresql.acid.zalan.do
+          key: password
+    - name: KEYCLOAK_ADMIN
+      value: admin
+    - name: KEYCLOAK_ADMIN_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: keycloak-admin
+          key: KEYCLOAK_PASSWORD
+    - name: JAVA_OPTS_APPEND
+      value: >-
+        -Djgroups.dns.query={{ include "keycloak.fullname" . }}-headless
 
 postgresql:
+  enabled: true
   access_secret: keycloakx-pgsql-postgres-pod-env
   size: 8Gi
