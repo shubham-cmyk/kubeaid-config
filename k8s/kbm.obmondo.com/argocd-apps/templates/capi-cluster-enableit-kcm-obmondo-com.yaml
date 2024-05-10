@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kcm-capi-cluster
+  name: capi-cluster-enableit-kcm-obmondo-com
   namespace: argocd
 spec:
   destination:
@@ -14,7 +14,7 @@ spec:
       targetRevision: HEAD
       helm:
         valueFiles:
-          - $values/k8s/kbm.obmondo.com/argocd-apps/values-kcm-capi-cluster.yaml
+          - $values/k8s/kbm.obmondo.com/argocd-apps/capi-clusters/enableit-kcm-obmondo-com.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values

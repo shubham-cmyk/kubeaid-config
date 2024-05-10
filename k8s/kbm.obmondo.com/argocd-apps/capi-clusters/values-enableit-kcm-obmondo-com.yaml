@@ -2,13 +2,12 @@ provider:
   hetzner: true
 
 global:
-  clusterName: kcm
+  clusterName: kcm.obmondo.com
+  customerid: enableit
   kubernetes:
     version: v1.28.6
-
-cluster:
-  api:
-    infrastructure: hetzner:v1.0.0-beta.33
+  caph:
+    version: v1.0.0-beta.37
   kubeaid:
     repo: https://github.com/Obmondo/kubeaid.git
   kubeaidConfig:

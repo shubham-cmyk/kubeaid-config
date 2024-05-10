@@ -1,6 +1,8 @@
 cluster-api-operator:
-  infrastructure: hetzner:v1.0.0-beta.33;aws:v2.5.0;azure:v1.14.3
   addon: helm
-  bootstrap: kubeadm:v1.6.3
-  controlPlane: kubeadm:v1.6.3
-  core: cluster-api:v1.6.3
+  bootstrap: kubeadm:v1.7.2
+  controlPlane: kubeadm:v1.7.2
+  core: cluster-api:v1.7.2
+  configSecret:
+    name: cluster-api-token
+    namespace: cluster-api
