@@ -1,16 +1,22 @@
-apiVersion: bitnami.com/v1alpha1
-kind: SealedSecret
-metadata:
-  creationTimestamp: null
-  name: api-tokens
-  namespace: obmondo-website
-spec:
-  encryptedData:
-    chat: AgA1bQPFC4gp/wqYwJQgCPUCnFwCgmceLyIC7KNjwmydR34oy6NCwg8hUfDXXZbEYX0zWJyALwsgCvRWu/fvYo0ZX3kRpckn4t3gUdnuHHxRzi9DqS6HDrRaxFH25esFB16T47wLMSKuBs28iDjC9qzM0GG+NOZsp2ghluKV0T31LkezAKgdEAYkrHuhLvWVHeo00ZkXuvYXp3myydPxR6KdTpB314KFEuQ9m5DS5EXb7oZTcEiriY8j4AnPc0VrJO76S66laiIACneiUMNRiGUZLAGcC9uYWnbeCFl/ayEHRyPLNo5rWBGfBMMkAU2TSBATAYvYtA/pADZwhz7Ji0PLH/P7VYj+gVeQIgMu1F+gDKepU9GnuHgKS0Yio+HbfZcoiNMr7nfvtBY9/lj/hR9r2TTI9y4OfpABMQvdJD2y4dLQtdf8wps16/dG7Tf20DfLfUhM8ecDAIH+L0fgfxDVXN2UWaiQw+8Pb8BKHWCcWgXu4GP0ZQ5lbsvElL+Zhsr2ty4k25OmINaYNg+YHZK7FV06kHIXa17FrgQIEzgzTQ5ye/FOxd27K65Fq1gFp848Eeqikr9lT8A5e4tJLot7KUak/QyTSuMdVUhTZkMYyy0BrAFM+eaxg3ttF/Fpc69KbapIYbyOtPPGSbGcqQjmNzlN7glRj3NJArOXgMjcusVdU55jucm4V23CoSKaGEpn0uESZk6BhhK7KkpN7mGss0D+E9zwKjzYSQ==
-    gitea: AgCAfFMO4nJdE5OdilZvbESWom+qDn2S6vc8dZ4EPuB/snjVuSG8RMJLVtOKDQFCBFJFesPkvHElMWk1ejOdE4e2U9yh3VnktqM6k3OyxYyA03ta0dAv/aGKEdCI8Ah9bhikqzfp34TSNxv80mqfPWeGR91zhIaI8MQX9nfBZf+3tICZ0Mc0aYqfyFiI8128CIEhqZEYSXM1VrVqRgiHn3wijnCP/Lp2hvNru0oqZyGzU+3Otb0T74+XopFpiC90jO7h53L7MCx24Pdgz2xtet+fBMdDUp65u6pWVJ2BbljlYHNbBsFIcKuep25RTjnZYOti2ZvAH0IFELukzoKn4BHeK1z3MpOScOSuh0HZZoHB7CBCJWbfEayQ1t/UAJ8t9bkZJAw8h/oILwggpHN7yzUuCenvyJ3PeSxfxe6cDaj9bGNxqhk40ESPHkGsyWm0cXEb5N/pVU9+C2sbgZcBcSqdF8U4gKtOmwwUiTQW9z5xVoKW8cYpNVKLmWUovRcjIFLjz6D1wgr+3U6aujCvKw+hg7kS3rVabpnSerbsxAMuxHd2VHtkZs3O+9WK4+X3nrNYz5pExUrCQoGwcPJGq/9CeS1P6cUGt5hrm5vBe1ue3H7VLHmfyTSmv6lVSqIb9uQbQTqeOmMvFxGf4gP5hBHG24IhQmsUkRZWZTraW99X+2XH9sKycQeYtxhJRtqYhZZ6a9JE4xWSGPs4HgUPlDHoRgCqb3IkgK6tQcAn3T1qENjH7MIVbFoG
-    mattermost: AgCRXmfRWZxtWmA9+GCexGuo683fptKi6AuG+5OGzEYo+QQjiBYgHZxWk1rHDEVfsTvcU8CNb8RiN6cIC09XPIrJYqaPQxttwTH9Ye2seQHx9eYHRtQXRHvJ7AtsO4TjFEyAgzJ29vt17EjE9c2fHgoY5yqKqlIhWGfxYGjfcMjODK7gmezWRhQ2KKaw/cjnN0jzUjUJBpb0Hi50JiVrJ8xQsY+2NQhOzljTSjmqIiHWwwi8EYDDaafW6duF2AOHI/QOSFYq869+9tN36Kx5ZrIe+132d40wPUsRLT23P2cyXoPP3V5pEcXhGzvYNfPcXTfmP2kby8eEQZcOQOPp4CGvSgODmMeP8auhHxoC293N+6zb2DPHNXiorLMq8ZC0LnmxJRgk81yepNiNtJqTOFOfDCO5egK1uh5++HPGiY+nPSS/rIed4JQdW3qKpQPpXUoMSc2LUdyO1tGRGaf4K8qp9FwtGIfmf82JgGVoWIEjlMGggdTXMnlrzyy6zpMljBF0sDu5Evyu5KSFJs0DGxexv6v3ww1WbGqlEH2rZbGRLcsWDBgAVLrzfzI9+j8cd9SVSlEiAp/HUEDh5w20sDkMT/9pvdgvC4g/huCJUuw7Vaaq49DXGQNgGVEgBSGuv5HnSMSEJBORmpS9AeWSgORVw9TLFljWOx/KfCOeb7Fz59IP8Romb7VhfOQ7g06XWGotqHF89wStscXPz3MpsgCbxAnGcK3aEvlVzg==
-  template:
-    metadata:
-      creationTimestamp: null
-      name: api-tokens
-      namespace: obmondo-website
+{
+  "kind": "SealedSecret",
+  "apiVersion": "bitnami.com/v1alpha1",
+  "metadata": {
+    "name": "api-tokens",
+    "namespace": "obmondo-website",
+    "creationTimestamp": null
+  },
+  "spec": {
+    "template": {
+      "metadata": {
+        "name": "api-tokens",
+        "namespace": "obmondo-website",
+        "creationTimestamp": null
+      },
+      "data": null
+    },
+    "encryptedData": {
+      "gitea": "AgBkk5FZ0VkCGKROje7urWlc/lQtJDy9BPn9blHC3v2QR0bY2uCQoO75dTNJBtD4xjEmOSnPo8Jkl1pnycau0AL5wFqxgkpyyykHq3jodwPfj++s+vbKPpIiGOgBJomGYVZ0jPW+fhtu1ci00m0FA+yJCYSZvrNrE51O6K3bfBor7sxUX6JBJPsqUziQV+mqTymH+thwJKl8Lc0jxR9e6BGj7UEq/iuOm0eMLGaO0tyCBc9MZWqRXZs5+7qR0FBBQMK8jWR/w1szlc0dkmqiHqldyYFQao8Tnemd44d1SQ0KbcN5PE5CosGFnYqEgIX2/8FvlG0DpVbXzdzJUmwRpPFPSJL4fYjl/jb5yqqu4jaNXwRqB5SS0nMDyDdwSHAdDxxLm9rjXmkHVPzCEIBafG7hjL10/Cpu08WkG6ffo6aeVnYw+L77IxPiP0Enc3rZFHKtJilOiNAcb1wPMq4S/0SosLWpLWLeBBs1IGXy6z61CKq3LJzN0qLMEn5fc9C4356hoCuaCvC5WXtN0quXzn0t3nCtnY7iJ0KXHP2OzX64tPbBbFFviQnU1qIdwa0TLiYYLZpvkrUBU5fGp4Dxr/iBz8wAFMoMblO1MnebwCbj1EUjTy/FvRLjhszs3JOZQ0syI+1FDUXsKJ/MMJqVjeUwTSprolRgWA2s8zZERzBr92ltXGKgS6o9OdKh1wDffDRm83EbHEXwkqvzz5paro+NbERR+/M/HafaOvN0e4552nIy1KLltuS3"
+    }
+  }
+}
