@@ -62,6 +62,8 @@ api:
   server:
     internal_ips_for_readonly_auth: "172.20.0.0/16"
   mode: beta
+  redis:
+    url: redis://redis-cluster-enableit-api-leader:6379
 
 persistence:
   enabled: true
