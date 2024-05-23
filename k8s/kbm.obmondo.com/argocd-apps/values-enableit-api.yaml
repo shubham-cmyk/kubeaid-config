@@ -53,7 +53,7 @@ api:
     image:
       repository: harbor.obmondo.com/obmondo/clojure-api/api
       pullPolicy: Always
-      tag: v3.0.35-xenial
+      tag: v3.0.36-xenial
   go:
     image:
       repository: harbor.obmondo.com/obmondo/enableit-go-api
