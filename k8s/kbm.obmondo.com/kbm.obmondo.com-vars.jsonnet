@@ -36,7 +36,8 @@
     'logging',
     'velero',
     'monitoring',
-    'obmondo'
+    'obmondo',
+    'zfs-localpv'
   ],
   prometheus+: {
     storage: {
