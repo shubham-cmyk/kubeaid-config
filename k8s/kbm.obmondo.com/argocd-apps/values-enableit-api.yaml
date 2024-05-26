@@ -97,7 +97,7 @@ ingress:
         - path: /api/customer
           pathType: Prefix
           servicePort: 8088
-        - path: /api/order/
+        - path: /api/order
           pathType: Prefix
           servicePort: 8088
         - path: /api/puppet
