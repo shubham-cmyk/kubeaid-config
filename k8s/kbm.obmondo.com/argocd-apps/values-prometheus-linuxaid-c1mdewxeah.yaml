@@ -1,4 +1,4 @@
 customerid: c1mdewxeah
 prometheus:
   storage:
-    size: 40Gi
+    size: 60Gi
