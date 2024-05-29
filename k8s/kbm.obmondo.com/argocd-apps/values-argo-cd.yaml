@@ -53,5 +53,7 @@ argo-cd:
         - argocd.kbm.obmondo.com
   controller:
     resources:
+      requests:
+        memory: 1Gi
       limits:
-        memory: 1280Mi
+        memory: 1.5Gi
