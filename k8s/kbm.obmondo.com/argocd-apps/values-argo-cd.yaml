@@ -22,6 +22,7 @@ argo-cd:
         g, sanskar@obmondo.com, role:admin
         g, archisman@obmondo.com, role:admin
         g, devesh@obmondo.com, role:admin
+        g, m.talha@obmondo.com, role:admin
       scopes: '[groups, email]'
     cm:
       url: https://argocd.kbm.obmondo.com
