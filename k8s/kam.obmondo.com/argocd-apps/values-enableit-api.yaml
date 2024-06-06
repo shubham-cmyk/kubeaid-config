@@ -83,6 +83,9 @@ api:
   redis:
     url: redis://redis-cluster-enableit-api-leader:6379
 
+redis:
+  replicas: 3
+
 persistence:
   enabled: true
 ci:
