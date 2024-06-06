@@ -52,6 +52,10 @@ argo-cd:
       - secretName: argocd-ssl
         hosts:
         - argocd.kbm.obmondo.com
+  global:
+    # -- Default domain used by all components
+    ## Used for ingresses, certificates, SSO, notifications, etc.
+    domain: argocd.kbm.obmondo.com
   controller:
     resources:
       requests:
