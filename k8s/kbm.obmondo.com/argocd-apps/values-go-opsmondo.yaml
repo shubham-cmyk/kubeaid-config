@@ -1,3 +1,76 @@
 opsmondo:
   image:
     tag: v0.18.5
+
+alerts:
+  high_priority_alerts:
+    - monitor::system::ntp::sync
+    - monitor::system::disk::usage
+    - HighStorageUsage
+    ## -- CEPH related alerts --
+    - CephHealthError
+    - CephHealthWarning
+    - CephMonDownQuorumAtRisk
+    - CephMonDown
+    - CephMonDiskspaceCritical
+    - CephMonDiskspaceLow
+    - CephMonClockSkew
+    - CephOSDDownHigh
+    - CephOSDHostDown
+    - CephOSDDown
+    - CephOSDNearFull
+    - CephOSDFull
+    - CephOSDBackfillFull
+    - CephOSDTooManyRepairs
+    - CephOSDTimeoutsPublicNetwork
+    - CephOSDTimeoutsClusterNetwork
+    - CephOSDInternalDiskSizeMismatch
+    - CephDeviceFailurePredicted
+    - CephDeviceFailurePredictionTooHigh
+    - CephDeviceFailureRelocationIncomplete
+    - CephOSDFlapping
+    - CephOSDReadErrors
+    - CephPGImbalance
+    - CephFilesystemDamaged
+    - CephFilesystemOffline
+    - CephFilesystemDegraded
+    - CephFilesystemMDSRanksLow
+    - CephFilesystemInsufficientStandby
+    - CephFilesystemFailureNoStandby
+    - CephFilesystemReadOnly
+    - CephMgrModuleCrash
+    - CephMgrPrometheusModuleInactive
+    - CephPGsInactive
+    - CephPGsUnclean
+    - CephPGsDamaged
+    - CephPGRecoveryAtRisk
+    - CephPGUnavailableBlockingIO
+    - CephPGBackfillAtRisk
+    - CephPGNotScrubbed
+    - CephPGsHighPerOSD
+    - CephPGNotDeepScrubbed
+    - CephNodeRootFilesystemFull
+    - CephNodeNetworkPacketDrops
+    - CephNodeNetworkPacketErrors
+    - CephNodeNetworkBondDegraded
+    - CephNodeDiskspaceWarning
+    - CephNodeInconsistentMTU
+    - CephPoolGrowthWarning
+    - CephPoolBackfillFull
+    - CephPoolFull
+    - CephPoolNearFull
+    - CephSlowOps
+    - CephDaemonSlowOps
+    - CephadmUpgradeFailed
+    - CephadmDaemonFailed
+    - CephadmPaused
+    - CephObjectMissing
+    - CephDaemonCrash
+    - CephRBDMirrorImagesPerDaemonHigh
+    - CephRBDMirrorImagesNotInSync
+    - CephRBDMirrorImagesNotInSyncVeryHigh
+    - CephRBDMirrorImageTransferBandwidthHigh
+  low_priority_alerts:
+    - VeleroUnsuccessfulBackup
+    - KubeAggregatedAPIErrors
+    - monitor::system::service::down
