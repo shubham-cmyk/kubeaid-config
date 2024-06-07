@@ -1,4 +1,12 @@
 customerid: c1mdewxeah
 prometheus:
+  ingress:
+    enable: true
+    allowedSourceRanges:
+      - "138.201.82.121/32"
+      - "138.201.224.126/32"
+      - "78.46.72.21/32"
+      - "176.9.124.207/32"
+      - "85.10.211.48/32"
   storage:
     size: 60Gi
