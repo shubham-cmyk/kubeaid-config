@@ -65,11 +65,11 @@ api:
   redis:
     url: redis://redis-cluster-enableit-api-leader:6379
   prometheus_customer_url:
-    enableit: prometheus-main.monitoring-enableit.svc.cluster.local:9090/enableit
-    7ejidqmfi9: prometheus-main.monitoring-7ejidqmfi9.svc.cluster.local:9090/7ejidqmfi9
-    abbnoa6nlk: prometheus-main.monitoring-abbnoa6nlk.svc.cluster.local:9090/abbnoa6nlk
-    c1mdewxeah: prometheus-main.monitoring-c1mdewxeah.svc.cluster.local:9090/c1mdewxeah
-    ebillet: prometheus-main.monitoring-ebillet.svc.cluster.local:9090/ebillet
+    - enableit;http://prometheus-main.monitoring-enableit.svc.cluster.local:9090/enableit
+    - 7ejidqmfi9;http://prometheus-main.monitoring-7ejidqmfi9.svc.cluster.local:9090/7ejidqmfi9
+    - abbnoa6nlk;http://prometheus-main.monitoring-abbnoa6nlk.svc.cluster.local:9090/abbnoa6nlk
+    - c1mdewxeah;http://prometheus-main.monitoring-c1mdewxeah.svc.cluster.local:9090/c1mdewxeah
+    - ebillet;http://prometheus-main.monitoring-ebillet.svc.cluster.local:9090/ebillet
 
 redis:
   replicas: 3
