@@ -26,7 +26,6 @@ argo-cd:
         g, bhavishya@obmondo.com, role:admin
       scopes: '[groups, email]'
     cm:
-      url: https://argocd.kbm.obmondo.com
       oidc.config: |
         name: Keycloak
         issuer: https://keycloak.obmondo.com/auth/realms/Obmondo
