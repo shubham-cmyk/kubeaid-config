@@ -1,7 +1,6 @@
 customerid: ebillet
 prometheus:
   ingress:
-    enable: true
     allowedSourceRanges:
       - "138.201.82.121/32"
       - "138.201.224.126/32"
