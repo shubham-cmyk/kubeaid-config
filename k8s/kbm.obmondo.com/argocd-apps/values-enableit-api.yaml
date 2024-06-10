@@ -129,7 +129,7 @@ ingress:
           servicePort: 8088
         - path: /api/customers
           pathType: Prefix
-          servicePort: 8088
+          servicePort: 8080
         - path: /api/mail-invoices
           pathType: Prefix
           servicePort: 8088
