@@ -82,6 +82,13 @@ api:
     internal_ips_for_readonly_auth: "172.20.0.0/16"
   redis:
     url: redis://redis-cluster-enableit-api-leader:6379
+  prometheus_customer_url:
+    - enableit;https://prometheus.obmondo.com/enableit
+    - 7ejidqmfi9;https://prometheus.obmondo.com/7ejidqmfi9
+    - abbnoa6nlk;https://prometheus.obmondo.com/abbnoa6nlk
+    - c1mdewxeah;https://prometheus.obmondo.com/c1mdewxeah
+    - ebillet;https://prometheus.obmondo.com/ebillet
+
 
 redis:
   replicas: 3
