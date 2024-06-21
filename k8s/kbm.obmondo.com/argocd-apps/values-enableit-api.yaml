@@ -40,9 +40,9 @@ api:
     addDevPrefixes: false
     allowTestData: false
   puppetdb:
-    url: 'http://puppet.enableit.dk:58080'
+    url: "http://puppet.enableit.dk:58080"
   puppetserver:
-    url: 'https://puppet.enableit.dk'
+    url: "https://puppet.enableit.dk"
   mattermost:
     channel: testing
     enabled: false
@@ -161,6 +161,9 @@ ingress:
           pathType: Prefix
           servicePort: 8088
         - path: /api/contacts
+          pathType: Prefix
+          servicePort: 8088
+        - path: /api/invoice-data
           pathType: Prefix
           servicePort: 8088
         - path: /
