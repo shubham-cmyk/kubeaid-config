@@ -84,7 +84,7 @@ ingress:
   hosts:
     - host: api-beta.obmondo.com
       paths:
-        - path: /api/server/
+        - path: /api/server
           servicePort: 8088
         - path: /api/servers/tags
           pathType: Prefix
