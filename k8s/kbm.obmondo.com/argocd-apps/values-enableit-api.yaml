@@ -106,7 +106,7 @@ ingress:
         - path: /api/servers/cve_details
           pathType: Prefix
           servicePort: 8080
-        - path: /api/servers
+        - path: /api/server
           pathType: Prefix
           servicePort: 8088
         - path: /api/customer
