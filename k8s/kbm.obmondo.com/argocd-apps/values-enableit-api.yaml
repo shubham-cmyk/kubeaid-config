@@ -112,6 +112,9 @@ ingress:
         - path: /api/customer
           pathType: Prefix
           servicePort: 8088
+        - path: /api/customer_details
+          pathType: Prefix
+          servicePort: 8080
         - path: /api/order
           pathType: Prefix
           servicePort: 8088
