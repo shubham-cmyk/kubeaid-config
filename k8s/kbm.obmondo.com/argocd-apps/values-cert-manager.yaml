@@ -10,3 +10,12 @@ issuer:
       dnsNames:
         - obmondo.com
     - type: http
+
+cert-manager:
+  cainjector:
+    resources:
+      limits:
+        memory: 512Mi
+      requests:
+        cpu: 1m
+        memory: 128Mi
