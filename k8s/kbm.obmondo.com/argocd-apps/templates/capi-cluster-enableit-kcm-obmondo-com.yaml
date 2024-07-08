@@ -6,7 +6,6 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: capi-cluster
     server: 'https://kubernetes.default.svc'
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
@@ -14,7 +13,7 @@ spec:
       targetRevision: HEAD
       helm:
         valueFiles:
-          - $values/k8s/kbm.obmondo.com/argocd-apps/capi-clusters/enableit-kcm-obmondo-com.yaml
+          - $values/k8s/kbm.obmondo.com/argocd-apps/capi-clusters/values-enableit-kcm-obmondo-com.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
