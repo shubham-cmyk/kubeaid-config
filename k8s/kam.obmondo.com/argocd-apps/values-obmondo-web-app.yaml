@@ -2,6 +2,7 @@ replicaCount: 1
 image:
   tag: obmondo-v3.0.5
   pullPolicy: Always
+middleware: true
 ingress:
   hosts:
     - host: obmondo.com
@@ -40,3 +41,4 @@ ingress:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     kubernetes.io/ingress.class: traefik-cert-manager
+    traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-obmondo-web-app-redirect@kubernetescrd
