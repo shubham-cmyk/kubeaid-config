@@ -2,7 +2,7 @@ provider:
   hetzner: true
 
 global:
-  clusterName: kcm.obmondo.com
+  clusterName: kcm
   customerid: enableit
   kubernetes:
     version: v1.29.3
