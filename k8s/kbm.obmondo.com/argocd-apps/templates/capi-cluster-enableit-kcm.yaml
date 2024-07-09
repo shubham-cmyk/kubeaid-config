@@ -13,7 +13,7 @@ spec:
       targetRevision: HEAD
       helm:
         valueFiles:
-          - $values/k8s/kbm.obmondo.com/argocd-apps/capi-clusters/enableit-kcm.yaml
+          - $values/k8s/kbm.obmondo.com/argocd-apps/capi-clusters/values-enableit-kcm.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
