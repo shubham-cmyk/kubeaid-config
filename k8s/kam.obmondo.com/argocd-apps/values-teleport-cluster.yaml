@@ -6,3 +6,5 @@ teleport-cluster:
   proxyListenerMode: "multiplex"
   authentication:
     secondFactor: "on"
+  persistence:
+    volumeSize: 15Gi
