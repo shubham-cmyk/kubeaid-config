@@ -9,7 +9,7 @@ name: yamllint
 jobs:
   yamllint:
     name: Yaml Lint
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04-htzhel1-ax42-a
     container:
       image: harbor.obmondo.com/obmondo/kubeaid-ci:1.2.0
     steps:
