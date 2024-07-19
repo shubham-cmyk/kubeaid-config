@@ -9,7 +9,7 @@ spec:
     namespace: enableit-website
   project: default
   sources:
-    - repoURL: https://gitlab.enableit.dk/enableit/enableit-website.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/enableit-website.git
       path: helm/enableit-website
       targetRevision: HEAD
       helm:
