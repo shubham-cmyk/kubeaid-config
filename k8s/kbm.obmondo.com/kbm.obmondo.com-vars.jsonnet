@@ -1,7 +1,7 @@
 {
   platform: 'kubeadm',
   extra_configs: true,
-  'blackbox-exporter': false,
+  'blackbox-exporter': true,
   connect_obmondo: true,
   connect_keda: true,
   grafana_keycloak_enable: true,
