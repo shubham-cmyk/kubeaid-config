@@ -1,0 +1,19 @@
+image:
+  repository: harbor.obmondo.com/obmondo/gitea-stats-exporter
+  pullPolicy: Always
+  tag: "latest"
+
+ingress:
+  hosts:
+    - host: beta.gitea-stats.kbm.obmondo.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: beta-gitea-stats0-kbm-tls
+      hosts:
+        - beta.gitea-stats.kbm.obmondo.com
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    kubernetes.io/ingress.class: traefik-cert-manager
+    traefik.ingress.kubernetes.io/router.middlewares: gitea-stas-exporter-redirect@kubernetescrd

@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitea-stats
+  namespace: obmondo
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: obmondo
+  project: default
+  sources:
+    - repoURL: https://gitea.obmondo.com/EnableIT/gitea-stats-exporter.git
+      path: helm/
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+          - $values/k8s/kbm.obmondo.com/argocd-apps/gitea-stats.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
+      targetRevision: HEAD
+      ref: values
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true
