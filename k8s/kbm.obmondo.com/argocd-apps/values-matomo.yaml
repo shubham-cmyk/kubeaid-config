@@ -1,29 +1,20 @@
 matomo:
+  matomoUsername: klavs
+  matomoEmail: klavs@obmondo.com
   mariadb:
     enabled: false
   externalDatabase:
-    host: matomo
+    host: matomo-mariadb.matomo-test.svc.cluster.local
     port: 3306
     user: matomo
-    database: matomo
-    existingSecret: mariadb-secret
+    database: matomo-mariadb
+    existingSecret: matomo-user     # make sure in the secret the key is db-password in mariadb template
   ingress:
+    ingressClassName: traefik-cert-manager
     enabled: true
     hostname: matomo.kbm.obmondo.com
     path: /
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt
       kubernetes.io/ingress.class: traefik-cert-manager
-
-mariadb:
-  volumeClaimTemplate:
-    resources:
-      requests:
-        storage: 1Gi
-  resources:
-    requests:
-      cpu: 100m
-      memory: 128Mi
-    limits:
-      cpu: 300m
-      memory: 512Mi
+    tls: true
