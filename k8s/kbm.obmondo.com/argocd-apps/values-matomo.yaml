@@ -4,7 +4,7 @@ matomo:
   mariadb:
     enabled: false
   externalDatabase:
-    host: matomo-mariadb.matomo-test.svc.cluster.local
+    host: matomo-mariadb.matomo.svc.cluster.local
     port: 3306
     user: matomo
     database: matomo-mariadb
