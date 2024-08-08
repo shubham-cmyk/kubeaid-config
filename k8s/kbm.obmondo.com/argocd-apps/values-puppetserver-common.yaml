@@ -1,6 +1,8 @@
 puppetserver:
-  puppeturl: "ssh://git@gitea.obmondo.com:2223/EnableIT/puppet.git"
-  ingress:
-    annotations:
-      kubernetes.io/ingress.class: traefik-cert-manager
-      cert-manager.io/cluster-issuer: letsencrypt
+  puppetserver:
+    puppeturl: "ssh://git@gitea.obmondo.com:2223/EnableIT/puppet.git"
+    masters:
+      ingress:
+        annotations:
+          kubernetes.io/ingress.class: traefik-cert-manager
+          cert-manager.io/cluster-issuer: letsencrypt

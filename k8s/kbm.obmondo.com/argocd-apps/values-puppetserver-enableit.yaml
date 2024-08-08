@@ -1,15 +1,16 @@
-customerid: enableit
 puppetserver:
-  puppeturl:
-  ingress:
-    enabled: true
-    hosts:
-      - enableit.puppet.obmondo.com
-    tls:
-      - secretName: enableit-puppet-obmondo-com
+  puppetserver:
+    puppeturl:
+    masters:
+      ingress:
+        enabled: true
         hosts:
           - enableit.puppet.obmondo.com
-  fqdns:
-    alternateServerNames: ""   # Comma-separated
-  hiera:
-    hieradataurl: ssh://git@gitea.obmondo.com:2223/EnableIT/linuxaid-config-enableit.git
+        tls:
+          - secretName: enableit-puppet-obmondo-com
+            hosts:
+              - enableit.puppet.obmondo.com
+    fqdns:
+      alternateServerNames: ""   # Comma-separated
+    hiera:
+      hieradataurl: ssh://git@gitea.obmondo.com:2223/EnableIT/linuxaid-config-enableit.git
