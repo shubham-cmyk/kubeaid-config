@@ -10,7 +10,7 @@ spec:
   project: default
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/gitea-stats-exporter.git
-      path: helm
+      path: helm/gitea-stats
       targetRevision: HEAD
       helm:
         valueFiles:
