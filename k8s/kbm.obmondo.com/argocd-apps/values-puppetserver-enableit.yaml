@@ -1,6 +1,5 @@
 puppetserver:
   puppetserver:
-    puppeturl:
     masters:
       ingress:
         enabled: true
@@ -14,3 +13,6 @@ puppetserver:
       alternateServerNames: ""   # Comma-separated
     hiera:
       hieradataurl: ssh://git@gitea.obmondo.com:2223/EnableIT/linuxaid-config-enableit.git
+      viaHttps:
+        credentials:
+          existingSecret: hiera-git-secret

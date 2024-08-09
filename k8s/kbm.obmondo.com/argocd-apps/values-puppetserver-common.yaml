@@ -1,6 +1,9 @@
 puppetserver:
   puppetserver:
-    puppeturl: "ssh://git@gitea.obmondo.com:2223/EnableIT/puppet.git"
+    puppeturl: "https://gitea.obmondo.com/EnableIT/puppet.git"
+    persistence:
+      code:
+        size: 2Gi
     masters:
       ingress:
         annotations:
