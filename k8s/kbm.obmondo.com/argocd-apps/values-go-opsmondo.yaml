@@ -13,6 +13,7 @@ opsmondo:
         - monitor::system::disk::usage
         - HighStorageUsage
         - KubePersistentVolumeFillingUp
+        - KubePersistentVolumeInodesFillingUp
         ## -- CEPH related alerts --
         - CephHealthError
         - CephHealthWarning
