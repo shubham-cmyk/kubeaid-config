@@ -1,0 +1,6 @@
+puppetserver:
+  puppetserver:
+    puppeturl: "https://gitea.obmondo.com/EnableIT/puppet.git"
+    persistence:
+      code:
+        size: 10Gi
