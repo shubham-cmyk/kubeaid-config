@@ -9,8 +9,8 @@ puppetserver:
           - secretName: enableit-puppet-obmondo-com
             hosts:
               - enableit.puppet.obmondo.com
-    fqdns:
-      alternateServerNames: ""   # Comma-separated
+      fqdns:
+        alternateServerNames: enableit.puppet.obmondo.com
     hiera:
       hieradataurl: ssh://git@gitea.obmondo.com:2223/EnableIT/linuxaid-config-enableit.git
       viaHttps:
