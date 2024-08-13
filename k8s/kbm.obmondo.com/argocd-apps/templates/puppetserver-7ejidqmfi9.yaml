@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: puppetserver-7ejidqmfi9
+  namespace: argocd
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: puppetserver-7ejidqmfi9
+  sources:
+    - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
+      path: argocd-helm-charts/puppetserver
+      targetRevision: linuxaid_setup
+      helm:
+        valueFiles:
+          - $values/k8s/kbm.obmondo.com/argocd-apps/values-puppetserver-7ejidqmfi9.yaml
+          - $values/k8s/kbm.obmondo.com/argocd-apps/values-puppetserver-common.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
+      targetRevision: linuxaid_setup
+      ref: values
+  project: default
+  syncPolicy:
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true
