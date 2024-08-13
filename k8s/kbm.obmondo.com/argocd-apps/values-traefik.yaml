@@ -49,6 +49,9 @@ traefik:
     kubernetesIngress:
       publishedService:
         enabled: true
+    kubernetesGateway:
+      enabled: true
+      experimentalChannel: true
 
 middleware:
   jwt:
