@@ -6,3 +6,8 @@ puppetserver:
     persistence:
       code:
         size: 5Gi
+    r10k:
+      hiera:
+        viaHttps:
+          credentials:
+            existingSecret: hiera-git-secret
