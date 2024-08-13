@@ -3,7 +3,7 @@ puppetserver:
     puppeturl: "https://gitea.obmondo.com/EnableIT/puppet.git"
     persistence:
       code:
-        size: 5Gi
+        size: 10Gi
     masters:
       ingress:
         annotations:
