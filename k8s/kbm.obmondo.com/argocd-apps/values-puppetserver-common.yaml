@@ -4,4 +4,4 @@ puppetserver:
     persistence:
       code:
         size: 5Gi
-        storageClass: rook-ceph-block-puppet
+        storageClass: rook-ceph-block-inodes-highfilecount
