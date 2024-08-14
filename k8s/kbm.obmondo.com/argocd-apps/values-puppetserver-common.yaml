@@ -1,6 +1,6 @@
 puppetserver:
   storage:
-    storageClass: zfs-localpv
+    storageClass: openebs-zfspv-shared
   puppetserver:
     puppeturl: "https://gitea.obmondo.com/EnableIT/puppet.git"
     persistence:
