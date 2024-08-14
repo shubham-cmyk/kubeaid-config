@@ -32,7 +32,7 @@ image:
 api:
   website: https://beta.obmondo.com
   domain: api-beta.obmondo.com
-  goApiUrl: '"https://api-beta.obmondo.com/api/"'
+  goApiUrl: '"http://localhost:8080/api/"'
   config:
     startSchedular: true
     addDevPrefixes: false
