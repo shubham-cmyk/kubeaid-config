@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: puppetserver-enableit
+  name: puppetserver-c1mdewxeah
   namespace: argocd
 spec:
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: puppetserver-enableit
+    namespace: puppetserver-c1mdewxeah
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
       path: argocd-helm-charts/puppetserver
       targetRevision: HEAD
       helm:
         valueFiles:
-          - $values/k8s/kbm.obmondo.com/argocd-apps/values-puppetserver-enableit.yaml
+          - $values/k8s/kbm.obmondo.com/argocd-apps/values-puppetserver-c1mdewxeah.yaml
           - $values/k8s/kbm.obmondo.com/argocd-apps/values-puppetserver-common.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD

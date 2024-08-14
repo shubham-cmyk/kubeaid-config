@@ -10,13 +10,13 @@ spec:
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
       path: argocd-helm-charts/puppetserver
-      targetRevision: linuxaid_setup
+      targetRevision: HEAD
       helm:
         valueFiles:
           - $values/k8s/kbm.obmondo.com/argocd-apps/values-puppetserver-7ejidqmfi9.yaml
           - $values/k8s/kbm.obmondo.com/argocd-apps/values-puppetserver-common.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
-      targetRevision: linuxaid_setup
+      targetRevision: HEAD
       ref: values
   project: default
   syncPolicy:

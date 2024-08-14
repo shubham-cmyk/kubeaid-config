@@ -1,0 +1,8 @@
+customerid: abbnoa6nlk
+puppetserver:
+  puppetserver:
+    masters:
+      fqdns:
+        alternateServerNames: abbnoa6nlk.puppet.obmondo.com
+  hiera:
+    hieradataurl: https://gitea.obmondo.com/EnableIT/linuxaid-config-abbnoa6nlk.git

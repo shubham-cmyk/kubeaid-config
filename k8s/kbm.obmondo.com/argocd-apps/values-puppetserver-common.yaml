@@ -11,3 +11,6 @@ puppetserver:
       viaHttps:
         credentials:
           existingSecret: hiera-git-secret
+  hiera:
+    eyaml:
+      existingSecret: eyaml-keys
