@@ -1,6 +1,6 @@
 puppetserver:
   storage:
-    storageClass: rook-ceph-block-inodes-highfilecount
+    storageClass: zfs-localpv
   puppetserver:
     puppeturl: "https://gitea.obmondo.com/EnableIT/puppet.git"
     persistence:
