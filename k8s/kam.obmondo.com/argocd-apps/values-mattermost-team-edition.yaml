@@ -22,7 +22,7 @@ mattermost-team-edition:
     MM_GITLABSETTINGS_USERAPIENDPOINT: "https://keycloak.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/userinfo"
     MM_GITLABSETTINGS_AUTHENDPOINT: "https://keycloak.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/auth"
     MM_GITLABSETTINGS_TOKENENDPOINT: "https://keycloak.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/token"
-    MM_TEAMSETTINGS_RESTRICTCREATIONTODOMAINS: "enableit.dk,obmondo.com,blackwoodseven.com,vsen.dk,gnhearing.com,gn.com,gnresound.com,jabra.com,ks.kk.dk,kk.dk,ebillet.dk,kilroy.net,hobbii.dk,mindcore.dk,hbkworld.com,churchdesk.com"
+    MM_TEAMSETTINGS_RESTRICTCREATIONTODOMAINS: "enableit.dk,obmondo.com,blackwoodseven.com,vsen.dk,gnhearing.com,gn.com,gnresound.com,jabra.com,ks.kk.dk,kk.dk,ebillet.dk,kilroy.net,hobbii.dk,mindcore.dk,hbkworld.com,churchdesk.com,sdfi.dk"
     MM_TEAMSETTINGS_MAXUSERSPERTEAM: "500"
     MM_EMAILSETTINGS_SENDPUSHNOTIFICATIONS: "true"
     MM_EMAILSETTINGS_PUSHNOTIFICATIONSERVER: "https://push-test.mattermost.com"
