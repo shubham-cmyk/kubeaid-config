@@ -4,8 +4,5 @@ puppetserver:
     masters:
       fqdns:
         alternateServerNames: 7ejidqmfi9.puppet.obmondo.com
-    hiera:
-      hieradataurl: ssh://git@gitea.obmondo.com:2223/EnableIT/linuxaid-config-7ejidqmfi9.git
-      viaHttps:
-        credentials:
-          existingSecret: hiera-git-secret
+  hiera:
+    hieradataurl: https://gitea.obmondo.com/EnableIT/linuxaid-config-7ejidqmfi9.git

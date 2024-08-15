@@ -1,8 +1,16 @@
 puppetserver:
   storage:
-    storageClass: rook-ceph-block-inodes-highfilecount
+    storageClass: openebs-zfspv-shared
   puppetserver:
     puppeturl: "https://gitea.obmondo.com/EnableIT/puppet.git"
     persistence:
       code:
-        size: 5Gi
+        size: 8Gi
+  r10k:
+    hiera:
+      viaHttps:
+        credentials:
+          existingSecret: hiera-git-secret
+  hiera:
+    eyaml:
+      existingSecret: eyaml-keys

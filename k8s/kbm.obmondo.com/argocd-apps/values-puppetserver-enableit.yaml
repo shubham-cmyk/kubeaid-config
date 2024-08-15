@@ -1,11 +1,12 @@
 customerid: enableit
+ingressroutes:
+  mastersFor:
+    - ebillet
+    - c1mdewxeah
 puppetserver:
   puppetserver:
     masters:
       fqdns:
         alternateServerNames: enableit.puppet.obmondo.com
-    hiera:
-      hieradataurl: ssh://git@gitea.obmondo.com:2223/EnableIT/linuxaid-config-enableit.git
-      viaHttps:
-        credentials:
-          existingSecret: hiera-git-secret
+  hiera:
+    hieradataurl: https://gitea.obmondo.com/EnableIT/linuxaid-config-enableit.git
