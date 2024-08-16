@@ -7,7 +7,7 @@ puppetserver:
   puppetserver:
     masters:
       fqdns:
-        alternateServerNames: enableit.puppet.obmondo.com
+        alternateServerNames: enableit.puppet.obmondo.com, ebillet.puppet.obmondo.com, c1mdewxeah.puppet.obmondo.com
   r10k:
     hiera:
       extraRepository:
