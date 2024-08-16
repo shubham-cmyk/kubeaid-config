@@ -10,9 +10,11 @@ puppetserver:
         alternateServerNames: enableit.puppet.obmondo.com
   r10k:
     hiera:
-      defaultRepoExtraConf:
-        prefix: enableit
       extraRepository:
+        enableit:
+          remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-enableit.git
+          basedir: /etc/puppetlabs/code/hiera-data
+          prefix: true
         c1mdewxeah:
           remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-c1mdewxeah.git
           basedir: /etc/puppetlabs/code/hiera-data
