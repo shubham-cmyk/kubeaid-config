@@ -8,5 +8,21 @@ puppetserver:
     masters:
       fqdns:
         alternateServerNames: enableit.puppet.obmondo.com
+  r10k:
+    hiera:
+      extraRepository:
+        enableit:
+          remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-enableit.git
+          basedir: /etc/puppetlabs/code/hiera-data
+          prefix: true
+        c1mdewxeah:
+          remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-c1mdewxeah.git
+          basedir: /etc/puppetlabs/code/hiera-data
+          prefix: true
+        ebillet:
+          remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-ebillet.git
+          basedir: /etc/puppetlabs/code/hiera-data
+          prefix: true
+
   hiera:
     hieradataurl: https://gitea.obmondo.com/EnableIT/linuxaid-config-enableit.git

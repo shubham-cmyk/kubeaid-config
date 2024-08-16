@@ -4,5 +4,12 @@ puppetserver:
     masters:
       fqdns:
         alternateServerNames: 7ejidqmfi9.puppet.obmondo.com
+  r10k:
+    hiera:
+      extraRepository:
+        7ejidqmfi9:
+          remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-7ejidqmfi9.git
+          basedir: /etc/puppetlabs/code/hiera-data
+          prefix: true
   hiera:
     hieradataurl: https://gitea.obmondo.com/EnableIT/linuxaid-config-7ejidqmfi9.git
