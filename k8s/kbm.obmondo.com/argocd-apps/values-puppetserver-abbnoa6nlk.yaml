@@ -4,5 +4,9 @@ puppetserver:
     masters:
       fqdns:
         alternateServerNames: abbnoa6nlk.puppet.obmondo.com
+  r10k:
+    hiera:
+      defaultRepoExtraConf:
+        prefix: abbnoa6nlk
   hiera:
     hieradataurl: https://gitea.obmondo.com/EnableIT/linuxaid-config-abbnoa6nlk.git
