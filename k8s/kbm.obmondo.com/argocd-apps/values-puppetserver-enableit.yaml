@@ -1,13 +1,9 @@
 customerid: enableit
-ingressroutes:
-  mastersFor:
-    - ebillet
-    - c1mdewxeah
 puppetserver:
   puppetserver:
     masters:
       fqdns:
-        alternateServerNames: enableit.puppet.obmondo.com, ebillet.puppet.obmondo.com, c1mdewxeah.puppet.obmondo.com
+        alternateServerNames: enableit.puppet.obmondo.com
   r10k:
     hiera:
       extraRepository:
