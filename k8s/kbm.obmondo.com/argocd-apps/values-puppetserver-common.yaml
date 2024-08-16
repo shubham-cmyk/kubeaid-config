@@ -8,6 +8,8 @@ puppetserver:
         size: 8Gi
   r10k:
     hiera:
+      cronJob:
+        schedule: "*/2 * * * *"
       viaHttps:
         credentials:
           existingSecret: hiera-git-secret
