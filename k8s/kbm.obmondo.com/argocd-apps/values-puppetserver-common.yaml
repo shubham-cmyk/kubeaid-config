@@ -6,8 +6,16 @@ puppetserver:
       PUPPETSERVER_ENC_PATH: /etc/puppetlabs/code/environments/master/puppet_enc.rb
   storage:
     storageClass: openebs-zfspv-shared
+  puppetboard:
+    image: ghcr.io/voxpupuli/puppetboard
+    tag: 5.4.0
+  puppetdb:
+    image: ghcr.io/voxpupuli/container-puppetdb
+    tag: 7.18.0-v1.5.0
   puppetserver:
     puppeturl: "https://gitea.obmondo.com/EnableIT/puppet.git"
+    image: ghcr.io/voxpupuli/container-puppetserver
+    tag: 7.17.0-v1.5.0
     customentrypoints:
       enabled: true
       configmaps:
