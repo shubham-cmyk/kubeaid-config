@@ -35,8 +35,8 @@ api:
   goApiUrl: '"http://localhost:8080/api/"'
   config:
     startSchedular: true
-    addDevPrefixes: false
-    allowTestData: false
+    addDevPrefixes: true
+    allowTestData: true
   puppetdb:
     url: "http://puppet.enableit.dk:58080"
   puppetserver:
