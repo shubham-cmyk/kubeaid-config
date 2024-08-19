@@ -1,6 +1,6 @@
 matomo:
-  matomoUsername: klavs
-  matomoEmail: klavs@obmondo.com
+  matomoUsername: admin
+  matomoEmail: info@obmondo.com
   mariadb:
     enabled: false
   externalDatabase:
