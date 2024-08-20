@@ -50,6 +50,9 @@ spec:
             - "namespace =~ testing|obmondo-ci|obmondo-gitea-ci"
           - receiver: 'null'
             matchers:
+            - "exported_namespace =~ testing|obmondo-ci|obmondo-gitea-ci"
+          - receiver: 'null'
+            matchers:
             - "alertname = InfoInhibitor"
           - receiver: obmondo
             continue: true
