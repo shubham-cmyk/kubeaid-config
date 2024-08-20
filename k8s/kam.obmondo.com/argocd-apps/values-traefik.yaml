@@ -19,6 +19,9 @@ traefik:
         clientAuthType: VerifyClientCertIfGiven
         secretNames:
           - puppetca-cert
+          - enableit-puppetca-cert
+          - 7ejidqmfi9-puppetca-cert
+          - abbnoa6nlk-puppetca-cert
     prometheus-puppet-agent-tls-auth:
       maxVersion: VersionTLS13
       minVersion: VersionTLS12
@@ -26,6 +29,9 @@ traefik:
         clientAuthType: RequireAndVerifyClientCert
         secretNames:
           - puppetca-cert
+          - enableit-puppetca-cert
+          - 7ejidqmfi9-puppetca-cert
+          - abbnoa6nlk-puppetca-cert
   service:
     type: NodePort
     externalIPs:
