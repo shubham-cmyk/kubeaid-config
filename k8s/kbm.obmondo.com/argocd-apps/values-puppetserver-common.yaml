@@ -1,8 +1,11 @@
+# NOTE: This is a common values for all the Obmondo customers
+# if you dont want these default, you can override in customer specific values file
 puppetserver:
   global:
     extraEnv:
       AUTOSIGN: /etc/puppetlabs/code/environments/master/puppet_autosign.rb
       PUPPET_REPORTS: puppetdb
+      PUPPETSERVER_ENVIRONMENT_TIMEOUT: 0
       PUPPETSERVER_ENC_PATH: /etc/puppetlabs/code/environments/master/puppet_enc.rb
   storage:
     storageClass: openebs-zfspv-shared
