@@ -13,3 +13,14 @@ puppetserver:
           prefix: true
   hiera:
     hieradataurl: https://gitea.obmondo.com/EnableIT/linuxaid-config-7ejidqmfi9.git
+
+postgresql:
+  instance: 1
+  size: 2Gi
+  recover: false
+  resources:
+    limits:
+      memory: 400Mi
+    requests:
+      memory: 400Mi
+      cpu: 150m
