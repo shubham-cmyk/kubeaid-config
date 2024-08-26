@@ -1,6 +1,6 @@
 opsmondo:
   image:
-    tag: v0.18.8
+    tag: v0.18.9
 
   config:
     alerts:
