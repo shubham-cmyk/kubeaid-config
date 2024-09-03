@@ -54,7 +54,7 @@ image:
   pullPolicy: Always
 api:
   email:
-    overview: ["klavs.klavsen@enableit.dk"]
+    overview: '["klavs.klavsen@enableit.dk"]'
   website: https://obmondo.com
   domain: api.obmondo.com
   goApiUrl: '"http://localhost:8080/api/"'
