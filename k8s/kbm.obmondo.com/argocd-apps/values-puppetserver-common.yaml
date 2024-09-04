@@ -16,7 +16,7 @@ puppetserver:
     image: ghcr.io/voxpupuli/container-puppetdb
     tag: 7.18.0-v1.5.0
   puppetserver:
-    puppeturl: "https://gitea.obmondo.com/EnableIT/puppet.git"
+    puppeturl: "https://gitea.obmondo.com/EnableIT/LinuxAid.git"
     image: ghcr.io/voxpupuli/container-puppetserver
     tag: 7.17.0-v1.5.0
     customentrypoints:
