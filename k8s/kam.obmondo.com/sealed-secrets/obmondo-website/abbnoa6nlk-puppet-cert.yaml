@@ -15,4 +15,3 @@ spec:
       name: abbnoa6nlk-puppet-cert
       namespace: obmondo-website
     type: kubernetes.io/tls
-

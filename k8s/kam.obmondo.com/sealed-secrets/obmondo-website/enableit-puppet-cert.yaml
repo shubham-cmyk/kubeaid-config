@@ -15,4 +15,3 @@ spec:
       name: enableit-puppet-cert
       namespace: obmondo-website
     type: kubernetes.io/tls
-
