@@ -5,7 +5,7 @@ global:
   clusterName: kcm
   customerid: enableit
   kubernetes:
-    version: v1.29.3
+    version: v1.30.4
   kubeaid:
     repo: https://github.com/Obmondo/kubeaid.git
   kubeaidConfig:
