@@ -9,21 +9,21 @@ argo-cd:
   configs:
     secret:
       createSecret: false     # managed by sealed-secrets now
-  server:
-    rbacConfig:
+    params:
+      server.insecure: true
+    rbac:
       policy.csv: |
         g, ArgoCDAdmins, role:admin
         g, ArgoCDDevs, role:readonly
-    extraArgs:
-      - --insecure
-    config:
-      url: https://argocd.kam.obmondo.com
+      scopes: '[groups, email]'
+    cm:
       oidc.config: |
         name: Keycloak
         issuer: https://keycloak.obmondo.com/auth/realms/Obmondo
         clientID: argocd
         clientSecret: $oidc.keycloak.clientSecret
         requestedScopes: ["openid", "profile", "email", "groups"]
+  server:
     ingress:
       enabled: true
       annotations:
@@ -35,3 +35,5 @@ argo-cd:
       - secretName: argocd-ssl
         hosts:
         - argocd.kam.obmondo.com
+  global:
+    domain: argocd.kam.obmondo.com
