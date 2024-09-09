@@ -16,7 +16,7 @@ puppetserver:
 
 postgresql:
   instance: 1
-  size: 2Gi
+  size: 3Gi
   recover: false
   resources:
     limits:
