@@ -16,11 +16,11 @@ puppetserver:
 
 postgresql:
   instance: 1
-  size: 2Gi
+  size: 3Gi
   recover: false
   resources:
     limits:
-      memory: 600Mi
+      memory: 800Mi
     requests:
-      memory: 500Mi
+      memory: 600Mi
       cpu: 200m
