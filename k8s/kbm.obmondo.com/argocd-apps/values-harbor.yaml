@@ -17,3 +17,6 @@ harbor:
         size: 250Gi
       database:
         size: 2.5Gi
+      jobservice:
+        jobLog:
+          size: 2Gi
