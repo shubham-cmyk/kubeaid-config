@@ -1,24 +1,18 @@
-{
-  "kind": "SealedSecret",
-  "apiVersion": "bitnami.com/v1alpha1",
-  "metadata": {
-    "name": "api-tokens",
-    "namespace": "obmondo-website",
-    "creationTimestamp": null
-  },
-  "spec": {
-    "template": {
-      "metadata": {
-        "name": "api-tokens",
-        "namespace": "obmondo-website",
-        "creationTimestamp": null
-      },
-      "data": null
-    },
-    "encryptedData": {
-      "chat": "AgCh/MRhzvuxWREWoEuIN2edrAXaNqztqatGPc2fDKvefI5PhAdiP8Kg7/0et/By0qEEdH+oa3p8fJ/fNeWbhpaM8vGGhkBAZFpcfbAK+OBLJjmboI2afBBI3X/K7AGA3WE+XfJmWEwZg04q7xIJ4o4uhAn10jooEM8H7TOu4TR2u8FFEWL6DY1cjebsQM4d9zuCUJCMb+9Gp62iCQ1cmqrTdporVc1RFih+epwEurE3uqqN6BSXVbQRogFnRu1H4Wx54PG2J09Y/dRpbkZ7CiKdEm2oJrDIixGsw55+m71/GnUD927EYHR+8WighPrOYwLGPZ2XAK3ByfNR2Rr0hSodNFnfPUD5w0R1utYkX9t4To5xdh8oqf4XSzYTceViLbNZcMwCdehPvq/gpeF7N4ryHoTUV/nQfWz29slEMPMqn2i744vsS/rm8wBCtLPwrJLtZWRO3XRdIPhFO3z79JRHIRAnYTgOEJ/CgJdHm6q00ZExDWQ6XRoFuHtKQIhLgDtsibedr5KB53JOJ942XjikjsF5rf2R9+s3Kv3jM4PamFnxlw3teBm7LojsowDQToh2o5iVTOXyQ9TopwcPPK7CuUiKpRH27sXtd/eFy/h221tzP3afZJn94Kabg+efpCgCvUKgNWPN49fqoH+GM/qNNNm81POc+o/AXMg1lrP5N2PViX532287xKg4TioysVSUlKX5fTCreyFX1ZkSeSi/aN3z1wZ54K+17w==",
-      "gitea": "AgBsORg8DL2L6Zk+NizIM5iZv7ayeFbKgaOFV5pnSCPV59zItBDa3EvExcnQOvgp41nwF6NKWkX1AdLyHpD8nzY/ZQwah25F55gwTy6aWGzcv5UFv8GR8cTN8pllO3+GLu3dHzu70jshmhqONQtu7IN01+Q0rPJNDi7HT+8aj56eHM7ZYZMly9Il5iEjf0z+0jwgpnvL3rqwrKFOwwGAj3yJBGLiQmNVmcX274oz5KpzJ81PgDGAunJFFyT/LNY0X9zNqqKgAAEXXVyjnRn2sWVfJVxVsk5QiS3xUqPcASU52WZgqcDSPxEsEtftQeFmdY1avkdKHzsQS87HWScExypsabzQkJk1F8gBHs2mVxSMf2mRv9jmw5mKywA2+n09hqRO/wXGkI8qhBZvJRbtdRCh+ChsjEhYz7VfBQNzc15zy0B+ea4fyWYY3R4ByZySotaCE7JDLrTeKvaRNYIFCya08UKcPYOJul6/lp8y6R31W0wbiq9Ti78Vqc3ATQMxeHnaFKf6n3nCJUdCRepDIFZL88wOCuLqIAdR3NjLREA41vkeJZGCz7HjOW0HCyMIxi6gYIDvVRV9R6KXKXRVYEaHMkH1fLo/z671xz+oe9l+prYCVvWaIreclOeSa7UG+K2jtczj9B3QoRCZ3QasrKamIEnXMy3T/7WnjTIK3mqw1ijcYJw8HfnEoDFYJHxQ7JcPF5n0v0qlk7ZrwoN1udLkrUbs9u13ozFIa44+rTGhmGH9jpN1fOyF",
-      "mattermost": "AgBdkPft/xnJPO5CHXIDkvqBFR/ai7x1ZtFG4agNuFTLGI/HXE1pzNo+al4FSATK6tA96mh5VCPbhkeZgNn9g2YidrFnEwXIH09BF93vVJFJ+gk4Ji585FSNrhvn8tJMhQ6FucCseN82w0DzQOSJNn5wU+DYX3nGfDhLUeSjvsBg+f8bgPU+fn12bq5jQUiHkyW2DrrlSSsKKJ2pQNzTuEqmFYnqeDMjwZlS+Lhs6HcERgfgyTC+Mi+9/ZQJtSJoCpLn7SOpcidIBbX0Fd9bJZHigKg58Gywd6K2XBOrZSkI+KnuRb2vUWD5iW57/FYFrqEwgIccUwcewl21g0X+Mrv/WqOF7aNQSE9yoAO0iTDylFkfj9C51Xluv7jbFupoAaADiWB4ucqS972w8aPrL264LaWICEH6jAhOI4WM6J1mzkJJCr+D7qrkCOZ5bq5pVjF+ClJqwGI5yRTdDKdRH8dgj+zpXNULR/GCHqHvLEEi3e33kptPkLUQCh8nSbiLRW8CqXrQAlEim1Q43T/7C8k/dR/YVZDsB18Fxj4R+RqOxujTxMp0KLYEbIZJerwvAEXEm+HoGrJEQZNmcJKLzH9fdTWi29Dqgu7776FP4m9knGbzh3GBxkBCW0C2NoZYtxfdKP09E2D0iWnMSqBnryoAnfTkfBYJ3VTyZcyINOqOmVKPkwc9pluP+deZe1uqUyaqfG2l078r0BvX2LbwE9XyH/HNHz8VjyxMSg=="
-    }
-  }
-}
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: api-tokens
+  namespace: obmondo-website
+spec:
+  encryptedData:
+    chat: AgAHHyJ2t8EUoJv/DIIV9ozza5UFeH2f9uEBoyduQb2oO3Df/CTBbTadEs7x7ZjZRa7CvZi9d1DRpZrBoEXQQWwhsJ3IHo+LFHUxicJnYnRc9Y4vYOfl+5T61L2sJIIC+X6+aQxT9mD685c/sAPyhcnp6S+9gMRzqYrAcJ2i9JZIqrzsRZ92N2NMVnt5oBxDL86q7Nf/13MLsqsa33z51l+dvii7i5pw8OK7DGMH7TzIalEon2Fa3aXfYeSR5xVor265NSa9HcNfMXwZMAj9KHgKT36rjEUQk0Ld5FW9+sUZrhl5tiXB8+WG9gQsGqjxp2h6Rt+yqhFySvt1eV5Oq97Jq8m8An2ex3B6KXeDIwkFX0UgFgmY4raRJoKz52Go0O1U4+XlL9Bv+uuSUWIfubElSji6XnkWaVLYrd4qwyUxgNAhjSQnsBp5tsegkgvwAWw6JHfiwVPtq2pZ/LGZeJXIq6qqvRXAhRDPD2K453jDz+LEn9f9WN1B6isUkdaIIjdekGk3wO5JBtY25d5XbYmtVKid5zvVTKSu3Y3JALqYGAAMR7DUKUMz0RDQl2LcjKJC1TDA7RRKptpLvDC8KGD2IVvp8J2CLI4DqK9xpinmvXHv8gngME/fkSzpbRtnJeLyR3/mDATLlhtjMA76un09UWQNwJFqGLNVJc9hSUiWdHadjs+CqL34pZOuFzIqMuuV1GrHKtU0OZvMRNZ67msnOWdn9SUCDq2CkQ==
+    gitea: AgClfMk00DnFgj5iGlClHMpP0SpIi9r7zqnljDn0yI8CtPUPW6mZfYI+Y7WYBkS57Boin2flKcQXuTf9d9v0W+kYwpz+rH5GbjlQvc/ioenAOk/Mdamt1eKWTpohUnmbUdyjEp3xUlNS/qlhRzgxOfDWHsBv8MyFmgs2HcQb1d1RNAkOwDmVyZNwwP3osNAUmgBg8plihMj9Uyc6lPeyIEJ6aKq792ZP2Ym+Q8nr4a/ffz2U05SRJU/mRgzi+mJJUFe6Zo4SxJA/jhMWzWCIAZPRk2/lTnwOIWrXBmk+qeIFQ6BipwBLRe3acVIrNDpx7iSaQTMyJFKC0jpLi/uwjNkE2G3EKNP8Vnqhe/WgO4PcnaUuRSJu9VD1Dlpyb1kSbq9lsrvfzuFUdDYD3ReoF7QFf+G3R/ouT/uSFqfDIgK1baw5NFkIu99HLnh1VnFYTTqRCXFu9TGU34tK/dyAuqDpvmihTS1o/7RjTEm0f0QESi9sDdfvdLWnv0lfDnzNE2CBI31kbX5wM15ztQ3I7OncP1Gu8OxFtK4hp+jKQBi02hVQteHW+LHRFOBcrDVa/Z0HqVBQUYLYYygRIMZly6KP7GBC5TPxTrlEh29AWbrt8iVHdgCmwZRvKvcaUCc3aT+KNsuuiORwF5IGppyuOtqDyTVI4UzFDFYrasLxW6bfRJtLhLYeW0SyDWGxuu7vfxu/wyTr18ERPM5PoJjFIKVWbO8OTK7kRTWIXN5CFkmpqbS1+Ny9lVgG
+    mattermost: AgBHr2K2H5HgnHzksVYRJ6gwAl5tR06eYR5sWGHwzV7/H95dtd1c2ZooldUlWy179vFJsOPZgiBjYZx7sKveoye5fqMBUGCiX1dUoPpSBia+5sqThqsSbt9edMvyv/uPSOf7ozUjx6pW9C99k87snRvkHkQkd0q/MySl9NWr5lXubxdzBi+mUqgkcJru/Wh4xKx4kv+scOVfq1TgFrOVGcfF8PFUMwQ8/XMErHnCyhJ21PgJ+SMS0pqe7hmzlC7CmqWRmKf1fngi9bTm3YCsiTX4FdUZTPQjl/aKYU1+1I78Rxy0puB3eQEM1/888GeIFmkOdVaET1l2KOa3x1kYqdOTt60k1KzbTknTaDrp5OIOLhYL8XZ9Im7eRxUVkocmCUUlH/V1n33QzV6Ddw2ZuO+pm1TdfLy7oIrAToZ6mpZeqDeJ23qwDV3Q+ZRwuIiG/bqlWMNFfaQHmCZfyhxncfisnIxa2123GN7lLH13ggD5jMafi6ZxZlxfzgTY3+UMkz8MDdjgqOaez+OYWt9+tJMkxlqIDrfBHEH2mjAMVEt3eONCil6BQFCBOe6VwOwgGvrbZ58xtP6ANNF5tQq7rOKn6bSr8T5tgAPYRyIsaSW4QDAyGuvyJrINvqpDQXmncOVrwopVQYPfXdZ/MkE/AgMNI5RjS7j2XnHmYwEHyqjQPV6T7/Bbtjk/yPNcxisjFbya2Nt8FREc8Bapwpb9dJMd7NP7yweDMNzzrg==
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: api-tokens
+      namespace: obmondo-website
+
