@@ -15,4 +15,3 @@ spec:
       creationTimestamp: null
       name: api-tokens
       namespace: obmondo-website
-
