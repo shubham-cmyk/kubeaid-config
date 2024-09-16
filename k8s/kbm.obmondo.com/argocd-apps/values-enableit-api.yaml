@@ -79,10 +79,20 @@ ci:
   enabled: false
 pgdump:
   enabled: true
+
+# API ports guide for ingress
+# This section defines the servicePort used by different language APIs in our environments.
+# - Port 8080: Used by Go API
+# - Port 8088: Used by Clojure API
+# - Port 8100: Used by Webtee
+# KBM uses the Go API by default
 ingress:
   hosts:
     - host: api-beta.obmondo.com
       paths:
+        - path: /api/servers/ping-and-get-noop
+          pathType: Prefix
+          servicePort: 8080
         - path: /api/servers/tags
           pathType: Prefix
           servicePort: 8088
