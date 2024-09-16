@@ -19,3 +19,8 @@ cert-manager:
       requests:
         cpu: 1m
         memory: 128Mi
+
+wildcardCertificates:
+  enabled: true
+  domains:
+    - "*.kbm.obmondo.com"
