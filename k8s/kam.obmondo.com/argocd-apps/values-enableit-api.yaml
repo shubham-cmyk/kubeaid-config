@@ -106,6 +106,12 @@ ci:
 pgdump:
   enabled: false
 
+# API ports guide for ingress
+# This section defines the servicePort used by different language APIs in our environments.
+# - Port 8080: Used by Go API
+# - Port 8088: Used by Clojure API
+# - Port 8100: Used by Webtee
+# KAM uses the Clojure API by default
 ingress:
   hosts:
     - host: api.obmondo.com
@@ -135,6 +141,9 @@ ingress:
           pathType: Prefix
           servicePort: 8080
         - path: /api/invoice/
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/servers/ping-and-get-noop
           pathType: Prefix
           servicePort: 8080
         - path: /api/servers/tags
