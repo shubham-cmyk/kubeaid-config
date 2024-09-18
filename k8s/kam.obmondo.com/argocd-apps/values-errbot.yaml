@@ -4,8 +4,6 @@ imagePullSecrets:
 initContainerCmd: "chown -R 1000:1000 /home/errbot/data"
 
 image:
-  repository: harbor.obmondo.com/obmondo/errbot
-  pullPolicy: Always
   tag: "v6.2.0"
 
 additionalLabels:
@@ -33,3 +31,6 @@ env:
     # only bot admins are allowed to change bot configuration
   - name: BOT_ADMINS
     value: "@klavs,@ajaiswal,@aman0,@megh,@faizan,@hritik,@bhavishya"
+
+serviceMonitor:
+  enabled: true
