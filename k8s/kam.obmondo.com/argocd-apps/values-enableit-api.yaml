@@ -83,7 +83,7 @@ api:
     image:
       repository: harbor.obmondo.com/obmondo/enableit-go-api
       pullPolicy: Always
-      tag: v0.0.73
+      tag: v0.0.74
   server:
     internal_ips_for_readonly_auth: "172.20.0.0/16"
   redis:
@@ -141,9 +141,6 @@ ingress:
           pathType: Prefix
           servicePort: 8080
         - path: /api/invoice/
-          pathType: Prefix
-          servicePort: 8080
-        - path: /api/servers/ping-and-get-noop
           pathType: Prefix
           servicePort: 8080
         - path: /api/servers/tags
