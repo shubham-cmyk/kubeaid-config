@@ -32,6 +32,7 @@ argo-cd:
         g, kanha@obmondo.com, role:admin
         g, mdasif@obmondo.com, role:admin
         g, vitamax@obmondo.com, role:admin
+        g, mayank@obmondo.com, role:admin
       scopes: '[groups, email]'
     cm:
       oidc.config: |
