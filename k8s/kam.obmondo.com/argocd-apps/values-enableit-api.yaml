@@ -55,6 +55,7 @@ image:
   pullPolicy: Always
 api:
   email:
+    info: info@obmondo.com
     overview: '["klavs.klavsen@enableit.dk"]'
   website: https://obmondo.com
   domain: api.obmondo.com
