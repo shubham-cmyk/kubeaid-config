@@ -25,6 +25,7 @@ approvers:
   - "klavs@obmondo.com"
   - "ashish@obmondo.com"
   - "aman@obmondo.com"
+  - "faizan@obmondo.com"
 internalIpRanges:
   - 172.20.0.0/16
 trustedProxies:
