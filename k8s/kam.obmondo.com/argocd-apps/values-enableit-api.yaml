@@ -36,7 +36,6 @@ approvers:
   - "klavs@obmondo.com"
   - "ashish@obmondo.com"
   - "aman@obmondo.com"
-  - "faizan@obmondo.com"
 internalIpRanges:
   - "135.181.21.167"   # kbm01
   - "135.181.21.154"   # kbm02
