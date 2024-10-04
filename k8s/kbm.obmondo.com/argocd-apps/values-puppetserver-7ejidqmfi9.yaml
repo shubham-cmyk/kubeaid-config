@@ -13,6 +13,9 @@ puppetserver:
           prefix: true
   hiera:
     hieradataurl: https://gitea.obmondo.com/EnableIT/linuxaid-config-7ejidqmfi9.git
+  puppetdb:
+    persistence:
+      size: 1Gi
 
 postgresql:
   instance: 1
