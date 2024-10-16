@@ -10,6 +10,9 @@ issuer:
       dnsNames:
         - obmondo.com
     - type: http
+      http01:
+        ingress:
+          ingressClassName: trafeik-cert-manager
 
 cert-manager:
   cainjector:
