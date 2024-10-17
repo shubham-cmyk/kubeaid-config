@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: finance-api
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: finance
+  project: default
+  sources:
+    - repoURL: https://gitea.obmondo.com/EnableIT/finance-api.git
+      path: helm/finance-api
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+          - $values/k8s/kam.obmondo.com/argocd-apps/values-finance-api.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
+      targetRevision: HEAD
+      ref: values
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
