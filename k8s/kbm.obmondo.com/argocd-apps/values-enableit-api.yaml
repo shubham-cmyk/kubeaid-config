@@ -185,6 +185,9 @@ ingress:
         - path: /api/invoice-data
           pathType: Prefix
           servicePort: 8088
+        - path: /api/webhook/gitea
+          pathType: Prefix
+          servicePort: 8080
         - path: /
           pathType: ImplementationSpecific
           servicePort: 8080
