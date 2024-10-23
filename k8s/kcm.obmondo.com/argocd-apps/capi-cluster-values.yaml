@@ -1,0 +1,47 @@
+global:
+  clusterName: kcm.obmondo.com
+  kubernetes:
+    version: 1.30.4
+  clusterAPI:
+    version: v1.8.1
+  capa:
+    version: v2.6.1
+    autoScaler: true
+  kubeaid:
+    repo: git@github.com:Obmondo/kubeaid.git
+  kubeaidConfig:
+    repo: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
+
+provider:
+  
+  hetzner: true
+hetzner:
+  robot: true
+  pods:
+    cidrBlock: 10.244.0.0/16
+  controlPlaneEndpoint:
+    host: 65.108.24.157
+    port: 6443
+  controlPlaneLoadBalancer:
+    enabled: false
+  controlPlaneRegions:
+    - hel1
+  nodes:
+  1866472:
+    name: htzhel1-ax41d.enableit.dk
+    maintenanceMode: false
+    wwn:
+      - 0x50000397cb700acd
+      - 0x500003981be00179
+  1866482:
+    name: htzhel1-ax41e.enableit.dk
+    maintenanceMode: false
+    wwn:
+      - 0x5000cca25ed86494
+      - 0x5000cca25ecf496b
+  1866484:
+    name: htzhel1-ax41f.enableit.dk
+    maintenanceMode: false
+    wwn:
+      - 0x50014ee2097c6ca4
+      - 0x50014ee2097c9304

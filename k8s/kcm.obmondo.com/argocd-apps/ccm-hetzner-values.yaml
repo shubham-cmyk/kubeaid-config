@@ -1,0 +1,5 @@
+---
+secret:
+  name: capi-cluster-hetzner
+  privateNetwork:
+    enabled: false
