@@ -21,7 +21,7 @@
     requests: { cpu: '10m', memory: '30Mi' },
   },
   alertmanager_resources+: {
-    limits: { memory: '50Mi' },
+    limits: { memory: '100Mi' },
     requests: { cpu: '10m', memory: '20Mi' },
   },
   prometheus_resources+: {
