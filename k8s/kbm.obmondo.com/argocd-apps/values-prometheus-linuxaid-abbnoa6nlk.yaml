@@ -1,1 +1,4 @@
 customerid: abbnoa6nlk
+prometheus:
+  storage:
+    size: 60Gi
