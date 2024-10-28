@@ -1,7 +1,4 @@
 opsmondo:
-  image:
-    tag: v0.18.15
-
   config:
     alerts:
       low_priority_alerts:
