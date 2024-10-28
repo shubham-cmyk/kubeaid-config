@@ -15,4 +15,3 @@ spec:
       creationTimestamp: null
       name: capi-cluster-hetzner
       namespace: capi-cluster
-

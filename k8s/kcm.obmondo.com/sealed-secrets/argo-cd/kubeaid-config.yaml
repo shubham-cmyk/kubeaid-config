@@ -19,4 +19,3 @@ spec:
         argocd.argoproj.io/secret-type: repository
       name: kubeaid-config
       namespace: argo-cd
-
