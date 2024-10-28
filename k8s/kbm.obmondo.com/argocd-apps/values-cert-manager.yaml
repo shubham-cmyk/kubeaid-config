@@ -6,13 +6,16 @@ issuer:
   solvers:
     - type: dns
       cloudProvider: cloudflare
-      cloudProviderSecret: cloudflare-api-token-secret
+      cloudProviderSecretRef:
+        name: cloudflare-api-token-secret
+        key: api-token
       dnsNames:
         - obmondo.com
+        - "*.kbm.obmondo.com"
     - type: http
       http01:
         ingress:
-          ingressClassName: trafeik-cert-manager
+          ingressClassName: traefik-cert-manager
 
 cert-manager:
   cainjector:
