@@ -9,7 +9,9 @@ ignore: |-2
 
 rules:
   line-length: disable
-  document-start: false
+  document-start: disable
+  empty-lines:
+    max-end: 1
   indentation: false
   comments:
     ignore: |-2
