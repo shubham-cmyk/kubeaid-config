@@ -22,7 +22,6 @@ ingress:
       hosts:
         - beta.kube-aid.io
         - beta.kubeaid.io
-        - beta.k8id.io
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     kubernetes.io/ingress.class: traefik-cert-manager
