@@ -259,11 +259,6 @@ spec:
       record: kubeaidManagedApps
     - expr: 0
       labels:
-        name: redmine
-        project: default
-      record: kubeaidManagedApps
-    - expr: 0
-      labels:
         name: relate
         project: default
       record: kubeaidManagedApps
@@ -324,17 +319,17 @@ spec:
       record: kubeaidManagedApps
     - expr: 0
       labels:
+        name: traefik-forward-auth-rbac
+        project: default
+      record: kubeaidManagedApps
+    - expr: 0
+      labels:
         name: velero
         project: default
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: whoami
-        project: default
-      record: kubeaidManagedApps
-    - expr: 0
-      labels:
-        name: yetibot
         project: default
       record: kubeaidManagedApps
     - expr: 0
