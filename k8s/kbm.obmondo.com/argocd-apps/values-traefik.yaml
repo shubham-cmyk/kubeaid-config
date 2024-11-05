@@ -79,5 +79,6 @@ middleware:
 
 wildcardCertificates:
   enabled: true
+  issuer: letsencrypt
   domains:
     - "*.kbm.obmondo.com"
