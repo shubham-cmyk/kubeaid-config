@@ -9,7 +9,10 @@ traefik:
   logs:
     general:
       level: INFO
-  # https://doc.traefik.io/traefik/https/tls/#tls-options
+  tlsStore:
+    default:
+      defaultCertificate:
+        secretName: kbm-obmondo-com
   tlsOptions:
     api-puppet-agent-tls-auth:
       maxVersion: VersionTLS13
