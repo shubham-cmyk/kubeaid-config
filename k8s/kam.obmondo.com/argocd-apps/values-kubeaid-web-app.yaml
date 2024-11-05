@@ -6,11 +6,11 @@ image:
 middleware: true
 ingress:
   hosts:
-    - host: k8id.io
+    - host: www.kubeaid.io
       paths:
         - path: /
           pathType: ImplementationSpecific
-    - host: www.k8id.io
+    - host: www.kube-aid.io
       paths:
         - path: /
           pathType: ImplementationSpecific
@@ -25,8 +25,8 @@ ingress:
   tls:
     - secretName: k8id-io-tls
       hosts:
-        - k8id.io
-        - www.k8id.io
+        - www.kubeaid.io
+        - www.kube-aid.io
         - kubeaid.io
         - kube-aid.io
   annotations:
