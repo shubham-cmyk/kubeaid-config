@@ -76,3 +76,8 @@ middleware:
       EQn+uJRX/KpfHWHIdIJQEe2dm4a9pc3/Uue/eFS5Bzb3fYyUgNrG+JN0Ki5ATFTy
       DwIDAQAB
       -----END PUBLIC KEY-----
+
+wildcardCertificates:
+  enabled: true
+  domains:
+    - "*.kbm.obmondo.com"
