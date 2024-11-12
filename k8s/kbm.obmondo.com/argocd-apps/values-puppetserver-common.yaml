@@ -33,9 +33,17 @@ puppetserver:
             puppet config set node_terminus "exec" --section server
           fi
 
-          puppet config set reports "puppetdb,prometheus" --section master
+          puppet config set reports "puppetdb,prometheus" --section server
           puppetserver gem install fugit -v 1.9.0
           puppetserver gem install tzinfo-data
+
+          cat <<EOL >> "/etc/puppetlabs/puppet/prometheus.yaml"
+          ---
+          textfile_directory: /var/lib/prometheus-dropzone
+          environments:
+            - production
+          stale_time: 5
+          EOL
     persistence:
       code:
         size: 8Gi
