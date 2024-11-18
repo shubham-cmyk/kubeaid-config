@@ -41,8 +41,8 @@ puppetserver:
           ---
           textfile_directory: /etc/puppetlabs/code/prometheus-dropzone
           environments:
-            - production
-          stale_time: 5
+            - master
+          stale_time: 30
           EOL
 
           mkdir -p /etc/puppetlabs/code/prometheus-dropzone
