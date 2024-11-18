@@ -195,3 +195,5 @@ extraEnv:
     value: http://puppet.enableit.dk:58080
   - name: PUPPET_TIMEOUT
     value: 30
+  - name: DELETION_OF_TAG_BASED_WINDOWS_ALLOWED
+    value: true
