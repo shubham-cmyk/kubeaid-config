@@ -42,9 +42,6 @@
     'monitoring',
     'obmondo',
     'zfs-localpv',
-    'puppetserver-enableit',
-    'puppetserver-7ejidqmfi9',
-    'puppetserver-abbnoa6nlk',
   ],
   prometheus+: {
     storage: {
