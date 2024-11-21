@@ -22,3 +22,4 @@ spec:
     automated: null
     syncOptions:
       - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true
