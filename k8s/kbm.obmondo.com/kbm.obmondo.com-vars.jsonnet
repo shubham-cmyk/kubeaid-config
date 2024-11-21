@@ -15,6 +15,7 @@
     velero: true,
     rabbitmq: true,
     monitoring: true,
+    smartmon: true
   },
   prometheus_operator_resources+: {
     limits: { memory: '120Mi' },

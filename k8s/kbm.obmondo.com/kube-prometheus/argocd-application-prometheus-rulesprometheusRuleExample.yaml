@@ -337,3 +337,8 @@ spec:
         name: zfs-localpv
         project: default
       record: kubeaidManagedApps
+    - expr: 0
+      labels:
+        name: smartmon
+        project: default
+      record: kubeaidManagedApps
