@@ -15,7 +15,7 @@ spec:
         valueFiles:
           - $values/k8s/kbm.obmondo.com/argocd-apps/values-opsmondo-gitea-staging.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
-      targetRevision: HEAD
+      targetRevision: add/opsmondo-and-gitea-for-staging
       ref: values
   project: default
   syncPolicy:
