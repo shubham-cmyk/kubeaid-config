@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: opsmondo
+  name: opsmondo-staging
   namespace: argocd
 spec:
   destination:
-    namespace: monitoring
+    namespace: monitoring-staging
     server: 'https://kubernetes.default.svc'
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/opsmondo.git
@@ -13,7 +13,7 @@ spec:
       targetRevision: HEAD
       helm:
         valueFiles:
-          - $values/k8s/kbm.obmondo.com/argocd-apps/values-opsmondo.yaml
+          - $values/k8s/kbm.obmondo.com/argocd-apps/values-go-opsmondo-staging.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
