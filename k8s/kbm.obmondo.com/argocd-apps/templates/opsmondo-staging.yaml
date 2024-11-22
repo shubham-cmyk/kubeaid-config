@@ -9,14 +9,17 @@ spec:
     server: 'https://kubernetes.default.svc'
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/opsmondo.git
-      path: helm/opsmondo
       targetRevision: HEAD
+      path: helm/opsmondo
       helm:
         valueFiles:
-          - $values/k8s/kbm.obmondo.com/argocd-apps/values-opsmondo-staging.yaml
+          - values.staging.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
       targetRevision: add/opsmondo-and-gitea-for-staging
-      ref: values
+      path: k8s/kbm.obmondo.com/argocd-apps
+      helm:
+        valueFiles:
+          - values-opsmondo-staging.yaml
   project: default
   syncPolicy:
     automated: null
