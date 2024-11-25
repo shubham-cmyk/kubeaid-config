@@ -6,7 +6,7 @@ metadata:
 spec:
   sources:
   - repoURL: https://gitea.obmondo.com/EnableIT/opsmondo.git
-    targetRevision: HEAD
+    targetRevision: add/running-independanat-gitea-for-staging
     path: helm/opsmondo
     helm:
       valueFiles:
