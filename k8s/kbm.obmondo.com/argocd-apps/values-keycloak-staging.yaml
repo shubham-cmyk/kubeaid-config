@@ -1,0 +1,30 @@
+---
+keycloakx:
+  image:
+    tag: "25.0.5"
+  dbchecker:
+    enabled: true
+  database:
+    hostname: keycloak-pgsql-rw
+  ingress:
+    enabled: true
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
+      traefik.ingress.kubernetes.io/router.tls: "true"
+      kubernetes.io/ingress.class: traefik-cert-manager
+    rules:
+      - host: keycloak-staging.kbm.obmondo.com
+        paths:
+          - path: /
+            pathType: Prefix
+
+cnpg:
+  size: 8Gi
+  host: keycloak-pgsql-rw
+  storageClass: rook-ceph-block
+  pass: keycloak-pgsql-app
+  logicalbackup:
+    enabled: false
+
+blackbox:
+  probe: false
