@@ -2,6 +2,12 @@ customerid: 7ejidqmfi9
 puppetserver:
   puppetserver:
     masters:
+      resources:
+        requests:
+          memory: 3072Mi
+          cpu: 500m
+        limits:
+          memory: 3072Mi
       fqdns:
         alternateServerNames: 7ejidqmfi9.puppet.obmondo.com
   r10k:
