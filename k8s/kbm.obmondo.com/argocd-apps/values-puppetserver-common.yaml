@@ -53,6 +53,7 @@ puppetserver:
     persistence:
       code:
         size: 8Gi
+    extraInitArgs: find /etc/puppetlabs/puppet/ssl/certs -name '*.pem' ! -name 'puppet.pem' ! -name 'ca.pem' -type f -exec rm -f {} +;
 
   r10k:
     code:
