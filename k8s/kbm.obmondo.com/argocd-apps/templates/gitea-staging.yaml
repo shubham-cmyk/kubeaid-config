@@ -6,7 +6,7 @@ metadata:
 spec:
   sources:
   - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
-    targetRevision: Helm_Update_20241120_MjI4ODkK
+    targetRevision: HEAD
     path: argocd-helm-charts/gitea
   - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
     targetRevision: add/opsmondo-and-gitea-for-staging
