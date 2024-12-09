@@ -1,0 +1,37 @@
+kafkaTopics:
+  - topicName: service-window-certnames
+    cluster: strimzi-kafka
+    partitions: 3
+    replicas: 1
+
+kafkaUser:
+  - name: opsmondo
+    cluster: strimzi-kafka
+    authentication:
+      type: tls
+    authorization:
+      type: simple
+      acls:
+        - type: allow
+          resource:
+            type: topic
+            name: service-window-certnames
+            patternType: literal
+          host: "*"
+          operations:
+            - Read
+  - name: obmondo-api-go
+    cluster: strimzi-kafka
+    authentication:
+      type: tls
+    authorization:
+      type: simple
+      acls:
+        - type: allow
+          resource:
+            type: topic
+            name: service-window-certnames
+            patternType: literal
+          host: "*"
+          operations:
+            - Write
