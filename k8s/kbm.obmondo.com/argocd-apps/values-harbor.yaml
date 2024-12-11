@@ -16,7 +16,7 @@ harbor:
       registry:
         size: 250Gi
       database:
-        size: 2.5Gi
+        size: 4Gi
       jobservice:
         jobLog:
           size: 2Gi
