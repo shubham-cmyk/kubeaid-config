@@ -49,8 +49,8 @@ api:
     channel: testing
     enabled: false
   chat:
-    teamid: dummy
-    userid: dummy
+    teamid: cnuya58yz7njpxweab87aq7uth
+    userid: c1eimfzfy3rrbxgjiinx9z168a
   clojure:
     image:
       repository: harbor.obmondo.com/obmondo/clojure-api/api
