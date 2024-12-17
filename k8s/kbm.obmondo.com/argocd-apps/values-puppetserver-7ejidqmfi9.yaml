@@ -4,10 +4,10 @@ puppetserver:
     masters:
       resources:
         requests:
-          memory: 3072Mi
+          memory: 4096Mi
           cpu: 500m
         limits:
-          memory: 3072Mi
+          memory: 4096Mi
       fqdns:
         alternateServerNames: 7ejidqmfi9.puppet.obmondo.com
   r10k:
