@@ -4,7 +4,7 @@ puppetserver:
   global:
     extraEnv:
       AUTOSIGN: /etc/puppetlabs/code/environments/master/puppet_autosign.rb
-      PUPPET_REPORTS: puppetdb
+      PUPPET_REPORTS: puppetdb,prometheus
       PUPPETSERVER_ENVIRONMENT_TIMEOUT: 0
       PUPPETSERVER_ENC_PATH: /etc/puppetlabs/code/environments/master/puppet_enc.rb
   storage:
@@ -36,7 +36,10 @@ puppetserver:
             puppet config set node_terminus "exec" --section server
           fi
 
-          puppet config set reports "puppetdb,prometheus" --section server
+          puppet config set hostprivkey /etc/puppetlabs/puppet/ssl/private_keys/puppet.pem
+          puppet config set hostcert /etc/puppetlabs/puppet/ssl/certs/puppet.pem
+          puppet config set hostpubkey /etc/puppetlabs/puppet/ssl/public_keys/puppet.pem
+
           puppetserver gem install fugit -v 1.9.0
           puppetserver gem install tzinfo-data
 
@@ -53,8 +56,6 @@ puppetserver:
     persistence:
       code:
         size: 8Gi
-    extraInitArgs: find /etc/puppetlabs/puppet/ssl/certs -name '*.pem' ! -name 'puppet.pem' ! -name 'ca.pem' -type f -exec rm -f {} +;
-
   r10k:
     code:
       cronJob:
