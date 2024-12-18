@@ -1,5 +1,3 @@
-
-
 relate:
   image:
     registry: harbor.obmondo.com
@@ -22,12 +20,12 @@ relate:
     - name: DBUSER
       valueFrom:
         secretKeyRef:
-          name: relate-pgsql-app 
+          name: relate-pgsql-app
           key: username
     - name: DBPASS
       valueFrom:
         secretKeyRef:
-          name: relate-pgsql-app 
+          name: relate-pgsql-app
           key: password
 
   ingress:
@@ -40,6 +38,3 @@ relate:
     extraHosts:
       - name: relate.obmondo.com
         path: /
-
-
-
