@@ -45,6 +45,7 @@
     'monitoring',
     'obmondo',
     'zfs-localpv',
+    'testing-metrics',
   ],
   prometheus+: {
     storage: {
