@@ -51,6 +51,10 @@ api:
   chat:
     teamid: cnuya58yz7njpxweab87aq7uth
     userid: c1eimfzfy3rrbxgjiinx9z168a
+  oncall:
+    api_url: https://oncall.kbm.obmondo.com/api
+    webhook_url: "dummy"
+    schedule_id: "dummy"
   clojure:
     image:
       repository: harbor.obmondo.com/obmondo/clojure-api/api
