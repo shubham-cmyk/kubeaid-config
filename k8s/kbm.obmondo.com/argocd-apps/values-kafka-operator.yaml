@@ -20,6 +20,15 @@ kafkaUser:
           host: "*"
           operations:
             - Read
+        - type: allow
+          resource:
+            type: group
+            name: opsmondo-consumers
+            patternType: literal
+          host: "*"
+          operations:
+            - Read
+
   - name: obmondo-api-go
     cluster: strimzi-kafka
     authentication:
@@ -35,3 +44,30 @@ kafkaUser:
           host: "*"
           operations:
             - Write
+        - type: allow
+          resource:
+            type: group
+            name: obmondo-api-go-consumers
+            patternType: literal
+          host: "*"
+          operations:
+            - Read
+
+ingress:
+  enable: true
+  class: traefik-cert-manager
+  annotations:
+    kubernetes.io/ingress.class: traefik-cert-manager
+    cert-manager.io/cluster-issuer: letsencrypt
+  name: kafka
+  rules:
+    - host: kafka.kbm.obmondo.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: strimzi-kafka-kafka-internal-bootstrap
+                port:
+                  number: 9094
