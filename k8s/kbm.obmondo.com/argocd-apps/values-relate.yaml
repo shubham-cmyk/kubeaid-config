@@ -27,14 +27,32 @@ relate:
         secretKeyRef:
           name: relate-pgsql-app
           key: password
+    - name: KEYCLOAK_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: relate-secret
+          key: secret
+    - name: KEYCLOAK_PUBLICKEY
+      valueFrom:
+        secretKeyRef:
+          name: relate-secret
+          key: publickey
 
+  nginx:
+    serverName: relate.obmondo.com
+    rootDirectory: /var/www/relate
   ingress:
     enabled: true
-    hostname: relate.kbm.obmondo.com
+    hostname: relate.obmondo.com
+    path: /
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt
       kubernetes.io/ingress.class: traefik-cert-manager
     tls: true
     extraHosts:
-      - name: relate.obmondo.com
-        path: /
+  cnpg:
+    backup:
+      destinationPath: "s3://relate-atat"
+      endpointURL: "https://s3.obmondo.com"
+      cloud: "aws"
+
