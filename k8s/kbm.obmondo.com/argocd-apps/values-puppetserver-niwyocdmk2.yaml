@@ -1,0 +1,26 @@
+customerid: niwyocdmk2
+puppetserver:
+  puppetserver:
+    image: ghcr.io/voxpupuli/container-puppetserver
+    tag: 8.7.0-latest
+    masters:
+      fqdns:
+        alternateServerNames: niwyocdmk2.puppet.obmondo.com
+
+  hiera:
+    hieradataurl: https://gitea.obmondo.com/EnableIT/linuxaid-config-niwyocdmk2.git
+
+  puppetdb:
+    image: ghcr.io/voxpupuli/container-puppetdb
+    tag: 8.8.1-latest
+
+postgresql:
+  instance: 1
+  size: 2Gi
+  recover: false
+  resources:
+    limits:
+      memory: 500Mi
+    requests:
+      memory: 500Mi
+      cpu: 200m
