@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: obmondo-puhsupdate
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: obmondo-pushupdate
+  project: default
+  source:
+    repoURL: https://gitea.obmondo.com/EnableIT/pushupdate.git
+    path: build/helm
+    targetRevision: HEAD
+    helm:
+        valueFiles:
+          - $values/k8s/kbm.obmondo.com/argocd-apps/values-obmondo-pushupdate.yaml
+    - ref: values
+      repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
+      targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
