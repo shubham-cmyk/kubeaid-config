@@ -41,6 +41,7 @@ relate:
   nginx:
     serverName: relate.obmondo.com
     rootDirectory: /var/www/relate
+    storageClass: ceph-filesystem
   ingress:
     enabled: true
     hostname: relate.obmondo.com
