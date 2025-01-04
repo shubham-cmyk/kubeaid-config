@@ -9,8 +9,8 @@ spec:
     namespace: obmondo
   project: default
   sources:
-    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
-      path: argocd-helm-charts/gitea-stats
+    - repoURL: https://gitea.obmondo.com/EnableIT/gitea-stats-exporter.git
+      path: helm/gitea-stats
       targetRevision: HEAD
       helm:
         valueFiles:
