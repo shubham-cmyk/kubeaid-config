@@ -3,16 +3,16 @@ image:
   pullPolicy: Always
 
 ingress:
+  enabled: true
   hosts:
-    - host: gitea-stats.kam.obmondo.com
+    - host: gitea-stats.obmondo.com
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls:
-    - secretName: gitea-stats0-kam-tls
+    - secretName: gitea-stats-tls
       hosts:
-        - gitea-stats.kam.obmondo.com
+        - gitea-stats.obmondo.com
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     kubernetes.io/ingress.class: traefik-cert-manager
-    traefik.ingress.kubernetes.io/router.middlewares: gitea-stas-exporter-redirect@kubernetescrd
