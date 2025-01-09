@@ -1,9 +1,11 @@
 networkpolicies: false
 LoadCustomCRDs: true
 schedule:
+  includedNamespaces:
+    - "relate"
   daily: true
-  weekly: true
-  sixhourly: true
+  weekly: false
+  sixhourly: false
 velero:
   metrics:
     enabled: true
@@ -13,26 +15,20 @@ velero:
     backupStorageLocation:
     - name: default
       provider: aws
-      bucket: velero-kbm-obmondo-com
+      bucket: velero-kbm-obmondo-com-bantha
       config:
-        region: "atat"
+        region: "eu-west-1"
         s3ForcePathStyle: true
         s3Url: https://s3.obmondo.com
     volumeSnapshotLocation:
     - name: default
       provider: aws
       config:
-        region: "atat"
+        region: "eu-west-1"
         profile: "default"
     features: EnableCSI
     defaultBackupTTL: 168h
   initContainers:
-  - name: velero-plugin-for-csi
-    image: 'velero/velero-plugin-for-csi:v0.3.1'
-    imagePullPolicy: IfNotPresent
-    volumeMounts:
-    - mountPath: /target
-      name: plugins
   - name: velero-velero-plugin-for-aws
     image: 'velero/velero-plugin-for-aws:v1.5.1'
     imagePullPolicy: IfNotPresent
@@ -42,3 +38,4 @@ velero:
   credentials:
     useSecret: true
     name: cloud-credentials
+    existingSecret: cloud-credentials
