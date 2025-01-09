@@ -1,0 +1,14 @@
+---
+ciso-assistant:
+  clusterDomain: obmondo.com
+  ingress:
+    hosts:
+      - host: ciso.obmondo.com
+    tls:
+      - hosts:
+          - ciso.obmondo.com
+        secretName: ciso-obmondo-com-tls
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
+      kubernetes.io/ingress.class: traefik-cert-manager
+      traefik.ingress.kubernetes.io/router.tls: 'true'
