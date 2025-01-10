@@ -29,5 +29,6 @@
     'rook-ceph',
     'mattermost',
     'obmondo',
+    'obmondo-website',
   ],
 }
