@@ -215,7 +215,7 @@ postgresql:
     enabled: false
 
 serviceMonitor:
-  enabled: false
+  enabled: true
 
 extraEnv:
   - name: PUPPET_API
