@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cve-dictionary
+  name: vuls-dictionary
   namespace: argocd
 spec:
   destination:
@@ -9,11 +9,11 @@ spec:
     server: 'https://kubernetes.default.svc'
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
-      path: argocd-helm-charts/cve-dictionary
+      path: argocd-helm-charts/vuls-dictionary
       targetRevision: HEAD
       helm:
         valueFiles:
-          - $values/k8s/kbm.obmondo.com/argocd-apps/values-cve-dictionary.yaml
+          - $values/k8s/kbm.obmondo.com/argocd-apps/values-vuls-dictionary.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
