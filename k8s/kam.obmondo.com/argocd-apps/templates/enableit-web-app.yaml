@@ -1,24 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: enableit-website
+  name: enableit-web-app
   namespace: argocd
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: enableit-website
+    namespace: obmondo-website
   project: default
   sources:
-    - repoURL: https://gitea.obmondo.com/EnableIT/enableit-website.git
-      path: helm/enableit-website
+    - repoURL: https://gitea.obmondo.com/EnableIT/obmondo-web-app.git
+      path: .helm/web-app
       targetRevision: HEAD
       helm:
         valueFiles:
-          - $values/k8s/kbm.obmondo.com/argocd-apps/values-enableit-website.yaml
+            - $values/k8s/kam.obmondo.com/argocd-apps/values-enableit-web-app.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
   syncPolicy:
+    automated: null
     syncOptions:
-      - CreateNamespace=true
-      - ApplyOutOfSyncOnly=true
+    - CreateNamespace=true
+    - ApplyOutOfSyncOnly=true

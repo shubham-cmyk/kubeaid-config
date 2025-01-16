@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  tag: latest
+  tag: beta-enableit-v3.6.0
   pullPolicy: Always
 ingress:
   hosts:
