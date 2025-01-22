@@ -41,6 +41,11 @@ zfs-localpv:
       requests:
         cpu: 50m
         memory: 100Mi
+
 storageClass:
   enabled: true
-  poolName: mypool
+  zfs-localpv:
+    poolName: mypool
+  openebs-zfspv-shared:
+    poolName: mypool
+    shared: yes
