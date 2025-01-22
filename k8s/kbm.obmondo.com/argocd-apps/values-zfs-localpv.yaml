@@ -48,4 +48,4 @@ storageClass:
     poolName: mypool
   openebs-zfspv-shared:
     poolName: mypool
-    shared: yes
+    shared: "yes"
