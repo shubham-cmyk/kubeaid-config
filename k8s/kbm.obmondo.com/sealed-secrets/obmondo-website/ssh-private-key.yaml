@@ -1,0 +1,22 @@
+{
+  "kind": "SealedSecret",
+  "apiVersion": "bitnami.com/v1alpha1",
+  "metadata": {
+    "name": "ssh-private-key",
+    "namespace": "obmondo-website",
+    "creationTimestamp": null
+  },
+  "spec": {
+    "template": {
+      "metadata": {
+        "name": "ssh-private-key",
+        "namespace": "obmondo-website",
+        "creationTimestamp": null
+      },
+      "data": null
+    },
+    "encryptedData": {
+      "ssh-private-key": "AgACyCiBPqyJ1pzux/Gd+4TcixdhRJib/4EFCBTCoHmiZNyF3ScL0BF0FdIPTkdT14xyAtksq1zC808dKb7+iJT1Cpb1GZFaCOh66hjiE26D+hsczGOTRis8rTGtpBLqw2HyhzQEAbMCR20eC0GzoPE4ajtjc4dpTCupEYHtiFRIf3pUivXV7uhBnG4app6uqKRp1o81jVxBZsz3qxHUDL4uwPXtFfZgmZafh/FscZiqfzSStIoLEwK8brGdRvyDLqX16+vHRANq5zsYI2oieUmtiuGMFOAHLu0sP0Prk6f2leKAh66RszAJCWdI3nYrQDrTNAjxpeErOKgDltIdHDjYy4mkafkkfiMfAMfYUmKQsLeZNi1mKMFDEbuXm8bRd6uOlhvdfvagxKea1WL9QS9Vxuy/eOeuEC/TiVVZNaB73G5dH6BjjsgU3xSYNL1rAytTH50SaPkeJ1lrOQnoWdsOYCo6GcaqpyygwJwN1ochGdG3n2/2iDwd9yeb/w8PZVHzUObS+SU5xJVcTf9iS/HplVLXhJ3hhxeZFSPH7t1Ludesv2Fzjur4siV4yK2BZh7Jcy172zheOMJoeaaAKCbF4mSEl4MifTyTuBZJ0ZYaRi+a+TqHQj4pKgBpsRVLQH4wNtstG5urkkgKI/Kg4n5SlOBREUbI5jieos0xp4uvNgmlWHsI5Ssa2kcGfD7RXnvoLBJtQUi0tyNy0b8dHW5CA4A3Us0li8+tYPTfu4lLw/N/jrGnAFT8JU9BpyqMy4L4jwveZz+yf0GJ1FxflZO3PZD8S4QAPEHrh1NcruO8MvjlgehIOh8eoz/nAwn3Zqk6skeknAEj1IIZaclwD4Vdhba2qEx/J/yzyNjoG45Q6sYtslvEfrgBqKPlQoTtm28zdEUWs5VgevTkB9J9D7UqB+dpLRwbe2cuGYcczosekn49of6KIpCEsnFv145tOOrQ11gy4zpc1JBhgSlLk911moKptBtCutqXHJvFPhf27ZWwUAAsTzdsTfSgSF4RcdFzmQp7Oqy8spbl63jPG0cR6GmVczAXODqzBeUCYmifv7M/UWqbIuIlDBeJO3P2ipIQl83VFhn1WZfFYdaghDLWIiVnwowB7gBs989eNIvcCa3rLUS0oGHUjpr3Lz43eMoKkX1QMOHzhZEpqqrGLRLp8MtvIEU7Dp2v9VDcQRi4DTqFX2WcqvYuICUK6r5KzBZL9ghsfdUg7wpfpi3qZ78CfKyQP0X6ZfWFynQ="
+    }
+  }
+}
