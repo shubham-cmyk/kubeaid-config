@@ -1,6 +1,7 @@
 image:
   repository: harbor.obmondo.com/obmondo/gitea-stats-exporter
   pullPolicy: Always
+  tag: v1.0.6
 
 ingress:
   enabled: true
