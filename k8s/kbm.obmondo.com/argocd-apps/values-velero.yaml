@@ -3,6 +3,9 @@ LoadCustomCRDs: true
 schedule:
   includedNamespaces:
     - "relate"
+    - "puppetserver-7ejidqmfi9"
+    - "puppetserver-abbnoa6nlk"
+    - "puppetserver-enableit"
   daily: true
   weekly: false
   sixhourly: false
