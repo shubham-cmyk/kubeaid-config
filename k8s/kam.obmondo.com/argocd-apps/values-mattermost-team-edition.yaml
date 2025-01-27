@@ -39,6 +39,7 @@ matternelle:
   domain: webchat.obmondo.com
 
 postgres:
+  instance: 2
   storageClass: zfs-localpv
   logicalbackup:
     enabled: true
