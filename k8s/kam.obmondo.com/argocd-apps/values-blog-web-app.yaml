@@ -1,0 +1,17 @@
+replicaCount: 1
+image:
+  tag: blog-v0.0.1
+  pullPolicy: Always
+ingress:
+  hosts:
+    - host: blogs.obmondo.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: blog-com-tls
+      hosts:
+        - blogs.obmondo.com
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    kubernetes.io/ingress.class: traefik-cert-manager
