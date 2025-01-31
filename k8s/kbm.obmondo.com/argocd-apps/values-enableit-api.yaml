@@ -230,16 +230,22 @@ extraEnv:
     value: true
 
 g10k:
-  image:
-    repository: harbor.obmondo.com/obmondo/g10k
-    pullPolicy: Always
-    tag: 1.0.6
   enabled: true
   schedule: "0/30 * * * *"
+  image:
+    repository: harbor.obmondo.com/obmondo/g10k
+    tag: 1.0.6
+    pullPolicy: Always
 
 gitRepos:
   linuxaid:
-    - 7ejidqmfi9
     - enableit
+    - abbnoa6nlk
+    - niwyocdmk2
+    - 7ejidqmfi9
+    - c1mdewxeah
   kubeaid:
     - enableit
+    - niwyocdmk2
+    - qd2xcggwag
+    - rufvpto91t
