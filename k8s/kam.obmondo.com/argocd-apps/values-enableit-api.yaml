@@ -63,6 +63,7 @@ api:
     overview: '["klavs.klavsen@enableit.dk"]'
   website: https://obmondo.com
   domain: api.obmondo.com
+  giteaRepoCreation: true
   goApiUrl: '"http://localhost:8080/api/"'
   config:
     startSchedular: true
@@ -125,6 +126,9 @@ ingress:
   hosts:
     - host: api.obmondo.com
       paths:
+        - path: /api/servers/ping-and-get-noop
+          pathType: Prefix
+          servicePort: 8080
         - path: /api/ping
           pathType: Prefix
           servicePort: 8080
@@ -155,7 +159,22 @@ ingress:
         - path: /api/servers/tags
           pathType: Prefix
           servicePort: 8088
-        - path: /api/servers/
+        - path: /api/servers/csv/customer
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/servers/customer
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/servers/cve_details
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/servers/facts
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/servers/install-link
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/servers/install
           pathType: Prefix
           servicePort: 8080
         - path: /api/customer_details
