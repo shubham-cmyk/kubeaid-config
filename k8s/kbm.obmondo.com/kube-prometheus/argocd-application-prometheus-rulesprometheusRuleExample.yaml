@@ -10,340 +10,340 @@ spec:
     - expr: 0
       labels:
         name: argo-cd
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: argocd-image-updater
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: aws-ebs-csi-driver
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: aws-efs-csi-driver
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: capi-cluster
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: ccm-hetzner
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: cerebro
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: cert-manager
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: cilium
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: circleci-runner
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: cloudnative-pg
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: cluster-api
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: cluster-autoscaler
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: crossplane
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: dokuwiki
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: errbot
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: external-dns
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: filebeat
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: fluent-bit
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: gatekeeper
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: gitea-runner
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: gitlab-runner
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: grafana-operator
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: graylog
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: haproxy
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: harbor
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: kubeaid-custom-azure
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: k8s-event-logger
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: keda
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: keycloakx
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: kube2iam
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: kubernetes-dashboard
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: mail
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: mariadb-operator
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: matomo
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: mattermost-team-edition
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: metallb
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: metrics-server
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: mongodb-operator
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: obmondo-k8s-agent
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: oncall
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: opencost
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: opensearch
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: opensearch-dashboards
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: postgres-operator
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: prometheus-adapter
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: prometheus-linuxaid
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: puppetserver
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: rabbitmq-operator
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: redis-operator
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: relate
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: reloader
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: rook-ceph
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: sealed-secrets
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: snapshot-controller
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: sonarqube
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: strimzi-kafka-operator
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: teleport-cluster
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: teleport-kube-agent
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: tigera-operator
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: traefik
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: traefik-forward-auth
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: traefik-forward-auth-rbac
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: velero
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: whoami
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: zfs-localpv
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: smartmon
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
     - expr: 0
       labels:
         name: mdraid
-        project: default
+        project: kubeaid
       record: kubeaidManagedApps
