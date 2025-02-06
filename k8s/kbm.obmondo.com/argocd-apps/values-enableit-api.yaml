@@ -101,19 +101,36 @@ ingress:
         - path: /api/servers/ping-and-get-noop
           pathType: Prefix
           servicePort: 8080
+        - path: /api/ping
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/notify
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/window
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/tag
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/user-location
+          pathType: Prefix
+          servicePort: 8080
+        - path: /swagger/go
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/timereg
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/report/error
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/invoice/
+          pathType: Prefix
+          servicePort: 8080
         - path: /api/servers/tags
           pathType: Prefix
           servicePort: 8088
-        - path: /Webtee
-          pathType: Prefix
-          serviceName: enableit-api-grpc
-          servicePort: 8100
-        - path: /api/subscription
-          pathType: Prefix
-          servicePort: 8088
-        - path: /api/feature
-          pathType: Prefix
-          servicePort: 8080
         - path: /api/servers/csv/customer
           pathType: Prefix
           servicePort: 8080
@@ -126,84 +143,25 @@ ingress:
         - path: /api/servers/facts
           pathType: Prefix
           servicePort: 8080
-        - path: /api/server
-          pathType: Prefix
-          servicePort: 8088
-        - path: /api/customer
-          pathType: Prefix
-          servicePort: 8088
-        - path: /api/customer_details
-          pathType: Prefix
-          servicePort: 8080
-        - path: /api/count
-          pathType: Prefix
-          servicePort: 8080
-        - path: /api/order
-          pathType: Prefix
-          servicePort: 8088
-        - path: /api/puppet
-          pathType: Prefix
-          servicePort: 8088
-        - path: /api/invoice-pdf
-          pathType: Prefix
-          servicePort: 8088
-        - path: /api/data
-          pathType: Prefix
-          servicePort: 8088
-        - path: /api/contact
-          pathType: Prefix
-          servicePort: 8088
-        - path: /api/job
-          pathType: Prefix
-          servicePort: 8088
-        - path: /api/products
-          pathType: Prefix
-          servicePort: 8088
-        - path: /api/customers
-          pathType: Prefix
-          servicePort: 8088
-        - path: /api/mail-invoices
-          pathType: Prefix
-          servicePort: 8088
-        - path: /api/feedback
-          pathType: Prefix
-          servicePort: 8088
-        - path: /api/facts
-          pathType: Prefix
-          servicePort: 8088
-        - path: /api/user/
-          pathType: Prefix
-          servicePort: 8088
-        - path: /api/users
-          pathType: Prefix
-          servicePort: 8088
-        - path: /api/clusters
-          pathType: Prefix
-          servicePort: 8088
-        - path: /api/cluster
-          pathType: Prefix
-          servicePort: 8088
-        - path: /api/auth
-          pathType: Prefix
-          servicePort: 8088
-        - path: /api/contacts
-          pathType: Prefix
-          servicePort: 8088
-        - path: /api/invoice-data
-          pathType: Prefix
-          servicePort: 8088
-        - path: /api/webhook/gitea
-          pathType: Prefix
-          servicePort: 8080
-        - path: /
-          pathType: ImplementationSpecific
-          servicePort: 8080
         - path: /api/servers/install-link
           pathType: Prefix
           servicePort: 8080
         - path: /api/servers/install
           pathType: Prefix
           servicePort: 8080
+        - path: /api/customer_details
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/count
+          pathType: Prefix
+          servicePort: 8080
+        - path: /Webtee
+          pathType: Prefix
+          serviceName: enableit-api-grpc
+          servicePort: 8100
+        - path: /
+          pathType: ImplementationSpecific
+          servicePort: 8088
 
   tls:
     - secretName: api-beta-obmondo-com-tls
