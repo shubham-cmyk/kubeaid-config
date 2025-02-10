@@ -101,7 +101,7 @@ ingress:
         - path: /api/servers/ping-and-get-noop
           pathType: Prefix
           servicePort: 8080
-        - path: /servers/statistics/os/customer/
+        - path: /api/servers/statistics/os/customer/
           pathType: Prefix
           servicePort: 8080
         - path: /api/ping
