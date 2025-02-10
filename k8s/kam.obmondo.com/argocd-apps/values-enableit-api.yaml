@@ -129,6 +129,9 @@ ingress:
         - path: /api/servers/ping-and-get-noop
           pathType: Prefix
           servicePort: 8080
+        - path: /servers/statistics/os/customer/
+          pathType: Prefix
+          servicePort: 8080
         - path: /api/ping
           pathType: Prefix
           servicePort: 8080
@@ -223,6 +226,8 @@ extraEnv:
     value: 30
   - name: DELETION_OF_TAG_BASED_WINDOWS_ALLOWED
     value: true
+  - name: CONFIG_REPOS_PATH
+    value: /opt/obmondo/repos
 
 g10k:
   enabled: true
