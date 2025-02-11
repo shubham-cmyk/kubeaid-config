@@ -1,24 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: opsmondo
+  name: gitea-staging
   namespace: argocd
 spec:
   sources:
-  - repoURL: https://gitea.obmondo.com/EnableIT/opsmondo.git
+  - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
     targetRevision: HEAD
-    path: helm/opsmondo
+    path: argocd-helm-charts/gitea
   - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
-    targetRevision: HEAD
+    targetRevision: add/opsmondo-and-gitea-for-staging
     path: k8s/kbm.obmondo.com/argocd-apps
     helm:
       valueFiles:
-      - values-opsmondo.yaml
+      - values-gitea-staging.yaml
   destination:
-    namespace: monitoring
+    namespace: monitoring-staging
     server: 'https://kubernetes.default.svc'
   project: default
   syncPolicy:
     automated: null
     syncOptions:
     - ApplyOutOfSyncOnly=true
+    - CreateNamespace=true
