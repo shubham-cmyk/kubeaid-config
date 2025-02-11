@@ -5,18 +5,16 @@ metadata:
   namespace: argocd
 spec:
   sources:
-  - repoURL: https://gitea.obmondo.com/EnableIT/opsmondo.git
-    targetRevision: add/running-independanat-gitea-for-staging
-    path: helm/opsmondo
-    helm:
-      valueFiles:
-      - values.staging.yaml
-  - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
-    targetRevision: add/opsmondo-and-gitea-for-staging
-    path: k8s/kbm.obmondo.com/argocd-apps
-    helm:
-      valueFiles:
-      - values-opsmondo-staging.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/opsmondo.git
+      path: helm/opsmondo
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+          - values.staging.yaml
+          - $values/k8s/kbm.obmondo.com/argocd-apps/values-opsmondo-staging.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
+      targetRevision: HEAD
+      ref: values
   destination:
     namespace: monitoring-staging
     server: 'https://kubernetes.default.svc'
