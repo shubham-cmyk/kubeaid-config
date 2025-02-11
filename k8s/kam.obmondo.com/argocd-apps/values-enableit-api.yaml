@@ -249,3 +249,6 @@ gitRepos:
     - niwyocdmk2
     - qd2xcggwag
     - rufvpto91t
+
+sendNotification:
+  mail: true
