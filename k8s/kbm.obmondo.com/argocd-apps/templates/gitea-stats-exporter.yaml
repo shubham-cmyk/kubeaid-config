@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gitea-stats
+  name: gitea-stats-exporter
   namespace: argocd
 spec:
   destination:
@@ -14,7 +14,7 @@ spec:
       targetRevision: HEAD
       helm:
         valueFiles:
-          - $values/k8s/kbm.obmondo.com/argocd-apps/values-gitea-stats.yaml
+          - $values/k8s/kbm.obmondo.com/argocd-apps/values-gitea-stats-exporter.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
