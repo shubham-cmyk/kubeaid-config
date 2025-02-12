@@ -1,4 +1,8 @@
 gitea:
+  extraContainers:
+  - name: gitea-bootstrap
+    image: harbor.obmondo.com/obmondo/gitea-bootstrap:v1.0.0
+
   image:
     registry: harbor.obmondo.com
     repository: obmondo/gitea
