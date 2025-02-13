@@ -1,0 +1,31 @@
+gitea:
+  extraDeploy:
+  - apiVersion: batch/v1
+    kind: Job
+    metadata:
+      name: gitea-bootstrap
+      annotations:
+        "helm.sh/hook": post-install
+        "helm.sh/hook-delete-policy": hook-succeeded
+    spec:
+      parallelism: 1
+      completions: 1
+      backoffLimit: 1
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: gitea-bootstrap
+              image: harbor.obmondo.com/obmondo/gitea-bootstrap:v1.0.4
+              env:
+                - name: GITEA_URL
+                  value: http://gitea-staging-http:3000
+                - name: GITEA_USERNAME
+                  value: opsmondo_staging
+                - name: GITEA_PASSWORD
+                  value: Yae3aesh
+                - name: POSTGRES_URI
+                  valueFrom:
+                    secretKeyRef:
+                      name: gitea-staging-pgsql-app
+                      key: uri
