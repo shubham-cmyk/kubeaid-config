@@ -7,4 +7,4 @@ teleport-cluster:
   authentication:
     secondFactor: "on"
   persistence:
-    volumeSize: 15Gi
+    volumeSize: 20Gi
