@@ -189,6 +189,9 @@ ingress:
         - path: /api/feature
           pathType: Prefix
           servicePort: 8080
+        - path: /api/config
+          pathType: Prefix
+          servicePort: 8080
         - path: /Webtee
           pathType: Prefix
           serviceName: enableit-api-grpc
