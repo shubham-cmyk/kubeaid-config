@@ -65,7 +65,7 @@ api:
     image:
       repository: harbor.obmondo.com/obmondo/enableit-go-api
       pullPolicy: Always
-      tag: v0.1.7
+      tag: v0.1.8
   server:
     internal_ips_for_readonly_auth: "172.20.0.0/16"
   mode: beta
@@ -156,6 +156,9 @@ ingress:
           pathType: Prefix
           servicePort: 8080
         - path: /api/count
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/feature
           pathType: Prefix
           servicePort: 8080
         - path: /Webtee
