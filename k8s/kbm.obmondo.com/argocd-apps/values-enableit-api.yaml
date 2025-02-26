@@ -166,6 +166,9 @@ ingress:
         - path: /api/config
           pathType: Prefix
           servicePort: 8080
+        - path: /api/v2/subscriptions
+          pathType: Exact
+          servicePort: 8080
         - path: /Webtee
           pathType: Prefix
           serviceName: enableit-api-grpc
@@ -203,6 +206,8 @@ extraEnv:
     value: true
   - name: CONFIG_REPOS_PATH
     value: /opt/obmondo/repos
+  - name: ACCESS_LIST_CERTNAMES
+    value: "internal-api01.enableit,opsmondo-test.niwyocdmk2,k8s-htzhel1-kbm.enableit"
 
 g10k:
   enabled: true
