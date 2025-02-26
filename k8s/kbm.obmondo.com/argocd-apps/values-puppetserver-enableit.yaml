@@ -19,6 +19,10 @@ puppetserver:
           remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-ebillet.git
           basedir: /etc/puppetlabs/code/hiera-data
           prefix: true
+        qd2xcggwag:
+          remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-qd2xcggwag.git
+          basedir: /etc/puppetlabs/code/hiera-data
+          prefix: true
 
   hiera:
     hieradataurl: https://gitea.obmondo.com/EnableIT/linuxaid-config-enableit.git
