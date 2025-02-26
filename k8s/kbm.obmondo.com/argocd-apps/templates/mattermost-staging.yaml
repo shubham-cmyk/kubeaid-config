@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mattermost-staging
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: mattermost-staging
+  project: default
+  sources:
+    - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
+      path: argocd-helm-charts/mattermost-team-edition
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+          - $values/k8s/kbm.obmondo.com/argocd-apps/values-mattermost-staging.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
+      targetRevision: HEAD
+      ref: values
+  syncPolicy:
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true

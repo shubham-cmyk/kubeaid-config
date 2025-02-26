@@ -1,0 +1,46 @@
+mattermost-team-edition:
+  image:
+    repository: mattermost/mattermost-team-edition
+    tag: 10.3.1@sha256:5892ec2bdb79d74adafd2ef689ac4ea585370646a8028cc6da249ed2715ae6fa
+  ingress:
+    enabled: true
+    path: /
+    hosts:
+      - mattermost-staging.obmondo.com
+    extraHosts:
+      - host: webchat-staging.obmondo.com
+        servicePort: 8989
+    tls:
+      - secretName: mattermost-staging-obmondo-com
+        hosts:
+          - mattermost-staging.obmondo.com
+      - secretName: webchat-staging-obmondo-com
+        hosts:
+          - webchat-staging.obmondo.com
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
+      kubernetes.io/ingress.class: traefik-cert-manager
+  extraPorts:
+    - name: matternelle
+      port: 8989
+      protocol: TCP
+  config:
+    MM_GITLABSETTINGS_USERAPIENDPOINT: "https://keycloak.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/userinfo"
+    MM_GITLABSETTINGS_AUTHENDPOINT: "https://keycloak.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/auth"
+    MM_GITLABSETTINGS_TOKENENDPOINT: "https://keycloak.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/token"
+    MM_TEAMSETTINGS_RESTRICTCREATIONTODOMAINS: "enableit.dk,obmondo.com"
+    MM_EMAILSETTINGS_SENDPUSHNOTIFICATIONS: "true"
+    MM_EMAILSETTINGS_PUSHNOTIFICATIONSERVER: "https://push-test.mattermost.com"
+    MM_SERVICESETTINGS_SITEURL: "https://mattermost-staging.obmondo.com"
+    MM_SERVICESETTINGS_COLLAPSEDTHREADS: "default_on"
+    MM_SERVICESETTINGS_THREADAUTOFOLLOW: "true"
+    MM_SERVICESETTINGS_ENABLELINKPREVIEWS: "true"
+    MM_SERVICESETTINGS_RESTRICTLINKPREVIEWS: "gitlab.enableit.dk, github.com"
+    MM_SERVICESETTINGS_ENABLEAPIUSERDELETION: "true"
+    MM_PLUGINSETTINGS_ENABLE: "true"
+    MM_PLUGINSETTINGS_PLUGINS: "{\n\"com.mattermost.nps\":{\n\"enablesurvey\":false\n},\n\"com.mattermost.plugin-incident-management\":{\n\"BotUserID\":\"5h9oef4z1tnsfedg9jbdfh6j3c\"\n},\n\"jitsi\":{\n\"jitsiappid\":null,\n\"jitsiappsecret\":null,\n\"jitsicompatibilitymode\":false,\n\"jitsiembedded\":null,\n\"jitsijwt\":null,\n\"jitsilinkvalidtime\":30,\n\"jitsinamingscheme\":\"uuid\",\n\"jitsiurl\":\"https://meet.jit.si\"\n},\n\"mattermost-autolink\":{\n\"EnableAdminCommand\":true,\n\"EnableOnUpdate\":true,\n\"Links\":[\n{\n\"DisableNonWordPrefix\":false,\n\"DisableNonWordSuffix\":false,\n\"Disabled\":false,\n\"Name\":\"GN_SNOW\",\n\"Pattern\":\"(?P\\u003cticket_id\\u003eTCK[0-9]{7})\",\n\"Scope\":null,\n\"Template\":\"[GNSNOW${ticket_id}](https://gnsn.service-now.com/text_search_exact_match.do?sysparm_search=${ticket_id})\",\n\"WordMatch\":false\n},\n{\n\"DisableNonWordPrefix\":false,\n\"DisableNonWordSuffix\":false,\n\"Disabled\":false,\n\"Name\":\"devops\",\n\"Pattern\":\"@devops*\",\n\"Scope\":null,\n\"Template\":\"[@devops](\\\\\\\\*@ajaiswal@deepak@klavsklavsen@runejuhl@aman0@leke\\\\\\\\*)\",\n\"WordMatch\":false\n},\n{\n\"DisableNonWordPrefix\":false,\n\"DisableNonWordSuffix\":false,\n\"Disabled\":false,\n\"Name\":\"gitlab\",\n\"Pattern\":\"MR-(?P\\u003crepo\\u003e.+)-(?P\\u003cid\\u003e\\\\d+)\",\n\"Scope\":null,\n\"Template\":\"[MR-${repo}-${id}](https://gitlab.enableit.dk/obmondo/${repo}/merge_requests/${id})\",\n\"WordMatch\":false\n},\n{\n\"DisableNonWordPrefix\":false,\n\"DisableNonWordSuffix\":false,\n\"Disabled\":false,\n\"Name\":\"india\",\n\"Pattern\":\"@india*\",\n\"Scope\":null,\n\"Template\":\"[@india](\\\\\\\\*@deepak@sandeep@aman0@sachin@ajaiswal\\\\\\\\*)\",\n\"WordMatch\":false\n},\n{\n\"DisableNonWordPrefix\":false,\n\"DisableNonWordSuffix\":false,\n\"Disabled\":false,\n\"Name\":\"oncall\",\n\"Pattern\":\"@oncall*\",\n\"Scope\":null,\n\"Template\":\"[@oncall](\\\\\\\\*@deepak@aman0\\\\\\\\*)\",\n\"WordMatch\":false\n},\n{\n\"DisableNonWordPrefix\":false,\n\"DisableNonWordSuffix\":false,\n\"Disabled\":false,\n\"Name\":\"reviewer\",\n\"Pattern\":\"@reviewer*\",\n\"Scope\":null,\n\"Template\":\"[@reviewer](\\\\\\\\*@ajaiswal@klavsklavsen@runejuhl@aman0\\\\\\\\*)\",\n\"WordMatch\":false\n},\n{\n\"DisableNonWordPrefix\":false,\n\"DisableNonWordSuffix\":false,\n\"Disabled\":false,\n\"Name\":\"support\",\n\"Pattern\":\"#(?P\\u003cticket_id\\u003e[0-9]{4,5})\",\n\"Scope\":null,\n\"Template\":\"[issue#${ticket_id}](https://support.obmondo.com/issues/${ticket_id})\",\n\"WordMatch\":false\n},\n{\n\"DisableNonWordPrefix\":false,\n\"DisableNonWordSuffix\":false,\n\"Disabled\":false,\n\"Name\":\"@meghashyam\",\n\"Pattern\":\"\",\n\"Scope\":null,\n\"Template\":\"\",\n\"WordMatch\":false\n},\n{\n\"DisableNonWordPrefix\":false,\n\"DisableNonWordSuffix\":false,\n\"Disabled\":false,\n\"Name\":\"@abhishek\",\n\"Pattern\":\"\",\n\"Scope\":null,\n\"Template\":\"\",\n\"WordMatch\":false\n}\n],\n\"PluginAdmins\":\"ajaiswal,klavsklavsen\"\n},\n\"net.appmodule.mattermost-jitsi-plugin\":{\n\"jitsiurl\":null\n}\n}"
+    MM_PLUGINSETTINGS_PLUGINSTATES: "{\n\"com.github.matterpoll.matterpoll\":{\n\"Enable\":true\n},\n\"com.github.moussetc.mattermost.plugin.giphy\":{\n\"Enable\":true\n},\n\"com.mattermost.apps\":{\n\"Enable\":true\n},\n\"com.mattermost.custom-attributes\":{\n\"Enable\":true\n},\n\"com.mattermost.nps\":{\n\"Enable\":false\n},\n\"com.mattermost.plugin-channel-export\":{\n\"Enable\":false\n},\n\"com.mattermost.plugin-incident-management\":{\n\"Enable\":false\n},\n\"com.mattermost.plugin-todo\":{\n\"Enable\":false\n},\n\"com.mattermost.welcomebot\":{\n\"Enable\":false\n},\n\"focalboard\":{\n\"Enable\":false\n},\n\"jitsi\":{\n\"Enable\":true\n},\n\"mattermost-autolink\":{\n\"Enable\":true\n},\n\"memes\":{\n\"Enable\":true\n},\n\"net.appmodule.mattermost-jitsi-plugin\":{\n\"Enable\":false\n},\n\"playbooks\":{\n\"Enable\":false\n},\n\"com.gitlab.itk.fr.matternelle\":{\n\"Enable\":true\n}\n}"
+
+postgres:
+  pass: mattermost-pgsql-app
+  storageClass: zfs-localpv
