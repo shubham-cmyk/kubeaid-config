@@ -82,6 +82,8 @@ redis:
   replicas: 3
 
 persistence:
+  g10k:
+    size: 3Gi
   enabled: true
 ci:
   enabled: false
