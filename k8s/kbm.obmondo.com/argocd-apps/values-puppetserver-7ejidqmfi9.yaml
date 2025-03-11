@@ -6,10 +6,10 @@ puppetserver:
         PUPPETDB_JAVA_ARGS: "-Xms5939.2m -Xmx5939.2m -XX:+HeapDumpOnOutOfMemoryError"
       resources:
         requests:
-          memory: 6144Mi
-          cpu: 800m
+          memory: 8192Mi
+          cpu: 1000m
         limits:
-          memory: 6144Mi
+          memory: 8192Mi
       fqdns:
         alternateServerNames: 7ejidqmfi9.puppet.obmondo.com
   r10k:
