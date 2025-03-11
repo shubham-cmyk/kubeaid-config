@@ -22,6 +22,7 @@ traefik:
           - enableit-puppetca-cert
           - 7ejidqmfi9-puppetca-cert
           - abbnoa6nlk-puppetca-cert
+          - niwyocdmk2-puppetca-cert
     prometheus-puppet-agent-tls-auth:
       maxVersion: VersionTLS13
       minVersion: VersionTLS12
@@ -32,6 +33,7 @@ traefik:
           - enableit-puppetca-cert
           - 7ejidqmfi9-puppetca-cert
           - abbnoa6nlk-puppetca-cert
+          - niwyocdmk2-puppetca-cert
   service:
     type: NodePort
     externalIPs:
