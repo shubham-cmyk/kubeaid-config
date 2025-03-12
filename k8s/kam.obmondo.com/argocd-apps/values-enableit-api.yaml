@@ -111,7 +111,7 @@ redis:
 
 persistence:
   g10k:
-    size: 3Gi
+    size: 5Gi
   enabled: true
 ci:
   enabled: false
