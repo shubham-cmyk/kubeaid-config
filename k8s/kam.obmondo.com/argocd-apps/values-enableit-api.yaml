@@ -196,6 +196,9 @@ ingress:
         - path: /api/v2/subscriptions
           pathType: Exact
           servicePort: 8080
+        - path: /api/orders
+          pathType: Prefix
+          servicePort: 8080
         - path: /Webtee
           pathType: Prefix
           serviceName: enableit-api-grpc
