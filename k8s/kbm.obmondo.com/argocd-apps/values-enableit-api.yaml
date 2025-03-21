@@ -210,7 +210,7 @@ extraEnv:
   - name: CONFIG_REPOS_PATH
     value: /opt/obmondo/repos
   - name: ACCESS_LIST_CERTNAMES
-    value: "internal-api01.enableit,opsmondo-test.niwyocdmk2,k8s-htzhel1-kbm.enableit"
+    value: "internal-api01.enableit,opsmondo-test.niwyocdmk2,k8s-htzhel1-kbm.enableit,financeapi-puppet-cert.enableit,finance-api-beta-service.enableit"
 
 g10k:
   enabled: true
