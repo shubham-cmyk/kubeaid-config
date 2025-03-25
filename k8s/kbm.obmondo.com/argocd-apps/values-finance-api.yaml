@@ -2,7 +2,7 @@ namespace: finance
 replicaCount: 1
 image:
     repository: harbor.obmondo.com/obmondo/finance-api
-    tag: v0.0.1
+    tag: v0.1.0
     pullPolicy: Always
 
 
@@ -30,7 +30,7 @@ ingress:
           pathType: Prefix
         - path: /api/v1/auth
           pathType: Prefix
-        - path: /api/v1/swagger/go
+        - path: /swagger/go
           pathType: Prefix
   tls:
     - secretName: finance-api-beta-obmondo-com-tls
@@ -54,6 +54,15 @@ keycloak:
 
 go_api:
   url: https://api-beta.obmondo.com
+
+tls:
+  secret: finance-api-beta-service
+
+service_cert:
+  secret: finance-api-beta-service
+  path: /app/tls/certificates/
+  cert_path: /app/tls/certificates/tls.crt
+  key_path: /app/tls/certificates/tls.key
 
 redis:
   replicas: 3
