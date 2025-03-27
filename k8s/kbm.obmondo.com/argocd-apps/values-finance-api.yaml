@@ -44,12 +44,12 @@ postgresql:
       disk: nvme
 
 keycloak:
-  url: "https://keycloak.obmondo.com/auth/realms"
-  realm: "Obmondo"
-  client_id: "finance_api_dev"
-  owner_role: "owner"
+  url: "https://keycloak-staging.kbm.obmondo.com/auth/realms"
+  realm: "finance"
+  client_id: "finance-api"
+  owner_role: "finance-admin"
   client_secret:
-    name: financeapi-keycloak-secret
+    name: finance-api-keycloak-secret
     key: client_secret
 
 go_api:
