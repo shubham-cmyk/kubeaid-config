@@ -1,0 +1,15 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: finance-api-keycloak
+  namespace: finance
+spec:
+  encryptedData:
+    client_secret: AgAkymEN+/A3jKA0Q0AvWCEtWymN5sdp8okPwIVdmkL88OxV36yOThRw1V6i6/nudzZWOVYhXWVaOnCnjDlqAEbAwOQjZbo0IJ4zFiFvMvMVL6mUbEPQry86bISt3MEG2/DWWsO0KtGtsj7KtavjJJa5B24a2AuDhUNL2+pZ/K0F/P/+KV0kX5IOKWFQ19lvo+STQnP8BUdy3LdJvB+/ZvQPN2fYb6F4Or2y3xUgm+7zIVZWX/m8Ij5RgIEkIxDUT4I8Z/LqDYItCiBeN9nnpYL08pNqNZDDKM9BNPtEQtpCsHnHGknwIY+xNnGBYthwKtHv9APIbPjbk54INxS4abtC4Y4tlhCBBceQPP8gBooHgjECZPOJLwMTx4xcwEMoJb7RXW9CWTmmZZwQXmRChRUerJ8OxjVVLyL7g677Qlq3q5fcvaO/zUMB4ELL9Nuap8W9I9TKV+VtOppVIuWpEdZ3winghULTFF/fMb7sCVMaxv+7jOG3zGI/FabPNmzv+s+5Fu/dW5FwhKqWxsgskM59f2jABcA9ikfSkmUEQP8cRbbiX3MFsNhU7oT7mtpjP64t2RYQ543rBFby5H+quKeFLWpXLxiWFyiiPH/nvGREcAB9jZr8NvkBKhVsa42GN3l1Fkn1T5c0aCmZuF/jhLD3ksO/G58xY9DsIO+sgFdzbl/DK0mugIy7dfQj85J8r4G3XZvRpGm/bGknsvbWX3R5zNbDG/4nqVztKwz7UGW+ZA==
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: finance-api-keycloak
+      namespace: finance
