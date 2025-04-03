@@ -38,10 +38,10 @@ postgresql:
 keycloak:
   url: "https://keycloak.obmondo.com/auth/realms"
   realm: "Obmondo"
-  client_id: "finance_api_prod"
+  client_id: "finance_api"
   owner_role: "owner"
   client_secret:
-    name: financeapi-keycloak-secret
+    name: finance-api-keycloak
     key: client_secret
 
 go_api:
