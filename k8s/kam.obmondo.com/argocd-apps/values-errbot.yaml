@@ -20,6 +20,31 @@ env:
       secretKeyRef:
         name: errbot-mattermost-secrets
         key: bot-token
+  - name: AI_SERVICES
+    valueFrom:
+      secretKeyRef:
+        name: errbot-relate-token
+        key: AI-Services
+  - name: ISMS
+    valueFrom:
+      secretKeyRef:
+        name: errbot-relate-token
+        key: ISMS
+  - name: DATA_PRIVACY
+    valueFrom:
+      secretKeyRef:
+        name: errbot-relate-token
+        key: data-privacy
+  - name: INFORMATION_SECURITY
+    valueFrom:
+      secretKeyRef:
+        name: errbot-relate-token
+        key: information-security
+  - name: QUALITY_MINDSET
+    valueFrom:
+      secretKeyRef:
+        name: errbot-relate-token
+        key: quality-mindset
   - name: BOT_SERVER
     value: "chat.obmondo.com"
   - name: BOT_PORT
