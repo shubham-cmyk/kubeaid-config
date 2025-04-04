@@ -43,6 +43,12 @@ postgresql:
     nodeSelector:
       disk: nvme
 
+service_cert:
+  secret: finance-api-puppet-cert
+  path: /app/tls/certificates/
+  cert_path: /app/tls/certificates/tls.crt
+  key_path: /app/tls/certificates/tls.key
+
 keycloak:
   url: "https://keycloak.obmondo.com/auth/realms"
   realm: "Obmondo"
