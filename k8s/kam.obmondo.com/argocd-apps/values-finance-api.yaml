@@ -43,6 +43,9 @@ postgresql:
     nodeSelector:
       disk: nvme
 
+tls:
+  secret: finance-api-puppet-cert
+
 service_cert:
   secret: finance-api-puppet-cert
   path: /app/tls/certificates/
