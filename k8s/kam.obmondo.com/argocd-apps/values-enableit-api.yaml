@@ -203,6 +203,9 @@ ingress:
           pathType: Prefix
           serviceName: enableit-api-grpc
           servicePort: 8100
+        - path: /api/webhook/gitea
+          pathType: Exact
+          servicePort: 8080
         - path: /
           pathType: ImplementationSpecific
           servicePort: 8088
