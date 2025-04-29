@@ -14,9 +14,9 @@ harbor:
   persistence:
     persistentVolumeClaim:
       registry:
-        size: 250Gi
-      database:
-        size: 4Gi
+        size: 270Gi
       jobservice:
         jobLog:
-          size: 2Gi
+          size: 3Gi
+postgres:
+  size: 6Gi
