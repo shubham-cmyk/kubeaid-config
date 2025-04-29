@@ -1,5 +1,8 @@
 customerid: 7ejidqmfi9
 puppetserver:
+  puppetdb:
+    persistence:
+      size: 2Gi
   puppetserver:
     masters:
       extraEnv:
