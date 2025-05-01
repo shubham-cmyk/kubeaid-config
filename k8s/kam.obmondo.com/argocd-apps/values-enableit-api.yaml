@@ -210,6 +210,9 @@ ingress:
         - path: /
           pathType: ImplementationSpecific
           servicePort: 8088
+        - path: /api/v1/users
+          pathType: Prefix
+          servicePort: 8080
   tls:
     - secretName: api-obmondo-com-tls
       hosts:
