@@ -18,5 +18,13 @@ harbor:
       jobservice:
         jobLog:
           size: 3Gi
+
 postgres:
   size: 6Gi
+  logicalbackup:
+    enabled: true
+    s3bucket: "kbm-postgres-logical-backup"
+    s3bucketscopesuffix: "harbor"
+    provider: "s3"
+    s3endpoint: "https://s3.obmondo.com"
+    retension: "30"
