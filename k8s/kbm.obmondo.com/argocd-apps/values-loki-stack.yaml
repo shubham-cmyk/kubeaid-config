@@ -1,9 +1,22 @@
+---
+
 loki-stack:
   loki:
     enabled: true
     isDefault: true
     persistence:
       enabled: true
+      storageClassName: rook-ceph-retain-block
 
   promtail:
     enabled: true
+    initContainer:
+      - name: init
+        image: docker.io/busybox:1.33
+        imagePullPolicy: IfNotPresent
+        command:
+          - sh
+          - -c
+          - sysctl -w fs.inotify.max_user_instances=8192
+        securityContext:
+          privileged: true
