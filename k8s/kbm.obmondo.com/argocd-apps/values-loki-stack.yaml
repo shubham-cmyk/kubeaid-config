@@ -1,0 +1,9 @@
+loki-stack:
+  loki:
+    enabled: true
+    isDefault: true
+    persistence:
+      enabled: true
+
+  promtail:
+    enabled: true
