@@ -12,12 +12,14 @@ puppetserver:
   puppetdb:
     persistence:
       size: 1Gi
+    extraEnv:
+      PUPPETDB_JAVA_ARGS: "-Xms512m -Xmx2500m -XX:+HeapDumpOnOutOfMemoryError"
 
   puppetserver:
     puppeturl: "https://gitea.obmondo.com/EnableIT/LinuxAid.git"
     masters:
       extraEnv:
-        PUPPETDB_JAVA_ARGS: "-Xms512m -Xmx2500m -XX:+HeapDumpOnOutOfMemoryError"
+        PUPPETSERVER_JAVA_ARGS: "-Xms512m -Xmx2500m -XX:+HeapDumpOnOutOfMemoryError"
         PUPPETSERVER_MAX_ACTIVE_INSTANCES: 4
       resources:
         requests:
