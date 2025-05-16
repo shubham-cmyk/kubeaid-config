@@ -11,7 +11,6 @@ spec:
       alertmanager.yaml: |
         global:
           resolve_timeout: 5m
-
         inhibit_rules:
         - "equal":
           - "namespace"
