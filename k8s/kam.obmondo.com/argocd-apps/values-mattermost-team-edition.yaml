@@ -1,4 +1,7 @@
 mattermost-team-edition:
+  persistence:
+    data:
+      size: 15Gi
   image:
     repository: mattermost/mattermost-team-edition
     tag: 10.3.1@sha256:5892ec2bdb79d74adafd2ef689ac4ea585370646a8028cc6da249ed2715ae6fa
@@ -146,6 +149,7 @@ matternelle:
   domain: webchat.obmondo.com
 
 postgres:
+  size: 15Gi
   instance: 2
   storageClass: zfs-localpv
   logicalbackup:
