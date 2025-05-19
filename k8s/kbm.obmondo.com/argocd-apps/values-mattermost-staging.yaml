@@ -156,7 +156,27 @@ mattermost-team-edition:
           "PluginAdmins": "ajaiswal,klavsklavsen"
         }
       }
-    MM_PLUGINSETTINGS_PLUGINSTATES: '{"com.github.matterpoll.matterpoll":{"Enable":true},"com.github.moussetc.mattermost.plugin.giphy":{"Enable":true},"com.mattermost.apps":{"Enable":true},"mattermost-autolink":{"Enable":true},"memes":{"Enable":true},"com.gitlab.itk.fr.matternelle":{"Enable":true}}'
+    MM_PLUGINSETTINGS_PLUGINSTATES: |-
+      {
+        "com.github.matterpoll.matterpoll": {
+          "Enable":true
+        },
+        "com.github.moussetc.mattermost.plugin.giphy": {
+          "Enable":true
+        },
+        "com.mattermost.apps": {
+          "Enable":true
+        },
+        "mattermost-autolink": {
+          "Enable":true
+        },
+        "memes": {
+          "Enable":true
+        },
+        "com.gitlab.itk.fr.matternelle": {
+          "Enable":true
+        }
+      }
 
 postgres:
   pass: mattermost-pgsql-app

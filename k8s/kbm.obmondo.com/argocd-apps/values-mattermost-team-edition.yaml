@@ -176,7 +176,60 @@ mattermost-team-edition:
         }
       }
 
-    MM_PLUGINSETTINGS_PLUGINSTATES: "{\n\"com.github.matterpoll.matterpoll\":{\n\"Enable\":true\n},\n\"com.github.moussetc.mattermost.plugin.giphy\":{\n\"Enable\":true\n},\n\"com.mattermost.apps\":{\n\"Enable\":true\n},\n\"com.mattermost.custom-attributes\":{\n\"Enable\":true\n},\n\"com.mattermost.nps\":{\n\"Enable\":false\n},\n\"com.mattermost.plugin-channel-export\":{\n\"Enable\":false\n},\n\"com.mattermost.plugin-incident-management\":{\n\"Enable\":false\n},\n\"com.mattermost.plugin-todo\":{\n\"Enable\":false\n},\n\"com.mattermost.welcomebot\":{\n\"Enable\":false\n},\n\"focalboard\":{\n\"Enable\":false\n},\n\"jitsi\":{\n\"Enable\":true\n},\n\"mattermost-autolink\":{\n\"Enable\":true\n},\n\"memes\":{\n\"Enable\":true\n},\n\"net.appmodule.mattermost-jitsi-plugin\":{\n\"Enable\":false\n},\n\"playbooks\":{\n\"Enable\":false\n},\n\"com.gitlab.itk.fr.matternelle\":{\n\"Enable\":true\n},\n\"mattermost-plugin-remind\":{\n\"Enable\":true\n}\n}"
+    MM_PLUGINSETTINGS_PLUGINSTATES: |-
+      {
+        "com.github.matterpoll.matterpoll": {
+          "Enable": true
+        },
+        "com.github.moussetc.mattermost.plugin.giphy": {
+          "Enable": true
+        },
+        "com.mattermost.apps": {
+          "Enable": true
+        },
+        "com.mattermost.custom-attributes": {
+          "Enable": true
+        },
+        "com.mattermost.nps": {
+          "Enable": false
+        },
+        "com.mattermost.plugin-channel-export": {
+          "Enable": false
+        },
+        "com.mattermost.plugin-incident-management": {
+          "Enable": false
+        },
+        "com.mattermost.plugin-todo": {
+          "Enable": false
+        },
+        "com.mattermost.welcomebot": {
+          "Enable": false
+        },
+        "focalboard": {
+          "Enable": false
+        },
+        "jitsi": {
+          "Enable": true
+        },
+        "mattermost-autolink": {
+          "Enable": true
+        },
+        "memes": {
+          "Enable": true
+        },
+        "net.appmodule.mattermost-jitsi-plugin": {
+          "Enable": false
+        },
+        "playbooks": {
+          "Enable": false
+        },
+        "com.gitlab.itk.fr.matternelle": {
+          "Enable": true
+        },
+        "mattermost-plugin-remind": {
+          "Enable": true
+        }
+      }
 
 postgres:
   pass: mattermost-pgsql-app
