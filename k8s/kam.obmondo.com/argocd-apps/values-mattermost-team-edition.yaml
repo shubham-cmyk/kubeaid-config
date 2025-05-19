@@ -1,4 +1,7 @@
 mattermost-team-edition:
+  persistence:
+    data:
+      size: 15Gi
   image:
     repository: mattermost/mattermost-team-edition
     tag: 10.3.1@sha256:5892ec2bdb79d74adafd2ef689ac4ea585370646a8028cc6da249ed2715ae6fa
@@ -30,15 +33,123 @@ mattermost-team-edition:
     MM_SERVICESETTINGS_COLLAPSEDTHREADS: "default_on"
     MM_SERVICESETTINGS_THREADAUTOFOLLOW: "true"
     MM_SERVICESETTINGS_ENABLELINKPREVIEWS: "true"
-    MM_SERVICESETTINGS_RESTRICTLINKPREVIEWS: "gitlab.enableit.dk, github.com, gitea.obmondo.com"
+    MM_SERVICESETTINGS_RESTRICTLINKPREVIEWS: "github.com, gitea.obmondo.com"
     MM_PLUGINSETTINGS_ENABLE: "true"
-    MM_PLUGINSETTINGS_PLUGINS: "{\"mattermost-autolink\":{\"EnableAdminCommand\":true,\"EnableOnUpdate\":true,\"Links\":[{\"DisableNonWordPrefix\":false,\"DisableNonWordSuffix\":false,\"Disabled\":false,\"Name\":\"GN_SNOW\",\"Pattern\":\"(?P<ticket_id>TCK[0-9]{7})\",\"Scope\":null,\"Template\":\"[GNSNOW${ticket_id}](https://gnsn.service-now.com/text_search_exact_match.do?sysparm_search=${ticket_id})\",\"WordMatch\":false},{\"DisableNonWordPrefix\":true,\"DisableNonWordSuffix\":false,\"Disabled\":false,\"Name\":\"operations\",\"Pattern\":\"@operations*\",\"Scope\":null,\"Template\":\"@deepak @basit @hritik @sidharth @divyam @smahar\",\"WordMatch\":false},{\"DisableNonWordPrefix\":true,\"DisableNonWordSuffix\":false,\"Disabled\":false,\"Name\":\"features\",\"Pattern\":\"@features*\",\"Scope\":null,\"Template\":\"@aman @anantharam @sanskar @archisman @faizan @kanha\",\"WordMatch\":false},{\"DisableNonWordPrefix\":true,\"DisableNonWordSuffix\":false,\"Disabled\":false,\"Name\":\"product\",\"Pattern\":\"@product*\",\"Scope\":null,\"Template\":\"@amal @basit @emil @mayank @md-asif @rishikesh @suwarana @rehan @sgupta\",\"WordMatch\":false},{\"DisableNonWordPrefix\":true,\"DisableNonWordSuffix\":false,\"Disabled\":false,\"Name\":\"business\",\"Pattern\":\"@business*\",\"Scope\":null,\"Template\":\"@bhavishya @esther @vitamax @md-asif @olayinka @timothy @victorine\",\"WordMatch\":false},{\"DisableNonWordPrefix\":true,\"DisableNonWordSuffix\":false,\"Disabled\":false,\"Name\":\"sales\",\"Pattern\":\"@sales*\",\"Scope\":null,\"Template\":\"@anjana @prashant @sankhadeep \",\"WordMatch\":false},{\"DisableNonWordPrefix\":false,\"DisableNonWordSuffix\":false,\"Disabled\":false,\"Name\":\"support\",\"Pattern\":\"https://gitea.obmondo.com/EnableIT/(?P<repo>.+)/issues/(?P<id>[0-9].+)\",\"Scope\":null,\"Template\":\"[${repo}#${id}](https://gitea.obmondo.com/EnableIT/${repo}/issues/${id})\",\"WordMatch\":false}],\"PluginAdmins\":\"ajaiswal,klavsklavsen\"}}"
-    MM_PLUGINSETTINGS_PLUGINSTATES: "{\"com.github.matterpoll.matterpoll\":{\"Enable\":true},\"com.github.moussetc.mattermost.plugin.giphy\":{\"Enable\":true},\"com.mattermost.apps\":{\"Enable\":true},\"mattermost-autolink\":{\"Enable\":true},\"memes\":{\"Enable\":true},\"com.gitlab.itk.fr.matternelle\":{\"Enable\":true}}"
+    MM_PLUGINSETTINGS_PLUGINS: |-
+      {
+        "mattermost-autolink": {
+          "EnableAdminCommand": true,
+          "EnableOnUpdate": true,
+          "Links": [
+            {
+              "ProcessBotPosts": true,
+              "DisableNonWordPrefix": false,
+              "DisableNonWordSuffix": false,
+              "Disabled": false,
+              "Name": "GN_SNOW",
+              "Pattern": "(?P<ticket_id>TCK[0-9]{7})",
+              "Scope": null,
+              "Template": "[GNSNOW${ticket_id}](https://gnsn.service-now.com/text_search_exact_match.do?sysparm_search=${ticket_id})",
+              "WordMatch": false
+            },
+            {
+              "ProcessBotPosts": true,
+              "DisableNonWordPrefix": true,
+              "DisableNonWordSuffix": false,
+              "Disabled": false,
+              "Name": "operations",
+              "Pattern": "@operations*",
+              "Scope": null,
+              "Template": "@deepak @basit @hritik @sidharth @divyam @smahar @kanha @sol @franco-david @sanskar",
+              "WordMatch": false
+            },
+            {
+              "ProcessBotPosts": true,
+              "DisableNonWordPrefix": true,
+              "DisableNonWordSuffix": false,
+              "Disabled": false,
+              "Name": "features",
+              "Pattern": "@features*",
+              "Scope": null,
+              "Template": "@aman @anantharam @sanskar @archisman @faizan @kanha",
+              "WordMatch": false
+            },
+            {
+              "ProcessBotPosts": true,
+              "DisableNonWordPrefix": true,
+              "DisableNonWordSuffix": false,
+              "Disabled": false,
+              "Name": "product",
+              "Pattern": "@product*",
+              "Scope": null,
+              "Template": "@amal @basit @emil @mayank @md-asif @rishikesh @suwarna @rehan @sgupta",
+              "WordMatch": false
+            },
+            {
+              "ProcessBotPosts": true,
+              "DisableNonWordPrefix": true,
+              "DisableNonWordSuffix": false,
+              "Disabled": false,
+              "Name": "business",
+              "Pattern": "@business*",
+              "Scope": null,
+              "Template": "@bhavishya @esther @vitamax @md-asif @olayinka @timothy @victorine @sol",
+              "WordMatch": false
+            },
+            {
+              "ProcessBotPosts": true,
+              "DisableNonWordPrefix": true,
+              "DisableNonWordSuffix": false,
+              "Disabled": false,
+              "Name": "sales",
+              "Pattern": "@sales*",
+              "Scope": null,
+              "Template": "@anjana @prashant @sankhadeep",
+              "WordMatch": false
+            },
+            {
+              "ProcessBotPosts": true,
+              "DisableNonWordPrefix": false,
+              "DisableNonWordSuffix": false,
+              "Disabled": false,
+              "Name": "support",
+              "Pattern": "https://gitea.obmondo.com/EnableIT/(?P<repo>.+)/issues/(?P<id>[0-9].+)",
+              "Scope": null,
+              "Template": "[${repo}#${id}](https://gitea.obmondo.com/EnableIT/${repo}/issues/${id})",
+              "WordMatch": false
+            }
+          ],
+          "PluginAdmins": "ajaiswal,klavsklavsen"
+        }
+      }
+
+    MM_PLUGINSETTINGS_PLUGINSTATES: |-
+      {
+        "com.github.matterpoll.matterpoll": {
+          "Enable":true
+        },
+        "com.github.moussetc.mattermost.plugin.giphy": {
+          "Enable":true
+        },
+        "com.mattermost.apps": {
+          "Enable":true
+        },
+        "mattermost-autolink": {
+          "Enable":true
+        },
+        "memes": {
+          "Enable":true
+        },
+        "com.gitlab.itk.fr.matternelle":{
+          "Enable":true
+        }
+      }
 
 matternelle:
   domain: webchat.obmondo.com
 
 postgres:
+  size: 15Gi
   instance: 2
   storageClass: zfs-localpv
   logicalbackup:
