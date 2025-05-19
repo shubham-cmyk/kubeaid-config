@@ -221,6 +221,8 @@ extraEnv:
     value: true
   - name: CONFIG_REPOS_PATH
     value: /opt/obmondo/repos
+  - name: PUPPET_PKCS7_CERT_PATH
+    value: /opt/obmondo/puppet-pkcs7-cert.pem
   - name: ACCESS_LIST_CERTNAMES
     value: "internal-api01.enableit,opsmondo-test.niwyocdmk2,k8s-htzhel1-kbm.enableit,financeapi-puppet-cert.enableit,finance-api-beta-service.enableit"
 
