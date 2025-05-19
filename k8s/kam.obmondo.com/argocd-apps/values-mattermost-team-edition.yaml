@@ -60,7 +60,7 @@ mattermost-team-edition:
               "Name": "operations",
               "Pattern": "@operations*",
               "Scope": null,
-              "Template": "@deepak @basit @hritik @sidharth @divyam @smahar",
+              "Template": "@deepak @basit @hritik @sidharth @divyam @smahar @kanha @sol @franco-david @sanskar",
               "WordMatch": false
             },
             {
@@ -93,7 +93,7 @@ mattermost-team-edition:
               "Name": "business",
               "Pattern": "@business*",
               "Scope": null,
-              "Template": "@bhavishya @esther @vitamax @md-asif @olayinka @timothy @victorine",
+              "Template": "@bhavishya @esther @vitamax @md-asif @olayinka @timothy @victorine @sol",
               "WordMatch": false
             },
             {
