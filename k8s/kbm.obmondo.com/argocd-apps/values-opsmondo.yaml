@@ -7,7 +7,6 @@ opsmondo:
         - monitor::system::service::down
       high_priority_alerts:
         - monitor::system::ntp::sync
-        - monitor::system::disk::usage
         - HighStorageUsage
         - KubePersistentVolumeFillingUp
         - KubePersistentVolumeInodesFillingUp
@@ -16,8 +15,6 @@ opsmondo:
         - CephHealthWarning
         - CephMonDownQuorumAtRisk
         - CephMonDown
-        - CephMonDiskspaceCritical
-        - CephMonDiskspaceLow
         - CephMonClockSkew
         - CephOSDDownHigh
         - CephOSDHostDown
@@ -28,7 +25,6 @@ opsmondo:
         - CephOSDTooManyRepairs
         - CephOSDTimeoutsPublicNetwork
         - CephOSDTimeoutsClusterNetwork
-        - CephOSDInternalDiskSizeMismatch
         - CephDeviceFailurePredicted
         - CephDeviceFailurePredictionTooHigh
         - CephDeviceFailureRelocationIncomplete
@@ -74,3 +70,8 @@ opsmondo:
         - CephRBDMirrorImagesNotInSync
         - CephRBDMirrorImagesNotInSyncVeryHigh
         - CephRBDMirrorImageTransferBandwidthHigh
+      high_priority_if_severity_critical:
+        - monitor::system::disk::usage
+        - CephMonDiskspaceCritical
+        - CephMonDiskspaceLow
+        - CephOSDInternalDiskSizeMismatch
