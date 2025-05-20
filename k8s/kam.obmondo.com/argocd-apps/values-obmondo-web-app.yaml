@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  tag: obmondo-v3.8.0
+  tag: obmondo-v3.9.0
   pullPolicy: Always
 middleware: true
 ingress:
