@@ -63,12 +63,12 @@ api:
     image:
       repository: harbor.obmondo.com/obmondo/clojure-api/api
       pullPolicy: Always
-      tag: v3.0.72
+      tag: v3.0.73
   go:
     image:
       repository: harbor.obmondo.com/obmondo/enableit-go-api
       pullPolicy: Always
-      tag: v0.2.3.1
+      tag: v0.2.4
   server:
     internal_ips_for_readonly_auth: "172.20.0.0/16"
   mode: beta
