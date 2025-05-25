@@ -1,5 +1,8 @@
 customerid: enableit
 prometheus:
+  storage:
+    size: 40Gi
+    className: rook-ceph-block
   resources:
     limits:
       memory: 4Gi
