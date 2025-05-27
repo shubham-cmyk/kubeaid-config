@@ -190,6 +190,9 @@ ingress:
         - path: /api/customer_details
           pathType: Prefix
           servicePort: 8080
+        - path: /api/subscription_transactions
+          pathType: Prefix
+          servicePort: 8080
         - path: /api/count
           pathType: Prefix
           servicePort: 8080
