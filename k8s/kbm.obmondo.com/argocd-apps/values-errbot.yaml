@@ -27,4 +27,4 @@ env:
     value: "Obmondo"
     # only bot admins are allowed to change bot configuration
   - name: BOT_ADMINS
-    value: "@klavs,@ajaiswal,@aman0,@megh,@faizan,@hritik"
+    value: "@klavs,@ajaiswal,@aman0,@faizan,@hritik,@bhavishya"
