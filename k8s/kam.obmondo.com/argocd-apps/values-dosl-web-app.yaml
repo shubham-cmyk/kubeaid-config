@@ -1,0 +1,22 @@
+replicaCount: 1
+image:
+  tag: v0.0.0
+  pullPolicy: Always
+ingress:
+  hosts:
+    - host: dosl.dk
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+    - host: www.dosl.dk
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: dosl-dk-tls
+      hosts:
+        - dosl.dk
+        - www.dosl.dk
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    kubernetes.io/ingress.class: traefik-cert-manager
