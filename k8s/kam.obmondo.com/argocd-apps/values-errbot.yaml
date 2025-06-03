@@ -45,6 +45,17 @@ env:
       secretKeyRef:
         name: errbot-relate-token
         key: quality-mindset
+  - name: TLS_CERT
+    valueFrom:
+      secretKeyRef:
+        name: errbot-puppet-cert
+        key: tls.crt
+  - name: TLS_KEY
+    valueFrom:
+      secretKeyRef:
+        name: errbot-puppet-cert
+        key: tls.key
+
   - name: BOT_SERVER
     value: "chat.obmondo.com"
   - name: BOT_PORT
