@@ -1,10 +1,10 @@
 customerid: abbnoa6nlk
 prometheus:
   storage:
-    size: 60Gi
+    size: 100Gi
   resources:
     limits:
-      memory: 4Gi
+      memory: 8Gi
     requests:
-      cpu: 600m
-      memory: 2Gi
+      cpu: 1200m
+      memory: 6Gi
