@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  labels:
+    kubeaid.io/version: "HEAD"
+    kubeaid.io/managed-by: "kubeaid"
+    kubeaid.io/priority: "default"
+  name: k8s-configs
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system
+  project: kubeaid
+  source:
+    repoURL: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
+    path: k8s/vpn-obmondo-com/k8s-configs
+    targetRevision: HEAD
+    directory:
+      recurse: true
