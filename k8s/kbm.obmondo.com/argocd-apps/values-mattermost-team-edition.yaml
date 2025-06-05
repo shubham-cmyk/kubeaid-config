@@ -38,6 +38,7 @@ mattermost-team-edition:
     MM_SERVICESETTINGS_RESTRICTLINKPREVIEWS: "github.com"
     MM_SERVICESETTINGS_ENABLEAPIUSERDELETION: "true"
     MM_PLUGINSETTINGS_ENABLE: "true"
+    MM_PLUGINSETTINGS_ENABLEUPLOADS: "true"
     MM_PLUGINSETTINGS_PLUGINS: |-
       {
         "com.mattermost.nps": {
