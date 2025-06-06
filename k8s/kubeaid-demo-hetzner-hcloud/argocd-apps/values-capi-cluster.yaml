@@ -6,7 +6,7 @@ global:
     repo: https://github.com/Obmondo/KubeAid
   kubeaidConfig:
     repo: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
-  additionalUsers: 
+  additionalUsers:
     - name: klavs
       sshPublicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDgjmqOC7ghLNqK6CkD7YTpCw4rpC5CblAndACCpZ+3xXnT8qrNDxzCVj1O2QnWQw8w0J4WUBKhePClAlF3HUnXPxvBzAFGlxrkdfS6ndAy4T/Ew1healjxDF7mOcuDwoBPuLVEXwPYJ3OFUrOKajRcvP85AGO0MYAbVyVg/ANsiTmVp+T70UfHtYG6MQdTIO+wpcHAgHFV/yotaQTKNA5HpvbxP5qdjrlas1T5XXBoKV9HVXL0ipTBj4OFNFYF+FDKVfdM4MvrktFXzzGHGWtn/QkWxMvPOrnKFRhxvFse0YyKOV5wLtsdjdX23NKgC6skayAFiY/+T2Y5mcnIz3zOm0hCOtdVpaajWfJyIrSKz4UmuGtCfdyX4jqLOgtqByHGwMzHtkjfr3m+eqDvxyRLlEIEpITYdkIe2t5emeBTKHl2NrrC7btvL4Awz4azKkdTDgdXl7FUgL2537N8EYnQ8DHZrImsJkpV+hIwwSuZAGr6enfrObYTzyWbEo0HttXbot9iNWNjcf5aLZTNoPSM+gE/C3BTJs4ykjM9Aq1SC9qQwqeXvvv3x529tOW0SnrohVnNFn/Z41+nfYK6TC5ZNihBdKXkBQUi9YaLJs0jlYg9aDA0fhYDYr8OJOT1xRUwm/zfM7Je6QykS2fqAQRUEWknmfshVHrzY61IeSbWhQ== klavs
     - name: ashish
@@ -29,16 +29,15 @@ hetzner:
   imageName: ubuntu-24.04
 
   controlPlane:
-    
     machineType: cax11
     replicas: 1
     loadBalancer:
       enabled: true
       region: hel1
 
-    regions: 
+    regions:
       - hel1
 
-  nodeGroups: 
+  nodeGroups:
     hcloud: []
     bareMetal: []
