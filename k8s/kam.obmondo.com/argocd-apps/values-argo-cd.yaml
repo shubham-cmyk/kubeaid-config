@@ -37,3 +37,9 @@ argo-cd:
         - argocd.kam.obmondo.com
   global:
     domain: argocd.kam.obmondo.com
+  controller:
+    resources:
+      requests:
+        memory: 800Mi
+      limits:
+        memory: 1250Mi
