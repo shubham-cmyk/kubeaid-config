@@ -5,24 +5,23 @@ metadata:
     kubeaid.io/version: "HEAD"
     kubeaid.io/managed-by: "kubeaid"
     kubeaid.io/priority: "default"
-  name: cluster-autoscaler
+  name: ccm-hcloud
   namespace: argocd
 spec:
   destination:
-    namespace: cluster-autoscaler
+    namespace: kube-system
     server: https://kubernetes.default.svc
+  project: kubeaid
   sources:
     - repoURL: https://github.com/Obmondo/KubeAid
-      path: argocd-helm-charts/cluster-autoscaler
+      path: argocd-helm-charts/ccm-hcloud
       targetRevision: HEAD
       helm:
         valueFiles:
-          - $values/k8s/vpn-obmondo-com/argocd-apps/values-cluster-autoscaler.yaml
+          - $values/k8s/vpn-obmondo-com/argocd-apps/values-ccm-hcloud.yaml
     - repoURL: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
-  project: kubeaid
   syncPolicy:
     syncOptions:
-      - CreateNamespace=true
       - ApplyOutOfSyncOnly=true
