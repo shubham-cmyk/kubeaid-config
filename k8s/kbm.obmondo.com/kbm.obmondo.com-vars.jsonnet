@@ -47,6 +47,7 @@
     'zfs-localpv',
     'testing-metrics',
     'obmondo-website',
+    'finance',
   ],
   prometheus+: {
     storage: {
