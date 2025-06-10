@@ -2575,11 +2575,11 @@ items:
                                       },
                                       {
                                           "color": "rgba(237, 129, 40, 0.89)",
-                                          "value": 0.10000000000000001
+                                          "value": 0.1
                                       },
                                       {
                                           "color": "rgba(50, 172, 45, 0.97)",
-                                          "value": 0.29999999999999999
+                                          "value": 0.3
                                       }
                                   ]
                               },
@@ -2657,7 +2657,7 @@ items:
                                       },
                                       {
                                           "color": "rgba(237, 129, 40, 0.89)",
-                                          "value": 0.025000000000000001
+                                          "value": 0.025
                                       },
                                       {
                                           "color": "rgba(245, 54, 54, 0.9)",
@@ -3310,11 +3310,11 @@ items:
                                       },
                                       {
                                           "color": "rgba(237, 129, 40, 0.89)",
-                                          "value": 0.025000000000000001
+                                          "value": 0.025
                                       },
                                       {
                                           "color": "rgba(245, 54, 54, 0.9)",
-                                          "value": 0.10000000000000001
+                                          "value": 0.1
                                       }
                                   ]
                               },
@@ -3627,7 +3627,7 @@ items:
                           {
                               "aggregation": "Last",
                               "alias": "MONs out of Quorum",
-                              "crit": 1.6000000000000001,
+                              "crit": 1.6,
                               "datasource": "$datasource",
                               "decimals": 2,
                               "displayAliasType": "Warning / Critical",
@@ -3641,7 +3641,7 @@ items:
                               "refId": "C",
                               "units": "none",
                               "valueHandler": "Number Threshold",
-                              "warn": 1.1000000000000001
+                              "warn": 1.1
                           }
                       ],
                       "title": "Monitors",
@@ -5306,7 +5306,7 @@ items:
                                       "color": "rgba(255,0,255,0.7)"
                                   },
                                   "filterValues": {
-                                      "le": 1.0000000000000001e-09
+                                      "le": 0.000000001
                                   },
                                   "legend": {
                                       "show": true
@@ -5434,7 +5434,7 @@ items:
                                       "color": "rgba(255,0,255,0.7)"
                                   },
                                   "filterValues": {
-                                      "le": 1.0000000000000001e-09
+                                      "le": 0.000000001
                                   },
                                   "legend": {
                                       "show": true
@@ -5562,7 +5562,7 @@ items:
                                       "color": "rgba(255,0,255,0.7)"
                                   },
                                   "filterValues": {
-                                      "le": 1.0000000000000001e-09
+                                      "le": 0.000000001
                                   },
                                   "legend": {
                                       "show": true
@@ -5691,7 +5691,7 @@ items:
                                       "color": "rgba(255,0,255,0.7)"
                                   },
                                   "filterValues": {
-                                      "le": 1.0000000000000001e-09
+                                      "le": 0.000000001
                                   },
                                   "legend": {
                                       "show": true
@@ -9868,7 +9868,7 @@ items:
                                       },
                                       {
                                           "color": "red",
-                                          "value": 0.84999999999999998
+                                          "value": 0.85
                                       }
                                   ]
                               },
@@ -54636,11 +54636,11 @@ items:
                                           },
                                           {
                                               "color": "yellow",
-                                              "value": 0.80000000000000004
+                                              "value": 0.8
                                           },
                                           {
                                               "color": "red",
-                                              "value": 0.90000000000000002
+                                              "value": 0.9
                                           }
                                       ]
                                   },
@@ -55725,11 +55725,11 @@ items:
                                           },
                                           {
                                               "color": "yellow",
-                                              "value": 0.80000000000000004
+                                              "value": 0.8
                                           },
                                           {
                                               "color": "red",
-                                              "value": 0.90000000000000002
+                                              "value": 0.9
                                           }
                                       ]
                                   },
@@ -56807,11 +56807,11 @@ items:
                                           },
                                           {
                                               "color": "yellow",
-                                              "value": 0.80000000000000004
+                                              "value": 0.8
                                           },
                                           {
                                               "color": "red",
-                                              "value": 0.90000000000000002
+                                              "value": 0.9
                                           }
                                       ]
                                   },
@@ -63315,7 +63315,7 @@ items:
                                       },
                                       {
                                           "color": "green",
-                                          "value": 0.10000000000000001
+                                          "value": 0.1
                                       }
                                   ]
                               },
@@ -63380,7 +63380,7 @@ items:
                                       },
                                       {
                                           "color": "yellow",
-                                          "value": 0.10000000000000001
+                                          "value": 0.1
                                       }
                                   ]
                               },
@@ -63445,7 +63445,7 @@ items:
                                       },
                                       {
                                           "color": "red",
-                                          "value": 0.10000000000000001
+                                          "value": 0.1
                                       }
                                   ]
                               },

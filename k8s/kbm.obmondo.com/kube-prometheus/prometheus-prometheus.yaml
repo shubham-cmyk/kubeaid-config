@@ -41,7 +41,7 @@ spec:
       cpu: 200m
       memory: 5Gi
   retention: 15d
-  ruleNamespaceSelector: null
+  ruleNamespaceSelector: {}
   ruleSelector: {}
   securityContext:
     fsGroup: 2000
