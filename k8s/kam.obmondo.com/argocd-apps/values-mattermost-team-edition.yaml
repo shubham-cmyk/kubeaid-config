@@ -60,7 +60,7 @@ mattermost-team-edition:
               "Name": "operations",
               "Pattern": "@operations*",
               "Scope": null,
-              "Template": "@deepak @basit @hritik @sidharth @divyam @smahar @kanha @sol @franco-david @sanskar",
+              "Template": "@deepak @basit @hritik @sidharth @divyam @smahar @kanha @franco-david @sanskar",
               "WordMatch": false
             },
             {
@@ -93,7 +93,7 @@ mattermost-team-edition:
               "Name": "business",
               "Pattern": "@business*",
               "Scope": null,
-              "Template": "@bhavishya @esther @vitamax @md-asif @olayinka @timothy @victorine @sol",
+              "Template": "@bhavishya @esther @vitamax @md-asif @olayinka @timothy @victorine",
               "WordMatch": false
             },
             {
@@ -104,7 +104,7 @@ mattermost-team-edition:
               "Name": "sales",
               "Pattern": "@sales*",
               "Scope": null,
-              "Template": "@sankhadeep @prashant",
+              "Template": "@sankhadeep",
               "WordMatch": false
             },
             {
