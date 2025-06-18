@@ -1,10 +1,9 @@
 namespace: finance
 replicaCount: 1
 image:
-    repository: harbor.obmondo.com/obmondo/finance-api
-    tag: v0.3.2
-    pullPolicy: Always
-
+  repository: harbor.obmondo.com/obmondo/finance-api
+  tag: v0.3.2
+  pullPolicy: Always
 
 imagePullSecrets:
   - name: harbor-registry-secret
