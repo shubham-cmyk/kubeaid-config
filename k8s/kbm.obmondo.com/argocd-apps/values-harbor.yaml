@@ -27,4 +27,4 @@ postgres:
     s3bucketscopesuffix: "harbor"
     provider: "s3"
     s3endpoint: "https://s3.obmondo.com"
-    retension: "30"
+    retention: "30"
