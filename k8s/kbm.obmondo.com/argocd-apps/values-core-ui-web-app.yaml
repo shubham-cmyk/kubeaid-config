@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  tag: beta-core-v3.7.8
+  tag: beta-core-v3.9.7
   pullPolicy: Always
 ingress:
   hosts:
