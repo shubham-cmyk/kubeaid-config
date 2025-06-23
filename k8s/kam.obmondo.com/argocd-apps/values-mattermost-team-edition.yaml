@@ -60,7 +60,7 @@ mattermost-team-edition:
               "Name": "operations",
               "Pattern": "@operations*",
               "Scope": null,
-              "Template": "@deepak @basit @hritik @sidharth @divyam @smahar @kanha @franco-david @sanskar",
+              "Template": "@deepak @basit @hritik @sidharth @divyam @smahar @kanha @franco-david @sanskar @oleg",
               "WordMatch": false
             },
             {
