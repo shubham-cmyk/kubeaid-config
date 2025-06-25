@@ -1,9 +1,9 @@
 namespace: finance
 replicaCount: 1
 image:
-  repository: harbor.obmondo.com/obmondo/finance-api
-  tag: v0.3.2
-  pullPolicy: Always
+    repository: harbor.obmondo.com/obmondo/finance-api
+    tag: v0.3.2
+    pullPolicy: Always
 
 imagePullSecrets:
   - name: harbor-registry-secret
@@ -72,6 +72,11 @@ persistence:
     size: 2Gi
     accessMode: ReadWriteMany
     storageClass: ceph-filesystem
+
+mail:
+  from: "info@enableit.dk"
+  host: "mail.system"
+  port: 587
 
 serviceMonitor:
   enabled: true
