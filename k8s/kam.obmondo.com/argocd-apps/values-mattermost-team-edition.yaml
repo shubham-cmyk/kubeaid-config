@@ -58,7 +58,7 @@ mattermost-team-edition:
               "DisableNonWordSuffix": false,
               "Disabled": false,
               "Name": "operations",
-              "Pattern": "@operations*",
+              "Pattern": "\B@operations?\b",
               "Scope": null,
               "Template": "@deepak @basit @hritik @sidharth @divyam @smahar @kanha @franco-david @sanskar @oleg",
               "WordMatch": false
@@ -69,7 +69,7 @@ mattermost-team-edition:
               "DisableNonWordSuffix": false,
               "Disabled": false,
               "Name": "features",
-              "Pattern": "@features*",
+              "Pattern": "\B@features?\b",
               "Scope": null,
               "Template": "@aman @anantharam @sanskar @archisman @faizan @kanha",
               "WordMatch": false
@@ -80,7 +80,7 @@ mattermost-team-edition:
               "DisableNonWordSuffix": false,
               "Disabled": false,
               "Name": "product",
-              "Pattern": "@product*",
+              "Pattern": "\B@products?\b",
               "Scope": null,
               "Template": "@amal @basit @emil @mayank @md-asif @rishikesh @suwarna @rehan @sgupta",
               "WordMatch": false
@@ -91,7 +91,7 @@ mattermost-team-edition:
               "DisableNonWordSuffix": false,
               "Disabled": false,
               "Name": "business",
-              "Pattern": "@business*",
+              "Pattern": "\B@business\b",
               "Scope": null,
               "Template": "@bhavishya @esther @vitamax @md-asif @olayinka @timothy @victorine",
               "WordMatch": false
@@ -102,7 +102,7 @@ mattermost-team-edition:
               "DisableNonWordSuffix": false,
               "Disabled": false,
               "Name": "sales",
-              "Pattern": "@sales*",
+              "Pattern": "\B@sales?\b",
               "Scope": null,
               "Template": "@sankhadeep",
               "WordMatch": false
