@@ -58,7 +58,7 @@ mattermost-team-edition:
               "DisableNonWordSuffix": false,
               "Disabled": false,
               "Name": "devops",
-              "Pattern": "@devops*",
+              "Pattern": "\B@devops\b",
               "Scope": null,
               "Template": "[@devops](https://gnsn.service-now.com/text_search_exact_match.do?sysparm_search=${ticket_id})",
               "WordMatch": false
@@ -78,7 +78,7 @@ mattermost-team-edition:
               "DisableNonWordSuffix": false,
               "Disabled": false,
               "Name": "india",
-              "Pattern": "@india*",
+              "Pattern": "\B@india\b",
               "Scope": null,
               "Template": "[@india](\\\\*@deepak@sandeep@aman0@sachin@ajaiswal\\\\*)",
               "WordMatch": false
@@ -88,7 +88,7 @@ mattermost-team-edition:
               "DisableNonWordSuffix": false,
               "Disabled": false,
               "Name": "oncall",
-              "Pattern": "@oncall*",
+              "Pattern": "\B@oncall\b",
               "Scope": null,
               "Template": "[@oncall](\\\\*@deepak@aman0\\\\*)",
               "WordMatch": false
@@ -98,7 +98,7 @@ mattermost-team-edition:
               "DisableNonWordSuffix": false,
               "Disabled": false,
               "Name": "reviewer",
-              "Pattern": "@reviewer*",
+              "Pattern": "\B@reviewer?\b",
               "Scope": null,
               "Template": "[@reviewer](\\\\*@ajaiswal@klavsklavsen@runejuhl@aman0\\\\*)",
               "WordMatch": false
@@ -136,7 +136,7 @@ mattermost-team-edition:
             {
               "ProcessBotPosts": true,
               "Name": "Duck AI",
-              "Pattern": "@duck-ai",
+              "Pattern": "\B@duck-ai\b",
               "Template": "[@duck-ai](https://duck.ai)",
               "Scope": null,
               "WordMatch": false
@@ -147,7 +147,7 @@ mattermost-team-edition:
               "DisableNonWordSuffix":false,
               "Disabled":false,
               "Name":"operations",
-              "Pattern":"@operations*",
+              "Pattern":"\B@operations?\b",
               "Scope":null,
               "Template":"@deepak @basit @hritik @sidharth @divyam @smahar",
               "WordMatch":false
