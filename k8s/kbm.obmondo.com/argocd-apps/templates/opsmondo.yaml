@@ -7,7 +7,7 @@ spec:
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/opsmondo.git
       path: helm/opsmondo
-      targetRevision: v0.22.0
+      targetRevision: v0.26.0
       helm:
         valueFiles:
           - $values/k8s/kbm.obmondo.com/argocd-apps/values-opsmondo.yaml
@@ -19,6 +19,5 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   syncPolicy:
-    automated: null
     syncOptions:
     - ApplyOutOfSyncOnly=true
