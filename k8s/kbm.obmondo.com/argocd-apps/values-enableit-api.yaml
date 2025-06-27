@@ -251,5 +251,7 @@ gitRepos:
     - qd2xcggwag
     - rufvpto91t
 
+obmondoInstallScript: 1.0.9
+
 sendNotification:
   mail: false

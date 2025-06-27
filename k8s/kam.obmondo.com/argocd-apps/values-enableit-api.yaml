@@ -45,18 +45,18 @@ approvers:
   - "ashish@obmondo.com"
   - "aman@obmondo.com"
 internalIpRanges:
-  - "135.181.21.167"  # kbm01
-  - "135.181.21.154"  # kbm02
-  - "135.181.21.153"  # kbm03
-  - "135.181.223.235"  # kbw01
-  - "65.21.130.86"  # kbw02
-  - "65.21.130.85"  # kbw03
-  - "78.46.72.21"  # kam01
-  - "176.9.124.207"  # kam02
-  - "85.10.211.48"  # kam03
-  - "138.201.82.121"  # kaw01
-  - "138.201.224.126"  # kaw02
-  - "172.20.0.0/16"  # Internal service ip range k8s
+  - "135.181.21.167" # kbm01
+  - "135.181.21.154" # kbm02
+  - "135.181.21.153" # kbm03
+  - "135.181.223.235" # kbw01
+  - "65.21.130.86" # kbw02
+  - "65.21.130.85" # kbw03
+  - "78.46.72.21" # kam01
+  - "176.9.124.207" # kam02
+  - "85.10.211.48" # kam03
+  - "138.201.82.121" # kaw01
+  - "138.201.224.126" # kaw02
+  - "172.20.0.0/16" # Internal service ip range k8s
 trustedProxies:
   - 172.20.0.0/16
 image:
@@ -284,6 +284,8 @@ gitRepos:
     - niwyocdmk2
     - qd2xcggwag
     - rufvpto91t
+
+obmondoInstallScript: 1.0.9
 
 sendNotification:
   mail: true
