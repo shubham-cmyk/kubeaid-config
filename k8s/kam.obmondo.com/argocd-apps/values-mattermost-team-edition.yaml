@@ -104,7 +104,7 @@ mattermost-team-edition:
               "Name": "sales",
               "Pattern": "\B@sales?\b",
               "Scope": null,
-              "Template": "@sankhadeep",
+              "Template": "@sankhadeep @divya",
               "WordMatch": false
             },
             {
