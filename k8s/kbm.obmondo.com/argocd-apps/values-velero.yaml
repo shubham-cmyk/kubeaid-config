@@ -42,3 +42,8 @@ velero:
     useSecret: true
     name: cloud-credentials
     existingSecret: cloud-credentials
+volumeSnapshotClasses:
+  - name: zfs-disk-snapshotclass
+    driver: zfs.csi.openebs.io
+    deletionPolicy: Delete
+
