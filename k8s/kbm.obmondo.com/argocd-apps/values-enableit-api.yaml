@@ -251,7 +251,10 @@ gitRepos:
     - qd2xcggwag
     - rufvpto91t
 
-obmondoInstallScript: 1.0.9
+# Update the version here as we use the same install script
+# for setting up the server
+# Ref: https://gitea.obmondo.com/EnableIT/go-scripts/src/branch/main/cmd/obmondo-install-setup/Makefile#L3
+obmondoInstallScript: 1.0.10
 
 sendNotification:
   mail: false
