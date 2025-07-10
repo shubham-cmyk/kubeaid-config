@@ -42,4 +42,4 @@ wildcardCertificates:
   enabled: true
   issuer: letsencrypt
   domains:
-    - "*.kbm.obmondo.com"
+    - "*.kcm.obmondo.com"

@@ -11,7 +11,7 @@ issuer:
         key: api-token
       dnsNames:
         - obmondo.com
-        - "*.kbm.obmondo.com"
+        - "*.kcm.obmondo.com"
     - type: http
       http01:
         ingress:
