@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rook-ceph
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: rook-ceph
+  project: default
+  sources:
+    - repoURL: https://github.com/Obmondo/KubeAid.git
+      path: argocd-helm-charts/rook-ceph
+      targetRevision: 16.0.1
+      helm:
+        valueFiles:
+          - $values/k8s/kcm/argocd-apps/values-rook-ceph.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
+      targetRevision: HEAD
+      ref: values
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
