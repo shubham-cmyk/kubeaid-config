@@ -1,0 +1,16 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: teleport-kube-agent-join-token
+  namespace: obmondo
+spec:
+  encryptedData:
+    auth-token: AgBn6wvZWBZl/VokiGFllPV1i/03QbhvUTQBYazohj30VrUjakcoIGIml0zvrIP69yh6HA0SWUtNo5VU0g9oGH7PVe1lcAebhOUCOncFDCA5AXqG9SMbQkRUXvg5v+FGgeHA07JKZdRHAGI7dqvvUaWNf16PHGNPnUzPm36ZXA6bLNsJuPQC8IMZWNHrBtPgaqQ0Ut663i46ZcNSTrkto4b6ivMsGRrJ+mvS1pWNJ2nY5ov6yDAlnXOfp7Bu5qR3f4y2nR139qnc80xxCQefoz6UEh9AWS0JAHDz7/dPyyx/bOP6SDx9scj4QVzomyA6s0YlwtdknyvGMwYGuja6ItDc2k/6SRKr1HfvgqJhKeu1MzK/23rvTzCISZf1XV21YXycyMZ97nx1Jmp4fTWF2x/XE1zQV1g1mwDu+nYr3v0Sp1z/5EPv60ppl3DiZB+6yF3XfJfW9OvnJKvu6TrtzwtnNf2tMCkTihXz37dXhDKL1amp3uIL6uNzKLKBUwDxsaF25rB+9EY9WDCimtxmQT9JqQPMCEs6pUREqKltTRm/tpZYQwHh8awqQC2/7RM2Sl/p2cAM/9KYGDpzoLnCrxwLtzmcBGTT/msqXazPvvsHimbBKmKXkgWfVWyKN6X3c7kVGlzBwgEjOljzwYEfIwK16pkjyWB4uOZGXdujoM5cFhqoBwnhuMV5VfRGQfxgdTpC7Fu7+17Fej4Ok2uhG9HsXid96HR3G/tEG3JqRIpiKg==
+  template:
+    metadata:
+      creationTimestamp: null
+      name: teleport-kube-agent-join-token
+      namespace: obmondo
+    type: Opaque
