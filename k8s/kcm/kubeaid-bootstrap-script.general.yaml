@@ -1,11 +1,11 @@
 forkURLs:
-  kubeaid: https://gitea.obmondo.com/EnableIT/kubeaid
+  kubeaid: https://github.com/Obmondo/kubeaid
   kubeaidConfig: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
 
 cluster:
   name: kcm
   k8sVersion: v1.32.0
-  kubeaidVersion: HEAD
+  kubeaidVersion: 16.0.1
   enableAuditLogging: true
   additionalUsers:
     - name: obmondo

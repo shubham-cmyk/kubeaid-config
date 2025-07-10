@@ -3,7 +3,7 @@ global:
   kubernetes:
     version: v1.32.0
   kubeaid:
-    repo: https://gitea.obmondo.com/EnableIT/kubeaid
+    repo: https://github.com/Obmondo/kubeaid
   kubeaidConfig:
     repo: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
   additionalUsers:
