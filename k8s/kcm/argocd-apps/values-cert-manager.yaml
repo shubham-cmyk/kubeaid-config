@@ -1,3 +1,22 @@
+issuer:
+  enabled: true
+  issuerEmail: klavs@obmondo.com
+  production: true
+  secret: kcm-letsencrypt-key
+  solvers:
+    - type: dns
+      cloudProvider: cloudflare
+      cloudProviderSecretRef:
+        name: cloudflare-api-token-secret
+        key: api-token
+      dnsNames:
+        - obmondo.com
+        - "*.kbm.obmondo.com"
+    - type: http
+      http01:
+        ingress:
+          ingressClassName: traefik-cert-manager
+
 cert-manager:
   prometheus:
-    enabled: false
+    enabled: true
