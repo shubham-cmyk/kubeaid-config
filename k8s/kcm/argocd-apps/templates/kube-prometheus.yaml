@@ -16,7 +16,7 @@ spec:
   project: kubeaid
   source:
     path: k8s/kcm/kube-prometheus
-    repoURL: https://github.com/Archisman-Mridha/kubeaid-config
+    repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
     targetRevision: HEAD
     directory:
       recurse: true

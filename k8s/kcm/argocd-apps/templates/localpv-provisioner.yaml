@@ -15,13 +15,13 @@ spec:
     namespace: localpv-provisioner
   project: kubeaid
   sources:
-    - repoURL: https://github.com/Archisman-Mridha/kubeaid
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid
       path: argocd-helm-charts/localpv-provisioner
       targetRevision: HEAD
       helm:
         valueFiles:
           - $values/k8s/kcm/argocd-apps/values-localpv-provisioner.yaml
-    - repoURL: https://github.com/Archisman-Mridha/kubeaid-config
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
       targetRevision: HEAD
       ref: values
   syncPolicy:
