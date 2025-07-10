@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   labels:
-    kubeaid.io/version: HEAD
+    kubeaid.io/version: 16.0.1
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "10"
   name: hetzner-robot
