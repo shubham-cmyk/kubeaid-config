@@ -1,0 +1,45 @@
+traefik:
+  deployment:
+    kind: DaemonSet
+  ports:
+    websecure:
+      hostPort: 443
+    web:
+      hostPort: 80
+  logs:
+    general:
+      level: INFO
+  tlsStore:
+    default:
+      defaultCertificate:
+        secretName: kcm
+  service:
+    type: NodePort
+    externalIPs:
+      - 65.108.24.157
+  experimental:
+    plugins:
+      jwt:
+        moduleName: github.com/Obmondo/traefik-jwt-plugin
+        version: v0.7.1
+      headerauthentication:
+        moduleName: github.com/omar-shrbajy-arive/headerauthentication
+        version: v1.0.3
+  additionalArguments:
+    - "--providers.kubernetesingress.ingressclass=traefik-cert-manager"
+    - "--entrypoints.websecure.http.tls"
+    - "--metrics.prometheus=true"
+  # https://github.com/argoproj/argo-cd/issues/1704#issuecomment-904741817
+  providers:
+    kubernetesCRD:
+      enabled: true
+      allowCrossNamespace: true
+    kubernetesIngress:
+      publishedService:
+        enabled: true
+
+wildcardCertificates:
+  enabled: true
+  issuer: letsencrypt
+  domains:
+    - "*.kbm.obmondo.com"
