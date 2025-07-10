@@ -15,9 +15,9 @@ spec:
     namespace: localpv-provisioner
   project: kubeaid
   sources:
-    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid
+    - repoURL: https://github.com/Obmondo/kubeaid
       path: argocd-helm-charts/localpv-provisioner
-      targetRevision: HEAD
+      targetRevision: 16.0.1
       helm:
         valueFiles:
           - $values/k8s/kcm/argocd-apps/values-localpv-provisioner.yaml
