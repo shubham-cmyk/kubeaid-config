@@ -2,12 +2,16 @@ namespace: finance
 replicaCount: 1
 image:
     repository: harbor.obmondo.com/obmondo/finance-api
-    tag: v0.3.2
+    tag: v0.4.2
     pullPolicy: Always
 
 
 imagePullSecrets:
   - name: harbor-registry-secret
+
+mode: prod
+# Specifies the level of logs in prod; info, warn or error
+log_level: info
 
 ingress:
   enabled: true
@@ -73,3 +77,64 @@ persistence:
     size: 2Gi
     accessMode: ReadWriteMany
     storageClass: ceph-filesystem
+
+mail:
+  from: "info@enableit.dk"
+  host: "mail.system"
+  port: 587
+  to: "klavs@obmondo.com"
+
+serviceMonitor:
+  enabled: true
+  scrapeTimeout: "10s"
+  port: http
+  interval: 10s
+  additionalLabels: {}
+
+prometheusRule:
+  enabled: true
+  # Financial Metrics
+  vatSeverity: critical
+  invoiceAmountThreshold: 1000000
+  invoiceSeverity: warning
+
+  # API Performance
+  errorRateThreshold: 0.05
+  errorRateSeverity: critical
+  latencyThreshold: 2
+  latencySeverity: warning
+  concurrentRequestsThreshold: 100
+  concurrentRequestsSeverity: warning
+
+  # Database Performance
+  dbQueryThreshold: 1
+  dbQuerySeverity: warning
+  dbErrorThreshold: 0.05
+  dbErrorSeverity: warning
+  dbConnectionSeverity: critical
+
+  # Authentication
+  authLatencyThreshold: 1
+  authLatencySeverity: warning
+  authFailureThreshold: 5
+  authFailureSeverity: critical
+  certAuthFailureThreshold: 5
+  certAuthFailureSeverity: critical
+
+  # Cache Performance
+  cacheHitRatioThreshold: 0.7
+  cacheHitRatioSeverity: warning
+
+  # Invoice Processing
+  invoiceProcessingThreshold: 30
+  invoiceProcessingSeverity: warning
+  invoiceGenerationFailureThreshold: 0.1
+  invoiceGenerationFailureSeverity: critical
+
+  # Cron Jobs
+  cronJobTimeoutThreshold: 3600
+  cronJobTimeoutSeverity: critical
+  cronJobDurationThreshold: 300
+  cronJobDurationSeverity: warning
+  cronJobFailureThreshold: 0
+  cronJobFailureSeverity: critical

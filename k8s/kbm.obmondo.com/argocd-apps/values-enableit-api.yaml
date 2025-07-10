@@ -24,6 +24,7 @@ admins:
   - "francodavid@obmondo.com"
   - "sol@obmondo.com"
   - "oleg@obmondo.com"
+  - "yulian@obmondo.com"
 masters:
   - "klavs@obmondo.com"
   - "ashish@obmondo.com"
@@ -64,12 +65,12 @@ api:
     image:
       repository: harbor.obmondo.com/obmondo/clojure-api/api
       pullPolicy: Always
-      tag: v3.0.74
+      tag: v3.0.76
   go:
     image:
       repository: harbor.obmondo.com/obmondo/enableit-go-api
       pullPolicy: Always
-      tag: v0.2.7
+      tag: v0.2.8
   server:
     internal_ips_for_readonly_auth: "172.20.0.0/16"
   mode: beta
@@ -250,6 +251,11 @@ gitRepos:
     - niwyocdmk2
     - qd2xcggwag
     - rufvpto91t
+
+# Update the version here as we use the same install script
+# for setting up the server
+# Ref: https://gitea.obmondo.com/EnableIT/go-scripts/src/branch/main/cmd/obmondo-install-setup/Makefile#L3
+obmondoInstallScript: 1.0.10
 
 sendNotification:
   mail: false

@@ -40,6 +40,7 @@ argo-cd:
         g, francodavid@obmondo.com, role:admin
         g, smahar@obmondo.com, role:admin
         g, oleg@obmondo.com, role:admin
+        g, yulian@obmondo.com role:admin
       scopes: '[groups, email]'
     cm:
       oidc.config: |
