@@ -13,7 +13,7 @@ spec:
   sources:
     - repoURL: https://github.com/Obmondo/KubeAid
       path: argocd-helm-charts/teleport-kube-agent
-      targetRevision: 16.0.1
+      targetRevision: 13.0.0
       helm:
         valueFiles:
           - $values/k8s/kcm/argocd-apps/values-teleport-kube-agent.yaml
