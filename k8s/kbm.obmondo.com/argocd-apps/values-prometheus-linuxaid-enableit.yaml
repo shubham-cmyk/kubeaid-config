@@ -2,9 +2,10 @@ customerid: enableit
 prometheus:
   storage:
     size: 40Gi
+    className: zfs-localpv
   resources:
     limits:
       memory: 4Gi
     requests:
       memory: 2Gi
-      cpu: 1500m
+      cpu: 250m
