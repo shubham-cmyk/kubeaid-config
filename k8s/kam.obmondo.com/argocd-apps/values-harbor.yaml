@@ -1,0 +1,30 @@
+harbor:
+  expose:
+    tls:
+      certSource: secret
+      secret:
+        secretName: harbor-cert
+    ingress:
+      hosts:
+        core: harbor.obmondo.com
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt
+        kubernetes.io/ingress.class: traefik-cert-manager
+  externalURL: https://harbor.obmondo.com
+  persistence:
+    persistentVolumeClaim:
+      registry:
+        size: 270Gi
+      jobservice:
+        jobLog:
+          size: 3Gi
+
+postgres:
+  size: 6Gi
+  logicalbackup:
+    enabled: true
+    s3bucket: "kam-postgres-logical-backup"
+    s3bucketscopesuffix: "harbor"
+    provider: "s3"
+    s3endpoint: "https://s3.obmondo.com"
+    retention: "30"
