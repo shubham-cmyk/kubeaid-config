@@ -8,4 +8,4 @@ prometheus:
       memory: 4Gi
     requests:
       memory: 2Gi
-      cpu: 250m
+      cpu: 200m

@@ -4,4 +4,4 @@ prometheus:
     className: zfs-localpv
   resources:
     requests:
-      cpu: 250m
+      cpu: 70m
