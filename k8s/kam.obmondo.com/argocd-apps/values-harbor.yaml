@@ -11,6 +11,16 @@ harbor:
         cert-manager.io/cluster-issuer: letsencrypt
         kubernetes.io/ingress.class: traefik-cert-manager
   externalURL: https://harbor.obmondo.com
+  core:
+    existingSecret: harbor-core-custom
+    secretName: harbor-core-custom
+    existingXsrfSecret: harbor-core-custom
+  jobservice:
+    existingSecret: harbor-core-custom
+  registry:
+    existingSecret: harbor-core-custom
+    credentials:
+      existingSecret: harbor-core-custom
   persistence:
     persistentVolumeClaim:
       registry:
