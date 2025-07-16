@@ -15,6 +15,12 @@ harbor:
     existingSecret: harbor-core-custom
     secretName: harbor-core-custom
     existingXsrfSecret: harbor-core-custom
+    extraEnvVars:
+      - name: CONFIG_OVERWRITE_JSON
+        valueFrom:
+          secretKeyRef:
+            name: harbor-core-custom
+            key: oidc-config
   jobservice:
     existingSecret: harbor-core-custom
   registry:
