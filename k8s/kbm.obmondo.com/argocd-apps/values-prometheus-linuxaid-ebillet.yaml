@@ -1,1 +1,7 @@
 customerid: ebillet
+prometheus:
+  storage:
+    className: zfs-localpv
+  resources:
+    requests:
+      cpu: 250m

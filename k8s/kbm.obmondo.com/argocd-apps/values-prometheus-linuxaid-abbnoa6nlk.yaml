@@ -2,9 +2,10 @@ customerid: abbnoa6nlk
 prometheus:
   storage:
     size: 100Gi
+    className: zfs-localpv
   resources:
     limits:
       memory: 8Gi
     requests:
-      cpu: 1200m
+      cpu: 250m
       memory: 6Gi
