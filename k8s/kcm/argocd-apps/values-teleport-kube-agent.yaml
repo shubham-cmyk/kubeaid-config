@@ -3,7 +3,7 @@ teleport-kube-agent:
   roles: kube
   kubeClusterName: kcm
   proxyAddr: teleport.obmondo.com:443
-  labels: { "env": "enableit-dev" }
+  labels: {"env": "enableit-dev"}
   resources:
     limits:
       cpu: "200m"
