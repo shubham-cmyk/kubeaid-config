@@ -1,5 +1,8 @@
 customerid: niwyocdmk2
 puppetserver:
+  global:
+    extraEnv:
+      OBMONDO_ENV: "beta"
   puppetserver:
     image: ghcr.io/voxpupuli/container-puppetserver
     tag: 8.7.0-latest
