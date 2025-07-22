@@ -21,8 +21,6 @@ argo-cd:
         g, basit@obmondo.com, role:admin
         g, sanskar@obmondo.com, role:admin
         g, archisman@obmondo.com, role:admin
-        g, devesh@obmondo.com, role:admin
-        g, m.talha@obmondo.com, role:admin
         g, bhavishya@obmondo.com, role:admin
         g, anantharam@obmondo.com, role:admin
         g, suwarna@obmondo.com, role:admin
@@ -39,7 +37,6 @@ argo-cd:
         g, olayinka@obmondo.com, role:admin
         g, francodavid@obmondo.com, role:admin
         g, smahar@obmondo.com, role:admin
-        g, oleg@obmondo.com, role:admin
         g, yulian@obmondo.com, role:admin
         g, nmalang@obmondo.com, rolle:admin
       scopes: '[groups, email]'
