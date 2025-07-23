@@ -2,7 +2,7 @@ namespace: finance
 replicaCount: 1
 image:
     repository: harbor.obmondo.com/obmondo/finance-api
-    tag: v0.4.3
+    tag: v0.4.4
     pullPolicy: Always
 
 imagePullSecrets:
