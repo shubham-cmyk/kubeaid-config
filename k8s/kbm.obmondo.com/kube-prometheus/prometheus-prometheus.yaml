@@ -59,6 +59,6 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 60Gi
+            storage: 80Gi
         storageClassName: rook-ceph-block
   version: 2.46.0
