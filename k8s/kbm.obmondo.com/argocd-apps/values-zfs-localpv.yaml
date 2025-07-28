@@ -44,6 +44,7 @@ zfs-localpv:
 
 storageClass:
   enabled: true
+  poolName: mypool
   zfs-localpv:
     poolName: mypool
     dedup: "off"
