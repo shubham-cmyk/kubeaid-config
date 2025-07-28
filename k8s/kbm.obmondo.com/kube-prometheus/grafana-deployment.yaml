@@ -79,9 +79,6 @@ spec:
         - mountPath: /grafana-dashboard-definitions/0/apiserver
           name: grafana-dashboard-apiserver
           readOnly: false
-        - mountPath: /grafana-dashboard-definitions/0/ceph
-          name: grafana-dashboard-ceph
-          readOnly: false
         - mountPath: /grafana-dashboard-definitions/0/cert-manager
           name: grafana-dashboard-cert-manager
           readOnly: false
@@ -157,9 +154,6 @@ spec:
         - mountPath: /grafana-dashboard-definitions/0/proxy
           name: grafana-dashboard-proxy
           readOnly: false
-        - mountPath: /grafana-dashboard-definitions/0/rabbitmq
-          name: grafana-dashboard-rabbitmq
-          readOnly: false
         - mountPath: /grafana-dashboard-definitions/0/scheduler
           name: grafana-dashboard-scheduler
           readOnly: false
@@ -197,9 +191,6 @@ spec:
       - configMap:
           name: grafana-dashboard-apiserver
         name: grafana-dashboard-apiserver
-      - configMap:
-          name: grafana-dashboard-ceph
-        name: grafana-dashboard-ceph
       - configMap:
           name: grafana-dashboard-cert-manager
         name: grafana-dashboard-cert-manager
@@ -275,9 +266,6 @@ spec:
       - configMap:
           name: grafana-dashboard-proxy
         name: grafana-dashboard-proxy
-      - configMap:
-          name: grafana-dashboard-rabbitmq
-        name: grafana-dashboard-rabbitmq
       - configMap:
           name: grafana-dashboard-scheduler
         name: grafana-dashboard-scheduler
