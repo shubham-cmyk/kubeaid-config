@@ -103,6 +103,15 @@ netbird:
         }
       }
 
+    podCommand:
+      args:
+        - --port=80
+        - --log-file=console
+        - --log-level=debug
+        - --disable-anonymous-metrics=false
+        - --single-account-mode-domain=vpn.obmondo.com
+        - --dns-domain=vpn.obmondo.com
+
     image:
       tag: 0.46.0
     persistentVolume:
