@@ -60,7 +60,7 @@ netbird:
           "ExtraConfig": {
             "Password": "{{ .IDP_SERVICE_ACCOUNT_PASSWORD }}",
             "Username": "{{ .IDP_SERVICE_ACCOUNT_USER }}",
-            "AdminEndpoint": "https://keycloak.obmondo.com/admin/realms/Obmondo"
+            "AdminEndpoint": "https://keycloak.obmondo.com/auth/admin/realms/Obmondo"
           },
           "KeycloakClientCredentials": null
         },
