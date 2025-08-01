@@ -1,5 +1,5 @@
 image:
-  repository: harbor.obmondo.com/obmondo/gitea-stats-exporter
+  repository: obmondo/gitea-stats-exporter
   pullPolicy: Always
   tag: v1.1.0
 
