@@ -1,4 +1,6 @@
-image:
-  repository: harbor.obmondo.com/obmondo/gitea-stats-exporter
-  pullPolicy: Always
-  tag: v1.0.6
+# We intentionally not providing anything here since we want KBM
+# to point to HEAD by default and use the image tag/version mentioned
+# in the chart's appVersion. We can find the same pattern in Opsmondo.
+# Ref: https://gitea.obmondo.com/EnableIT/gitea-stats-exporter/src/branch/main/helm/gitea-stats-exporter/Chart.yaml#L21
+# Ref: https://gitea.obmondo.com/EnableIT/gitea-stats-exporter/src/branch/main/helm/gitea-stats-exporter/values.yaml#L19
+{}
