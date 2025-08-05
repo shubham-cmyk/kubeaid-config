@@ -38,10 +38,12 @@ admins:
 masters:
   - "klavs@obmondo.com"
   - "ashish@obmondo.com"
+  - "lisbeth@obmondo.com"
 approvers:
   - "klavs@obmondo.com"
   - "ashish@obmondo.com"
   - "aman@obmondo.com"
+  - "lisbeth@obmondo.com"
 internalIpRanges:
   - "135.181.21.167"  # kbm01
   - "135.181.21.154"  # kbm02
