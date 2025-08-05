@@ -31,10 +31,12 @@ admins:
 masters:
   - "klavs@obmondo.com"
   - "ashish@obmondo.com"
+  - "lisbeth@obmondo.com"
 approvers:
   - "klavs@obmondo.com"
   - "ashish@obmondo.com"
   - "aman@obmondo.com"
+  - "lisbeth@obmondo.com"
 internalIpRanges:
   - 172.20.0.0/16
 trustedProxies:
