@@ -13,6 +13,9 @@ puppetserver:
           cpu: 3000m
         limits:
           memory: 6144Mi
+    persistence:
+      code:
+        size: 16Gi
   r10k:
     hiera:
       extraRepository:
