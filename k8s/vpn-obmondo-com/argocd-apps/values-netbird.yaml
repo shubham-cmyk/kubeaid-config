@@ -217,8 +217,3 @@ netbird:
             scheme: h2c
         tls:
           secretName: vpn.obmondo.com
-
-coturn:
-  externalDatabase:
-    enabled: true
-    existingSecret: netbird-pgsql-app
