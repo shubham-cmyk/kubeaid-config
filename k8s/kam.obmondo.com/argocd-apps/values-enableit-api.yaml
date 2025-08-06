@@ -2,6 +2,7 @@
 namespace: obmondo-website
 admins:
   - "klavs@obmondo.com"
+  - "lisbeth@obmondo.com"
   - "ashish@obmondo.com"
   - "aman@obmondo.com"
   - "emilhp@obmondo.com"
