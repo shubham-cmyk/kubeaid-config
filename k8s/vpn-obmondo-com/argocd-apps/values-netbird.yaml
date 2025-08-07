@@ -217,3 +217,7 @@ netbird:
             scheme: h2c
         tls:
           secretName: vpn.obmondo.com
+
+coturn:
+  coturn:
+    realm: "turn.vpn.obmondo.com"
