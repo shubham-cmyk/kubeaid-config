@@ -221,3 +221,5 @@ netbird:
 coturn:
   coturn:
     realm: "turn.vpn.obmondo.com"
+  externalDatabase:
+    enabled: false
