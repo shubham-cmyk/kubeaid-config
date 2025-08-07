@@ -1,7 +1,7 @@
 customerid: abbnoa6nlk
 prometheus:
   storage:
-    size: 100Gi
+    size: 120Gi
     className: zfs-localpv
   resources:
     limits:
