@@ -30,5 +30,6 @@
     'mattermost',
     'obmondo',
     'obmondo-website',
+    'finance',
   ],
 }
