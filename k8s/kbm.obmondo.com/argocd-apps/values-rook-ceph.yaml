@@ -24,6 +24,28 @@ rook-ceph-cluster:
   cephClusterSpec:
     storage:
       deviceFilter: "^sd[ab]4$"
+    resources:
+      mgr:
+        limits:
+          cpu: "1000m"
+          memory: "1200Mi"
+        requests:
+          cpu: "1000m"
+          memory: "800Mi"
+      mon:
+        limits:
+          cpu: "200m"
+          memory: "1000Mi"
+        requests:
+          cpu: "200m"
+          memory: "800Mi"
+      osd:
+        limits:
+          cpu: null
+          memory: "2000Mi"
+        requests:
+          cpu: "500m"
+          memory: "1500Mi"
 
   cephBlockPoolsVolumeSnapshotClass:
     enabled: true
