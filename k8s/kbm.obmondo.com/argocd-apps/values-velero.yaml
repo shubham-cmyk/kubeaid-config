@@ -11,6 +11,7 @@ schedule:
     - "puppetserver-7ejidqmfi9"
     - "puppetserver-abbnoa6nlk"
     - "puppetserver-enableit"
+    - "ciso-assistant"
   daily: true
   weekly: false
   sixhourly: false
