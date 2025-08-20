@@ -4,5 +4,8 @@ prometheus:
     size: 80Gi
     className: zfs-localpv
   resources:
+    limits:
+      memory: 2Gi
     requests:
       cpu: 70m
+      memory: 1Gi
