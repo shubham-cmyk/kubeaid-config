@@ -1,7 +1,7 @@
 customerid: ebillet
 prometheus:
   storage:
-    size: 45Gi
+    size: 80Gi
     className: zfs-localpv
   resources:
     requests:
