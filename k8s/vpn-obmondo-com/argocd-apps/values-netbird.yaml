@@ -221,5 +221,8 @@ netbird:
 coturn:
   coturn:
     realm: "turn.vpn.obmondo.com"
+  service:
+    type: NodePort
+    externalTrafficPolicy: Cluster
   externalDatabase:
     enabled: false
