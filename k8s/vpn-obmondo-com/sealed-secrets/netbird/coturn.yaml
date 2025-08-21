@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: netbird-turn-credentials
+  namespace: netbird
+stringData:
+  username: netbird
+  password: xx6Lcsq5jh8Q
+type: Opaque

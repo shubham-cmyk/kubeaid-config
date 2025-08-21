@@ -1,3 +1,14 @@
 cert-manager:
   prometheus:
     enabled: false
+
+issuer:
+  enabled: true
+  issuerEmail: klavs@obmondo.com
+  production: true
+  secret: vpn-letsencrypt-key
+  solvers:
+    - type: http
+      http01:
+        ingress:
+          ingressClassName: traefik-cert-manager

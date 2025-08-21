@@ -1,0 +1,18 @@
+apiVersion: v1
+data:
+  datastoreEncryptionKey: ZnJrL3lWVFBSam1tczBxbWozcmE5RnVzbUdBSFpmVDU3SzBQY2p6R05Vdz0=
+  idpClientID: bmV0YmlyZC12cG4tY2xpZW50
+  idpClientMgmtID: bmV0YmlyZC12cG4tYmFja2VuZA==
+  idpClientMgmtSecret: cHhlZjNmaHVidjU1ZTdxQWVaWkxPaDBncGg1NWY1V3Q=
+  idpServiceAccountUser: c2VydmljZS1hY2NvdW50LW5ldGJpcmQtdnBuLWJhY2tlbmQ=
+  postgresDSN: cG9zdGdyZXNxbDovL25ldGJpcmQ6cTJFQmJnNEFtWmgyRjR3cFBOY0E3UjBkSEUyd24yWThLbFFXTm5uSXJpcmRwU3BXbVVHU3J0aXlWVVl5NnFjRkBuZXRiaXJkLXBnc3FsLXJ3Lm5ldGJpcmQ6NTQzMi9uZXRiaXJk
+  relayPassword: eHh4
+  stunServer: c3R1bjpzdHVuLnZwbi5vYm1vbmRvLmNvbTozNDc4
+  turnServer: dHVybjp0dXJuLnZwbi5vYm1vbmRvLmNvbTozNDc4
+  turnServerPassword: eHh4
+  turnServerUser: dHVyblVzZXI=
+kind: Secret
+metadata:
+  creationTimestamp: null
+  name: netbird
+  namespace: netbird
