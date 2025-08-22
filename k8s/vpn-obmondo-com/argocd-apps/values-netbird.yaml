@@ -112,34 +112,18 @@ netbird:
         - --single-account-mode-domain=vpn.obmondo.com
         - --dns-domain=netbird.selfhosted
 
-    image:
-      tag: 0.55.1
-    persistentVolume:
-      enabled: false
-    envFromSecret:
-      NETBIRD_STORE_ENGINE_POSTGRES_DSN: netbird/postgresDSN
-      STUN_SERVER: netbird/stunServer
-      TURN_SERVER: netbird/turnServer
-      TURN_SERVER_USER: netbird/turnServerUser
-      TURN_SERVER_PASSWORD: netbird/turnServerPassword
-      RELAY_PASSWORD: netbird/relayPassword
-      IDP_CLIENT_ID: netbird/idpClientID
-      IDP_CLIENT_MGMT_ID: netbird/idpClientMgmtID
-      IDP_CLIENT_MGMT_SECRET: netbird/idpClientMgmtSecret
-      IDP_SERVICE_ACCOUNT_USER: netbird/idpServiceAccountUser
-      IDP_SERVICE_ACCOUNT_PASSWORD: netbird/idpServiceAccountPassword
-      DATASTORE_ENCRYPTION_KEY: netbird/datastoreEncryptionKey
-
-    useBackwardsGrpcService: true
-
-    serviceGrpc:
-      port: 80
-
     ingressGrpc:
-      enabled: true
-      annotations:
-        traefik.ingress.kubernetes.io/service.serversscheme: h2c
-      className: traefik-cert-manager
+      tls:
+        - hosts:
+            - vpn.obmondo.com
+          secretName: vpn.obmondo.com
+      hosts:
+        - host: vpn.obmondo.com
+          paths:
+            - path: /management
+              pathType: ImplementationSpecific
+
+    ingress:
       tls:
         - hosts:
             - vpn.obmondo.com
@@ -149,21 +133,9 @@ netbird:
           paths:
             - path: /api
               pathType: ImplementationSpecific
-            - path: /management
-              pathType: ImplementationSpecific
 
   signal:
-    image:
-      tag: 0.55.1
-
-    service:
-      port: 80
-
     ingress:
-      enabled: true
-      annotations:
-        traefik.ingress.kubernetes.io/service.serversscheme: h2c
-      className: traefik-cert-manager
       tls:
         - hosts:
             - vpn.obmondo.com
@@ -171,27 +143,15 @@ netbird:
       hosts:
         - host: vpn.obmondo.com
           paths:
-            - path: /signal
+            - path: /signalexchange
               pathType: ImplementationSpecific
 
   relay:
-    image:
-      tag: 0.55.1
-    envFromSecret:
-      NB_AUTH_SECRET: netbird/relayPassword
     env:
       NB_LOG_LEVEL: info
       NB_LISTEN_ADDRESS: ":33080"
       NB_EXPOSED_ADDRESS: rels://vpn.obmondo.com:443/relay
-
-    service:
-      port: 80
-
     ingress:
-      enabled: true
-      annotations:
-        traefik.ingress.kubernetes.io/service.serversscheme: h2c
-      className: traefik-cert-manager
       tls:
         - hosts:
             - vpn.obmondo.com
@@ -204,35 +164,13 @@ netbird:
 
   dashboard:
     enabled: true
-    image:
-      tag: v2.17.0
     env:
       # Endpoints
       NETBIRD_MGMT_API_ENDPOINT: https://vpn.obmondo.com:443
       NETBIRD_MGMT_GRPC_API_ENDPOINT: https://vpn.obmondo.com:443
       # OIDC
-      AUTH_CLIENT_SECRET:
       AUTH_AUTHORITY: https://keycloak.obmondo.com/auth/realms/Obmondo
-      USE_AUTH0: false
-      AUTH_SUPPORTED_SCOPES: openid profile email offline_access netbird-vpn-api
-      AUTH_REDIRECT_URI:
-      AUTH_SILENT_REDIRECT_URI:
-      NETBIRD_TOKEN_SOURCE: accessToken
-      NGINX_SSL_PORT:
-      LETSENCRYPT_DOMAIN:
-      LETSENCRYPT_EMAIL:
-    envFromSecret:
-      AUTH_CLIENT_ID: netbird/idpClientID
-      AUTH_AUDIENCE: netbird/idpClientID
-
-    service:
-      port: 80
-
     ingress:
-      enabled: true
-      annotations:
-        traefik.ingress.kubernetes.io/service.serversscheme: h2c
-      className: traefik-cert-manager
       tls:
         - hosts:
             - vpn.obmondo.com
@@ -246,8 +184,8 @@ netbird:
 coturn:
   coturn:
     realm: "turn.vpn.obmondo.com"
-  service:
-    type: NodePort
-    externalTrafficPolicy: Cluster
-  externalDatabase:
-    enabled: false
+    auth:
+      existingSecret: netbird
+      secretKeys:
+        username: turnServerUser
+        password: turnServerPassword
