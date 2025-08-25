@@ -38,4 +38,4 @@ traefik:
   ingressRoute:
     dashboard:
       enabled: true
-      annotations: { traefik.ingress.kubernetes.io/router.tls: "true" }
+      annotations: {traefik.ingress.kubernetes.io/router.tls: "true"}
