@@ -8,7 +8,7 @@ act-runner:
     existingToken: gitea-runner-token
     storageclass: zfs-localpv
     storage:
-      size: 100Gi
+      size: 120Gi
     instance: "https://gitea.obmondo.com"
     parallel_jobs: 30
     labels:
