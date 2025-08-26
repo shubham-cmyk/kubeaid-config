@@ -2,7 +2,7 @@ namespace: finance
 replicaCount: 1
 image:
     repository: harbor.obmondo.com/obmondo/finance-api
-    tag: v0.4.7
+    tag: v0.5.1
     pullPolicy: Always
 
 imagePullSecrets:
@@ -54,9 +54,11 @@ keycloak:
   client_secret:
     name: finance-api-keycloak-secret
     key: client_secret
+  redirect_uri: "https://beta-finance.obmondo.com/payments"
 
 go_api:
   url: https://api-beta.obmondo.com
+
 
 tls:
   secret: finance-api-beta-service
@@ -69,6 +71,8 @@ service_cert:
 
 redis:
   replicas: 3
+  storage: 4Gi
+  url: redis://redis-cluster-finance-api-leader:6379
 
 persistence:
   enabled: true
