@@ -32,4 +32,10 @@
     'obmondo-website',
     'finance',
   ],
+  prometheus: {
+    storage: {
+      size: '40Gi',
+    },
+    retention: '15d',
+  },
 }
