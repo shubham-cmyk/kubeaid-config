@@ -13,6 +13,7 @@ schedule:
     - "puppetserver-enableit"
     - "ciso-assistant"
   daily: true
+  dailyTTL: 72h
   weekly: false
   sixhourly: false
 velero:
@@ -36,7 +37,7 @@ velero:
         region: "eu-west-1"
         profile: "default"
     features: EnableCSI
-    defaultBackupTTL: 168h
+    defaultBackupTTL: 72h
   initContainers:
   - name: velero-velero-plugin-for-aws
     image: 'velero/velero-plugin-for-aws:v1.5.1'
