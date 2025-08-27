@@ -60,4 +60,5 @@ spec:
         resources:
           requests:
             storage: 40Gi
+        storageClassName: rook-ceph-block
   version: 2.46.0

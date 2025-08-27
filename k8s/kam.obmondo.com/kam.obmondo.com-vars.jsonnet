@@ -35,6 +35,7 @@
   prometheus: {
     storage: {
       size: '40Gi',
+      classname: 'rook-ceph-block',
     },
     retention: '15d',
   },
