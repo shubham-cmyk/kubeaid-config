@@ -110,6 +110,9 @@ ingress:
   hosts:
     - host: api-beta.obmondo.com
       paths:
+        - path: /api/leave
+          pathType: Prefix
+          servicePort: 8080
         - path: /api/servers/puppet
           pathType: Prefix
           servicePort: 8080
