@@ -9,6 +9,10 @@
   grafana_keycloak_url: 'https://keycloak.obmondo.com',
   grafana_keycloak_realm: 'Obmondo',
   kube_prometheus_version: 'v0.13.0',
+  addMixins: {
+    'node-count-monthly-status': true,
+    ceph: true,
+  },
 
   prometheus_operator_resources+: {
     limits: { memory: '80Mi' },
