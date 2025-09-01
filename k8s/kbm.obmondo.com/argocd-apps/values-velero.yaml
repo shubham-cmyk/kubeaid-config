@@ -14,7 +14,7 @@ schedule:
     - "ciso-assistant"
   daily: true
   dailyTTL: 72h
-  weekly: false
+  weekly: true
   sixhourly: false
 velero:
   metrics:
