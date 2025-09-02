@@ -85,7 +85,6 @@ api:
     - enableit;https://prometheus.obmondo.com/enableit
     - 7ejidqmfi9;https://prometheus.obmondo.com/7ejidqmfi9
     - abbnoa6nlk;https://prometheus.obmondo.com/abbnoa6nlk
-    - c1mdewxeah;https://prometheus.obmondo.com/c1mdewxeah
     - ebillet;https://prometheus.obmondo.com/ebillet
 
 redis:
@@ -256,7 +255,6 @@ gitRepos:
     - abbnoa6nlk
     - niwyocdmk2
     - 7ejidqmfi9
-    - c1mdewxeah
     - qd2xcggwag
   kubeaid:
     - niwyocdmk2
