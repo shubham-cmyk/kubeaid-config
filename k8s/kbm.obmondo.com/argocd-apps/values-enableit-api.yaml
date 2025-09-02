@@ -70,7 +70,7 @@ api:
     image:
       repository: harbor.obmondo.com/obmondo/clojure-api/api
       pullPolicy: Always
-      tag: v3.0.78
+      tag: v3.0.79
   go:
     image:
       repository: harbor.obmondo.com/obmondo/enableit-go-api
