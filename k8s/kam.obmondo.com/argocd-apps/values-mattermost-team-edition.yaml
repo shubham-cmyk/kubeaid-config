@@ -60,7 +60,7 @@ mattermost-team-edition:
               "Name": "operations",
               "Pattern": "\\B@operations?\\b",
               "Scope": null,
-              "Template": "Operation Team (@deepak @hritik @sidharth @divyam @smahar @kanha @franco-david @sanskar @vitamax @md-asif @yulian @nitish0 @olayinka)",
+              "Template": "Operations Team (@deepak @hritik @sidharth @divyam @smahar @franco-david @vitamax @md-asif @yulian @nitish0 @olayinka)",
               "WordMatch": false
             },
             {
@@ -82,7 +82,7 @@ mattermost-team-edition:
               "Name": "product",
               "Pattern": "\\B@products?\\b",
               "Scope": null,
-              "Template": "Product Team (@amal @basit @emil @mayank @rishikesh @suwarna @rehan @sgupta)",
+              "Template": "Product Team (@amal @basit @emil @esther @mayank @rishikesh @suwarna @rehan @sgupta)",
               "WordMatch": false
             },
             {
@@ -93,7 +93,7 @@ mattermost-team-edition:
               "Name": "business",
               "Pattern": "\\B@business\\b",
               "Scope": null,
-              "Template": "Business Team (@bhavishya @esther @vitamax @olayinka @timothy @victorine)",
+              "Template": "Business Team (@bhavishya @vitamax @olayinka @yulian @timothy @victorine)",
               "WordMatch": false
             },
             {
