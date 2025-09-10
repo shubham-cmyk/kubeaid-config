@@ -1,6 +1,5 @@
 customerid: 7ejidqmfi9
 prometheus:
-  retention: 7d
   storage:
     size: 130Gi
     className: zfs-localpv

@@ -15,6 +15,7 @@ schedule:
   daily: true
   dailyTTL: 72h
   weekly: true
+  weeklyTTL: 168h
   sixhourly: false
 velero:
   metrics:
