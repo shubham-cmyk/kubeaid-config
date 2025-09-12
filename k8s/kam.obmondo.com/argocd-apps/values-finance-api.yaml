@@ -2,7 +2,7 @@ namespace: finance
 replicaCount: 1
 image:
     repository: harbor.obmondo.com/obmondo/finance-api
-    tag: v0.6.0
+    tag: v0.6.1
     pullPolicy: Always
 
 
@@ -33,6 +33,8 @@ ingress:
         - path: /api/v1/ping
           pathType: Prefix
         - path: /api/v1/auth
+          pathType: Prefix
+        - path: /api/v1/expenses
           pathType: Prefix
         - path: /swagger/go
           pathType: Prefix
