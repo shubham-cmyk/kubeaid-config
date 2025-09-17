@@ -1,6 +1,8 @@
 # NOTE: This is a common values for all the Obmondo customers
 # if you dont want these default, you can override in customer specific values file
 puppetserver:
+  puppetserver:
+    puppeturl: "https://gitea.obmondo.com/EnableIT/LinuxAid.git"
   storage:
     storageClass: openebs-zfspv-shared
 
