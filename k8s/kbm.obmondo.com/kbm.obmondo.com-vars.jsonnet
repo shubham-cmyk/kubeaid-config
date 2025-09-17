@@ -17,7 +17,8 @@
     monitoring: true,
     smartmon: true,
     zfs: true,
-    mdraid: true
+    mdraid: true,
+    ceph: true,
   },
   prometheus_operator_resources+: {
     limits: { memory: '120Mi' },
