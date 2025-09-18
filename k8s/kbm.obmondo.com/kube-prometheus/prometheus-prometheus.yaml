@@ -41,7 +41,24 @@ spec:
       cpu: 200m
       memory: 5Gi
   retention: 15d
-  ruleNamespaceSelector: {}
+  ruleNamespaceSelector:
+    matchExpressions:
+    - key: kubernetes.io/metadata.name
+      operator: In
+      values:
+      - argocd
+      - cert-manager
+      - finance
+      - logging
+      - monitoring
+      - obmondo
+      - obmondo-website
+      - rook-ceph
+      - system
+      - testing-metrics
+      - traefik
+      - velero
+      - zfs-localpv
   ruleSelector: {}
   securityContext:
     fsGroup: 2000
