@@ -1,8 +1,28 @@
 # NOTE: This is a common values for all the Obmondo customers
 # if you dont want these default, you can override in customer specific values file
 puppetserver:
+  global:
+    extraEnv:
+      PUPPETSERVER_ENC_PATH: /etc/puppetlabs/code/environments/master/puppet_enc.rb
+      AUTOSIGN: /etc/puppetlabs/code/environments/master/puppet_autosign.rb
+
   puppetserver:
     puppeturl: "https://gitea.obmondo.com/EnableIT/LinuxAid.git"
+    masters:
+      extraEnv:
+        AUTOSIGN_CLIENT_CERT: /etc/puppetlabs/puppet/ssl/certs/puppet.pem
+        AUTOSIGN_CLIENT_KEY: /etc/puppetlabs/puppet/ssl/private_keys/puppet.pem
+    customentrypoints:
+      configmaps:
+        configure_external_nodes.sh: |-
+          #!/bin/bash
+          set -e
+
+          if test -n "${PUPPETSERVER_ENC_PATH}" ; then
+            puppet config set external_nodes "$PUPPETSERVER_ENC_PATH" --section server
+            puppet config set node_terminus "exec" --section server
+          fi
+
   storage:
     storageClass: openebs-zfspv-shared
 
