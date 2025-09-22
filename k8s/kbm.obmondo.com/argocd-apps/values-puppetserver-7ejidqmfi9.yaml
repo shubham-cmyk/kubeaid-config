@@ -18,6 +18,12 @@ puppetserver:
           memory: 6144Mi
       fqdns:
         alternateServerNames: 7ejidqmfi9.puppet.obmondo.com
+    persistence:
+      code:
+        size: 20Gi
+      data:
+        size: 1Gi
+    extraEnv:
   hiera:
     hieradataurl: https://gitea.obmondo.com/EnableIT/linuxaid-config-7ejidqmfi9.git
 
