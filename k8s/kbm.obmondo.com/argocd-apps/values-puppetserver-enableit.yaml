@@ -4,7 +4,7 @@ puppetserver:
     masters:
       fqdns:
         alternateServerNames: enableit.puppet.obmondo.com
-    storage:
+    persistence:
       code:
         size: 14Gi
       data:
