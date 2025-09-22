@@ -12,6 +12,9 @@ puppetserver:
   r10k:
     hiera:
       extraRepository:
+        enableit:
+          remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-enableit.git
+          basedir: /etc/puppetlabs/code/hiera-data/enableit
         ebillet:
           remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-ebillet.git
           basedir: /etc/puppetlabs/code/hiera-data/ebillet
@@ -21,8 +24,6 @@ puppetserver:
         a0hu8x41ng:
           remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-a0hu8x41ng.git
           basedir: /etc/puppetlabs/code/hiera-data/a0hu8x41ng
-  hiera:
-    hieradataurl: https://gitea.obmondo.com/EnableIT/linuxaid-config-enableit.git
 
 postgresql:
   instance: 1
