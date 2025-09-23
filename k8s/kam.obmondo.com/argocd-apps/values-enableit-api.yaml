@@ -101,7 +101,7 @@ api:
     image:
       repository: harbor.obmondo.com/obmondo/enableit-go-api
       pullPolicy: Always
-      tag: v0.3.1.3
+      tag: v0.3.2
   server:
     internal_ips_for_readonly_auth: "172.20.0.0/16"
   redis:
@@ -297,7 +297,7 @@ gitRepos:
 # Update the version here as we use the same install script
 # for setting up the server
 # Ref: https://gitea.obmondo.com/EnableIT/go-scripts/src/branch/main/cmd/obmondo-install-setup/Makefile#L3
-obmondoInstallScript: 1.0.15
+obmondoInstallScript: 1.0.18
 
 sendNotification:
   mail: true
