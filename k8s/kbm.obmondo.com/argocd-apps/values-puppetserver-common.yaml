@@ -12,16 +12,6 @@ puppetserver:
       extraEnv:
         AUTOSIGN_CLIENT_CERT: /etc/puppetlabs/puppet/ssl/certs/puppet.pem
         AUTOSIGN_CLIENT_KEY: /etc/puppetlabs/puppet/ssl/private_keys/puppet.pem
-    customentrypoints:
-      configmaps:
-        configure_external_nodes.sh: |-
-          #!/bin/bash
-          set -e
-
-          if test -n "${PUPPETSERVER_ENC_PATH}" ; then
-            puppet config set external_nodes "$PUPPETSERVER_ENC_PATH" --section server
-            puppet config set node_terminus "exec" --section server
-          fi
 
   storage:
     storageClass: openebs-zfspv-shared
