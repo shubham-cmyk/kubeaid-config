@@ -21,6 +21,9 @@ puppetserver:
         qd2xcggwag:
           remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-qd2xcggwag.git
           basedir: /etc/puppetlabs/code/hiera-data/qd2xcggwag
+        7ejidqmfi9:
+          remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-7ejidqmfi9.git
+          basedir: /etc/puppetlabs/code/hiera-data/7ejidqmfi9
         a0hu8x41ng:
           remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-a0hu8x41ng.git
           basedir: /etc/puppetlabs/code/hiera-data/a0hu8x41ng
