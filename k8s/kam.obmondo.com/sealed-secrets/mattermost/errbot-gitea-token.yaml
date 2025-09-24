@@ -1,0 +1,14 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: errbot-gitea-token
+  namespace: mattermost
+spec:
+  encryptedData:
+    token: AgCUbT5RX60HCwVvRy8bUYadqxHntHlef5DZXWYlLvzrbTW6QoJV2VTxSPTy2jMZvdHPxzzkcP0Cz/Kx4W8Nyx4nbhbtq488+k0ZsKlpezw4T/y4Na5RLIkL94ChqFlE+ZPHTS5a/fXsKKDZ1NQLIjdU/sTxsWtNLEkCK/TQ9GpSEbRQCXgHV8Kk7c1UpQcZt8VVSidA8q57i/7bJt8J7Wt+3Q+TXYwt3cLGU46gwlLuwwLZILXvx+AVKM1ysssni25lgeCW2RjAzLsK4uyevRWmq4holNkR/DVYSeDH8j3lrXjqzQrcbW/UGBoEQeBHa39Ee9LGR00D4WGpPYnw4f5BLzdFMTMVqnWtZIhQVCfBTdjXVHpnSPbuHQAV6Ex5DQMYbC+jgh9Dx63fhncFfs3gcuMgzSAHnbDij1AuEFyY3XF8PEpdxQLi5xsi/rD+qxC1FGVxX4bOf5EpShDRGYQr/XeeUJIC0NAGaY/XSs5SIubO5xHCWrKHRFicvTmaEm81hSR6cJiJAkwKA370BhUiE/7MXicfjiEs7vP3Y2u2jQSHmhnBtRDRR0FGfyWaX9XOKG/H6Im7aJE9VI25DFXeHfXZkIJneQFh2fHSM3D9x73ZJV/iX18M2FfumZUn7Yu8gbsHrCtFSs5BxQ5afHelw2EvCWhj1cyyBGqwWbv/2bZtgfsoum57VF85tk3tRUSMGEO03EUVAuYBit5hSg/H/CLhLSi7z67uKW0rLkhxlsWymK56nD6a
+  template:
+    metadata:
+      creationTimestamp: null
+      name: errbot-gitea-token
+      namespace: mattermost
