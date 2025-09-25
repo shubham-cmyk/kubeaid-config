@@ -211,6 +211,6 @@ mattermost:
       secret: db-credentials             # Name of Kubernetes secret for DB connection string
   fileStore:
     external:
-      url: s3.obmondo.com
-      bucket: kbm-postgres-backups
+      url: bucket.kbm.obmondo.com
+      bucket: mattermost-kbm
       secret: file-store-credentials          # Name of Kubernetes secret for file store credentials
