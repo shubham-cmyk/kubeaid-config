@@ -1,11 +1,12 @@
 prometheus:
+  server: prometheus.obmondo.com
   ingress:
     annotations:
       traefik.ingress.kubernetes.io/router.tls: "true"
-      traefik.ingress.kubernetes.io/router.tls.domains.0.main: {{ .Values.prometheus.server }}
+      traefik.ingress.kubernetes.io/router.tls.domains.0.main: prometheus.obmondo.com
       traefik.ingress.kubernetes.io/router.tls.options: traefik-prometheus-puppet-agent-tls-auth@kubernetescrd
-      traefik.ingress.kubernetes.io/router.middlewares: monitoring-{{ .Values.customerid }}-ipwhitelist-{{ .Values.customerid }}@kubernetescrd
-
+grafana:
+  server: graphs.obmondo.com
 middleware:
   jwt:
     enabled: true
