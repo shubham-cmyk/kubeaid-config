@@ -6,6 +6,7 @@ metadata:
 spec:
   destination:
     server: 'https://kubernetes.default.svc'
+    namespace: monitoring-enableit
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
       path: argocd-helm-charts/prometheus-linuxaid
@@ -20,4 +21,5 @@ spec:
   project: default
   syncPolicy:
     syncOptions:
+      - CreateNamespace=true
       - ApplyOutOfSyncOnly=true

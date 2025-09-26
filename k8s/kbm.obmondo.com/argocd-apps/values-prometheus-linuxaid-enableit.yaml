@@ -8,7 +8,9 @@ prometheus:
     requests:
       memory: 4Gi
       cpu: 200m
-middlewares:
+  externalUrl: /enableit
+  routePrefix: /enableit
+middleware:
   jwt:
     headers:
       authentication: enableit
