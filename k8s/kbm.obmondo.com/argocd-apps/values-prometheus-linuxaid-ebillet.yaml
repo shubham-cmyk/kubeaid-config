@@ -8,7 +8,9 @@ prometheus:
     requests:
       cpu: 70m
       memory: 1Gi
-middlewares:
+  externalUrl: /ebillet
+  routePrefix: /ebillet
+middleware:
   jwt:
     headers:
       authentication: ebillet
