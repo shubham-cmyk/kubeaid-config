@@ -1,6 +1,8 @@
 customerid: 7ejidqmfi9
 puppetserver:
   puppetdb:
+    fqdns:
+      alternateServerNames: 7ejidqmfi9.puppetdb.obmondo.com
     persistence:
       size: 2Gi
     extraEnv:
