@@ -1,4 +1,3 @@
-customerid: abbnoa6nlk
 prometheus:
   storage:
     size: 120Gi
@@ -9,3 +8,7 @@ prometheus:
     requests:
       cpu: 250m
       memory: 6Gi
+middlewares:
+  jwt:
+    headers:
+      authentication: abbnoa6nlk
