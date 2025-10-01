@@ -1,6 +1,14 @@
-# We intentionally not providing anything here since we want KBM
-# to point to HEAD by default and use the image tag/version mentioned
-# in the chart's appVersion. We can find the same pattern in Opsmondo.
-# Ref: https://gitea.obmondo.com/EnableIT/gitea-stats-exporter/src/branch/main/helm/gitea-stats-exporter/Chart.yaml#L21
-# Ref: https://gitea.obmondo.com/EnableIT/gitea-stats-exporter/src/branch/main/helm/gitea-stats-exporter/values.yaml#L19
-{}
+ingress:
+  enabled: true
+  hosts:
+    - host: gitea-stats.kbm.obmondo.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: gitea-stats-tls
+      hosts:
+        - gitea-stats.kbm.obmondo.com
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    kubernetes.io/ingress.class: traefik-cert-manager
