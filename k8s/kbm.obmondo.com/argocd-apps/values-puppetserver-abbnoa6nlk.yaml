@@ -1,5 +1,8 @@
 customerid: abbnoa6nlk
 puppetserver:
+  puppetdb:
+    fqdns:
+      alternateServerNames: abbnoa6nlk.puppetdb.obmondo.com
   puppetserver:
     masters:
       fqdns:

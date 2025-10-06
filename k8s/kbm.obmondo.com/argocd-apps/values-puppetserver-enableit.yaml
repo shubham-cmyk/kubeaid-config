@@ -1,5 +1,8 @@
 customerid: enableit
 puppetserver:
+  puppetdb:
+    fqdns:
+      alternateServerNames: enableit.puppetdb.obmondo.com
   puppetserver:
     masters:
       fqdns:

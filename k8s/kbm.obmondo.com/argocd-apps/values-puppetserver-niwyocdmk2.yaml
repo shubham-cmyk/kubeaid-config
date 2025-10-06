@@ -22,6 +22,8 @@ puppetserver:
     hieradataurl: https://gitea.obmondo.com/EnableIT/linuxaid-config-niwyocdmk2.git
 
   puppetdb:
+    fqdns:
+      alternateServerNames: niwyocdmk2.puppetdb.obmondo.com
     image: ghcr.io/voxpupuli/container-puppetdb
     tag: 8.8.1-latest
 
