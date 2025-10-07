@@ -28,7 +28,7 @@ puppetserver:
   r10k:
     hiera:
       extraRepository:
-        enableit:
+        7ejidqmfi9:
           remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-7ejidqmfi9.git
           basedir: /etc/puppetlabs/code/hiera-data/7ejidqmfi9
 
