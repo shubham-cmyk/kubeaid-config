@@ -7,18 +7,12 @@ puppetserver:
     masters:
       fqdns:
         alternateServerNames: niwyocdmk2.puppet.obmondo.com
-
   r10k:
     hiera:
       extraRepository:
         niwyocdmk2:
           remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-niwyocdmk2.git
-          basedir: /etc/puppetlabs/code/hiera-data
-          prefix: true
-
-  hiera:
-    hieradataurl: https://gitea.obmondo.com/EnableIT/linuxaid-config-niwyocdmk2.git
-
+          basedir: /etc/puppetlabs/code/hiera-data/niwyocdmk2
   puppetdb:
     fqdns:
       alternateServerNames: niwyocdmk2.puppetdb.obmondo.com
