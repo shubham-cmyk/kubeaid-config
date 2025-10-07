@@ -4,8 +4,6 @@ puppetserver:
     extraEnv:
       OBMONDO_ENV: "beta"
   puppetserver:
-    image: ghcr.io/voxpupuli/container-puppetserver
-    tag: 8.7.0-latest
     masters:
       fqdns:
         alternateServerNames: niwyocdmk2.puppet.obmondo.com
@@ -24,8 +22,6 @@ puppetserver:
   puppetdb:
     fqdns:
       alternateServerNames: niwyocdmk2.puppetdb.obmondo.com
-    image: ghcr.io/voxpupuli/container-puppetdb
-    tag: 8.8.1-latest
 
 postgresql:
   instance: 1
