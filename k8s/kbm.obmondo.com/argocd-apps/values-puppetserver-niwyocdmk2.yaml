@@ -1,5 +1,7 @@
 customerid: niwyocdmk2
 puppetserver:
+  nodeSelector:
+    kubernetes.io/hostname: htzhel1-ax41na.enableit.dk
   global:
     extraEnv:
       OBMONDO_ENV: "beta"
