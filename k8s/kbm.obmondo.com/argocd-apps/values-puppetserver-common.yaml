@@ -3,7 +3,7 @@
 puppetserver:
   global:
     extraEnv:
-      PUPPETSERVER_ENC_PATH: /etc/puppetlabs/code/environments/master/puppet_enc.rb
+      OPENVOXSERVER_ENC_PATH: /etc/puppetlabs/code/environments/master/puppet_enc.rb
       AUTOSIGN: /etc/puppetlabs/code/environments/master/puppet_autosign.rb
 
   puppetserver:
