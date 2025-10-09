@@ -9,7 +9,7 @@ spec:
     namespace: puppetserver-niwyocdmk2
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
-      path: argocd-helm-charts/puppetserver
+      path: argocd-helm-charts/openvox
       targetRevision: HEAD
       helm:
         valueFiles:
