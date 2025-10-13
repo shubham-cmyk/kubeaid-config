@@ -1,6 +1,6 @@
 prometheus:
   storage:
-    size: 150Gi
+    size: 160Gi
     className: zfs-localpv
   resources:
     limits:
