@@ -29,3 +29,7 @@ minio:
       existingSecret: users
       existingSecretKey: mattermost
       policy: readwrite
+    - accessKey: admin
+      existingSecret: users
+      existingSecretKey: admin
+      policy: readwrite

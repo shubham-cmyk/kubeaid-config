@@ -19,10 +19,10 @@ mattermost-operator:
       - --metrics-addr=0.0.0.0:8383
 mattermost:
   name: mattermost
-  image: mattermost/mattermost-enterprise-edition
+  image: mattermost/mattermost-team-edition
   imagePullPolicy: IfNotPresent
-  version: 10.9.4
-  size: 5000users
+  version: 10.3.1
+  size: 100users
   useServiceLoadBalancer: false
   serviceAnnotations: {}
   ingress:
@@ -38,6 +38,12 @@ mattermost:
       value: "true"
     - name: MM_FILESETTINGS_AMAZONS3SSL
       value: "true"
+    - name: MM_GITLABSETTINGS_ENABLE
+      value: "true"
+    - name: MM_GITLABSETTINGS_ID
+      value: "mattermost"
+    - name: MM_GITLABSETTINGS_SECRET
+      value: "cnHtlkgqKSanPmh4upjOJUmHw4hJutdN"
     - name: MM_GITLABSETTINGS_USERAPIENDPOINT
       value: "https://keycloak.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/userinfo"
     - name: MM_GITLABSETTINGS_AUTHENDPOINT
@@ -214,3 +220,8 @@ mattermost:
       url: bucket.kbm.obmondo.com
       bucket: mattermost-kbm
       secret: file-store-credentials          # Name of Kubernetes secret for file store credentials
+
+postgres:
+  size: 20Gi
+  recover: false
+  pass: mattermost-pgsql-app

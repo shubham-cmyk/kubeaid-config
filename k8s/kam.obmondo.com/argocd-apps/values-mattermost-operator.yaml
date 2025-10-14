@@ -19,25 +19,31 @@ mattermost-operator:
       - --metrics-addr=0.0.0.0:8383
 mattermost:
   name: mattermost
-  image: mattermost/mattermost-enterprise-edition
+  image: mattermost/mattermost-team-edition
   imagePullPolicy: IfNotPresent
-  version: 10.9.4
-  size: 5000users
+  version: 10.3.1
+  size: 150users
   useServiceLoadBalancer: false
   serviceAnnotations: {}
   ingress:
     enabled: true
-    host: mattermost.obmondo.com
+    host: mattermost.kam.obmondo.com
     annotations:
-      nginx.ingress.kubernetes.io/ssl-redirect: "true"
       kubernetes.io/tls-acme: "true"
       cert-manager.io/cluster-issuer: letsencrypt
       kubernetes.io/ingress.class: traefik-cert-manager
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
   mattermostEnv:
     - name: MM_FILESETTINGS_AMAZONS3SSE
       value: "true"
     - name: MM_FILESETTINGS_AMAZONS3SSL
       value: "true"
+    - name: MM_GITLABSETTINGS_ENABLE
+      value: "true"
+    - name: MM_GITLABSETTINGS_ID
+      value: "mattermost"
+    - name: MM_GITLABSETTINGS_SECRET
+      value: "cnHtlkgqKSanPmh4upjOJUmHw4hJutdN"
     - name: MM_GITLABSETTINGS_USERAPIENDPOINT
       value: "https://keycloak.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/userinfo"
     - name: MM_GITLABSETTINGS_AUTHENDPOINT
@@ -45,13 +51,13 @@ mattermost:
     - name: MM_GITLABSETTINGS_TOKENENDPOINT
       value: "https://keycloak.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/token"
     - name: MM_TEAMSETTINGS_RESTRICTCREATIONTODOMAINS
-      value: "enableit.dk,obmondo.com"
+      value: "enableit.dk,obmondo.com,blackwoodseven.com,vsen.dk,gnhearing.com,gn.com,gnresound.com,jabra.com,ks.kk.dk,kk.dk,ebillet.dk,kilroy.net,hobbii.dk,mindcore.dk,hbkworld.com,churchdesk.com,sdfi.dk,pm.me,cybernordic.dk,opus.com,opusaris.com,rybner.dk,image2work.com,grandpedersen.dk,gmail.com,kds.dk,kantar.com,webpros.com"
     - name: MM_EMAILSETTINGS_SENDPUSHNOTIFICATIONS
       value: "true"
     - name: MM_EMAILSETTINGS_PUSHNOTIFICATIONSERVER
       value: "https://push-test.mattermost.com"
     - name: MM_SERVICESETTINGS_SITEURL
-      value: "https://mattermost.obmondo.com"
+      value: "https://mattermost.kam.obmondo.com"
     - name: MM_SERVICESETTINGS_COLLAPSEDTHREADS
       value: "default_on"
     - name: MM_SERVICESETTINGS_THREADAUTOFOLLOW
@@ -214,3 +220,17 @@ mattermost:
       url: bucket.obmondo.com
       bucket: mattermost-kam
       secret: file-store-credentials          # Name of Kubernetes secret for file store credentials
+
+matternelle:
+  domain: webchat.obmondo.com
+
+postgres:
+  size: 20Gi
+  instance: 2
+  pass: mattermost-pgsql-app
+  logicalbackup:
+    enabled: true
+    s3bucket: "logical-backup-kam"
+    provider: "s3"
+    s3endpoint: "https://bucket.obmondo.com"
+    retension: "30"
