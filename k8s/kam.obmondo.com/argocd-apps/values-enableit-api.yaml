@@ -306,3 +306,6 @@ obmondoInstallScript: 1.0.22
 
 sendNotification:
   mail: true
+  customers:
+    - 7ejidqmfi9
+    - abbnoa6nlk
