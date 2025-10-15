@@ -18,6 +18,9 @@ puppetserver:
         enableit:
           remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-enableit.git
           basedir: /etc/puppetlabs/code/hiera-data/enableit
+        niwyocdmk2:
+          remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-niwyocdmk2.git
+          basedir: /etc/puppetlabs/code/hiera-data/niwyocdmk2
         p45k4z2vfh:
           remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-p45k4z2vfh.git
           basedir: /etc/puppetlabs/code/hiera-data/p45k4z2vfh
