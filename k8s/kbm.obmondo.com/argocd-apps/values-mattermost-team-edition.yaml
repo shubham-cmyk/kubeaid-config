@@ -229,6 +229,12 @@ mattermost-team-edition:
         },
         "mattermost-plugin-remind": {
           "Enable": true
+        },
+        "com.github.scottleedavis.mattermost-plugin-remind": {
+          "Enable": true
+        },
+        "com.github.scottleedavis.mattermost-plugin-remind": {
+          "Enable": true
         }
       }
 
