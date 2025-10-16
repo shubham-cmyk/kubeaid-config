@@ -27,7 +27,8 @@ mattermost:
   serviceAnnotations: {}
   ingress:
     enabled: true
-    host: mattermost.kam.obmondo.com
+    host: chat.obmondo.com
+    tlsSecret: chat.obmondo.com
     annotations:
       kubernetes.io/tls-acme: "true"
       cert-manager.io/cluster-issuer: letsencrypt
@@ -57,7 +58,7 @@ mattermost:
     - name: MM_EMAILSETTINGS_PUSHNOTIFICATIONSERVER
       value: "https://push-test.mattermost.com"
     - name: MM_SERVICESETTINGS_SITEURL
-      value: "https://mattermost.kam.obmondo.com"
+      value: "https://chat.obmondo.com"
     - name: MM_SERVICESETTINGS_COLLAPSEDTHREADS
       value: "default_on"
     - name: MM_SERVICESETTINGS_THREADAUTOFOLLOW
