@@ -209,6 +209,9 @@ mattermost:
           },
           "com.gitlab.itk.fr.matternelle": {
             "Enable": true
+          },
+          "com.github.scottleedavis.mattermost-plugin-remind": {
+            "Enable": true
           }
         }
   licenseSecret: ""                      # Set your secret name if using enterprise license
