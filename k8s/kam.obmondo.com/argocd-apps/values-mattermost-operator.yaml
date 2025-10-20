@@ -101,16 +101,6 @@ mattermost:
                 "DisableNonWordPrefix": false,
                 "DisableNonWordSuffix": false,
                 "Disabled": false,
-                "Name": "gitlab",
-                "Pattern": "MR-(?P<repo>.+)-(?P<id>\\d+)",
-                "Scope": null,
-                "Template": "[MR-${repo}-${id}](https://gitea.obmondo.com/Obmondo/${repo}/merge_requests/${id})",
-                "WordMatch": false
-              },
-              {
-                "DisableNonWordPrefix": false,
-                "DisableNonWordSuffix": false,
-                "Disabled": false,
                 "Name": "india",
                 "Pattern": "\\B@india\\b",
                 "Scope": null,
@@ -169,10 +159,13 @@ mattermost:
               },
               {
                 "ProcessBotPosts": true,
-                "Name": "Duck AI",
-                "Pattern": "\\B@duck-ai\\b",
-                "Template": "[@duck-ai](https://duck.ai)",
+                "DisableNonWordPrefix": true,
+                "DisableNonWordSuffix": false,
+                "Disabled": false,
+                "Name": "operations",
+                "Pattern": "\\B@operations?\\b",
                 "Scope": null,
+                "Template": "Operations Team (@deepak @hritik @sidharth @divyam @smahar @franco-david @vitamax @md-asif @yulian @nitish0 @olayinka @deep @onkar)",
                 "WordMatch": false
               },
               {
@@ -180,10 +173,54 @@ mattermost:
                 "DisableNonWordPrefix": true,
                 "DisableNonWordSuffix": false,
                 "Disabled": false,
-                "Name": "operations",
-                "Pattern": "\\B@operations?\\b",
+                "Name": "features",
+                "Pattern": "\\B@features?\\b",
                 "Scope": null,
-                "Template": "@deepak @basit @hritik @sidharth @divyam @smahar",
+                "Template": "Feature Team (@aman @anantharam @sanskar @archisman @faizan @sidharth @shivam0)",
+                "WordMatch": false
+              },
+              {
+                "ProcessBotPosts": true,
+                "DisableNonWordPrefix": true,
+                "DisableNonWordSuffix": false,
+                "Disabled": false,
+                "Name": "product",
+                "Pattern": "\\B@products?\\b",
+                "Scope": null,
+                "Template": "Product Team (@amal @basit @emil @esther @mayank @rishikesh @suwarna @rehan @sgupta)",
+                "WordMatch": false
+              },
+              {
+                "ProcessBotPosts": true,
+                "DisableNonWordPrefix": true,
+                "DisableNonWordSuffix": false,
+                "Disabled": false,
+                "Name": "business",
+                "Pattern": "\\B@business\\b",
+                "Scope": null,
+                "Template": "Business Team (@bhavishya @vitamax @olayinka @yulian @timothy @victorine)",
+                "WordMatch": false
+              },
+              {
+                "ProcessBotPosts": true,
+                "DisableNonWordPrefix": true,
+                "DisableNonWordSuffix": false,
+                "Disabled": false,
+                "Name": "sales",
+                "Pattern": "\\B@sales?\\b",
+                "Scope": null,
+                "Template": "Sales Team (@sankhadeep @divya)",
+                "WordMatch": false
+              },
+              {
+                "ProcessBotPosts": true,
+                "DisableNonWordPrefix": false,
+                "DisableNonWordSuffix": false,
+                "Disabled": false,
+                "Name": "support",
+                "Pattern": "https://gitea.obmondo.com/EnableIT/(?P<repo>.+)/issues/(?P<id>[0-9].+)",
+                "Scope": null,
+                "Template": "[${repo}#${id}](https://gitea.obmondo.com/EnableIT/${repo}/issues/${id})",
                 "WordMatch": false
               }
             ],
