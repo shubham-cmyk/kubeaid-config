@@ -266,6 +266,7 @@ postgres:
   size: 20Gi
   instance: 2
   pass: mattermost-pgsql-app
+  storageClass: zfs-localpv
   logicalbackup:
     enabled: true
     s3bucket: "logical-backup-kam"
