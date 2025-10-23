@@ -23,6 +23,13 @@ mattermost:
   imagePullPolicy: IfNotPresent
   version: 10.11.4
   size: 150users
+  resources:
+    limits:
+      cpu: '5'
+      memory: 8Gi
+    requests:
+      cpu: 500m
+      memory: 500Mi
   useServiceLoadBalancer: false
   serviceAnnotations: {}
   ingress:
@@ -53,6 +60,8 @@ mattermost:
       value: "https://keycloak.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/token"
     - name: MM_TEAMSETTINGS_RESTRICTCREATIONTODOMAINS
       value: "enableit.dk,obmondo.com,blackwoodseven.com,vsen.dk,gnhearing.com,gn.com,gnresound.com,jabra.com,ks.kk.dk,kk.dk,ebillet.dk,kilroy.net,hobbii.dk,mindcore.dk,hbkworld.com,churchdesk.com,sdfi.dk,pm.me,cybernordic.dk,opus.com,opusaris.com,rybner.dk,image2work.com,grandpedersen.dk,gmail.com,kds.dk,kantar.com,webpros.com"
+    - name: MM_TEAMSETTINGS_MAXUSERSPERTEAM
+      value: "200"
     - name: MM_EMAILSETTINGS_SENDPUSHNOTIFICATIONS
       value: "true"
     - name: MM_EMAILSETTINGS_PUSHNOTIFICATIONSERVER
@@ -66,7 +75,7 @@ mattermost:
     - name: MM_SERVICESETTINGS_ENABLELINKPREVIEWS
       value: "true"
     - name: MM_SERVICESETTINGS_RESTRICTLINKPREVIEWS
-      value: "github.com"
+      value: "github.com, gitea.obmondo.com"
     - name: MM_SERVICESETTINGS_ENABLEAPIUSERDELETION
       value: "true"
     - name: MM_PLUGINSETTINGS_ENABLE
@@ -176,7 +185,7 @@ mattermost:
                 "Name": "features",
                 "Pattern": "\\B@features?\\b",
                 "Scope": null,
-                "Template": "Feature Team (@aman @anantharam @sanskar @archisman @faizan @sidharth @shivam0)",
+                "Template": "Feature Team (@aman0 @anantharam @sanskar @archisman @faizan @sidharth @shivam0)",
                 "WordMatch": false
               },
               {
