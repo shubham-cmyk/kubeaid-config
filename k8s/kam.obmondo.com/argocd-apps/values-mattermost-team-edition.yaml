@@ -82,7 +82,7 @@ mattermost-team-edition:
               "Name": "product",
               "Pattern": "\\B@products?\\b",
               "Scope": null,
-              "Template": "Product Team (@amal @basit @emil @esther @mayank @rishikesh @suwarna @rehan @sgupta)",
+              "Template": "Product Team (@amal @basit @emil @esther @mayank @rishikesh @suwarna @rehan @sgupta @deep)",
               "WordMatch": false
             },
             {
