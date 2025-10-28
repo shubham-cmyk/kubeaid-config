@@ -47,7 +47,7 @@ spec:
             repeat_interval: 5m
           - receiver: 'null'
             matchers:
-            - "namespace =~ testing|obmondo-ci|obmondo-gitea-ci"
+            - "namespace =~ testing|obmondo-ci|obmondo-gitea-ci|puppetserver-niwyocdmk2"
           - receiver: 'null'
             matchers:
             - "exported_namespace =~ testing|obmondo-ci|obmondo-gitea-ci"
