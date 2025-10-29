@@ -56,6 +56,9 @@ spec:
             - "alertname = InfoInhibitor"
           - receiver: obmondo
             continue: true
+          - receiver: 'null'
+            matchers:
+            - "alertname in = [KubernetesVersionInfoEos, KubernetesVersionInfoEol]"
 
         receivers:
           - name: "null"
