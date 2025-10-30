@@ -1,7 +1,5 @@
 ---
 keycloakx:
-  image:
-    tag: "25.0.5"
   dbchecker:
     enabled: true
   database:
