@@ -66,8 +66,6 @@ chat:
   token: "usf14zhwqjfu3jyn1n3swcmmuo"
   team_name: "obmondo-kbm"
 
-
-
 tls:
   secret: finance-api-beta-service
 
