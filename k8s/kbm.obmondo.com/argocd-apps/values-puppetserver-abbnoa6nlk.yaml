@@ -18,7 +18,7 @@ puppetserver:
           memory: 6144Mi
     persistence:
       code:
-        size: 16Gi
+        size: 20Gi
   r10k:
     hiera:
       extraRepository:
