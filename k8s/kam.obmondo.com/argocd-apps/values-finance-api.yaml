@@ -2,7 +2,7 @@ namespace: finance
 replicaCount: 1
 image:
     repository: harbor.obmondo.com/obmondo/finance-api
-    tag: v0.6.5
+    tag: v0.6.6
     pullPolicy: Always
 
 
@@ -89,6 +89,14 @@ mail:
   host: "mail.system"
   port: 587
   to: "klavs@obmondo.com"
+
+chat:
+  host: "https://chat.obmondo.com"
+  token: 
+    name: chat-token
+    key: token
+  team_name: "Obmondo"
+
 
 serviceMonitor:
   enabled: true
