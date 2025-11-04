@@ -63,7 +63,9 @@ go_api:
 
 chat:
   host: "https://mattermost-staging.obmondo.com"
-  token: "usf14zhwqjfu3jyn1n3swcmmuo"
+  token:
+    name: chat-token
+    key: token
   team_name: "obmondo-kbm"
 
 tls:
