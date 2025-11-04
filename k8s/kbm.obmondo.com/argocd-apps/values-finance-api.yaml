@@ -2,7 +2,7 @@ namespace: finance
 replicaCount: 1
 image:
     repository: harbor.obmondo.com/obmondo/finance-api
-    tag: v0.6.6
+    tag: v0.6.7
     pullPolicy: Always
 
 imagePullSecrets:
@@ -65,8 +65,6 @@ chat:
   host: "https://mattermost-staging.obmondo.com"
   token: "usf14zhwqjfu3jyn1n3swcmmuo"
   team_name: "obmondo-kbm"
-
-
 
 tls:
   secret: finance-api-beta-service
