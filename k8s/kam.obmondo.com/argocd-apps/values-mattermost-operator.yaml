@@ -207,7 +207,7 @@ mattermost:
                 "Name": "business",
                 "Pattern": "\\B@business\\b",
                 "Scope": null,
-                "Template": "Business Team (@bhavishya @vitamax @olayinka @yulian @timothy @victorine)",
+                "Template": "Business Team (@bhavishya @timothy @victorine @kenneth)",
                 "WordMatch": false
               },
               {
