@@ -215,6 +215,17 @@ mattermost:
                 "DisableNonWordPrefix": true,
                 "DisableNonWordSuffix": false,
                 "Disabled": false,
+                "Name": "outreach",
+                "Pattern": "\\B@outreach\\b",
+                "Scope": null,
+                "Template": "Outreach Team (@mwarid @akshay @sankhadeep @divya )",
+                "WordMatch": false
+              },
+              {
+                "ProcessBotPosts": true,
+                "DisableNonWordPrefix": true,
+                "DisableNonWordSuffix": false,
+                "Disabled": false,
                 "Name": "sales",
                 "Pattern": "\\B@sales?\\b",
                 "Scope": null,
