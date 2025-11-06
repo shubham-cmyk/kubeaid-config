@@ -48,6 +48,13 @@ postgresql:
   affinity:
     nodeSelector:
       disk: nvme
+  resources:
+    requests:
+      memory: 256Mi
+      cpu: 300m
+    limits:
+      memory: 512Mi
+      cpu: 600m
 
 tls:
   secret: finance-api-puppet-cert
