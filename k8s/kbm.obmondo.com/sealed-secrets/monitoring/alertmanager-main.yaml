@@ -58,7 +58,7 @@ spec:
             continue: true
           - receiver: 'null'
             matchers:
-            - "alertname in = [KubernetesVersionInfoEos, KubernetesVersionInfoEol]"
+            - "alertname =~ KubernetesVersionInfoEos|KubernetesVersionInfoEol"
 
         receivers:
           - name: "null"
