@@ -1,9 +1,5 @@
 customerid: niwyocdmk2
 puppetserver:
-  storage:
-    storageClass: rook-ceph-block
-  accessModes:
-    - ReadOnlyMany
   global:
     extraEnv:
       OBMONDO_ENV: "beta"

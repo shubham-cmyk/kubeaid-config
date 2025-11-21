@@ -8,6 +8,12 @@ puppetserver:
 
   puppetserver:
     puppeturl: "https://gitea.obmondo.com/EnableIT/LinuxAid.git"
+    persistence:
+      code:
+        size: 20Gi
+        storageClass: ceph-filesystem
+        accessModes:
+          - ReadWriteMany
     masters:
       extraEnv:
         AUTOSIGN_CLIENT_CERT: /etc/puppetlabs/puppet/ssl/certs/puppet.pem

@@ -8,8 +8,6 @@ puppetserver:
       fqdns:
         alternateServerNames: enableit.puppet.obmondo.com
     persistence:
-      code:
-        size: 14Gi
       data:
         size: 800Mi
   r10k:
