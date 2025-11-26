@@ -1,0 +1,14 @@
+ingress:
+  enabled: true
+  hosts:
+    - host: gitea-stats.kcm.obmondo.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: gitea-stats-tls
+      hosts:
+        - gitea-stats.kcm.obmondo.com
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    kubernetes.io/ingress.class: traefik-cert-manager

@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gitea-staging
+  namespace: argocd
+spec:
+  sources:
+    - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
+      path: argocd-helm-charts/gitea
+      targetRevision: 20.1.1
+      helm:
+        valueFiles:
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-gitea-staging.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
+      targetRevision: HEAD
+      ref: values
+  destination:
+    namespace: monitoring-staging
+    server: 'https://kubernetes.default.svc'
+  project: kubeaid
+  syncPolicy:
+    automated: null
+    syncOptions:
+    - ApplyOutOfSyncOnly=true
+    - CreateNamespace=true
