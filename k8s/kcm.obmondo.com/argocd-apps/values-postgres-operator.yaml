@@ -1,0 +1,12 @@
+postgres-operator:
+  configAwsOrGcp:
+    kube_iam_role: "arn:aws:iam::123456789826:root"
+  configLogicalBackup:
+    logical_backup_s3_bucket: kcm-postgres-logical-backup
+    logical_backup_s3_endpoint: https://s3.obmondo.com
+    logical_backup_s3_access_key_id: kcm
+    logical_backup_s3_secret_access_key: goumei4Quah7naiKookaida2
+s3:
+  bucket: kcm-postgres-backups
+  endpoint: https://s3.obmondo.com
+  access_key_id: kcm
