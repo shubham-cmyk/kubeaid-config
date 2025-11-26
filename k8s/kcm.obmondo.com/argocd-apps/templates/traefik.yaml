@@ -1,22 +1,26 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: rook-ceph
+  labels:
+    kubeaid.io/version: 16.0.1
+    kubeaid.io/managed-by: kubeaid
+    kubeaid.io/sync-order: "10"
+  name: traefik
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: rook-ceph
+    namespace: traefik
   project: default
   sources:
     - repoURL: https://github.com/Obmondo/KubeAid.git
-      path: argocd-helm-charts/rook-ceph
+      path: argocd-helm-charts/traefik
       targetRevision: 16.0.1
       helm:
         valueFiles:
-          - $values/k8s/kcm/argocd-apps/values-rook-ceph.yaml
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-traefik.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values

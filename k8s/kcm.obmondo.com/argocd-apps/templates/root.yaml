@@ -15,7 +15,7 @@ spec:
     namespace: argocd
   project: kubeaid
   source:
-    path: k8s/kcm/argocd-apps
+    path: k8s/kcm.obmondo.com/argocd-apps
     repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
     targetRevision: HEAD
   syncPolicy:

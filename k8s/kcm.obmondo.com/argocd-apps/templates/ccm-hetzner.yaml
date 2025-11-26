@@ -5,25 +5,23 @@ metadata:
     kubeaid.io/version: 16.0.1
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "10"
-  name: traefik
+  name: ccm-hetzner
   namespace: argocd
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
+    namespace: kube-system
     server: https://kubernetes.default.svc
-    namespace: traefik
-  project: default
+  project: kubeaid
   sources:
-    - repoURL: https://github.com/Obmondo/KubeAid.git
-      path: argocd-helm-charts/traefik
+    - repoURL: https://github.com/Obmondo/kubeaid
+      path: argocd-helm-charts/ccm-hetzner
       targetRevision: 16.0.1
       helm:
         valueFiles:
-          - $values/k8s/kcm/argocd-apps/values-traefik.yaml
-    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-ccm-hetzner.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
       targetRevision: HEAD
       ref: values
   syncPolicy:
     syncOptions:
-    - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
