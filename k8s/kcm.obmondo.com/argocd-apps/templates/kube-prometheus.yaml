@@ -15,7 +15,7 @@ spec:
     namespace: monitoring
   project: kubeaid
   source:
-    path: k8s/kcm/kube-prometheus
+    path: k8s/kcm.obmondo.com/kube-prometheus
     repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
     targetRevision: HEAD
     directory:

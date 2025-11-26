@@ -5,37 +5,38 @@ metadata:
     kubeaid.io/version: 16.0.1
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "10"
-  name: cilium
+  name: capi-cluster
   namespace: argocd
 spec:
   destination:
-    namespace: cilium
+    namespace: capi-cluster
     server: https://kubernetes.default.svc
-  project: kubeaid
   sources:
     - repoURL: https://github.com/Obmondo/kubeaid
-      path: argocd-helm-charts/cilium
+      path: argocd-helm-charts/capi-cluster
       targetRevision: 16.0.1
       helm:
         valueFiles:
-          - $values/k8s/kcm/argocd-apps/values-cilium.yaml
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-capi-cluster.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
       targetRevision: HEAD
       ref: values
+  project: kubeaid
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
       - ApplyOutOfSyncOnly=true
   ignoreDifferences:
-    - kind: Secret
-      name: cilium-ca
+    - group: cluster.x-k8s.io
+      kind: MachineDeployment
       jsonPointers:
-        - /data
-    - kind: Secret
-      name: hubble-server-certs
+        - /spec/replicas
+    - group: infrastructure.cluster.x-k8s.io
+      kind: HetznerCluster
       jsonPointers:
-        - /data
-    - kind: Secret
-      name: hubble-relay-client-certs
+        - /spec/controlPlaneEndpoint/host
+    
+    - group: infrastructure.cluster.x-k8s.io
+      kind: HetznerBareMetalHost
       jsonPointers:
-        - /data
+        - /metadata/annotations/capi.syself.com~1wipe-disk

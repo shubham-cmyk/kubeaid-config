@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: redis-operator
+  namespace: argocd
+spec:
+  destination:
+    namespace: redis-operator
+    server: 'https://kubernetes.default.svc'
+  sources:
+    - repoURL: https://github.com/Obmondo/kubeaid
+      path: argocd-helm-charts/redis-operator
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-redis-operator.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
+      targetRevision: HEAD
+      ref: values
+  project: kubeaid
+  syncPolicy:
+    automated: null
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true

@@ -5,26 +5,24 @@ metadata:
     kubeaid.io/version: 16.0.1
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "10"
-  name: sealed-secrets
+  name: cluster-api-operator
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
+    namespace: cluster-api-operator
     server: https://kubernetes.default.svc
-    namespace: sealed-secrets
-  project: kubeaid
   sources:
     - repoURL: https://github.com/Obmondo/kubeaid
-      path: argocd-helm-charts/sealed-secrets
+      path: argocd-helm-charts/cluster-api-operator
       targetRevision: 16.0.1
       helm:
         valueFiles:
-          - $values/k8s/kcm/argocd-apps/values-sealed-secrets.yaml
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-cluster-api-operator.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
       targetRevision: HEAD
       ref: values
+  project: kubeaid
   syncPolicy:
     syncOptions:
-      - ApplyOutOfSyncOnly=true
       - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true

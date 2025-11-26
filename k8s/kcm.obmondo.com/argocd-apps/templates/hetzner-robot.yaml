@@ -18,7 +18,7 @@ spec:
       targetRevision: 16.0.1
       helm:
         valueFiles:
-          - $values/k8s/kcm/argocd-apps/values-hetzner-robot.yaml
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-hetzner-robot.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
       targetRevision: HEAD
       ref: values

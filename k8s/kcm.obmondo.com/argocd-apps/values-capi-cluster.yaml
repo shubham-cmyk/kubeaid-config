@@ -1,5 +1,5 @@
 global:
-  clusterName: kcm
+  clusterName: kcm.obmondo.com
   kubernetes:
     version: v1.32.0
   kubeaid:
