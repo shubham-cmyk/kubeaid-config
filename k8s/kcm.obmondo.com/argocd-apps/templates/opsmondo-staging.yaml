@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: opsmondo-staging
+  namespace: argocd
+spec:
+  sources:
+    - repoURL: https://github.com/Obmondo/kubeaid
+      path: helm/opsmondo
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+          - values.staging.yaml
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-opsmondo-staging.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
+      targetRevision: HEAD
+      ref: values
+  destination:
+    namespace: monitoring-staging
+    server: 'https://kubernetes.default.svc'
+  project: kubeaid
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - ApplyOutOfSyncOnly=true
+    - CreateNamespace=true
