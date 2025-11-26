@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
 spec:
   sources:
-    - repoURL: https://github.com/Obmondo/kubeaid
+    - repoURL: https://gitea.obmondo.com/EnableIT/opsmondo.git
       path: helm/opsmondo
       targetRevision: HEAD
       helm:
