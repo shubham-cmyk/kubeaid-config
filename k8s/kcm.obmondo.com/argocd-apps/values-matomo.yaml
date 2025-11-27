@@ -1,0 +1,24 @@
+matomo:
+  matomoUsername: admin
+  matomoEmail: info@obmondo.com
+  mariadb:
+    enabled: false
+  externalDatabase:
+    host: matomo-mariadb.matomo.svc.cluster.local
+    port: 3306
+    user: matomo
+    database: matomo-mariadb
+    existingSecret: matomo-user     # make sure in the secret the key is db-password in mariadb template
+  ingress:
+    ingressClassName: traefik-cert-manager
+    enabled: true
+    hostname: matomo.kcm.obmondo.com
+    path: /
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
+      kubernetes.io/ingress.class: traefik-cert-manager
+    tls: true
+
+mariadb:
+  storage:
+    size: 3Gi

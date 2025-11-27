@@ -5,3 +5,5 @@ mariadb-operator:
     cert:
       certManager:
         enabled: true
+  crds:
+    enabled: true
