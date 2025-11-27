@@ -22,7 +22,7 @@ spec:
         valueFiles:
           - $values/k8s/kcm.obmondo.com/argocd-apps/values-localpv-provisioner.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
-      targetRevision: opendesk
+      targetRevision: HEAD
       ref: values
   syncPolicy:
     syncOptions:
