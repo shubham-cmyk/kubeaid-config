@@ -1,0 +1,15 @@
+---
+global:
+  domain: opendesk.kcm.obmondo.com
+certificate:
+  issuerRef:
+    name: "letsencrypt"
+    kind: "ClusterIssuer"
+ingress:
+  ingressClassName: nginx
+persistence:
+  storageClassNames:
+    RWX: "openebs-hostpath"
+    RWO: "openebs-hostpath"
+postfix:
+  hostname: "webmail.opendesk.kcm.obmondo.com"

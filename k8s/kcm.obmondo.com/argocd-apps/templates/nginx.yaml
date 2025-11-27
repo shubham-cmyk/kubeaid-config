@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: nginx
+  project: kubeaid
+  sources:
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid
+      path: argocd-helm-charts/ingress-nginx
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-nginx.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
+      targetRevision: opendesk
+      ref: values
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true

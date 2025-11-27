@@ -1,1 +1,25 @@
 ---
+argo-cd:
+  configs:
+    secret:
+      createSecret: false     # managed by sealed-secrets now
+    params:
+      server.insecure: true
+  server:
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: traefik-cert-manager
+        # necessary for bare-metal only - for unknown reason.
+        cert-manager.io/cluster-issuer: letsencrypt
+      hosts:
+      - argocd.kcm.obmondo.com
+      tls:
+      - secretName: argocd-ssl
+        hosts:
+        - argocd.kcm.obmondo.com
+      ingressClassName: traefik-cert-manager
+  global:
+    # -- Default domain used by all components
+    ## Used for ingresses, certificates, SSO, notifications, etc.
+    domain: argocd.kcm.obmondo.com
