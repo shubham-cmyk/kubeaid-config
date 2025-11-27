@@ -7,18 +7,18 @@ spec:
   destination:
     namespace: gitea
     server: https://kubernetes.default.svc
-  project: default
+  project: kubeaid
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
       path: argocd-helm-charts/gitea-runner
-      targetRevision: HEAD
+      targetRevision: 20.1.1
       helm:
         valueFiles:
-          - $values/k8s/kbm.obmondo.com/argocd-apps/values-gitea-runner.yaml
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-gitea-runner.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
   syncPolicy:
     syncOptions:
-    - CreateNamespace=true
     - ApplyOutOfSyncOnly=true
+    - CreateNamespace=true
