@@ -13,7 +13,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   sources:
-    - repoURL: https://github.com/Obmondo/KubeAid.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid.git
       path: argocd-helm-charts/harbor
       targetRevision: 20.1.1
       helm:

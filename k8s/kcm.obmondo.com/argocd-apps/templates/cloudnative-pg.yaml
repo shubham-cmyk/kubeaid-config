@@ -12,7 +12,7 @@ spec:
     namespace: cloudnative-pg
     server: 'https://kubernetes.default.svc'
   sources:
-    - repoURL: https://github.com/Obmondo/KubeAid.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid.git
       path: argocd-helm-charts/cloudnative-pg
       targetRevision: 20.1.1
       helm:

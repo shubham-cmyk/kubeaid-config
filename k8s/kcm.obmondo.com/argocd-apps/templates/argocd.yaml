@@ -15,7 +15,7 @@ spec:
     namespace: argocd
   project: kubeaid
   sources:
-    - repoURL: https://github.com/Obmondo/kubeaid
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid
       path: argocd-helm-charts/argo-cd
       targetRevision: 20.1.1
       helm:
