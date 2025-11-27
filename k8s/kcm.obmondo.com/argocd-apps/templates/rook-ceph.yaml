@@ -4,7 +4,11 @@ metadata:
   name: rook-ceph
   namespace: argocd
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    kubeaid.io/version: 20.1.1
+    kubeaid.io/managed-by: kubeaid
+    kubeaid.io/sync-order: "10"
 spec:
   destination:
     server: https://kubernetes.default.svc
@@ -13,7 +17,7 @@ spec:
   sources:
     - repoURL: https://github.com/Obmondo/KubeAid.git
       path: argocd-helm-charts/rook-ceph
-      targetRevision: 16.0.1
+      targetRevision: 20.1.1
       helm:
         valueFiles:
           - $values/k8s/kcm.obmondo.com/argocd-apps/values-rook-ceph.yaml

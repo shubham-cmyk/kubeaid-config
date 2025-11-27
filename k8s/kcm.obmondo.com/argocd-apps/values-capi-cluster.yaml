@@ -1,12 +1,12 @@
 global:
-  clusterName: kcm.obmondo.com
+  clusterName: kcm
   kubernetes:
     version: v1.33.0
   kubeaid:
-    repo: https://github.com/Obmondo/kubeaid
+    repo: https://github.com/Archisman-Mridha/kubeaid
   kubeaidConfig:
-    repo: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
-  additionalUsers:
+    repo: https://github.com/Archisman-Mridha/kubeaid-config
+  additionalUsers: 
     - name: archi
       sshPublicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC6dc7jP7zQT7qSKkFJd4pOMZmTb0kx8R29A3DbzLaDSSepEGtJ+64taQ4YI1C5/l7BFdi8blb1N135tRf54YY1v1plFDzukjxMx8GLa965T4YuSPg/1PhNQfsUcGDL/LXMktJiJP8pYvQKnOjM6KHju1GJKPlmlWHkttyFk6KmkeltF+ljPRGJhpOUjvM9RJgsYqiy6+pb8hGKxQi4dQ07duj7y7N/0pPbHg/BrtpbtHm2r/fsrFfzVwqIRg61LKxrcTZ4HPGpKPoare+X+wbp85hQOfWr6KtG9cQMjGbneZTYAYXhQxYlr2XlbGq/yj9mQJxYg/rEIL/EQY12An4zdI2hqpNlgkZwioc2agCGs3HvtQY64gpSF/M530Wx6Dm2e9eltSj+frr+WJdz3QXqO84dUENllFavL+gSGuT+MBzYOCsCAlKzKEj1EZ4ivkpYaNvTNrVqFpNMPsvuX3nAjlcl3g2Wmkb+hjPjTH84glNEvFsc2FYLSaU46jyb6UJ3aSUaJsCBIQfp4C6BVAYwEe9OzvuJrp8Ky4P5C0t0UvJgfdbUIh5TksTZ5QpyQiMvzpvmhJEWY+BEHHiI2a2ZRs8DPr9NZ0M6aut0AfxdM3YxIRcNU1m8lJc37/QgQETuzKCnQzZwsJF/HdVuXv+VW39kstpvRO/o5ORGaCg/SQ== cardno:13_819_971
 provider:
@@ -15,57 +15,75 @@ provider:
 hetzner:
   mode: bare-metal
   bareMetal:
-    wipeDisks: False
+    wipeDisks: false
     sshKeyPair:
       name: cluster
     installImage:
       imagePath: /root/.oldroot/nfs/images/Ubuntu-2404-noble-amd64-base.tar.gz
     diskLayoutSetupCommands: |
-
+      
+      set -e
       apt-get update -y
       apt install zfsutils-linux -y
-
+      
       if zpool import -f primary >/dev/null 2>&1; then
         echo "Imported existing primary ZPool"
       else
         # Create the ZPool (in mirror mode) across the NVMe disks.
         zpool create primary mirror /dev/nvme0n1 /dev/nvme1n1
-
+      
         # From that ZPool, set aside 100GB for ContainerD, by creating a ZVolume.
         #
         # A ZFS volume is a dataset that represents a block device. ZFS volumes are identified as
         # devices in the /dev/zvol/{dsk,rdsk}/pool directory.
-        zfs create -V 100G primary/containerd
+        zfs create -s -V 100G primary/containerd
         udevadm settle
         mkfs.ext4 /dev/zvol/primary/containerd
-
+      
         # From that ZPool, set aside 50GB for ephemeral volumes for pods, by creating a ZVolume.
-        zfs create -V 50G primary/pod-ephemeral-volumes
+        zfs create -s -V 50G primary/pod-ephemeral-volumes
         udevadm settle
         mkfs.ext4 /dev/zvol/primary/pod-ephemeral-volumes
+      
+        # From that ZPool, set aside 50GB for pod logs, by creating a (thinly provisioned)
+        # ZVolume.
+        zfs create -s -V 50G primary/pod-logs
+        udevadm settle
+        mkfs.ext4 /dev/zvol/primary/pod-logs
       fi
-
+      
       mkdir -p /var/lib/containerd
       echo "/dev/zvol/primary/containerd /var/lib/containerd ext4 defaults,nofail 0 0" | tee -a /etc/fstab
       mount /dev/zvol/primary/containerd /var/lib/containerd
-
+      
       mkdir -p /var/lib/kubelet/pods
       echo "/dev/zvol/primary/pod-ephemeral-volumes /var/lib/kubelet/pods ext4 defaults,nofail 0 0" | tee -a /etc/fstab
       mount /dev/zvol/primary/pod-ephemeral-volumes /var/lib/kubelet/pods
-
+      
+      mkdir -p /var/log/pods
+      echo "/dev/zvol/primary/pod-logs /var/log/pods ext4 defaults,nofail 0 0" | tee -a /etc/fstab
+      mount /dev/zvol/primary/pod-logs /var/log/pods
+      
+      # Enable weekly ZPool trimming for the ZPool.
+      # So unused storage space will be reclaimed back, from the ZVolumes into the ZPool.
+      # REFER : https://openzfs.github.io/openzfs-docs/man/master/8/zpool-trim.8.html.
+      systemctl enable zfs-trim-weekly@rpool.timer --now
+      
       # Create partition (without RAID) for Rook Ceph, which will take up the remaining of each HDD.
       echo ",,83" | sfdisk -N 4 /dev/sda --force
       partprobe /dev/sda
       echo ",,83" | sfdisk -N 4 /dev/sdb --force
       partprobe /dev/sdb
+      
 
   controlPlane:
-    regions:
+    regions: 
       - fsn1
       - nbg1
       - hel1
 
-    bareMetal:
+    
+    bareMetal: 
       endpoint:
         isFailoverIP: true
         host: 65.108.24.157
@@ -84,66 +102,67 @@ hetzner:
             - "0x50014ee2097c9304"
       diskLayoutSetupCommands: ""
 
-  nodeGroups:
+    
+
+  nodeGroups: 
     hcloud: []
     bareMetal:
-      # each server has 2 2TB disks.
       - name: zfs-and-ceph
         labels:
           node-role.kubernetes.io/zfs-and-ceph: ""
           node.cluster.x-k8s.io/nodegroup: zfs-and-ceph
         taints: []
         bareMetalHosts:
-          - serverID: "2852588" # 95.217.201.29
+          - serverID: "2852588"
             wwns:
-              - "eui.343339304e4026070025384100000002"
-              - "eui.343339304e4026020025384100000002"
-          - serverID: "2854796" # 148.251.135.184
+              - eui.343339304e4026070025384100000002
+              - eui.343339304e4026020025384100000002
+          - serverID: "2854796"
             wwns:
-              - "eui.343339304e5042380025384100000008"
-              - "eui.343339304e5042300025384100000008"
+              - eui.343339304e5042380025384100000008
+              - eui.343339304e5042300025384100000008
         diskLayoutSetupCommands: |
           set -e
-
+    
           apt-get update -y
           apt install zfsutils-linux -y
-
+    
           # In NVMe disk nvme0n1, create the nvme0n1p4 extended partition.
           echo ",,E" | sfdisk -N 4 /dev/nvme0n1 --force --no-reread
-
+    
           # And inside that extended partition, create nvme0n1p5 and nvme0n1p6 logical partitions,
           # each taking up 50% of the extended partition.
           # nvme0n1p5 : will be used by the primary ZFS pool.
           # nvme0n1p6 : will be used by Rook Ceph.
-
+    
           EXTENDED_PARTITION_SIZE=$(sfdisk -l /dev/nvme0n1 | grep nvme0n1p4 | awk '{print $4}')
           EXTENDED_PARTITION_HALF_SIZE=$((EXTENDED_PARTITION_SIZE / 2))
-
+    
           echo ",${EXTENDED_PARTITION_HALF_SIZE},83" | sfdisk -N 5 /dev/nvme0n1 --force --no-reread
           echo ",,83" | sfdisk -N 6 /dev/nvme0n1 --force --no-reread
-
+    
           partprobe /dev/nvme0n1
           udevadm settle
-
+    
           # Now, let's do the same for the NVMe disk nvme1n1.
-
+    
           echo ",,E" | sfdisk -N 4 /dev/nvme1n1 --force --no-reread
-
+    
           EXTENDED_PARTITION_SIZE=$(sfdisk -l /dev/nvme1n1 | grep nvme1n1p4 | awk '{print $4}')
           EXTENDED_PARTITION_HALF_SIZE=$((EXTENDED_PARTITION_SIZE / 2))
-
+    
           echo ",${EXTENDED_PARTITION_HALF_SIZE},83" | sfdisk -N 5 /dev/nvme1n1 --force --no-reread
           echo ",,83" | sfdisk -N 6 /dev/nvme1n1 --force --no-reread
-
+    
           partprobe /dev/nvme1n1
           udevadm settle
-
+    
           if zpool import -f primary >/dev/null 2>&1; then
             echo "Imported existing primary ZPool"
           else
             # Create the mirrored ZPool out partitions : nvme0n1p5 and nvme1n1p5.
             zpool create primary mirror /dev/nvme0n1p5 /dev/nvme1n1p5
-
+    
             # From that ZPool, set aside 50GB for ContainerD, by creating a ZVolume.
             #
             # A ZFS volume is a dataset that represents a block device. ZFS volumes are identified as
@@ -151,66 +170,64 @@ hetzner:
             zfs create -s -V 50G primary/containerd
             udevadm settle
             mkfs.ext4 /dev/zvol/primary/containerd
-
+    
             # From that ZPool, set aside 50GB for ephemeral volumes for pods, by creating a ZVolume.
             zfs create -s -V 50G primary/pod-ephemeral-volumes
             udevadm settle
             mkfs.ext4 /dev/zvol/primary/pod-ephemeral-volumes
-
+    
             # From that ZPool, set aside 50GB for pod logs, by creating a (thinly provisioned)
             # ZVolume.
             zfs create -s -V 50G primary/pod-logs
             udevadm settle
             mkfs.ext4 /dev/zvol/primary/pod-logs
           fi
-
+    
           mkdir -p /var/lib/containerd
           echo "/dev/zvol/primary/containerd /var/lib/containerd ext4 defaults,nofail 0 0" | tee -a /etc/fstab
           mount /dev/zvol/primary/containerd /var/lib/containerd
-
+    
           mkdir -p /var/lib/kubelet/pods
           echo "/dev/zvol/primary/pod-ephemeral-volumes /var/lib/kubelet/pods ext4 defaults,nofail 0 0" | tee -a /etc/fstab
           mount /dev/zvol/primary/pod-ephemeral-volumes /var/lib/kubelet/pods
-
-          mkdir -p /var/log
-          echo "/dev/zvol/primary/pod-logs /var/log ext4 defaults,nofail 0 0" | tee -a /etc/fstab
-          mount /dev/zvol/primary/pod-logs /var/log
-
+    
+          mkdir -p /var/log/pods
+          echo "/dev/zvol/primary/pod-logs /var/log/pods ext4 defaults,nofail 0 0" | tee -a /etc/fstab
+          mount /dev/zvol/primary/pod-logs /var/log/pods
+    
           # Enable weekly ZPool trimming for the ZPool.
           # So unused storage space will be reclaimed back, from the ZVolumes into the ZPool.
           # REFER : https://openzfs.github.io/openzfs-docs/man/master/8/zpool-trim.8.html.
           systemctl enable zfs-trim-weekly@rpool.timer --now
-
-      # each server has 2 1TB disks.
       - name: zfs
         labels:
           node-role.kubernetes.io/zfs: ""
           node.cluster.x-k8s.io/nodegroup: zfs
         taints: []
         bareMetalHosts:
-          - serverID: "2853926" # 144.76.102.62
+          - serverID: "2853926"
             wwns:
-              - "eui.0025388511c5b3e1"
-              - "eui.0025388511c5b367"
+              - eui.0025388511c5b3e1
+              - eui.0025388511c5b367
         diskLayoutSetupCommands: |
           set -e
-
+    
           apt-get update -y
           apt install zfsutils-linux -y
-
+    
           # In each NVMe disk, create a partition which'll take up the remaining storage space.
           echo ",,83" | sfdisk -N 4 /dev/nvme0n1 --force
           partprobe /dev/nvme0n1
           echo ",,83" | sfdisk -N 4 /dev/nvme1n1 --force
           partprobe /dev/nvme1n1
           udevadm settle
-
+    
           if zpool import -f primary >/dev/null 2>&1; then
             echo "Imported existing primary ZPool"
           else
             # Create a mirrored ZPool out of those 2 partitions.
             zpool create primary mirror /dev/nvme0n1p4 /dev/nvme1n1p4
-
+    
             # From that ZPool, set aside 50GB for ContainerD, by creating a (thinly provisioned)
             # ZVolume.
             #
@@ -219,32 +236,32 @@ hetzner:
             zfs create -s -V 50G primary/containerd
             udevadm settle
             mkfs.ext4 /dev/zvol/primary/containerd
-
+    
             # From that ZPool, set aside 50GB for ephemeral volumes for pods, by creating a
             # (thinly provisioned) ZVolume.
             zfs create -s -V 50G primary/pod-ephemeral-volumes
             udevadm settle
             mkfs.ext4 /dev/zvol/primary/pod-ephemeral-volumes
-
+    
             # From that ZPool, set aside 50GB for pod logs, by creating a (thinly provisioned)
             # ZVolume.
             zfs create -s -V 50G primary/pod-logs
             udevadm settle
             mkfs.ext4 /dev/zvol/primary/pod-logs
           fi
-
+    
           mkdir -p /var/lib/containerd
           echo "/dev/zvol/primary/containerd /var/lib/containerd ext4 defaults,nofail 0 0" | tee -a /etc/fstab
           mount /dev/zvol/primary/containerd /var/lib/containerd
-
+    
           mkdir -p /var/lib/kubelet/pods
           echo "/dev/zvol/primary/pod-ephemeral-volumes /var/lib/kubelet/pods ext4 defaults,nofail 0 0" | tee -a /etc/fstab
           mount /dev/zvol/primary/pod-ephemeral-volumes /var/lib/kubelet/pods
-
-          mkdir -p /var/log
-          echo "/dev/zvol/primary/pod-logs /var/log ext4 defaults,nofail 0 0" | tee -a /etc/fstab
-          mount /dev/zvol/primary/pod-logs /var/log
-
+    
+          mkdir -p /var/log/pods
+          echo "/dev/zvol/primary/pod-logs /var/log/pods ext4 defaults,nofail 0 0" | tee -a /etc/fstab
+          mount /dev/zvol/primary/pod-logs /var/log/pods
+    
           # Enable weekly ZPool trimming for the ZPool.
           # So unused storage space will be reclaimed back, from the ZVolumes into the ZPool.
           # REFER : https://openzfs.github.io/openzfs-docs/man/master/8/zpool-trim.8.html.

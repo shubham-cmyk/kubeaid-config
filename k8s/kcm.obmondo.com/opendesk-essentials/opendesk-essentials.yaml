@@ -2635,7 +2635,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: minio
     app.kubernetes.io/version: 2025.4.22
-    helm.sh/chart: minio-16.0.10
+    helm.sh/chart: minio-20.1.10
 spec:
   podSelector:
     matchLabels:
@@ -2658,7 +2658,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: minio
     app.kubernetes.io/version: 2025.4.22
-    helm.sh/chart: minio-16.0.10
+    helm.sh/chart: minio-20.1.10
 spec:
   maxUnavailable: 1
   selector:
@@ -2677,7 +2677,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: minio
     app.kubernetes.io/version: 2025.4.22
-    helm.sh/chart: minio-16.0.10
+    helm.sh/chart: minio-20.1.10
 automountServiceAccountToken: false
 secrets:
   - name: minio
@@ -2693,7 +2693,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: minio
     app.kubernetes.io/version: 2025.4.22
-    helm.sh/chart: minio-16.0.10
+    helm.sh/chart: minio-20.1.10
 type: Opaque
 data:
   root-user: "YWRtaW4="
@@ -2710,7 +2710,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: minio
     app.kubernetes.io/version: 2025.4.22
-    helm.sh/chart: minio-16.0.10
+    helm.sh/chart: minio-20.1.10
     app.kubernetes.io/component: minio-provisioning
 data:
   policy-migrations-bucket-policy.json: |
@@ -2821,7 +2821,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: minio
     app.kubernetes.io/version: 2025.4.22
-    helm.sh/chart: minio-16.0.10
+    helm.sh/chart: minio-20.1.10
 spec:
   accessModes:
     - "ReadWriteOnce"
@@ -2841,7 +2841,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: minio
     app.kubernetes.io/version: 2025.4.22
-    helm.sh/chart: minio-16.0.10
+    helm.sh/chart: minio-20.1.10
 spec:
   type: ClusterIP
   ports:
@@ -2868,7 +2868,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: minio
     app.kubernetes.io/version: 2025.4.22
-    helm.sh/chart: minio-16.0.10
+    helm.sh/chart: minio-20.1.10
 spec:
   selector:
     matchLabels:
@@ -2883,7 +2883,7 @@ spec:
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/name: minio
         app.kubernetes.io/version: 2025.4.22
-        helm.sh/chart: minio-16.0.10
+        helm.sh/chart: minio-20.1.10
       annotations:
         checksum/credentials-secret: c524353512aec9789a0b74f5b1a7ea996379a926cc4ecffd3bd0180c7309c5af
     spec:
@@ -3049,7 +3049,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: minio
     app.kubernetes.io/version: 2025.4.22
-    helm.sh/chart: minio-16.0.10
+    helm.sh/chart: minio-20.1.10
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: 4G
     nginx.org/client-max-body-size: 4G
@@ -3082,7 +3082,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: minio
     app.kubernetes.io/version: 2025.4.22
-    helm.sh/chart: minio-16.0.10
+    helm.sh/chart: minio-20.1.10
   annotations:
     nginx.org/websocket-services: minio
 spec:
@@ -3114,7 +3114,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: minio
     app.kubernetes.io/version: 2025.4.22
-    helm.sh/chart: minio-16.0.10
+    helm.sh/chart: minio-20.1.10
     app.kubernetes.io/component: minio-provisioning
   annotations:
     "managed-by": "helmfile"
@@ -3125,7 +3125,7 @@ spec:
       labels:
         app.kubernetes.io/managed-by: Helm
         app.kubernetes.io/version: 2025.4.22
-        helm.sh/chart: minio-16.0.10
+        helm.sh/chart: minio-20.1.10
         app.kubernetes.io/component: minio-provisioning
     spec:
       
