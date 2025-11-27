@@ -2,7 +2,7 @@
 argo-cd:
   configs:
     secret:
-      createSecret: false     # managed by sealed-secrets now
+      createSecret: false # managed by sealed-secrets now
     params:
       server.insecure: true
   server:
@@ -13,12 +13,17 @@ argo-cd:
         # necessary for bare-metal only - for unknown reason.
         cert-manager.io/cluster-issuer: letsencrypt
       hosts:
-      - argocd.kcm.obmondo.com
-      tls:
-      - secretName: argocd-ssl
-        hosts:
         - argocd.kcm.obmondo.com
+      tls:
+        - secretName: argocd-ssl
+          hosts:
+            - argocd.kcm.obmondo.com
       ingressClassName: traefik-cert-manager
+  # The control-plane nodes are currently whitelisted by HAProxy.
+  # We're scheduling the repo-server there, so it can access Gitea.
+  repoServer:
+    nodeSelector:
+      node-role.kubernetes.io/control-plane: ""
   global:
     # -- Default domain used by all components
     ## Used for ingresses, certificates, SSO, notifications, etc.
