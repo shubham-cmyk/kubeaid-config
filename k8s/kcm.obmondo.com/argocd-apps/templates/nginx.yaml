@@ -1,27 +1,27 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  name: nginx
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
   labels:
     kubeaid.io/version: 20.1.1
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "10"
-  name: traefik
-  namespace: argocd
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: traefik
+    namespace: nginx
   project: kubeaid
   sources:
-    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid.git
-      path: argocd-helm-charts/traefik
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid
+      path: argocd-helm-charts/ingress-nginx
       targetRevision: 20.1.1
       helm:
         valueFiles:
-          - $values/k8s/kcm.obmondo.com/argocd-apps/values-traefik.yaml
-    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-nginx.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
       targetRevision: HEAD
       ref: values
   syncPolicy:

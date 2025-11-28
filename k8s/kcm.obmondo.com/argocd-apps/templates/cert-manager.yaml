@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   labels:
-    kubeaid.io/version: 16.0.1
+    kubeaid.io/version: 20.1.1
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "10"
   name: cert-manager
@@ -13,9 +13,9 @@ spec:
     server: https://kubernetes.default.svc
   project: kubeaid
   sources:
-    - repoURL: https://github.com/Obmondo/kubeaid
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid
       path: argocd-helm-charts/cert-manager
-      targetRevision: 16.0.1
+      targetRevision: 20.1.1
       helm:
         valueFiles:
           - $values/k8s/kcm.obmondo.com/argocd-apps/values-cert-manager.yaml

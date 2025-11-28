@@ -5,25 +5,26 @@ metadata:
     kubeaid.io/version: 20.1.1
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "10"
-  name: traefik
+  name: zfs-localpv
   namespace: argocd
   finalizers:
-  - resources-finalizer.argocd.argoproj.io
+    - argocd.argoproj.io/resources-finalizer
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: traefik
+    namespace: zfs-localpv
   project: kubeaid
   sources:
-    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid.git
-      path: argocd-helm-charts/traefik
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid
+      path: argocd-helm-charts/zfs-localpv
       targetRevision: 20.1.1
       helm:
         valueFiles:
-          - $values/k8s/kcm.obmondo.com/argocd-apps/values-traefik.yaml
-    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-zfs-localpv.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
       targetRevision: HEAD
       ref: values
   syncPolicy:
     syncOptions:
-    - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true

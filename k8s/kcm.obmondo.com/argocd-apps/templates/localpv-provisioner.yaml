@@ -5,23 +5,26 @@ metadata:
     kubeaid.io/version: 20.1.1
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "10"
-  name: ccm-hetzner
+  name: localpv-provisioner
   namespace: argocd
+  finalizers:
+    - argocd.argoproj.io/resources-finalizer
 spec:
   destination:
-    namespace: kube-system
     server: https://kubernetes.default.svc
+    namespace: localpv-provisioner
   project: kubeaid
   sources:
-    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid
-      path: argocd-helm-charts/ccm-hetzner
+    - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid
+      path: argocd-helm-charts/localpv-provisioner
       targetRevision: 20.1.1
       helm:
         valueFiles:
-          - $values/k8s/kcm.obmondo.com/argocd-apps/values-ccm-hetzner.yaml
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-localpv-provisioner.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
       targetRevision: HEAD
       ref: values
   syncPolicy:
     syncOptions:
       - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true

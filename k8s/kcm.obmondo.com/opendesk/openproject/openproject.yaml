@@ -1,0 +1,1112 @@
+---
+# Source: openproject/templates/serviceaccount.yaml
+apiVersion: "v1"
+kind: "ServiceAccount"
+metadata:
+  name: openproject
+  labels:
+    app.kubernetes.io/name: openproject
+    helm.sh/chart: openproject-10.1.0
+    app.kubernetes.io/instance: openproject
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: "16.1.0"
+...
+---
+# Source: openproject/templates/secret_core.yaml
+apiVersion: "v1"
+kind: "Secret"
+metadata:
+  name: "openproject-core"
+  labels:
+    app.kubernetes.io/name: openproject
+    helm.sh/chart: openproject-10.1.0
+    app.kubernetes.io/instance: openproject
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: "16.1.0"
+data: # reset data to make sure only keys defined below remain
+stringData:
+  DATABASE_HOST: "postgresql"
+  DATABASE_PORT: "5432"
+  DATABASE_URL: "postgresql://openproject_user@postgresql:5432/openproject"
+  OPENPROJECT_SEED_ADMIN_USER_PASSWORD: "0ed4915fb2a68510364593449c57b18c7ec82dc3"
+  OPENPROJECT_SEED_ADMIN_USER_PASSWORD_RESET: "false"
+  OPENPROJECT_SEED_ADMIN_USER_NAME: "OpenProject Internal Admin"
+  OPENPROJECT_SEED_ADMIN_USER_MAIL: "openproject-admin@swp-domain.internal"
+  OPENPROJECT_HTTPS: "true"
+  OPENPROJECT_SEED_LOCALE: "de"
+  OPENPROJECT_HOST__NAME: "projects.opendesk.kcm.obmondo.com"
+  OPENPROJECT_HSTS: "true"
+  OPENPROJECT_RAILS__CACHE__STORE: "memcache"
+  OPENPROJECT_RAILS__RELATIVE__URL__ROOT: ""
+  POSTGRES_STATEMENT_TIMEOUT: "120s"
+...
+---
+# Source: openproject/templates/secret_cron_environment.yaml
+apiVersion: "v1"
+kind: "Secret"
+metadata:
+  name: "openproject-cron-environment"
+  labels:
+    app.kubernetes.io/name: openproject
+    helm.sh/chart: openproject-10.1.0
+    app.kubernetes.io/instance: openproject
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: "16.1.0"
+data: # reset data to make sure only keys defined below remain
+stringData:
+  # Additional environment variables
+  IMAP_HOST: 
+  IMAP_PORT: "993"
+  IMAP_USERNAME: 
+  IMAP_PASSWORD: 
+...
+---
+# Source: openproject/templates/secret_environment.yaml
+apiVersion: "v1"
+kind: "Secret"
+metadata:
+  name: "openproject-environment"
+  labels:
+    app.kubernetes.io/name: openproject
+    helm.sh/chart: openproject-10.1.0
+    app.kubernetes.io/instance: openproject
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: "16.1.0"
+data: # reset data to make sure only keys defined below remain
+stringData:
+  # Additional environment variables
+  OPENPROJECT_APP__TITLE: "Projekte - openDesk"
+  OPENPROJECT_AUTHENTICATION_GLOBAL__BASIC__AUTH_PASSWORD: "f97b99dba2add5cb8c97c5a33d3cf97dbd6e9dd5"
+  OPENPROJECT_AUTHENTICATION_GLOBAL__BASIC__AUTH_USER: "8ff774f3221344ed216c54510e38256d4b1f2e7f"
+  OPENPROJECT_DEFAULT__COMMENT__SORT__ORDER: "desc"
+  OPENPROJECT_EMAIL__DELIVERY__METHOD: "smtp"
+  OPENPROJECT_HOME__URL: "https://portal.opendesk.kcm.obmondo.com/"
+  OPENPROJECT_LOGIN__REQUIRED: "true"
+  OPENPROJECT_LOG__LEVEL: "debug"
+  OPENPROJECT_MAIL__FROM: "no-reply@opendesk.kcm.obmondo.com"
+  OPENPROJECT_OAUTH__ALLOW__REMAPPING__OF__EXISTING__USERS: "true"
+  OPENPROJECT_OMNIAUTH__DIRECT__LOGIN__PROVIDER: "keycloak"
+  OPENPROJECT_OPENID__CONNECT_KEYCLOAK_ISSUER: "https://id.opendesk.kcm.obmondo.com/realms/opendesk"
+  OPENPROJECT_OPENID__CONNECT_KEYCLOAK_POST__LOGOUT__REDIRECT__URI: "https://projects.opendesk.kcm.obmondo.com/"
+  OPENPROJECT_SEED_DESIGN_ACCENT__COLOR: "#571EFA"
+  OPENPROJECT_SEED_DESIGN_FAVICON: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTExIiBoZWlnaHQ9IjExMSIgdmlld0JveD0iMCAwIDExMSAxMTEiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHg9IjAuNSIgeT0iMC41IiB3aWR0aD0iMTEwIiBoZWlnaHQ9IjExMCIgcng9IjIwIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMjQuMzI5NiA4Ni43MDY5TDI0LjMyOTYgMjQuMzc3MkgxNi41MzQzTDE2LjUzNDMgODYuNzA2OUgyNC4zMjk2WiIgZmlsbD0iIzU3MUVGQSIvPgo8cGF0aCBkPSJNODYuODM1MyA1OS40Mzk3SDU1LjY3NTlDNTEuMzcwNyA1OS40Mzk3IDQ3Ljg4MDYgNjIuOTI5OCA0Ny44ODA2IDY3LjIzNVY3NS4wMTk0QzQ3Ljg4MDYgNzkuMzI0NiA1MS4zNzA3IDgyLjgxNDcgNTUuNjc1OSA4Mi44MTQ3SDg2LjgzNTNDOTEuMTQwNSA4Mi44MTQ3IDk0LjYzMDYgNzkuMzI0NiA5NC42MzA2IDc1LjAxOTRWNjcuMjM1Qzk0LjYzMDYgNjIuOTI5OCA5MS4xNDA1IDU5LjQzOTcgODYuODM1MyA1OS40Mzk3WiIgZmlsbD0iIzU3MUVGQSIvPgo8cGF0aCBkPSJNNjMuNDYwMyAyOC4yODAzSDM5LjkyMDNDMzUuNjE1MSAyOC4yODAzIDMyLjEyNSAzMS43NzA0IDMyLjEyNSAzNi4wNzU2VjQzLjg1OTlDMzIuMTI1IDQ4LjE2NTIgMzUuNjE1MSA1MS42NTUzIDM5LjkyMDMgNTEuNjU1M0g2My40NjAzQzY3Ljc2NTUgNTEuNjU1MyA3MS4yNTU2IDQ4LjE2NTIgNzEuMjU1NiA0My44NTk5VjM2LjA3NTZDNzEuMjU1NiAzMS43NzA0IDY3Ljc2NTUgMjguMjgwMyA2My40NjAzIDI4LjI4MDNaIiBmaWxsPSIjMzQxMjkxIi8+Cjwvc3ZnPgo="
+  OPENPROJECT_SEED_DESIGN_HEADER__BG__COLOR: "#ffffff"
+  OPENPROJECT_SEED_DESIGN_HEADER__ITEM__BG__HOVER__COLOR: "#f5f5f5"
+  OPENPROJECT_SEED_DESIGN_LOGO: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODIiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCA4MiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTQuNDM1MzggMy45MDQ3OUM3LjEzMDM2IDMuOTA0NzkgOC44NTI2IDUuODgxNjIgOC44NTI2IDguMzAyOEM4Ljg1MjYgMTAuNzI0IDcuMTMwMzYgMTIuNzAwOCA0LjQzNTM4IDEyLjcwMDhDMS43NDA0IDEyLjcwMDggMCAxMC43MjQgMCA4LjMwMjhDMCA1Ljg4MTYyIDEuNzIyMjUgMy45MDQ3OSA0LjQzNTM4IDMuOTA0NzlaTTQuNDM1MzggMTEuNjI3MkM2LjQ5ODgxIDExLjYyNzIgNy41OTEzMiAxMC4wOTI4IDcuNTkxMzIgOC4zMDI4QzcuNTkxMzIgNi41MTI3NiA2LjQ5ODgxIDQuOTc4NDQgNC40MzUzOCA0Ljk3ODQ0QzIuMzcxOTUgNC45Nzg0NCAxLjI2MzEgNi41MTI3NiAxLjI2MzEgOC4zMDI4QzEuMjYzMSAxMC4wOTI4IDIuMzUzOCAxMS42MjcyIDQuNDM1MzggMTEuNjI3MloiIGZpbGw9ImJsYWNrIi8+CjxwYXRoIGQ9Ik0xMC40OTIyIDQuMDc1MjZIMTEuNzU1M1Y2LjIyMjU4QzEyLjM1MjQgNC44MDc5NiAxMy42MTU1IDMuOTA0NzkgMTUuNDU3NSAzLjkwNDc5QzE3LjgyOTQgMy45MDQ3OSAxOS40MzE5IDUuNjk0ODIgMTkuNDMxOSA4LjMxOTEyQzE5LjQzMTkgMTAuOTQzNCAxNy44Mjk0IDEyLjcwMDggMTUuNDU3NSAxMi43MDA4QzEzLjU4MSAxMi43MDA4IDEyLjMzNiAxMS43NjMyIDExLjc1NTMgMTAuMzgzVjE1LjYzMzRIMTAuNDkyMlY0LjA3NTI2Wk0xNS4wNjM3IDExLjYyNzJDMTYuNzY5NiAxMS42MjcyIDE4LjE2ODggMTAuNTY5OCAxOC4xNjg4IDguMzE5MTJDMTguMTY4OCA2LjA2ODQzIDE2Ljc2OTYgNC45Nzg0NCAxNS4wNjM3IDQuOTc4NDRDMTMuMzU3OCA0Ljk3ODQ0IDExLjgwNjEgNi4wODY1NiAxMS44MDYxIDguMzE5MTJDMTEuODA2MSAxMC41NTE3IDEzLjM3NTkgMTEuNjI3MiAxNS4wNjM3IDExLjYyNzJaIiBmaWxsPSJibGFjayIvPgo8cGF0aCBkPSJNMjQuNzg3MSAzLjkwNDY1QzI3LjIwOTggMy45MDQ2NSAyOC44MzA0IDUuNDIyNjQgMjguODMwNCA4LjAxMjQ4VjguNTIzOTJIMjIuMDI0OUMyMi4wNzU3IDEwLjI5NzYgMjIuOTc5NSAxMS42NTk3IDI0Ljg1NiAxMS42NTk3QzI2LjQwNzcgMTEuNjU5NyAyNy4zMTMzIDEwLjg0MTcgMjcuNjIgOS41Nzk0NUgyOC44NjQ5QzI4LjUwNzQgMTEuMDc5MyAyNy40ODM4IDEyLjY5ODkgMjQuODkwNSAxMi42OTg5QzIyLjE0NDcgMTIuNjk4OSAyMC44MTQ1IDEwLjY1MzEgMjAuODE0NSA4LjE4MTE1QzIwLjgxNDUgNS40NTM0NyAyMi40MDA2IDMuOTAyODMgMjQuNzg4OSAzLjkwMjgzTDI0Ljc4NzEgMy45MDQ2NVpNMjcuNTgzNyA3LjUzNTVDMjcuNDYzOSA1Ljg4MTQ4IDI2LjM1NSA0Ljk0Mzg1IDI0Ljc2ODkgNC45NDM4NUMyMy4yODQ0IDQuOTQzODUgMjIuMTc1NiA1Ljg5NzgxIDIyLjAzOTQgNy41MzU1SDI3LjU4MzdaIiBmaWxsPSJibGFjayIvPgo8cGF0aCBkPSJNMzAuNjAzNSA0LjA3NTI2SDMxLjg2NjZWNi40Mjc1MkMzMi4zMjc2IDQuODU4NzUgMzMuNTIxNyAzLjkwNDc5IDM1LjM4MDEgMy45MDQ3OUMzNy4yMzg0IDMuOTA0NzkgMzguNDE2MiA1LjEzMjYgMzguNDE2MiA3LjM0ODg0VjEyLjUzMDNIMzcuMTM2OFY3LjQ1MDRDMzcuMTM2OCA1LjY5NDgyIDM2LjQ1NDQgNC45Nzg0NCAzNC45NTM2IDQuOTc4NDRDMzMuMDQyNiA0Ljk3ODQ0IDMxLjg2NjYgNi41ODE2OCAzMS44NjY2IDguODQ4N1YxMi41MzAzSDMwLjYwMzVWNC4wNzUyNloiIGZpbGw9ImJsYWNrIi8+CjxwYXRoIGQ9Ik00MC41NDg4IDAuNTExMjNINDQuOTY3OUM0Ni4yMTgzIDAuNTExMjMgNDcuMzIxNyAwLjY2NTM4NiA0OC4yNzgxIDAuOTcxODg3QzQ5LjIzMjcgMS4yNzgzOSA1MC4wMTQ4IDEuODc1MDcgNTAuNjIyOCAyLjc2MTkyQzUxLjIzMDggMy42NDg3OCA1MS41MzU2IDQuODk4MzYgNTEuNTM1NiA2LjUxMjQ4QzUxLjUzNTYgOC4xMjY2IDUxLjIzMDggOS4zOTQzMSA1MC42MjI4IDEwLjI3OTRDNTAuMDE0OCAxMS4xNjYyIDQ5LjIzMjcgMTEuNzYyOSA0OC4yNzgxIDEyLjA2OTRDNDcuMzIxNyAxMi4zNzU5IDQ2LjIyMDEgMTIuNTMwMSA0NC45Njc5IDEyLjUzMDFINDAuNTQ4OFYwLjUxMTIzWk00NC45Njc5IDEwLjEyN0M0NS44MzE3IDEwLjEyNyA0Ni41MjMyIDEwLjA1ODEgNDcuMDQwNCA5LjkyMjA3QzQ3LjU1NzYgOS43ODYwNSA0Ny45Nzg2IDkuNDU5NiA0OC4zMDM1IDguOTQwOTFDNDguNjI4MyA4LjQyNDAzIDQ4Ljc4OTggNy42MTMzNCA0OC43ODk4IDYuNTEyNDhDNDguNzg5OCA1LjQxMTYyIDQ4LjYyNDcgNC42MTU0NCA0OC4yOTYyIDQuMDkxM0M0Ny45NjU5IDMuNTY4OTggNDcuNTQ0OSAzLjIzODkxIDQ3LjAzMzEgMy4xMDI4OEM0Ni41MjEzIDIuOTY2ODYgNDUuODMzNSAyLjg5Nzk1IDQ0Ljk2OTcgMi44OTc5NUg0My4yODAxVjEwLjEyN0g0NC45Njk3SDQ0Ljk2NzlaIiBmaWxsPSJibGFjayIvPgo8cGF0aCBkPSJNNTMuMzE1OCA1LjgyMjA1QzUzLjY5NjkgNS4xNTY0NiA1NC4yMjUgNC42NDg2NSA1NC45MDE5IDQuMjk2OEM1NS41Nzg5IDMuOTQ0OTYgNTYuMzU1NiAzLjc2OTA0IDU3LjIzMDMgMy43NjkwNEM1OC42NjQgMy43NjkwNCA1OS43ODM4IDQuMTQ5OSA2MC41OTEzIDQuOTExNjJDNjEuMzk4OSA1LjY3MzM0IDYxLjgwMTggNi43MjUyMyA2MS44MDE4IDguMDY1NDlWOC43ODE4N0g1NS4zNTM4QzU1LjM5OTIgOS4zOTQ4NyA1NS41OTM0IDkuODc1NDggNTUuOTM0NiAxMC4yMjE5QzU2LjI3NTcgMTAuNTY4MyA1Ni43NDIyIDEwLjc0MjQgNTcuMzMzOCAxMC43NDI0QzU3Ljg0NTUgMTAuNzQyNCA1OC4yNjg0IDEwLjYzNTQgNTguNjA0MSAxMC40MTc4QzU4LjkzOTkgMTAuMjAxOSA1OS4xNTIyIDkuODk1NDMgNTkuMjQ0OCA5LjQ5NjQ0SDYxLjgyQzYxLjY4MzkgMTAuNDUwNCA2MS4yMjQ3IDExLjIyNDggNjAuNDQ2MiAxMS44MTQyQzU5LjY2NzYgMTIuNDA1NSA1OC42MzUgMTIuNzAxMSA1Ny4zNTAxIDEyLjcwMTFDNTYuNDA2NCAxMi43MDExIDU1LjU4NzkgMTIuNTEwNyA1NC44OTI5IDEyLjEyOThDNTQuMTk5NiAxMS43NDg5IDUzLjY2NzkgMTEuMjE3NiA1My4yOTc3IDEwLjUzNTZDNTIuOTI3NCA5Ljg1MzcyIDUyLjc0NDEgOS4wNzAyNCA1Mi43NDQxIDguMTgzMzhDNTIuNzQ0MSA3LjI5NjUyIDUyLjkzNDcgNi40ODc2NSA1My4zMTU4IDUuODIyMDVaTTU5LjI3NzQgNy4zODE3NkM1OS4yMzIxIDYuODM1ODYgNTkuMDMwNiA2LjQxNTExIDU4LjY3MTMgNi4xMTk0OUM1OC4zMTM4IDUuODIzODcgNTcuODQ5MiA1LjY3Njk2IDU3LjI4MTEgNS42NzY5NkM1Ni43MTMxIDUuNjc2OTYgNTYuMjcyMSA1LjgyNTY4IDU1LjkyNTUgNi4xMTk0OUM1NS41Nzg5IDYuNDE1MTEgNTUuMzgyOSA2LjgzNTg2IDU1LjMzNzUgNy4zODE3Nkg1OS4yNzc0WiIgZmlsbD0iYmxhY2siLz4KPHBhdGggZD0iTTY0LjEwNzUgMTEuODY0N0M2My4zNTYxIDExLjMwOCA2Mi45ODA1IDEwLjQ5IDYyLjk4MDUgOS40MDkxSDY1LjU3MzhDNjUuNTczOCA5Ljg5ODc4IDY1LjcyODEgMTAuMjU5NyA2Ni4wMzQ4IDEwLjQ5MThDNjYuMzQxNSAxMC43MjU4IDY2LjgxMzMgMTAuODQxOSA2Ny40NTAzIDEwLjg0MTlDNjcuOTE2NyAxMC44NDE5IDY4LjI1NDMgMTAuNzgyIDY4LjQ2NDggMTAuNjYyM0M2OC42NzUzIDEwLjU0MjYgNjguNzgwNiAxMC4zNTIyIDY4Ljc4MDYgMTAuMDkxQzY4Ljc4MDYgOS45MDk2NiA2OC43MTg5IDkuNzYwOTQgNjguNTkzNyA5LjY0ODVDNjguNDY4NCA5LjUzNDI0IDY4LjI2ODggOS40MzgxMiA2Ny45OTY2IDkuMzU4MzJMNjUuMzY4OCA4LjY0MTk0QzY0Ljc4OCA4LjQ5NTA0IDY0LjI4ODkgOC4yMzAyNSA2My44Njc5IDcuODQ5NEM2My40NDY5IDcuNDY4NTQgNjMuMjM2NCA2Ljk0MjU5IDYzLjIzNjQgNi4yNzE1NUM2My4yMzY0IDUuNDY0NDkgNjMuNTY4NSA0Ljg0NjA1IDY0LjIzNDUgNC40MTI2QzY0LjkwMDUgMy45ODA5NiA2NS44Mjk3IDMuNzY1MTQgNjcuMDIzOSAzLjc2NTE0QzY4LjM0MzIgMy43NjUxNCA2OS4zNzIyIDQuMDI5OTIgNzAuMTEwOCA0LjU1NzY5QzcwLjg0OTUgNS4wODU0NSA3MS4yMTk3IDUuODUwNzkgNzEuMjE5NyA2Ljg1MDA5SDY4LjYyNjNDNjguNjI2MyA2LjAyMTI3IDY4LjA5ODIgNS42MDU5NiA2Ny4wNDAyIDUuNjA1OTZDNjYuNjY0NSA1LjYwNTk2IDY2LjM2ODcgNS42Njk0MyA2Ni4xNTI3IDUuNzkyNzZDNjUuOTM2OCA1LjkxNzkgNjUuODI3OSA2LjA4Mjk0IDY1LjgyNzkgNi4yODc4N0M2NS44Mjc5IDYuNjM5NzIgNjYuMTQgNi44OTU0MyA2Ni43NjYyIDcuMDU1MDNMNjguNzc4OCA3LjU1MDE1QzY5LjU2MjggNy43NDQyMSA3MC4xOTI1IDguMDQxNjQgNzAuNjY0MyA4LjQ0NjA4QzcxLjEzNjIgOC44NDg3IDcxLjM3MjEgOS40MTQ1NCA3MS4zNzIxIDEwLjE0MThDNzEuMzcyMSAxMC45NzI0IDcxLjA0IDExLjYwNTQgNzAuMzc0IDEyLjA0MjVDNjkuNzA3OSAxMi40Nzk2IDY4LjcyMjUgMTIuNjk5IDY3LjQxNCAxMi42OTlDNjUuOTU4NiAxMi42OTkgNjQuODU1MiAxMi40MTk3IDY0LjEwMzggMTEuODYyOUw2NC4xMDc1IDExLjg2NDdaIiBmaWxsPSJibGFjayIvPgo8cGF0aCBkPSJNNzIuODA2NiAwSDc1LjRWNy4yNjE3MUw3OC44MjgyIDMuOTM3MzZIODIuMDAwNEw3Ny43MTkzIDguMTE0MTFMODEuOTg0MSAxMi41MzAzSDc4LjgyODJMNzUuNCA4LjkxNTczVjEyLjUzMDNINzIuODA2NlYwWiIgZmlsbD0iYmxhY2siLz4KPC9zdmc+Cg=="
+  OPENPROJECT_SEED_DESIGN_MAIN__MENU__BG__COLOR: "#ffffff"
+  OPENPROJECT_SEED_DESIGN_MAIN__MENU__BG__HOVER__BACKGROUND: "#f5f5f5"
+  OPENPROJECT_SEED_DESIGN_MAIN__MENU__BG__SELECTED__BACKGROUND: "#571EFA"
+  OPENPROJECT_SEED_DESIGN_PRIMARY__BUTTON__COLOR: "#571EFA"
+  OPENPROJECT_SEED_LDAP_OPENDESK_ADMIN__MAPPING: "opendeskProjectmanagementAdmin"
+  OPENPROJECT_SEED_LDAP_OPENDESK_BASEDN: "dc=swp-ldap,dc=internal"
+  OPENPROJECT_SEED_LDAP_OPENDESK_BINDPASSWORD: "2de88f54e56405d78b0f6314eac4009a24939710"
+  OPENPROJECT_SEED_LDAP_OPENDESK_BINDUSER: "uid=ldapsearch_openproject,cn=users,dc=swp-ldap,dc=internal"
+  OPENPROJECT_SEED_LDAP_OPENDESK_FILTER: "(&(objectClass=opendeskProjectmanagementUser)(opendeskProjectmanagementEnabled=TRUE))"
+  OPENPROJECT_SEED_LDAP_OPENDESK_FIRSTNAME__MAPPING: "givenName"
+  OPENPROJECT_SEED_LDAP_OPENDESK_GROUPFILTER_OPENDESK_BASE: "dc=swp-ldap,dc=internal"
+  OPENPROJECT_SEED_LDAP_OPENDESK_GROUPFILTER_OPENDESK_FILTER: "(&(objectClass=opendeskProjectmanagementGroup)(opendeskProjectmanagementEnabled=TRUE))"
+  OPENPROJECT_SEED_LDAP_OPENDESK_GROUPFILTER_OPENDESK_GROUP__ATTRIBUTE: "cn"
+  OPENPROJECT_SEED_LDAP_OPENDESK_GROUPFILTER_OPENDESK_SYNC__USERS: "true"
+  OPENPROJECT_SEED_LDAP_OPENDESK_HOST: "ums-ldap-server"
+  OPENPROJECT_SEED_LDAP_OPENDESK_LASTNAME__MAPPING: "sn"
+  OPENPROJECT_SEED_LDAP_OPENDESK_LOGIN__MAPPING: "uid"
+  OPENPROJECT_SEED_LDAP_OPENDESK_MAIL__MAPPING: "mailPrimaryAddress"
+  OPENPROJECT_SEED_LDAP_OPENDESK_PORT: "389"
+  OPENPROJECT_SEED_LDAP_OPENDESK_SECURITY: "plain_ldap"
+  OPENPROJECT_SEED_LDAP_OPENDESK_SYNC__USERS: "true"
+  OPENPROJECT_SMTP__ADDRESS: "postfix.opendesk.svc.cluster.local"
+  OPENPROJECT_SMTP__AUTHENTICATION: "cram_md5"
+  OPENPROJECT_SMTP__DOMAIN: "opendesk.kcm.obmondo.com"
+  OPENPROJECT_SMTP__ENABLE__STARTTLS__AUTO: "true"
+  OPENPROJECT_SMTP__OPENSSL__VERIFY__MODE: "none"
+  OPENPROJECT_SMTP__PASSWORD: "fe5f8ce805fbf2c067c4be175b34efd98ce64449"
+  OPENPROJECT_SMTP__PORT: "587"
+  OPENPROJECT_SMTP__SSL: "false"
+  OPENPROJECT_SMTP__USER__NAME: "opendesk-system@opendesk.kcm.obmondo.com"
+  OPENPROJECT_SOUVAP__NAVIGATION__SECRET: "3fcfc241e2b27da4baba1de8a3a75072ed4fca5f"
+  OPENPROJECT_SOUVAP__NAVIGATION__URL: "https://portal.opendesk.kcm.obmondo.com/univention/portal/navigation.json?base=https%3A//portal.opendesk.kcm.obmondo.com"
+  OPENPROJECT_USER__DEFAULT__TIMEZONE: "Europe/Berlin"
+...
+---
+# Source: openproject/templates/secret_memcached.yaml
+apiVersion: "v1"
+kind: "Secret"
+metadata:
+  name: "openproject-memcached"
+  labels:
+    app.kubernetes.io/name: openproject
+    helm.sh/chart: openproject-10.1.0
+    app.kubernetes.io/instance: openproject
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: "16.1.0"
+data: # reset data to make sure only keys defined below remain
+stringData:
+  OPENPROJECT_CACHE__MEMCACHE__SERVER: "memcached:11211"
+...
+---
+# Source: openproject/templates/secret_oidc.yaml
+apiVersion: "v1"
+kind: "Secret"
+metadata:
+  name: "openproject-oidc"
+  labels:
+    app.kubernetes.io/name: openproject
+    helm.sh/chart: openproject-10.1.0
+    app.kubernetes.io/instance: openproject
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: "16.1.0"
+data: # reset data to make sure only keys defined below remain
+stringData:
+  # OpenID Connect settings
+  
+  OPENPROJECT_OPENID__CONNECT_KEYCLOAK_DISPLAY__NAME: "Keycloak"
+  OPENPROJECT_OPENID__CONNECT_KEYCLOAK_HOST: "id.opendesk.kcm.obmondo.com"
+  
+  OPENPROJECT_OPENID__CONNECT_KEYCLOAK_IDENTIFIER: "opendesk-openproject"
+  OPENPROJECT_OPENID__CONNECT_KEYCLOAK_SECRET: "4c280910f6cfb6c6e79a3d5a908bd6214cd3562a"
+  OPENPROJECT_OPENID__CONNECT_KEYCLOAK_AUTHORIZATION__ENDPOINT: "/realms/opendesk/protocol/openid-connect/auth"
+  OPENPROJECT_OPENID__CONNECT_KEYCLOAK_TOKEN__ENDPOINT: "/realms/opendesk/protocol/openid-connect/token"
+  OPENPROJECT_OPENID__CONNECT_KEYCLOAK_USERINFO__ENDPOINT: "/realms/opendesk/protocol/openid-connect/userinfo"
+  OPENPROJECT_OPENID__CONNECT_KEYCLOAK_END__SESSION__ENDPOINT: "https://id.opendesk.kcm.obmondo.com/realms/opendesk/protocol/openid-connect/logout"
+  OPENPROJECT_OPENID__CONNECT_KEYCLOAK_SCOPE: "[openid,opendesk-openproject-scope]"
+  
+  OPENPROJECT_OPENID__CONNECT_KEYCLOAK_ATTRIBUTE__MAP_ADMIN: "openproject_admin"
+  
+  OPENPROJECT_OPENID__CONNECT_KEYCLOAK_ATTRIBUTE__MAP_LOGIN: "opendesk_username"
+...
+---
+# Source: openproject/templates/secret_s3.yaml
+apiVersion: "v1"
+kind: "Secret"
+metadata:
+  name: "openproject-s3"
+  labels:
+    app.kubernetes.io/name: openproject
+    helm.sh/chart: openproject-10.1.0
+    app.kubernetes.io/instance: openproject
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: "16.1.0"
+data: # reset data to make sure only keys defined below remain
+stringData:
+  OPENPROJECT_ATTACHMENTS__STORAGE: fog
+  OPENPROJECT_FOG_CREDENTIALS_PROVIDER: AWS
+  
+  OPENPROJECT_FOG_CREDENTIALS_AWS__ACCESS__KEY__ID: "openproject_user"
+  OPENPROJECT_FOG_CREDENTIALS_AWS__SECRET__ACCESS__KEY: "fcfa935cf477f5c2941df0447257d1ae1895a37f"
+  OPENPROJECT_FOG_CREDENTIALS_ENDPOINT: https://objectstore.opendesk.kcm.obmondo.com
+  OPENPROJECT_FOG_CREDENTIALS_HOST: https://objectstore.opendesk.kcm.obmondo.com
+  
+  OPENPROJECT_FOG_DIRECTORY: openproject
+  OPENPROJECT_FOG_CREDENTIALS_REGION: eu-west-1
+  OPENPROJECT_FOG_CREDENTIALS_PATH__STYLE: "true"
+  OPENPROJECT_FOG_CREDENTIALS_AWS__SIGNATURE__VERSION: "4"
+  # remove use_iam_profile fallback after some point
+  OPENPROJECT_FOG_CREDENTIALS_USE__IAM__PROFILE: "false"
+  OPENPROJECT_FOG_CREDENTIALS_ENABLE__SIGNATURE__V4__STREAMING: "true"
+  OPENPROJECT_DIRECT__UPLOADS: "true"
+...
+---
+# Source: openproject/templates/service.yaml
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: openproject
+  labels:
+    app.kubernetes.io/name: openproject
+    helm.sh/chart: openproject-10.1.0
+    app.kubernetes.io/instance: openproject
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: "16.1.0"
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: openproject
+    app.kubernetes.io/instance: openproject
+    openproject/process: web
+...
+---
+# Source: openproject/templates/cron-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openproject-cron
+  labels:
+    app.kubernetes.io/name: openproject
+    helm.sh/chart: openproject-10.1.0
+    app.kubernetes.io/instance: openproject
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: "16.1.0"
+    openproject/process: cron
+spec:
+  replicas: 0
+  strategy:
+    type: "Recreate"
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: openproject
+      app.kubernetes.io/instance: openproject
+      openproject/process: cron
+  template:
+    metadata:
+      annotations:
+        
+        # annotate pods with env value checksums so changes trigger re-deployments
+        
+        checksum/env-core: 1a3a33da0a65ed26add9dca16486f25f258cbe0bbad00f4618a30b628c4a2efa
+        checksum/env-memcached: 667608227d2126f9c23fc53e77aba999044a535153438b71cdf0325e4faae81d
+        checksum/env-oidc: f27c12165f3da0fd0f37af1085bb2e6c85273192ea8ba986982ee25e71910d33
+        checksum/env-s3: 9047a67207a617043f892247115c09cf5871da6dc7245d35c3453ff613bbf996
+        checksum/env-environment: 125c3e3cbb36b7e675d14b17811372c04f703b310bdd7c89ee5d4afbeb52343c
+        checksum/env-cron-environment: 88334edd526f4b3bb70b92978a6842287c9d254785da9b7886e08eaff4ee419a
+      labels:
+        app.kubernetes.io/name: openproject
+        helm.sh/chart: openproject-10.1.0
+        app.kubernetes.io/instance: openproject
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/version: "16.1.0"
+        openproject/process: cron
+    spec:            
+      securityContext:
+        fsGroup: 1000
+      serviceAccountName: openproject
+      volumes:        
+        - name: tmp
+          # we can't use emptyDir due to the sticky bit issue
+          # see: https://github.com/kubernetes/kubernetes/issues/110835
+          ephemeral:
+            volumeClaimTemplate:
+              metadata:
+                creationTimestamp: null
+              spec:
+                accessModes: ["ReadWriteOnce"]
+                storageClassName: openebs-tmp-hostpath
+                resources:
+                  requests:
+                    storage: 5Gi
+        - name: app-tmp
+          # we can't use emptyDir due to the sticky bit / world writable issue
+          # see: https://github.com/kubernetes/kubernetes/issues/110835
+          ephemeral:
+            volumeClaimTemplate:
+              metadata:
+                creationTimestamp: null
+              spec:
+                accessModes: ["ReadWriteOnce"]
+                storageClassName: openebs-tmp-hostpath
+                resources:
+                  requests:
+                    storage: 5Gi        
+      initContainers:
+        - name: wait-for-db          
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsGroup: 1000
+            runAsNonRoot: true
+            runAsUser: 1000
+            seLinuxOptions: null
+            seccompProfile:
+              type: RuntimeDefault
+          image: registry.opencode.de/bmi/opendesk/components/supplier/openproject/images-mirror/open_desk:16.1.1@sha256:2fe8a7d1cab42611b01f4ca20ce7179a0637477f2882364b4a1cfdebde9ecd6f
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - secretRef:
+                name: openproject-core
+            - secretRef:
+                name: openproject-oidc
+            - secretRef:
+                name: openproject-s3
+            - secretRef:
+                name: openproject-memcached
+            - secretRef:
+                name: openproject-environment
+            - secretRef:
+                name: openproject-cron-environment
+          env:
+            
+            - name: OPENPROJECT_DB_PASSWORD
+              value: 2f8fea4e3716ce8fa44ae96bd699ea77347519f9
+          args:
+            - bash
+            - /app/docker/prod/wait-for-db
+          resources:
+            limits:
+              cpu: 99
+              memory: 768Mi
+            requests:
+              cpu: 0.1
+              memory: 256Mi
+          volumeMounts:            
+            - mountPath: /tmp
+              name: tmp
+            - mountPath: /app/tmp
+              name: app-tmp
+      containers:
+        - name: "cron"          
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsGroup: 1000
+            runAsNonRoot: true
+            runAsUser: 1000
+            seLinuxOptions: null
+            seccompProfile:
+              type: RuntimeDefault
+          image: registry.opencode.de/bmi/opendesk/components/supplier/openproject/images-mirror/open_desk:16.1.1@sha256:2fe8a7d1cab42611b01f4ca20ce7179a0637477f2882364b4a1cfdebde9ecd6f
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - secretRef:
+                name: openproject-core
+            - secretRef:
+                name: openproject-oidc
+            - secretRef:
+                name: openproject-s3
+            - secretRef:
+                name: openproject-memcached
+            - secretRef:
+                name: openproject-environment
+            - secretRef:
+                name: openproject-cron-environment
+          args:
+            - bash
+            - /app/docker/prod/cron
+          env:
+            
+            - name: OPENPROJECT_DB_PASSWORD
+              value: 2f8fea4e3716ce8fa44ae96bd699ea77347519f9
+          volumeMounts:            
+            - mountPath: /tmp
+              name: tmp
+            - mountPath: /app/tmp
+              name: app-tmp            
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "1Gi"
+              cpu: "1"
+---
+# Source: openproject/templates/web-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openproject-web
+  labels:
+    app.kubernetes.io/name: openproject
+    helm.sh/chart: openproject-10.1.0
+    app.kubernetes.io/instance: openproject
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: "16.1.0"
+    openproject/process: web
+spec:
+  replicas: 1
+  strategy:
+    
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: openproject
+      app.kubernetes.io/instance: openproject
+      openproject/process: web
+  template:
+    metadata:
+      annotations:
+        
+        # annotate pods with env value checksums so changes trigger re-deployments
+        
+        checksum/env-core: 1a3a33da0a65ed26add9dca16486f25f258cbe0bbad00f4618a30b628c4a2efa
+        checksum/env-memcached: 667608227d2126f9c23fc53e77aba999044a535153438b71cdf0325e4faae81d
+        checksum/env-oidc: f27c12165f3da0fd0f37af1085bb2e6c85273192ea8ba986982ee25e71910d33
+        checksum/env-s3: 9047a67207a617043f892247115c09cf5871da6dc7245d35c3453ff613bbf996
+        checksum/env-environment: 125c3e3cbb36b7e675d14b17811372c04f703b310bdd7c89ee5d4afbeb52343c
+      labels:
+        app.kubernetes.io/name: openproject
+        helm.sh/chart: openproject-10.1.0
+        app.kubernetes.io/instance: openproject
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/version: "16.1.0"
+        openproject/process: web
+    spec:            
+      securityContext:
+        fsGroup: 1000
+      serviceAccountName: openproject
+      volumes:        
+        - name: tmp
+          # we can't use emptyDir due to the sticky bit issue
+          # see: https://github.com/kubernetes/kubernetes/issues/110835
+          ephemeral:
+            volumeClaimTemplate:
+              metadata:
+                creationTimestamp: null
+              spec:
+                accessModes: ["ReadWriteOnce"]
+                storageClassName: openebs-tmp-hostpath
+                resources:
+                  requests:
+                    storage: 5Gi
+        - name: app-tmp
+          # we can't use emptyDir due to the sticky bit / world writable issue
+          # see: https://github.com/kubernetes/kubernetes/issues/110835
+          ephemeral:
+            volumeClaimTemplate:
+              metadata:
+                creationTimestamp: null
+              spec:
+                accessModes: ["ReadWriteOnce"]
+                storageClassName: openebs-tmp-hostpath
+                resources:
+                  requests:
+                    storage: 5Gi        
+      initContainers:
+        - name: wait-for-db          
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsGroup: 1000
+            runAsNonRoot: true
+            runAsUser: 1000
+            seLinuxOptions: null
+            seccompProfile:
+              type: RuntimeDefault
+          image: registry.opencode.de/bmi/opendesk/components/supplier/openproject/images-mirror/open_desk:16.1.1@sha256:2fe8a7d1cab42611b01f4ca20ce7179a0637477f2882364b4a1cfdebde9ecd6f
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - secretRef:
+                name: openproject-core
+            - secretRef:
+                name: openproject-oidc
+            - secretRef:
+                name: openproject-s3
+            - secretRef:
+                name: openproject-memcached
+            - secretRef:
+                name: openproject-environment
+          env:
+            
+            - name: OPENPROJECT_DB_PASSWORD
+              value: 2f8fea4e3716ce8fa44ae96bd699ea77347519f9
+          args:
+            - /app/docker/prod/wait-for-db
+          resources:
+            limits:
+              cpu: 99
+              memory: 768Mi
+            requests:
+              cpu: 0.1
+              memory: 256Mi
+          volumeMounts:            
+            - mountPath: /tmp
+              name: tmp
+            - mountPath: /app/tmp
+              name: app-tmp
+      containers:
+        - name: "openproject"          
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsGroup: 1000
+            runAsNonRoot: true
+            runAsUser: 1000
+            seLinuxOptions: null
+            seccompProfile:
+              type: RuntimeDefault
+          image: registry.opencode.de/bmi/opendesk/components/supplier/openproject/images-mirror/open_desk:16.1.1@sha256:2fe8a7d1cab42611b01f4ca20ce7179a0637477f2882364b4a1cfdebde9ecd6f
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - secretRef:
+                name: openproject-core
+            - secretRef:
+                name: openproject-oidc
+            - secretRef:
+                name: openproject-s3
+            - secretRef:
+                name: openproject-memcached
+            - secretRef:
+                name: openproject-environment
+          env:
+            
+            - name: OPENPROJECT_DB_PASSWORD
+              value: 2f8fea4e3716ce8fa44ae96bd699ea77347519f9
+          args:
+            - /app/docker/prod/web
+          volumeMounts:            
+            - mountPath: /tmp
+              name: tmp
+            - mountPath: /app/tmp
+              name: app-tmp            
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: "/health_checks/default"
+              port: 8080
+              httpHeaders:
+                # required otherwise health check will return 404 because health check is done using the Pod IP, which may cause issues with downstream variants
+                - name: Host
+                  value: localhost
+            initialDelaySeconds: 300
+            timeoutSeconds: 3
+            periodSeconds: 30
+            failureThreshold: 30
+            successThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: "/health_checks/default"
+              port: 8080
+              httpHeaders:
+                # required otherwise health check will return 404 because health check is done using the Pod IP, which may cause issues with downstream variants
+                - name: Host
+                  value: localhost
+            initialDelaySeconds: 150
+            timeoutSeconds: 3
+            periodSeconds: 15
+            failureThreshold: 30
+            successThreshold: 1
+          resources:
+            limits:
+              cpu: 99
+              memory: 2Gi
+            requests:
+              cpu: 0.1
+              memory: 768Mi
+---
+# Source: openproject/templates/worker-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openproject-worker-default
+  labels:
+    app.kubernetes.io/name: openproject
+    helm.sh/chart: openproject-10.1.0
+    app.kubernetes.io/instance: openproject
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: "16.1.0"
+    openproject/process: worker-default
+spec:
+  replicas: 1
+  strategy:
+    
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: openproject
+      app.kubernetes.io/instance: openproject
+      openproject/process: worker-default
+  template:
+    metadata:
+      annotations:
+        
+        # annotate pods with env value checksums so changes trigger re-deployments
+        
+        checksum/env-core: 1a3a33da0a65ed26add9dca16486f25f258cbe0bbad00f4618a30b628c4a2efa
+        checksum/env-memcached: 667608227d2126f9c23fc53e77aba999044a535153438b71cdf0325e4faae81d
+        checksum/env-oidc: f27c12165f3da0fd0f37af1085bb2e6c85273192ea8ba986982ee25e71910d33
+        checksum/env-s3: 9047a67207a617043f892247115c09cf5871da6dc7245d35c3453ff613bbf996
+        checksum/env-environment: 125c3e3cbb36b7e675d14b17811372c04f703b310bdd7c89ee5d4afbeb52343c
+      labels:
+        app.kubernetes.io/name: openproject
+        helm.sh/chart: openproject-10.1.0
+        app.kubernetes.io/instance: openproject
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/version: "16.1.0"
+        openproject/process: worker-default
+    spec:            
+      securityContext:
+        fsGroup: 1000
+      serviceAccountName: openproject
+      volumes:        
+        - name: tmp
+          # we can't use emptyDir due to the sticky bit issue
+          # see: https://github.com/kubernetes/kubernetes/issues/110835
+          ephemeral:
+            volumeClaimTemplate:
+              metadata:
+                creationTimestamp: null
+              spec:
+                accessModes: ["ReadWriteOnce"]
+                storageClassName: openebs-tmp-hostpath
+                resources:
+                  requests:
+                    storage: 5Gi
+        - name: app-tmp
+          # we can't use emptyDir due to the sticky bit / world writable issue
+          # see: https://github.com/kubernetes/kubernetes/issues/110835
+          ephemeral:
+            volumeClaimTemplate:
+              metadata:
+                creationTimestamp: null
+              spec:
+                accessModes: ["ReadWriteOnce"]
+                storageClassName: openebs-tmp-hostpath
+                resources:
+                  requests:
+                    storage: 5Gi        
+      initContainers:
+        - name: wait-for-db          
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsGroup: 1000
+            runAsNonRoot: true
+            runAsUser: 1000
+            seLinuxOptions: null
+            seccompProfile:
+              type: RuntimeDefault
+          image: registry.opencode.de/bmi/opendesk/components/supplier/openproject/images-mirror/open_desk:16.1.1@sha256:2fe8a7d1cab42611b01f4ca20ce7179a0637477f2882364b4a1cfdebde9ecd6f
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - secretRef:
+                name: openproject-core
+            - secretRef:
+                name: openproject-oidc
+            - secretRef:
+                name: openproject-s3
+            - secretRef:
+                name: openproject-memcached
+            - secretRef:
+                name: openproject-environment
+          env:
+            
+            - name: OPENPROJECT_DB_PASSWORD
+              value: 2f8fea4e3716ce8fa44ae96bd699ea77347519f9
+          args:
+            - bash
+            - /app/docker/prod/wait-for-db
+          resources:
+            limits:
+              cpu: 99
+              memory: 768Mi
+            requests:
+              cpu: 0.1
+              memory: 256Mi
+          volumeMounts:            
+            - mountPath: /tmp
+              name: tmp
+            - mountPath: /app/tmp
+              name: app-tmp
+      containers:
+        - name: "openproject"          
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsGroup: 1000
+            runAsNonRoot: true
+            runAsUser: 1000
+            seLinuxOptions: null
+            seccompProfile:
+              type: RuntimeDefault
+          image: registry.opencode.de/bmi/opendesk/components/supplier/openproject/images-mirror/open_desk:16.1.1@sha256:2fe8a7d1cab42611b01f4ca20ce7179a0637477f2882364b4a1cfdebde9ecd6f
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - secretRef:
+                name: openproject-core
+            - secretRef:
+                name: openproject-oidc
+            - secretRef:
+                name: openproject-s3
+            - secretRef:
+                name: openproject-memcached
+            - secretRef:
+                name: openproject-environment
+          args:
+            - bash
+            - /app/docker/prod/worker
+          env:
+            
+            - name: OPENPROJECT_DB_PASSWORD
+              value: 2f8fea4e3716ce8fa44ae96bd699ea77347519f9
+            - name: "OPENPROJECT_GOOD_JOB_QUEUES"
+              value: ""
+          volumeMounts:            
+            - mountPath: /tmp
+              name: tmp
+            - mountPath: /app/tmp
+              name: app-tmp            
+          resources:
+            limits:
+              cpu: 99
+              memory: 4Gi
+            requests:
+              cpu: 0.25
+              memory: 512Mi
+---
+# Source: openproject/templates/seeder-job.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: openproject-seeder-1
+  labels:
+    app.kubernetes.io/name: openproject
+    helm.sh/chart: openproject-10.1.0
+    app.kubernetes.io/instance: openproject
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: "16.1.0"
+  annotations:
+    "managed-by": "helmfile"
+    intents.otterize.com/service-name: openproject-seeder
+spec:
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: openproject
+        helm.sh/chart: openproject-10.1.0
+        app.kubernetes.io/instance: openproject
+        app.kubernetes.io/managed-by: Helm
+        app.kubernetes.io/version: "16.1.0"
+        openproject/process: seeder
+      annotations:
+        "managed-by": "helmfile"
+        intents.otterize.com/service-name: openproject-seeder
+    spec:            
+      securityContext:
+        fsGroup: 1000
+      volumes:        
+        - name: tmp
+          # we can't use emptyDir due to the sticky bit issue
+          # see: https://github.com/kubernetes/kubernetes/issues/110835
+          ephemeral:
+            volumeClaimTemplate:
+              metadata:
+                creationTimestamp: null
+              spec:
+                accessModes: ["ReadWriteOnce"]
+                storageClassName: openebs-tmp-hostpath
+                resources:
+                  requests:
+                    storage: 5Gi
+        - name: app-tmp
+          # we can't use emptyDir due to the sticky bit / world writable issue
+          # see: https://github.com/kubernetes/kubernetes/issues/110835
+          ephemeral:
+            volumeClaimTemplate:
+              metadata:
+                creationTimestamp: null
+              spec:
+                accessModes: ["ReadWriteOnce"]
+                storageClassName: openebs-tmp-hostpath
+                resources:
+                  requests:
+                    storage: 5Gi        
+      initContainers:
+        - name: check-db-ready
+          image: "registry-1.docker.io/library/postgres:16.9-alpine3.20@sha256:e5507c984377515b8c9922b0eb19f55aba2063fdc7bccf268cefd53133f97054"
+          imagePullPolicy: IfNotPresent
+          command: [
+            'sh',
+            '-c',
+            'until pg_isready -h $DATABASE_HOST -p $DATABASE_PORT -U openproject_user; do echo "waiting for database $DATABASE_HOST:$DATABASE_PORT"; sleep 2; done;'
+          ]
+          envFrom:
+            - secretRef:
+                name: openproject-core
+            - secretRef:
+                name: openproject-oidc
+            - secretRef:
+                name: openproject-s3
+            - secretRef:
+                name: openproject-memcached
+            - secretRef:
+                name: openproject-environment
+          env:
+            
+            - name: OPENPROJECT_DB_PASSWORD
+              value: 2f8fea4e3716ce8fa44ae96bd699ea77347519f9
+          resources:
+            limits:
+              cpu: 99
+              memory: 768Mi
+            requests:
+              cpu: 0.1
+              memory: 256Mi
+          volumeMounts:            
+            - mountPath: /tmp
+              name: tmp
+            - mountPath: /app/tmp
+              name: app-tmp          
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsGroup: 1000
+            runAsNonRoot: true
+            runAsUser: 1000
+            seLinuxOptions: null
+            seccompProfile:
+              type: RuntimeDefault
+      containers:
+        - name: seeder
+          image: "registry.opencode.de/bmi/opendesk/components/supplier/openproject/images-mirror/open_desk:16.1.1@sha256:2fe8a7d1cab42611b01f4ca20ce7179a0637477f2882364b4a1cfdebde9ecd6f"
+          imagePullPolicy: IfNotPresent
+          args:
+            - bash
+            - /app/docker/prod/seeder
+          envFrom:
+            - secretRef:
+                name: openproject-core
+            - secretRef:
+                name: openproject-oidc
+            - secretRef:
+                name: openproject-s3
+            - secretRef:
+                name: openproject-memcached
+            - secretRef:
+                name: openproject-environment
+          env:
+            
+            - name: OPENPROJECT_DB_PASSWORD
+              value: 2f8fea4e3716ce8fa44ae96bd699ea77347519f9
+          resources:
+            limits:
+              cpu: 99
+              memory: 768Mi
+            requests:
+              cpu: 0.1
+              memory: 256Mi
+          volumeMounts:            
+            - mountPath: /tmp
+              name: tmp
+            - mountPath: /app/tmp
+              name: app-tmp                      
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsGroup: 1000
+            runAsNonRoot: true
+            runAsUser: 1000
+            seLinuxOptions: null
+            seccompProfile:
+              type: RuntimeDefault
+      restartPolicy: OnFailure
+---
+# Source: openproject/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: openproject
+  labels:
+    app.kubernetes.io/name: openproject
+    helm.sh/chart: openproject-10.1.0
+    app.kubernetes.io/instance: openproject
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: "16.1.0"
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 100M
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "60"
+    nginx.org/client-max-body-size: 100M
+    nginx.org/proxy-read-timeout: 60s
+    nginx.org/proxy-send-timeout: 60s
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - "projects.opendesk.kcm.obmondo.com"
+      secretName: "opendesk-certificates-tls"
+  rules:
+    - host: "projects.opendesk.kcm.obmondo.com"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: openproject
+                port:
+                  name: http
+...
+---
+# Source: openproject/templates/tests/test-connection.yaml
+apiVersion: "v1"
+kind: "Pod"
+metadata:
+  name: "openproject-test-connection"
+  labels:
+    app.kubernetes.io/name: openproject
+    helm.sh/chart: openproject-10.1.0
+    app.kubernetes.io/instance: openproject
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/version: "16.1.0"
+  annotations:
+    "managed-by": "helmfile"
+spec:
+  containers:
+    - name: "wget"
+      image: "busybox"
+      command: ['wget']
+      args:
+        - '--no-verbose'
+        - '--tries=1'
+        - '--spider'
+        - 'openproject:8080/health_check'
+  restartPolicy: "Never"
+...
+
+---
+# Source: opendesk-openproject-bootstrap/templates/serviceaccount.yaml
+apiVersion: "v1"
+kind: "ServiceAccount"
+metadata:
+  name: "opendesk-openproject-bootstrap"
+  labels:
+    app.kubernetes.io/name: opendesk-openproject-bootstrap
+    helm.sh/chart: opendesk-openproject-bootstrap-2.2.0
+    app.kubernetes.io/instance: opendesk-openproject-bootstrap
+    app.kubernetes.io/managed-by: Helm
+automountServiceAccountToken: false
+...
+---
+# Source: opendesk-openproject-bootstrap/templates/secrect.yaml
+kind: "Secret"
+apiVersion: "v1"
+metadata:
+  name: "opendesk-openproject-bootstrap"
+  labels:
+    app.kubernetes.io/name: opendesk-openproject-bootstrap
+    helm.sh/chart: opendesk-openproject-bootstrap-2.2.0
+    app.kubernetes.io/instance: opendesk-openproject-bootstrap
+    app.kubernetes.io/managed-by: Helm
+stringData:
+  openprojectAdminUsername: "8ff774f3221344ed216c54510e38256d4b1f2e7f"
+  openprojectAdminPassword: "f97b99dba2add5cb8c97c5a33d3cf97dbd6e9dd5"
+  nextcloudAdminUsername: "nextcloud"
+  nextcloudAdminPassword: "1485e92b89524e530fee2c98d4fdb1cc3cbc0109"
+...
+---
+# Source: opendesk-openproject-bootstrap/templates/job.yaml
+apiVersion: "batch/v1"
+kind: "Job"
+metadata:
+  name: "opendesk-openproject-bootstrap-bootstrap-1"
+  labels:
+    app.kubernetes.io/name: opendesk-openproject-bootstrap
+    helm.sh/chart: opendesk-openproject-bootstrap-2.2.0
+    app.kubernetes.io/instance: opendesk-openproject-bootstrap
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "managed-by": "helmfile"
+spec:
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: opendesk-openproject-bootstrap
+        helm.sh/chart: opendesk-openproject-bootstrap-2.2.0
+        app.kubernetes.io/instance: opendesk-openproject-bootstrap
+        app.kubernetes.io/managed-by: Helm
+      annotations:
+    spec:
+      restartPolicy: "Never"
+      securityContext:
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
+      serviceAccountName: opendesk-openproject-bootstrap
+      containers:
+        - name: "opendesk-openproject-bootstrap"
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsGroup: 1000
+            runAsNonRoot: true
+            runAsUser: 1000
+            seLinuxOptions: null
+            seccompProfile:
+              type: RuntimeDefault
+          resources:
+            limits:
+              memory: 1Gi
+            requests:
+              cpu: 500m
+              memory: 256Mi
+
+          image: "registry.opencode.de/bmi/opendesk/components/platform-development/images/opendesk-openproject-bootstrap:1.1.4@sha256:2fd97a316114428849aaeef87fb8755274e675830088a93afcafac91bb048d1d"
+          imagePullPolicy: IfNotPresent
+          command:
+            - "/app/entrypoint.sh"
+
+          volumeMounts:
+            - mountPath: "/app/temp"
+              name: "temp-dir"
+          env:
+            - name: "OPENPROJECT_HOST"
+              value: "https://projects.opendesk.kcm.obmondo.com"
+            - name: "OPENPROJECT_STORAGE_NAME"
+              value: "Nextcloud at opendesk.kcm.obmondo.com"
+            - name: "OP_ADMIN_USERNAME"
+              valueFrom:
+                secretKeyRef:
+                  key: "openprojectAdminUsername"
+                  name: "opendesk-openproject-bootstrap"
+            - name: "OP_ADMIN_PASSWORD"
+              valueFrom:
+                secretKeyRef:
+                  key: "openprojectAdminPassword"
+                  name: "opendesk-openproject-bootstrap"
+            - name: "NEXTCLOUD_HOST"
+              value: "https://files.opendesk.kcm.obmondo.com"
+            - name: "NC_ADMIN_USERNAME"
+              valueFrom:
+                secretKeyRef:
+                  key: "nextcloudAdminUsername"
+                  name: "opendesk-openproject-bootstrap"
+            - name: "SETUP_PROJECT_FOLDER"
+              value: "true"
+            - name: "NC_ADMIN_PASSWORD"
+              valueFrom:
+                secretKeyRef:
+                  key: "nextcloudAdminPassword"
+                  name: "opendesk-openproject-bootstrap"
+            - name: "OD_OP_BOOTSTRAP_TEMP_DIR"
+              value: "/app/temp"
+            - name: "OD_OP_BOOTSTRAP_DEBUG_ENABLED"
+              value: "true"
+            - name: "OD_OP_BOOTSTRAP_DEBUG_PAUSE_BEFORE_SCRIPT_START"
+              value: "0"
+
+      volumes:
+        - name: "temp-dir"
+          emptyDir:
+            sizeLimit: "20Mi"
+...
+

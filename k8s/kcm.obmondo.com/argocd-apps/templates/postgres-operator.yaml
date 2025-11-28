@@ -3,6 +3,10 @@ kind: Application
 metadata:
   name: postgres-operator
   namespace: argocd
+  labels:
+    kubeaid.io/version: 20.1.1
+    kubeaid.io/managed-by: kubeaid
+    kubeaid.io/sync-order: "10"
 spec:
   destination:
     namespace: postgres-operator
@@ -10,7 +14,7 @@ spec:
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
       path: argocd-helm-charts/postgres-operator
-      targetRevision: HEAD
+      targetRevision: 20.1.1
       helm:
         valueFiles:
           - $values/k8s/kcm.obmondo.com/argocd-apps/values-postgres-operator.yaml

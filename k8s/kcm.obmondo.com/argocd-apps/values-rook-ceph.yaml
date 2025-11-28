@@ -23,7 +23,7 @@ rook-ceph-cluster:
 
   cephClusterSpec:
     storage:
-      deviceFilter: "^sd[ab]4$"
+      deviceFilter: "^(sd[ab]4|nvme[01]n1p6)$"
 
       # cephBlockPoolsVolumeSnapshotClass:
       #   enabled: true

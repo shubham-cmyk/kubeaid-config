@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   labels:
-    kubeaid.io/version: 16.0.1
+    kubeaid.io/version: HEAD
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "10"
   name: capi-cluster
@@ -12,12 +12,13 @@ spec:
     namespace: capi-cluster
     server: https://kubernetes.default.svc
   sources:
-    - repoURL: https://github.com/Obmondo/kubeaid
+    # TODO : Release changes to Obmondo's KubeAid, and point to that.
+    - repoURL: https://github.com/Archisman-Mridha/kubeaid
       path: argocd-helm-charts/capi-cluster
-      targetRevision: 16.0.1
+      targetRevision: HEAD
       helm:
         valueFiles:
-          - $values/k8s/kcm.obmondo.com/argocd-apps/values-capi-cluster.yaml
+          - $values/k8s/kcm/argocd-apps/values-capi-cluster.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
       targetRevision: HEAD
       ref: values

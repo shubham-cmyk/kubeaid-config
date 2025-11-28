@@ -3,15 +3,19 @@ kind: Application
 metadata:
   name: harbor
   namespace: argocd
+  labels:
+    kubeaid.io/version: 20.1.1
+    kubeaid.io/managed-by: kubeaid
+    kubeaid.io/sync-order: "10"
 spec:
   destination:
     namespace: harbor
     server: https://kubernetes.default.svc
   project: default
   sources:
-    - repoURL: https://github.com/Obmondo/KubeAid.git
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid.git
       path: argocd-helm-charts/harbor
-      targetRevision: 16.0.1
+      targetRevision: 20.1.1
       helm:
         valueFiles:
           - $values/k8s/kcm.obmondo.com/argocd-apps/values-harbor.yaml
