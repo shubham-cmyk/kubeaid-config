@@ -23,6 +23,10 @@ mattermost:
   imagePullPolicy: IfNotPresent
   version: 10.11.4
   size: 150users
+  extraPorts:
+    - name: matternelle
+      containerPort: 8989
+      protocol: TCP
   resources:
     limits:
       cpu: '5'
