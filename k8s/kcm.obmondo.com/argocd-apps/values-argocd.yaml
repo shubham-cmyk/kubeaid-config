@@ -2,9 +2,52 @@
 argo-cd:
   configs:
     secret:
-      createSecret: false # managed by sealed-secrets now
+      createSecret: false     # managed by sealed-secrets now
     params:
       server.insecure: true
+    rbac:
+      policy.csv: |
+        g, ArgoCDAdmins, role:admin
+        g, ArgoCDDevs, role:readonly
+        g, deepak@obmondo.com, role:admin
+        g, divyam@obmondo.com, role:admin
+        g, rishikesh@obmondo.com, role:admin
+        g, basit@obmondo.com, role:admin
+        g, sanskar@obmondo.com, role:admin
+        g, archisman@obmondo.com, role:admin
+        g, bhavishya@obmondo.com, role:admin
+        g, anantharam@obmondo.com, role:admin
+        g, suwarna@obmondo.com, role:admin
+        g, sgupta@obmondo.com, role:admin
+        g, hritik@obmondo.com, role:admin
+        g, sidharth@obmondo.com, role:admin
+        g, kanha@obmondo.com, role:admin
+        g, mdasif@obmondo.com, role:admin
+        g, vitamax@obmondo.com, role:admin
+        g, mayank@obmondo.com, role:admin
+        g, victorine@obmondo.com, role:admin
+        g, timothy@obmondo.com, role:admin
+        g, esther@obmondo.com, role:admin
+        g, olayinka@obmondo.com, role:admin
+        g, francodavid@obmondo.com, role:admin
+        g, smahar@obmondo.com, role:admin
+        g, yulian@obmondo.com, role:admin
+        g, nmalang@obmondo.com, rolle:admin
+        g, deep@obmondo.com, role:admin
+        g, onkar@obmondo.com, role:admin
+        g, kenneth@obmondo.com, role:admin
+        g, akshay@obmondo.com, role:admin
+        g, mwarid@obmondo.com, role:admin
+        g, shivam@obmondo.com, role:admin
+        g, gaurav@obmondo.com, role:admin
+      scopes: '[groups, email]'
+    cm:
+      oidc.config: |
+        name: Keycloak
+        issuer: https://keycloak.obmondo.com/auth/realms/Obmondo
+        clientID: argocd
+        clientSecret: $oidc.keycloak.clientSecret
+        requestedScopes: ["openid", "profile", "email", "groups"]
   server:
     ingress:
       enabled: true
@@ -13,17 +56,12 @@ argo-cd:
         # necessary for bare-metal only - for unknown reason.
         cert-manager.io/cluster-issuer: letsencrypt
       hosts:
-        - argocd.kcm.obmondo.com
+      - argocd.kcm.obmondo.com
       tls:
-        - secretName: argocd-ssl
-          hosts:
-            - argocd.kcm.obmondo.com
+      - secretName: argocd-ssl
+        hosts:
+        - argocd.kcm.obmondo.com
       ingressClassName: traefik-cert-manager
-  # The control-plane nodes are currently whitelisted by HAProxy.
-  # We're scheduling the repo-server there, so it can access Gitea.
-  repoServer:
-    nodeSelector:
-      node-role.kubernetes.io/control-plane: ""
   global:
     # -- Default domain used by all components
     ## Used for ingresses, certificates, SSO, notifications, etc.
