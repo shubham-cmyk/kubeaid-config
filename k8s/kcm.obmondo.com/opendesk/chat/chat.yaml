@@ -1,23 +1,22 @@
 ---
 # Source: opendesk-element/templates/serviceaccount.yaml
-apiVersion: "v1"
-kind: "ServiceAccount"
+apiVersion: v1
+kind: ServiceAccount
 metadata:
-  name: "opendesk-element"
-  namespace: "opendesk"
+  name: opendesk-element
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: opendesk-element
     helm.sh/chart: opendesk-element-6.1.3
     app.kubernetes.io/instance: opendesk-element
     app.kubernetes.io/managed-by: Helm
 automountServiceAccountToken: false
-...
 ---
 # Source: opendesk-element/templates/configmap.yaml
-kind: "ConfigMap"
-apiVersion: "v1"
+kind: ConfigMap
+apiVersion: v1
 metadata:
-  name: "opendesk-element"
+  name: opendesk-element
   labels:
     app.kubernetes.io/name: opendesk-element
     helm.sh/chart: opendesk-element-6.1.3
@@ -148,10 +147,10 @@ data:
     }
 ---
 # Source: opendesk-element/templates/configmap.yaml
-kind: "ConfigMap"
-apiVersion: "v1"
+kind: ConfigMap
+apiVersion: v1
 metadata:
-  name: "opendesk-element-nginx"
+  name: opendesk-element-nginx
   labels:
     app.kubernetes.io/name: opendesk-element
     helm.sh/chart: opendesk-element-6.1.3
@@ -160,106 +159,89 @@ metadata:
 data:
   nginx.conf: |-
     worker_processes  auto;
-
     error_log  stderr warn;
     pid        /tmp/nginx.pid;
-
     events {
         worker_connections  1024;
     }
-
     http {
         client_body_temp_path /tmp/client_temp;
         proxy_temp_path       /tmp/proxy_temp_path;
         fastcgi_temp_path     /tmp/fastcgi_temp;
         uwsgi_temp_path       /tmp/uwsgi_temp;
         scgi_temp_path        /tmp/scgi_temp;
-
         include       /etc/nginx/mime.types;
         default_type  application/octet-stream;
-
         set_real_ip_from 0.0.0.0/0;
         real_ip_header X-Forwarded-For;
-
         log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
                           '$status $body_bytes_sent "$http_referer" '
                           '"$http_user_agent"';
-
         access_log  /var/log/nginx/access.log  main;
-
         sendfile        on;
-        #tcp_nopush     on;
-
+        # tcp_nopush     on;
         keepalive_timeout  65;
-
         server {
             listen       8080;
-
             add_header X-Frame-Options SAMEORIGIN;
             add_header X-Content-Type-Options nosniff;
             add_header X-XSS-Protection "1; mode=block";
             add_header Content-Security-Policy "frame-ancestors 'self'";
             add_header X-Robots-Tag "noindex, nofollow, noarchive, noimageindex";
-
             location / {
                 root   /usr/share/nginx/html;
                 index  index.html index.htm;
-
                 charset utf-8;
             }
-
             location = /health {
                 allow all;
                 default_type 'application/json';
                 return 200 '{"status": "ok"}';
             }
-
         }
     }
-...
 ---
 # Source: opendesk-element/templates/service.yaml
-apiVersion: "v1"
-kind: "Service"
+apiVersion: v1
+kind: Service
 metadata:
-  name: "opendesk-element"
-  namespace: "opendesk"
+  name: opendesk-element
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: opendesk-element
     helm.sh/chart: opendesk-element-6.1.3
     app.kubernetes.io/instance: opendesk-element
     app.kubernetes.io/managed-by: Helm
 spec:
-  type: "ClusterIP"
+  type: ClusterIP
   ports:
-    - name: "element"
+    - name: element
       port: 8080
       targetPort: 8080
-      protocol: "TCP"
+      protocol: TCP
   selector:
     app.kubernetes.io/name: opendesk-element
     app.kubernetes.io/instance: opendesk-element
-...
 ---
 # Source: opendesk-element/templates/deployment.yaml
-apiVersion: "apps/v1"
-kind: "Deployment"
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: "opendesk-element"
-  namespace: "opendesk"
+  name: opendesk-element
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: opendesk-element
     helm.sh/chart: opendesk-element-6.1.3
     app.kubernetes.io/instance: opendesk-element
     app.kubernetes.io/managed-by: Helm
-    app.kubernetes.io/component: "clamd"
+    app.kubernetes.io/component: clamd
 spec:
   replicas: 1
   selector:
     matchLabels:
       app.kubernetes.io/name: opendesk-element
       app.kubernetes.io/instance: opendesk-element
-  strategy: 
+  strategy:
     rollingUpdate:
       maxSurge: 2
       maxUnavailable: 1
@@ -279,36 +261,34 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             - labelSelector:
                 matchExpressions:
-                  - key: "app.kubernetes.io/name"
-                    operator: "In"
-                    values:
-                      - "opendesk-element"
-              topologyKey: "kubernetes.io/hostname"
+                  - key: app.kubernetes.io/name
+                    operator: In
+                    values: [opendesk-element]
+              topologyKey: kubernetes.io/hostname
       securityContext:
         fsGroup: 101
       serviceAccountName: opendesk-element
       terminationGracePeriodSeconds: 30
       initContainers:
-        - name: "copy-modules"
+        - name: copy-modules
           command:
-          - cp
-          - -r
-          - /tmp/element-web-modules
-          - /mnt/tmp/element-web-modules
+            - cp
+            - -r
+            - /tmp/element-web-modules
+            - /mnt/tmp/element-web-modules
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
-              drop:
-              - ALL
+              drop: [ALL]
             privileged: false
             readOnlyRootFilesystem: true
             runAsGroup: 101
             runAsNonRoot: true
             runAsUser: 101
-            seLinuxOptions: null
+            seLinuxOptions:
             seccompProfile:
               type: RuntimeDefault
-          image: "registry.opencode.de/bmi/opendesk/components/supplier/element/images-mirror/opendesk-plugin:latest-250304@sha256:b997a9245c5a85ddb9935e6a9f8f8da60fed58aad17df8f1e1e2fabafdbf0dd1"
+          image: registry.opencode.de/bmi/opendesk/components/supplier/element/images-mirror/opendesk-plugin:latest-250304@sha256:b997a9245c5a85ddb9935e6a9f8f8da60fed58aad17df8f1e1e2fabafdbf0dd1
           imagePullPolicy: IfNotPresent
           env:
           resources:
@@ -319,31 +299,30 @@ spec:
               cpu: 0.1
               memory: 32Mi
           volumeMounts:
-            - name: "tmp"
-              mountPath: "/mnt/tmp"
-        - name: "init-element"
+            - name: tmp
+              mountPath: /mnt/tmp
+        - name: init-element
           command:
-          - /bin/sh
-          - -c
-          - |
-            /docker-entrypoint.sh nginx -t;
-            cat /tmp/element-web-config/config.json
-            cp /tmp/element-web-config/config.json /tmp-app/config.json
-            cp -r /tmp/element-web-modules /tmp-app/modules
+            - /bin/sh
+            - -c
+            - |
+              /docker-entrypoint.sh nginx -t;
+              cat /tmp/element-web-config/config.json
+              cp /tmp/element-web-config/config.json /tmp-app/config.json
+              cp -r /tmp/element-web-modules /tmp-app/modules
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
-              drop:
-              - ALL
+              drop: [ALL]
             privileged: false
             readOnlyRootFilesystem: true
             runAsGroup: 101
             runAsNonRoot: true
             runAsUser: 101
-            seLinuxOptions: null
+            seLinuxOptions:
             seccompProfile:
               type: RuntimeDefault
-          image: "registry.opencode.de/bmi/opendesk/components/supplier/element/images-mirror/opendesk-plugin:latest-250304@sha256:b997a9245c5a85ddb9935e6a9f8f8da60fed58aad17df8f1e1e2fabafdbf0dd1"
+          image: registry.opencode.de/bmi/opendesk/components/supplier/element/images-mirror/opendesk-plugin:latest-250304@sha256:b997a9245c5a85ddb9935e6a9f8f8da60fed58aad17df8f1e1e2fabafdbf0dd1
           imagePullPolicy: IfNotPresent
           env:
           resources:
@@ -354,55 +333,54 @@ spec:
               cpu: 0.1
               memory: 32Mi
           volumeMounts:
-            - name: "config"
-              mountPath: "/app/config.json"
-              subPath: "config.json"
+            - name: config
+              mountPath: /app/config.json
+              subPath: config.json
               readOnly: false
-            - name: "config"
-              mountPath: "/app/custom-home.html"
-              subPath: "custom-home.html"
+            - name: config
+              mountPath: /app/custom-home.html
+              subPath: custom-home.html
               readOnly: true
-            - name: "config"
-              mountPath: "/app/custom-translations.json"
-              subPath: "custom-translations.json"
+            - name: config
+              mountPath: /app/custom-translations.json
+              subPath: custom-translations.json
               readOnly: true
-            - name: "nginx-config"
-              mountPath: "/etc/nginx/nginx.conf"
-              subPath: "nginx.conf"
+            - name: nginx-config
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
               readOnly: false
-            - name: "tmp"
-              mountPath: "/tmp"
-            - name: "tmp-app"
-              mountPath: "/tmp-app"
+            - name: tmp
+              mountPath: /tmp
+            - name: tmp-app
+              mountPath: /tmp-app
       containers:
-        - name: "element"
+        - name: element
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
-              drop:
-              - ALL
+              drop: [ALL]
             privileged: false
             readOnlyRootFilesystem: true
             runAsGroup: 101
             runAsNonRoot: true
             runAsUser: 101
-            seLinuxOptions: null
+            seLinuxOptions:
             seccompProfile:
               type: RuntimeDefault
-          image: "registry.opencode.de/bmi/opendesk/components/supplier/element/images-mirror/opendesk-plugin:latest-250304@sha256:b997a9245c5a85ddb9935e6a9f8f8da60fed58aad17df8f1e1e2fabafdbf0dd1"
+          image: registry.opencode.de/bmi/opendesk/components/supplier/element/images-mirror/opendesk-plugin:latest-250304@sha256:b997a9245c5a85ddb9935e6a9f8f8da60fed58aad17df8f1e1e2fabafdbf0dd1
           imagePullPolicy: IfNotPresent
           env:
-          - name: NGINX_ENVSUBST_TEMPLATE_DIR
-            value: /non-existant-so-that-this-works-with-read-only-root-filesystem
+            - name: NGINX_ENVSUBST_TEMPLATE_DIR
+              value: /non-existant-so-that-this-works-with-read-only-root-filesystem
           ports:
             - name: element
               containerPort: 8080
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: "/health"
-              port: "element"
-              scheme: "HTTP"
+              path: /health
+              port: element
+              scheme: HTTP
             initialDelaySeconds: 1
             periodSeconds: 10
             timeoutSeconds: 1
@@ -410,9 +388,9 @@ spec:
             successThreshold: 1
           readinessProbe:
             httpGet:
-              path: "/health"
-              port: "element"
-              scheme: "HTTP"
+              path: /health
+              port: element
+              scheme: HTTP
             initialDelaySeconds: 1
             periodSeconds: 1
             timeoutSeconds: 1
@@ -420,9 +398,9 @@ spec:
             successThreshold: 1
           startupProbe:
             httpGet:
-              path: "/health"
-              port: "element"
-              scheme: "HTTP"
+              path: /health
+              port: element
+              scheme: HTTP
             initialDelaySeconds: 2
             periodSeconds: 2
             timeoutSeconds: 1
@@ -436,95 +414,90 @@ spec:
               cpu: 0.1
               memory: 32Mi
           volumeMounts:
-            - name: "tmp-app"
-              mountPath: "/app/config.json"
-              subPath: "config.json"
+            - name: tmp-app
+              mountPath: /app/config.json
+              subPath: config.json
               readOnly: true
-            - name: "tmp-app"
-              mountPath: "/app/modules"
-              subPath: "modules"
+            - name: tmp-app
+              mountPath: /app/modules
+              subPath: modules
               readOnly: true
-            - name: "config"
-              mountPath: "/app/custom-home.html"
-              subPath: "custom-home.html"
+            - name: config
+              mountPath: /app/custom-home.html
+              subPath: custom-home.html
               readOnly: true
-            - name: "config"
-              mountPath: "/app/custom-translations.json"
-              subPath: "custom-translations.json"
+            - name: config
+              mountPath: /app/custom-translations.json
+              subPath: custom-translations.json
               readOnly: true
-            - name: "nginx-config"
-              mountPath: "/etc/nginx/nginx.conf"
-              subPath: "nginx.conf"
+            - name: nginx-config
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
               readOnly: true
-            - name: "tmp"
-              mountPath: "/tmp"
+            - name: tmp
+              mountPath: /tmp
       volumes:
-        - name: "config"
+        - name: config
           configMap:
-            name: "opendesk-element"
+            name: opendesk-element
             defaultMode: 420
-        - name: "nginx-config"
+        - name: nginx-config
           configMap:
-            name: "opendesk-element-nginx"
+            name: opendesk-element-nginx
             defaultMode: 420
-        - name: "tmp-app"
+        - name: tmp-app
           emptyDir:
-            medium: "Memory"
-        - name: "tmp"
+            medium: Memory
+        - name: tmp
           emptyDir:
-            medium: "Memory"
-            sizeLimit: "50Mi"
-...
+            medium: Memory
+            sizeLimit: 50Mi
 ---
 # Source: opendesk-element/templates/ingress.yaml
-apiVersion: "networking.k8s.io/v1"
-kind: "Ingress"
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: "opendesk-element"
+  name: opendesk-element
   labels:
     app.kubernetes.io/name: opendesk-element
     helm.sh/chart: opendesk-element-6.1.3
     app.kubernetes.io/instance: opendesk-element
     app.kubernetes.io/managed-by: Helm
 spec:
-  ingressClassName: "nginx"
+  ingressClassName: nginx
   tls:
-    - hosts:
-        - "chat.opendesk.kcm.obmondo.com"
-      secretName: "opendesk-certificates-tls"
+    - hosts: [chat.opendesk.kcm.obmondo.com]
+      secretName: opendesk-certificates-tls
   rules:
-    - host: "chat.opendesk.kcm.obmondo.com"
+    - host: chat.opendesk.kcm.obmondo.com
       http:
         paths:
-          - path: "/"
-            pathType: "Prefix"
+          - path: /
+            pathType: Prefix
             backend:
               service:
                 name: opendesk-element
                 port:
                   name: element
-...
-
 ---
 # Source: opendesk-synapse-web/templates/serviceaccount.yaml
-apiVersion: "v1"
-kind: "ServiceAccount"
+apiVersion: v1
+kind: ServiceAccount
 metadata:
-  name: "opendesk-synapse-web"
-  namespace: "opendesk"
+  name: opendesk-synapse-web
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: opendesk-synapse-web
     helm.sh/chart: opendesk-synapse-web-6.1.3
     app.kubernetes.io/instance: opendesk-synapse-web
     app.kubernetes.io/managed-by: Helm
 automountServiceAccountToken: false
-...
 ---
 # Source: opendesk-synapse-web/templates/configmap.yaml
-kind: "ConfigMap"
-apiVersion: "v1"
+kind: ConfigMap
+apiVersion: v1
 metadata:
-  name: "opendesk-synapse-web"
+  name: opendesk-synapse-web
   labels:
     app.kubernetes.io/name: opendesk-synapse-web
     helm.sh/chart: opendesk-synapse-web-6.1.3
@@ -533,28 +506,17 @@ metadata:
 data:
   429.http: >
     HTTP/1.0 429 Too Many Requests
-
     Cache-Control: no-cache
-
     Connection: close
-
     Content-Type: text/html
-
     access-control-allow-origin: *
-
     access-control-allow-methods: GET, POST, PUT, DELETE, OPTIONS
-
     access-control-allow-headers: Origin, X-Requested-With, Content-Type,
     Accept, Authorization
-
-
     <html><body><h1>429 Too Many Requests</h1>
-
     No server is available to handle this request.
-
     </body></html>
   haproxy.cfg: |
-
     global
         maxconn 40000
         log stdout format raw local0 info
@@ -566,7 +528,6 @@ data:
         # Allow start of container when fd limit is too low
         # https://github.com/haproxy/haproxy/issues/1866
         no strict-limits
-
     defaults
         mode http
         fullconn 20000
@@ -605,9 +566,7 @@ data:
         #
         # Note that this is overridden for some servers and backends.
         default-server maxconn 500
-
         option redispatch
-
         compression algo gzip
         compression type text/plain text/html text/xml application/json text/css
 
@@ -620,21 +579,16 @@ data:
         #        monitoring requests which match the "monitor fail" condition
         #
         errorfile 503 /usr/local/etc/haproxy/429.http
-
     resolvers kubedns
         parse-resolv-conf
         hold timeout 600s
         hold refused 600s
-
     frontend http-in
         bind :::8008 v4v6
-
         maxconn 20000
-
         log global
         # same as http log, with %Th (handshake time)
         log-format "%ci:%cp [%tr] %ft %b/%s %Th/%TR/%Tw/%Tc/%Tr/%Ta %ST %B %CC %CS %tsc %ac/%fc/%bc/%sc/%rc %sq/%bq %hr %hs %{+Q}r"
-
         capture request header Host len 32
         capture request header Referer len 200
         capture request header User-Agent len 200
@@ -661,10 +615,8 @@ data:
         # So we can't guarantee the header is present
         # https is a more sensible default than http for the missing header as we force public_baseurl to https
         http-request set-header X-Forwarded-Proto https if !{ hdr(X-Forwarded-Proto) -m found }
-
         monitor-uri /haproxy_test
         # If we get here then we want to proxy everything to synapse or a worker.
-
         use_backend return_204 if { method OPTIONS }
 
         # try to extract a useful access token from either the auth header or a
@@ -678,21 +630,15 @@ data:
         # Disable Google FLoC
         http-response set-header Permissions-Policy "interest-cohort=()"
 
-
-
         # Load the backend from one of the map files.
         acl has_get_map path -m reg -M -f /usr/local/etc/haproxy/path_map_file_get
-
         http-request set-var(req.backend) path,map_reg(/usr/local/etc/haproxy/path_map_file_get,main) if has_get_map METH_GET
         http-request set-var(req.backend) path,map_reg(/usr/local/etc/haproxy/path_map_file,main) unless { var(req.backend) -m found }
-
         use_backend %[var(req.backend)]
-
     backend main
         default-server maxconn 250
         # Use DNS SRV service discovery on the headless service
         server-template main 1 _synapse-http._tcp.opendesk-synapse.opendesk.svc.cluster.local resolvers kubedns init-addr none
-
 
     # a backend which responds to everything with a 204
     backend return_204
@@ -710,38 +656,35 @@ data:
 
     # A map file that is used in haproxy config to map from matrix paths to the
     # named backend. The format is: path_regexp backend_name
-
-...
 ---
 # Source: opendesk-synapse-web/templates/service.yaml
-apiVersion: "v1"
-kind: "Service"
+apiVersion: v1
+kind: Service
 metadata:
-  name: "opendesk-synapse-web"
-  namespace: "opendesk"
+  name: opendesk-synapse-web
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: opendesk-synapse-web
     helm.sh/chart: opendesk-synapse-web-6.1.3
     app.kubernetes.io/instance: opendesk-synapse-web
     app.kubernetes.io/managed-by: Helm
 spec:
-  type: "ClusterIP"
+  type: ClusterIP
   ports:
-    - name: "web"
+    - name: web
       port: 8008
       targetPort: 8008
-      protocol: "TCP"
+      protocol: TCP
   selector:
     app.kubernetes.io/name: opendesk-synapse-web
     app.kubernetes.io/instance: opendesk-synapse-web
-...
 ---
 # Source: opendesk-synapse-web/templates/deployment.yaml
-apiVersion: "apps/v1"
-kind: "Deployment"
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: "opendesk-synapse-web"
-  namespace: "opendesk"
+  name: opendesk-synapse-web
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: opendesk-synapse-web
     helm.sh/chart: opendesk-synapse-web-6.1.3
@@ -753,7 +696,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: opendesk-synapse-web
       app.kubernetes.io/instance: opendesk-synapse-web
-  strategy: 
+  strategy:
     rollingUpdate:
       maxSurge: 2
       maxUnavailable: 1
@@ -773,31 +716,29 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             - labelSelector:
                 matchExpressions:
-                  - key: "app.kubernetes.io/name"
+                  - key: app.kubernetes.io/name
                     operator: In
-                    values:
-                      - "opendesk-synapse-web"
-              topologyKey: "kubernetes.io/hostname"
+                    values: [opendesk-synapse-web]
+              topologyKey: kubernetes.io/hostname
       securityContext:
         fsGroup: 101
       serviceAccountName: opendesk-synapse-web
       terminationGracePeriodSeconds: 30
       containers:
-        - name: "haproxy"
+        - name: haproxy
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
-              drop:
-              - ALL
+              drop: [ALL]
             privileged: false
             readOnlyRootFilesystem: true
             runAsGroup: 101
             runAsNonRoot: true
             runAsUser: 101
-            seLinuxOptions: null
+            seLinuxOptions:
             seccompProfile:
               type: RuntimeDefault
-          image: "registry-1.docker.io/rapidfort/haproxy-official:3.1.7-bookworm@sha256:ab50f196f66884f62fb379c40824036cd0dabb10df660097cff99b7ae22c2c44"
+          image: registry-1.docker.io/rapidfort/haproxy-official:3.1.7-bookworm@sha256:ab50f196f66884f62fb379c40824036cd0dabb10df660097cff99b7ae22c2c44
           imagePullPolicy: IfNotPresent
           env:
           ports:
@@ -806,9 +747,9 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: "/haproxy_test"
-              port: "web"
-              scheme: "HTTP"
+              path: /haproxy_test
+              port: web
+              scheme: HTTP
             initialDelaySeconds: 1
             periodSeconds: 10
             timeoutSeconds: 1
@@ -816,9 +757,9 @@ spec:
             successThreshold: 1
           readinessProbe:
             httpGet:
-              path: "/haproxy_test"
-              port: "web"
-              scheme: "HTTP"
+              path: /haproxy_test
+              port: web
+              scheme: HTTP
             initialDelaySeconds: 1
             periodSeconds: 1
             timeoutSeconds: 1
@@ -832,21 +773,20 @@ spec:
               cpu: 0.1
               memory: 64Mi
           volumeMounts:
-            - name: "config"
-              mountPath: "/usr/local/etc/haproxy"
+            - name: config
+              mountPath: /usr/local/etc/haproxy
               readOnly: true
       volumes:
-        - name: "config"
+        - name: config
           configMap:
-            name: "opendesk-synapse-web"
+            name: opendesk-synapse-web
             defaultMode: 420
-...
 ---
 # Source: opendesk-synapse-web/templates/ingress.yaml
-apiVersion: "networking.k8s.io/v1"
-kind: "Ingress"
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: "opendesk-synapse-web"
+  name: opendesk-synapse-web
   labels:
     app.kubernetes.io/name: opendesk-synapse-web
     helm.sh/chart: opendesk-synapse-web-6.1.3
@@ -854,64 +794,60 @@ metadata:
     app.kubernetes.io/managed-by: Helm
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: 100M
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
-    nginx.ingress.kubernetes.io/proxy-send-timeout: "60"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: '60'
+    nginx.ingress.kubernetes.io/proxy-send-timeout: '60'
     nginx.org/client-max-body-size: 100M
     nginx.org/proxy-read-timeout: 60s
     nginx.org/proxy-send-timeout: 60s
 spec:
-  ingressClassName: "nginx"
+  ingressClassName: nginx
   tls:
-    - hosts:
-        - "matrix.opendesk.kcm.obmondo.com"
-      secretName: "opendesk-certificates-tls"
+    - hosts: [matrix.opendesk.kcm.obmondo.com]
+      secretName: opendesk-certificates-tls
   rules:
-    - host: "matrix.opendesk.kcm.obmondo.com"
+    - host: matrix.opendesk.kcm.obmondo.com
       http:
         paths:
-          - path: "/_matrix"
-            pathType: "Prefix"
+          - path: /_matrix
+            pathType: Prefix
             backend:
               service:
                 name: opendesk-synapse-web
                 port:
                   name: web
-          - path: "/_synapse"
-            pathType: "Prefix"
+          - path: /_synapse
+            pathType: Prefix
             backend:
               service:
                 name: opendesk-synapse-web
                 port:
                   name: web
-...
-
 ---
 # Source: opendesk-synapse/templates/serviceaccount.yaml
-apiVersion: "v1"
-kind: "ServiceAccount"
+apiVersion: v1
+kind: ServiceAccount
 metadata:
-  name: "opendesk-synapse"
-  namespace: "opendesk"
+  name: opendesk-synapse
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: opendesk-synapse
     helm.sh/chart: opendesk-synapse-6.1.3
     app.kubernetes.io/instance: opendesk-synapse
     app.kubernetes.io/managed-by: Helm
 automountServiceAccountToken: false
-...
 ---
 # Source: opendesk-synapse/templates/secret.yaml
-kind: "Secret"
-apiVersion: "v1"
+kind: Secret
+apiVersion: v1
 metadata:
-  name: "opendesk-synapse"
+  name: opendesk-synapse
   labels:
     app.kubernetes.io/name: opendesk-synapse
     helm.sh/chart: opendesk-synapse-6.1.3
     app.kubernetes.io/instance: opendesk-synapse
     app.kubernetes.io/managed-by: Helm
 stringData:
-  app-service-intercom-service.yaml: | 
+  app-service-intercom-service.yaml: |
     as_token: b9dfbe2b3fe9caf8f69fa60c1c2da54ee57ad1be
     hs_token: b9dfbe2b3fe9caf8f69fa60c1c2da54ee57ad1be
     id: intercom-service
@@ -921,7 +857,7 @@ stringData:
         regex: '@.*'
     sender_localpart: intercom-service
     url: null
-  app-service-ox-appsuite.yaml: | 
+  app-service-ox-appsuite.yaml: |
     as_token: 71856aa5630f7cb64ea0f353b9e9d50f118b6a81
     hs_token: 71856aa5630f7cb64ea0f353b9e9d50f118b6a81
     id: ox-appsuite
@@ -931,27 +867,25 @@ stringData:
         regex: '@.*'
     sender_localpart: ox-appsuite
     url: null
-...
 ---
 # Source: opendesk-synapse/templates/secret.yaml
-kind: "Secret"
-apiVersion: "v1"
+kind: Secret
+apiVersion: v1
 metadata:
-  name: "opendesk-synapse-database-password"
+  name: opendesk-synapse-database-password
   labels:
     app.kubernetes.io/name: opendesk-synapse
     helm.sh/chart: opendesk-synapse-6.1.3
     app.kubernetes.io/instance: opendesk-synapse
     app.kubernetes.io/managed-by: Helm
 stringData:
-  pgpass.conf: "postgresql:5432:matrix:matrix_user:a4554459946c74dce8946f63cf84e92e52208d6a"
-...
+  pgpass.conf: postgresql:5432:matrix:matrix_user:a4554459946c74dce8946f63cf84e92e52208d6a
 ---
 # Source: opendesk-synapse/templates/configmap.yaml
-kind: "ConfigMap"
-apiVersion: "v1"
+kind: ConfigMap
+apiVersion: v1
 metadata:
-  name: "opendesk-synapse-main"
+  name: opendesk-synapse-main
   labels:
     app.kubernetes.io/name: opendesk-synapse
     helm.sh/chart: opendesk-synapse-6.1.3
@@ -959,9 +893,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
 data:
   instance_template.yaml: |-
-
     worker_app: synapse.app.homeserver
-
     database:
       name: "psycopg2"
       args:
@@ -987,10 +919,10 @@ data:
         cp_max: 5
 ---
 # Source: opendesk-synapse/templates/configmap.yaml
-kind: "ConfigMap"
-apiVersion: "v1"
+kind: ConfigMap
+apiVersion: v1
 metadata:
-  name: "opendesk-synapse-shared"
+  name: opendesk-synapse-shared
   labels:
     app.kubernetes.io/name: opendesk-synapse
     helm.sh/chart: opendesk-synapse-6.1.3
@@ -1002,9 +934,7 @@ data:
     public_baseurl: https://matrix.opendesk.kcm.obmondo.com
     report_stats: false
     signing_key_path: /media/generatedSecrets/signingKey
-
     log_config: "/config/log_config.yaml"
-
     email:
       enable_notifs: true
       enable_tls: false
@@ -1015,7 +945,6 @@ data:
       smtp_port: "25"
       smtp_user: "opendesk-system@opendesk.kcm.obmondo.com"
       smtp_pass: "fe5f8ce805fbf2c067c4be175b34efd98ce64449"
-
     ip_range_blacklist:
     - '127.0.0.0/8'
     - '10.0.0.0/8'
@@ -1036,7 +965,6 @@ data:
     - '2001:db8::/32'
     - 'ff00::/8'
     - 'fec0::/10'
-
     listeners:
     - port: 8008
       tls: false
@@ -1073,29 +1001,22 @@ data:
       resources:
       - names: []
         compress: false
-
-    enabled_media_repo: True
+    enabled_media_repo: true
     media_store_path: "/media/media_store"
     uploads_path: "/media/uploads"
-
     enable_metrics: true
     registration_shared_secret_path: "/media/generatedSecrets/sharedSecret"
-
     use_presence: false
     presence:
       enabled: false
-
     enable_set_displayname: true
-
     require_auth_for_profile_requests: true
     limit_profile_requests_to_users_who_share_rooms: false
     allow_public_rooms_without_auth: false
     allow_public_rooms_over_federation: false
     room_list_publication_rules:
       - "action": "allow"
-
     federation_domain_whitelist:
-
     sso:
       client_whitelist:
         - https://chat.opendesk.kcm.obmondo.com
@@ -1106,11 +1027,11 @@ data:
         client_id: opendesk-matrix
         client_secret: "331e2aae2571ec38ebba4c04165c074d83cf6c76"
         scopes:
-          
+
           - openid
-          
+
           - opendesk-matrix-scope
-          
+
         allow_existing_users: true
         user_mapping_provider:
           config:
@@ -1120,7 +1041,6 @@ data:
             email_template: "{{ user.email }}"
         backchannel_logout_enabled: true
         backchannel_logout_ignore_sub: true
-
     password_config:
       enabled: true
       localdb_enabled: true
@@ -1134,20 +1054,15 @@ data:
       - module: synapse_guest_module.GuestModule
         config:
           display_name_suffix: ' (Gast)'
-
-
     instance_map:
       main:
         host: opendesk-synapse
         port: 9093
-
-    send_federation: True
-
-    start_pushers: True
+    send_federation: true
+    start_pushers: true
     app_service_config_files:
       - /secrets/app-service-intercom-service.yaml
       - /secrets/app-service-ox-appsuite.yaml
-    
     rc_login:
       account:
         burst_count: 8
@@ -1163,98 +1078,87 @@ data:
     user_directory:
       enabled: true
       search_all_users: true
-
   log_config.yaml: |
-
     version: 1
-
     formatters:
       precise:
         format: '%(asctime)s - %(name)s - %(lineno)d - %(levelname)s - %(request)s - %(message)s'
-
     handlers:
       console:
         class: logging.StreamHandler
         formatter: precise
-
     loggers:
       synapse.storage.SQL:
         level: "INFO"
-
     root:
       level: "INFO"
       handlers:
       - console
-
     disable_existing_loggers: false
-
-...
 ---
 # Source: opendesk-synapse/templates/service.yaml
-apiVersion: "v1"
-kind: "Service"
+apiVersion: v1
+kind: Service
 metadata:
-  name: "opendesk-synapse"
-  namespace: "opendesk"
+  name: opendesk-synapse
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: opendesk-synapse
     helm.sh/chart: opendesk-synapse-6.1.3
     app.kubernetes.io/instance: opendesk-synapse
     app.kubernetes.io/managed-by: Helm
 spec:
-  type: "ClusterIP"
+  type: ClusterIP
   clusterIP: None
   ports:
-    - name: "synapse-health"
+    - name: synapse-health
       port: 8080
       targetPort: 8080
-      protocol: "TCP"
-    - name: "synapse-http"
+      protocol: TCP
+    - name: synapse-http
       port: 8008
       targetPort: 8008
-      protocol: "TCP"
-    - name: "synapse-metrics"
+      protocol: TCP
+    - name: synapse-metrics
       port: 9001
       targetPort: 9001
-      protocol: "TCP"
-    - name: "synapse-repl"
+      protocol: TCP
+    - name: synapse-repl
       port: 9093
       targetPort: 9093
-      protocol: "TCP"
+      protocol: TCP
   selector:
     app.kubernetes.io/name: opendesk-synapse
     app.kubernetes.io/instance: opendesk-synapse
-...
 ---
 # Source: opendesk-synapse/templates/service.yaml
-apiVersion: "v1"
-kind: "Service"
+apiVersion: v1
+kind: Service
 metadata:
-  name: "opendesk-synapse-federation"
-  namespace: "opendesk"
+  name: opendesk-synapse-federation
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: opendesk-synapse
     helm.sh/chart: opendesk-synapse-6.1.3
     app.kubernetes.io/instance: opendesk-synapse
     app.kubernetes.io/managed-by: Helm
 spec:
-  type: "ClusterIP"
+  type: ClusterIP
   ports:
-    - name: "federation"
+    - name: federation
       port: 8448
       targetPort: 8448
-      protocol: "TCP"
+      protocol: TCP
   selector:
     app.kubernetes.io/name: opendesk-synapse
     app.kubernetes.io/instance: opendesk-synapse
-...
 ---
 # Source: opendesk-synapse/templates/statefulset.yaml
 apiVersion: apps/v1
-kind: "StatefulSet"
+kind: StatefulSet
 metadata:
-  name: "opendesk-synapse"
-  namespace: "opendesk"
+  name: opendesk-synapse
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: opendesk-synapse
     helm.sh/chart: opendesk-synapse-6.1.3
@@ -1267,7 +1171,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: opendesk-synapse
       app.kubernetes.io/instance: opendesk-synapse
-  updateStrategy: 
+  updateStrategy:
     type: RollingUpdate
   template:
     metadata:
@@ -1282,23 +1186,22 @@ spec:
     spec:
       securityContext:
         fsGroup: 10991
-      serviceAccountName: "opendesk-synapse"
+      serviceAccountName: opendesk-synapse
       terminationGracePeriodSeconds: 30
       initContainers:
-        - name: "install-guest-module"
-          image: "registry.opencode.de/bmi/opendesk/components/supplier/element/images-mirror/synapse-guest-module:1.0.1@sha256:a8c02b2eb4dfea9632b32d00415af8d5276870fa150fac392914f67053c161ea"
+        - name: install-guest-module
+          image: registry.opencode.de/bmi/opendesk/components/supplier/element/images-mirror/synapse-guest-module:1.0.1@sha256:a8c02b2eb4dfea9632b32d00415af8d5276870fa150fac392914f67053c161ea
           imagePullPolicy: IfNotPresent
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
-              drop:
-              - ALL
+              drop: [ALL]
             privileged: false
             readOnlyRootFilesystem: true
             runAsGroup: 10991
             runAsNonRoot: true
             runAsUser: 10991
-            seLinuxOptions: null
+            seLinuxOptions:
             seccompProfile:
               type: RuntimeDefault
           resources:
@@ -1309,28 +1212,27 @@ spec:
               cpu: 0.5
               memory: 256Mi
           volumeMounts:
-            - name: "synapse-modules"
-              mountPath: "/modules"
+            - name: synapse-modules
+              mountPath: /modules
       containers:
-        - name: "synapse"
+        - name: synapse
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
-              drop:
-              - ALL
+              drop: [ALL]
             privileged: false
             readOnlyRootFilesystem: true
             runAsGroup: 10991
             runAsNonRoot: true
             runAsUser: 10991
-            seLinuxOptions: null
+            seLinuxOptions:
             seccompProfile:
               type: RuntimeDefault
-          image: "registry.opencode.de/bmi/opendesk/components/supplier/element/images-mirror/synapse:v1.129.0@sha256:13ac3293547d8c06e1e03fca4e02ef9a47f132acc2e2cdb4143a01495dd924cf"
+          image: registry.opencode.de/bmi/opendesk/components/supplier/element/images-mirror/synapse:v1.129.0@sha256:13ac3293547d8c06e1e03fca4e02ef9a47f132acc2e2cdb4143a01495dd924cf
           imagePullPolicy: IfNotPresent
           command:
-            - "bash"
-            - "-cx"
+            - bash
+            - -cx
             - |
               mkdir -p /media/generatedSecrets
               cp /secret/pgpass.conf /config/rendered/pgpass.conf
@@ -1338,30 +1240,30 @@ spec:
               sed "s/REPLACE_HOSTNAME/$(hostname -s)/g" /config/instance_template.yaml > /config/rendered/instance.yaml
               /start.py run --config-path=/config/homeserver.yaml --config-path=/config/rendered/instance.yaml
           env:
-            - name: "SYNAPSE_WORKER"
-              value: "synapse.app.homeserver"
-            - name: "SSL_CERT_DIR"
-              value: "/etc/ssl/certs"
-            - name: "PYTHONPATH"
-              value: "/modules"
+            - name: SYNAPSE_WORKER
+              value: synapse.app.homeserver
+            - name: SSL_CERT_DIR
+              value: /etc/ssl/certs
+            - name: PYTHONPATH
+              value: /modules
           ports:
-            - name: "synapse-health"
+            - name: synapse-health
               containerPort: 8080
               protocol: TCP
-            - name: "synapse-http"
+            - name: synapse-http
               containerPort: 8008
               protocol: TCP
-            - name: "synapse-metrics"
+            - name: synapse-metrics
               containerPort: 9001
               protocol: TCP
-            - name: "synapse-repl"
+            - name: synapse-repl
               containerPort: 9093
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: "/health"
-              port: "synapse-health"
-              scheme: "HTTP"
+              path: /health
+              port: synapse-health
+              scheme: HTTP
             initialDelaySeconds: 1
             periodSeconds: 6
             timeoutSeconds: 2
@@ -1369,9 +1271,9 @@ spec:
             successThreshold: 1
           readinessProbe:
             httpGet:
-              path: "/health"
-              port: "synapse-health"
-              scheme: "HTTP"
+              path: /health
+              port: synapse-health
+              scheme: HTTP
             initialDelaySeconds: 15
             periodSeconds: 15
             timeoutSeconds: 2
@@ -1385,110 +1287,105 @@ spec:
               cpu: 0.5
               memory: 256Mi
           volumeMounts:
-            - mountPath: "/config/homeserver.yaml"
-              name: "shared-config"
+            - mountPath: /config/homeserver.yaml
+              name: shared-config
               readOnly: true
-              subPath: "homeserver.yaml"
-            - mountPath: "/config/instance_template.yaml"
-              name: "process-type-config"
+              subPath: homeserver.yaml
+            - mountPath: /config/instance_template.yaml
+              name: process-type-config
               readOnly: true
-              subPath: "instance_template.yaml"
-            - mountPath: "/config/log_config.yaml"
-              name: "shared-config"
+              subPath: instance_template.yaml
+            - mountPath: /config/log_config.yaml
+              name: shared-config
               readOnly: true
-              subPath: "log_config.yaml"
-            - mountPath: "/secrets/"
-              name: "external-secrets"
+              subPath: log_config.yaml
+            - mountPath: /secrets/
+              name: external-secrets
               readOnly: true
-            - mountPath: "/secret/pgpass.conf"
-              name: "database-password"
+            - mountPath: /secret/pgpass.conf
+              name: database-password
               readOnly: true
-              subPath: "pgpass.conf"
-            - mountPath: "/config/rendered"
-              name: "rendered-config"
-            - mountPath: "/media"
-              name: "media"
-            - mountPath: "/tmp"
-              name: "tmp"
-            - name: "synapse-modules"
-              mountPath: "/modules"
+              subPath: pgpass.conf
+            - mountPath: /config/rendered
+              name: rendered-config
+            - mountPath: /media
+              name: media
+            - mountPath: /tmp
+              name: tmp
+            - name: synapse-modules
+              mountPath: /modules
       volumes:
-        - name: "external-secrets"
+        - name: external-secrets
           secret:
-            secretName: "opendesk-synapse"
+            secretName: opendesk-synapse
             defaultMode: 420
-        - name: "database-password"
+        - name: database-password
           secret:
-            secretName: "opendesk-synapse-database-password"
+            secretName: opendesk-synapse-database-password
             defaultMode: 420
-        - name: "shared-config"
+        - name: shared-config
           configMap:
-            name: "opendesk-synapse-shared"
+            name: opendesk-synapse-shared
             defaultMode: 420
-        - name: "process-type-config"
+        - name: process-type-config
           configMap:
-            name: "opendesk-synapse-main"
+            name: opendesk-synapse-main
             defaultMode: 420
-        - name: "rendered-config"
+        - name: rendered-config
           emptyDir:
-            medium: "Memory"
-            sizeLimit: "50Mi"
-        - name: "tmp"
+            medium: Memory
+            sizeLimit: 50Mi
+        - name: tmp
           emptyDir:
-            medium: "Memory"
-            sizeLimit: "50Mi"
-        - name: "synapse-modules"
+            medium: Memory
+            sizeLimit: 50Mi
+        - name: synapse-modules
           emptyDir:
-            medium: "Memory"
-            sizeLimit: "50Mi"
+            medium: Memory
+            sizeLimit: 50Mi
   volumeClaimTemplates:
     - metadata:
-        name: "media"
+        name: media
       spec:
-        accessModes:
-          - "ReadWriteOnce"
+        accessModes: [ReadWriteOnce]
         resources:
           requests:
-            storage: "1Gi"
+            storage: 1Gi
         storageClassName: openebs-hostpath
-...
 ---
 # Source: opendesk-synapse/templates/ingress.yaml
-apiVersion: "networking.k8s.io/v1"
-kind: "Ingress"
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: "opendesk-synapse"
+  name: opendesk-synapse
   labels:
     app.kubernetes.io/name: opendesk-synapse
     helm.sh/chart: opendesk-synapse-6.1.3
     app.kubernetes.io/instance: opendesk-synapse
     app.kubernetes.io/managed-by: Helm
 spec:
-  ingressClassName: "nginx"
+  ingressClassName: nginx
   tls:
-    - hosts:
-        - "matrix-federation.opendesk.kcm.obmondo.com"
-      secretName: "opendesk-certificates-tls"
+    - hosts: [matrix-federation.opendesk.kcm.obmondo.com]
+      secretName: opendesk-certificates-tls
   rules:
-    - host: "matrix-federation.opendesk.kcm.obmondo.com"
+    - host: matrix-federation.opendesk.kcm.obmondo.com
       http:
         paths:
-          - path: "/"
-            pathType: "Prefix"
+          - path: /
+            pathType: Prefix
             backend:
               service:
                 name: opendesk-synapse-federation
                 port:
                   name: federation
-...
-
 ---
 # Source: matrix-neoboard-widget/templates/serviceaccount.yaml
-apiVersion: "v1"
-kind: "ServiceAccount"
+apiVersion: v1
+kind: ServiceAccount
 metadata:
   name: matrix-neoboard-widget
-  namespace: "opendesk"
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: matrix-neoboard-widget
     helm.sh/chart: matrix-neoboard-widget-3.5.1
@@ -1496,14 +1393,13 @@ metadata:
     app.kubernetes.io/managed-by: Helm
   annotations:
 automountServiceAccountToken: false
-...
 ---
 # Source: matrix-neoboard-widget/templates/service.yaml
-apiVersion: "v1"
-kind: "Service"
+apiVersion: v1
+kind: Service
 metadata:
-  name: "matrix-neoboard-widget"
-  namespace: "opendesk"
+  name: matrix-neoboard-widget
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: matrix-neoboard-widget
     helm.sh/chart: matrix-neoboard-widget-3.5.1
@@ -1511,23 +1407,22 @@ metadata:
     app.kubernetes.io/managed-by: Helm
   annotations:
 spec:
-  type: "ClusterIP"
+  type: ClusterIP
   ports:
-    - name: "http"
+    - name: http
       port: 80
-      targetPort: "http"
-      protocol: "TCP"
+      targetPort: http
+      protocol: TCP
   selector:
     app.kubernetes.io/name: matrix-neoboard-widget
     app.kubernetes.io/instance: matrix-neoboard-widget
-...
 ---
 # Source: matrix-neoboard-widget/templates/deployment.yaml
 apiVersion: apps/v1
-kind: "Deployment"
+kind: Deployment
 metadata:
   name: matrix-neoboard-widget
-  namespace: "opendesk"
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: matrix-neoboard-widget
     helm.sh/chart: matrix-neoboard-widget-3.5.1
@@ -1539,7 +1434,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: matrix-neoboard-widget
       app.kubernetes.io/instance: matrix-neoboard-widget
-  strategy: 
+  strategy:
     type: RollingUpdate
   template:
     metadata:
@@ -1556,31 +1451,30 @@ spec:
         fsGroupChangePolicy: Always
       serviceAccountName: matrix-neoboard-widget
       containers:
-        - name: "widget"
+        - name: widget
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
-              drop:
-              - ALL
+              drop: [ALL]
             privileged: false
             readOnlyRootFilesystem: true
             runAsGroup: 101
             runAsNonRoot: true
             runAsUser: 101
-            seLinuxOptions: null
+            seLinuxOptions:
             seccompProfile:
               type: RuntimeDefault
-          image: "registry.opencode.de/bmi/opendesk/components/supplier/nordeck/images-mirror/matrix-neoboard-widget:2.2.1@sha256:db404ba5b8e76cbd1166529dc2156d84506f1c2d341a1798d25a074e531b9d3d"
+          image: registry.opencode.de/bmi/opendesk/components/supplier/nordeck/images-mirror/matrix-neoboard-widget:2.2.1@sha256:db404ba5b8e76cbd1166529dc2156d84506f1c2d341a1798d25a074e531b9d3d
           imagePullPolicy: IfNotPresent
           env:
             - name: REACT_APP_HOME_SERVER_URL
-              value: "https://matrix.opendesk.kcm.obmondo.com"
+              value: https://matrix.opendesk.kcm.obmondo.com
             - name: REACT_APP_PRIMARY_COLOR
-              value: "#571EFA"
+              value: '#571EFA'
             - name: REACT_APP_LIGHT_PRIMARY_COLOR
-              value: "#571EFA"
+              value: '#571EFA'
             - name: REACT_APP_DARK_PRIMARY_COLOR
-              value: "#571EFA"
+              value: '#571EFA'
           livenessProbe:
             httpGet:
               path: /
@@ -1611,26 +1505,25 @@ spec:
               cpu: 0.1
               memory: 48Mi
           volumeMounts:
-            - name: "cache"
-              mountPath: "/var/cache/nginx"
-            - name: "tmp"
-              mountPath: "/tmp"
+            - name: cache
+              mountPath: /var/cache/nginx
+            - name: tmp
+              mountPath: /tmp
       volumes:
-        - name: "cache"
+        - name: cache
           emptyDir:
-            medium: "Memory"
-            sizeLimit: "50Mi"
-        - name: "tmp"
+            medium: Memory
+            sizeLimit: 50Mi
+        - name: tmp
           emptyDir:
-            medium: "Memory"
-            sizeLimit: "50Mi"
-...
+            medium: Memory
+            sizeLimit: 50Mi
 ---
 # Source: matrix-neoboard-widget/templates/ingress.yaml
-apiVersion: "networking.k8s.io/v1"
-kind: "Ingress"
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: "matrix-neoboard-widget"
+  name: matrix-neoboard-widget
   labels:
     app.kubernetes.io/name: matrix-neoboard-widget
     helm.sh/chart: matrix-neoboard-widget-3.5.1
@@ -1638,13 +1531,12 @@ metadata:
     app.kubernetes.io/managed-by: Helm
   annotations:
 spec:
-  ingressClassName: "nginx"
+  ingressClassName: nginx
   tls:
-    - hosts:
-        - "matrix-neoboard-widget.opendesk.kcm.obmondo.com"
-      secretName: "opendesk-certificates-tls"
+    - hosts: [matrix-neoboard-widget.opendesk.kcm.obmondo.com]
+      secretName: opendesk-certificates-tls
   rules:
-    - host: "matrix-neoboard-widget.opendesk.kcm.obmondo.com"
+    - host: matrix-neoboard-widget.opendesk.kcm.obmondo.com
       http:
         paths:
           - path: /
@@ -1654,15 +1546,13 @@ spec:
                 name: matrix-neoboard-widget
                 port:
                   name: http
-...
-
 ---
 # Source: matrix-neochoice-widget/templates/serviceaccount.yaml
-apiVersion: "v1"
-kind: "ServiceAccount"
+apiVersion: v1
+kind: ServiceAccount
 metadata:
   name: matrix-neochoice-widget
-  namespace: "opendesk"
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: matrix-neochoice-widget
     helm.sh/chart: matrix-neochoice-widget-3.5.1
@@ -1670,14 +1560,13 @@ metadata:
     app.kubernetes.io/managed-by: Helm
   annotations:
 automountServiceAccountToken: false
-...
 ---
 # Source: matrix-neochoice-widget/templates/service.yaml
-apiVersion: "v1"
-kind: "Service"
+apiVersion: v1
+kind: Service
 metadata:
-  name: "matrix-neochoice-widget"
-  namespace: "opendesk"
+  name: matrix-neochoice-widget
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: matrix-neochoice-widget
     helm.sh/chart: matrix-neochoice-widget-3.5.1
@@ -1685,23 +1574,22 @@ metadata:
     app.kubernetes.io/managed-by: Helm
   annotations:
 spec:
-  type: "ClusterIP"
+  type: ClusterIP
   ports:
-    - name: "http"
+    - name: http
       port: 80
-      targetPort: "http"
-      protocol: "TCP"
+      targetPort: http
+      protocol: TCP
   selector:
     app.kubernetes.io/name: matrix-neochoice-widget
     app.kubernetes.io/instance: matrix-neochoice-widget
-...
 ---
 # Source: matrix-neochoice-widget/templates/deployment.yaml
 apiVersion: apps/v1
-kind: "Deployment"
+kind: Deployment
 metadata:
   name: matrix-neochoice-widget
-  namespace: "opendesk"
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: matrix-neochoice-widget
     helm.sh/chart: matrix-neochoice-widget-3.5.1
@@ -1713,7 +1601,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: matrix-neochoice-widget
       app.kubernetes.io/instance: matrix-neochoice-widget
-  strategy: 
+  strategy:
     type: RollingUpdate
   template:
     metadata:
@@ -1730,31 +1618,30 @@ spec:
         fsGroupChangePolicy: Always
       serviceAccountName: matrix-neochoice-widget
       containers:
-        - name: "widget"
+        - name: widget
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
-              drop:
-              - ALL
+              drop: [ALL]
             privileged: false
             readOnlyRootFilesystem: true
             runAsGroup: 101
             runAsNonRoot: true
             runAsUser: 101
-            seLinuxOptions: null
+            seLinuxOptions:
             seccompProfile:
               type: RuntimeDefault
-          image: "registry.opencode.de/bmi/opendesk/components/supplier/nordeck/images-mirror/matrix-poll-widget:1.5.2@sha256:8d0cce2b4f71787cab6cd1b6e6ff52205224a5d01ba384b3ebfbf05bc3228930"
+          image: registry.opencode.de/bmi/opendesk/components/supplier/nordeck/images-mirror/matrix-poll-widget:1.5.2@sha256:8d0cce2b4f71787cab6cd1b6e6ff52205224a5d01ba384b3ebfbf05bc3228930
           imagePullPolicy: IfNotPresent
           env:
             - name: REACT_APP_HOME_SERVER_URL
-              value: "https://matrix.opendesk.kcm.obmondo.com"
+              value: https://matrix.opendesk.kcm.obmondo.com
             - name: REACT_APP_POLL_DESCRIPTION_REQUIRED
-              value: "true"
+              value: 'true'
             - name: REACT_APP_IGNORE_USER_IDS
-              value: "@meetings-bot:opendesk.kcm.obmondo.com"
+              value: '@meetings-bot:opendesk.kcm.obmondo.com'
             - name: REACT_APP_PRIMARY_COLOR
-              value: "#571EFA"
+              value: '#571EFA'
           livenessProbe:
             httpGet:
               path: /
@@ -1785,26 +1672,25 @@ spec:
               cpu: 0.1
               memory: 48Mi
           volumeMounts:
-            - name: "cache"
-              mountPath: "/var/cache/nginx"
-            - name: "tmp"
-              mountPath: "/tmp"
+            - name: cache
+              mountPath: /var/cache/nginx
+            - name: tmp
+              mountPath: /tmp
       volumes:
-        - name: "cache"
+        - name: cache
           emptyDir:
-            medium: "Memory"
-            sizeLimit: "50Mi"
-        - name: "tmp"
+            medium: Memory
+            sizeLimit: 50Mi
+        - name: tmp
           emptyDir:
-            medium: "Memory"
-            sizeLimit: "50Mi"
-...
+            medium: Memory
+            sizeLimit: 50Mi
 ---
 # Source: matrix-neochoice-widget/templates/ingress.yaml
-apiVersion: "networking.k8s.io/v1"
-kind: "Ingress"
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: "matrix-neochoice-widget"
+  name: matrix-neochoice-widget
   labels:
     app.kubernetes.io/name: matrix-neochoice-widget
     helm.sh/chart: matrix-neochoice-widget-3.5.1
@@ -1812,13 +1698,12 @@ metadata:
     app.kubernetes.io/managed-by: Helm
   annotations:
 spec:
-  ingressClassName: "nginx"
+  ingressClassName: nginx
   tls:
-    - hosts:
-        - "matrix-neochoice-widget.opendesk.kcm.obmondo.com"
-      secretName: "opendesk-certificates-tls"
+    - hosts: [matrix-neochoice-widget.opendesk.kcm.obmondo.com]
+      secretName: opendesk-certificates-tls
   rules:
-    - host: "matrix-neochoice-widget.opendesk.kcm.obmondo.com"
+    - host: matrix-neochoice-widget.opendesk.kcm.obmondo.com
       http:
         paths:
           - path: /
@@ -1828,15 +1713,13 @@ spec:
                 name: matrix-neochoice-widget
                 port:
                   name: http
-...
-
 ---
 # Source: matrix-neodatefix-widget/templates/serviceaccount.yaml
-apiVersion: "v1"
-kind: "ServiceAccount"
+apiVersion: v1
+kind: ServiceAccount
 metadata:
   name: matrix-neodatefix-widget
-  namespace: "opendesk"
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: matrix-neodatefix-widget
     helm.sh/chart: matrix-neodatefix-widget-3.5.1
@@ -1844,14 +1727,13 @@ metadata:
     app.kubernetes.io/managed-by: Helm
   annotations:
 automountServiceAccountToken: false
-...
 ---
 # Source: matrix-neodatefix-widget/templates/service.yaml
-apiVersion: "v1"
-kind: "Service"
+apiVersion: v1
+kind: Service
 metadata:
-  name: "matrix-neodatefix-widget"
-  namespace: "opendesk"
+  name: matrix-neodatefix-widget
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: matrix-neodatefix-widget
     helm.sh/chart: matrix-neodatefix-widget-3.5.1
@@ -1859,23 +1741,22 @@ metadata:
     app.kubernetes.io/managed-by: Helm
   annotations:
 spec:
-  type: "ClusterIP"
+  type: ClusterIP
   ports:
-    - name: "http"
+    - name: http
       port: 80
-      targetPort: "http"
-      protocol: "TCP"
+      targetPort: http
+      protocol: TCP
   selector:
     app.kubernetes.io/name: matrix-neodatefix-widget
     app.kubernetes.io/instance: matrix-neodatefix-widget
-...
 ---
 # Source: matrix-neodatefix-widget/templates/deployment.yaml
 apiVersion: apps/v1
-kind: "Deployment"
+kind: Deployment
 metadata:
   name: matrix-neodatefix-widget
-  namespace: "opendesk"
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: matrix-neodatefix-widget
     helm.sh/chart: matrix-neodatefix-widget-3.5.1
@@ -1887,7 +1768,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: matrix-neodatefix-widget
       app.kubernetes.io/instance: matrix-neodatefix-widget
-  strategy: 
+  strategy:
     type: RollingUpdate
   template:
     metadata:
@@ -1904,33 +1785,32 @@ spec:
         fsGroupChangePolicy: Always
       serviceAccountName: matrix-neodatefix-widget
       containers:
-        - name: "widget"
+        - name: widget
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
-              drop:
-              - ALL
+              drop: [ALL]
             privileged: false
             readOnlyRootFilesystem: true
             runAsGroup: 101
             runAsNonRoot: true
             runAsUser: 101
-            seLinuxOptions: null
+            seLinuxOptions:
             seccompProfile:
               type: RuntimeDefault
-          image: "registry.opencode.de/bmi/opendesk/components/supplier/nordeck/images-mirror/matrix-meetings-widget:1.7.1@sha256:c03917f78ba197b2f93a59eb3d6596447de1e2bf5836194afa121fae8ea18593"
+          image: registry.opencode.de/bmi/opendesk/components/supplier/nordeck/images-mirror/matrix-meetings-widget:1.7.1@sha256:c03917f78ba197b2f93a59eb3d6596447de1e2bf5836194afa121fae8ea18593
           imagePullPolicy: IfNotPresent
           env:
             - name: REACT_APP_HOME_SERVER_URL
-              value: "https://matrix.opendesk.kcm.obmondo.com"
+              value: https://matrix.opendesk.kcm.obmondo.com
             - name: REACT_APP_API_BASE_URL
-              value: "https://matrix-neodatefix-bot.opendesk.kcm.obmondo.com"
+              value: https://matrix-neodatefix-bot.opendesk.kcm.obmondo.com
             - name: REACT_APP_BOT_USER_ID
-              value: "@meetings-bot:opendesk.kcm.obmondo.com"
+              value: '@meetings-bot:opendesk.kcm.obmondo.com'
             - name: REACT_APP_DISPLAY_ALL_MEETINGS
-              value: "true"
+              value: 'true'
             - name: REACT_APP_PRIMARY_COLOR
-              value: "#571EFA"
+              value: '#571EFA'
           livenessProbe:
             httpGet:
               path: /
@@ -1961,26 +1841,25 @@ spec:
               cpu: 0.1
               memory: 48Mi
           volumeMounts:
-            - name: "cache"
-              mountPath: "/var/cache/nginx"
-            - name: "tmp"
-              mountPath: "/tmp"
+            - name: cache
+              mountPath: /var/cache/nginx
+            - name: tmp
+              mountPath: /tmp
       volumes:
-        - name: "cache"
+        - name: cache
           emptyDir:
-            medium: "Memory"
-            sizeLimit: "50Mi"
-        - name: "tmp"
+            medium: Memory
+            sizeLimit: 50Mi
+        - name: tmp
           emptyDir:
-            medium: "Memory"
-            sizeLimit: "50Mi"
-...
+            medium: Memory
+            sizeLimit: 50Mi
 ---
 # Source: matrix-neodatefix-widget/templates/ingress.yaml
-apiVersion: "networking.k8s.io/v1"
-kind: "Ingress"
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: "matrix-neodatefix-widget"
+  name: matrix-neodatefix-widget
   labels:
     app.kubernetes.io/name: matrix-neodatefix-widget
     helm.sh/chart: matrix-neodatefix-widget-3.5.1
@@ -1988,13 +1867,12 @@ metadata:
     app.kubernetes.io/managed-by: Helm
   annotations:
 spec:
-  ingressClassName: "nginx"
+  ingressClassName: nginx
   tls:
-    - hosts:
-        - "matrix-neodatefix-widget.opendesk.kcm.obmondo.com"
-      secretName: "opendesk-certificates-tls"
+    - hosts: [matrix-neodatefix-widget.opendesk.kcm.obmondo.com]
+      secretName: opendesk-certificates-tls
   rules:
-    - host: "matrix-neodatefix-widget.opendesk.kcm.obmondo.com"
+    - host: matrix-neodatefix-widget.opendesk.kcm.obmondo.com
       http:
         paths:
           - path: /
@@ -2004,117 +1882,104 @@ spec:
                 name: matrix-neodatefix-widget
                 port:
                   name: http
-...
-
 ---
 # Source: opendesk-synapse-create-account/templates/serviceaccount.yaml
-apiVersion: "v1"
-kind: "ServiceAccount"
+apiVersion: v1
+kind: ServiceAccount
 metadata:
-  name: "matrix-neodatefix-bot-bootstrap"
-  namespace: "opendesk"
+  name: matrix-neodatefix-bot-bootstrap
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: opendesk-synapse-create-account
     helm.sh/chart: opendesk-synapse-create-account-6.1.3
     app.kubernetes.io/instance: matrix-neodatefix-bot-bootstrap
     app.kubernetes.io/managed-by: Helm
-...
 ---
 # Source: opendesk-synapse-create-account/templates/secret.yaml
-kind: "Secret"
-apiVersion: "v1"
+kind: Secret
+apiVersion: v1
 metadata:
-  name: "matrix-neodatefix-bot-bootstrap"
+  name: matrix-neodatefix-bot-bootstrap
   labels:
     app.kubernetes.io/name: opendesk-synapse-create-account
     helm.sh/chart: opendesk-synapse-create-account-6.1.3
     app.kubernetes.io/instance: matrix-neodatefix-bot-bootstrap
     app.kubernetes.io/managed-by: Helm
 stringData:
-  password: "ea9450f5241ada8ab121db0284fb33658cb75316"
-...
+  password: ea9450f5241ada8ab121db0284fb33658cb75316
 ---
 # Source: opendesk-synapse-create-account/templates/role.yaml
-apiVersion: "rbac.authorization.k8s.io/v1"
-kind: "Role"
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
 metadata:
-  namespace: "opendesk"
-  name: "matrix-neodatefix-bot-bootstrap"
+  namespace: opendesk
+  name: matrix-neodatefix-bot-bootstrap
 rules:
   # needed to execute commands inside pod
-  - apiGroups: [""]
-    resources:
-      - "pods"
-    resourceNames: ["opendesk-synapse-0"]
-    verbs: ["get"]
-  - apiGroups: [""]
-    resources:
-      - "pods/exec"
-    resourceNames: ["opendesk-synapse-0"]
-    verbs: ["create"]
+  - apiGroups: ['']
+    resources: [pods]
+    resourceNames: [opendesk-synapse-0]
+    verbs: [get]
+  - apiGroups: ['']
+    resources: [pods/exec]
+    resourceNames: [opendesk-synapse-0]
+    verbs: [create]
   # needed to create and replace the secret
-  - apiGroups: [""]
-    resources:
-      - "secrets"
-    verbs: ["create"]
-  - apiGroups: [""]
-    resources:
-      - "secrets"
-    resourceNames:
-      - "matrix-neodatefix-bot-account"
-    verbs: ["delete"]
-...
+  - apiGroups: ['']
+    resources: [secrets]
+    verbs: [create]
+  - apiGroups: ['']
+    resources: [secrets]
+    resourceNames: [matrix-neodatefix-bot-account]
+    verbs: [delete]
 ---
 # Source: opendesk-synapse-create-account/templates/rolebinding.yaml
-apiVersion: "rbac.authorization.k8s.io/v1"
-kind: "RoleBinding"
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
 metadata:
-  name: "matrix-neodatefix-bot-bootstrap"
-  namespace: "opendesk"
-roleRef: # points to the ClusterRole
-  apiGroup: "rbac.authorization.k8s.io"
-  kind: "Role"
-  name: "matrix-neodatefix-bot-bootstrap"
-subjects: # points to the ServiceAccount
-- kind: "ServiceAccount"
-  name: "matrix-neodatefix-bot-bootstrap"
-  namespace: "opendesk" # ns of service account
-...
+  name: matrix-neodatefix-bot-bootstrap
+  namespace: opendesk
+roleRef:  # points to the ClusterRole
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: matrix-neodatefix-bot-bootstrap
+subjects:  # points to the ServiceAccount
+  - kind: ServiceAccount
+    name: matrix-neodatefix-bot-bootstrap
+    namespace: opendesk  # ns of service account
 ---
 # Source: opendesk-synapse-create-account/templates/delete-job.yaml
-apiVersion: "batch/v1"
-kind: "Job"
+apiVersion: batch/v1
+kind: Job
 metadata:
-  name: "matrix-neodatefix-bot-bootstrap"
+  name: matrix-neodatefix-bot-bootstrap
   labels:
     app.kubernetes.io/name: opendesk-synapse-create-account
     helm.sh/chart: opendesk-synapse-create-account-6.1.3
     app.kubernetes.io/instance: matrix-neodatefix-bot-bootstrap
     app.kubernetes.io/managed-by: Helm
   annotations:
-    "managed-by": "helmfile"
-    "managed-by": "helmfile"
+    managed-by: helmfile
 spec:
   template:
     spec:
-      serviceAccountName: "matrix-neodatefix-bot-bootstrap"
+      serviceAccountName: matrix-neodatefix-bot-bootstrap
       containers:
-        - name: "opendesk-synapse-create-account"
+        - name: opendesk-synapse-create-account
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
-              drop:
-              - ALL
+              drop: [ALL]
             privileged: false
             readOnlyRootFilesystem: true
             runAsGroup: 101
             runAsNonRoot: true
             runAsUser: 101
-            seLinuxOptions: null
+            seLinuxOptions:
             seccompProfile:
               type: RuntimeDefault
-          image: "registry-1.docker.io/alpine/k8s:1.33.0@sha256:60333a52c38e9a8df0a9b93a5a24a4870f0db2c7ea3266b185386bd0a500d7dc"
-          imagePullPolicy: "IfNotPresent"
+          image: registry-1.docker.io/alpine/k8s:1.33.0@sha256:60333a52c38e9a8df0a9b93a5a24a4870f0db2c7ea3266b185386bd0a500d7dc
+          imagePullPolicy: IfNotPresent
           resources:
             limits:
               cpu: 1
@@ -2125,52 +1990,49 @@ spec:
           tty: true
           env:
             - name: NAMESPACE
-              value: "opendesk"
+              value: opendesk
             - name: SECRET_NAME
-              value: "matrix-neodatefix-bot-account"
+              value: matrix-neodatefix-bot-account
           command:
-            - "/bin/bash"
-            - "-c"
+            - /bin/bash
+            - -c
             - |
               kubectl delete secret --namespace="${NAMESPACE}" ${SECRET_NAME} --ignore-not-found
       restartPolicy: Never
   backoffLimit: 4
-...
 ---
 # Source: opendesk-synapse-create-account/templates/job.yaml
-apiVersion: "batch/v1"
-kind: "Job"
+apiVersion: batch/v1
+kind: Job
 metadata:
-  name: "matrix-neodatefix-bot-bootstrap"
+  name: matrix-neodatefix-bot-bootstrap
   labels:
     app.kubernetes.io/name: opendesk-synapse-create-account
     helm.sh/chart: opendesk-synapse-create-account-6.1.3
     app.kubernetes.io/instance: matrix-neodatefix-bot-bootstrap
     app.kubernetes.io/managed-by: Helm
   annotations:
-    "managed-by": "helmfile"
-    "managed-by": "helmfile"
+    managed-by: helmfile
 spec:
   template:
     spec:
-      serviceAccountName: "matrix-neodatefix-bot-bootstrap"
+      serviceAccountName: matrix-neodatefix-bot-bootstrap
       containers:
-        - name: "opendesk-synapse-create-account"
+        - name: opendesk-synapse-create-account
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
-              drop:
-              - ALL
+              drop: [ALL]
             privileged: false
             readOnlyRootFilesystem: true
             runAsGroup: 101
             runAsNonRoot: true
             runAsUser: 101
-            seLinuxOptions: null
+            seLinuxOptions:
             seccompProfile:
               type: RuntimeDefault
-          image: "registry-1.docker.io/alpine/k8s:1.33.0@sha256:60333a52c38e9a8df0a9b93a5a24a4870f0db2c7ea3266b185386bd0a500d7dc"
-          imagePullPolicy: "IfNotPresent"
+          image: registry-1.docker.io/alpine/k8s:1.33.0@sha256:60333a52c38e9a8df0a9b93a5a24a4870f0db2c7ea3266b185386bd0a500d7dc
+          imagePullPolicy: IfNotPresent
           resources:
             limits:
               cpu: 1
@@ -2180,50 +2042,45 @@ spec:
               memory: 256Mi
           tty: true
           env:
-            - name: "NAMESPACE"
-              value: "opendesk"
-            - name: "SYNAPSE_POD"
-              value: "opendesk-synapse-0"
-            - name: "MATRIX_USERNAME"
-              value: "meetings-bot"
-            - name: "MATRIX_PASSWORD"
+            - name: NAMESPACE
+              value: opendesk
+            - name: SYNAPSE_POD
+              value: opendesk-synapse-0
+            - name: MATRIX_USERNAME
+              value: meetings-bot
+            - name: MATRIX_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: "matrix-neodatefix-bot-bootstrap"
-                  key: "password"
-            - name: "DEVICE_ID"
-              value: "DEFAULT"
-            - name: "SECRET_NAME"
-              value: "matrix-neodatefix-bot-account"
+                  name: matrix-neodatefix-bot-bootstrap
+                  key: password
+            - name: DEVICE_ID
+              value: DEFAULT
+            - name: SECRET_NAME
+              value: matrix-neodatefix-bot-account
           command:
-            - "/bin/bash"
-            - "-c"
+            - /bin/bash
+            - -c
             - |
               # SPDX-FileCopyrightText: 2024 Zentrum für Digitale Souveränität der Öffentlichen Verwaltung (ZenDiS) GmbH
               # SPDX-FileCopyrightText: 2023 Bundesministerium des Innern und für Heimat, PG ZenDiS "Projektgruppe für Aufbau ZenDiS"
               # SPDX-License-Identifier: Apache-2.0
-              
               until kubectl exec --namespace="${NAMESPACE}" ${SYNAPSE_POD} -c synapse \
               -- bash -c 'curl -sf http://localhost:8008/health';
               do
                 echo "waiting for container to be alive..."
                 sleep 1
               done
-              
               ACCESS_TOKEN=$(kubectl exec --namespace="${NAMESPACE}" ${SYNAPSE_POD} -c synapse \
               -- bash -c "
               echo \"create the user ${MATRIX_USERNAME} if not exists\"
               register_new_matrix_user -u ${MATRIX_USERNAME} -a -c /config/homeserver.yaml -p ${MATRIX_PASSWORD} || true
-              
               RESULT=''
               ACCESS_TOKEN=''
               MATRIX_USER_ID=''
-              
               create_user() {
                   RESULT=\$(curl -X POST -d '{\"type\":\"m.login.password\", \"user\":\"$MATRIX_USERNAME\", \"password\":\"$MATRIX_PASSWORD\", \"device_id\":\"$DEVICE_ID\"}' http://localhost:8008/_matrix/client/v3/login)
                   ACCESS_TOKEN=\$(echo \$RESULT | sed -n 's/.*\"access_token\":\"\([^\"]*\)\".*/\1/p')
                   MATRIX_USER_ID=\$(echo \$RESULT | sed -n 's/.*\"user_id\":\"\([^\"]*\)\".*/\1/p')
-              
                   if [ -z "\${ACCESS_TOKEN}" ]
                   then
                       return 1
@@ -2231,7 +2088,6 @@ spec:
                       return 0
                   fi
               }
-              
               echo \"login as user ${MATRIX_USERNAME}\"
               until create_user
               do
@@ -2239,39 +2095,33 @@ spec:
                   echo 'waiting for user to login...'
                   sleep 5
               done
-              
               echo \"disable rate limiting for user ${MATRIX_USERNAME}\"
               until curl -X POST -f -d '{\"messages_per_second\": 0, \"burst_count\": 0}' -H \"Authorization: Bearer \$ACCESS_TOKEN\" -H 'Content-Type: application/json' http://localhost:8008/_synapse/admin/v1/users/\$MATRIX_USER_ID/override_ratelimit
               do
                   echo 'waiting for rate limit to be set...'
                   sleep 5
               done
-              
               echo "\n"
               echo \$ACCESS_TOKEN
               " | tee /dev/tty | tail -1)
-              
               kubectl delete secret --namespace="${NAMESPACE}" ${SECRET_NAME} --ignore-not-found
               kubectl create secret --namespace="${NAMESPACE}" generic ${SECRET_NAME} --from-literal=access_token=$ACCESS_TOKEN
-              
           volumeMounts:
-            - name: "tmp"
-              mountPath: "/tmp"
-      restartPolicy: "Never"
+            - name: tmp
+              mountPath: /tmp
+      restartPolicy: Never
       volumes:
-        - name: "tmp"
+        - name: tmp
           emptyDir:
-            medium: "Memory"
+            medium: Memory
   backoffLimit: 4
-...
-
 ---
 # Source: matrix-neodatefix-bot/templates/serviceaccount.yaml
-apiVersion: "v1"
-kind: "ServiceAccount"
+apiVersion: v1
+kind: ServiceAccount
 metadata:
   name: matrix-neodatefix-bot
-  namespace: "opendesk"
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: matrix-neodatefix-bot
     helm.sh/chart: matrix-neodatefix-bot-3.5.1
@@ -2279,13 +2129,12 @@ metadata:
     app.kubernetes.io/managed-by: Helm
   annotations:
 automountServiceAccountToken: false
-...
 ---
 # Source: matrix-neodatefix-bot/templates/configmap.yaml
-kind: "ConfigMap"
-apiVersion: "v1"
+kind: ConfigMap
+apiVersion: v1
 metadata:
-  name: "matrix-neodatefix-bot-config"
+  name: matrix-neodatefix-bot-config
   labels:
     app.kubernetes.io/name: matrix-neodatefix-bot
     helm.sh/chart: matrix-neodatefix-bot-3.5.1
@@ -2384,7 +2233,6 @@ data:
         ],
         "room_events": []
       }
-  
   default_widget_layouts.json: |
     [
       {
@@ -2457,10 +2305,10 @@ data:
     ]
 ---
 # Source: matrix-neodatefix-bot/templates/configmap.yaml
-kind: "ConfigMap"
-apiVersion: "v1"
+kind: ConfigMap
+apiVersion: v1
 metadata:
-  name: "matrix-neodatefix-bot-widget-images"
+  name: matrix-neodatefix-bot-widget-images
   labels:
     app.kubernetes.io/name: matrix-neodatefix-bot
     helm.sh/chart: matrix-neodatefix-bot-3.5.1
@@ -2471,13 +2319,12 @@ binaryData:
     iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACshmLzAAAEfklEQVRYCcVXfVBUVRT/7RNEiBAisAEZ/GKkqCSjBmjcmKzAqRnGBsYwzdSykGCQcESnBKfBQYXIzNYPItPNxmSicJDUxsJJ46OSj7FkREEjRGlZQViElaV37nCXfbvvwS6DdP54795zzv39znv3nXfPUQ2KgiE5ef5P7Ck7g3MXL6O9sxumYRN3GdNdUKngM9UdkcGz8c4iNV584hEzjooC6DMa8eauQ9D+XGU23MvBsqinUZC8HC7OzhCIaCLJiY8elDhJVCf+uDAYnfkJm9DlsUA/ZMTFIMjPF/TqxkNoKy+13kRO0Q+ov9pqhjyxJQWqxdmaweKKGqYk8orcDLi5TDY7jefA0NeP8PQccxCLw0Mh0AfHhZ78XpETB2ETBxfidqKvnQu9dmvRd/dgd2k5fqpvAD3B4zP8kbjoWYTOCrB2tWtuyUHcgmWqWe95XVMLQpK2YPNXJegy9MJJEHDwdAXC0rai8NRZuwitnSw5iNvJ2oHPe8Wnjc3WsFSp2/UBHg30Z6ZW3S0s2b4fa3ZrMf1BL0lO87WO3Fkayi04evZ3NN/UYc/apWZy8vPz9kRp5ruY4euNFfkH0HG7R2653TrFACobmhmIOiTIBszDzRV5q+LQdqsLW4+W2dgdUSgGwEF6+418KLnHiikUMXcmNMfL0dnTK7E5MlEMIDx4JsMp/vW8Il7SS1EwiAGWVNUq+oxmUAwg/pknMV3c7w1fFuNae4cszpIFYdi79jVEWxwuso4jKBUDmDLZGQdS32DpF715J/7R6W1gnCZNwpqYBfD19EB6YRHa9J02PqMpFAOghQvnBePgupVovN4u/kK3obKhSRHvWFUd5qdmo+bK34o+coYRA6AFr6qfQllWMrrv9EG9MZfVC3JAK56LwHV9F6I25YF+YPbKqAEQ0POhD6M6byPm+k9DouYw1hV8A5PJJOF4W9wK9ykumP2QDwJ8vNAonn4XW9okPnITuwKghXPEc4JOygTxjXxcchrJe49I8Lw93FGZuwGVeRkYMA0iLmcfItdvx2Vx+0YSuwMgEDrNtGkr8UpEKD4rK0dpdb0Ee5r4MWqOn8G8lA9R29wCfY8BCTsKYLw7IPGznDgUAC0UxANpX9Iy3O/qgqyvj1lioemGDin7j6C1Yzgbqhuv4n3t9xI/y4nDAdBiet1xkfPxW+M13DbcMeOFBQWyLTIrhgY7vj2JH2v+slaz+ZgCoJVe7m4MYMDqY9QkLmUHFTMOXajsfj3/C+i6hmsPbh9TAHRUf1dRy7LCcygQDjj1PlccTl/Nageuozul6Fufai1VbOxwAP3Gu3hB/DNeufEvshJetgEkRUTwLGTK2Kj2LDx1TrJGsK5QJFaZCa+g8lfHs5+UjAtTbYqPgTpkjo2ZsocLcQvUsXCh0nk0oTPil23rkRq7cERXyhZt2ip4iluiJMQtULvEhep2KjzHSwJ8HmApq4RH3BPSmLz3eRHKL1yyiYM1JtQbLv+ocML6Qh4F9YeHxC1iWUCNIikmSnhzSnysO+bE/0d7/h9DXZ8X7llkrwAAAABJRU5ErkJggg==
   poll.png: |-
     iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAX5JREFUeNpiZIACpR1dAkCqAIjjgViBgTbgARAvBOIJ9zzKPoAEGKGWgyxcD8QGDPQBF4A4EeiIC4xQn++no+XIjnBkggY7vS1ngNpZwASN84EC8Uw0THDEAAUmhgEGNHWAJq/YwDmgS8eTYYtVPBjzsbDT1wEgy4OldeChsMwsAqcjmGhpOXJUJCqY0N4B2CyHgWufXtHWAfgsL7uynWH3q9ukOwAUdPkq1gwynPwUWb726RXSEyEs8eQpWzFsBqZkXFmKEstxOgA95YJoEB/dEZRajtMBbuKqGNkG3RHUsBynA3a9vM3w6c9PDHGYI2YYBlDFcpwOuP75FUPUqRU4HeEqpkoVy/EmQnyOoJblBLMhsY4g13KiCiJCjqDEcqJLQlyOoNRykopidEdQw3JwsxzYKv5PigZQLuBj5WB48v0jVeoQFlI1gEKA2Jwx4E0yYh3wYADtf8AE7asNFFgIcsAEaDeJ3gBk5wQmaC81kc6OgHVOPzAOdPccIMAAntC9XAhEIcEAAAAASUVORK5CYII=
-...
 ---
 # Source: matrix-neodatefix-bot/templates/persistentvolumeclaim.yaml
-apiVersion: "v1"
-kind: "PersistentVolumeClaim"
+apiVersion: v1
+kind: PersistentVolumeClaim
 metadata:
-  name: "matrix-neodatefix-bot"
+  name: matrix-neodatefix-bot
   annotations:
   labels:
     app.kubernetes.io/name: matrix-neodatefix-bot
@@ -2485,20 +2332,18 @@ metadata:
     app.kubernetes.io/instance: matrix-neodatefix-bot
     app.kubernetes.io/managed-by: Helm
 spec:
-  accessModes:
-    - "ReadWriteOnce"
+  accessModes: [ReadWriteOnce]
   resources:
     requests:
-      storage: "1Gi"
+      storage: 1Gi
   storageClassName: openebs-hostpath
-...
 ---
 # Source: matrix-neodatefix-bot/templates/service.yaml
-apiVersion: "v1"
-kind: "Service"
+apiVersion: v1
+kind: Service
 metadata:
-  name: "matrix-neodatefix-bot"
-  namespace: "opendesk"
+  name: matrix-neodatefix-bot
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: matrix-neodatefix-bot
     helm.sh/chart: matrix-neodatefix-bot-3.5.1
@@ -2506,23 +2351,22 @@ metadata:
     app.kubernetes.io/managed-by: Helm
   annotations:
 spec:
-  type: "ClusterIP"
+  type: ClusterIP
   ports:
-    - name: "http"
+    - name: http
       port: 80
-      targetPort: "http"
-      protocol: "TCP"
+      targetPort: http
+      protocol: TCP
   selector:
     app.kubernetes.io/name: matrix-neodatefix-bot
     app.kubernetes.io/instance: matrix-neodatefix-bot
-...
 ---
 # Source: matrix-neodatefix-bot/templates/deployment.yaml
 apiVersion: apps/v1
-kind: "Deployment"
+kind: Deployment
 metadata:
   name: matrix-neodatefix-bot
-  namespace: "opendesk"
+  namespace: opendesk
   labels:
     app.kubernetes.io/name: matrix-neodatefix-bot
     helm.sh/chart: matrix-neodatefix-bot-3.5.1
@@ -2534,7 +2378,7 @@ spec:
     matchLabels:
       app.kubernetes.io/name: matrix-neodatefix-bot
       app.kubernetes.io/instance: matrix-neodatefix-bot
-  strategy: 
+  strategy:
     type: Recreate
   template:
     metadata:
@@ -2551,58 +2395,54 @@ spec:
         fsGroupChangePolicy: Always
       serviceAccountName: matrix-neodatefix-bot
       containers:
-        - name: "widget"
+        - name: widget
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
-              drop:
-              - ALL
+              drop: [ALL]
             privileged: false
             readOnlyRootFilesystem: true
             runAsGroup: 101
             runAsNonRoot: true
             runAsUser: 101
-            seLinuxOptions: null
+            seLinuxOptions:
             seccompProfile:
               type: RuntimeDefault
-          image: "registry.opencode.de/bmi/opendesk/components/supplier/nordeck/images-mirror/matrix-meetings-bot:2.8.3@sha256:5bc9b8d67b4ecb38b618e84d54e759ba57c0533706300154a60423dfcf86f7e1"
+          image: registry.opencode.de/bmi/opendesk/components/supplier/nordeck/images-mirror/matrix-meetings-bot:2.8.3@sha256:5bc9b8d67b4ecb38b618e84d54e759ba57c0533706300154a60423dfcf86f7e1
           imagePullPolicy: IfNotPresent
           env:
             - name: LOG_LEVEL
-              value: "info"
+              value: info
             - name: ENABLE_PRIVATE_ROOM_ERROR_SENDING
-              value: "false"
+              value: 'false'
             - name: STORAGE_FILE_DATA_PATH
-              value: "/app/storage"
-            - name: "ENABLE_CRYPTO"
-              value: "false"
+              value: /app/storage
+            - name: ENABLE_CRYPTO
+              value: 'false'
             - name: HOMESERVER_URL
-              value: "https://matrix.opendesk.kcm.obmondo.com"
+              value: https://matrix.opendesk.kcm.obmondo.com
             - name: MEETINGWIDGET_URL
-              value: "https://matrix-neodatefix-widget.opendesk.kcm.obmondo.com/#/?theme=$org.matrix.msc2873.client_theme&matrix_user_id=$matrix_user_id&matrix_display_name=$matrix_display_name&matrix_avatar_url=$matrix_avatar_url&matrix_room_id=$matrix_room_id&matrix_client_id=$org.matrix.msc2873.client_id&matrix_client_language=$org.matrix.msc2873.client_language&matrix_device_id=$org.matrix.msc3819.matrix_device_id&matrix_base_url=$org.matrix.msc4039.matrix_base_url"
+              value: https://matrix-neodatefix-widget.opendesk.kcm.obmondo.com/#/?theme=$org.matrix.msc2873.client_theme&matrix_user_id=$matrix_user_id&matrix_display_name=$matrix_display_name&matrix_avatar_url=$matrix_avatar_url&matrix_room_id=$matrix_room_id&matrix_client_id=$org.matrix.msc2873.client_id&matrix_client_language=$org.matrix.msc2873.client_language&matrix_device_id=$org.matrix.msc3819.matrix_device_id&matrix_base_url=$org.matrix.msc4039.matrix_base_url
             - name: MEETINGWIDGET_COCKPIT_URL
-              value: "https://matrix-neodatefix-widget.opendesk.kcm.obmondo.com/cockpit/#/?theme=$org.matrix.msc2873.client_theme&matrix_user_id=$matrix_user_id&matrix_display_name=$matrix_display_name&matrix_avatar_url=$matrix_avatar_url&matrix_room_id=$matrix_room_id&matrix_client_id=$org.matrix.msc2873.client_id&matrix_client_language=$org.matrix.msc2873.client_language&matrix_device_id=$org.matrix.msc3819.matrix_device_id&matrix_base_url=$org.matrix.msc4039.matrix_base_url"
+              value: https://matrix-neodatefix-widget.opendesk.kcm.obmondo.com/cockpit/#/?theme=$org.matrix.msc2873.client_theme&matrix_user_id=$matrix_user_id&matrix_display_name=$matrix_display_name&matrix_avatar_url=$matrix_avatar_url&matrix_room_id=$matrix_room_id&matrix_client_id=$org.matrix.msc2873.client_id&matrix_client_language=$org.matrix.msc2873.client_language&matrix_device_id=$org.matrix.msc3819.matrix_device_id&matrix_base_url=$org.matrix.msc4039.matrix_base_url
             - name: BREAKOUT_SESSION_WIDGET_URL
-              value: "https://matrix-neodatefix-widget.opendesk.kcm.obmondo.com/#/?theme=$org.matrix.msc2873.client_theme&matrix_user_id=$matrix_user_id&matrix_display_name=$matrix_display_name&matrix_avatar_url=$matrix_avatar_url&matrix_room_id=$matrix_room_id&matrix_client_id=$org.matrix.msc2873.client_id&matrix_client_language=$org.matrix.msc2873.client_language&matrix_device_id=$org.matrix.msc3819.matrix_device_id&matrix_base_url=$org.matrix.msc4039.matrix_base_url"
+              value: https://matrix-neodatefix-widget.opendesk.kcm.obmondo.com/#/?theme=$org.matrix.msc2873.client_theme&matrix_user_id=$matrix_user_id&matrix_display_name=$matrix_display_name&matrix_avatar_url=$matrix_avatar_url&matrix_room_id=$matrix_room_id&matrix_client_id=$org.matrix.msc2873.client_id&matrix_client_language=$org.matrix.msc2873.client_language&matrix_device_id=$org.matrix.msc3819.matrix_device_id&matrix_base_url=$org.matrix.msc4039.matrix_base_url
             - name: MATRIX_LINK_SHARE
-              value: "https://chat.opendesk.kcm.obmondo.com/#/room/"
+              value: https://chat.opendesk.kcm.obmondo.com/#/room/
             - name: MEETINGWIDGET_NAME
-              value: "Terminplaner"
+              value: Terminplaner
             - name: MEETINGWIDGET_COCKPIT_NAME
-              value: "Meeting Steuerung"
+              value: Meeting Steuerung
             - name: BREAKOUT_SESSION_WIDGET_NAME
-              value: "Breakoutsessions"
+              value: Breakoutsessions
             - name: CALENDAR_ROOM_NAME
-              value: "Terminplaner"
+              value: Terminplaner
             - name: BOT_DISPLAYNAME
-              value: "Meetings Bot"
+              value: Meetings Bot
             - name: OPEN_XCHANGE_MEETING_URL_TEMPLATE
-              value: "https://webmail.opendesk.kcm.obmondo.com/appsuite/#app=io.ox/calendar&id={{id}}&folder={{folder}}"
+              value: https://webmail.opendesk.kcm.obmondo.com/appsuite/#app=io.ox/calendar&id={{id}}&folder={{folder}}
             - name: ENABLE_GUEST_USER_POWER_LEVEL_CHANGE
-              value: "true"
-            # TODO: enable this if the room reaper is deployed
-            #- name: AUTO_DELETION_OFFSET
-            #  value: 60
+              value: 'true'
             - name: ACCESS_TOKEN
               valueFrom:
                 secretKeyRef:
@@ -2610,7 +2450,7 @@ spec:
                   name: matrix-neodatefix-bot-account
           livenessProbe:
             tcpSocket:
-              port: "http"
+              port: http
             initialDelaySeconds: 15
             periodSeconds: 20
             timeoutSeconds: 5
@@ -2618,7 +2458,7 @@ spec:
             successThreshold: 1
           readinessProbe:
             tcpSocket:
-              port: "http"
+              port: http
             initialDelaySeconds: 15
             periodSeconds: 15
             timeoutSeconds: 5
@@ -2636,36 +2476,32 @@ spec:
               cpu: 0.1
               memory: 128Mi
           volumeMounts:
-            - name: "data"
-              mountPath: "/app/storage"
-            - name: "config"
-              mountPath: "/app/conf"
-            - name: "widget-images"
-              mountPath: "/app/widget-images"
-
-            #- name: "tmp"
-            #  mountPath: "/tmp"
+            - name: data
+              mountPath: /app/storage
+            - name: config
+              mountPath: /app/conf
+            - name: widget-images
+              mountPath: /app/widget-images
       volumes:
-        - name: "data"
+        - name: data
           persistentVolumeClaim:
             claimName: matrix-neodatefix-bot
         - name: config
           configMap:
-            name: "matrix-neodatefix-bot-config"
+            name: matrix-neodatefix-bot-config
         - name: widget-images
           configMap:
-            name: "matrix-neodatefix-bot-widget-images"
-        - name: "tmp"
+            name: matrix-neodatefix-bot-widget-images
+        - name: tmp
           emptyDir:
-            medium: "Memory"
-            sizeLimit: "50Mi"
-...
+            medium: Memory
+            sizeLimit: 50Mi
 ---
 # Source: matrix-neodatefix-bot/templates/ingress.yaml
-apiVersion: "networking.k8s.io/v1"
-kind: "Ingress"
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: "matrix-neodatefix-bot"
+  name: matrix-neodatefix-bot
   labels:
     app.kubernetes.io/name: matrix-neodatefix-bot
     helm.sh/chart: matrix-neodatefix-bot-3.5.1
@@ -2673,13 +2509,12 @@ metadata:
     app.kubernetes.io/managed-by: Helm
   annotations:
 spec:
-  ingressClassName: "nginx"
+  ingressClassName: nginx
   tls:
-    - hosts:
-        - "matrix-neodatefix-bot.opendesk.kcm.obmondo.com"
-      secretName: "opendesk-certificates-tls"
+    - hosts: [matrix-neodatefix-bot.opendesk.kcm.obmondo.com]
+      secretName: opendesk-certificates-tls
   rules:
-    - host: "matrix-neodatefix-bot.opendesk.kcm.obmondo.com"
+    - host: matrix-neodatefix-bot.opendesk.kcm.obmondo.com
       http:
         paths:
           - path: /
@@ -2689,5 +2524,3 @@ spec:
                 name: matrix-neodatefix-bot
                 port:
                   name: http
-...
-
