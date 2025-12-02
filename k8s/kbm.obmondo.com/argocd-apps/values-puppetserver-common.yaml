@@ -22,17 +22,6 @@ puppetserver:
   storage:
     storageClass: openebs-zfspv-shared
 
-  r10k:
-    asSidecar: false
-    code:
-      viaHttps:
-        credentials:
-          existingSecret: puppet-git-secret
-    hiera:
-      viaHttps:
-        credentials:
-          existingSecret: hiera-git-secret
-
   hiera:
     eyaml:
       existingSecret: eyaml-keys
@@ -49,3 +38,13 @@ ipAllowedList:
   - "85.10.211.48"     # kam03
   - "138.201.82.121"   # kaw01
   - "138.201.224.126"  # kaw02
+
+g10k:
+  code:
+    viaHttps:
+      credentials:
+        existingSecret: puppet-git-secret
+  hiera:
+    viaHttps:
+      credentials:
+        existingSecret: hiera-git-secret
