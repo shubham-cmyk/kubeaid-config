@@ -19,12 +19,13 @@ puppetserver:
     persistence:
       code:
         size: 20Gi
-  r10k:
-    hiera:
-      extraRepository:
-        abbnoa6nlk:
-          remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-abbnoa6nlk.git
-          basedir: /etc/puppetlabs/code/hiera-data/abbnoa6nlk
+
+g10k:
+  hiera:
+    extraRepository:
+      abbnoa6nlk:
+        remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-abbnoa6nlk.git
+        basedir: /etc/puppetlabs/code/hiera-data/abbnoa6nlk
 
 postgresql:
   instance: 1

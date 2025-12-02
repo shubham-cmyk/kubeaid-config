@@ -41,10 +41,10 @@ ipAllowedList:
 
 g10k:
   code:
-    viaHttps:
+    viaSsh:
       credentials:
-        existingSecret: puppet-git-secret
+        existingSecret: g10k-git-secret
   hiera:
-    viaHttps:
+    viaSsh:
       credentials:
-        existingSecret: hiera-git-secret
+        existingSecret: g10k-git-secret
