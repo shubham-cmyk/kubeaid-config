@@ -9,8 +9,3 @@ ingress-nginx:
     config:
       annotations-risk-level: Critical
       strict-validate-path-type: false
-    # hostPort:
-    #   enabled: true
-    #   ports:
-    #     http: 80
-    #     https: 443
