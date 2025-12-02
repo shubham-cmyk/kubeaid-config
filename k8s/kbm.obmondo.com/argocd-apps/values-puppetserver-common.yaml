@@ -7,7 +7,7 @@ puppetserver:
       AUTOSIGN: /etc/puppetlabs/code/environments/master/puppet_autosign.rb
 
   puppetserver:
-    puppeturl: "https://gitea.obmondo.com/EnableIT/LinuxAid.git"
+    puppeturl: ssh://git@gitea.obmondo.com:2223/EnableIT/LinuxAid.git
     persistence:
       code:
         size: 20Gi

@@ -15,7 +15,7 @@ g10k:
   hiera:
     extraRepository:
       niwyocdmk2:
-        remote: https://gitea.obmondo.com/EnableIT/linuxaid-config-niwyocdmk2.git
+        remote: ssh://git@gitea.obmondo.com:2223/EnableIT/linuxaid-config-niwyocdmk2.git
         basedir: /etc/puppetlabs/code/hiera-data/niwyocdmk2
 
 postgresql:
