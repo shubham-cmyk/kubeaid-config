@@ -219,6 +219,17 @@ mattermost:
                 "DisableNonWordPrefix": true,
                 "DisableNonWordSuffix": false,
                 "Disabled": false,
+                "Name": "security",
+                "Pattern": "\\B@security\\b",
+                "Scope": null,
+                "Template": "Security Team (@md-asif @sidharth @smahar @franco-david)",
+                "WordMatch": false
+              },
+              {
+                "ProcessBotPosts": true,
+                "DisableNonWordPrefix": true,
+                "DisableNonWordSuffix": false,
+                "Disabled": false,
                 "Name": "outreach",
                 "Pattern": "\\B@outreach\\b",
                 "Scope": null,
