@@ -11,7 +11,6 @@ puppetserver:
     persistence:
       code:
         size: 20Gi
-        storageClass: ceph-filesystem
         accessModes:
           - ReadWriteMany
     masters:
@@ -20,7 +19,7 @@ puppetserver:
         AUTOSIGN_CLIENT_KEY: /etc/puppetlabs/puppet/ssl/private_keys/puppet.pem
 
   storage:
-    storageClass: openebs-zfspv-shared
+    storageClass: ceph-filesystem
 
   hiera:
     eyaml:
