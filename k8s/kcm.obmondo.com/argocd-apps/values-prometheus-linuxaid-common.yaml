@@ -13,6 +13,8 @@ alertmanager:
   version: v0.27.0
   ingress:
     enabled: false
+  secrets:
+    - puppet-agent-tls-auth
   config:
     global:
       resolve_timeout: 5m
