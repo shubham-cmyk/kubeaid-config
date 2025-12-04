@@ -1,25 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: puppetserver-enableit
+  name: prometheus-linuxaid-enableit
   namespace: argocd
 spec:
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: puppetserver-enableit
+    namespace: monitoring-enableit
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
-      path: argocd-helm-charts/openvox
+      path: argocd-helm-charts/prometheus-linuxaid
       targetRevision: HEAD
       helm:
         valueFiles:
-          - $values/k8s/kbm.obmondo.com/argocd-apps/values-puppetserver-common.yaml
-          - $values/k8s/kbm.obmondo.com/argocd-apps/values-puppetserver-enableit.yaml
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-prometheus-linuxaid-common.yaml
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-prometheus-linuxaid-enableit.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
   project: default
   syncPolicy:
     syncOptions:
-      - ApplyOutOfSyncOnly=true
       - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true

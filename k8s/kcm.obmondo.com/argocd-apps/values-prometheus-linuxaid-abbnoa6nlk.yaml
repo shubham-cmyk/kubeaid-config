@@ -1,0 +1,16 @@
+prometheus:
+  storage:
+    size: 120Gi
+    className: ceph-filesystem
+  resources:
+    limits:
+      memory: 8Gi
+    requests:
+      cpu: 250m
+      memory: 6Gi
+  externalUrl: /abbnoa6nlk
+  routePrefix: /abbnoa6nlk
+middleware:
+  jwt:
+    headers:
+      authentication: abbnoa6nlk
