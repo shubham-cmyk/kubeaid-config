@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: grafana-operator
+  namespace: argocd
+spec:
+  destination:
+    namespace: grafana-operator
+    server: 'https://kubernetes.default.svc'
+  source:
+    repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
+    path: argocd-helm-charts/grafana-operator
+    targetRevision: 20.1.1
+  project: kubeaid
+  syncPolicy:
+    automated: null
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
