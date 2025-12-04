@@ -1,0 +1,16 @@
+prometheus:
+  storage:
+    size: 100Gi
+    className: ceph-filesystem
+  resources:
+    limits:
+      memory: 2Gi
+    requests:
+      cpu: 70m
+      memory: 1Gi
+  externalUrl: /ebillet
+  routePrefix: /ebillet
+middleware:
+  jwt:
+    headers:
+      authentication: ebillet

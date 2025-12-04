@@ -1,0 +1,16 @@
+prometheus:
+  storage:
+    size: 130Gi
+    className: ceph-filesystem
+  resources:
+    limits:
+      memory: 6Gi
+    requests:
+      memory: 4Gi
+      cpu: 200m
+  externalUrl: /enableit
+  routePrefix: /enableit
+middleware:
+  jwt:
+    headers:
+      authentication: enableit

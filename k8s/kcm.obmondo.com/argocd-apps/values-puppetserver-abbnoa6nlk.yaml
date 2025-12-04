@@ -1,0 +1,39 @@
+customerid: abbnoa6nlk
+puppetserver:
+  puppetdb:
+    fqdns:
+      alternateServerNames: abbnoa6nlk.puppetdb.obmondo.com
+  puppetserver:
+    masters:
+      fqdns:
+        alternateServerNames: abbnoa6nlk.puppet.obmondo.com
+      extraEnv:
+        PUPPETDB_JAVA_ARGS: "-Xms512m -Xmx5196m -XX:+HeapDumpOnOutOfMemoryError"
+        PUPPETSERVER_MAX_ACTIVE_INSTANCES: 4
+      resources:
+        requests:
+          memory: 6144Mi
+          cpu: 3000m
+        limits:
+          memory: 6144Mi
+    persistence:
+      code:
+        size: 20Gi
+
+g10k:
+  hiera:
+    extraRepository:
+      abbnoa6nlk:
+        remote: ssh://git@gitea.obmondo.com:2223/EnableIT/linuxaid-config-abbnoa6nlk.git
+        basedir: /etc/puppetlabs/code/hiera-data/abbnoa6nlk
+
+postgresql:
+  instance: 1
+  size: 6Gi
+  recover: false
+  resources:
+    limits:
+      memory: 800Mi
+    requests:
+      memory: 600Mi
+      cpu: 200m
