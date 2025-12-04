@@ -13,8 +13,8 @@ spec:
       targetRevision: HEAD
       helm:
         valueFiles:
-          - $values/k8s/kbm.obmondo.com/argocd-apps/values-puppetserver-common.yaml
-          - $values/k8s/kbm.obmondo.com/argocd-apps/values-puppetserver-enableit.yaml
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-puppetserver-common.yaml
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-puppetserver-enableit.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
