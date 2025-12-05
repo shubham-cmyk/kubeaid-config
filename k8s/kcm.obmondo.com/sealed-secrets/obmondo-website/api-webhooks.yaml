@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: api-webhooks
+  namespace: obmondo-website
+spec:
+  encryptedData:
+    gitea: AgBhYv+vpDkKZUwPxjkIOgkzi2UE7aRpnVLuh7EVd/FU1SS3ts4OwxrUjPovXjVIqIOTN9rUT2J5odTh1ILcU++IgFnEpIowjbk5fCN9rTJcGORGsAV86KKtTqjmaut1C+WCV/X3WLzp02mmqwYzM2G3fS4TbXMRR/B45SzwNbRfQYuEjZY9aMhfQ9+tmJ0Ze213hjtwHL0Y7wdz7UkfkuLlUl+ZP3DOII5aRhLOkKSokNfOZghyf7g3XDQhsRm10eNSVvTaxZkZo6zM/gktNKKJcfAtJfwJZ/pUXK9n8HB6az+Nv5QmR0klZkEJQ3qEO8v6SJ4806o8hPkJjE/9yIvTOPDevEcAdlEgeEusb5Xk2GdePTK9jh/ZZ07iaxnjhPJxCsojxC0xpUJSZpIG3/d/ez+jJ0LpuQi7xPkOCg15EVgGMDlC7KUWPICtQNtfmWRFk3BCuDz6hP7qMuHvC/Re207/iQGqYwqKsdOkuO+fyncXz3eZthBfRDS8wejTBHcF9zpO7997nOgQpoU0nTQB9dbmjtNWFC1rByGPnGmM57+xcA4zq3gTbz8zXwCDIBadks/pn4137YXOHc06toQXLKNgP/Pdy6xCo3m/P805k5Z++FGgeqWbFfxibBAdRNJ9naWmdkQ0BayHTRmVPfn66Rz/EO9V7V91w7TiPYgsg/GNgzksBnDanZsYIMl/JY8zSBB0Kr8eroIsb2XZnt0CioyYvrrF+woD72J6kbY86Hs=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: api-webhooks
+      namespace: obmondo-website
+    type: Opaque
+
