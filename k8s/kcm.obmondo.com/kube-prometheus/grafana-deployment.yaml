@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/grafana-config: f990678df1236a7e73ed8e75ad6710eb
+        checksum/grafana-config: 34fabb63f34e0ec25ac7561b9e32c210
         checksum/grafana-dashboardproviders: 7bfe17dee1b0cf65e31b3bc6f3d41f50
         checksum/grafana-datasources: 0448db3deb16fa6f6f565d7107d176be
       labels:
@@ -29,7 +29,14 @@ spec:
     spec:
       automountServiceAccountToken: false
       containers:
-      - env: []
+      - env:
+        - name: GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION
+          value: "true"
+        - name: GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: grafana-keycloak-secret
+              name: kube-prometheus-stack-grafana
         image: grafana/grafana:12.0.1
         name: grafana
         ports:
@@ -72,17 +79,68 @@ spec:
         - mountPath: /grafana-dashboard-definitions/0/apiserver
           name: grafana-dashboard-apiserver
           readOnly: false
-        - mountPath: /grafana-dashboard-definitions/0/cert-manager
-          name: grafana-dashboard-cert-manager
+        - mountPath: /grafana-dashboard-definitions/0/ceph-ceph-cluster-advanced
+          name: grafana-dashboard-ceph-ceph-cluster-advanced
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/ceph-ceph-nvmeof-performance
+          name: grafana-dashboard-ceph-ceph-nvmeof-performance
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/ceph-ceph-nvmeof
+          name: grafana-dashboard-ceph-ceph-nvmeof
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/ceph-cephfs-overview
+          name: grafana-dashboard-ceph-cephfs-overview
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/ceph-cephfsdashboard
+          name: grafana-dashboard-ceph-cephfsdashboard
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/ceph-host-details
+          name: grafana-dashboard-ceph-host-details
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/ceph-hosts-overview
+          name: grafana-dashboard-ceph-hosts-overview
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/ceph-multi-cluster-overview
+          name: grafana-dashboard-ceph-multi-cluster-overview
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/ceph-osd-device-details
+          name: grafana-dashboard-ceph-osd-device-details
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/ceph-osds-overview
+          name: grafana-dashboard-ceph-osds-overview
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/ceph-pool-detail
+          name: grafana-dashboard-ceph-pool-detail
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/ceph-pool-overview
+          name: grafana-dashboard-ceph-pool-overview
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/ceph-radosgw-detail
+          name: grafana-dashboard-ceph-radosgw-detail
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/ceph-radosgw-overview
+          name: grafana-dashboard-ceph-radosgw-overview
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/ceph-radosgw-sync-overview
+          name: grafana-dashboard-ceph-radosgw-sync-overview
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/ceph-rbd-details
+          name: grafana-dashboard-ceph-rbd-details
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/ceph-rbd-overview
+          name: grafana-dashboard-ceph-rbd-overview
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/ceph-rgw-s3-analytics
+          name: grafana-dashboard-ceph-rgw-s3-analytics
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/ceph-smb-overview
+          name: grafana-dashboard-ceph-smb-overview
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/0/cluster-total
           name: grafana-dashboard-cluster-total
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/0/controller-manager
           name: grafana-dashboard-controller-manager
-          readOnly: false
-        - mountPath: /grafana-dashboard-definitions/0/etcd
-          name: grafana-dashboard-etcd
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/0/grafana-overview
           name: grafana-dashboard-grafana-overview
@@ -162,11 +220,14 @@ spec:
         - mountPath: /grafana-dashboard-definitions/0/proxy
           name: grafana-dashboard-proxy
           readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/rabbitmq-erlang-memory-allocators
+          name: grafana-dashboard-rabbitmq-erlang-memory-allocators
+          readOnly: false
+        - mountPath: /grafana-dashboard-definitions/0/rabbitmq-rabbitmq-overview
+          name: grafana-dashboard-rabbitmq-rabbitmq-overview
+          readOnly: false
         - mountPath: /grafana-dashboard-definitions/0/scheduler
           name: grafana-dashboard-scheduler
-          readOnly: false
-        - mountPath: /grafana-dashboard-definitions/0/sealedsecrets
-          name: grafana-dashboard-sealedsecrets
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/0/workload-total
           name: grafana-dashboard-workload-total
@@ -201,17 +262,68 @@ spec:
           name: grafana-dashboard-apiserver
         name: grafana-dashboard-apiserver
       - configMap:
-          name: grafana-dashboard-cert-manager
-        name: grafana-dashboard-cert-manager
+          name: grafana-dashboard-ceph-ceph-cluster-advanced
+        name: grafana-dashboard-ceph-ceph-cluster-advanced
+      - configMap:
+          name: grafana-dashboard-ceph-ceph-nvmeof-performance
+        name: grafana-dashboard-ceph-ceph-nvmeof-performance
+      - configMap:
+          name: grafana-dashboard-ceph-ceph-nvmeof
+        name: grafana-dashboard-ceph-ceph-nvmeof
+      - configMap:
+          name: grafana-dashboard-ceph-cephfs-overview
+        name: grafana-dashboard-ceph-cephfs-overview
+      - configMap:
+          name: grafana-dashboard-ceph-cephfsdashboard
+        name: grafana-dashboard-ceph-cephfsdashboard
+      - configMap:
+          name: grafana-dashboard-ceph-host-details
+        name: grafana-dashboard-ceph-host-details
+      - configMap:
+          name: grafana-dashboard-ceph-hosts-overview
+        name: grafana-dashboard-ceph-hosts-overview
+      - configMap:
+          name: grafana-dashboard-ceph-multi-cluster-overview
+        name: grafana-dashboard-ceph-multi-cluster-overview
+      - configMap:
+          name: grafana-dashboard-ceph-osd-device-details
+        name: grafana-dashboard-ceph-osd-device-details
+      - configMap:
+          name: grafana-dashboard-ceph-osds-overview
+        name: grafana-dashboard-ceph-osds-overview
+      - configMap:
+          name: grafana-dashboard-ceph-pool-detail
+        name: grafana-dashboard-ceph-pool-detail
+      - configMap:
+          name: grafana-dashboard-ceph-pool-overview
+        name: grafana-dashboard-ceph-pool-overview
+      - configMap:
+          name: grafana-dashboard-ceph-radosgw-detail
+        name: grafana-dashboard-ceph-radosgw-detail
+      - configMap:
+          name: grafana-dashboard-ceph-radosgw-overview
+        name: grafana-dashboard-ceph-radosgw-overview
+      - configMap:
+          name: grafana-dashboard-ceph-radosgw-sync-overview
+        name: grafana-dashboard-ceph-radosgw-sync-overview
+      - configMap:
+          name: grafana-dashboard-ceph-rbd-details
+        name: grafana-dashboard-ceph-rbd-details
+      - configMap:
+          name: grafana-dashboard-ceph-rbd-overview
+        name: grafana-dashboard-ceph-rbd-overview
+      - configMap:
+          name: grafana-dashboard-ceph-rgw-s3-analytics
+        name: grafana-dashboard-ceph-rgw-s3-analytics
+      - configMap:
+          name: grafana-dashboard-ceph-smb-overview
+        name: grafana-dashboard-ceph-smb-overview
       - configMap:
           name: grafana-dashboard-cluster-total
         name: grafana-dashboard-cluster-total
       - configMap:
           name: grafana-dashboard-controller-manager
         name: grafana-dashboard-controller-manager
-      - configMap:
-          name: grafana-dashboard-etcd
-        name: grafana-dashboard-etcd
       - configMap:
           name: grafana-dashboard-grafana-overview
         name: grafana-dashboard-grafana-overview
@@ -291,11 +403,14 @@ spec:
           name: grafana-dashboard-proxy
         name: grafana-dashboard-proxy
       - configMap:
+          name: grafana-dashboard-rabbitmq-erlang-memory-allocators
+        name: grafana-dashboard-rabbitmq-erlang-memory-allocators
+      - configMap:
+          name: grafana-dashboard-rabbitmq-rabbitmq-overview
+        name: grafana-dashboard-rabbitmq-rabbitmq-overview
+      - configMap:
           name: grafana-dashboard-scheduler
         name: grafana-dashboard-scheduler
-      - configMap:
-          name: grafana-dashboard-sealedsecrets
-        name: grafana-dashboard-sealedsecrets
       - configMap:
           name: grafana-dashboard-workload-total
         name: grafana-dashboard-workload-total
