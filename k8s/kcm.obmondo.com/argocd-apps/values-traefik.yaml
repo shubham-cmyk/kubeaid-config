@@ -21,6 +21,17 @@ traefik:
           - 7ejidqmfi9-puppetca-cert
           - abbnoa6nlk-puppetca-cert
           - niwyocdmk2-puppetca-cert
+    prometheus-puppet-agent-tls-auth:
+      maxVersion: VersionTLS13
+      minVersion: VersionTLS12
+      clientAuth:
+        clientAuthType: RequireAndVerifyClientCert
+        secretNames:
+          - puppetca-cert
+          - enableit-puppetca-cert
+          - 7ejidqmfi9-puppetca-cert
+          - abbnoa6nlk-puppetca-cert
+          - niwyocdmk2-puppetca-cert
   tlsStore:
     default:
       defaultCertificate:
