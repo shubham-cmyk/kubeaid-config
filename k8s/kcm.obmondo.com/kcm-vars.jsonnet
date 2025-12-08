@@ -13,7 +13,6 @@
   enable_custom_metrics_apiservice: true,
   addMixins: {
     velero: true,
-    rabbitmq: true,
     monitoring: true,
     smartmon: true,
     zfs: true,
