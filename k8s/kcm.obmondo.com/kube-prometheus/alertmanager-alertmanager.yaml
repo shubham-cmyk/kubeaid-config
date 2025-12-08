@@ -23,14 +23,24 @@ spec:
   replicas: 1
   resources:
     limits:
-      memory: 50Mi
+      memory: 200Mi
     requests:
       cpu: 10m
       memory: 20Mi
-  secrets: []
+  secrets:
+  - obmondo-clientcert
+  - alertmanager-main
   securityContext:
     fsGroup: 2000
     runAsNonRoot: true
     runAsUser: 1000
   serviceAccountName: alertmanager-main
+  storage:
+    volumeClaimTemplate:
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
   version: 0.28.1
