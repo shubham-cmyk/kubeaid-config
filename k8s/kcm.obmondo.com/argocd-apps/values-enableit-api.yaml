@@ -191,7 +191,7 @@ ingress:
           pathType: Prefix
           servicePort: 8080
         - path: /api/v2/subscriptions
-          pathType: Exact
+          pathType: Prefix
           servicePort: 8080
         - path: /api/orders
           pathType: Prefix
