@@ -40,13 +40,10 @@
   },
   prometheus_scrape_namespaces: [
     'rook-ceph',
-    'logging',
-    'velero',
     'monitoring',
     'obmondo',
     'zfs-localpv',
     'obmondo-website',
-    'finance',
   ],
   prometheus_scrape_default_namespaces: [
     "argocd",

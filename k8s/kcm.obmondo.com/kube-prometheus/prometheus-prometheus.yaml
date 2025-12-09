@@ -48,8 +48,6 @@ spec:
       values:
       - argocd
       - cert-manager
-      - finance
-      - logging
       - monitoring
       - obmondo
       - obmondo-website
@@ -57,7 +55,6 @@ spec:
       - sealed-secrets
       - system
       - traefik
-      - velero
       - zfs-localpv
   ruleSelector: {}
   scrapeConfigNamespaceSelector: {}
