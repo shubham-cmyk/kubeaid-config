@@ -8,6 +8,8 @@ puppetserver:
 
   puppetserver:
     puppeturl: ssh://git@gitea.obmondo.com:2223/EnableIT/LinuxAid.git
+    securityContext:
+      fsGroupChangePolicy: "OnRootMismatch"
     persistence:
       code:
         size: 20Gi
