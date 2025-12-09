@@ -4,13 +4,6 @@ schedule:
   includedNamespaces:
     - "relate"
     - "monitoring"
-    - "monitoring-7ejidqmfi9"
-    - "monitoring-abbnoa6nlk"
-    - "monitoring-ebillet"
-    - "monitoring-enableit"
-    - "puppetserver-7ejidqmfi9"
-    - "puppetserver-abbnoa6nlk"
-    - "puppetserver-enableit"
     - "ciso-assistant"
   daily: true
   dailyTTL: 72h
