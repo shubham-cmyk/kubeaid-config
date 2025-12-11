@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  tag: enableit-v3.7.1
+  tag: enableit-v4.4.0
   pullPolicy: Always
 ingress:
   hosts:
