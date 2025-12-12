@@ -11,7 +11,7 @@ imagePullSecrets:
 
 mode: prod
 # Specifies the level of logs in prod; info, warn or error
-log_level: info
+log_level: error
 
 ingress:
   enabled: true
