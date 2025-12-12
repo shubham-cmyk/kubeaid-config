@@ -23,7 +23,7 @@ rook-ceph-cluster:
 
   cephClusterSpec:
     storage:
-      deviceFilter: "^(sd[ab]4|nvme[01]n1p6)$"
+      deviceFilter: "^sd[ab]4$"
     resources:
       mgr:
         limits:
@@ -64,7 +64,7 @@ rook-ceph-cluster:
           activeStandby: true
           resources:
             limits:
-              memory: "2000Mi"
+              memory: "3000Mi"
             requests:
               cpu: "200m"
               memory: "1000Mi"
