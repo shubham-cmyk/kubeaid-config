@@ -17,7 +17,7 @@ spec:
       targetRevision: HEAD
       helm:
         valueFiles:
-          - $values/k8s/kcm/argocd-apps/values-capi-cluster.yaml
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-capi-cluster.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
       targetRevision: HEAD
       ref: values
