@@ -16,7 +16,7 @@ spec:
         valueFiles:
           - $values/k8s/kcm.obmondo.com/argocd-apps/values-enableit-api.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
-      targetRevision: migrate-enableit-api-kcm
+      targetRevision: HEAD
       ref: values
   syncPolicy:
     syncOptions:
