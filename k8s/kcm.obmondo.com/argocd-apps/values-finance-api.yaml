@@ -49,8 +49,8 @@ postgresql:
       disk: nvme
 
 keycloak:
-  url: "https://keycloak-staging.obmondo.com/auth/realms"
-  realm: "finance"  # TODO: Verify this realm exists in KCM Keycloak
+  url: "https://keycloak-staging.kcm.obmondo.com/auth/realms"
+  realm: "finance"
   client_id: "finance-api"
   owner_role: "finance-admin"
   client_secret:
