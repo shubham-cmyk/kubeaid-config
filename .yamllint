@@ -3,9 +3,10 @@ extends: default
 
 ignore: |2-
   build/kube-prometheus/libraries
-  k8s/kbm.obmondo.com/argocd-helm-charts/**/charts
+  k8s/kbm.obmondo.com/argocd-helm-charts/**/charts # Ignore because it contains large helmfile generated templates
   **/templates/**
   .git/**
+  k8s/kcm.obmondo.com/opendesk/
 
 rules:
   line-length: disable

@@ -1,0 +1,15 @@
+---
+coturn:
+  image:
+    registry: docker.io # default values file has a typo dockeri.io
+  coturn:
+    externalIP: 65.108.24.157
+    minPort: 49152
+    maxPort: 49252  # 100 ports for roughly 50 concurrent users i.e 2 ports per user. Default has 16,384 ports which is overkill for our usecase.
+    realm: turn.kcm.obmondo.com
+    authentication:
+      secret: OhuBF8ETFEqEUwb2bqIZI3rfGo0Mq2
+  certificate:
+    request:
+      issuerRef:
+        name: letsencrypt

@@ -12,4 +12,10 @@ persistence:
     RWX: openebs-hostpath
     RWO: openebs-hostpath
 postfix:
-  hostname: webmail.opendesk.kcm.obmondo.com
+  hostname: "webmail.opendesk.kcm.obmondo.com"
+turn:
+  credentials: OhuBF8ETFEqEUwb2bqIZI3rfGo0Mq2
+  server:
+    host: turn.kcm.obmondo.com
+  tls:
+    host: turn.kcm.obmondo.com
