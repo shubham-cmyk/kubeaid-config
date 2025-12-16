@@ -215,6 +215,9 @@ ingress:
         - path: /api/leave
           pathType: Prefix
           servicePort: 8080
+        - path: /api/cluster/customer
+          pathType: Prefix
+          servicePort: 8080
 
   tls:
     - secretName: api-beta-obmondo-com-tls
