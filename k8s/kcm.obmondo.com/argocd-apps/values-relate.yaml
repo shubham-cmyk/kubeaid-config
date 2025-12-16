@@ -39,11 +39,11 @@ relate:
           key: publickey
 
   nginx:
-    serverName: relate.kcm.obmondo.com
+    serverName: relate.obmondo.com
     rootDirectory: /var/www/relate
   ingress:
     enabled: true
-    hostname: relate.kcm.obmondo.com
+    hostname: relate.obmondo.com
     path: /
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt
@@ -55,4 +55,7 @@ relate:
       destinationPath: "s3://relate-atat"
       endpointURL: "https://s3.obmondo.com"
       cloud: "aws"
-
+      wal:
+        encryption: "AES256"
+      data:
+        encryption: "AES256"
