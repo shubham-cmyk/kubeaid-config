@@ -2106,28 +2106,28 @@ spec:
             - configMapRef:
                 name: jitsi-prosody-common
           env:
-            - name: AUTH_TYPE
-              value: hybrid_matrix_token
-            - name: JWT_APP_ID
-              value: meet.opendesk.kcm.obmondo.com
-            - name: JWT_APP_SECRET
-              value: bcf362546628d7392f707eda7333e7d75f05a1bc
-            - name: MATRIX_UVS_SYNC_POWER_LEVELS
-              value: 'true'
-            - name: MATRIX_UVS_URL
-              value: http://opendesk-matrix-user-verification-service.opendesk.svc.cluster.local
-            - name: TURNS_HOST
-              value: ''
-            - name: TURNS_PORT
-              value: '5349'
-            - name: TURN_HOST
-              value: ''
-            - name: TURN_PORT
-              value: '3478'
-            - name: TURN_TRANSPORT
-              value: udp
-            - name: TURN_CREDENTIALS
-              value: ''
+          - name: AUTH_TYPE
+            value: hybrid_matrix_token
+          - name: JWT_APP_ID
+            value: meet.opendesk.kcm.obmondo.com
+          - name: JWT_APP_SECRET
+            value: bcf362546628d7392f707eda7333e7d75f05a1bc
+          - name: MATRIX_UVS_SYNC_POWER_LEVELS
+            value: "true"
+          - name: MATRIX_UVS_URL
+            value: http://opendesk-matrix-user-verification-service.opendesk.svc.cluster.local
+          - name: TURNS_HOST
+            value: turn.kcm.obmondo.com
+          - name: TURNS_PORT
+            value: "5349"
+          - name: TURN_HOST
+            value: turn.kcm.obmondo.com
+          - name: TURN_PORT
+            value: "3478"
+          - name: TURN_TRANSPORT
+            value: udp
+          - name: TURN_CREDENTIALS
+            value: OhuBF8ETFEqEUwb2bqIZI3rfGo0Mq2
           ports:
             - name: xmpp-c2s
               containerPort: 5222

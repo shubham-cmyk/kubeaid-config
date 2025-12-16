@@ -249,7 +249,7 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/configmap: 674889deb1602bc91211bd3ab008a0927b4baae08760a025858f9ddf2377f2b2
+        checksum/configmap: db394c9a623b9a38ed0e5061aef450d00caa424dd5a477c4524e77ff452d1800
       labels:
         app.kubernetes.io/name: opendesk-element
         helm.sh/chart: opendesk-element-6.1.3
@@ -513,6 +513,7 @@ data:
     access-control-allow-methods: GET, POST, PUT, DELETE, OPTIONS
     access-control-allow-headers: Origin, X-Requested-With, Content-Type,
     Accept, Authorization
+
     <html><body><h1>429 Too Many Requests</h1>
     No server is available to handle this request.
     </body></html>
@@ -1045,6 +1046,8 @@ data:
       enabled: true
       localdb_enabled: true
     turn_uris:
+      - turn:turn.kcm.obmondo.com:5349?transport=udp
+    turn_shared_secret: "OhuBF8ETFEqEUwb2bqIZI3rfGo0Mq2"
     turn_username: ""
     turn_password: ""
     turn_user_lifetime: 1h
@@ -1176,7 +1179,7 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/configmap: ffffd5980b24f2b801ccf573ade42181611b232b3632bbae5ad0f63acec90b0e
+        checksum/configmap: fa998088407f80f5304e362881490f6fa1a28a90ae4894a2a7158d1a825640f6
         checksum/secret: 7fde546a57275e70a428e9a04171692fe8a172c736661844bf3ec8657162ac56
       labels:
         app.kubernetes.io/name: opendesk-synapse
@@ -2383,7 +2386,7 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/configmap: 58b20f2ee1fc963dfa0d56e00382a38533bd989a9b4394ba23bb54c550f744cd
+        checksum/configmap: 24a46ecb103ac88287c4a9ca9348b1cc0e1a35127592b0cbde4ef51d7e705324
       labels:
         app.kubernetes.io/name: matrix-neodatefix-bot
         helm.sh/chart: matrix-neodatefix-bot-3.5.1
