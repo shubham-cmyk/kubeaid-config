@@ -1,0 +1,152 @@
+namespace: finance
+replicaCount: 1
+image:
+    repository: harbor.obmondo.com/obmondo/finance-api
+    tag: v0.6.9
+    pullPolicy: Always
+
+imagePullSecrets:
+  - name: harbor-registry-secret
+
+mode: beta
+# Specifies the level of logs in prod; info, warn or error
+log_level: info
+
+ingress:
+  enabled: true
+  # className: traefik-cert-manager
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+    kubernetes.io/ingress.class: traefik-cert-manager
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.tls.options: traefik-api-puppet-agent-tls-auth@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-cn-header-enableit-api@kubernetescrd
+  hosts:
+    - host: finance-api-beta.obmondo.com
+      paths:
+        - path: /api/v1/invoice
+          pathType: Prefix
+        - path: /api/v1/employees
+          pathType: Prefix
+        - path: /api/v1/ping
+          pathType: Prefix
+        - path: /api/v1/auth
+          pathType: Prefix
+        - path: /api/v1/expenses
+          pathType: Prefix
+        - path: /swagger/go
+          pathType: Prefix
+  tls:
+    - secretName: finance-api-beta-obmondo-com-tls
+      hosts:
+        - finance-api-beta.obmondo.com
+
+postgresql:
+  storageClass: rook-ceph-block
+  affinity:
+    nodeSelector:
+      disk: nvme
+
+keycloak:
+  url: "https://keycloak-staging.kcm.obmondo.com/auth/realms"
+  realm: "finance"
+  client_id: "finance-api"
+  owner_role: "finance-admin"
+  client_secret:
+    name: finance-api-keycloak-secret
+    key: client_secret
+  redirect_uri: "https://beta-finance.obmondo.com/payments"
+
+go_api:
+  url: https://api-beta.obmondo.com
+
+# TODO: Verify Mattermost team exists in KCM
+chat:
+  host: "https://mattermost-staging.obmondo.com"  # TODO: Update to KCM Mattermost if different
+  token:
+    name: chat-token
+    key: token
+  team_name: "obmondo-kbm"  # TODO: Update to KCM team name
+
+tls:
+  secret: finance-api-beta-service
+
+service_cert:
+  secret: finance-api-beta-service
+  path: /app/tls/certificates/
+  cert_path: /app/tls/certificates/tls.crt
+  key_path: /app/tls/certificates/tls.key
+
+redis:
+  replicas: 3
+  storage: 4Gi
+  url: redis://redis-cluster-finance-api-leader:6379
+
+persistence:
+  enabled: true
+  invoices:
+    size: 2Gi
+    accessMode: ReadWriteMany
+    storageClass: ceph-filesystem
+
+mail:
+  from: "info@enableit.dk"
+  host: "mail.system"
+  port: 587
+  to: "klavs@obmondo.com"
+
+serviceMonitor:
+  enabled: true
+  scrapeTimeout: "10s"
+  port: http
+  interval: 10s
+  additionalLabels: {}
+
+prometheusRule:
+  enabled: true
+  # Financial Metrics
+  vatSeverity: critical
+  invoiceAmountThreshold: 1000000
+  invoiceSeverity: warning
+
+  # API Performance
+  errorRateThreshold: 0.05
+  errorRateSeverity: critical
+  latencyThreshold: 2
+  latencySeverity: warning
+  concurrentRequestsThreshold: 100
+  concurrentRequestsSeverity: warning
+
+  # Database Performance
+  dbQueryThreshold: 1
+  dbQuerySeverity: warning
+  dbErrorThreshold: 0.05
+  dbErrorSeverity: warning
+  dbConnectionSeverity: critical
+
+  # Authentication
+  authLatencyThreshold: 1
+  authLatencySeverity: warning
+  authFailureThreshold: 5
+  authFailureSeverity: critical
+  certAuthFailureThreshold: 5
+  certAuthFailureSeverity: critical
+
+  # Cache Performance
+  cacheHitRatioThreshold: 0.7
+  cacheHitRatioSeverity: warning
+
+  # Invoice Processing
+  invoiceProcessingThreshold: 30
+  invoiceProcessingSeverity: warning
+  invoiceGenerationFailureThreshold: 0.1
+  invoiceGenerationFailureSeverity: critical
+
+  # Cron Jobs
+  cronJobTimeoutThreshold: 3600
+  cronJobTimeoutSeverity: critical
+  cronJobDurationThreshold: 300
+  cronJobDurationSeverity: warning
+  cronJobFailureThreshold: 0
+  cronJobFailureSeverity: critical
