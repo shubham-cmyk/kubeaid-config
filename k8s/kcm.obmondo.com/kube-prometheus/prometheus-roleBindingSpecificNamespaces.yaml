@@ -200,7 +200,7 @@ items:
       app.kubernetes.io/part-of: kube-prometheus
       app.kubernetes.io/version: 3.4.0
     name: prometheus-k8s
-    namespace: system
+    namespace: traefik
   roleRef:
     apiGroup: rbac.authorization.k8s.io
     kind: Role
@@ -219,7 +219,7 @@ items:
       app.kubernetes.io/part-of: kube-prometheus
       app.kubernetes.io/version: 3.4.0
     name: prometheus-k8s
-    namespace: traefik
+    namespace: velero
   roleRef:
     apiGroup: rbac.authorization.k8s.io
     kind: Role

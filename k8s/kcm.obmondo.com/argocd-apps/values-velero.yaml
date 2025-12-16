@@ -1,0 +1,53 @@
+networkpolicies: false
+LoadCustomCRDs: true
+schedule:
+  includedNamespaces:
+    - "monitoring"
+    - "obmondo"
+    - "obmondo-website"
+    - "finance"
+    - "relate"
+    - "argocd"
+  daily: true
+  dailyTTL: 72h
+  weekly: true
+  weeklyTTL: 168h
+  sixhourly: false
+velero:
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+  configuration:
+    backupStorageLocation:
+    - name: default
+      provider: aws
+      bucket: velero-kcm-obmondo-com-bantha
+      config:
+        region: "eu-west-1"
+        s3ForcePathStyle: true
+        s3Url: https://s3.obmondo.com
+    volumeSnapshotLocation:
+    - name: default
+      provider: aws
+      config:
+        region: "eu-west-1"
+        profile: "default"
+    features: EnableCSI
+    defaultBackupTTL: 72h
+  initContainers:
+  - name: velero-velero-plugin-for-aws
+    image: 'velero/velero-plugin-for-aws:v1.5.1'
+    imagePullPolicy: IfNotPresent
+    volumeMounts:
+    - mountPath: /target
+      name: plugins
+  credentials:
+    useSecret: true
+    name: cloud-credentials
+    existingSecret: cloud-credentials
+volumeSnapshotClasses:
+  - name: zfs-disk-snapshotclass
+    driver: zfs.csi.openebs.io
+    deletionPolicy: Delete
+

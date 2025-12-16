@@ -44,6 +44,7 @@
     'obmondo',
     'zfs-localpv',
     'obmondo-website',
+    'velero',
   ],
   prometheus_scrape_default_namespaces: [
     "argocd",
