@@ -1,0 +1,14 @@
+replicaCount: 1
+image:
+  tag: beta-enableit-v4.4.1
+  pullPolicy: Always
+ingress:
+  hosts:
+    - host: enableit.kcm.obmondo.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: enableit-kcm-obmondo-com-tls
+      hosts:
+        - enableit.kcm.obmondo.com
