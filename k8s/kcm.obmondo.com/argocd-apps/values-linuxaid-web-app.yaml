@@ -1,17 +1,19 @@
 replicaCount: 1
 image:
-  tag: beta-core-v4.4.1
+  tag: beta-linuxaid-v4.4.1
   pullPolicy: Always
+middleware: true
 ingress:
   hosts:
-    - host: core-ui.kbm.obmondo.com
+    - host: beta.linuxaid.io
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls:
-    - secretName: beta-core-ui-com-tls
+    - secretName: beta-linuxaid-io-tls
       hosts:
-        - core-ui.kbm.obmondo.com
+        - beta.linuxaid.io
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt
     kubernetes.io/ingress.class: traefik-cert-manager
+    traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-linuxaid-web-app-redirect@kubernetescrd
