@@ -1,4 +1,13 @@
 prometheus:
+  server: ebillet.prometheus.obmondo.com
+  ingress:
+    enabled: true
+    domain: ebillet.prometheus.obmondo.com
+    ingressClassName: traefik-cert-manager
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
+      traefik.ingress.kubernetes.io/router.tls: "true"
+      traefik.ingress.kubernetes.io/router.tls.options: traefik-prometheus-puppet-agent-tls-auth@kubernetescrd
   storage:
     size: 100Gi
     className: ceph-filesystem
@@ -8,9 +17,6 @@ prometheus:
     requests:
       cpu: 70m
       memory: 1Gi
-  externalUrl: /ebillet
-  routePrefix: /ebillet
-middleware:
-  jwt:
-    headers:
-      authentication: ebillet
+
+grafana:
+  server: ebillet.graphs.obmondo.com

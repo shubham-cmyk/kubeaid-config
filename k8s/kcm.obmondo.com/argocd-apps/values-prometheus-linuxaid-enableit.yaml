@@ -1,4 +1,13 @@
 prometheus:
+  server: enableit.prometheus.obmondo.com
+  ingress:
+    enabled: true
+    domain: enableit.prometheus.obmondo.com
+    ingressClassName: traefik-cert-manager
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
+      traefik.ingress.kubernetes.io/router.tls: "true"
+      traefik.ingress.kubernetes.io/router.tls.options: traefik-prometheus-puppet-agent-tls-auth@kubernetescrd
   storage:
     size: 130Gi
     className: ceph-filesystem
@@ -6,11 +15,8 @@ prometheus:
     limits:
       memory: 6Gi
     requests:
-      memory: 4Gi
       cpu: 200m
-  externalUrl: /enableit
-  routePrefix: /enableit
-middleware:
-  jwt:
-    headers:
-      authentication: enableit
+      memory: 4Gi
+
+grafana:
+  server: enableit.graphs.obmondo.com

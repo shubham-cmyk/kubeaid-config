@@ -1,14 +1,3 @@
-prometheus:
-  server: prometheus.obmondo.com
-  ingress:
-    annotations:
-      traefik.ingress.kubernetes.io/router.tls: "true"
-      traefik.ingress.kubernetes.io/router.tls.domains.0.main: prometheus.obmondo.com
-      traefik.ingress.kubernetes.io/router.tls.options: traefik-prometheus-puppet-agent-tls-auth@kubernetescrd
-
-grafana:
-  server: graphs.obmondo.com
-
 alertmanager:
   version: v0.27.0
   ingress:
