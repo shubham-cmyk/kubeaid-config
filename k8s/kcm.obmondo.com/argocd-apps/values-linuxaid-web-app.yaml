@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  tag: beta-linuxaid-v4.4.1
+  tag: beta-linuxaid-v4.4.4
   pullPolicy: Always
 middleware: true
 ingress:
