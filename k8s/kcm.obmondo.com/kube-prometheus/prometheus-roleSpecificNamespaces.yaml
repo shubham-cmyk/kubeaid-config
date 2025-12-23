@@ -390,7 +390,7 @@ items:
       app.kubernetes.io/part-of: kube-prometheus
       app.kubernetes.io/version: 3.4.0
     name: prometheus-k8s
-    namespace: system
+    namespace: traefik
   rules:
   - apiGroups:
     - ""
@@ -428,7 +428,7 @@ items:
       app.kubernetes.io/part-of: kube-prometheus
       app.kubernetes.io/version: 3.4.0
     name: prometheus-k8s
-    namespace: traefik
+    namespace: velero
   rules:
   - apiGroups:
     - ""
