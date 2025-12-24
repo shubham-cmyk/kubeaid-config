@@ -1,5 +1,6 @@
 {
   platform: "kubeadm",
+  certname: "kcm.enableit",
   extra_configs: true,
   "blackbox-exporter": false,
   connect_obmondo: true,
@@ -28,8 +29,8 @@
     requests: { cpu: "10m", memory: "20Mi" },
   },
   prometheus_resources+: {
-    limits: { memory: "5Gi" },
-    requests: { cpu: "200m", memory: "500Mi" },
+    limits: { memory: "6Gi" },
+    requests: { cpu: "200m", memory: "4Gi" },
   },
   prometheus_adapter_resources+: {
     limits: { memory: '2Gi' },

@@ -17,7 +17,9 @@ spec:
       namespace: monitoring
       port: web
   enableFeatures: []
-  externalLabels: {}
+  externalLabels:
+    certname: kcm.enableit
+    product: kubeaid
   externalUrl: ""
   image: quay.io/prometheus/prometheus:v3.4.0
   nodeSelector:
@@ -36,10 +38,10 @@ spec:
   replicas: 1
   resources:
     limits:
-      memory: 5Gi
+      memory: 6Gi
     requests:
       cpu: 200m
-      memory: 500Mi
+      memory: 4Gi
   retention: 15d
   ruleNamespaceSelector:
     matchExpressions:
