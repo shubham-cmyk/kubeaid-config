@@ -94,8 +94,8 @@ api:
     teamid: iu94xkqsgjgj5ne4eeie1harcr
     userid: dpg87od6hpy5zpnhjw99qhbw3r
   oncall:
-    api_url: https://oncall.kbm.obmondo.com/api
-    webhook_url: "https://oncall.kbm.obmondo.com/integrations/v1/webhook/GIWu31k10fk5nyhfIYwdCZriy/"
+    api_url: https://oncall.kcm.obmondo.com/api
+    webhook_url: "https://oncall.kcm.obmondo.com/integrations/v1/webhook/GIWu31k10fk5nyhfIYwdCZriy/"
     schedule_id: "SLK3BQXNE4FSB"
   clojure:
     image:
