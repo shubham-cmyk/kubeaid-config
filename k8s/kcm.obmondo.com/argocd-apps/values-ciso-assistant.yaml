@@ -1,0 +1,12 @@
+---
+ciso-assistant:
+  global:
+    domain: ciso.obmondo.com
+  ingress:
+    enabled: true
+    tls:
+      existingSecret: ciso-obmondo-com-tls
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
+      kubernetes.io/ingress.class: traefik-cert-manager
+      traefik.ingress.kubernetes.io/router.tls: 'true'
