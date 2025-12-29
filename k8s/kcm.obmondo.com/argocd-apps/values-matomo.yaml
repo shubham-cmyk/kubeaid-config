@@ -18,6 +18,8 @@ matomo:
       cert-manager.io/cluster-issuer: letsencrypt
       kubernetes.io/ingress.class: traefik-cert-manager
     tls: true
+  pdb:
+    create: false
 
 mariadb:
   storage:
