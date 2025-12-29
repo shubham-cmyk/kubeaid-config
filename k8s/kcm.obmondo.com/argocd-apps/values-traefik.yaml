@@ -62,6 +62,8 @@ traefik:
     kubernetesIngress:
       publishedService:
         enabled: true
+  podDisruptionBudget:
+    enabled: false
 
 middleware:
   jwt:
