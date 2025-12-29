@@ -3,11 +3,8 @@ LoadCustomCRDs: true
 schedule:
   includedNamespaces:
     - "monitoring"
-    - "obmondo"
-    - "obmondo-website"
-    - "finance"
     - "relate"
-    - "argocd"
+    - "ciso-assistant"
   daily: true
   dailyTTL: 72h
   weekly: true
