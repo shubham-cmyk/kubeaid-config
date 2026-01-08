@@ -1,0 +1,46 @@
+global:
+  clusterName: vpn-obmondo
+  kubernetes:
+    version: v1.33.0
+  kubeaid:
+    repo: https://gitea.obmondo.com/EnableIT/kubeaid
+  kubeaidConfig:
+    repo: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
+  additionalUsers:
+    - name: archi
+      sshPublicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC6dc7jP7zQT7qSKkFJd4pOMZmTb0kx8R29A3DbzLaDSSepEGtJ+64taQ4YI1C5/l7BFdi8blb1N135tRf54YY1v1plFDzukjxMx8GLa965T4YuSPg/1PhNQfsUcGDL/LXMktJiJP8pYvQKnOjM6KHju1GJKPlmlWHkttyFk6KmkeltF+ljPRGJhpOUjvM9RJgsYqiy6+pb8hGKxQi4dQ07duj7y7N/0pPbHg/BrtpbtHm2r/fsrFfzVwqIRg61LKxrcTZ4HPGpKPoare+X+wbp85hQOfWr6KtG9cQMjGbneZTYAYXhQxYlr2XlbGq/yj9mQJxYg/rEIL/EQY12An4zdI2hqpNlgkZwioc2agCGs3HvtQY64gpSF/M530Wx6Dm2e9eltSj+frr+WJdz3QXqO84dUENllFavL+gSGuT+MBzYOCsCAlKzKEj1EZ4ivkpYaNvTNrVqFpNMPsvuX3nAjlcl3g2Wmkb+hjPjTH84glNEvFsc2FYLSaU46jyb6UJ3aSUaJsCBIQfp4C6BVAYwEe9OzvuJrp8Ky4P5C0t0UvJgfdbUIh5TksTZ5QpyQiMvzpvmhJEWY+BEHHiI2a2ZRs8DPr9NZ0M6aut0AfxdM3YxIRcNU1m8lJc37/QgQETuzKCnQzZwsJF/HdVuXv+VW39kstpvRO/o5ORGaCg/SQ== cardno:13_819_971
+    - name: klavs
+      sshPublicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDgjmqOC7ghLNqK6CkD7YTpCw4rpC5CblAndACCpZ+3xXnT8qrNDxzCVj1O2QnWQw8w0J4WUBKhePClAlF3HUnXPxvBzAFGlxrkdfS6ndAy4T/Ew1healjxDF7mOcuDwoBPuLVEXwPYJ3OFUrOKajRcvP85AGO0MYAbVyVg/ANsiTmVp+T70UfHtYG6MQdTIO+wpcHAgHFV/yotaQTKNA5HpvbxP5qdjrlas1T5XXBoKV9HVXL0ipTBj4OFNFYF+FDKVfdM4MvrktFXzzGHGWtn/QkWxMvPOrnKFRhxvFse0YyKOV5wLtsdjdX23NKgC6skayAFiY/+T2Y5mcnIz3zOm0hCOtdVpaajWfJyIrSKz4UmuGtCfdyX4jqLOgtqByHGwMzHtkjfr3m+eqDvxyRLlEIEpITYdkIe2t5emeBTKHl2NrrC7btvL4Awz4azKkdTDgdXl7FUgL2537N8EYnQ8DHZrImsJkpV+hIwwSuZAGr6enfrObYTzyWbEo0HttXbot9iNWNjcf5aLZTNoPSM+gE/C3BTJs4ykjM9Aq1SC9qQwqeXvvv3x529tOW0SnrohVnNFn/Z41+nfYK6TC5ZNihBdKXkBQUi9YaLJs0jlYg9aDA0fhYDYr8OJOT1xRUwm/zfM7Je6QykS2fqAQRUEWknmfshVHrzY61IeSbWhQ== klavs
+    - name: ashish
+      sshPublicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDAhxkaT6cj+uRLA/wWu5d+5yun6NQXeUOE0tqGi6H8Dn3ZqC6wlYK7uHwOxZILJGa4X/kzGWHlZ6wfZw6lgbqunkJHLf3oXXI1cJGBkzPVBYkCnJItSP19fAty5C//SxNYlngicf+vowWdlq6O4ECkH7NdmVne4MHYz2DpRMjobjKDB1OW/0ESBlZhxzevwNnNqVdwXoz8852PQqo41w/uUAx5393Wj/VF2WB20HDWy97Ye6m3eV+ZMGiTJkumaNQ7JPdRTeNpl8zPwLJ0X0FS4H8z7wGfrUpVzlGuXjSGN3TxTewEW2WnD5yL0XRZznVBGARH71ut23VtFS8Fo8xsPn1ePjHho2BBviAxQ2ACp4UkzMt40lQNR7jtNZY/e2ZYMRVfJ+3cJgGfiwBfDjo6fgdPZowmGMJa0ydKT/WTt5LjEIiACFUMrMwn8yauXHybZCnUCduY/9AqSqh3ut0fKOsUS4tjj6/UUGDOjHE60nOvv3P7vCHQZqoznxC6oirYbTCCqQAK4Gm7vyNvzA5ep/4xMcp3vJVIKMj9z3sCSuvQYD2NsuC3H128FUYNjQMt2Z8dFO0oWme/x8Ghj9KEPLHGk452gif0JNzAgRRsXVmvGClx5XrrTa0jBAn7uT9DOZYMRPKYM7bluR2RtjHY1creHuH1DXTY3xaoUX65lw== openpgp:0x08A54863 Ashish
+    - name: aman
+      sshPublicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDQD0xNXDwqOd7g394DitNlxz4YLJ8c8aPEZfPWskuF1s0IC5TLW/ymWtWpgfktU1BgkQWF5xE3QirqEZHdrLPFyBn7EgHq+IdPWUxxfoAHuH1FG7+xkRmfN+HPqgoDSi7PJefJ82NIepCiS78WBgFmgTJTKcF1CRaXangJSKoly5B6rQA8sk+MkotSAhjZhQYBxFbVB6BNjiC6Ui5p2h81crR5MLsPo8RHB4Dk9JkSzC++x+QwgSWCxztuR936h/gP+q6utsRqYT9vRr+BYmgN58uWbDeT1uUWVmQKyN3iWyEDjFa9Z8ZscdQqekb6NaxxUquRVVEhCDho244y7PR4pzHafISiMgaR/MShX2Yh5pAnKGRR5hyNm9bwjtQnXR7+7lTIzKsFgxgqg6DJTxkvqLPCT15MXDKK2SBGZUo9aIRwmPZeA8rLxTYC50adm2Cdn1KgfjtYvomupxBtxQkzNPsaEDiivRbLjMx2uovkXaRfNRr0BX73Of6iBTrzuhnI5iUcRO/lP0x/3aWNl38w4qRtCcWywyf1ugaphG7a6f3NHtvUeYPA3YMpV45tM1cqSQ3lM3qCz9oeH/3JrLNU36PBL0PRPKGDjNhtEALUY7R0GpDDsY6OYtXNAv1cGbOkr+q4rZg1qwOjAnm0q/0//yiocxxiH3Z4cZSPTUX95Q== openpgp:0x7C9EEBD5 Aman
+    - name: divyam
+      sshPublicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC49jWrHSFz0bB1FD7IuHTUfFWRmG/qXUZ7gkCAtT63jLJ41MWk4eUy6nqLFFvfkbXY8gPTbGLvWsTEa4aPA6MDaTGaJZC/9Sz8zOM/wnMfR7SbdUJ/C1L5A5dAcC72lSYxk4n2ffR9tDjoVEnsActOt5UkFtUKeJkSiYbVQ41+apVXz5stwXa7WQJ0hjD/gtyt9nIiTbTaNKz932XbLpbOo1YJpLD/6dwnXHjY56ou+9bQyXWwctDcOX9b1CTUffXcM+UpQHH8jDhH6O5ZO7xVV/LIbB5QxH+qBNa8KAHK7tBCHxaqnV2ThZlQdwP5DVCSanLEZFgvhQ/NhWgknYm3R/ccPmv7otJT9OPyOtcGqsU4IeCLnD3lucpxzPtrrzjUcRA871xF5fO4lHupdCt/6SqfYluPz+rAGvz/qz5dOzHhQe++XfHUEXKwo1388WhYOH95Kz7c6tCPujcUwuX81LPc+7J8W8mcQJJGJGbD+oqs30mPF6BLvpJVz5keipTDLBbOvgC1mKU6DmiAG1O3Y1o77IzrOn+SSoeuZcZm+GMCfQfIqtwcQ2j8EZjtLYIPup4knI4Irsg/NspT/FmWWI7tzqNLCGjExCbkpRBEL/ZwbsbZEG0CFlpMd2YhxkIH+Ng6qzbbrDgiGpehYFAjqw4NgWHMh6BuxPyfO/RHUQ== divyam
+    - name: siddharth
+      sshPublicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDXimLMdPa4Kl0D2VxpMIM7a3Ii0u1+zDQK9NX5vQagkcug7SGX+ot4iuV1bAkWJ/BVZnbhEDedI0fgdDCZjzcYAlpxQUKZ4zBK+CTnaQygK2BVQmkGouKFjg+D8yjf4FmBWq1dmPHsibLW3LPETMqICpL4bCDvo0/GYG/t/QmaEzmYMXZn64SEbRKaNcEMNJfHrRwrJ/RKwD+rh7KdKZals1QWYbPYYrzZjJZW4Vpt0nAhoMD5GfLE/UxvCF3WUOKPuZSLKMQr7y2hiDoswLqwrAiw9F5C3DBgqP+l4PLLkMV3D/hJO+X4IiJiPC1DG2l8wmB04f0nLiCW/Hv1ZeDhSDtewmSNRUYqCVKkjkGqAeItmc1tV+sqZyxCdlfNkmomz9xBbVbhvfgha5pbuCuJQaN/skd1G0beWuzY27W0QBq198ekjVNOwbUYHLJW6nehBhNxnZmgdLI77/jESm9kkkH4n/B9TzRvcOaX3OMIzR5hv1UMusIZaRS9FsJVym9gXV8yHP40hbRnNQkRTPJJnXmjMFKqhPS/iDu86HZ6HS3Qp3p9jIgO8kH3bhbKUjx5fyt7VfuJPd5WdjDo+N26dZvpto/IdsQVDuOk8ghwKNMyylLqASmhrD/Xc+XT3R1jnc71jYVtfzCvOtWagEG8pQWUV7mziMIRIYEz8hB+Pw== siddharth
+provider:
+  hetzner: true
+
+hetzner:
+  mode: hcloud
+  hcloud:
+    zone: eu-central
+    imageName: ubuntu-24.04
+    sshKeyPairName: kubeaid-demo
+
+  controlPlane:
+    regions:
+      - hel1
+
+
+    hcloud:
+      machineType: cax11
+      replicas: 1
+      loadBalancer:
+        enabled: true
+        region: hel1
+
+  nodeGroups:
+    hcloud: []
+    bareMetal: []
