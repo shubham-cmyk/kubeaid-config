@@ -360,7 +360,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-alertmanager-overview
     namespace: monitoring
 - apiVersion: v1
@@ -1242,7 +1242,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-apiserver
     namespace: monitoring
 - apiVersion: v1
@@ -3641,7 +3641,7 @@ items:
                           "step": 200
                       }
                   ],
-                  "title": "OSD Type Count",
+                  "title": "RADOS Object Count",
                   "type": "timeseries"
               },
               {
@@ -5324,7 +5324,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-ceph-ceph-cluster-advanced
     namespace: monitoring
 - apiVersion: v1
@@ -6519,7 +6519,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-ceph-ceph-nvmeof-performance
     namespace: monitoring
 - apiVersion: v1
@@ -8481,7 +8481,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-ceph-ceph-nvmeof
     namespace: monitoring
 - apiVersion: v1
@@ -8880,7 +8880,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-ceph-cephfs-overview
     namespace: monitoring
 - apiVersion: v1
@@ -13615,7 +13615,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-ceph-cephfsdashboard
     namespace: monitoring
 - apiVersion: v1
@@ -15044,7 +15044,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-ceph-host-details
     namespace: monitoring
 - apiVersion: v1
@@ -16005,7 +16005,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-ceph-hosts-overview
     namespace: monitoring
 - apiVersion: v1
@@ -18243,7 +18243,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-ceph-multi-cluster-overview
     namespace: monitoring
 - apiVersion: v1
@@ -19161,7 +19161,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-ceph-osd-device-details
     namespace: monitoring
 - apiVersion: v1
@@ -20596,7 +20596,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-ceph-osds-overview
     namespace: monitoring
 - apiVersion: v1
@@ -21335,7 +21335,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-ceph-pool-detail
     namespace: monitoring
 - apiVersion: v1
@@ -23084,7 +23084,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-ceph-pool-overview
     namespace: monitoring
 - apiVersion: v1
@@ -23818,7 +23818,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-ceph-radosgw-detail
     namespace: monitoring
 - apiVersion: v1
@@ -25113,6 +25113,259 @@ items:
                           "show": true
                       }
                   ]
+              },
+              {
+                  "collapse": false,
+                  "collapsed": false,
+                  "gridPos": {
+                      "h": 1,
+                      "w": 24,
+                      "x": 0,
+                      "y": 27
+                  },
+                  "id": 14,
+                  "panels": [
+
+                  ],
+                  "repeat": null,
+                  "repeatIteration": null,
+                  "repeatRowId": null,
+                  "showTitle": true,
+                  "title": "RGW Overview - Bucket Notification",
+                  "titleSize": "h6",
+                  "type": "row"
+              },
+              {
+                  "aliasColors": {
+
+                  },
+                  "bars": false,
+                  "dashLength": 10,
+                  "dashes": false,
+                  "datasource": "$datasource",
+                  "description": "Shows the number of pending notifications in each Object topic queue, indicating how many messages are waiting to be delivered",
+                  "fieldConfig": {
+                      "defaults": {
+                          "custom": {
+                              "fillOpacity": 8,
+                              "showPoints": "never"
+                          },
+                          "unit": ""
+                      }
+                  },
+                  "fill": 1,
+                  "fillGradient": 0,
+                  "gridPos": {
+                      "h": 8,
+                      "w": 12,
+                      "x": 0,
+                      "y": 28
+                  },
+                  "id": 15,
+                  "legend": {
+                      "alignAsTable": false,
+                      "avg": false,
+                      "current": false,
+                      "max": false,
+                      "min": false,
+                      "rightSide": false,
+                      "show": true,
+                      "sideWidth": null,
+                      "total": false,
+                      "values": false
+                  },
+                  "lines": true,
+                  "linewidth": 1,
+                  "links": [
+
+                  ],
+                  "nullPointMode": "null as zero",
+                  "options": {
+                      "legend": {
+                          "calcs": [
+                              "lastNotNull"
+                          ],
+                          "displayMode": "list",
+                          "placement": "right",
+                          "showLegend": true,
+                          "sortDesc": true
+                      }
+                  },
+                  "percentage": false,
+                  "pointradius": 5,
+                  "points": false,
+                  "renderer": "flot",
+                  "repeat": null,
+                  "seriesOverrides": [
+
+                  ],
+                  "spaceLength": 10,
+                  "stack": false,
+                  "steppedLine": false,
+                  "targets": [
+                      {
+                          "expr": "(\n ceph_rgw_topic_persistent_topic_len\n)\n",
+                          "format": "time_series",
+                          "intervalFactor": 1,
+                          "legendFormat": "{{topic}}",
+                          "refId": "A"
+                      }
+                  ],
+                  "thresholds": [
+
+                  ],
+                  "timeFrom": null,
+                  "timeShift": null,
+                  "title": "Pending Notifications by Topic",
+                  "tooltip": {
+                      "shared": true,
+                      "sort": 0,
+                      "value_type": "individual"
+                  },
+                  "type": "timeseries",
+                  "xaxis": {
+                      "buckets": null,
+                      "mode": "time",
+                      "name": null,
+                      "show": true,
+                      "values": [
+
+                      ]
+                  },
+                  "yaxes": [
+                      {
+                          "format": "",
+                          "label": null,
+                          "logBase": 1,
+                          "max": null,
+                          "min": 0,
+                          "show": true
+                      },
+                      {
+                          "format": "short",
+                          "label": null,
+                          "logBase": 1,
+                          "max": null,
+                          "min": 0,
+                          "show": true
+                      }
+                  ]
+              },
+              {
+                  "aliasColors": {
+
+                  },
+                  "bars": false,
+                  "dashLength": 10,
+                  "dashes": false,
+                  "datasource": "$datasource",
+                  "description": "Shows the total size of pending notifications stored per Object topic, reflecting how much data is waiting to be delivered.",
+                  "fieldConfig": {
+                      "defaults": {
+                          "custom": {
+                              "fillOpacity": 8,
+                              "showPoints": "never"
+                          },
+                          "unit": "bytes"
+                      }
+                  },
+                  "fill": 1,
+                  "fillGradient": 0,
+                  "gridPos": {
+                      "h": 8,
+                      "w": 12,
+                      "x": 12,
+                      "y": 28
+                  },
+                  "id": 16,
+                  "legend": {
+                      "alignAsTable": false,
+                      "avg": false,
+                      "current": false,
+                      "max": false,
+                      "min": false,
+                      "rightSide": false,
+                      "show": true,
+                      "sideWidth": null,
+                      "total": false,
+                      "values": false
+                  },
+                  "lines": true,
+                  "linewidth": 1,
+                  "links": [
+
+                  ],
+                  "nullPointMode": "null as zero",
+                  "options": {
+                      "legend": {
+                          "calcs": [
+                              "lastNotNull"
+                          ],
+                          "displayMode": "list",
+                          "placement": "right",
+                          "showLegend": true,
+                          "sortDesc": true
+                      }
+                  },
+                  "percentage": false,
+                  "pointradius": 5,
+                  "points": false,
+                  "renderer": "flot",
+                  "repeat": null,
+                  "seriesOverrides": [
+
+                  ],
+                  "spaceLength": 10,
+                  "stack": false,
+                  "steppedLine": false,
+                  "targets": [
+                      {
+                          "expr": "(\n ceph_rgw_topic_persistent_topic_size\n)\n",
+                          "format": "time_series",
+                          "intervalFactor": 1,
+                          "legendFormat": "{{topic}}",
+                          "refId": "A"
+                      }
+                  ],
+                  "thresholds": [
+
+                  ],
+                  "timeFrom": null,
+                  "timeShift": null,
+                  "title": "Pending Notifications Size by Topic",
+                  "tooltip": {
+                      "shared": true,
+                      "sort": 0,
+                      "value_type": "individual"
+                  },
+                  "type": "timeseries",
+                  "xaxis": {
+                      "buckets": null,
+                      "mode": "time",
+                      "name": null,
+                      "show": true,
+                      "values": [
+
+                      ]
+                  },
+                  "yaxes": [
+                      {
+                          "format": "bytes",
+                          "label": null,
+                          "logBase": 1,
+                          "max": null,
+                          "min": 0,
+                          "show": true
+                      },
+                      {
+                          "format": "short",
+                          "label": null,
+                          "logBase": 1,
+                          "max": null,
+                          "min": 0,
+                          "show": true
+                      }
+                  ]
               }
           ],
           "refresh": "30s",
@@ -25315,7 +25568,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-ceph-radosgw-overview
     namespace: monitoring
 - apiVersion: v1
@@ -26025,7 +26278,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-ceph-radosgw-sync-overview
     namespace: monitoring
 - apiVersion: v1
@@ -26573,7 +26826,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-ceph-rbd-details
     namespace: monitoring
 - apiVersion: v1
@@ -27547,7 +27800,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-ceph-rbd-overview
     namespace: monitoring
 - apiVersion: v1
@@ -32603,7 +32856,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-ceph-rgw-s3-analytics
     namespace: monitoring
 - apiVersion: v1
@@ -33741,7 +33994,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-ceph-smb-overview
     namespace: monitoring
 - apiVersion: v1
@@ -34555,7 +34808,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-cluster-total
     namespace: monitoring
 - apiVersion: v1
@@ -35159,7 +35412,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-controller-manager
     namespace: monitoring
 - apiVersion: v1
@@ -35783,7 +36036,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-grafana-overview
     namespace: monitoring
 - apiVersion: v1
@@ -37370,7 +37623,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-k8s-resources-cluster
     namespace: monitoring
 - apiVersion: v1
@@ -38011,7 +38264,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-k8s-resources-multicluster
     namespace: monitoring
 - apiVersion: v1
@@ -39529,7 +39782,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-k8s-resources-namespace
     namespace: monitoring
 - apiVersion: v1
@@ -40210,7 +40463,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-k8s-resources-node
     namespace: monitoring
 - apiVersion: v1
@@ -41594,7 +41847,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-k8s-resources-pod
     namespace: monitoring
 - apiVersion: v1
@@ -42281,7 +42534,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-k8s-resources-windows-cluster
     namespace: monitoring
 - apiVersion: v1
@@ -42735,7 +42988,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-k8s-resources-windows-namespace
     namespace: monitoring
 - apiVersion: v1
@@ -43244,7 +43497,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-k8s-resources-windows-pod
     namespace: monitoring
 - apiVersion: v1
@@ -44310,7 +44563,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-k8s-resources-workload
     namespace: monitoring
 - apiVersion: v1
@@ -45573,7 +45826,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-k8s-resources-workloads-namespace
     namespace: monitoring
 - apiVersion: v1
@@ -45989,7 +46242,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-k8s-windows-cluster-rsrc-use
     namespace: monitoring
 - apiVersion: v1
@@ -46616,7 +46869,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-k8s-windows-node-rsrc-use
     namespace: monitoring
 - apiVersion: v1
@@ -47869,7 +48122,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-kubelet
     namespace: monitoring
 - apiVersion: v1
@@ -48509,7 +48762,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-namespace-by-pod
     namespace: monitoring
 - apiVersion: v1
@@ -49307,7 +49560,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-namespace-by-workload
     namespace: monitoring
 - apiVersion: v1
@@ -49908,7 +50161,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-node-cluster-rsrc-use
     namespace: monitoring
 - apiVersion: v1
@@ -50512,7 +50765,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-node-rsrc-use
     namespace: monitoring
 - apiVersion: v1
@@ -51235,7 +51488,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-nodes-aix
     namespace: monitoring
 - apiVersion: v1
@@ -51982,7 +52235,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-nodes-darwin
     namespace: monitoring
 - apiVersion: v1
@@ -52721,7 +52974,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-nodes
     namespace: monitoring
 - apiVersion: v1
@@ -53043,7 +53296,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-persistentvolumesusage
     namespace: monitoring
 - apiVersion: v1
@@ -53537,7 +53790,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-pod-total
     namespace: monitoring
 - apiVersion: v1
@@ -54338,7 +54591,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-prometheus-remote-write
     namespace: monitoring
 - apiVersion: v1
@@ -54751,7 +55004,7 @@ items:
                               }
                           },
                           "min": 0,
-                          "unit": "ms"
+                          "unit": "short"
                       }
                   },
                   "gridPos": {
@@ -55177,7 +55430,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-prometheus
     namespace: monitoring
 - apiVersion: v1
@@ -55832,7 +56085,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-proxy
     namespace: monitoring
 - apiVersion: v1
@@ -56433,7 +56686,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-scheduler
     namespace: monitoring
 - apiVersion: v1
@@ -57019,7 +57272,7 @@ items:
       app.kubernetes.io/component: grafana
       app.kubernetes.io/name: grafana
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 12.0.1
+      app.kubernetes.io/version: 12.1.0
     name: grafana-dashboard-workload-total
     namespace: monitoring
 kind: ConfigMapList

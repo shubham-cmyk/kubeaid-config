@@ -10,7 +10,7 @@
   grafana_keycloak_url: 'https://keycloak.obmondo.com',
   grafana_keycloak_realm: 'Obmondo',
   grafana_ingress_host: 'grafana.kcm.obmondo.com',
-  kube_prometheus_version: "v0.15.0",
+  kube_prometheus_version: "v0.16.0",
   enable_custom_metrics_apiservice: true,
   addMixins: {
     velero: true,
@@ -46,6 +46,7 @@
     'zfs-localpv',
     'obmondo-website',
     'velero',
+    'finance',
   ],
   prometheus_scrape_default_namespaces: [
     "argocd",
