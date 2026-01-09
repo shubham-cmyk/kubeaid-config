@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/instance: k8s
     app.kubernetes.io/name: prometheus
     app.kubernetes.io/part-of: kube-prometheus
-    app.kubernetes.io/version: 3.4.0
+    app.kubernetes.io/version: 3.5.0
   name: k8s
   namespace: monitoring
 spec:
@@ -21,7 +21,7 @@ spec:
     certname: kcm.enableit
     product: kubeaid
   externalUrl: ""
-  image: quay.io/prometheus/prometheus:v3.4.0
+  image: quay.io/prometheus/prometheus:v3.5.0
   nodeSelector:
     kubernetes.io/os: linux
   podMetadata:
@@ -30,7 +30,7 @@ spec:
       app.kubernetes.io/instance: k8s
       app.kubernetes.io/name: prometheus
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 3.4.0
+      app.kubernetes.io/version: 3.5.0
   podMonitorNamespaceSelector: {}
   podMonitorSelector: {}
   probeNamespaceSelector: {}
@@ -50,6 +50,7 @@ spec:
       values:
       - argocd
       - cert-manager
+      - finance
       - monitoring
       - obmondo
       - obmondo-website
@@ -79,4 +80,4 @@ spec:
           requests:
             storage: 50Gi
         storageClassName: rook-ceph-block
-  version: 3.4.0
+  version: 3.5.0
