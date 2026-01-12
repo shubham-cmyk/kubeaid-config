@@ -236,7 +236,7 @@ mattermost:
       storageSize: 50G
 
 matternelle:
-  domain: webchat.obmondo.com
+  domain: webchat-staging.obmondo.com
 
 postgres:
   size: 20Gi
