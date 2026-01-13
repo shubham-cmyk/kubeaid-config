@@ -1,16 +1,16 @@
 {
-  platform: "kubeadm",
-  certname: "kcm.enableit",
+  platform: 'kubeadm',
+  certname: 'kcm.enableit',
   extra_configs: true,
-  "blackbox-exporter": false,
+  'blackbox-exporter': false,
   connect_obmondo: true,
   connect_keda: false,
   grafana_keycloak_enable: true,
-  grafana_root_url: "https://grafana.kcm.obmondo.com",
+  grafana_root_url: 'https://grafana.abmondo.com',
   grafana_keycloak_url: 'https://keycloak.obmondo.com',
   grafana_keycloak_realm: 'Obmondo',
-  grafana_ingress_host: 'grafana.kcm.obmondo.com',
-  kube_prometheus_version: "v0.16.0",
+  grafana_ingress_host: 'grafana.obmondo.com',
+  kube_prometheus_version: 'v0.16.0',
   enable_custom_metrics_apiservice: true,
   addMixins: {
     velero: true,
@@ -21,16 +21,16 @@
     ceph: true,
   },
   prometheus_operator_resources+: {
-    limits: { memory: "120Mi" },
-    requests: { cpu: "10m", memory: "30Mi" },
+    limits: { memory: '120Mi' },
+    requests: { cpu: '10m', memory: '30Mi' },
   },
   alertmanager_resources+: {
-    limits: { memory: "200Mi" },
-    requests: { cpu: "10m", memory: "20Mi" },
+    limits: { memory: '200Mi' },
+    requests: { cpu: '10m', memory: '20Mi' },
   },
   prometheus_resources+: {
-    limits: { memory: "6Gi" },
-    requests: { cpu: "200m", memory: "4Gi" },
+    limits: { memory: '6Gi' },
+    requests: { cpu: '200m', memory: '4Gi' },
   },
   prometheus_adapter_resources+: {
     limits: { memory: '2Gi' },
@@ -49,15 +49,15 @@
     'finance',
   ],
   prometheus_scrape_default_namespaces: [
-    "argocd",
-    "sealed-secrets",
-    "cert-manager",
+    'argocd',
+    'sealed-secrets',
+    'cert-manager',
   ],
   prometheus+: {
     storage: {
-      size: "50Gi",
-      classname: 'rook-ceph-block'
+      size: '50Gi',
+      classname: 'rook-ceph-block',
     },
-    retention: "15d",
+    retention: '15d',
   },
 }
