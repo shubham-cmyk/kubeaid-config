@@ -276,7 +276,7 @@ gitRepos:
 # Update the version here as we use the same install script
 # for setting up the server
 # Ref: https://gitea.obmondo.com/EnableIT/go-scripts/src/branch/main/cmd/obmondo-install-setup/Makefile#L3
-obmondoInstallScript: v1.0.3
+obmondoInstallScript: v1.0.4
 
 sendNotification:
   mail: false
