@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  labels:
+    kubeaid.io/version: 21.0.0
+    kubeaid.io/managed-by: kubeaid
+    kubeaid.io/sync-order: "10"
+  name: hcloud-csi-driver
+  namespace: argocd
+spec:
+  destination:
+    namespace: kube-system
+    server: https://kubernetes.default.svc
+  sources:
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid
+      path: argocd-helm-charts/hcloud-csi-driver
+      targetRevision: 21.0.0
+      helm:
+        valueFiles:
+          - $values/k8s/vpn-obmondo/argocd-apps/values-hcloud-csi-driver.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
+      targetRevision: HEAD
+      ref: values
+  project: kubeaid
+  syncPolicy:
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
