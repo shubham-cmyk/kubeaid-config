@@ -1,25 +1,24 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: sonarqube
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git
-    targetRevision: HEAD
-    path: argocd-helm-charts/sonarqube
-    helm:
-      valueFiles:
-        - $values/k8s/kcm.obmondo.com/argocd-apps/values-sonarqube.yaml
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: sonarqube
-  syncPolicy:
-    syncOptions:
-      - ApplyOutOfSyncOnly=true
+apiVersion: argoproj.io/v1alpha1  
+kind: Application  
+metadata:  
+  name: sonarqube  
+  namespace: argocd  
+spec:  
+  project: default  
+  sources:  
+    - repoURL: https://gitea.obmondo.com/EnableIT/KubeAid.git  
+      targetRevision: HEAD  
+      path: argocd-helm-charts/sonarqube  
+      helm:  
+        valueFiles:  
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-sonarqube.yaml  
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git  
+      targetRevision: HEAD  
+      ref: values  
+  destination:  
+    server: https://kubernetes.default.svc  
+    namespace: sonarqube  
+  syncPolicy:  
+    syncOptions:  
+      - ApplyOutOfSyncOnly=true  
       - CreateNamespace=true
-  sources:
-    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
-      targetRevision: HEAD
-      ref: values
