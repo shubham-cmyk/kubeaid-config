@@ -143,6 +143,12 @@ ingress:
         - path: /api/customer/issues
           pathType: Prefix
           servicePort: 8080
+        - path: /api/customer/puppetserver
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/customer/grafana
+          pathType: Prefix
+          servicePort: 8080
         - path: /api/leave
           pathType: Prefix
           servicePort: 8080
