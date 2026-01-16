@@ -296,7 +296,8 @@ mattermost:
       url: bucket.obmondo.com
       bucket: mattermost-kam
       secret: file-store-credentials          # Name of Kubernetes secret for file store credentials
-
+    local:
+      enabled: false
 matternelle:
   domain: webchat.obmondo.com
 
