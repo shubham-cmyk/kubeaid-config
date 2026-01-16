@@ -22,5 +22,7 @@ grafana:
   ingress:
     enabled: true
     domain: ebillet.graphs.obmondo.com
+    ingressClassName: traefik-cert-manager
     annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
       traefik.ingress.kubernetes.io/router.middlewares: monitoring-ebillet-grafana-chain@kubernetescrd

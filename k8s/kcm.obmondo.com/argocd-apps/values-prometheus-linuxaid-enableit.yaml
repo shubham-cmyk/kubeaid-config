@@ -21,6 +21,8 @@ prometheus:
 grafana:
   ingress:
     enabled: true
+    ingressClassName: traefik-cert-manager
     domain: enableit.graphs.obmondo.com
     annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
       traefik.ingress.kubernetes.io/router.middlewares: monitoring-enableit-grafana-chain@kubernetescrd
