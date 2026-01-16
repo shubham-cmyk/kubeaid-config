@@ -234,6 +234,8 @@ mattermost:
     local:
       enabled: true
       storageSize: 50G
+    external:
+      url: nil
 
 matternelle:
   domain: webchat-staging.obmondo.com
