@@ -26,3 +26,8 @@ grafana:
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt
       traefik.ingress.kubernetes.io/router.middlewares: monitoring-ebillet-grafana-chain@kubernetescrd
+
+middleware:
+  jwt:
+    headers:
+      authentication: ebillet
