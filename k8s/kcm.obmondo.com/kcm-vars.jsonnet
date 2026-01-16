@@ -6,10 +6,10 @@
   connect_obmondo: true,
   connect_keda: false,
   grafana_keycloak_enable: true,
-  grafana_root_url: 'https://grafana.abmondo.com',
+  grafana_root_url: 'https://grafana.kcm.obmondo.com',
   grafana_keycloak_url: 'https://keycloak.obmondo.com',
   grafana_keycloak_realm: 'Obmondo',
-  grafana_ingress_host: 'grafana.obmondo.com',
+  grafana_ingress_host: 'grafana.kcm.obmondo.com',
   kube_prometheus_version: 'v0.16.0',
   enable_custom_metrics_apiservice: true,
   addMixins: {
