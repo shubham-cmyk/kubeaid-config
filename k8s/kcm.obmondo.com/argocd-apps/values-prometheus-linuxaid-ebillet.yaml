@@ -19,4 +19,8 @@ prometheus:
       memory: 1Gi
 
 grafana:
-  server: ebillet.graphs.obmondo.com
+  ingress:
+    enabled: true
+    domain: ebillet.graphs.obmondo.com
+    annotations:
+      traefik.ingress.kubernetes.io/router.middlewares: monitoring-ebillet-grafana-chain@kubernetescrd
