@@ -19,4 +19,8 @@ prometheus:
       memory: 4Gi
 
 grafana:
-  server: enableit.graphs.obmondo.com
+  ingress:
+    enabled: true
+    domain: enableit.graphs.obmondo.com
+    annotations:
+      traefik.ingress.kubernetes.io/router.middlewares: monitoring-enableit-grafana-chain@kubernetescrd
