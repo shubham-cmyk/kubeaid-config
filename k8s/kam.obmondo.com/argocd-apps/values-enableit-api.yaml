@@ -309,6 +309,7 @@ gitRepos:
     - niwyocdmk2
     - qd2xcggwag
     - rufvpto91t
+    - a0hu8x41ng
 
 prometheusRule:
   enabled: true
