@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   labels:
-    kubeaid.io/version: 21.0.0
+    kubeaid.io/version: 22.0.0
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "10"
   name: cilium
@@ -15,7 +15,7 @@ spec:
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid
       path: argocd-helm-charts/cilium
-      targetRevision: 21.0.0
+      targetRevision: 22.0.0
       helm:
         valueFiles:
           - $values/k8s/vpn-obmondo/argocd-apps/values-cilium.yaml

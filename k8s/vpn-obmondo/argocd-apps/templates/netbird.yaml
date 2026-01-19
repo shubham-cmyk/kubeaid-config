@@ -5,23 +5,24 @@ metadata:
     kubeaid.io/version: 22.0.0
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "10"
-  name: ccm-hcloud
+  name: netbird
   namespace: argocd
 spec:
   destination:
-    namespace: kube-system
+    namespace: netbird
     server: https://kubernetes.default.svc
   project: kubeaid
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid
-      path: argocd-helm-charts/ccm-hcloud
+      path: argocd-helm-charts/netbird
       targetRevision: 22.0.0
       helm:
         valueFiles:
-          - $values/k8s/vpn-obmondo/argocd-apps/values-ccm-hcloud.yaml
+          - $values/k8s/vpn-obmondo/argocd-apps/values-netbird.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
       targetRevision: HEAD
       ref: values
   syncPolicy:
     syncOptions:
+      - CreateNamespace=true
       - ApplyOutOfSyncOnly=true
