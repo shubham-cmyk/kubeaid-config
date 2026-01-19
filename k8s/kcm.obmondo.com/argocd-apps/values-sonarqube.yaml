@@ -1,0 +1,21 @@
+sonarqube:
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt
+    hosts:
+      - name: sonarqube.kcm.obmondo.com
+        path: /
+    tls:
+      - secretName: sonarqube-kcm-tls
+        hosts:
+          - sonarqube.kcm.obmondo.com
+  serviceAccount:
+    create: true
+    name: sonarqube
+  sonarProperties:
+    sonar.core.serverBaseURL: "https://sonarqube.kcm.obmondo.com"
+postgresql:
+  size: 4Gi
+networkpolicies: false
