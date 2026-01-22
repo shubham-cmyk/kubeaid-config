@@ -1,0 +1,15 @@
+whoami:
+  ingress:
+    hosts:
+      - host: whoami.kcm.obmondo.com
+        paths:
+          - /
+    tls:
+      - secretName: whoami-kcm-obmondo-com-tls
+        hosts:
+          - whoami.kcm.obmondo.com
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      kubernetes.io/ingress.class: traefik
+      traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
