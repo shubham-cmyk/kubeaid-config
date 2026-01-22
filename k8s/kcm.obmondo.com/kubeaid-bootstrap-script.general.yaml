@@ -114,26 +114,26 @@ cloud:
           # Whether you're using a Hetzner Bare-Metal Failover IP or not.
           isFailoverIP: true
         bareMetalHosts:
-          - serverID: 1866472  # 65.21.232.119
-            wwns: ['0x50014ee0ae6cabbb', '0x50014ee6b080c608']
-          - serverID: 1866482  # 65.108.70.52
-            wwns: ['0x5000cca25ed86494', '0x5000cca25ecf496b']
-          - serverID: 1866484  # 65.108.70.176
-            wwns: ['0x50014ee2097c6ca4', '0x50014ee2097c9304']
+          - serverID: 1866472 # 65.21.232.119
+            wwns: ["0x50014ee0ae6cabbb", "0x50014ee6b080c608"]
+          - serverID: 1866482 # 65.108.70.52
+            wwns: ["0x5000cca25ed86494", "0x5000cca25ecf496b"]
+          - serverID: 1866484 # 65.108.70.176
+            wwns: ["0x50014ee2097c6ca4", "0x50014ee2097c9304"]
     nodeGroups:
       bareMetal:
         # each server has 2 2TB disks.
         - name: zfs-and-ceph
           labels:
-            node-role.kubernetes.io/zfs-and-ceph: ''
+            node-role.kubernetes.io/zfs-and-ceph: ""
             node.cluster.x-k8s.io/nodegroup: zfs-and-ceph
           taints: []
           bareMetalHosts:
-            - serverID: '2852588'  # 95.217.201.29
+            - serverID: "2852588" # 95.217.201.29
               wwns:
                 - eui.343339304e4026070025384100000002
                 - eui.343339304e4026020025384100000002
-            - serverID: '2854796'  # 148.251.135.184
+            - serverID: "2854796" # 148.251.135.184
               wwns:
                 - eui.343339304e5042380025384100000008
                 - eui.343339304e5042300025384100000008
@@ -170,16 +170,16 @@ cloud:
               # Create the mirrored ZPool out partitions : nvme0n1p5 and nvme1n1p5.
               zpool create primary mirror /dev/nvme0n1p5 /dev/nvme1n1p5
 
-              # From that ZPool, set aside 50GB for ContainerD, by creating a ZVolume.
+              # From that ZPool, set aside 100GB for ContainerD, by creating a ZVolume.
               #
               # A ZFS volume is a dataset that represents a block device. ZFS volumes are identified as
               # devices in the /dev/zvol/{dsk,rdsk}/pool directory.
-              zfs create -s -V 50G primary/containerd
+              zfs create -s -V 100G primary/containerd
               udevadm settle
               mkfs.ext4 /dev/zvol/primary/containerd
 
               # From that ZPool, set aside 50GB for ephemeral volumes for pods, by creating a ZVolume.
-              zfs create -s -V 50G primary/pod-ephemeral-volumes
+              zfs create -s -V 100G primary/pod-ephemeral-volumes
               udevadm settle
               mkfs.ext4 /dev/zvol/primary/pod-ephemeral-volumes
 
@@ -207,11 +207,11 @@ cloud:
         # each server has 2 1TB disks.
         - name: zfs
           labels:
-            node-role.kubernetes.io/zfs: ''
+            node-role.kubernetes.io/zfs: ""
             node.cluster.x-k8s.io/nodegroup: zfs
           taints: []
           bareMetalHosts:
-            - serverID: '2853926'  # 144.76.102.62
+            - serverID: "2853926" # 144.76.102.62
               wwns: [eui.0025388511c5b3e1, eui.0025388511c5b367]
           diskLayoutSetupCommands: |-
             set -e
@@ -230,12 +230,12 @@ cloud:
               # Create a mirrored ZPool out of those 2 partitions.
               zpool create primary mirror /dev/nvme0n1p4 /dev/nvme1n1p4
 
-              # From that ZPool, set aside 50GB for ContainerD, by creating a (thinly provisioned)
+              # From that ZPool, set aside 100GB for ContainerD, by creating a (thinly provisioned)
               # ZVolume.
               #
               # A ZFS volume is a dataset that represents a block device. ZFS volumes are identified
               # as devices in the /dev/zvol/{dsk,rdsk}/pool directory.
-              zfs create -s -V 50G primary/containerd
+              zfs create -s -V 100G primary/containerd
               udevadm settle
               mkfs.ext4 /dev/zvol/primary/containerd
 

@@ -76,28 +76,28 @@ hetzner:
         isFailoverIP: true
         host: 65.108.24.157
       bareMetalHosts:
-        - serverID: '1866472'
-          wwns: ['0x50014ee0ae6cabbb', '0x50014ee6b080c608']
-        - serverID: '1866482'
-          wwns: ['0x5000cca25ed86494', '0x5000cca25ecf496b']
-        - serverID: '1866484'
-          wwns: ['0x50014ee2097c6ca4', '0x50014ee2097c9304']
-      diskLayoutSetupCommands: ''
+        - serverID: "1866472"
+          wwns: ["0x50014ee0ae6cabbb", "0x50014ee6b080c608"]
+        - serverID: "1866482"
+          wwns: ["0x5000cca25ed86494", "0x5000cca25ecf496b"]
+        - serverID: "1866484"
+          wwns: ["0x50014ee2097c6ca4", "0x50014ee2097c9304"]
+      diskLayoutSetupCommands: ""
 
   nodeGroups:
     hcloud: []
     bareMetal:
       - name: zfs-and-ceph
         labels:
-          node-role.kubernetes.io/zfs-and-ceph: ''
+          node-role.kubernetes.io/zfs-and-ceph: ""
           node.cluster.x-k8s.io/nodegroup: zfs-and-ceph
         taints: []
         bareMetalHosts:
-          - serverID: '2852588'
+          - serverID: "2852588"
             wwns:
               - eui.343339304e4026070025384100000002
               - eui.343339304e4026020025384100000002
-          - serverID: '2854796'
+          - serverID: "2854796"
             wwns:
               - eui.343339304e5042380025384100000008
               - eui.343339304e5042300025384100000008
@@ -134,11 +134,11 @@ hetzner:
             # Create the mirrored ZPool out partitions : nvme0n1p5 and nvme1n1p5.
             zpool create primary mirror /dev/nvme0n1p5 /dev/nvme1n1p5
 
-            # From that ZPool, set aside 50GB for ContainerD, by creating a ZVolume.
+            # From that ZPool, set aside 100GB for ContainerD, by creating a ZVolume.
             #
             # A ZFS volume is a dataset that represents a block device. ZFS volumes are identified as
             # devices in the /dev/zvol/{dsk,rdsk}/pool directory.
-            zfs create -s -V 50G primary/containerd
+            zfs create -s -V 100G primary/containerd
             udevadm settle
             mkfs.ext4 /dev/zvol/primary/containerd
 
@@ -169,11 +169,11 @@ hetzner:
           systemctl enable zfs-trim-weekly@rpool.timer --now
       - name: zfs
         labels:
-          node-role.kubernetes.io/zfs: ''
+          node-role.kubernetes.io/zfs: ""
           node.cluster.x-k8s.io/nodegroup: zfs
         taints: []
         bareMetalHosts:
-          - serverID: '2853926'
+          - serverID: "2853926"
             wwns: [eui.0025388511c5b3e1, eui.0025388511c5b367]
         diskLayoutSetupCommands: |-
           set -e
@@ -192,12 +192,12 @@ hetzner:
             # Create a mirrored ZPool out of those 2 partitions.
             zpool create primary mirror /dev/nvme0n1p4 /dev/nvme1n1p4
 
-            # From that ZPool, set aside 50GB for ContainerD, by creating a (thinly provisioned)
+            # From that ZPool, set aside 100GB for ContainerD, by creating a (thinly provisioned)
             # ZVolume.
             #
             # A ZFS volume is a dataset that represents a block device. ZFS volumes are identified
             # as devices in the /dev/zvol/{dsk,rdsk}/pool directory.
-            zfs create -s -V 50G primary/containerd
+            zfs create -s -V 100G primary/containerd
             udevadm settle
             mkfs.ext4 /dev/zvol/primary/containerd
 
