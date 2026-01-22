@@ -233,7 +233,7 @@ mattermost:
                 "Name": "outreach",
                 "Pattern": "\\B@outreach\\b",
                 "Scope": null,
-                "Template": "Outreach Team (@mwarid @akshay @sankhadeep @divya )",
+                "Template": "Outreach Team (@mwarid @akshay @sankhadeep)",
                 "WordMatch": false
               },
               {
@@ -244,7 +244,7 @@ mattermost:
                 "Name": "sales",
                 "Pattern": "\\B@sales?\\b",
                 "Scope": null,
-                "Template": "Sales Team (@sankhadeep @divya)",
+                "Template": "Sales Team (@sankhadeep)",
                 "WordMatch": false
               },
               {
