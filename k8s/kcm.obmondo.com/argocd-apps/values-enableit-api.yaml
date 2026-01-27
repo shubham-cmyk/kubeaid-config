@@ -118,6 +118,12 @@ ingress:
         - path: /api/customer/issues
           pathType: Prefix
           servicePort: 8080
+        - path: /api/products
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/instance_counts/certname
+          pathType: Prefix
+          servicePort: 8080
         - path: /api/customer/puppetserver
           pathType: Prefix
           servicePort: 8080
