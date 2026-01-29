@@ -50,6 +50,7 @@ spec:
       values:
       - argocd
       - cert-manager
+      - cloudnative-pg
       - finance
       - monitoring
       - obmondo

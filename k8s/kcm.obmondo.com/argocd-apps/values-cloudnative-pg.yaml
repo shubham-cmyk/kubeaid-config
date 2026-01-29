@@ -1,1 +1,10 @@
----
+cloudnative-pg:
+  monitoring:
+    podMonitorEnabled: true
+    prometheusRule:
+      enabled: true
+      labels:
+        prometheus: k8s
+      backupMaxAgeSeconds: 86400  # 24 hours
+      walArchiveMaxAgeSeconds: 300
+      firstRecoverabilityPointMaxAgeSeconds: 604800
