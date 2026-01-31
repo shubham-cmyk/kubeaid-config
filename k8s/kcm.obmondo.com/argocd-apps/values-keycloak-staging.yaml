@@ -17,6 +17,8 @@ keycloakx:
             pathType: Prefix
 
 postgresql:
+  monitoring:
+    enablePodMonitor: true
   storageClass: rook-ceph-block
   size: 8Gi
   backups:
