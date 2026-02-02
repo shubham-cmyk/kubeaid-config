@@ -21,6 +21,7 @@ traefik:
           - puppetca-cert
           - enableit-puppetca-cert
           - enableit-puppetca-new-cert
+          - enableit-puppetca-newcert-again
           - 7ejidqmfi9-puppetca-cert
           - abbnoa6nlk-puppetca-cert
           - niwyocdmk2-puppetca-cert
@@ -33,6 +34,10 @@ traefik:
           - puppetca-cert
           - enableit-puppetca-cert
           - enableit-puppetca-new-cert
+          # NOTE: the above two CAs should be removed later
+          # once we have verified no client is using it or
+          # simply sign all the client
+          - enableit-puppetca-newcert-again
           - 7ejidqmfi9-puppetca-cert
           - abbnoa6nlk-puppetca-cert
           - niwyocdmk2-puppetca-cert

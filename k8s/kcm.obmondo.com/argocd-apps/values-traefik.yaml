@@ -18,6 +18,7 @@ traefik:
         secretNames:
           - puppetca-cert
           - enableit-puppetca-cert
+          - enableit-puppetca-newcert-again
           - enableit-puppetca-new-cert
           - 7ejidqmfi9-puppetca-cert
           - abbnoa6nlk-puppetca-cert
@@ -31,6 +32,7 @@ traefik:
           - puppetca-cert
           - enableit-puppetca-cert
           - enableit-puppetca-new-cert
+          - enableit-puppetca-newcert-again
           - 7ejidqmfi9-puppetca-cert
           - abbnoa6nlk-puppetca-cert
           - niwyocdmk2-puppetca-cert
