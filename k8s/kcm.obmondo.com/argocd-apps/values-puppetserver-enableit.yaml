@@ -16,22 +16,22 @@ g10k:
     extraRepository:
       enableit:
         remote: ssh://git@gitea.obmondo.com:2223/EnableIT/linuxaid-config-enableit.git
-        basedir: /tmp/linuxaid-config/enableit
+        basedir: /etc/puppetlabs/code/hiera-data/enableit
       niwyocdmk2:
         remote: ssh://git@gitea.obmondo.com:2223/EnableIT/linuxaid-config-niwyocdmk2.git
-        basedir: /tmp/linuxaid-config/niwyocdmk2
+        basedir: /etc/puppetlabs/code/hiera-data/niwyocdmk2
       p45k4z2vfh:
         remote: ssh://git@gitea.obmondo.com:2223/EnableIT/linuxaid-config-p45k4z2vfh.git
-        basedir: /tmp/linuxaid-config/p45k4z2vfh
+        basedir: /etc/puppetlabs/code/hiera-data/p45k4z2vfh
       ebillet:
         remote: ssh://git@gitea.obmondo.com:2223/EnableIT/linuxaid-config-ebillet.git
-        basedir: /tmp/linuxaid-config/ebillet
+        basedir: /etc/puppetlabs/code/hiera-data/ebillet
       qd2xcggwag:
         remote: ssh://git@gitea.obmondo.com:2223/EnableIT/linuxaid-config-qd2xcggwag.git
-        basedir: /tmp/linuxaid-config/qd2xcggwag
+        basedir: /etc/puppetlabs/code/hiera-data/qd2xcggwag
       a0hu8x41ng:
         remote: ssh://git@gitea.obmondo.com:2223/EnableIT/linuxaid-config-a0hu8x41ng.git
-        basedir: /tmp/linuxaid-config/a0hu8x41ng
+        basedir: /etc/puppetlabs/code/hiera-data/a0hu8x41ng
 
 postgresql:
   instance: 1
