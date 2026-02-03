@@ -5,6 +5,8 @@ schedule:
     - "monitoring"
     - "relate"
     - "ciso-assistant"
+    - "matomo"
+    - "keycloak-staging"
   daily: true
   dailyTTL: 72h
   weekly: true
