@@ -8,7 +8,7 @@ matomo:
     port: 3306
     user: matomo
     database: matomo-mariadb
-    existingSecret: matomo-user     # make sure in the secret the key is db-password in mariadb template
+    existingSecret: mariadb-secret     # make sure in the secret the key is db-password in mariadb template
   ingress:
     ingressClassName: traefik-cert-manager
     enabled: true
@@ -20,11 +20,17 @@ matomo:
     tls: true
   pdb:
     create: false
-  image:
-    registry: public.ecr.aws
-    repository: bitnami/matomo
-    tag: 5.6.2
 
 mariadb:
+  rootPasswordSecretKeyRef:
+    name: mariadb-secret
+    key: MARIADB_ROOT_PASSWORD
+    generate: false
   storage:
     size: 3Gi
+  username: matomo
+  passwordSecretKeyRef:
+    name: mariadb-secret
+    key: db-password
+    generate: false
+  database: matomo-mariadb
