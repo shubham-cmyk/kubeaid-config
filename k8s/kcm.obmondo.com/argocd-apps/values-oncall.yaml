@@ -13,12 +13,12 @@ oncall:
       plugins:
         preinstall_sync_enabled: false
       server:
-        domain: oncall.kcm.obmondo.com
-        root_url: https://oncall.kcm.obmondo.com/grafana
+        domain: oncall-test.kcm.obmondo.com
+        root_url: https://oncall-test.kcm.obmondo.com/grafana
       auth:
         disable_login_form: false
         disable_signout_menu: false
-        signout_redirect_url: 'https://keycloak.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/logout?redirect_uri=https://oncall.kcm.obmondo.com/grafana'
+        signout_redirect_url: 'https://keycloak.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/logout?redirect_uri=https://oncall-test.kcm.obmondo.com/grafana'
       auth.generic_oauth:
         enabled: true
         allow_sign_up: true
@@ -79,7 +79,7 @@ oncall:
   oncall:
     telegram:
       enabled: true
-      webhookUrl: https://oncall.kcm.obmondo.com
+      webhookUrl: https://oncall-test.kcm.obmondo.com
       existingSecret: telegram-bot-token
       tokenKey: telegram-token
   redis:
