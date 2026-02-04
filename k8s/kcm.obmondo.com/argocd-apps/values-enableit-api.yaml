@@ -219,15 +219,15 @@ ingress:
         - path: /api/webhook
           pathType: Prefix
           servicePort: 8080
-        - path: /
-          pathType: ImplementationSpecific
-          servicePort: 8088
         - path: /api/v1/users
           pathType: Prefix
           servicePort: 8080
         - path: /api/cluster/customer
           pathType: Prefix
           servicePort: 8080
+        - path: /
+          pathType: ImplementationSpecific
+          servicePort: 8088
 
   tls:
     - secretName: api-beta-obmondo-com-tls
@@ -262,6 +262,15 @@ extraEnv:
     value: /opt/obmondo/puppet-pkcs7-cert.pem
   - name: ACCESS_LIST_CERTNAMES
     value: "internal-api01.enableit,opsmondo-test.niwyocdmk2,k8s-htzhel1-kbm.enableit,financeapi-puppet-cert.enableit,finance-api-beta-service.enableit"
+  - name: PUPPET_SSH_PRIVATE_KEY
+    value: /etc/enableit-api/puppet/ssh-privatekey
+  - name: GITEA_SSH_ADDR
+    value: "ssh://git@gitea-staging-ssh.monitoring-staging.svc.cluster.local:2222"
+  - name: GITEA_URL
+    value: "http://gitea-staging-http.monitoring-staging.svc.cluster.local:3000"
+  - name: GITEA_TOKEN
+    value: dffc3b5782fe0c7ca933241e04079a4cfeb2e75a
+
 
 g10k:
   enabled: true
