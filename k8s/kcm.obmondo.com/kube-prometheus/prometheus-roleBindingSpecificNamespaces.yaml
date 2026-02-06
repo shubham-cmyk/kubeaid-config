@@ -105,6 +105,25 @@ items:
       app.kubernetes.io/part-of: kube-prometheus
       app.kubernetes.io/version: 3.5.0
     name: prometheus-k8s
+    namespace: cloudnative-pg
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: Role
+    name: prometheus-k8s
+  subjects:
+  - kind: ServiceAccount
+    name: prometheus-k8s
+    namespace: monitoring
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    labels:
+      app.kubernetes.io/component: prometheus
+      app.kubernetes.io/instance: k8s
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 3.5.0
+    name: prometheus-k8s
     namespace: finance
   roleRef:
     apiGroup: rbac.authorization.k8s.io
@@ -143,6 +162,25 @@ items:
       app.kubernetes.io/part-of: kube-prometheus
       app.kubernetes.io/version: 3.5.0
     name: prometheus-k8s
+    namespace: monitoring-staging
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: Role
+    name: prometheus-k8s
+  subjects:
+  - kind: ServiceAccount
+    name: prometheus-k8s
+    namespace: monitoring
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    labels:
+      app.kubernetes.io/component: prometheus
+      app.kubernetes.io/instance: k8s
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 3.5.0
+    name: prometheus-k8s
     namespace: obmondo
   roleRef:
     apiGroup: rbac.authorization.k8s.io
@@ -162,7 +200,45 @@ items:
       app.kubernetes.io/part-of: kube-prometheus
       app.kubernetes.io/version: 3.5.0
     name: prometheus-k8s
+    namespace: obmondo-gitea-ci
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: Role
+    name: prometheus-k8s
+  subjects:
+  - kind: ServiceAccount
+    name: prometheus-k8s
+    namespace: monitoring
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    labels:
+      app.kubernetes.io/component: prometheus
+      app.kubernetes.io/instance: k8s
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 3.5.0
+    name: prometheus-k8s
     namespace: obmondo-website
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: Role
+    name: prometheus-k8s
+  subjects:
+  - kind: ServiceAccount
+    name: prometheus-k8s
+    namespace: monitoring
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    labels:
+      app.kubernetes.io/component: prometheus
+      app.kubernetes.io/instance: k8s
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 3.5.0
+    name: prometheus-k8s
+    namespace: puppetserver-niwyocdmk2
   roleRef:
     apiGroup: rbac.authorization.k8s.io
     kind: Role
@@ -201,6 +277,25 @@ items:
       app.kubernetes.io/version: 3.5.0
     name: prometheus-k8s
     namespace: sealed-secrets
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: Role
+    name: prometheus-k8s
+  subjects:
+  - kind: ServiceAccount
+    name: prometheus-k8s
+    namespace: monitoring
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    labels:
+      app.kubernetes.io/component: prometheus
+      app.kubernetes.io/instance: k8s
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 3.5.0
+    name: prometheus-k8s
+    namespace: system
   roleRef:
     apiGroup: rbac.authorization.k8s.io
     kind: Role
@@ -258,25 +353,6 @@ items:
       app.kubernetes.io/version: 3.5.0
     name: prometheus-k8s
     namespace: zfs-localpv
-  roleRef:
-    apiGroup: rbac.authorization.k8s.io
-    kind: Role
-    name: prometheus-k8s
-  subjects:
-  - kind: ServiceAccount
-    name: prometheus-k8s
-    namespace: monitoring
-- apiVersion: rbac.authorization.k8s.io/v1
-  kind: RoleBinding
-  metadata:
-    labels:
-      app.kubernetes.io/component: prometheus
-      app.kubernetes.io/instance: k8s
-      app.kubernetes.io/name: prometheus
-      app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 3.5.0
-    name: prometheus-k8s
-    namespace: keycloak-staging
   roleRef:
     apiGroup: rbac.authorization.k8s.io
     kind: Role

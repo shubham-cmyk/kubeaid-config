@@ -53,10 +53,14 @@ spec:
       - cloudnative-pg
       - finance
       - monitoring
+      - monitoring-staging
       - obmondo
+      - obmondo-gitea-ci
       - obmondo-website
+      - puppetserver-niwyocdmk2
       - rook-ceph
       - sealed-secrets
+      - system
       - traefik
       - velero
       - zfs-localpv

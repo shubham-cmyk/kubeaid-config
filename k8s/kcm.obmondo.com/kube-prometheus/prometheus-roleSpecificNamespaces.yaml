@@ -200,6 +200,44 @@ items:
       app.kubernetes.io/part-of: kube-prometheus
       app.kubernetes.io/version: 3.5.0
     name: prometheus-k8s
+    namespace: cloudnative-pg
+  rules:
+  - apiGroups:
+    - ""
+    resources:
+    - services
+    - endpoints
+    - pods
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - extensions
+    resources:
+    - ingresses
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - networking.k8s.io
+    resources:
+    - ingresses
+    verbs:
+    - get
+    - list
+    - watch
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    labels:
+      app.kubernetes.io/component: prometheus
+      app.kubernetes.io/instance: k8s
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 3.5.0
+    name: prometheus-k8s
     namespace: finance
   rules:
   - apiGroups:
@@ -276,6 +314,44 @@ items:
       app.kubernetes.io/part-of: kube-prometheus
       app.kubernetes.io/version: 3.5.0
     name: prometheus-k8s
+    namespace: monitoring-staging
+  rules:
+  - apiGroups:
+    - ""
+    resources:
+    - services
+    - endpoints
+    - pods
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - extensions
+    resources:
+    - ingresses
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - networking.k8s.io
+    resources:
+    - ingresses
+    verbs:
+    - get
+    - list
+    - watch
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    labels:
+      app.kubernetes.io/component: prometheus
+      app.kubernetes.io/instance: k8s
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 3.5.0
+    name: prometheus-k8s
     namespace: obmondo
   rules:
   - apiGroups:
@@ -314,7 +390,83 @@ items:
       app.kubernetes.io/part-of: kube-prometheus
       app.kubernetes.io/version: 3.5.0
     name: prometheus-k8s
+    namespace: obmondo-gitea-ci
+  rules:
+  - apiGroups:
+    - ""
+    resources:
+    - services
+    - endpoints
+    - pods
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - extensions
+    resources:
+    - ingresses
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - networking.k8s.io
+    resources:
+    - ingresses
+    verbs:
+    - get
+    - list
+    - watch
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    labels:
+      app.kubernetes.io/component: prometheus
+      app.kubernetes.io/instance: k8s
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 3.5.0
+    name: prometheus-k8s
     namespace: obmondo-website
+  rules:
+  - apiGroups:
+    - ""
+    resources:
+    - services
+    - endpoints
+    - pods
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - extensions
+    resources:
+    - ingresses
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - networking.k8s.io
+    resources:
+    - ingresses
+    verbs:
+    - get
+    - list
+    - watch
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    labels:
+      app.kubernetes.io/component: prometheus
+      app.kubernetes.io/instance: k8s
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 3.5.0
+    name: prometheus-k8s
+    namespace: puppetserver-niwyocdmk2
   rules:
   - apiGroups:
     - ""
@@ -391,6 +543,44 @@ items:
       app.kubernetes.io/version: 3.5.0
     name: prometheus-k8s
     namespace: sealed-secrets
+  rules:
+  - apiGroups:
+    - ""
+    resources:
+    - services
+    - endpoints
+    - pods
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - extensions
+    resources:
+    - ingresses
+    verbs:
+    - get
+    - list
+    - watch
+  - apiGroups:
+    - networking.k8s.io
+    resources:
+    - ingresses
+    verbs:
+    - get
+    - list
+    - watch
+- apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    labels:
+      app.kubernetes.io/component: prometheus
+      app.kubernetes.io/instance: k8s
+      app.kubernetes.io/name: prometheus
+      app.kubernetes.io/part-of: kube-prometheus
+      app.kubernetes.io/version: 3.5.0
+    name: prometheus-k8s
+    namespace: system
   rules:
   - apiGroups:
     - ""
@@ -505,44 +695,6 @@ items:
       app.kubernetes.io/version: 3.5.0
     name: prometheus-k8s
     namespace: zfs-localpv
-  rules:
-  - apiGroups:
-    - ""
-    resources:
-    - services
-    - endpoints
-    - pods
-    verbs:
-    - get
-    - list
-    - watch
-  - apiGroups:
-    - extensions
-    resources:
-    - ingresses
-    verbs:
-    - get
-    - list
-    - watch
-  - apiGroups:
-    - networking.k8s.io
-    resources:
-    - ingresses
-    verbs:
-    - get
-    - list
-    - watch
-- apiVersion: rbac.authorization.k8s.io/v1
-  kind: Role
-  metadata:
-    labels:
-      app.kubernetes.io/component: prometheus
-      app.kubernetes.io/instance: k8s
-      app.kubernetes.io/name: prometheus
-      app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 3.5.0
-    name: prometheus-k8s
-    namespace: keycloak-staging
   rules:
   - apiGroups:
     - ""
