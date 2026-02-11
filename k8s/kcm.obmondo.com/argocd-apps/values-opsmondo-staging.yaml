@@ -1,5 +1,11 @@
 opsmondo:
   config:
+    server:
+      own_certname: kcm.enableit
+      permitted_cidrs: |
+        78.46.72.21/32, 176.9.124.207/32, 85.10.211.48/32,
+        10.244.0.0/24, 10.244.7.0/24, 10.244.8.0/24,
+        10.244.13.0/24, 10.244.14.0/24, 10.244.15.0/24
     alerts:
       low_priority_alerts:
         - VeleroUnsuccessfulBackup
