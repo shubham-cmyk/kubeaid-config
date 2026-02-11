@@ -22,11 +22,6 @@ postgresql:
   storageClass: rook-ceph-block
   size: 8Gi
   backups:
-    destinationPath: "s3://kcm-keycloak-postgres-backups"
-    endpointURL: "https://s3.obmondo.com"
-    provider: aws
-    aws:
-      enableKube2IAMIntegration: false
-
+    enabled: false
 blackbox:
   probe: false
