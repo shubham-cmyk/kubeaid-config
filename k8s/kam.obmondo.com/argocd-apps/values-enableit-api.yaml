@@ -103,7 +103,7 @@ api:
     image:
       repository: harbor.obmondo.com/obmondo/clojure-api/api
       pullPolicy: Always
-      tag: v3.0.89
+      tag: v3.0.90
   go:
     image:
       repository: harbor.obmondo.com/obmondo/enableit-go-api
@@ -142,6 +142,9 @@ ingress:
     - host: api.obmondo.com
       paths:
         - path: /api/customer/issues
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/customer/billing
           pathType: Prefix
           servicePort: 8080
         - path: /api/products
