@@ -119,6 +119,9 @@ ingress:
         - path: /api/customer/issues
           pathType: Prefix
           servicePort: 8080
+        - path: /api/customer/billing
+          pathType: Prefix
+          servicePort: 8080
         - path: /api/products
           pathType: Prefix
           servicePort: 8080
