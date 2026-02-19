@@ -253,6 +253,9 @@ ingress:
         - path: /api/v1/users
           pathType: Prefix
           servicePort: 8080
+        - path: /api/v1/cluster
+          pathType: Prefix
+          servicePort: 8080
         - path: /api/leave
           pathType: Prefix
           servicePort: 8080

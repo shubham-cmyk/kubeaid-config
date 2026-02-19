@@ -219,6 +219,9 @@ ingress:
           pathType: Prefix
           serviceName: enableit-api-grpc
           servicePort: 8100
+        - path: /api/v1/cluster
+          pathType: Prefix
+          servicePort: 8080
         - path: /api/webhook
           pathType: Prefix
           servicePort: 8080
