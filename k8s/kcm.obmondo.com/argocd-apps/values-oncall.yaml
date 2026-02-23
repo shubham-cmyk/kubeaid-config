@@ -1,7 +1,7 @@
 oncall:
   grafanaPluginInstall:
     enabled: true
-  base_url: oncall.kcm.obmondo.com
+  base_url: test-oncall.kcm.obmondo.com
   grafana:
     persistence:
       enabled: true
@@ -13,12 +13,12 @@ oncall:
       plugins:
         preinstall_sync_enabled: false
       server:
-        domain: oncall-test.kcm.obmondo.com
-        root_url: https://oncall-test.kcm.obmondo.com/grafana
+        domain: test-oncall.kcm.obmondo.com
+        root_url: https://test-oncall.kcm.obmondo.com/grafana
       auth:
         disable_login_form: false
         disable_signout_menu: false
-        signout_redirect_url: 'https://keycloak.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/logout?redirect_uri=https://oncall-test.kcm.obmondo.com/grafana'
+        signout_redirect_url: 'https://keycloak.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/logout?redirect_uri=https://test-oncall.kcm.obmondo.com/grafana'
       auth.generic_oauth:
         enabled: true
         allow_sign_up: true
@@ -31,8 +31,6 @@ oncall:
         role_attribute_path: "contains(not_null(roles[*],''), 'Admin') && 'Admin' || contains(not_null(roles[*],''), 'Editor') && 'Editor' || contains(not_null(roles[*],''), 'Viewer') && 'Viewer'|| ''"
     env:
       GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION: true
-
-
       GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: grafana-oncall-app
     image:
       pullSecrets:
@@ -66,7 +64,7 @@ oncall:
     extraVolumes:
       - name: plugin-install-script
         configMap:
-          name: oncall-grafana-plugin-install
+          name: test-oncall-grafana-plugin-install
           defaultMode: 0755
       # defining extraVolumes in the parent values REPLACES (not appends to)
       # the subchart defaults, so we must explicitly include this provisioning volume.
@@ -81,7 +79,7 @@ oncall:
   oncall:
     telegram:
       enabled: true
-      webhookUrl: https://oncall-test.kcm.obmondo.com
+      webhookUrl: https://test-oncall.kcm.obmondo.com
       existingSecret: telegram-bot-token
       tokenKey: telegram-token
   redis:
@@ -97,9 +95,33 @@ oncall:
   backup:
     enabled: false
     cloud: "aws"
-    destinationPath: s3://kcm-oncall-postgres-backups
+    destinationPath: s3://kcm-test-oncall-postgres-backups
     endpointURL: https://s3.obmondo.com
   recover: false
 
-postgresql:
-  size: 70Gi
+
+global:
+  netpol:
+    enabled: true
+    releaseName: test-oncall
+    traefik:
+      namespace: grafana
+      labels:
+        app.kubernetes.io/instance: traefik
+
+  postgresql:
+    netpol: true
+    size: 70Gi
+  
+  celery:
+    netpol: true
+
+  engine:
+    netpol: true
+
+  redis:
+    netpol: true
+    enabled: true
+
+  grafana:
+    netpol: true

@@ -9,10 +9,20 @@ whoami:
         hosts:
           - whoami.kcm.obmondo.com
     annotations:
-      cert-manager.io/cluster-issuer: letsencrypt-prod
-      kubernetes.io/ingress.class: traefik
+      kubernetes.io/ingress.class: traefik-cert-manager
+      cert-manager.io/cluster-issuer: letsencrypt
       traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
       traefik.ingress.kubernetes.io/router.tls: "true"
 
-networkPolicy:
-  enabled: true
+global:
+  netpol:
+    enabled: true
+    releaseName: whoami
+    traefik:
+      namespace: traefik
+      labels:
+        app.kubernetes.io/name: traefik
+        app.kubernetes.io/instance: traefik
+
+  whoami:
+    netpol: true
