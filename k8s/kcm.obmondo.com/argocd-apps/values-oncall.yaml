@@ -31,6 +31,8 @@ oncall:
         role_attribute_path: "contains(not_null(roles[*],''), 'Admin') && 'Admin' || contains(not_null(roles[*],''), 'Editor') && 'Editor' || contains(not_null(roles[*],''), 'Viewer') && 'Viewer'|| ''"
     env:
       GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION: true
+
+
       GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: grafana-oncall-app
     image:
       pullSecrets:
