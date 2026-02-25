@@ -52,14 +52,15 @@ spec:
       - cert-manager
       - cloudnative-pg
       - finance
+      - finance-test
       - monitoring
       - monitoring-staging
       - obmondo
       - obmondo-gitea-ci
       - obmondo-website
+      - puppetserver-enableit
       - puppetserver-niwyocdmk2
       - rook-ceph
-      - sealed-secrets
       - system
       - traefik
       - velero
@@ -83,6 +84,6 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 50Gi
+            storage: 60Gi
         storageClassName: rook-ceph-block
   version: 3.5.0
