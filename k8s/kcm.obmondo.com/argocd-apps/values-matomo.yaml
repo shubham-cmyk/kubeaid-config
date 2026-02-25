@@ -4,7 +4,7 @@ matomo:
   mariadb:
     enabled: false
   externalDatabase:
-    host: matomo-mariadb.matomo.svc.cluster.local
+    host: matomo-mariadb
     port: 3306
     user: matomo
     database: matomo-mariadb
@@ -34,3 +34,9 @@ mariadb:
     key: db-password
     generate: false
   database: matomo-mariadb
+  logicalbackup:
+    enabled: true
+    s3bucket: "kcm-matomo"
+    provider: "s3"
+    s3endpoint: "https://s3.obmondo.com"
+    retention: "15 days"
