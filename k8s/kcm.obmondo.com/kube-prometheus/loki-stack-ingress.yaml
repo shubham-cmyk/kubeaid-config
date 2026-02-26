@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: loki-stack
+  namespace: monitoring
+  annotations:
+    kubernetes.io/ingress.class: traefik-cert-manager
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  rules:
+    - host: loki.kcm.obmondo.com
+      http:
+        paths:
+          - path: /loki
+            pathType: Prefix
+            backend:
+              service:
+                name: loki-stack
+                port:
+                  number: 3100
+  tls:
+    - hosts:
+        - loki.kcm.obmondo.com
+      secretName: loki-kcm-obmondo-com-tls
+
