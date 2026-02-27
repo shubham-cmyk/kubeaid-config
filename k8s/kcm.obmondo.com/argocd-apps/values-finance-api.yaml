@@ -150,3 +150,7 @@ prometheusRule:
   cronJobDurationSeverity: warning
   cronJobFailureThreshold: 0
   cronJobFailureSeverity: critical
+
+extraEnv:
+  - name: ACCESS_LIST_CERTNAMES
+    value: "svc-bridge.enableit,financeapi-client,obmondo-api.enableit"
