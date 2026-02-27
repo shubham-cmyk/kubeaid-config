@@ -299,7 +299,7 @@ extraEnv:
   - name: PUPPET_PKCS7_CERT_PATH
     value: /opt/obmondo/puppet-pkcs7-cert.pem
   - name: ACCESS_LIST_CERTNAMES
-    value: "finance-api.enableit,opsmondo.enableit,internal-api01.enableit,kcm.enableit"
+    value: "finance-api.enableit,opsmondo.enableit,internal-api01.enableit,kcm.enableit,obmondo-api.enableit"
 
 g10k:
   enabled: true
