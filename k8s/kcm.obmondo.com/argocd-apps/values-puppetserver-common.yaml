@@ -40,12 +40,7 @@ ipAllowedList:
   - "138.201.82.121"   # kaw01
   - "138.201.224.126"  # kaw02
 
-g10k:
-  code:
-    viaSsh:
-      credentials:
-        existingSecret: g10k-git-secret
-  hiera:
-    viaSsh:
-      credentials:
-        existingSecret: g10k-git-secret
+gfetch:
+  repos:
+    linuxaid:
+      url: ssh://git@gitea.obmondo.com:2223/EnableIT/linuxaid.git
