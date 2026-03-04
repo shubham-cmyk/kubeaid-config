@@ -143,8 +143,10 @@ prometheusRule:
   invoiceGenerationFailureThreshold: 0.1
   invoiceGenerationFailureSeverity: critical
 
-  # Cron Jobs
-  cronJobTimeoutThreshold: 3600
+  # Cron Jobs - per-schedule thresholds to avoid false positives (see finance-api docs/metrics/cron-job-alerts.md)
+  cronJobTimeoutDaily: 90000    # 25h - daily crons (ExchangeRate, Products, ExpenseCeiling, CompareinvoiceTotalHours, overdue_invoices)
+  cronJobTimeoutWeekday: 262800 # 73h - GenerateInvoiceCron (Mon-Fri 17:00)
+  cronJobTimeoutWeekly: 691200   # 8d  - CustomerUnnaprovedHoursCron (Fri 09:00)
   cronJobTimeoutSeverity: critical
   cronJobDurationThreshold: 300
   cronJobDurationSeverity: warning
