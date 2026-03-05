@@ -1,5 +1,9 @@
 customerid: enableit
 puppetserver:
+  global:
+    extraEnv:
+      AUTOSIGN_CLIENT_CERT: /opt/obmondo/ssl/puppetserver-enableit.crt
+      AUTOSIGN_CLIENT_KEY: /opt/obmondo/ssl/puppetserver-enableit.key
   puppetdb:
     fqdns:
       alternateServerNames: enableit.puppetdb.obmondo.com
@@ -10,6 +14,13 @@ puppetserver:
     persistence:
       data:
         size: 800Mi
+    extraSecrets:
+      - name: obmondo-clientcert
+        mountPath: /opt/obmondo/ssl/puppetserver-enableit.key
+        subPath: tls.key
+      - name: obmondo-clientcert
+        mountPath: /opt/obmondo/ssl/puppetserver-enableit.crt
+        subPath: tls.crt
 
 gfetch:
   repos:
