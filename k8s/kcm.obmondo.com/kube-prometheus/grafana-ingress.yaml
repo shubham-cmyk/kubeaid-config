@@ -17,7 +17,3 @@ spec:
               name: http
         path: /
         pathType: Prefix
-  tls:
-  - hosts:
-    - grafana.kcm.obmondo.com
-    secretName: kube-prometheus-grafana-tls
