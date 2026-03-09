@@ -116,10 +116,10 @@ api:
   redis:
     url: redis://redis-cluster-enableit-api-leader:6379
   prometheus_customer_url:
-    - enableit;https://enableit.prometheus.obmondo.com/enableit
+    - enableit;https://enableit.prometheus.obmondo.com
     - 7ejidqmfi9;https://prometheus.hearing.corp-ad.com/7ejidqmfi9 # these are now on internal ip ranges.might need to remove.
     - abbnoa6nlk;https://prometheus.corp.hbkworld.com/abbnoa6nlk # these are now on internal ip ranges.might need to remove
-    - ebillet;https://ebillet.prometheus.obmondo.com/ebillet
+    - ebillet;https://ebillet.prometheus.obmondo.com
 
 redis:
   replicas: 3
