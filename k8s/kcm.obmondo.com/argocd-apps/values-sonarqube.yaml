@@ -1,7 +1,7 @@
 sonarqube:
   ingress:
     enabled: true
-    ingressClassName: traefik
+    ingressClassName: traefik-cert-manager
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt
     hosts:
