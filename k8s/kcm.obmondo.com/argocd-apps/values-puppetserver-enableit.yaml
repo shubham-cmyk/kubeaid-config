@@ -23,6 +23,12 @@ puppetserver:
         subPath: tls.crt
 
 gfetch:
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      memory: "512Mi"
   repos:
     enableit:
       url: ssh://git@gitea.obmondo.com:2223/EnableIT/linuxaid-config-enableit.git
