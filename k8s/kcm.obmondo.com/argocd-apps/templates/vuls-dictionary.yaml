@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  labels:
+    kubeaid.io/version: 20.1.1
+    kubeaid.io/managed-by: kubeaid
+    kubeaid.io/sync-order: "10"
+  name: vuls-dictionary
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: vuls
+  project: kubeaid
+  sources:
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid
+      path: argocd-helm-charts/vuls-dictionary
+      targetRevision: 20.1.1
+      helm:
+        valueFiles:
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-vuls-dictionary.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit
+      targetRevision: HEAD
+      ref: values
+  syncPolicy:
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true
