@@ -7,7 +7,7 @@ spec:
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/opsmondo.git
       path: helm/opsmondo
-      targetRevision: v1.1.1
+      targetRevision: v1.1.2
       helm:
         valueFiles:
           - $values/k8s/kcm.obmondo.com/argocd-apps/values-opsmondo.yaml
