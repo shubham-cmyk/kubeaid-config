@@ -75,6 +75,7 @@ trustedProxies:
 image:
   pullPolicy: Always
 api:
+  mode: prod
   email:
     info: info@obmondo.com
     overview: '["klavs.klavsen@enableit.dk"]'
@@ -105,12 +106,12 @@ api:
     image:
       repository: harbor.obmondo.com/obmondo/clojure-api/api
       pullPolicy: Always
-      tag: v3.0.93
+      tag: v3.0.94
   go:
     image:
       repository: harbor.obmondo.com/obmondo/enableit-go-api
       pullPolicy: Always
-      tag: v0.5.1
+      tag: v0.5.2
   server:
     internal_ips_for_readonly_auth: "172.20.0.0/16"
   redis:
