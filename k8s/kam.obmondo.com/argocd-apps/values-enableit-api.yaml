@@ -255,6 +255,9 @@ ingress:
         - path: /api/v1/users
           pathType: Prefix
           servicePort: 8080
+        - path: /api/v1/customer
+          pathType: Prefix
+          servicePort: 8080
         - path: /api/v1/cluster
           pathType: Prefix
           servicePort: 8080
@@ -300,6 +303,8 @@ extraEnv:
     value: /opt/obmondo/puppet-pkcs7-cert.pem
   - name: ACCESS_LIST_CERTNAMES
     value: "finance-api.enableit,opsmondo.enableit,internal-api01.enableit,kcm.enableit,obmondo-api.enableit"
+  - name: FINANCE_API_URL
+    value: "https://finance-api.obmondo.com/"
 
 g10k:
   enabled: true
