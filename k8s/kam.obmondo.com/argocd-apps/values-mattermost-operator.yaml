@@ -63,7 +63,7 @@ mattermost:
     - name: MM_GITLABSETTINGS_TOKENENDPOINT
       value: "https://keycloak.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/token"
     - name: MM_TEAMSETTINGS_RESTRICTCREATIONTODOMAINS
-      value: "enableit.dk,obmondo.com,blackwoodseven.com,gnhearing.com,gn.com,gnresound.com,jabra.com,ebillet.dk,kilroy.net,hbkworld.com,grandpedersen.dk,image2work.com,gmail.com,kds.dk,kantar.com,webpros.com,elvium.com,rubyonsaas.com,eusafe.eu"
+      value: "enableit.dk,obmondo.com,blackwoodseven.com,gnhearing.com,gn.com,gnresound.com,jabra.com,ebillet.dk,kilroy.net,hbkworld.com,grandpedersen.dk,image2work.com,gmail.com,kds.dk,kantar.com,webpros.com,elvium.com,rubyonsaas.com,eusafe.eu,kirklarsen.dk"
     - name: MM_TEAMSETTINGS_MAXUSERSPERTEAM
       value: "200"
     - name: MM_EMAILSETTINGS_SENDPUSHNOTIFICATIONS
