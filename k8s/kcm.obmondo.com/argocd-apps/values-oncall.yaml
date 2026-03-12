@@ -1,14 +1,17 @@
 oncall:
+  grafanaPluginInstall:
+    enabled: true
   base_url: oncall.kcm.obmondo.com
   grafana:
     persistence:
       enabled: true
       size: 2Gi
-    plugins:
-      - https://grafana.com/api/plugins/grafana-oncall-app/versions/1.6.1/download;grafana-oncall-app
+    plugins: []
     grafana.ini:
       analytics:
-        check_for_updates: true
+        check_for_updates: false
+      plugins:
+        preinstall_sync_enabled: false
       server:
         domain: oncall.kcm.obmondo.com
         root_url: https://oncall.kcm.obmondo.com/grafana
@@ -28,6 +31,46 @@ oncall:
         role_attribute_path: "contains(not_null(roles[*],''), 'Admin') && 'Admin' || contains(not_null(roles[*],''), 'Editor') && 'Editor' || contains(not_null(roles[*],''), 'Viewer') && 'Viewer'|| ''"
     env:
       GF_SECURITY_DISABLE_INITIAL_ADMIN_CREATION: true
+      GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: grafana-oncall-app
+    image:
+      pullSecrets:
+        - harbor-registry-secret
+    extraInitContainers:
+      - name: install-oncall-plugin
+        # We are pulling plugin v1.6.1 from harbor - above this version, plugin and engine were not compatible with one another, so we are pinning to these versions.
+        image: harbor.obmondo.com/obmondo/oras:v1.3.0
+        command: [sh, /scripts/install-plugin.sh]
+        env:
+          - name: HARBOR_USER
+            valueFrom:
+              secretKeyRef:
+                name: oncall-plugin-config
+                key: username
+          - name: HARBOR_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: oncall-plugin-config
+                key: password
+          - name: HARBOR_PLUGIN_REF
+            valueFrom:
+              secretKeyRef:
+                name: oncall-plugin-config
+                key: plugin
+        volumeMounts:
+          - name: storage
+            mountPath: /var/lib/grafana
+          - name: plugin-install-script
+            mountPath: /scripts
+    extraVolumes:
+      - name: plugin-install-script
+        configMap:
+          name: oncall-grafana-plugin-install
+          defaultMode: 0755
+      # defining extraVolumes in the parent values REPLACES (not appends to)
+      # the subchart defaults, so we must explicitly include this provisioning volume.
+      - name: provisioning
+        configMap:
+          name: helm-testing-grafana-plugin-provisioning
     envValueFrom:
       GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET:
         secretKeyRef:
