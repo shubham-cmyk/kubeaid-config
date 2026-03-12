@@ -1,5 +1,5 @@
 imagePullSecrets:
-  - name: errbot-gitlab-registry
+  - name: harbor-registry-secret
 
 initContainerCmd: "chown -R 1000:1000 /home/errbot/data"
 
