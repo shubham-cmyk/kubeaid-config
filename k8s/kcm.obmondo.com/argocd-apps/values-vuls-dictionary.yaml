@@ -50,4 +50,4 @@ vulsServer:
       cpu: 500m
       memory: 512Mi
   resultsStorage:
-    size: 2Gi
+    size: 15Gi
