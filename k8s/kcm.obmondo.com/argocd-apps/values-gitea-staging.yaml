@@ -21,7 +21,7 @@ gitea:
             restartPolicy: Never
             containers:
               - name: gitea-bootstrap
-                image: harbor.obmondo.com/obmondo/gitea-bootstrap:v1.0.6
+                image: harbor.obmondo.com/obmondo/gitea-bootstrap:v1.0.10
                 env:
                   - name: GITEA_URL
                     value: http://gitea-staging-http:3000
