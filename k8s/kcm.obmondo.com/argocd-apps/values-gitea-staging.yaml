@@ -2,7 +2,7 @@ gitea:
   image:
     registry: harbor.obmondo.com
     repository: obmondo/gitea
-    tag: v1.24.50-obmondo
+    tag: v1.25.43-obmondo
     rootless: false
   extraDeploy:
     - apiVersion: batch/v1
