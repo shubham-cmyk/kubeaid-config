@@ -49,6 +49,7 @@ argo-cd:
         g, shubh@obmondo.com, role:admin
         g, klaes@obmondo.com, role:admin
         g, lucas@obmondo.com, role:admin
+        g, fasuto@obmondo.com, role:admin
         g, rishi@obmondo.com, role:admin
       scopes: '[groups, email]'
     cm:
