@@ -273,7 +273,7 @@ extraEnv:
   - name: PUPPET_PKCS7_CERT_PATH
     value: /opt/obmondo/puppet-pkcs7-cert.pem
   - name: ACCESS_LIST_CERTNAMES
-    value: "internal-api01.enableit,opsmondo-test.niwyocdmk2,k8s-htzhel1-kbm.enableit,financeapi-puppet-cert.enableit,finance-api-beta-service.enableit,obmondo-api.enableit"
+    value: "internal-api01.enableit,kcm.enableit,financeapi-puppet-cert.enableit,finance-api-beta-service.enableit,obmondo-api.enableit"
   - name: PUPPET_SSH_PRIVATE_KEY
     value: /etc/enableit-api/puppet/ssh-privatekey
   - name: GITEA_SSH_ADDR
@@ -284,7 +284,6 @@ extraEnv:
     value: dffc3b5782fe0c7ca933241e04079a4cfeb2e75a
   - name: FINANCE_API_URL
     value: "https://finance-api-beta.obmondo.com/"
-
 
 g10k:
   enabled: true
