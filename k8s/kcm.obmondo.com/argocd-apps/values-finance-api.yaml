@@ -61,13 +61,12 @@ keycloak:
 go_api:
   url: https://api-beta.obmondo.com
 
-# TODO: Verify Mattermost team exists in KCM
 chat:
-  host: "https://mattermost-staging.obmondo.com"  # TODO: Update to KCM Mattermost if different
+  host: "https://mattermost-staging.kcm.obmondo.com"
   token:
     name: chat-token
     key: token
-  team_name: "obmondo-kbm"  # TODO: Update to KCM team name
+  team_name: "obmondo-kcm"
 
 tls:
   secret: finance-api-beta-service
