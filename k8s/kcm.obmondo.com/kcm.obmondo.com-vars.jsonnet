@@ -43,6 +43,7 @@
     'cloudnative-pg',
     'finance',
     'finance-test',
+    'mattermost',
     'monitoring',
     'monitoring-staging',
     'obmondo',
