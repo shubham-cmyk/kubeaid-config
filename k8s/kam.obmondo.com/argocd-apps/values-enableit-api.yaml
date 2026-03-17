@@ -107,12 +107,12 @@ api:
     image:
       repository: harbor.obmondo.com/obmondo/clojure-api/api
       pullPolicy: Always
-      tag: v3.0.94
+      tag: v3.0.95
   go:
     image:
       repository: harbor.obmondo.com/obmondo/enableit-go-api
       pullPolicy: Always
-      tag: v0.5.2
+      tag: v0.5.3
   server:
     internal_ips_for_readonly_auth: "172.20.0.0/16"
   redis:
