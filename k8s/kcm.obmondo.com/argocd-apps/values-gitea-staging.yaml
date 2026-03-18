@@ -2,8 +2,10 @@ gitea:
   image:
     registry: harbor.obmondo.com
     repository: obmondo/gitea
-    tag: v1.25.43-obmondo
+    tag: v1.25.51-obmondo
     rootless: false
+  imagePullSecrets:
+    - name: harbor-registry-secret
   extraDeploy:
     - apiVersion: batch/v1
       kind: Job
