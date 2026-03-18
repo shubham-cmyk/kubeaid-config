@@ -84,7 +84,7 @@ api:
     image:
       repository: harbor.obmondo.com/obmondo/enableit-go-api
       pullPolicy: Always
-      tag: v0.5.3
+      tag: v0.5.4
   server:
     internal_ips_for_readonly_auth: "172.20.0.0/16"
   mode: beta
@@ -183,6 +183,9 @@ ingress:
           pathType: Prefix
           servicePort: 8088
         - path: /api/servers/csv/customer
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/servers/environment
           pathType: Prefix
           servicePort: 8080
         - path: /api/servers/customer
