@@ -1,0 +1,19 @@
+---
+loki-stack:
+  loki:
+    # Do not run a Loki server in KAM; use the central Loki in KCM instead.
+    enabled: false
+
+  promtail:
+    enabled: true
+    config:
+      # Override clients to send logs to the Loki endpoint exposed in KCM.
+      clients:
+        - url: https://loki.kcm.obmondo.com/loki/api/v1/push
+
+      snippets:
+        # Add a static label so KAM logs can be filtered in Loki/Grafana.
+        extraRelabelConfigs:
+          - target_label: cluster
+            replacement: kam
+
