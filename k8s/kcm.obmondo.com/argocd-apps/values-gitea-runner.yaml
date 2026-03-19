@@ -9,10 +9,12 @@ act-runner:
     parallel_jobs: 30
     labels:
       # upstream link: https://hub.docker.com/r/gitea/gitea
-      - "gitea:docker://gitea/gitea:1.21.3"
-      - "ubuntu-latest:docker://node:16-bullseye"
-      - "ubuntu-22.04:docker://node:16-bullseye"
-      - "ubuntu-20.04:docker://node:16-bullseye"
+      - "gitea:docker://harbor.obmondo.com/obmondo/gitea:v1.25.51-obmondo"
+      - "ubuntu-latest:docker://harbor.obmondo.com/obmondo/catthehacker-ubuntu:act-24.04"
+      - "ubuntu-24.04:docker://harbor.obmondo.com/obmondo/catthehacker-ubuntu:act-24.04"
+      - "ubuntu-22.04:docker://harbor.obmondo.com/obmondo/catthehacker-ubuntu:act-22.04"
+    registrySecretName: harbor-registry-secret
+    registrySecretMountPath: /runner/.docker
 
 runner:
   nameSpace:
