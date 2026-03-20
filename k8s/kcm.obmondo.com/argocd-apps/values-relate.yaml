@@ -52,7 +52,7 @@ relate:
     extraHosts:
   cnpg:
     backup:
-      destinationPath: "s3://relate-atat"
+      destinationPath: "s3://kcm-relate"
       endpointURL: "https://s3.obmondo.com"
       cloud: "aws"
       wal:
