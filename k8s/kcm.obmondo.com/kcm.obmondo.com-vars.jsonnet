@@ -2,7 +2,7 @@
   platform: 'kubeadm',
   certname: 'kcm.enableit',
   extra_configs: true,
-  'blackbox-exporter': false,
+  'blackbox-exporter': true,
   connect_obmondo: true,
   connect_keda: false,
   grafana_keycloak_enable: true,
@@ -19,7 +19,7 @@
     zfs: true,
     mdraid: true,
     ceph: true,
-    'hpa-maxed-out': true,
+    'blackbox-exporter': true,
   },
   prometheus_operator_resources+: {
     limits: { memory: '120Mi' },
