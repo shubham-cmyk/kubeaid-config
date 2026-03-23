@@ -16,6 +16,18 @@ sonarqube:
     name: sonarqube
   sonarProperties:
     sonar.core.serverBaseURL: "https://sonarqube.kcm.obmondo.com"
-postgresql:
+  jdbcOverwrite:
+    enabled: true
+    jdbcSecretName: sonarqube-pgsql-app
+    jdbcSecretPasswordKey: password
+    jdbcUrl: "jdbc:postgresql://sonarqube-pgsql-rw/sonarqube?socketTimeout=1500"
+    jdbcUsername: sonarqube
+
+cnpg:
+  enabled: true
+  instances: 1
   size: 4Gi
+  backups:
+    enabled: false
+
 networkpolicies: false
