@@ -5,7 +5,6 @@ metadata:
   namespace: monitoring
   annotations:
     kubernetes.io/ingress.class: traefik-cert-manager
-    cert-manager.io/cluster-issuer: letsencrypt
 spec:
   ingressClassName: traefik-cert-manager
   rules:
@@ -19,8 +18,4 @@ spec:
                 name: loki-stack
                 port:
                   number: 3100
-  tls:
-    - hosts:
-        - loki.kcm.obmondo.com
-      secretName: loki-kcm-obmondo-com-tls
 
