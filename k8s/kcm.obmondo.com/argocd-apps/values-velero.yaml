@@ -8,9 +8,9 @@ schedule:
     - "matomo"
     - "keycloak-staging"
   daily: true
-  dailyTTL: 72h
+  dailyTTL: 720h
   weekly: true
-  weeklyTTL: 168h
+  weeklyTTL: 2160h
   sixhourly: false
 velero:
   metrics:
