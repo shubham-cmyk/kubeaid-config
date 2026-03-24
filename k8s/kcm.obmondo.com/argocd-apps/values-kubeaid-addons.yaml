@@ -1,0 +1,23 @@
+---
+# fqdns
+global:
+  telegram:
+    url: "api.telegram.org"
+  keycloak:
+    url: "keycloak.obmondo.com"
+  grafana:
+    url: "grafana.com"
+  googleStorage:
+    url: "storage.googleapis.com"
+
+# default deny values
+defaultDeny:
+  enabled: true
+  namespaces:
+    test-oncall:
+      excludedPods:
+        - app: teleport-kube-agent
+        - app.kubernetes.io/instance: obmondo-k8s-agent
+        - app: gitea-stats-exporter
+        - app.kubernetes.io/instance: gitea-stats-exporter
+    whoami: {}
