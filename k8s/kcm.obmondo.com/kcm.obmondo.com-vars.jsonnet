@@ -19,6 +19,7 @@
     zfs: true,
     mdraid: true,
     ceph: true,
+    'hpa-maxed-out': true,
   },
   prometheus_operator_resources+: {
     limits: { memory: '120Mi' },
@@ -55,6 +56,7 @@
     'system',
     'velero',
     'zfs-localpv',
+    'graylog',
   ],
   prometheus_scrape_default_namespaces: [
     'argocd',
