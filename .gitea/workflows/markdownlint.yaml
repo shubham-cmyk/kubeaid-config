@@ -9,7 +9,10 @@ name: markdownlint
 jobs:
   markdownlint:
     runs-on: ubuntu-22.04-htzhel1-ax42-a
-    uses: Obmondo/gitea-actions/.gitea/workflows/markdownlint.yml@main
-    with:
-      config: .markdownlint-cli2.yaml
-      globs: '**/*.md'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install -g markdownlint-cli2
+      - run: markdownlint-cli2 --config .markdownlint-cli2.yaml "**/*.md"
