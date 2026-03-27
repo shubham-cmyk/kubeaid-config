@@ -1,0 +1,55 @@
+---
+pullThroughCache:
+  enabled: true
+  proxyRegistry: "harbor.obmondo.com"
+  mutateExistingOnPolicyUpdate: false
+
+upstreamRegistries:
+  - "docker.io"
+  - "docker.io/library"
+  - "ghcr.io"
+  - "registry.k8s.io"
+
+harborProxyCache:
+  enabled: true
+  registry: "harbor.obmondo.com"
+  dockerHubProject: "docker-hub-proxy-cache"
+  ghcrProject: "ghcr-proxy-cache"
+  k8sProject: "registry-k8s-proxy-cache"
+  imagePullSecretName: "harbor-proxy-cache"
+  ghcrImagePullSecretName: "harbor-ghcr-proxy-cache"
+  k8sImagePullSecretName: "harbor-registry-k8s-proxy-cache"
+  mutateExistingOnPolicyUpdate: false
+  excludeNamespaces:
+    - harbor
+
+syncSecrets:
+  enabled: true
+  items:
+    - name: harbor-proxy-cache
+      sourceSecret:
+        namespace: harbor
+        name: harbor-proxy-cache
+      targetSecret:
+        name: harbor-proxy-cache
+      excludeNamespaces:
+        - kyverno
+        - argocd
+    - name: harbor-ghcr-proxy-cache
+      sourceSecret:
+        namespace: harbor
+        name: harbor-ghcr-proxy-cache
+      targetSecret:
+        name: harbor-ghcr-proxy-cache
+      excludeNamespaces:
+        - kyverno
+        - argocd
+    - name: harbor-registry-k8s-proxy-cache
+      sourceSecret:
+        namespace: harbor
+        name: harbor-registry-k8s-proxy-cache
+      targetSecret:
+        name: harbor-registry-k8s-proxy-cache
+      excludeNamespaces:
+        - kyverno
+        - argocd
