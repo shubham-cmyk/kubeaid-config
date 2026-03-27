@@ -112,7 +112,7 @@ global:
   postgresql:
     netpol: true
     size: 70Gi
-  
+
   celery:
     netpol: true
 
