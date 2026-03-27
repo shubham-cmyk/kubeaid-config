@@ -20,6 +20,8 @@ ingress:
     kubernetes.io/ingress.class: traefik-cert-manager
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.tls.options: traefik-api-puppet-agent-tls-auth@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-cn-header-enableit-api@kubernetescrd
   hosts:
     - host: finance-api-beta.obmondo.com
       paths:
