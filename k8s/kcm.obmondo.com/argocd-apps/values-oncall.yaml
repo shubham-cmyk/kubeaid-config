@@ -91,7 +91,10 @@ oncall:
     enabled: true
     annotations:
       kubernetes.io/ingress.class: traefik-cert-manager
-      cert-manager.io/cluster-issuer: letsencrypt
+    tls:
+      - secretName: kcm-obmondo-com
+        hosts:
+          - oncall.kcm.obmondo.com
   backup:
     enabled: false
     cloud: "aws"
