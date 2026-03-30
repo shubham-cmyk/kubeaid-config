@@ -257,7 +257,7 @@ ingress:
     traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-cn-header-enableit-api@kubernetescrd
 
 postgresql:
-  instance: 2
+  instances: 2
   logicalBackup:
     enabled: false
 
