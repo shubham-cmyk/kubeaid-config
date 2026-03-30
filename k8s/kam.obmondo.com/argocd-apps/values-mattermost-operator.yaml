@@ -200,7 +200,7 @@ mattermost:
                 "Name": "product",
                 "Pattern": "\\B@products?\\b",
                 "Scope": null,
-                "Template": "Product Team (@amal @basit @emil @esther @mayank @rishikesh @suwarna @rehan @sgupta @deep)",
+                "Template": "Product Team (@basit @emil @esther @mayank @rishikesh @suwarna @rehan)",
                 "WordMatch": false
               },
               {
