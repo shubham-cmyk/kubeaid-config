@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/instance: k8s
     app.kubernetes.io/name: prometheus
     app.kubernetes.io/part-of: kube-prometheus
-    app.kubernetes.io/version: 3.9.1
+    app.kubernetes.io/version: 3.5.0
   name: k8s
   namespace: monitoring
 spec:
@@ -21,7 +21,7 @@ spec:
     certname: kcm.enableit
     product: kubeaid
   externalUrl: ""
-  image: quay.io/prometheus/prometheus:v3.9.1
+  image: quay.io/prometheus/prometheus:v3.5.0
   nodeSelector:
     kubernetes.io/os: linux
   podMetadata:
@@ -30,7 +30,7 @@ spec:
       app.kubernetes.io/instance: k8s
       app.kubernetes.io/name: prometheus
       app.kubernetes.io/part-of: kube-prometheus
-      app.kubernetes.io/version: 3.9.1
+      app.kubernetes.io/version: 3.5.0
   podMonitorNamespaceSelector: {}
   podMonitorSelector: {}
   probeNamespaceSelector: {}
@@ -75,7 +75,6 @@ spec:
     runAsNonRoot: true
     runAsUser: 1000
   serviceAccountName: prometheus-k8s
-  serviceDiscoveryRole: EndpointSlice
   serviceMonitorNamespaceSelector: {}
   serviceMonitorSelector: {}
   storage:
@@ -89,4 +88,4 @@ spec:
           requests:
             storage: 60Gi
         storageClassName: rook-ceph-block
-  version: 3.9.1
+  version: 3.5.0
