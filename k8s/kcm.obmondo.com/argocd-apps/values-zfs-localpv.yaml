@@ -1,8 +1,8 @@
 zfs-localpv:
   zfsNode:
-    # Currently, each node has NVMe attached.
     nodeSelector:
       kubernetes.io/os: linux
+      disk: nvme
     tolerations: []
     securityContext: {}
     labels: {}
@@ -10,9 +10,9 @@ zfs-localpv:
       create: true
       name: zfs-csi-node-critical
   zfsController:
-    # Currently, each node has NVMe attached.
     nodeSelector:
       kubernetes.io/os: linux
+      disk: nvme
     tolerations: []
     securityContext: {}
     priorityClass:
