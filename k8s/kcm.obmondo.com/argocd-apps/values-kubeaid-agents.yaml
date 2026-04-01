@@ -1,0 +1,9 @@
+appConfig:
+  argocd:
+    authTokenSecretName: repo-kubeaid-config-enableit
+  obmondoAPI:
+    url: https://api.obmondo.com/api
+  kubeaidConfig:
+    clusterName: kcm.obmondo.com
+
+obmondoAPITLSSecretName: obmondo-clientcert
