@@ -13,6 +13,11 @@ harbor:
   externalURL: https://harbor.obmondo.com
   core:
     existingSecret: harbor-core-custom
+    livenessProbe:
+      timeoutSeconds: 5
+      failureThreshold: 5
+    readinessProbe:
+      timeoutSeconds: 5
     secretName: harbor-core-custom
     existingXsrfSecret: harbor-core-custom
     extraEnvVars:
