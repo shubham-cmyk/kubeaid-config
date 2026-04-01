@@ -51,6 +51,7 @@ relate:
     tls: true
     extraHosts:
   cnpg:
+    size: 10Gi
     backup:
       destinationPath: "s3://kcm-relate"
       endpointURL: "https://s3.obmondo.com"
