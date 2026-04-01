@@ -44,6 +44,11 @@ argo-cd:
         g, rishi@obmondo.com, role:admin
         g, shubh@obmondo.com, role:admin
         g, lucas@obmondo.com, role:admin
+        p, role:kubeaid-apps, applications, get, kubeaid/*, allow
+        p, role:kubeaid-apps, applications, sync, kubeaid/*, allow
+        p, role:kubeaid-apps, applications, health, kubeaid/*, allow
+        p, role:kubeaid-apps, applications, status, kubeaid/*, allow
+        g, kubeaid-agent, role:kubeaid-apps
       scopes: '[groups, email]'
     cm:
       oidc.config: |
