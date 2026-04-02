@@ -58,7 +58,7 @@ keycloak:
     key: client_secret
   redirect_uri: "https://beta-finance.obmondo.com/payments"
 
-obmondo_api:
+go_api:
   url: https://api-beta.obmondo.com
 
 chat:
