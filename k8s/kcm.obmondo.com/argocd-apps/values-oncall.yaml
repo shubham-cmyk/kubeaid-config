@@ -1,7 +1,7 @@
 oncall:
   grafanaPluginInstall:
     enabled: true
-  base_url: test-oncall.kcm.obmondo.com
+  base_url: oncall.kcm.obmondo.com
   grafana:
     persistence:
       enabled: true
@@ -13,12 +13,12 @@ oncall:
       plugins:
         preinstall_sync_enabled: false
       server:
-        domain: test-oncall.kcm.obmondo.com
-        root_url: https://test-oncall.kcm.obmondo.com/grafana
+        domain: oncall.kcm.obmondo.com
+        root_url: https://oncall.kcm.obmondo.com/grafana
       auth:
         disable_login_form: false
         disable_signout_menu: false
-        signout_redirect_url: 'https://keycloak.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/logout?redirect_uri=https://test-oncall.kcm.obmondo.com/grafana'
+        signout_redirect_url: 'https://keycloak.obmondo.com/auth/realms/Obmondo/protocol/openid-connect/logout?redirect_uri=https://oncall.kcm.obmondo.com/grafana'
       auth.generic_oauth:
         enabled: true
         allow_sign_up: true
@@ -64,7 +64,7 @@ oncall:
     extraVolumes:
       - name: plugin-install-script
         configMap:
-          name: test-oncall-grafana-plugin-install
+          name: oncall-grafana-plugin-install
           defaultMode: 0755
       # defining extraVolumes in the parent values REPLACES (not appends to)
       # the subchart defaults, so we must explicitly include this provisioning volume.
@@ -79,7 +79,7 @@ oncall:
   oncall:
     telegram:
       enabled: true
-      webhookUrl: https://test-oncall.kcm.obmondo.com
+      webhookUrl: https://oncall.kcm.obmondo.com
       existingSecret: telegram-bot-token
       tokenKey: telegram-token
   redis:
@@ -98,18 +98,26 @@ oncall:
   backup:
     enabled: false
     cloud: "aws"
-    destinationPath: s3://kcm-test-oncall-postgres-backups
+    destinationPath: s3://kcm-oncall-postgres-backups
     endpointURL: https://s3.obmondo.com
   recover: false
 
 
 global:
+  telegram:
+    url: "api.telegram.org"
+  keycloak:
+    url: "keycloak.obmondo.com"
+  googleStorage:
+    url: "storage.googleapis.com"
+
   netpol:
     enabled: true
-    releaseName: test-oncall
+    releaseName: oncall
     traefik:
-      namespace: grafana
+      namespace: traefik
       labels:
+        app.kubernetes.io/name: traefik
         app.kubernetes.io/instance: traefik
 
   postgresql:
@@ -127,4 +135,14 @@ global:
     enabled: true
 
   grafana:
+    url: "grafana.com"
     netpol: true
+
+  rabbitmq:
+    enabled: true
+    instanceName: oncall-rabbitmq
+    netpol: true
+    resources:
+      requests:
+        cpu: 500m
+        memory: 2Gi
