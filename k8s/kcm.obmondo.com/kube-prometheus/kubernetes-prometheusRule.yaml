@@ -243,6 +243,18 @@ spec:
       for: 15m
       labels:
         severity: warning
+    - alert: KubeHpaMaxedOut
+      annotations:
+        description: HPA {{ $labels.namespace }}/{{ $labels.horizontalpodautoscaler  }} has been running at max replicas for longer than 15 minutes on cluster {{ $labels.cluster }}.
+        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubehpamaxedout
+        summary: HPA is running at max replicas
+      expr: |
+        kube_horizontalpodautoscaler_status_current_replicas{job="kube-state-metrics"}
+          ==
+        kube_horizontalpodautoscaler_spec_max_replicas{job="kube-state-metrics"}
+      for: 15m
+      labels:
+        severity: warning
     - alert: KubePdbNotEnoughHealthyPods
       annotations:
         description: PDB {{ $labels.cluster }}/{{ $labels.namespace }}/{{ $labels.poddisruptionbudget }} expects {{ $value }} more healthy pods. The desired number of healthy pods has not been met for at least 15m.

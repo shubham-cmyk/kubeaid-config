@@ -90,10 +90,10 @@ spec:
     path: /metrics/probes
     port: https-metrics
     relabelings:
-    - action: replace
+    - action: drop
+      regex: /metrics/probes
       sourceLabels:
       - __metrics_path__
-      targetLabel: metrics_path
     scheme: https
     tlsConfig:
       insecureSkipVerify: true
