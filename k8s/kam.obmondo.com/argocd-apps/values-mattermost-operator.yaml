@@ -189,7 +189,7 @@ mattermost:
                 "Name": "features",
                 "Pattern": "\\B@features?\\b",
                 "Scope": null,
-                "Template": "Feature Team (@aman0 @anantharam @sanskar @archisman @faizan @sidharth @shivam0 @sgupta)",
+                "Template": "Feature Team (@aman0 @anantharam @sanskar @archisman @faizan @sidharth @shivam0 @sgupta @vitamax @lucas @shubh)",
                 "WordMatch": false
               },
               {
