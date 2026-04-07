@@ -272,6 +272,10 @@ ingress:
         - path: /api/leave
           pathType: Prefix
           servicePort: 8080
+        - path: /api/v1/invoice-data
+          pathType: Prefix
+          servicePort: 8080
+
   tls:
     - secretName: api-obmondo-com-tls
       hosts:
