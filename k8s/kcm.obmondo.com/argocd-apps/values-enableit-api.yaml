@@ -243,6 +243,9 @@ ingress:
         - path: /api/cluster/customer
           pathType: Prefix
           servicePort: 8080
+        - path: /api/v1/invoice-data
+          pathType: Prefix
+          servicePort: 8080
         - path: /
           pathType: ImplementationSpecific
           servicePort: 8088
