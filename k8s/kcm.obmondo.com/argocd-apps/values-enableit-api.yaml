@@ -264,8 +264,11 @@ ingress:
 
 postgresql:
   instances: 2
+  size: 6Gi
   logicalBackup:
     enabled: false
+  monitoring:
+    enablePodMonitor: false
 
 serviceMonitor:
   enabled: true
