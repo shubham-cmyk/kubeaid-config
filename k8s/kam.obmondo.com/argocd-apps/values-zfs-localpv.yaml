@@ -24,6 +24,7 @@ storageClass:
   zfs-localpv:
     poolName: mypool
     dedup: "off"
+    allowVolumeExpansion: true
   openebs-zfspv-shared:
     poolName: mypool
     shared: "yes"
