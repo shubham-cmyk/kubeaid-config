@@ -290,6 +290,7 @@ ingress:
 
 postgresql:
   instances: 2
+  size: 6Gi
   logicalBackup:
     enabled: true
     s3bucket: kam-postgres-logical-backup
