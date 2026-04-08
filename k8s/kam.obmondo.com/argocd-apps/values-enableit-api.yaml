@@ -107,12 +107,12 @@ api:
     image:
       repository: harbor.obmondo.com/obmondo/clojure-api/api
       pullPolicy: Always
-      tag: v3.0.95
+      tag: v3.0.97
   go:
     image:
       repository: harbor.obmondo.com/obmondo/enableit-go-api
       pullPolicy: Always
-      tag: v0.5.8
+      tag: v0.6.5
   server:
     internal_ips_for_readonly_auth: "172.20.0.0/16"
   redis:
@@ -315,6 +315,8 @@ extraEnv:
     value: /opt/obmondo/puppet-pkcs7-cert.pem
   - name: ACCESS_LIST_CERTNAMES
     value: "finance-api.enableit,opsmondo.enableit,internal-api01.enableit,kcm.enableit,obmondo-api.enableit"
+  - name: READONLY_CERTNAMES
+    value: "artoo.enableit"
   - name: FINANCE_API_URL
     value: "https://finance-api.obmondo.com/"
 
