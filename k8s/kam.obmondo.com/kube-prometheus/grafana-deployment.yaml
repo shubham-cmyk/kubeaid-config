@@ -124,17 +124,11 @@ spec:
         - mountPath: /grafana-dashboard-definitions/0/ceph-rgw-s3-analytics
           name: grafana-dashboard-ceph-rgw-s3-analytics
           readOnly: false
-        - mountPath: /grafana-dashboard-definitions/0/cert-manager-cert-manager
-          name: grafana-dashboard-cert-manager-cert-manager
-          readOnly: false
         - mountPath: /grafana-dashboard-definitions/0/cluster-total
           name: grafana-dashboard-cluster-total
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/0/controller-manager
           name: grafana-dashboard-controller-manager
-          readOnly: false
-        - mountPath: /grafana-dashboard-definitions/0/etcd-etcd
-          name: grafana-dashboard-etcd-etcd
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/0/grafana-overview
           name: grafana-dashboard-grafana-overview
@@ -201,9 +195,6 @@ spec:
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/0/scheduler
           name: grafana-dashboard-scheduler
-          readOnly: false
-        - mountPath: /grafana-dashboard-definitions/0/sealedsecrets-sealed-secrets-controller
-          name: grafana-dashboard-sealedsecrets-sealed-secrets-controller
           readOnly: false
         - mountPath: /grafana-dashboard-definitions/0/workload-total
           name: grafana-dashboard-workload-total
@@ -282,17 +273,11 @@ spec:
           name: grafana-dashboard-ceph-rgw-s3-analytics
         name: grafana-dashboard-ceph-rgw-s3-analytics
       - configMap:
-          name: grafana-dashboard-cert-manager-cert-manager
-        name: grafana-dashboard-cert-manager-cert-manager
-      - configMap:
           name: grafana-dashboard-cluster-total
         name: grafana-dashboard-cluster-total
       - configMap:
           name: grafana-dashboard-controller-manager
         name: grafana-dashboard-controller-manager
-      - configMap:
-          name: grafana-dashboard-etcd-etcd
-        name: grafana-dashboard-etcd-etcd
       - configMap:
           name: grafana-dashboard-grafana-overview
         name: grafana-dashboard-grafana-overview
@@ -359,9 +344,6 @@ spec:
       - configMap:
           name: grafana-dashboard-scheduler
         name: grafana-dashboard-scheduler
-      - configMap:
-          name: grafana-dashboard-sealedsecrets-sealed-secrets-controller
-        name: grafana-dashboard-sealedsecrets-sealed-secrets-controller
       - configMap:
           name: grafana-dashboard-workload-total
         name: grafana-dashboard-workload-total

@@ -254,6 +254,86 @@ spec:
       for: 15m
       labels:
         severity: warning
+  - name: kubernetes-resources
+    rules:
+    - alert: KubeCPUQuotaOvercommit
+      annotations:
+        description: Cluster {{ $labels.cluster }}  has overcommitted CPU resource requests for Namespaces.
+        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubecpuquotaovercommit
+        summary: Cluster has overcommitted CPU resource requests.
+      expr: |
+        sum(min without(resource) (kube_resourcequota{job="kube-state-metrics", type="hard", resource=~"(cpu|requests.cpu)"})) by (cluster)
+          /
+        sum(kube_node_status_allocatable{resource="cpu", job="kube-state-metrics"}) by (cluster)
+          > 1.5
+      for: 5m
+      labels:
+        severity: warning
+    - alert: KubeMemoryQuotaOvercommit
+      annotations:
+        description: Cluster {{ $labels.cluster }}  has overcommitted memory resource requests for Namespaces.
+        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubememoryquotaovercommit
+        summary: Cluster has overcommitted memory resource requests.
+      expr: |
+        sum(min without(resource) (kube_resourcequota{job="kube-state-metrics", type="hard", resource=~"(memory|requests.memory)"})) by (cluster)
+          /
+        sum(kube_node_status_allocatable{resource="memory", job="kube-state-metrics"}) by (cluster)
+          > 1.5
+      for: 5m
+      labels:
+        severity: warning
+    - alert: KubeQuotaAlmostFull
+      annotations:
+        description: Namespace {{ $labels.namespace }} is using {{ $value | humanizePercentage }} of its {{ $labels.resource }} quota.
+        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubequotaalmostfull
+        summary: Namespace quota is going to be full.
+      expr: |
+        kube_resourcequota{job="kube-state-metrics", type="used"}
+          / ignoring(instance, job, type)
+        (kube_resourcequota{job="kube-state-metrics", type="hard"} > 0)
+          > 0.9 < 1
+      for: 15m
+      labels:
+        severity: info
+    - alert: KubeQuotaFullyUsed
+      annotations:
+        description: Namespace {{ $labels.namespace }} is using {{ $value | humanizePercentage }} of its {{ $labels.resource }} quota.
+        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubequotafullyused
+        summary: Namespace quota is fully used.
+      expr: |
+        kube_resourcequota{job="kube-state-metrics", type="used"}
+          / ignoring(instance, job, type)
+        (kube_resourcequota{job="kube-state-metrics", type="hard"} > 0)
+          == 1
+      for: 15m
+      labels:
+        severity: info
+    - alert: KubeQuotaExceeded
+      annotations:
+        description: Namespace {{ $labels.namespace }} is using {{ $value | humanizePercentage }} of its {{ $labels.resource }} quota.
+        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubequotaexceeded
+        summary: Namespace quota has exceeded the limits.
+      expr: |
+        kube_resourcequota{job="kube-state-metrics", type="used"}
+          / ignoring(instance, job, type)
+        (kube_resourcequota{job="kube-state-metrics", type="hard"} > 0)
+          > 1
+      for: 15m
+      labels:
+        severity: warning
+    - alert: CPUThrottlingHigh
+      annotations:
+        description: '{{ $value | humanizePercentage }} throttling of CPU in namespace {{ $labels.namespace }} for container {{ $labels.container }} in pod {{ $labels.pod }}.'
+        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/cputhrottlinghigh
+        summary: Processes experience elevated CPU throttling.
+      expr: |
+        sum(increase(container_cpu_cfs_throttled_periods_total{container!="", }[5m])) by (container, pod, namespace)
+          /
+        sum(increase(container_cpu_cfs_periods_total{}[5m])) by (container, pod, namespace)
+          > ( 25 / 100 )
+      for: 15m
+      labels:
+        severity: info
   - name: kubernetes-storage
     rules:
     - alert: KubePersistentVolumeFillingUp
@@ -433,6 +513,47 @@ spec:
         long: 3d
         severity: warning
         short: 6h
+  - name: kubernetes-system-apiserver
+    rules:
+    - alert: KubeAggregatedAPIErrors
+      annotations:
+        description: Kubernetes aggregated API {{ $labels.name }}/{{ $labels.namespace }} has reported errors. It has appeared unavailable {{ $value | humanize }} times averaged over the past 10m.
+        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeaggregatedapierrors
+        summary: Kubernetes aggregated API has reported errors.
+      expr: |
+        sum by(name, namespace, cluster)(increase(aggregator_unavailable_apiservice_total{job="apiserver"}[10m])) > 4
+      labels:
+        severity: warning
+    - alert: KubeAggregatedAPIDown
+      annotations:
+        description: Kubernetes aggregated API {{ $labels.name }}/{{ $labels.namespace }} has been only {{ $value | humanize }}% available over the last 10m.
+        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeaggregatedapidown
+        summary: Kubernetes aggregated API is down.
+      expr: |
+        (1 - max by(name, namespace, cluster)(avg_over_time(aggregator_unavailable_apiservice{job="apiserver"}[10m]))) * 100 < 85
+      for: 5m
+      labels:
+        severity: warning
+    - alert: KubeAPIDown
+      annotations:
+        description: KubeAPI has disappeared from Prometheus target discovery.
+        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapidown
+        summary: Target disappeared from Prometheus target discovery.
+      expr: |
+        absent(up{job="apiserver"} == 1)
+      for: 15m
+      labels:
+        severity: critical
+    - alert: KubeAPITerminatedRequests
+      annotations:
+        description: The kubernetes apiserver has terminated {{ $value | humanizePercentage }} of its incoming requests.
+        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapiterminatedrequests
+        summary: The kubernetes apiserver has terminated {{ $value | humanizePercentage }} of its incoming requests.
+      expr: |
+        sum(rate(apiserver_request_terminations_total{job="apiserver"}[10m]))  / (  sum(rate(apiserver_request_total{job="apiserver"}[10m])) + sum(rate(apiserver_request_terminations_total{job="apiserver"}[10m])) ) > 0.20
+      for: 5m
+      labels:
+        severity: warning
   - name: kubernetes-system-kubelet
     rules:
     - alert: KubeNodeNotReady
@@ -1282,124 +1403,3 @@ spec:
       labels:
         quantile: "0.5"
       record: node_quantile:kubelet_pleg_relist_duration_seconds:histogram_quantile
-  - name: kubernetes-system-apiserver
-    rules:
-    - alert: KubeAggregatedAPIErrors
-      annotations:
-        description: Kubernetes aggregated API {{ $labels.name }}/{{ $labels.namespace }} has reported errors. It has appeared unavailable {{ $value | humanize }} times averaged over the past 10m.
-        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeaggregatedapierrors
-        summary: Kubernetes aggregated API has reported errors.
-      expr: |
-        sum by(name, namespace, cluster)(increase(aggregator_unavailable_apiservice_total{job="apiserver"}[10m])) > 4
-      labels:
-        severity: warning
-    - alert: KubeAggregatedAPIDown
-      annotations:
-        description: Kubernetes aggregated API {{ $labels.name }}/{{ $labels.namespace }} has been only {{ $value | humanize }}% available over the last 10m.
-        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeaggregatedapidown
-        summary: Kubernetes aggregated API is down.
-      expr: |
-        (1 - max by(name, namespace, cluster)(avg_over_time(aggregator_unavailable_apiservice{job="apiserver"}[10m]))) * 100 < 85
-      for: 5m
-      labels:
-        severity: warning
-    - alert: KubeAPIDown
-      annotations:
-        description: KubeAPI has disappeared from Prometheus target discovery.
-        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapidown
-        summary: Target disappeared from Prometheus target discovery.
-      expr: |
-        absent(up{job="apiserver"} == 1)
-      for: 15m
-      labels:
-        severity: critical
-    - alert: KubeAPITerminatedRequests
-      annotations:
-        description: The kubernetes apiserver has terminated {{ $value | humanizePercentage }} of its incoming requests.
-        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubeapiterminatedrequests
-        summary: The kubernetes apiserver has terminated {{ $value | humanizePercentage }} of its incoming requests.
-      expr: |
-        sum(rate(apiserver_request_terminations_total{job="apiserver"}[10m]))  / (  sum(rate(apiserver_request_total{job="apiserver"}[10m])) + sum(rate(apiserver_request_terminations_total{job="apiserver"}[10m])) ) > 0.20
-      for: 5m
-      labels:
-        severity: warning
-  - name: kubernetes-resources
-    rules:
-    - alert: KubeCPUQuotaOvercommit
-      annotations:
-        description: Cluster {{ $labels.cluster }}  has overcommitted CPU resource requests for Namespaces.
-        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubecpuquotaovercommit
-        summary: Cluster has overcommitted CPU resource requests.
-      expr: |
-        sum(min without(resource) (kube_resourcequota{job="kube-state-metrics", type="hard", resource=~"(cpu|requests.cpu)"})) by (cluster)
-          /
-        sum(kube_node_status_allocatable{resource="cpu", job="kube-state-metrics"}) by (cluster)
-          > 1.5
-      for: 5m
-      labels:
-        severity: warning
-    - alert: KubeMemoryQuotaOvercommit
-      annotations:
-        description: Cluster {{ $labels.cluster }}  has overcommitted memory resource requests for Namespaces.
-        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubememoryquotaovercommit
-        summary: Cluster has overcommitted memory resource requests.
-      expr: |
-        sum(min without(resource) (kube_resourcequota{job="kube-state-metrics", type="hard", resource=~"(memory|requests.memory)"})) by (cluster)
-          /
-        sum(kube_node_status_allocatable{resource="memory", job="kube-state-metrics"}) by (cluster)
-          > 1.5
-      for: 5m
-      labels:
-        severity: warning
-    - alert: KubeQuotaAlmostFull
-      annotations:
-        description: Namespace {{ $labels.namespace }} is using {{ $value | humanizePercentage }} of its {{ $labels.resource }} quota.
-        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubequotaalmostfull
-        summary: Namespace quota is going to be full.
-      expr: |
-        kube_resourcequota{job="kube-state-metrics", type="used"}
-          / ignoring(instance, job, type)
-        (kube_resourcequota{job="kube-state-metrics", type="hard"} > 0)
-          > 0.9 < 1
-      for: 15m
-      labels:
-        severity: info
-    - alert: KubeQuotaFullyUsed
-      annotations:
-        description: Namespace {{ $labels.namespace }} is using {{ $value | humanizePercentage }} of its {{ $labels.resource }} quota.
-        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubequotafullyused
-        summary: Namespace quota is fully used.
-      expr: |
-        kube_resourcequota{job="kube-state-metrics", type="used"}
-          / ignoring(instance, job, type)
-        (kube_resourcequota{job="kube-state-metrics", type="hard"} > 0)
-          == 1
-      for: 15m
-      labels:
-        severity: info
-    - alert: KubeQuotaExceeded
-      annotations:
-        description: Namespace {{ $labels.namespace }} is using {{ $value | humanizePercentage }} of its {{ $labels.resource }} quota.
-        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/kubequotaexceeded
-        summary: Namespace quota has exceeded the limits.
-      expr: |
-        kube_resourcequota{job="kube-state-metrics", type="used"}
-          / ignoring(instance, job, type)
-        (kube_resourcequota{job="kube-state-metrics", type="hard"} > 0)
-          > 1
-      for: 15m
-      labels:
-        severity: warning
-    - alert: CPUThrottlingHigh
-      annotations:
-        description: '{{ $value | humanizePercentage }} throttling of CPU in namespace {{ $labels.namespace }} for container {{ $labels.container }} in pod {{ $labels.pod }}.'
-        runbook_url: https://runbooks.prometheus-operator.dev/runbooks/kubernetes/cputhrottlinghigh
-        summary: Processes experience elevated CPU throttling.
-      expr: |
-        sum(increase(container_cpu_cfs_throttled_periods_total{container!="", }[5m])) by (container, pod, namespace)
-          /
-        sum(increase(container_cpu_cfs_periods_total{}[5m])) by (container, pod, namespace)
-          > ( 25 / 100 )
-      for: 15m
-      labels:
-        severity: info

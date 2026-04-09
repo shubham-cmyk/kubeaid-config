@@ -1,5 +1,6 @@
 {
   platform: 'kubeadm',
+  certname: 'kam.enableit',
   extra_configs: true,
   'blackbox-exporter': false,
   connect_obmondo: true,
@@ -31,6 +32,7 @@
   },
   prometheus_scrape_namespaces: [
     'rook-ceph',
+    'artoo',
     'mattermost',
     'obmondo',
     'obmondo-website',

@@ -17,7 +17,9 @@ spec:
       namespace: monitoring
       port: web
   enableFeatures: []
-  externalLabels: {}
+  externalLabels:
+    certname: kam.enableit
+    product: kubeaid
   externalUrl: ""
   image: quay.io/prometheus/prometheus:v2.46.0
   nodeSelector:
@@ -41,7 +43,21 @@ spec:
       cpu: 800m
       memory: 2Gi
   retention: 15d
-  ruleNamespaceSelector: {}
+  ruleNamespaceSelector:
+    matchExpressions:
+    - key: kubernetes.io/metadata.name
+      operator: In
+      values:
+      - argocd
+      - artoo
+      - cert-manager
+      - finance
+      - mattermost
+      - monitoring
+      - obmondo
+      - obmondo-website
+      - rook-ceph
+      - traefik
   ruleSelector: {}
   securityContext:
     fsGroup: 2000
