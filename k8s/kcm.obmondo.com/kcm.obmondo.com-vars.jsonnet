@@ -57,6 +57,7 @@
     'velero',
     'zfs-localpv',
     'graylog',
+    'backup-exporter',
   ],
   prometheus_scrape_default_namespaces: [
     'argocd',

@@ -1,0 +1,9 @@
+image:
+  repository: harbor.obmondo.com/obmondo/obmondo-backup-exporter
+  tag: v1.0.0
+imagePullSecrets:
+  - name: harbor-registry-secret
+exporter:
+  postgres:
+    max_rpo: 24h
+    interval_rate: 0.25
