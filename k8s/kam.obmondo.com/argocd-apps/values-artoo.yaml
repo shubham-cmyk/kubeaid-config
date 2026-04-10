@@ -12,6 +12,9 @@ image:
   repository: harbor.obmondo.com/obmondo/artoo
   tag: v0.0.1-9e00d76
 
+pem:
+  enabled: true
+
 imagePullSecrets:
   - name: harbor-registry-secret
 
