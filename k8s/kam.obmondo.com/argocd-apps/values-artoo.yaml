@@ -10,7 +10,7 @@ backfill:
 
 image:
   repository: harbor.obmondo.com/obmondo/artoo
-  tag: v0.0.1-9e00d76
+  tag: v0.0.1-45c4048
 
 pem:
   enabled: true
