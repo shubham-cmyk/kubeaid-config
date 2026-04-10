@@ -79,12 +79,12 @@ api:
     image:
       repository: harbor.obmondo.com/obmondo/clojure-api/api
       pullPolicy: Always
-      tag: v3.0.98
+      tag: v3.0.99
   go:
     image:
       repository: harbor.obmondo.com/obmondo/enableit-go-api
       pullPolicy: Always
-      tag: v0.6.8
+      tag: v0.6.9
   server:
     internal_ips_for_readonly_auth: "172.20.0.0/16"
   mode: beta
@@ -123,6 +123,9 @@ ingress:
           pathType: Prefix
           servicePort: 8080
         - path: /api/customer/billing
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/customer/settings
           pathType: Prefix
           servicePort: 8080
         - path: /api/products
