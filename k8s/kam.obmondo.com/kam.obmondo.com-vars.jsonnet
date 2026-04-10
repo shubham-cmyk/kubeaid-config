@@ -32,7 +32,6 @@
   },
   prometheus_scrape_namespaces: [
     'rook-ceph',
-    'artoo',
     'mattermost',
     'obmondo',
     'obmondo-website',
