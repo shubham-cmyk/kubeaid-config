@@ -49,7 +49,6 @@ spec:
       operator: In
       values:
       - argocd
-      - artoo
       - cert-manager
       - finance
       - mattermost
