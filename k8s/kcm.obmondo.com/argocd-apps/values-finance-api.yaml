@@ -44,6 +44,8 @@ ingress:
 
 postgresql:
   storageClass: rook-ceph-block
+  monitoring:
+    enablePodMonitor: false
   affinity:
     nodeSelector:
       disk: nvme

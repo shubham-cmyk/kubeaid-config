@@ -7,5 +7,8 @@ harbor:
         jobLog:
           size: 3Gi
 
+# this instance is used for replication of our prod harbor which have logicalbackups enabled
 postgres:
   size: 6Gi
+  monitoring:
+    enablePodMonitor: false # we don't need barman backup alerts
