@@ -1,0 +1,128 @@
+calcom:
+  webappUrl: "https://calcom.kcm.obmondo.com"
+  image:
+    repository: harbor.obmondo.com/obmondo/calcom
+    pullPolicy: IfNotPresent
+    tag: 0.0.6
+
+  imagePullSecrets:
+    - name: harbor-registry-secret
+
+  secretRef: "calcom"
+
+  # Lock down public signup, organizations, and Google login (literal env; not from sealed secret).
+  # Team invites / API v2 / SAML may still create users unless disabled separately (see chart sso.*).
+  extraEnv:
+    - name: NEXT_PUBLIC_DISABLE_SIGNUP
+      value: "true"
+    - name: ORGANIZATIONS_ENABLED
+      value: "false"
+    - name: ORGANIZATIONS_AUTOLINK
+      value: "false"
+    - name: GOOGLE_LOGIN_ENABLED
+      value: "false"
+
+  ingress:
+    enabled: true
+    # Use the same ingress class cert-manager expects for HTTP-01 (matches other apps in this cluster)
+    className: "traefik-cert-manager"
+    annotations:
+      kubernetes.io/ingress.class: traefik-cert-manager
+      traefik.ingress.kubernetes.io/router.entrypoints: websecure
+      traefik.ingress.kubernetes.io/router.tls: "true"
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      external-dns.alpha.kubernetes.io/hostname: "calcom.kcm.obmondo.com"
+    hosts:
+      - host: calcom.kcm.obmondo.com
+        paths:
+          - path: /
+            pathType: Prefix
+    tls:
+      - secretName: calcom-tls
+        hosts:
+          - calcom.kcm.obmondo.com
+
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 2Gi
+    requests:
+      cpu: 500m
+      memory: 512Mi
+
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 70
+    targetMemoryUtilizationPercentage: 80
+
+  extraVolumeMounts:
+    - name: yarn-cache
+      mountPath: /calcom/.yarn
+    - name: temp-dir
+      mountPath: /tmp
+    - name: app-data
+      mountPath: /app/.next
+      subPath: .next
+
+  extraVolumes:
+    - name: yarn-cache
+      emptyDir: {}
+    - name: temp-dir
+      emptyDir: {}
+    - name: app-data
+      emptyDir: {}
+
+  # Update security context - temporarily run as root to test
+  securityContext:
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+    readOnlyRootFilesystem: false
+    runAsNonRoot: false
+    runAsUser: 0
+    runAsGroup: 0
+
+  # Enable SSO UI (SAML/OIDC). OIDC provider config is done inside Cal.com UI.
+  sso:
+    enabled: true
+    # Admin emails allowed to configure SSO in the Cal.com UI (Settings -> Security -> Single sign-on)
+    adminEmails:
+      - "onkarwork2234@gmail.com"
+
+postgresql:
+  enabled: true
+  instance: 1
+  size: 20Gi
+  recover: false
+  bootstrap:
+    initdb:
+      database: calcom
+      owner: calcom
+  resources:
+    limits:
+      memory: 1Gi
+      cpu: 500m
+    requests:
+      memory: 512Mi
+      cpu: 200m
+
+# Separate database for SSO migrations (required by Cal.com for SAML/OIDC).
+sso:
+  postgresql:
+    enabled: true
+    instance: 1
+    size: 5Gi
+    bootstrap:
+      initdb:
+        database: calcom_sso
+        owner: calcom
+    resources:
+      limits:
+        memory: 400Mi
+        cpu: 250m
+      requests:
+        memory: 256Mi
+        cpu: 50m
