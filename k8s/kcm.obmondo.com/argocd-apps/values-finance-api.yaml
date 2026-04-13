@@ -60,8 +60,8 @@ keycloak:
     key: client_secret
   redirect_uri: "https://beta-finance.obmondo.com/payments"
 
-go_api:
-  url: https://api-beta.obmondo.com
+obmondo_api:
+  base_url: https://api-beta.obmondo.com
 
 chat:
   host: "https://mattermost-staging.kcm.obmondo.com"
