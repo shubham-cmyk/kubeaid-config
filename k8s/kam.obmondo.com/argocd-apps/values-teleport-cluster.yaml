@@ -12,4 +12,4 @@ teleport-cluster:
       enabled: true
       issuerName: letsencrypt
       issuerKind: ClusterIssuer
-      addCommonName: true
+      addCommonName: false
