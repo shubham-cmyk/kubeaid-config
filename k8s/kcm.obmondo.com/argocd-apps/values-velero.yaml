@@ -13,6 +13,7 @@ schedule:
   weeklyTTL: 2160h
   sixhourly: false
 velero:
+  deployNodeAgent: true
   metrics:
     enabled: true
     serviceMonitor:
@@ -33,6 +34,7 @@ velero:
         region: "eu-west-1"
         profile: "default"
     features: EnableCSI
+    defaultSnapshotMoveData: true
     defaultBackupTTL: 72h
   initContainers:
   - name: velero-velero-plugin-for-aws
