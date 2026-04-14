@@ -44,7 +44,7 @@ cloud:
         hcloudServersSubnetCIDR: "10.0.0.0/24"
     controlPlane:
       hcloud:
-        machineType: cax11
+        machineType: cax21
         replicas: 1
         loadBalancer:
           enabled: true
