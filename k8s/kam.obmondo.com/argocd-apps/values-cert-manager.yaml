@@ -5,3 +5,13 @@ issuer:
   secret: kam-letsencrypt-key
   solvers:
     - type: http
+      http01:
+        ingress:
+          ingressClassName: traefik-cert-manager
+    - type: dns
+      cloudProvider: cloudflare
+      cloudProviderSecretRef:
+        name: cloudflare-api-token-secret
+        key: api-token
+      dnsNames:
+        - obmondo.com
