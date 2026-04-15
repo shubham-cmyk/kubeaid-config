@@ -15,3 +15,7 @@ issuer:
         key: api-token
       dnsNames:
         - obmondo.com
+
+cert-manager:
+  prometheus:
+    enabled: true
