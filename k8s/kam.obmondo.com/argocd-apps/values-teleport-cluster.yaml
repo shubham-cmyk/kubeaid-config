@@ -1,15 +1,10 @@
 ---
 teleport-cluster:
   clusterName: teleport.obmondo.com
-  acme: false
+  acme: true
+  acmeEmail: "ops@enableit.dk"
   proxyListenerMode: "multiplex"
   authentication:
     secondFactor: "on"
   persistence:
     volumeSize: 40Gi
-  highAvailability:
-    certManager:
-      enabled: true
-      issuerName: letsencrypt
-      issuerKind: ClusterIssuer
-      addCommonName: false
