@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kyverno
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    kubeaid.io/version: 24.3.0
+    kubeaid.io/managed-by: kubeaid
+    kubeaid.io/priority: default
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kyverno
+  project: kubeaid
+  sources:
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid.git
+      path: argocd-helm-charts/kyverno
+      targetRevision: 24.3.0
+      helm:
+        valueFiles:
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-kyverno.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
+      targetRevision: kyverno
+      ref: values
+  syncPolicy:
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true
