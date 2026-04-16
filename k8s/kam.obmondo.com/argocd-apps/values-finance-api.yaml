@@ -73,7 +73,7 @@ keycloak:
   client_secret:
     name: finance-api-keycloak
     key: client_secret
-  redirect_uri: "https://finance.obmondo.com/payments"
+  redirect_uri: "https://finance.obmondo.com/login"
 
 obmondo_api:
   base_url: https://api.obmondo.com
