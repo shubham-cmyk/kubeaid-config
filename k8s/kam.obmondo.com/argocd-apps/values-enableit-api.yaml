@@ -326,6 +326,8 @@ extraEnv:
     value: "artoo.enableit"
   - name: FINANCE_API_URL
     value: "https://finance-api.obmondo.com/"
+  - name: ARTOO_PROMETHEUS_URL
+    value: "http://prometheus-k8s.monitoring.svc.cluster.local:9090"
 
 g10k:
   enabled: true
