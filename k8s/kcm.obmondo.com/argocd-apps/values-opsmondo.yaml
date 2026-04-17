@@ -76,6 +76,7 @@ opsmondo:
         - CephRBDMirrorImagesNotInSync
         - CephRBDMirrorImagesNotInSyncVeryHigh
         - CephRBDMirrorImageTransferBandwidthHigh
+        - AlertmanagerFailedToSendAlerts
       high_priority_if_severity_critical:
         - monitor::system::disk::usage
         - CephMonDiskspaceCritical
