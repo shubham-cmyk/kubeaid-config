@@ -50,13 +50,13 @@ relate:
       kubernetes.io/ingress.class: traefik-cert-manager
     tls: true
     extraHosts:
-  cnpg:
+global:
+  postgresql:
+    enabled: true
+    instanceName: relate
     size: 10Gi
-    backup:
+    backups:
+      enabled: true
       destinationPath: "s3://kcm-relate"
       endpointURL: "https://s3.obmondo.com"
       cloud: "aws"
-      wal:
-        encryption: "AES256"
-      data:
-        encryption: "AES256"

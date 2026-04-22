@@ -240,7 +240,11 @@ mattermost:
 matternelle:
   domain: webchat-staging.obmondo.com
 
-postgres:
-  size: 20Gi
-  recover: false
-  pass: mattermost-pgsql-app
+global:
+  postgresql:
+    enabled: true
+    instanceName: mattermost
+    instances: 1
+    monitoring:
+      enablePodMonitor: false
+    size: 20Gi

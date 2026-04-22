@@ -95,13 +95,6 @@ oncall:
       - secretName: kcm-obmondo-com
         hosts:
           - oncall.kcm.obmondo.com
-  backup:
-    enabled: false
-    cloud: "aws"
-    destinationPath: s3://kcm-oncall-postgres-backups
-    endpointURL: https://s3.obmondo.com
-  recover: false
-
 
 global:
   telegram:
@@ -120,9 +113,24 @@ global:
         app.kubernetes.io/name: traefik
         app.kubernetes.io/instance: traefik
 
+
   postgresql:
-    netpol: true
+    enabled: true
+    instanceName: oncall
     size: 70Gi
+    netpol: true
+    logicalbackup:
+      enabled: true
+      pgversion: 18
+      s3bucket: "kcm-oncall-logical-backup"
+      provider: "s3"
+      s3endpoint: "https://s3.obmondo.com"
+      retention: "30 days"
+      tag: v3.1.5
+      s3region: us-east-1
+    # disabling barman monitoring since we use logical backups now
+    monitoring:
+      enablePodMonitor: false
 
   celery:
     netpol: true
