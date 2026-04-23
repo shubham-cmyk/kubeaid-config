@@ -92,37 +92,18 @@ calcom:
     adminEmails:
       - "onkarwork2234@gmail.com"
 
-postgresql:
-  enabled: true
-  instance: 1
-  size: 20Gi
-  recover: false
-  bootstrap:
-    initdb:
-      database: calcom
-      owner: calcom
-  resources:
-    limits:
-      memory: 1Gi
-      cpu: 500m
-    requests:
-      memory: 512Mi
-      cpu: 200m
-
-# Separate database for SSO migrations (required by Cal.com for SAML/OIDC).
-sso:
+global:
   postgresql:
     enabled: true
-    instance: 1
-    size: 5Gi
-    bootstrap:
-      initdb:
-        database: calcom_sso
-        owner: calcom
+    instanceName: calcom
+    monitoring:
+      enablePodMonitor: false
+    instances: 1
+    size: 20Gi
     resources:
       limits:
-        memory: 400Mi
-        cpu: 250m
+        memory: 1Gi
+        cpu: 500m
       requests:
-        memory: 256Mi
-        cpu: 50m
+        memory: 512Mi
+        cpu: 200m

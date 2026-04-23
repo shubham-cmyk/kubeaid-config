@@ -18,13 +18,17 @@ g10k:
         remote: ssh://git@gitea.obmondo.com:2223/EnableIT/linuxaid-config-niwyocdmk2.git
         basedir: /etc/puppetlabs/code/hiera-data/niwyocdmk2
 
-postgresql:
-  instance: 1
-  size: 2Gi
-  recover: false
-  resources:
-    limits:
-      memory: 500Mi
-    requests:
-      memory: 500Mi
-      cpu: 200m
+global:
+  postgresql:
+    enabled: true
+    instanceName: puppetserver
+    instances: 1
+    monitoring:
+      enablePodMonitor: false
+    size: 2Gi
+    resources:
+      limits:
+        memory: 500Mi
+      requests:
+        memory: 500Mi
+        cpu: 200m

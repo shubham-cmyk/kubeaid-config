@@ -49,13 +49,17 @@ gfetch:
       url: ssh://git@gitea.obmondo.com:2223/EnableIT/linuxaid-config-a0hu8x41ng.git
       local_path: /etc/puppetlabs/code/hiera-data/a0hu8x41ng
 
-postgresql:
-  instance: 1
-  size: 2Gi
-  recover: false
-  resources:
-    limits:
-      memory: 500Mi
-    requests:
-      memory: 500Mi
-      cpu: 200m
+global:
+  postgresql:
+    enabled: true
+    instanceName: puppetserver
+    instances: 1
+    monitoring:
+      enablePodMonitor: false
+    size: 2Gi
+    resources:
+      limits:
+        memory: 500Mi
+      requests:
+        memory: 500Mi
+        cpu: 200m

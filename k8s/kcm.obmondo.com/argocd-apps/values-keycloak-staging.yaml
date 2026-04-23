@@ -16,12 +16,16 @@ keycloakx:
           - path: /
             pathType: Prefix
 
-postgresql:
-  monitoring:
-    enablePodMonitor: true
-  storageClass: rook-ceph-block
-  size: 8Gi
-  backups:
-    enabled: false
+global:
+  postgresql:
+    enabled: true
+    instanceName: keycloak
+    instances: 1
+    size: 8Gi
+    storageClass: rook-ceph-block
+    backups:
+      enabled: false
+    monitoring:
+      enablePodMonitor: false
 blackbox:
   probe: false

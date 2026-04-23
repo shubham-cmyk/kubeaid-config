@@ -23,11 +23,15 @@ sonarqube:
     jdbcUrl: "jdbc:postgresql://sonarqube-pgsql-rw/sonarqube?socketTimeout=1500"
     jdbcUsername: sonarqube
 
-cnpg:
-  enabled: true
-  instances: 1
-  size: 4Gi
-  backups:
-    enabled: false
+global:
+  postgresql:
+    enabled: true
+    instanceName: sonarqube
+    instances: 1
+    size: 4Gi
+    backups:
+      enabled: false
+    monitoring:
+      enablePodMonitor: false
 
 networkpolicies: false
