@@ -4,7 +4,7 @@ imagePullSecrets:
 initContainerCmd: "chown -R 1000:1000 /home/errbot/data"
 
 image:
-  tag: "v6.3.21"
+  tag: "v6.3.21.1"
 
 additionalLabels:
   kubeaid.io/permissions: "allow-prometheus"
