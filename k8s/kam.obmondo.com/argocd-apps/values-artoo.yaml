@@ -9,7 +9,7 @@ backfill:
   from: "2025-01-01"
 
 image:
-  repository: harbor.obmondo.com/obmondo/artoo
+  tag: "v0.2.2"
 
 pem:
   enabled: true
