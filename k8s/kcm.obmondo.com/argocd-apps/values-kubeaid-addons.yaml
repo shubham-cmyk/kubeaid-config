@@ -3,6 +3,7 @@
 defaultDeny:
   enabled: true
   namespaces:
+    argocd: {}
     test-oncall:
       excludedPods:
         - app: teleport-kube-agent
@@ -17,3 +18,4 @@ defaultDeny:
         - app.kubernetes.io/instance: obmondo-k8s-agent
         - app.kubernetes.io/instance: gitea-stats-exporter
         - app: teleport-kube-agent
+
