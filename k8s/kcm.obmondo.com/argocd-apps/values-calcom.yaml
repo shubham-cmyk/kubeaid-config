@@ -30,7 +30,7 @@ calcom:
       kubernetes.io/ingress.class: traefik-cert-manager
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       traefik.ingress.kubernetes.io/router.tls: "true"
-      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      cert-manager.io/cluster-issuer: letsencrypt
       external-dns.alpha.kubernetes.io/hostname: "calcom.kcm.obmondo.com"
     hosts:
       - host: calcom.kcm.obmondo.com
