@@ -313,3 +313,7 @@ postgres:
     provider: "s3"
     s3endpoint: "https://bucket.obmondo.com"
     retension: "30"
+global:
+  postgresql:
+    backup:
+      destinationPath: "s3://bucket.obmondo.com"
