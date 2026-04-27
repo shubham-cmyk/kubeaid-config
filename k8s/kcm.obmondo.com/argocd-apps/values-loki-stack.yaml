@@ -29,4 +29,50 @@ loki-stack:
           - sysctl -w fs.inotify.max_user_instances=8192
         securityContext:
           privileged: true
+    extraVolumes:
+      - name: cilium-hubble
+        hostPath:
+          path: /var/run/cilium/hubble
+          type: DirectoryOrCreate
+    extraVolumeMounts:
+      - name: cilium-hubble
+        mountPath: /var/run/cilium/hubble
+        readOnly: true
+    config:
+      snippets:
+        extraScrapeConfigs: |
+          - job_name: cilium-hubble-audited
+            static_configs:
+              - targets: [localhost]
+                labels:
+                  job: cilium-hubble
+                  flow_type: audited
+                  __path__: /var/run/cilium/hubble/audited.log*
+            pipeline_stages:
+              - json:
+                  expressions:
+                    verdict: verdict
+                    source_namespace: source.namespace
+                    destination_namespace: destination.namespace
+              - labels:
+                  verdict:
+                  source_namespace:
+                  destination_namespace:
+          - job_name: cilium-hubble-dropped
+            static_configs:
+              - targets: [localhost]
+                labels:
+                  job: cilium-hubble
+                  flow_type: dropped
+                  __path__: /var/run/cilium/hubble/dropped.log*
+            pipeline_stages:
+              - json:
+                  expressions:
+                    verdict: verdict
+                    source_namespace: source.namespace
+                    destination_namespace: destination.namespace
+              - labels:
+                  verdict:
+                  source_namespace:
+                  destination_namespace:
 

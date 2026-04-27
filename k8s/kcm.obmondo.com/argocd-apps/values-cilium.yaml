@@ -4,3 +4,28 @@ cilium:
   k8sServiceHost: 65.108.70.52
   k8sServicePort: 6443
   extraArgs: ['--devices=eth0,enp+,eno+']
+  policyAuditMode: true
+  hubble:
+    export:
+      dynamic:
+        enabled: true
+        config:
+          createConfigMap: true
+          configMapName: cilium-flowlog-config
+          content:
+            - name: audited
+              filePath: /var/run/cilium/hubble/audited.log
+              includeFilters:
+                - verdict:
+                    - AUDIT
+              fileMaxSizeMb: 50
+              fileMaxBackups: 20
+              fileCompress: true
+            - name: dropped
+              filePath: /var/run/cilium/hubble/dropped.log
+              includeFilters:
+                - verdict:
+                    - DROPPED
+              fileMaxSizeMb: 50
+              fileMaxBackups: 20
+              fileCompress: true

@@ -11,12 +11,12 @@ spec:
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid.git
       path: argocd-helm-charts/kubeaid-addons
-      targetRevision: oncall-netpol
+      targetRevision: HEAD
       helm:
         valueFiles:
-          - $values/k8s/kcm.obmondo.com/argocd-apps/values-oncall.yaml
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-kubeaid-addons.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
-      targetRevision: test-oncall
+      targetRevision: HEAD
       ref: values
   syncPolicy:
     syncOptions:

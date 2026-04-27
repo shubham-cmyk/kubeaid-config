@@ -1,4 +1,37 @@
 ---
+global:
+  netpol:
+    enabled: true
+    traefik:
+      namespace: traefik
+      labels:
+        "k8s:app.kubernetes.io/name": traefik
+        "k8s:app.kubernetes.io/instance": traefik
+    prometheus:
+      namespace: monitoring
+      labels:
+        "k8s:app.kubernetes.io/name": prometheus
+
+  argocd:
+    netpol: true
+    namespace: argocd
+    endpointSelectorLabels:
+      app.kubernetes.io/part-of: argocd
+    kubeaidAgent:
+      namespace: monitoring
+      labels:
+        "k8s:app.kubernetes.io/name": kubeaid-agent
+    blackboxExporter:
+      enabled: true
+      namespace: monitoring
+      labels:
+        "k8s:app.kubernetes.io/name": blackbox-exporter
+    gitFQDNs:
+      - gitea.obmondo.com
+      - github.com
+      - charts.rook.io
+      - keycloak.obmondo.com
+
 argo-cd:
   configs:
     secret:
