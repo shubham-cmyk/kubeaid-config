@@ -21,7 +21,7 @@ mattermost:
   name: mattermost
   image: mattermost/mattermost-team-edition
   imagePullPolicy: IfNotPresent
-  version: 10.12.14
+  version: 10.11.14
   size: 150users
   extraPorts:
     - name: matternelle
