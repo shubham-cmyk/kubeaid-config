@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubeaid-agent
+  namespace: argocd
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  project: kubeaid
+  sources:
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid.git
+      path: argocd-helm-charts/kubeaid-agent
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-kubeaid-agent.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
+      targetRevision: HEAD
+      ref: values
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true

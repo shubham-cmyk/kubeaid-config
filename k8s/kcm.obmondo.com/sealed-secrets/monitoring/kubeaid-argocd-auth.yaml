@@ -1,0 +1,15 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: kubeaid-argocd-auth
+  namespace: monitoring
+spec:
+  encryptedData:
+    authToken: AgAEbuBfAd3kgan+MOEc4ZRbxEd6bzDGKNkAK8a0+uuiIW8uURSxcrsoHp+ohCmhfq0d9OEwytvjQWHSPXvEwdpF5JXFNC4bM4vLANPmYojHx+dJj45/BCVAX8+GENm+nVf6qV4vXg+6T0F1YZ6JFcL49zpxyhC87o4otH44ddnaVLc2YxJKGWVVj84df7rr2sTN8eOYmrZ6h2s0IX2BlSh6u7+I7HAzhhjq9+C9u8TfMWJ4t3+wsYeOoXnZyRIh3/pwIN0hjtjDeznbhfbRFrvLn05GoCeSctg9Jml54ogXC7NNNSbP7d7EEl/FIyP5X3cEL665Ob1tvzcALIH58IBvJOLNOouoDM0E3F+1F6sVgR19JJjn9Ot5XVq/E5SofvIafLJ2Hzyt0flUeXCzZbXx1WlfHg13sTJDquiuzl7rFrzRvpPij/9L+1HOARz/uRNPqJWIFpOTcb/hMQBqOe+cQ35gTVVv0m91/Krz0e2+3eNytMq766MDtGTb4qlOgugbi8+Wu7vJgc2KFE2YGcKRK2e/3EewkDFzMWr2Uf17TefzxWA/aG8XawSu2dIqX1yaVcyKgJ/9cUfhtFy2BsJo1jDEMWSH5y/xmmBMqPzcmPJNY+dbGGX4iz2jeRWpgSIVljsPfhZ4um+WhTzxb+bXvtZmau7HWNhv2xkObVf5EkqFuB5pLppr2dlehwZNv60cM6vRW/yV9u+eOQbECT98b1QN/CwOoS79GLJMKzsC3cG8iD8RXYTcrNlszwGmXt+xPBwt7TFD4eUxr3EGRRPlki1luXoqD04+3lcLT1a8f5HSwYmrNcI5/TtmKyL3aAgynHmcJs8eKPE8Oo893WkiLU0IlBQmZNrapAcRLFBuvRXJKqkRVS3lajux51yI9fLzwJB+pFLHox1HbRCNRgCetyJRMu6VKHfyzlARcEDvf++cZ9AB/VhhWfwe/keUqSdremNeTgK5+QCgL3BUzKoneXNLOc8SoV44lNzPcDIaQnebIiyw4KH5V47E00789KpgSwxblBR+
+  template:
+    metadata:
+      creationTimestamp: null
+      name: kubeaid-argocd-auth
+      namespace: monitoring
+    type: Opaque
