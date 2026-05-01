@@ -68,8 +68,12 @@ spec:
         matchLabels:
           kubernetes.io/metadata.name: obmondo
       podSelector:
-        matchLabels:
-          app.kubernetes.io/name: obmondo-k8s-agent
+        matchExpressions:
+        - key: app.kubernetes.io/name
+          operator: In
+          values:
+          - obmondo-k8s-agent
+          - kubeaid-agent
     ports:
     - port: 9090
       protocol: TCP

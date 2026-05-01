@@ -88,9 +88,6 @@ spec:
         - mountPath: /grafana-dashboard-definitions/0/ceph-ceph-nvmeof
           name: grafana-dashboard-ceph-ceph-nvmeof
           readOnly: false
-        - mountPath: /grafana-dashboard-definitions/0/ceph-cephfs-overview
-          name: grafana-dashboard-ceph-cephfs-overview
-          readOnly: false
         - mountPath: /grafana-dashboard-definitions/0/ceph-cephfsdashboard
           name: grafana-dashboard-ceph-cephfsdashboard
           readOnly: false
@@ -264,9 +261,6 @@ spec:
       - configMap:
           name: grafana-dashboard-ceph-ceph-nvmeof
         name: grafana-dashboard-ceph-ceph-nvmeof
-      - configMap:
-          name: grafana-dashboard-ceph-cephfs-overview
-        name: grafana-dashboard-ceph-cephfs-overview
       - configMap:
           name: grafana-dashboard-ceph-cephfsdashboard
         name: grafana-dashboard-ceph-cephfsdashboard
