@@ -18,4 +18,4 @@ defaultDeny:
         - app.kubernetes.io/instance: obmondo-k8s-agent
         - app.kubernetes.io/instance: gitea-stats-exporter
         - app: teleport-kube-agent
-
+    keycloak-staging: {}

@@ -4,6 +4,7 @@ keycloakx:
     enabled: true
   database:
     hostname: keycloak-pgsql-rw
+    port: 5432
   ingress:
     enabled: true
     annotations:
@@ -17,15 +18,80 @@ keycloakx:
             pathType: Prefix
 
 global:
+  netpol:
+    enabled: true
+    releaseName: keycloak-staging
+    traefik:
+      namespace: traefik
+      labels:
+        app.kubernetes.io/name: traefik
+        app.kubernetes.io/instance: traefik
+
+  keycloakx:
+    netpol: true
+
+  blackbox:
+    netpol: false
+    namespace: monitoring
+
   postgresql:
     enabled: true
+    netpol: true
     instanceName: keycloak
+    # revision: 0
     instances: 1
     size: 8Gi
     storageClass: rook-ceph-block
+
+    logicalbackup:
+      enabled: false
+      usePgDump: false
+      # provider: s3
+      # schedule: "*/5 * * * *"
+      # host: keycloak-pgsql-rw
+      # secretName: keycloak-pgsql-app
+      # user: keycloak
+      # db: keycloak
+      # s3accesskey: AWS_ACCESS_KEY_ID
+      # s3endpoint: ""
+      # s3region: ""
+      # s3bucket: ""
+      # retention: "30 days"
+      # pgversion: "18"
+
     backups:
       enabled: false
+      # provider: aws
+      # destinationPath: "s3://<bucket-name>/"
+      # endpointURL: ""
+      # aws:
+      #   enableKube2IAMIntegration: false
+
+    recover:
+      enabled: false
+      # revision: 0
+
     monitoring:
       enablePodMonitor: false
+      prometheus:
+        enabled: false
+        # labels:
+        #   app.kubernetes.io/namespace: monitoring
+        #   app.kubernetes.io/name: prometheus
+
+    clients:
+      - labels:
+          app.kubernetes.io/name: keycloakx
+          app.kubernetes.io/instance: keycloak-staging
+    # - labels:
+    #     app: keycloak-logical-backup
+
+    cnpg:
+      enabled: true
+      labels:
+        app.kubernetes.io/name: cloudnative-pg
+        app.kubernetes.io/instance: cloudnative-pg
+        io.cilium.k8s.namespace.labels.kubernetes.io/metadata.name: cloudnative-pg
+
 blackbox:
   probe: false
