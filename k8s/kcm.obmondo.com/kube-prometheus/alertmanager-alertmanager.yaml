@@ -37,6 +37,9 @@ spec:
   serviceAccountName: alertmanager-main
   storage:
     volumeClaimTemplate:
+      metadata:
+        labels:
+          velero.io/exclude-from-backup: "true"
       spec:
         accessModes:
         - ReadWriteOnce

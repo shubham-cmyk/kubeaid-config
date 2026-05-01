@@ -58,6 +58,8 @@
     'zfs-localpv',
     'graylog',
     'backup-exporter',
+    'trivy-system',
+    'version-checker',
   ],
   prometheus_scrape_default_namespaces: [
     'argocd',

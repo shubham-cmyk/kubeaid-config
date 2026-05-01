@@ -32,6 +32,7 @@ spec:
         - --port=8081
         - --telemetry-host=127.0.0.1
         - --telemetry-port=8082
+        - --metric-labels-allowlist=nodes=[beta.kubernetes.io/instance-type,kubernetes.io/hostname]
         image: registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.16.0
         name: kube-state-metrics
         resources:

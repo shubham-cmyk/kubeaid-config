@@ -1,0 +1,3 @@
+version-checker:
+  existingSecret: harbor-version-checker
+  selfhosted: []
