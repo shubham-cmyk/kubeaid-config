@@ -11,7 +11,7 @@ spec:
   destination:
     namespace: harbor
     server: https://kubernetes.default.svc
-  project: default
+  project: kubeaid
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid.git
       path: argocd-helm-charts/harbor
