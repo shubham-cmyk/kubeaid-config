@@ -1,11 +1,16 @@
 harbor:
+  updateStrategy:
+    type: Recreate
+
   persistence:
     persistentVolumeClaim:
       registry:
         size: 270Gi
+        storageClass: zfs-localpv
       jobservice:
         jobLog:
           size: 3Gi
+          storageClass: zfs-localpv
 
 # this instance is used for replication of our prod harbor which have logicalbackups enabled
 global:
