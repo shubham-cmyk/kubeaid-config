@@ -278,6 +278,9 @@ ingress:
         - path: /api/v1/invoice-data
           pathType: Prefix
           servicePort: 8080
+        - path: /api/v1/contacts
+          pathType: Prefix
+          servicePort: 8080
         - path: /api/performance
           pathType: Prefix
           servicePort: 8080
