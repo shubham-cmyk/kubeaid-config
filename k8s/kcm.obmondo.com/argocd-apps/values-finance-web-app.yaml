@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  tag: beta-finance-v4.8.9
+  tag: beta-finance-v5.0.3
   pullPolicy: Always
 ingress:
   hosts:

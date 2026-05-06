@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  tag: finance-v4.8.9
+  tag: finance-v5.0.3
   pullPolicy: Always
 ingress:
   hosts:
