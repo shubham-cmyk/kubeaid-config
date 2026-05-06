@@ -1,5 +1,6 @@
 prometheus:
   server: enableit.prometheus.obmondo.com
+  customerid: "enableit"
   ingress:
     enabled: true
     domain: enableit.prometheus.obmondo.com

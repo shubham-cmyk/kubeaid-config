@@ -1,5 +1,6 @@
 prometheus:
   server: ebillet.prometheus.obmondo.com
+  customerid: "ebillet"
   ingress:
     enabled: true
     domain: ebillet.prometheus.obmondo.com
