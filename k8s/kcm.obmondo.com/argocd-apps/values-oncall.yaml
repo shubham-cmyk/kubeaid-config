@@ -97,6 +97,12 @@ oncall:
           - oncall.kcm.obmondo.com
 
 global:
+  blackbox:
+    enabled: true
+    interval: 30m
+    url:
+      - https://oncall.kcm.obmondo.com
+
   telegram:
     url: "api.telegram.org"
   keycloak:

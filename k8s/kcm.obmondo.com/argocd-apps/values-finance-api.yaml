@@ -1,3 +1,10 @@
+global:
+  blackbox:
+    enabled: true
+    interval: 30m
+    url:
+      - https://finance-api-beta.obmondo.com
+
 namespace: finance
 replicaCount: 1
 image:

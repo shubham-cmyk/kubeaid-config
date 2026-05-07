@@ -51,6 +51,12 @@ relate:
     tls: true
     extraHosts:
 global:
+  blackbox:
+    enabled: true
+    interval: 30m
+    url:
+      - https://relate.obmondo.com
+
   postgresql:
     enabled: true
     instanceName: relate

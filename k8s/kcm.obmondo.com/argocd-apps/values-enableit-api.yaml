@@ -1,4 +1,11 @@
 ---
+global:
+  blackbox:
+    enabled: true
+    interval: 30m
+    url:
+      - https://api-beta.obmondo.com
+
 namespace: obmondo-website
 admins:
   - "aman@obmondo.com"

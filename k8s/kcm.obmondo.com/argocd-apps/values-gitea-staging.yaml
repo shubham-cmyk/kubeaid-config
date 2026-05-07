@@ -1,3 +1,10 @@
+global:
+  blackbox:
+    enabled: true
+    interval: 30m
+    url:
+      - https://gitea-staging.kcm.obmondo.com
+
 gitea:
   image:
     registry: harbor.obmondo.com

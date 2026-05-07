@@ -1,3 +1,10 @@
+global:
+  blackbox:
+    enabled: true
+    interval: 30m
+    url:
+      - https://gitea-stats.kcm.obmondo.com
+
 ingress:
   enabled: true
   hosts:

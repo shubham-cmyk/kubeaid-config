@@ -12,6 +12,12 @@ global:
       labels:
         "k8s:app.kubernetes.io/name": prometheus
 
+  blackbox:
+    enabled: true
+    interval: 30m
+    url:
+      - https://argocd.kcm.obmondo.com
+
   argocd:
     netpol: true
     namespace: argocd
