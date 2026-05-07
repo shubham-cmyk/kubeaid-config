@@ -1,3 +1,6 @@
+prometheus:
+  connect_obmondo: true
+
 alertmanager:
   version: v0.27.0
   ingress:
