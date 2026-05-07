@@ -255,6 +255,9 @@ ingress:
         - path: /api/v1/contacts
           pathType: Prefix
           servicePort: 8080
+        - path: /api/version
+          pathType: Prefix
+          servicePort: 8080
         - path: /
           pathType: ImplementationSpecific
           servicePort: 8088
