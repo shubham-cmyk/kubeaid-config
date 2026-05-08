@@ -1,5 +1,6 @@
 prometheus:
   connect_obmondo: true
+  subscribed-certname: "kcm.enableit"
 
 alertmanager:
   version: v0.27.0
