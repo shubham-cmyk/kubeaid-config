@@ -106,6 +106,7 @@ mattermost:
     - name: MM_PLUGINSETTINGS_PLUGINS
       value: |
         {
+          "com.gitlab.itk.fr.matternelle": {},
           "mattermost-autolink": {
             "EnableAdminCommand": true,
             "EnableOnUpdate": true,
