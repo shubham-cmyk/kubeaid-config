@@ -82,6 +82,25 @@ mattermost:
       value: "github.com, gitea.obmondo.com"
     - name: MM_SERVICESETTINGS_ENABLEAPIUSERDELETION
       value: "true"
+    - name: MM_EMAILSETTINGS_SMTPSERVER
+      value: "65.21.45.227"
+    - name: MM_EMAILSETTINGS_SMTPPORT
+      value: "587"
+    - name: MM_EMAILSETTINGS_ENABLESMTPAUTH
+      value: "true"
+    - name: MM_EMAILSETTINGS_SMTPUSERNAME
+      value: "shared@obmondo.com"
+    - name: MM_EMAILSETTINGS_SMTPPASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: mattermost-smtp-secret
+          key: smtp-password
+    - name: MM_EMAILSETTINGS_CONNECTIONSECURITY
+      value: "STARTTLS"
+    - name: MM_EMAILSETTINGS_SKIPSERVERCERTIFICATEVERIFICATION
+      value: "true"
+    - name: MM_SERVICESETTINGS_ENABLESECURITYFIXALERT
+      value: "true"
     - name: MM_PLUGINSETTINGS_ENABLE
       value: "true"
     - name: MM_PLUGINSETTINGS_PLUGINS
