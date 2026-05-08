@@ -1,3 +1,10 @@
+global:
+  blackbox:
+    enabled: true
+    interval: 30m
+    url:
+      - https://matomo.kcm.obmondo.com
+
 matomo:
   matomoUsername: admin
   matomoEmail: info@obmondo.com

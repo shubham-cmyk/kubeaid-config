@@ -15,6 +15,12 @@ whoami:
       traefik.ingress.kubernetes.io/router.tls: "true"
 
 global:
+  blackbox:
+    enabled: true
+    interval: 30m
+    url:
+      - https://whoami.kcm.obmondo.com
+
   netpol:
     enabled: true
     releaseName: whoami

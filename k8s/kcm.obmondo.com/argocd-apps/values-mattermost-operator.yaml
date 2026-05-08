@@ -241,6 +241,13 @@ matternelle:
   domain: webchat-staging.obmondo.com
 
 global:
+  blackbox:
+    enabled: true
+    interval: 30m
+    url:
+      - https://mattermost-staging.kcm.obmondo.com
+      - https://webchat-staging.obmondo.com
+
   postgresql:
     enabled: true
     instanceName: mattermost

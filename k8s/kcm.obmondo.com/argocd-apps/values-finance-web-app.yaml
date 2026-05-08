@@ -1,3 +1,10 @@
+global:
+  blackbox:
+    enabled: true
+    interval: 30m
+    url:
+      - https://beta-finance.obmondo.com
+
 replicaCount: 1
 image:
   tag: beta-finance-v5.0.3

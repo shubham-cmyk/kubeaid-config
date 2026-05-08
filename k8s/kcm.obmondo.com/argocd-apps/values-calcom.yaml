@@ -93,6 +93,12 @@ calcom:
       - "onkarwork2234@gmail.com"
 
 global:
+  blackbox:
+    enabled: true
+    interval: 30m
+    url:
+      - https://calcom.kcm.obmondo.com
+
   postgresql:
     enabled: true
     instanceName: calcom

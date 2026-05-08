@@ -1,3 +1,10 @@
+global:
+  blackbox:
+    enabled: true
+    interval: 30m
+    url:
+      - https://beta.linuxaid.io
+
 replicaCount: 1
 image:
   tag: beta-linuxaid-v4.8.1

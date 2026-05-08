@@ -1,4 +1,11 @@
 ---
+global:
+  blackbox:
+    enabled: true
+    interval: 30m
+    url:
+      - https://ciso.obmondo.com
+
 ciso-assistant:
   global:
     domain: ciso.obmondo.com
