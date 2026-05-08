@@ -10,7 +10,7 @@ forkURLs:
     version: 28.0.0
   kubeaidConfig:
     url: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
-    directory: 
+    directory:
 
 cluster:
   type: vpn
