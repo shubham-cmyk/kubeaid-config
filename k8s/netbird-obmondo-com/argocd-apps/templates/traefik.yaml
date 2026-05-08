@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  labels:
+    kubeaid.io/version: 28.0.0
+    kubeaid.io/managed-by: kubeaid
+    kubeaid.io/sync-order: "15"
+  name: traefik
+  namespace: argocd
+spec:
+  destination:
+    namespace: traefik
+    server: https://kubernetes.default.svc
+  project: kubeaid
+  sources:
+    - repoURL: https://github.com/Obmondo/KubeAid.git
+      path: argocd-helm-charts/traefik
+      targetRevision: 28.0.0
+      helm:
+        valueFiles:
+          - $values/k8s/netbird-obmondo-com/argocd-apps/values-traefik.yaml
+    - repoURL: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
+      targetRevision: HEAD
+      ref: values
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true

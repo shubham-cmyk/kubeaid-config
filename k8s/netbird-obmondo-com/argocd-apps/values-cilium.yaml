@@ -1,0 +1,12 @@
+---
+cilium:
+  kubeProxyReplacement: "true"
+  k8sServiceHost: api.vpn.obmondo.com
+  k8sServicePort: 6443
+
+  hostFirewall:
+    enabled: true
+
+  
+  extraArgs:
+    - "--devices=eth+,enp+,eno+"

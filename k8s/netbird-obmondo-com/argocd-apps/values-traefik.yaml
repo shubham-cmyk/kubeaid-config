@@ -1,0 +1,5 @@
+traefik:
+  service:
+    annotations:
+      load-balancer.hetzner.cloud/use-private-ip: "false"
+      load-balancer.hetzner.cloud/uses-proxyprotocol: "false"

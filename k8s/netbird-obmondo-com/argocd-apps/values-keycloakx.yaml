@@ -1,0 +1,6 @@
+keycloakx:
+  ingress:
+    hostname: keycloak.vpn.obmondo.com
+
+  adminSecret:
+    name: keycloak-admin

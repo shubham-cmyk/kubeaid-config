@@ -1,0 +1,15 @@
+cert-manager:
+  prometheus:
+    enabled: false
+issuer:
+  enabled: true
+  name: letsencrypt-prod
+  issuerEmail: ops@obmondo.com
+  production: true
+  secret: letsencrypt-prod-account-key
+  preferredChain: ""
+  solvers:
+    - type: http
+      http01:
+        ingress:
+          ingressClassName: traefik

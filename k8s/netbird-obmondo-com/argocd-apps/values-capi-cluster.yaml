@@ -1,0 +1,48 @@
+global:
+  clusterName: netbird-obmondo-com
+  kubernetes:
+    version: v1.35.4
+  kubeaid:
+    repo: https://github.com/Obmondo/KubeAid.git
+  kubeaidConfig:
+    repo: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
+  additionalUsers: 
+    []
+provider:
+  hetzner: true
+
+hetzner:
+  mode: hcloud
+  multipleSubnets: false
+
+  sshKeyPair:
+    name: netbird-obmondo-com
+  hcloud:
+    zone: eu-central
+    imageName: ubuntu-24.04
+    cidrBlock: 10.0.0.0/16
+    subnetCidrBlock: 10.0.0.0/24
+
+  controlPlane:
+    regions: 
+      - hel1
+
+    
+    endpoint:
+      host: api.vpn.obmondo.com
+    loadBalancer:
+      privateIP: 10.0.0.3
+      bootstrapPublicIP: 95.217.168.170
+
+    
+    hcloud: 
+      machineType: cax21
+      replicas: 1
+      loadBalancer:
+        enabled: true
+        region: hel1
+        endpoint: ""
+
+  nodeGroups: 
+    hcloud: []
+    bareMetal: []
