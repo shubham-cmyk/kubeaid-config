@@ -34,7 +34,7 @@ global:
     enabled: true
     instanceName: sonarqube
     instances: 1
-    size: 4Gi
+    size: 8Gi
     backups:
       enabled: true
       destinationPath: "s3://kcm-sonarqube"
