@@ -40,6 +40,8 @@ global:
       destinationPath: "s3://kcm-sonarqube"
       endpointURL: "https://s3.obmondo.com"
       cloud: "aws"
+      aws:
+        enableKube2IAMIntegration: false
     monitoring:
       enablePodMonitor: false
 
