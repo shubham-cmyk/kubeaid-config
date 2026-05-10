@@ -44,5 +44,10 @@ global:
         enableKube2IAMIntegration: false
     monitoring:
       enablePodMonitor: false
+    netpol: true
+    clients:
+      - labels:
+          app: sonarqube
 
-networkpolicies: false
+  netpol:
+    enabled: true
