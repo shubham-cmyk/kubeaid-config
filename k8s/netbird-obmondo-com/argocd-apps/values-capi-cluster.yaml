@@ -35,13 +35,12 @@ hetzner:
       bootstrapPublicIP: 95.217.168.170
 
     
-    hcloud: 
+    hcloud:
       machineType: cax21
       replicas: 1
       loadBalancer:
-        enabled: true
+        enabled: false
         region: hel1
-        endpoint: ""
 
   nodeGroups: 
     hcloud: []
