@@ -36,7 +36,10 @@ global:
     instances: 1
     size: 4Gi
     backups:
-      enabled: false
+      enabled: true
+      destinationPath: "s3://kcm-sonarqube"
+      endpointURL: "https://s3.obmondo.com"
+      cloud: "aws"
     monitoring:
       enablePodMonitor: false
 
