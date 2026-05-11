@@ -36,7 +36,7 @@ hetzner:
 
     
     hcloud:
-      machineType: cax21
+      machineType: cpx32
       replicas: 1
       loadBalancer:
         enabled: false
