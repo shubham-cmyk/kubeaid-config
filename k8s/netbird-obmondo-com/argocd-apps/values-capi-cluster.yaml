@@ -6,7 +6,7 @@ global:
     repo: https://github.com/Obmondo/KubeAid.git
   kubeaidConfig:
     repo: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
-  additionalUsers: 
+  additionalUsers:
     []
 provider:
   hetzner: true
@@ -24,17 +24,13 @@ hetzner:
     subnetCidrBlock: 10.0.0.0/24
 
   controlPlane:
-    regions: 
+    regions:
       - hel1
-
-    
     endpoint:
       host: api.vpn.obmondo.com
     loadBalancer:
       privateIP: 10.0.0.3
       bootstrapPublicIP: 95.217.168.170
-
-    
     hcloud:
       machineType: cpx32
       replicas: 1
@@ -42,6 +38,6 @@ hetzner:
         enabled: false
         region: hel1
 
-  nodeGroups: 
+  nodeGroups:
     hcloud: []
     bareMetal: []
