@@ -34,10 +34,20 @@ global:
     enabled: true
     instanceName: sonarqube
     instances: 1
-    size: 4Gi
+    size: 8Gi
     backups:
-      enabled: false
+      enabled: true
+      destinationPath: "s3://kcm-sonarqube"
+      endpointURL: "https://s3.obmondo.com"
+      cloud: "aws"
+      aws:
+        enableKube2IAMIntegration: false
     monitoring:
       enablePodMonitor: false
+    netpol: true
+    clients:
+      - labels:
+          app: sonarqube
 
-networkpolicies: false
+  netpol:
+    enabled: true
