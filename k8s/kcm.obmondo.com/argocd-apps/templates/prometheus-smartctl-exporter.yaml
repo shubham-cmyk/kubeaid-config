@@ -4,14 +4,20 @@ metadata:
   name: prometheus-smartctl-exporter
   namespace: argocd
 spec:
+  sources:
+    - repoURL: https://gitea.obmondo.com/EnableIT/Kubeaid.git
+      path: argocd-helm-charts/smartmon-exporter
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+          - $values/k8s/kcm.obmondo.com/argocd-apps/values-prometheus-smartctl-exporter.yaml
+    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
+      targetRevision: HEAD
+      ref: values
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
   project: default
-  source:
-    repoURL: https://gitea.obmondo.com/EnableIT/Kubeaid.git
-    path: argocd-helm-charts/smartmon-exporter
-    targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
