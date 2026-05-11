@@ -13,8 +13,6 @@ cluster-api-operator:
     kubeadm:
       namespace: capi-cluster
       createNamespace: false
-
-
   configSecret:
     name: cloud-credentials
     namespace: capi-cluster
