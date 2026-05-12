@@ -126,6 +126,9 @@ ingress:
   hosts:
     - host: api-beta.obmondo.com
       paths:
+        - path: /api/customer/gen-ssh-key
+          pathType: Prefix
+          servicePort: 8080
         - path: /api/customer/issues
           pathType: Prefix
           servicePort: 8080
@@ -315,7 +318,8 @@ extraEnv:
     value: dffc3b5782fe0c7ca933241e04079a4cfeb2e75a
   - name: FINANCE_API_URL
     value: "https://finance-api-beta.obmondo.com/"
-
+  - name: KUBEAID_AGENT_URL
+    value: http://kubeaid-agent.monitoring.svc.cluster.local
 g10k:
   enabled: true
   schedule: "0/30 * * * *"
