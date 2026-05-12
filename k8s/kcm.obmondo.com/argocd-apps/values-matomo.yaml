@@ -1,9 +1,11 @@
 global:
   blackbox:
     enabled: true
-    interval: 30m
-    url:
-      - https://matomo.kcm.obmondo.com
+    probes:
+      - module: http_2xx
+        interval: 30m
+        urls:
+          - https://matomo.kcm.obmondo.com
 
 matomo:
   matomoUsername: admin

@@ -1,9 +1,11 @@
 global:
   blackbox:
     enabled: true
-    interval: 30m
-    url:
-      - https://gitea-stats.kcm.obmondo.com
+    probes:
+      - module: http_2xx
+        interval: 30m
+        urls:
+          - https://gitea-stats.kcm.obmondo.com
 
 ingress:
   enabled: true

@@ -2,9 +2,11 @@
 global:
   blackbox:
     enabled: true
-    interval: 30m
-    url:
-      - https://api-beta.obmondo.com
+    probes:
+      - module: http_2xx
+        interval: 30m
+        urls:
+          - https://api-beta.obmondo.com
 
 namespace: obmondo-website
 admins:

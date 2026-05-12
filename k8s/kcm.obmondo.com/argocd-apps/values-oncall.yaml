@@ -99,9 +99,11 @@ oncall:
 global:
   blackbox:
     enabled: true
-    interval: 30m
-    url:
-      - https://oncall.kcm.obmondo.com
+    probes:
+      - module: http_2xx
+        interval: 30m
+        urls:
+          - https://oncall.kcm.obmondo.com
 
   telegram:
     url: "api.telegram.org"

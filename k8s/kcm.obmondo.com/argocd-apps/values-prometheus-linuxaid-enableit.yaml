@@ -1,10 +1,12 @@
 global:
   blackbox:
     enabled: true
-    interval: 30m
-    url:
-      - https://enableit.prometheus.obmondo.com
-      - https://enableit.graphs.obmondo.com
+    probes:
+      - module: http_2xx
+        interval: 30m
+        urls:
+          - https://enableit.prometheus.obmondo.com
+          - https://enableit.graphs.obmondo.com
 
 prometheus:
   server: enableit.prometheus.obmondo.com
