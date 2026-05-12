@@ -145,6 +145,9 @@ ingress:
   hosts:
     - host: api.obmondo.com
       paths:
+        - path: /api/customer/gen-ssh-key
+          pathType: Prefix
+          servicePort: 8080
         - path: /api/customer/issues
           pathType: Prefix
           servicePort: 8080
@@ -334,6 +337,9 @@ extraEnv:
     value: "https://finance-api.obmondo.com/"
   - name: ARTOO_PROMETHEUS_URL
     value: "http://prometheus-k8s.monitoring.svc.cluster.local:9090"
+  - name: KUBEAID_AGENT_URL
+    value: http://kubeaid-agent.monitoring.svc.cluster.local
+
 
 g10k:
   enabled: true
