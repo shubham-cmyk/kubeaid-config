@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   labels:
-    kubeaid.io/version: 29.0.2
+    kubeaid.io/version: 29.0.3
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "20"
   name: keycloakx
@@ -15,7 +15,7 @@ spec:
   sources:
     - repoURL: https://github.com/Obmondo/KubeAid.git
       path: argocd-helm-charts/keycloakx
-      targetRevision: 29.0.2
+      targetRevision: 29.0.3
       helm:
         valueFiles:
           - $values/k8s/netbird-obmondo-com/argocd-apps/values-keycloakx.yaml
