@@ -127,9 +127,18 @@ redis:
   replicas: 3
 
 persistence:
-  g10k:
+  reposAndSSH:
     size: 5Gi
+    accessMode: ReadWriteMany
+    storageClass: zfs-localpv-shared
   enabled: true
+
+gfetch:
+  enabled: true
+  image:
+    repository: harbor.obmondo.com/obmondo/gfetch
+    tag: 36
+    pullPolicy: IfNotPresent
 ci:
   enabled: false
 pgdump:
@@ -145,6 +154,9 @@ ingress:
   hosts:
     - host: api.obmondo.com
       paths:
+        - path: /api/customer/ssh
+          pathType: Prefix
+          servicePort: 8080
         - path: /api/customer/gen-ssh-key
           pathType: Prefix
           servicePort: 8080
@@ -340,31 +352,19 @@ extraEnv:
   - name: KUBEAID_AGENT_URL
     value: http://kubeaid-agent.monitoring.svc.cluster.local
 
-
-g10k:
-  enabled: true
-  schedule: "0/30 * * * *"
-  image:
-    repository: harbor.obmondo.com/obmondo/g10k
-    tag: 1.0.7
-    pullPolicy: Always
-
 gitRepos:
   linuxaid:
     - enableit
-    - abbnoa6nlk
-    - niwyocdmk2
-    - 7ejidqmfi9
-    - a0hu8x41ng
-    - p45k4z2vfh
-    - qd2xcggwag
+    - niwyocdmk2 # (internal test customer)
+    - p45k4z2vfh # (web pros)
+    - qd2xcggwag # (kilroy)
     - ebillet
   kubeaid:
     - enableit
-    - niwyocdmk2
-    - qd2xcggwag
-    - rufvpto91t
-    - a0hu8x41ng
+    - niwyocdmk2 # (internal test customer)
+    - qd2xcggwag # (kilroy)
+    - rufvpto91t # (bw7)
+    - e1dfvonemm # (kirklarsen)
 
 prometheusRule:
   enabled: true
