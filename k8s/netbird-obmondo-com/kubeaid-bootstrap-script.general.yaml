@@ -7,7 +7,7 @@ git:
 forkURLs:
   kubeaid:
     url: https://github.com/Obmondo/KubeAid.git
-    version: 28.1.0
+    version: 29.0.2
   kubeaidConfig:
     url: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
     directory:
