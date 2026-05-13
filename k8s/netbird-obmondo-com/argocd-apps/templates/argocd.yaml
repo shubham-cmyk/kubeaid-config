@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   labels:
-    kubeaid.io/version: 28.1.0
+    kubeaid.io/version: 29.0.2
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "100"
   name: argocd
@@ -17,7 +17,7 @@ spec:
   sources:
     - repoURL: https://github.com/Obmondo/KubeAid.git
       path: argocd-helm-charts/argo-cd
-      targetRevision: 28.1.0
+      targetRevision: 29.0.2
       helm:
         valueFiles:
           - $values/k8s/netbird-obmondo-com/argocd-apps/values-argocd.yaml

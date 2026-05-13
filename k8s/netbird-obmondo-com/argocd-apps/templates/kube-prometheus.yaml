@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   labels:
-    kubeaid.io/version: 28.1.0
+    kubeaid.io/version: 29.0.2
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "50"
   name: kube-prometheus

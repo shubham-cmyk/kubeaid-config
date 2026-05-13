@@ -13,7 +13,6 @@ provider:
 
 hetzner:
   mode: hcloud
-  multipleSubnets: false
 
   sshKeyPair:
     name: netbird-obmondo-com
