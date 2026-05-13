@@ -112,7 +112,7 @@ api:
     image:
       repository: harbor.obmondo.com/obmondo/enableit-go-api
       pullPolicy: Always
-      tag: v0.7.8
+      tag: v0.7.9
   server:
     internal_ips_for_readonly_auth: "172.20.0.0/16"
   redis:
