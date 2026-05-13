@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   labels:
-    kubeaid.io/version: 29.0.4
+    kubeaid.io/version: 29.0.5
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "1"
   name: root
