@@ -9,7 +9,7 @@ global:
     # snapshot kubeaid-cli rendered locally, instead of letting them
     # drift to whatever the fork's default branch happens to be at
     # node bootstrap time.
-    version: 29.0.4
+    version: 29.0.5
   kubeaidConfig:
     repo: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
   additionalUsers:
