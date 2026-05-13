@@ -130,7 +130,7 @@ persistence:
   reposAndSSH:
     size: 5Gi
     accessMode: ReadWriteMany
-    storageClass: zfs-localpv-shared
+    storageClass: openebs-zfspv-shared
   enabled: true
 
 gfetch:
