@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   labels:
-    kubeaid.io/version: master
+    kubeaid.io/version: 29.0.7
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "10"
   name: cluster-api-operator
@@ -15,9 +15,9 @@ spec:
     namespace: capi-cluster
   project: kubeaid
   sources:
-    - repoURL: https://github.com/ashish1099/kubeaid.git
+    - repoURL: https://github.com/Obmondo/kubeaid.git
       path: argocd-helm-charts/cluster-api-operator
-      targetRevision: master
+      targetRevision: 29.0.7
       helm:
         valueFiles:
           - $values/k8s/netbird-obmondo-com/argocd-apps/values-cluster-api-operator.yaml

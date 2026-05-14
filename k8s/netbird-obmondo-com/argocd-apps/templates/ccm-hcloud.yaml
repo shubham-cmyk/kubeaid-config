@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   labels:
-    kubeaid.io/version: master
+    kubeaid.io/version: 29.0.7
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "10"
   name: ccm-hcloud
@@ -13,9 +13,9 @@ spec:
     server: https://kubernetes.default.svc
   project: kubeaid
   sources:
-    - repoURL: https://github.com/ashish1099/kubeaid.git
+    - repoURL: https://github.com/Obmondo/kubeaid.git
       path: argocd-helm-charts/ccm-hcloud
-      targetRevision: master
+      targetRevision: 29.0.7
       helm:
         valueFiles:
           - $values/k8s/netbird-obmondo-com/argocd-apps/values-ccm-hcloud.yaml
