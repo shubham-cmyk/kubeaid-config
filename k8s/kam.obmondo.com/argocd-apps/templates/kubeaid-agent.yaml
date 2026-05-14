@@ -6,7 +6,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: monitoring
+    namespace: obmondo
   project: kubeaid
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid.git
