@@ -1,5 +1,14 @@
 traefik:
   service:
     annotations:
-      load-balancer.hetzner.cloud/use-private-ip: "false"
-      load-balancer.hetzner.cloud/uses-proxyprotocol: "false"
+      load-balancer.hetzner.cloud/network-zone: eu-central
+      load-balancer.hetzner.cloud/uses-proxyprotocol: "true"
+  providers:
+    kubernetesCRD:
+      enabled: true
+      allowCrossNamespace: true
+    kubernetesIngress:
+      publishedService:
+        enabled: true
+  podDisruptionBudget:
+    enabled: false
