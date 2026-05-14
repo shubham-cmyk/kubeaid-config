@@ -1,6 +1,18 @@
 keycloakx:
   ingress:
-    hostname: keycloak.vpn.obmondo.com
+    enabled: true
+    ingressClassName: traefik
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    tls:
+      - hosts:
+          - keycloak.vpn.obmondo.com
+        secretName: keycloak-tls
+    rules:
+      - host: keycloak.vpn.obmondo.com
+        paths:
+          - path: /
+            pathType: Prefix
 
   adminSecret:
     name: keycloak-admin
