@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   labels:
-    kubeaid.io/version: 29.0.6
+    kubeaid.io/version: master
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "10"
   name: capi-cluster
@@ -12,9 +12,9 @@ spec:
     namespace: capi-cluster
     server: https://kubernetes.default.svc
   sources:
-    - repoURL: https://github.com/Obmondo/KubeAid.git
+    - repoURL: https://github.com/ashish1099/kubeaid.git
       path: argocd-helm-charts/capi-cluster
-      targetRevision: 29.0.6
+      targetRevision: master
       helm:
         valueFiles:
           - $values/k8s/netbird-obmondo-com/argocd-apps/values-capi-cluster.yaml
