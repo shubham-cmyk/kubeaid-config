@@ -1,6 +1,0 @@
-hcloud-csi:
-  controller:
-    hcloudToken:
-      existingSecret:
-        name: cloud-credentials
-        key: hcloud
