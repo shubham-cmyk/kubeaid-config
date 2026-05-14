@@ -7,3 +7,16 @@ exporter:
   postgres:
     max_rpo: 24h
     interval_rate: 0.25
+    ignore_clusters:
+      finance:
+        - api-postgresql
+      finance-test:
+        - api-postgresql
+      obmondo-website:
+        - api-postgresql
+      monitoring-staging:
+        - gitea-staging-pgsql
+      keycloak-staging:
+        - keycloak-pgsql
+      keycloak-test:
+        - keycloak-pgsql
