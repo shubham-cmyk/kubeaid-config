@@ -1,0 +1,14 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: argocd-project-role-kubeaid-agent
+  namespace: obmondo
+spec:
+  encryptedData:
+    token: AgARRwsloBUSualUOY3XeH5w4BiytJlYo0yDHwfrkLRlpnNnDzRo+MShwCjQgVtMOK4fos5ZAFwM3jIDJaJ8TZZGOdz+kEViu6gFTM9GR+364XJm+LXcJo+v9RXLHZmBCxXkl83ApsUnGLqLMmEpru9kSbhWSIpatNmbPCs9KBsn7TAFKi57fkzFFy02zeBEU7MsO2NJcvbtMg0bGekYazAqWoc5+IxMImO4ICQCm3vaDpRST7z2gkcdqc8HRl2CSAzKD7hoSWHqbDnmlDGZ/QBBNcdqo66YjQDNyVraRUkE03/Y4jbgeP+wUxB7ziAyMAqv8BWQdRX/L6oqa5KQQAI8iuzdIuPyqC9JBKn7Ori2Ydsupp6/kUw6b2geT8rYw4GLXYjM7XNlGvr3A/EG8yTEue8Xu31olFFnpA/rXPZRXdPuxJDmILAvInHRfPa0R2gBlbacIeRR9V/x5JDS1Olpi+LyQOR6C1U/DGKC6e0mZjBA9tsTcvXOWpeo9bi7medPPr+Y7TLzOVi3Oe+lRmCqxirHL1OfpZFK3QQwQRJSZEfqx4L/eNileLOYMlqM67Kc6+2yc8xAAkKMTJt9aiKawrWiLOfw/2pUgQ4EbX+esQ2QgLO9sNl7fbZJodJ+BUy1pffiUqwONBM15BGXE1Ni6RocgqwSV7vmOrJlRdBzCJkpjGexVRvnExKKqVCrXvra+XjuyvIdrfk5o1eGhPrNrHN7wJzNZsvOzGyr/Ef87lyfBScTS26KOgB6QkQ+5Nmdaiyzitmx2TP0GfRrhD1loH6/xxayz9p+81T2rjXFKnm6Zag+sEtgTqTiwJVs/jjk2SMknQ1xLUNIDtDbS2lPBx4xBn8kEvdE4A/ZAELaKvAmgaGIR/hNnd6lv2BfdLftcPV7t64256eSNAw2ChggWDhUTeR5AjAlfAwb+4up9hCU88jtlEj+v4YBIG6cC9lCawbRt92iGFUohBLboNygrDFRfZ6aEwn1nqOX91gBmzLkrDPPgIgQ3KzyUQProm+mkmDYFA2d
+  template:
+    metadata:
+      creationTimestamp: null
+      name: argocd-project-role-kubeaid-agent
+      namespace: obmondo
