@@ -6,6 +6,12 @@ traefik:
       hostPort: 443
     web:
       hostPort: 80
+    gitea-ssh:
+      port: 2222
+      hostPort: 2222
+      protocol: TCP
+      expose:
+        default: true
   logs:
     general:
       level: INFO
