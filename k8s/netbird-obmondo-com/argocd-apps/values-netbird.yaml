@@ -1,5 +1,9 @@
 global:
   postgresql:
+    # Pinned off in kubeaid-cli's overlay so the bootstrap doesn't depend
+    # on the cluster's kubeaid chart version carrying the chart-side
+    # default. TODO: make this a config toggle when kubeaid-cli grows
+    # backup support.
     backups:
       enabled: false
 
