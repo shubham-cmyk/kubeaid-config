@@ -10,6 +10,20 @@ puppetserver:
   puppetdb:
     fqdns:
       alternateServerNames: niwyocdmk2.puppetdb.obmondo.com
+  metrics:
+    prometheus:
+      puppetdb:
+        serviceMonitor:
+          enabled: false
+
+
+puppetAgentExporter:
+  serviceMonitor:
+    enabled: false
+
+gfetch:
+  serviceMonitor:
+    enabled: false
 
 g10k:
   hiera:
