@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   labels:
-    kubeaid.io/version: 29.0.7
+    kubeaid.io/version: 29.0.8
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "15"
   name: traefik
@@ -15,7 +15,7 @@ spec:
   sources:
     - repoURL: https://github.com/Obmondo/kubeaid.git
       path: argocd-helm-charts/traefik
-      targetRevision: 29.0.7
+      targetRevision: 29.0.8
       helm:
         valueFiles:
           - $values/k8s/netbird-obmondo-com/argocd-apps/values-traefik.yaml
