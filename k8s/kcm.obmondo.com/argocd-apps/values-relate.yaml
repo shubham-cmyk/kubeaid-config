@@ -53,9 +53,10 @@ relate:
 global:
   blackbox:
     enabled: true
-    interval: 30m
-    url:
-      - https://relate.obmondo.com
+    probes:
+      - module: http_2xx
+        urls:
+          - https://relate.obmondo.com
 
   postgresql:
     enabled: true

@@ -243,10 +243,15 @@ matternelle:
 global:
   blackbox:
     enabled: true
-    interval: 30m
-    url:
-      - https://mattermost-staging.kcm.obmondo.com
-      - https://webchat-staging.obmondo.com
+    probes:
+      - module: http_2xx
+        interval: 30m
+        urls:
+          - https://mattermost-staging.kcm.obmondo.com
+          - https://webchat-staging.obmondo.com
+      - module: http_400_ok
+        urls:
+          - https://webchat.obmondo.com/ws
 
   postgresql:
     enabled: true

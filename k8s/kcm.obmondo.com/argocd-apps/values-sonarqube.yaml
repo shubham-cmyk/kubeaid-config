@@ -26,9 +26,11 @@ sonarqube:
 global:
   blackbox:
     enabled: true
-    interval: 30m
-    url:
-      - https://sonarqube.kcm.obmondo.com
+    probes:
+      - module: http_2xx
+        interval: 30m
+        urls:
+          - https://sonarqube.kcm.obmondo.com
 
   postgresql:
     enabled: true

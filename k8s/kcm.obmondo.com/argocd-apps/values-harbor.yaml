@@ -16,9 +16,11 @@ harbor:
 global:
   blackbox:
     enabled: true
-    interval: 30m
-    url:
-      - https://harbor.kcm.obmondo.com
+    probes:
+      - module: http_2xx
+        interval: 30m
+        urls:
+          - https://harbor.kcm.obmondo.com
 
   postgresql:
     enabled: true

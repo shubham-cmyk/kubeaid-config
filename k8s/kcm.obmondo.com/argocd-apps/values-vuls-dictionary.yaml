@@ -1,9 +1,11 @@
 global:
   blackbox:
     enabled: true
-    interval: 30m
-    url:
-      - https://vuls.obmondo.com
+    probes:
+      - module: http_2xx
+        interval: 30m
+        urls:
+          - https://vuls.obmondo.com
 
 ingress:
   enabled: true

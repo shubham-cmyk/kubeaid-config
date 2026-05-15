@@ -32,9 +32,11 @@ global:
 
   blackbox:
     enabled: true
-    interval: 30m
-    url:
-      - https://keycloak-staging.kcm.obmondo.com
+    probes:
+      - module: http_2xx
+        interval: 30m
+        urls:
+          - https://keycloak-staging.kcm.obmondo.com
     netpol: false
     namespace: monitoring
 

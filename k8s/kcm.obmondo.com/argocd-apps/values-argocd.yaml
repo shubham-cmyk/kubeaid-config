@@ -14,9 +14,10 @@ global:
 
   blackbox:
     enabled: true
-    interval: 30m
-    url:
-      - https://argocd.kcm.obmondo.com
+    probes:
+      - module: http_2xx
+        urls:
+          - https://argocd.kcm.obmondo.com
 
   argocd:
     netpol: true

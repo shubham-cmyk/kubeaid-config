@@ -1,9 +1,11 @@
 global:
   blackbox:
     enabled: true
-    interval: 30m
-    url:
-      - https://gitea-staging.kcm.obmondo.com
+    probes:
+      - module: http_2xx
+        interval: 30m
+        urls:
+          - https://gitea-staging.kcm.obmondo.com
 
 gitea:
   image:

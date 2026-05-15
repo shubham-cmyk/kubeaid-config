@@ -1,9 +1,11 @@
 global:
   blackbox:
     enabled: true
-    interval: 30m
-    url:
-      - https://finance-api-beta.obmondo.com
+    probes:
+      - module: http_2xx
+        interval: 30m
+        urls:
+          - https://finance-api-beta.obmondo.com
 
 namespace: finance
 replicaCount: 1

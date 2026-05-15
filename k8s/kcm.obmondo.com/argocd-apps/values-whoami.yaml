@@ -17,9 +17,11 @@ whoami:
 global:
   blackbox:
     enabled: true
-    interval: 30m
-    url:
-      - https://whoami.kcm.obmondo.com
+    probes:
+      - module: http_2xx
+        interval: 30m
+        urls:
+          - https://whoami.kcm.obmondo.com
 
   netpol:
     enabled: true
