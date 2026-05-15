@@ -52,17 +52,17 @@ netbird:
           "CertFile": "",
           "CertKey": "",
           "AuthAudience": "{{ .IDP_CLIENT_ID }}",
-          "AuthIssuer": "https://keycloak.vpn.obmondo.com/realms/obmondo",
+          "AuthIssuer": "https://keycloak.vpn.obmondo.com/auth/realms/obmondo",
           "AuthUserIDClaim": "",
-          "AuthKeysLocation": "https://keycloak.vpn.obmondo.com/realms/obmondo/protocol/openid-connect/certs",
-          "OIDCConfigEndpoint": "https://keycloak.vpn.obmondo.com/realms/obmondo/.well-known/openid-configuration",
+          "AuthKeysLocation": "https://keycloak.vpn.obmondo.com/auth/realms/obmondo/protocol/openid-connect/certs",
+          "OIDCConfigEndpoint": "https://keycloak.vpn.obmondo.com/auth/realms/obmondo/.well-known/openid-configuration",
           "IdpSignKeyRefreshEnabled": false
         },
         "IdpManagerConfig": {
           "ManagerType": "keycloak",
           "ClientConfig": {
-            "Issuer": "https://keycloak.vpn.obmondo.com/realms/obmondo/.well-known/openid-configuration",
-            "TokenEndpoint": "https://keycloak.vpn.obmondo.com/realms/obmondo/protocol/openid-connect/token",
+            "Issuer": "https://keycloak.vpn.obmondo.com/auth/realms/obmondo/.well-known/openid-configuration",
+            "TokenEndpoint": "https://keycloak.vpn.obmondo.com/auth/realms/obmondo/protocol/openid-connect/token",
             "ClientID": "{{ .IDP_CLIENT_MGMT_ID }}",
             "ClientSecret": "{{ .IDP_CLIENT_MGMT_SECRET }}",
             "GrantType": "client_credentials"
@@ -70,7 +70,7 @@ netbird:
           "ExtraConfig": {
             "Password": "{{ .IDP_SERVICE_ACCOUNT_PASSWORD }}",
             "Username": "{{ .IDP_SERVICE_ACCOUNT_USER }}",
-            "AdminEndpoint": "https://keycloak.vpn.obmondo.com/admin/realms/obmondo"
+            "AdminEndpoint": "https://keycloak.vpn.obmondo.com/auth/admin/realms/obmondo"
           },
           "KeycloakClientCredentials": null
         },
@@ -81,8 +81,8 @@ netbird:
             "ClientSecret": "",
             "Domain": "keycloak.vpn.obmondo.com",
             "Audience": "{{ .IDP_CLIENT_ID }}",
-            "TokenEndpoint": "https://keycloak.vpn.obmondo.com/realms/obmondo/protocol/openid-connect/token",
-            "DeviceAuthEndpoint": "https://keycloak.vpn.obmondo.com/realms/obmondo/protocol/openid-connect/auth/device",
+            "TokenEndpoint": "https://keycloak.vpn.obmondo.com/auth/realms/obmondo/protocol/openid-connect/token",
+            "DeviceAuthEndpoint": "https://keycloak.vpn.obmondo.com/auth/realms/obmondo/protocol/openid-connect/auth/device",
             "AuthorizationEndpoint": "",
             "Scope": "openid",
             "UseIDToken": false,
@@ -95,7 +95,7 @@ netbird:
             "ClientSecret": "",
             "Domain": "keycloak.vpn.obmondo.com",
             "Audience": "{{ .IDP_CLIENT_ID }}",
-            "TokenEndpoint": "https://keycloak.vpn.obmondo.com/realms/obmondo/protocol/openid-connect/token",
+            "TokenEndpoint": "https://keycloak.vpn.obmondo.com/auth/realms/obmondo/protocol/openid-connect/token",
             "DeviceAuthEndpoint": "",
             "AuthorizationEndpoint": "",
             "Scope": "openid profile email offline_access api",
@@ -193,7 +193,7 @@ netbird:
     env:
       NETBIRD_MGMT_API_ENDPOINT: https://netbird.vpn.obmondo.com:443
       NETBIRD_MGMT_GRPC_API_ENDPOINT: https://netbird.vpn.obmondo.com:443
-      AUTH_AUTHORITY: https://keycloak.vpn.obmondo.com/realms/obmondo
+      AUTH_AUTHORITY: https://keycloak.vpn.obmondo.com/auth/realms/obmondo
     ingress:
       enabled: true
       className: traefik
