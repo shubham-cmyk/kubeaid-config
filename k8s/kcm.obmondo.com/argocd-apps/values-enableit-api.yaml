@@ -91,7 +91,7 @@ api:
     image:
       repository: harbor.obmondo.com/obmondo/enableit-go-api
       pullPolicy: Always
-      tag: v0.8.0
+      tag: v0.8.1
   server:
     internal_ips_for_readonly_auth: "172.20.0.0/16"
   mode: beta
@@ -119,17 +119,17 @@ gfetch:
   enabled: true
   image:
     repository: harbor.obmondo.com/obmondo/gfetch
-    tag: 36
-    pullPolicy: IfNotPresent
+    tag: v1.1.0
+    pullPolicy: Always
   # KCM (beta) uses the staging gitea inside the cluster, not the prod
   # gitea.obmondo.com:2223. Override host + port; org stays EnableIT.
   # knownHostsLine MUST also be replaced with the staging gitea's host key
   # (run `ssh-keyscan -p 2222 gitea-staging-ssh.monitoring-staging.svc.cluster.local`
   # from inside the cluster and paste the ecdsa-sha2-nistp256 line below).
   internalGitea:
-    sshHost: gitea-staging-ssh.monitoring-staging.svc.cluster.local
+    sshHost: gitea-staging.kcm.obmondo.com
     sshPort: 2222
-    knownHostsLine: "REPLACE_ME_WITH_STAGING_GITEA_HOST_KEY"
+    knownHostsLine: "[gitea-staging.kcm.obmondo.com]:2222 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL+utgvhx4vh5cG92+WhaHay3S7VY0A3P2o54DypEUgI"
 ci:
   enabled: false
 pgdump:
