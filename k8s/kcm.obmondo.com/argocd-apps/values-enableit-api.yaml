@@ -135,6 +135,8 @@ ci:
 pgdump:
   enabled: true
 
+additionalKnownHost: "[gitea-staging.kcm.obmondo.com]:2222 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL+utgvhx4vh5cG92+WhaHay3S7VY0A3P2o54DypEUgI"
+
 # API ports guide for ingress
 # This section defines the servicePort used by different language APIs in our environments.
 # - Port 8080: Used by Go API
