@@ -62,6 +62,8 @@ global:
     enabled: true
     instanceName: relate
     size: 10Gi
+    monitoring:
+      enablePodMonitor: false # disable relate's CNPG backup/WAL prometheus alert
     backups:
       enabled: true
       destinationPath: "s3://kcm-relate"
