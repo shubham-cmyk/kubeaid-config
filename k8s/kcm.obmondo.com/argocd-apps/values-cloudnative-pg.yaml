@@ -5,6 +5,6 @@ cloudnative-pg:
       enabled: true
       labels:
         prometheus: k8s
-      backupMaxAgeSeconds: 86400  # 24 hours
-      walArchiveMaxAgeSeconds: 300
-      firstRecoverabilityPointMaxAgeSeconds: 604800
+      backupMaxAgeSeconds: 90000  # 24 hours + 1 hour as threhold
+      walArchiveMaxAgeSeconds: 600
+      firstRecoverabilityPointMaxAgeSeconds: 2700000 # 31 days (default retention is 30d (2592000 seconds) + 1d extra as threshold)
