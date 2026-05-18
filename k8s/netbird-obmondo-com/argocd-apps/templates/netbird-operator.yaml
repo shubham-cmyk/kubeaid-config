@@ -4,21 +4,21 @@ metadata:
   labels:
     kubeaid.io/version: 29.0.9
     kubeaid.io/managed-by: kubeaid
-    kubeaid.io/sync-order: "20"
-  name: keycloakx
+    kubeaid.io/sync-order: "10"
+  name: netbird-operator
   namespace: argocd
 spec:
   destination:
-    namespace: keycloakx
+    namespace: netbird
     server: https://kubernetes.default.svc
   project: kubeaid
   sources:
     - repoURL: https://github.com/Obmondo/kubeaid.git
-      path: argocd-helm-charts/keycloakx
+      path: argocd-helm-charts/netbird-operator
       targetRevision: 29.0.9
       helm:
         valueFiles:
-          - $values/k8s/netbird-obmondo-com/argocd-apps/values-keycloakx.yaml
+          - $values/k8s/netbird-obmondo-com/argocd-apps/values-netbird-operator.yaml
     - repoURL: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
