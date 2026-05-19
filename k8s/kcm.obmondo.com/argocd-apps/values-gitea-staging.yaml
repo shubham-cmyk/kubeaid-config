@@ -7,6 +7,26 @@ global:
         urls:
           - https://gitea-staging.kcm.obmondo.com
 
+  netpol:
+    enabled: true
+
+  postgresql:
+    netpol: true
+    instanceName: gitea-staging
+    monitoring:
+      prometheus:
+        enabled: false
+    clients:
+      - labels:
+          app.kubernetes.io/name: gitea
+          app.kubernetes.io/instance: gitea-staging
+    cnpg:
+      enabled: true
+      labels:
+        app.kubernetes.io/name: cloudnative-pg
+        app.kubernetes.io/instance: cloudnative-pg
+        io.cilium.k8s.namespace.labels.kubernetes.io/metadata.name: cloudnative-pg
+
 gitea:
   image:
     registry: harbor.obmondo.com
