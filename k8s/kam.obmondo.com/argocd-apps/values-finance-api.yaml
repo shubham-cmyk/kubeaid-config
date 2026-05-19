@@ -106,12 +106,6 @@ chat:
     key: token
   team_name: "obmondo"
 
-gitea:
-  url: "https://gitea.obmondo.com"
-  token:
-    name: gitea-token
-    key: token
-
 serviceMonitor:
   enabled: true
   scrapeTimeout: "10s"
