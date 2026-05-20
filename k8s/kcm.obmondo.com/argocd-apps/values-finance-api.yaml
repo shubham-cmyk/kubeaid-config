@@ -21,6 +21,14 @@ mode: beta
 # Specifies the level of logs in prod; info, warn or error
 log_level: info
 
+resources:
+  requests:
+    cpu: 200m
+    memory: 256Mi
+  limits:
+    cpu: 1000m
+    memory: 512Mi
+
 ingress:
   enabled: true
   # className: traefik-cert-manager
