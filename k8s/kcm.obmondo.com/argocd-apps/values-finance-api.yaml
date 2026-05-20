@@ -81,12 +81,6 @@ chat:
     key: token
   team_name: "obmondo-kcm"
 
-gitea:
-  url: "https://gitea-staging.kcm.obmondo.com"
-  token:
-    name: gitea-token
-    key: token
-
 tls:
   secret: finance-api-beta-service
 
