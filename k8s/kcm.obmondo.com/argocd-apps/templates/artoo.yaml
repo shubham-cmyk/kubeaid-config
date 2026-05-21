@@ -16,7 +16,7 @@ spec:
         valueFiles:
           - $values/k8s/kcm.obmondo.com/argocd-apps/values-artoo.yaml
     - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
-      targetRevision: artoo-kcm
+      targetRevision: HEAD
       ref: values
   syncPolicy:
     syncOptions:

@@ -22,6 +22,10 @@ extraEnvFrom:
   - secretRef:
       name: artoo-tokens
 
+env:
+  - name: ARTOO_PROMETHEUS_URL
+    value: "http://artoo-prometheus.artoo.svc.cluster.local:9090"
+
 mattermost:
   url: "https://mattermost-staging.kcm.obmondo.com"
 
