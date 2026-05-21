@@ -350,7 +350,7 @@ extraEnv:
   - name: FINANCE_API_URL
     value: "https://finance-api.obmondo.com/"
   - name: ARTOO_PROMETHEUS_URL
-    value: "http://prometheus-k8s.monitoring.svc.cluster.local:9090"
+    value: http://artoo-prometheus.artoo.svc.cluster.local:9090
   - name: KUBEAID_AGENT_URL
     value: http://kubeaid-agent.monitoring.svc.cluster.local
 
