@@ -48,14 +48,10 @@ calcom:
       memory: 2Gi
     requests:
       cpu: 500m
-      memory: 512Mi
+      memory: 850m
 
   autoscaling:
-    enabled: true
-    minReplicas: 2
-    maxReplicas: 10
-    targetCPUUtilizationPercentage: 70
-    targetMemoryUtilizationPercentage: 80
+    enabled: false
 
   extraVolumeMounts:
     - name: yarn-cache
