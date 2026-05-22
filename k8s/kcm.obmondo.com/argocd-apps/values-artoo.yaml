@@ -1,0 +1,36 @@
+channels:
+  award: "town-square"
+  standup: "town-square"
+  management: "management"
+  review: "reviews"
+  internalAlert: "team-operations"
+  customer: ""
+
+backfill:
+  from: "2025-01-01"
+
+image:
+  tag: "v0.2.7"
+
+pem:
+  enabled: true
+
+imagePullSecrets:
+  - name: harbor-registry-secret
+
+extraEnvFrom:
+  - secretRef:
+      name: artoo-tokens
+
+env:
+  - name: ARTOO_PROMETHEUS_URL
+    value: "http://artoo-prometheus.artoo.svc.cluster.local:9090"
+
+mattermost:
+  url: "https://mattermost-staging.kcm.obmondo.com"
+
+gitea:
+  url: "https://gitea-staging.kcm.obmondo.com"
+
+obmondo:
+  apiUrl: "https://api-beta.obmondo.com"
