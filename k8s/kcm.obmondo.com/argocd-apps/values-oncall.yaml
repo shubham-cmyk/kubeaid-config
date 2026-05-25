@@ -139,6 +139,11 @@ global:
     # disabling barman monitoring since we use logical backups now
     monitoring:
       enablePodMonitor: false
+      prometheus:
+        enabled: true
+        namespace: monitoring
+        labels:
+          app.kubernetes.io/name: prometheus
 
   celery:
     netpol: true
