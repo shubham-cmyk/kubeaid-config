@@ -129,6 +129,8 @@ global:
     netpol: true
     logicalbackup:
       enabled: true
+      image:
+        tag: 3.1.9
       pgversion: 18
       s3bucket: "kcm-oncall-logical-backup"
       provider: "s3"
