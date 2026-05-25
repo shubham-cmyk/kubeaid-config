@@ -40,7 +40,7 @@ hetzner:
 
   controlPlane:
     regions:
-      []
+      - hel1
     bareMetal:
       endpoint:
         isFailoverIP: true
