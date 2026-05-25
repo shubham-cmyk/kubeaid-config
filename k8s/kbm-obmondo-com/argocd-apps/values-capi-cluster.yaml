@@ -1,0 +1,88 @@
+global:
+  clusterName: kbm-obmondo-com
+  customerid: enableit
+  kubernetes:
+    version: v1.35.4
+  kubeaid:
+    repo: https://github.com/Obmondo/KubeAid.git
+    # Pinned for the in-node `git clone` in postKubeadmCommands. Keeps
+    # Cilium / CCM installs on the control-plane on the same chart
+    # snapshot kubeaid-cli rendered locally, instead of letting them
+    # drift to whatever the fork's default branch happens to be at
+    # node bootstrap time.
+    version: 29.1.1
+  # Pinned so each bare-metal node downloads the kubeaid-storagectl binary
+  # that matches the kubeaid-cli release that bootstrapped it. Empty on
+  # dev builds, which makes the chart fall back to `latest`.
+  kubeaidStoragectl:
+    version: v0.23.0-49-g67247c8
+  kubeaidConfig:
+    repo: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
+  additionalUsers:
+    []
+provider:
+  hetzner: true
+
+hetzner:
+  mode: bare-metal
+
+  sshKeyPair:
+    name: ashish_04694743
+  bareMetal:
+    wipeDisks: false
+    installImage:
+      imagePath: /root/.oldroot/nfs/images/Ubuntu-2404-noble-amd64-base.tar.gz
+      vg0:
+        size: 80
+        rootVolumeSize: 50
+    vSwitch:
+      vlanID: 4000
+
+  controlPlane:
+    regions:
+      []
+    bareMetal:
+      endpoint:
+        isFailoverIP: true
+        host: 95.216.30.44
+      bareMetalHosts:
+        - serverID: "1455726"
+          privateIP: 10.0.1.1
+          wwns:
+            - eui.002538b121b71e1e
+            - eui.002538b341beb77c
+        - serverID: "1455733"
+          privateIP: 10.0.1.2
+          wwns:
+            - eui.002538b221d0184c
+            - eui.002538ba51b16ee7
+        - serverID: "1455734"
+          privateIP: 10.0.1.3
+          wwns:
+            - eui.002538b951b25f90
+            - eui.002538ba51b16ee5
+
+  nodeGroups:
+    hcloud: []
+    bareMetal:
+      - name: kbm-obmondo-com-workers
+        labels: {}
+        taints: []
+        bareMetalHosts:
+          - serverID: "1414813"
+            privateIP: 10.0.1.4
+            wwns:
+              - "0x5000cca25ede270a"
+              - "0x5000cca25eccbe9f"
+          - serverID: "1454837"
+            privateIP: 10.0.1.5
+            wwns:
+              - "0x50014ee6b08e7c0d"
+              - "0x50014ee6afec0b5f"
+          - serverID: "1454838"
+            privateIP: 10.0.1.6
+            wwns:
+              - "0x5000c5006485a921"
+              - "0x5000c500650a6ab7"
+        zfs:
+          size: 220
