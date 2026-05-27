@@ -152,6 +152,8 @@ prometheusRule:
   authFailureSeverity: critical
   certAuthFailureThreshold: 5
   certAuthFailureSeverity: critical
+  certAuthNetworkFailureRate: 0.5
+  certAuthNetworkFailureSeverity: warning
 
   # Cache Performance
   cacheHitRatioThreshold: 0.7
