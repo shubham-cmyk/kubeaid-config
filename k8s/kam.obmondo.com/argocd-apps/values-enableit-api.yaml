@@ -125,6 +125,13 @@ api:
 
 redis:
   replicas: 3
+  resources:
+    requests:
+      cpu: 101m
+      memory: 512Mi
+    limits:
+      cpu: 101m
+      memory: 1Gi
 
 persistence:
   reposAndSSH:
