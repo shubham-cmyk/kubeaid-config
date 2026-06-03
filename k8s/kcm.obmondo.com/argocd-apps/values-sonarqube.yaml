@@ -45,7 +45,10 @@ global:
       aws:
         enableKube2IAMIntegration: false
     monitoring:
-      enablePodMonitor: false
+      enablePodMonitor: true
+      prometheus:
+        enabled: true
+        namespace: monitoring
     netpol: true
     clients:
       - labels:
@@ -53,3 +56,5 @@ global:
 
   netpol:
     enabled: true
+  sonarqube:
+    netpol: true
