@@ -93,7 +93,7 @@ api:
     image:
       repository: harbor.obmondo.com/obmondo/enableit-go-api
       pullPolicy: Always
-      tag: v0.8.3
+      tag: v0.8.3.1
   server:
     internal_ips_for_readonly_auth: "172.20.0.0/16"
   mode: beta
@@ -121,7 +121,7 @@ gfetch:
   enabled: true
   image:
     repository: harbor.obmondo.com/obmondo/gfetch
-    tag: v1.1.0
+    tag: v1.1.1
     pullPolicy: Always
   # KCM (beta) uses the staging gitea inside the cluster, not the prod
   # gitea.obmondo.com:2223. Override host + port; org stays EnableIT.
