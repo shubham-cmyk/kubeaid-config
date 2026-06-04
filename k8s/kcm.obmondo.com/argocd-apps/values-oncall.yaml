@@ -127,6 +127,11 @@ global:
     instanceName: oncall
     size: 70Gi
     netpol: true
+    env: # https://docs.aws.amazon.com/sdkref/latest/guide/feature-dataintegrity.html
+      - name: "AWS_REQUEST_CHECKSUM_CALCULATION"
+        value: "when_required"
+      - name: "AWS_RESPONSE_CHECKSUM_VALIDATION"
+        value: "when_required"
     logicalbackup:
       enabled: true
       image:
