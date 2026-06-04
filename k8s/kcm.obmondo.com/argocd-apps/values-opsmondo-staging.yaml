@@ -82,3 +82,7 @@ opsmondo:
         - CephMonDiskspaceCritical
         - CephMonDiskspaceLow
         - CephOSDInternalDiskSizeMismatch
+    health:
+      gitea_url: https://gitea-staging.kcm.obmondo.com/api/healthz
+      mattermost_url: https://chat.obmondo.com/api/v4/system/ping
+      oncall_url: https://oncall.kcm.obmondo.com/api/internal/v1/health/
