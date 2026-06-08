@@ -17,6 +17,8 @@ issuer:
         ingress:
           ingressClassName: traefik-cert-manager
 
+ciliumNetworkPolicies: true
+
 cert-manager:
   prometheus:
     enabled: true
