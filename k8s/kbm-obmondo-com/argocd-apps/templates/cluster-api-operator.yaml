@@ -12,7 +12,7 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: capi-cluster-enableit
+    namespace: capi-cluster
   project: kubeaid
   sources:
     - repoURL: https://github.com/Obmondo/KubeAid.git
