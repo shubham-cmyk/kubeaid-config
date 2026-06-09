@@ -10,12 +10,12 @@ global:
     # snapshot kubeaid-cli rendered locally, instead of letting them
     # drift to whatever the fork's default branch happens to be at
     # node bootstrap time.
-    version: 29.1.1
+    version: 29.3.0
   # Pinned so each bare-metal node downloads the kubeaid-storagectl binary
   # that matches the kubeaid-cli release that bootstrapped it. Empty on
   # dev builds, which makes the chart fall back to `latest`.
   kubeaidStoragectl:
-    version: v0.23.0-54-g0d24247-dirty
+    version: v0.23.0-60-gdcca23a
   kubeaidConfig:
     repo: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
   additionalUsers:
@@ -61,6 +61,8 @@ hetzner:
           wwns:
             - eui.002538b951b25f90
             - eui.002538ba51b16ee5
+      zfs:
+        size: 220
 
   nodeGroups:
     hcloud: []
