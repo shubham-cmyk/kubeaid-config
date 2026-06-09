@@ -1,97 +1,92 @@
 git:
-  sshUsername: git
-  useSSHAgent: true
-  knownHosts:
-    - "[gitea.obmondo.com]:2223 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFDZKKX5kDl8liLAp6+pkvzcbAODbJ9x2iZlBwUCedH0SiiFB8J8GFBnR/WwwL57tUTtMv+bdvSPx4HyAPIc7e4="
-
+    sshUsername: git
+    useSSHAgent: true
+    knownHosts:
+        - "[gitea.obmondo.com]:2223 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFDZKKX5kDl8liLAp6+pkvzcbAODbJ9x2iZlBwUCedH0SiiFB8J8GFBnR/WwwL57tUTtMv+bdvSPx4HyAPIc7e4="
 forkURLs:
-  kubeaid:
-    url: https://github.com/Obmondo/KubeAid.git
-    version: 29.1.1
-  kubeaidConfig:
-    url: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
-    directory:
-
+    kubeaid:
+        url: https://github.com/Obmondo/KubeAid.git
+        version: 29.3.0
+    kubeaidConfig:
+        url: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
+        directory:
 cluster:
-  type: workload
-  name: kbm-obmondo-com
-  k8sVersion: v1.35.4
-  enableAuditLogging: false
-  apiServer:
-    extraArgs: {}
-    extraVolumes: []
-    files: []
-    oidc:
-      issuerUrl: https://keycloak.vpn.obmondo.com/auth/realms/obmondo
-      clientId: kubernetes-kbm-obmondo-com
-  keycloak:
-    mode: external
-    dns: keycloak.vpn.obmondo.com
-    realm: obmondo
-  argoCD:
-    deployKeys:
-      kubeaidConfig:
-        privateKeyFilePath: /tmp/ssh-priv
-
+    type: workload
+    name: kbm-obmondo-com
+    k8sVersion: v1.35.4
+    enableAuditLogging: false
+    apiServer:
+        extraArgs: {}
+        extraVolumes: []
+        files: []
+        oidc:
+            issuerUrl: https://keycloak.vpn.obmondo.com/auth/realms/obmondo
+            clientId: kubernetes-kbm-obmondo-com
+    keycloak:
+        mode: external
+        dns: keycloak.vpn.obmondo.com
+        realm: obmondo
+    argoCD:
+        deployKeys:
+            kubeaidConfig:
+                privateKeyFilePath: /tmp/ssh-priv
 kubePrometheus:
-  version: v0.17.0
-
+    version: v0.17.0
 cloud:
-  hetzner:
-    mode: bare-metal
-    sshKeyPair:
-      name: kbm-obmondo-com
-      useSSHAgent: true
-    bareMetal:
-      wipeDisks: false
-      installImage:
-        imagePath: /root/.oldroot/nfs/images/Ubuntu-2404-noble-amd64-base.tar.gz
-        vg0:
-          size: 80
-          rootVolumeSize: 50
-      zfs:
-        size: 220
-      vSwitch:
-        name: kbm-obmondo-com-vswitch
-        vlanID: 4000
-        subnetCIDRBlock: "10.0.1.0/24"
-    controlPlane:
-      bareMetal:
-        endpoint:
-          isFailoverIP: true
-          host: 95.216.30.44
-        bareMetalHosts:
-          # Robot main IP: 135.181.21.167
-          - serverID: "1455726"
-            privateIP: 10.0.1.1
-          # Robot main IP: 135.181.21.154
-          - serverID: "1455733"
-            privateIP: 10.0.1.2
-          # Robot main IP: 135.181.21.153
-          - serverID: "1455734"
-            privateIP: 10.0.1.3
-      regions:
-        - hel1
-    nodeGroups:
-      bareMetal:
-        - name: kbm-obmondo-com-workers
-          zfs:
-            size: 220
-          bareMetalHosts:
-            # Robot main IP: 135.181.223.235
-            - serverID: "1414813"
-              privateIP: 10.0.1.4
-            # Robot main IP: 65.21.130.86
-            - serverID: "1454837"
-              privateIP: 10.0.1.5
-            # Robot main IP: 65.21.130.85
-            - serverID: "1454838"
-              privateIP: 10.0.1.6
-
+    hetzner:
+        mode: bare-metal
+        sshKeyPair:
+            name: kbm-obmondo-com
+            useSSHAgent: true
+        bareMetal:
+            wipeDisks: false
+            installImage:
+                imagePath: /root/.oldroot/nfs/images/Ubuntu-2404-noble-amd64-base.tar.gz
+                vg0:
+                    size: 80
+                    rootVolumeSize: 50
+            zfs:
+                size: 220
+            vSwitch:
+                name: kbm-obmondo-com-vswitch
+                vlanID: 4000
+                subnetCIDRBlock: "10.0.1.0/24"
+        controlPlane:
+            bareMetal:
+                endpoint:
+                    isFailoverIP: true
+                    host: 95.216.30.44
+                bareMetalHosts:
+                    # Robot main IP: 135.181.21.167
+                    - serverID: "1455726"
+                      privateIP: 10.0.1.1
+                    # Robot main IP: 135.181.21.154
+                    - serverID: "1455733"
+                      privateIP: 10.0.1.2
+                    # Robot main IP: 135.181.21.153
+                    - serverID: "1455734"
+                      privateIP: 10.0.1.3
+            regions:
+                - hel1
+        nodeGroups:
+            bareMetal:
+                - name: kbm-obmondo-com-workers
+                  zfs:
+                    size: 220
+                  bareMetalHosts:
+                    # Robot main IP: 135.181.223.235
+                    - serverID: "1414813"
+                      privateIP: 10.0.1.4
+                    # Robot main IP: 65.21.130.86
+                    - serverID: "1454837"
+                      privateIP: 10.0.1.5
+                    # Robot main IP: 65.21.130.85
+                    - serverID: "1454838"
+                      privateIP: 10.0.1.6
 obmondo:
-  customerID: enableit
-  monitoring: true
-  certPath: /home/ashish/kubeaid-config/enableit/k8s/outputs/configs/kbm.enableit.pem
-  keyPath: /home/ashish/kubeaid-config/enableit/k8s/outputs/configs/kbm.enableit.key
-  teleportAgent: false
+    customerID: enableit
+    monitoring: true
+    certPath: /home/ashish/kubeaid-config/enableit/k8s/outputs/configs/kbm.enableit.pem
+    keyPath: /home/ashish/kubeaid-config/enableit/k8s/outputs/configs/kbm.enableit.key
+    teleportAgent: false
 
