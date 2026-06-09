@@ -15,7 +15,7 @@ global:
   # that matches the kubeaid-cli release that bootstrapped it. Empty on
   # dev builds, which makes the chart fall back to `latest`.
   kubeaidStoragectl:
-    version: v0.23.0-69-g99fd907
+    version: v0.23.0-74-ga22c741
   kubeaidConfig:
     repo: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
   additionalUsers:
