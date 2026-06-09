@@ -7,5 +7,5 @@ opsbridge:
     mattermostUrl: "https://chat.obmondo.com"
     # Dynamic Routing
     qaChannelName: "kilroy-alerts-qa"
-    qaChannelTags: "@hritik @sidharth @smahar @franco-david @yulian @nitish0 @olayinka @kanha @onkar @gaurav"
+    qaChannelTags: "@hritik @sidharth @smahar @yulian @nitish0 @olayinka @kanha @onkar @gaurav"
     defaultAlertTags: "@operation"
