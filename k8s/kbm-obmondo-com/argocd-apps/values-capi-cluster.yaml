@@ -10,12 +10,12 @@ global:
     # snapshot kubeaid-cli rendered locally, instead of letting them
     # drift to whatever the fork's default branch happens to be at
     # node bootstrap time.
-    version: 29.3.0
+    version: 29.5.0
   # Pinned so each bare-metal node downloads the kubeaid-storagectl binary
   # that matches the kubeaid-cli release that bootstrapped it. Empty on
   # dev builds, which makes the chart fall back to `latest`.
   kubeaidStoragectl:
-    version: v0.23.0-86-g31ddff5
+    version: v0.24.0
   kubeaidConfig:
     repo: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
   additionalUsers:
