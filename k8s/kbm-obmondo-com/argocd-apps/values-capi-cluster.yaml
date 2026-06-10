@@ -51,8 +51,8 @@ hetzner:
         - serverID: "1455726"
           privateIP: 10.0.1.1
           wwns:
-            - eui.002538b341beb77c
             - eui.002538b121b71e1e
+            - eui.002538b341beb77c
         - serverID: "1455733"
           privateIP: 10.0.1.2
           wwns:
@@ -76,17 +76,17 @@ hetzner:
           - serverID: "1414813"
             privateIP: 10.0.1.4
             wwns:
-              - "0x5000cca25ede270a"
               - "0x5000cca25eccbe9f"
+              - "0x5000cca25ede270a"
           - serverID: "1454837"
             privateIP: 10.0.1.5
             wwns:
-              - "0x50014ee6b08e7c0d"
               - "0x50014ee6afec0b5f"
+              - "0x50014ee6b08e7c0d"
           - serverID: "1454838"
             privateIP: 10.0.1.6
             wwns:
               - "0x5000c5006485a921"
               - "0x5000c500650a6ab7"
         zfs:
-          size: 0
+          size: 220
