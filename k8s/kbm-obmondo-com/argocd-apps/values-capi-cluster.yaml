@@ -15,7 +15,7 @@ global:
   # that matches the kubeaid-cli release that bootstrapped it. Empty on
   # dev builds, which makes the chart fall back to `latest`.
   kubeaidStoragectl:
-    version: v0.23.0-75-gdf7e8c4
+    version: v0.23.0-81-gf1d9914
   kubeaidConfig:
     repo: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
   additionalUsers:
@@ -31,7 +31,7 @@ hetzner:
   bareMetal:
     wipeDisks: false
     installImage:
-      imagePath: /root/.oldroot/nfs/images/Ubuntu-2404-noble-amd64-base.tar.gz
+      imagePath: /root/.oldroot/nfs/images/Ubuntu-2604-resolute-amd64-base.tar.zst
       vg0:
         size: 80
         rootVolumeSize: 50
