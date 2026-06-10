@@ -31,7 +31,7 @@ cluster:
             kubeaidConfig:
                 privateKeyFilePath: /tmp/ssh-priv
 kubeaidStoragectl:
-  version: v0.25.0
+    version: v0.25.0
 kubePrometheus:
     version: v0.17.0
 cloud:
