@@ -1,4 +1,10 @@
 traefik:
+  # DaemonSet + hostPort: delete old pod before starting new (see KubeAid traefik chart EXAMPLES.md).
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
   deployment:
     kind: DaemonSet
   ports:
