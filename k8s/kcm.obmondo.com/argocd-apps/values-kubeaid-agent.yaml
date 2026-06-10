@@ -10,3 +10,5 @@ appConfig:
   puppetConfigDetails:
     url: http://puppetserver-enableit-puppetdb.puppetserver-enableit:8080
     runKubeAidPuppetSync: true
+extraSecretReaderNamespaces:
+  - obmondo-website
