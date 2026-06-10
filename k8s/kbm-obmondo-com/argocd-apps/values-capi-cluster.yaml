@@ -1,8 +1,8 @@
 global:
   clusterName: kbm-obmondo-com
-  customerid: enableit
+  customerid: 
   kubernetes:
-    version: v1.35.4
+    version: v1.35.5
   kubeaid:
     repo: https://github.com/Obmondo/KubeAid.git
     # Pinned for the in-node `git clone` in postKubeadmCommands. Keeps
@@ -15,7 +15,7 @@ global:
   # that matches the kubeaid-cli release that bootstrapped it. Empty on
   # dev builds, which makes the chart fall back to `latest`.
   kubeaidStoragectl:
-    version: v0.24.0
+    version: v0.25.0
   kubeaidConfig:
     repo: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
   additionalUsers:
@@ -56,8 +56,8 @@ hetzner:
         - serverID: "1455733"
           privateIP: 10.0.1.2
           wwns:
-            - eui.002538b221d0184c
             - eui.002538ba51b16ee7
+            - eui.002538b221d0184c
         - serverID: "1455734"
           privateIP: 10.0.1.3
           wwns:
@@ -69,7 +69,7 @@ hetzner:
   nodeGroups:
     hcloud: []
     bareMetal:
-      - name: kbm-obmondo-com-workers
+      - name: workers
         labels: {}
         taints: []
         bareMetalHosts:
@@ -89,4 +89,4 @@ hetzner:
               - "0x5000c5006485a921"
               - "0x5000c500650a6ab7"
         zfs:
-          size: 220
+          size: 0
