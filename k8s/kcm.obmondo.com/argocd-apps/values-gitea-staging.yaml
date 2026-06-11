@@ -35,6 +35,13 @@ gitea:
     rootless: false
   imagePullSecrets:
     - name: harbor-registry-secret
+  resources:
+    limits:
+      cpu: 250m
+      memory: 500Mi
+    requests:
+      cpu: 100m
+      memory: 256Mi
   gitea:
     config:
       server:
@@ -90,6 +97,7 @@ gitea:
                       secretKeyRef:
                         name: gitea-staging-pgsql-app
                         key: uri
+
 
   ingress:
     enabled: true
