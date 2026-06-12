@@ -17,6 +17,14 @@ pem:
 imagePullSecrets:
   - name: harbor-registry-secret
 
+resources:
+  requests:
+    cpu: 200m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 1Gi
+
 extraEnvFrom:
   - secretRef:
       name: artoo-tokens
