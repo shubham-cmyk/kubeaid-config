@@ -9,6 +9,10 @@ issuer:
   production: true
   secret: kbm-letsencrypt-key
   solvers:
+    - type: http
+      http01:
+        ingress:
+          ingressClassName: traefik-cert-manager
     - type: dns
       cloudProvider: cloudflare
       issuerEmail: klavs@obmondo.com
