@@ -1,6 +1,6 @@
 global:
   clusterName: kbm-obmondo-com
-  customerid:
+  customerid: 
   kubernetes:
     version: v1.35.5
   kubeaid:
@@ -10,7 +10,7 @@ global:
     # snapshot kubeaid-cli rendered locally, instead of letting them
     # drift to whatever the fork's default branch happens to be at
     # node bootstrap time.
-    version: 29.8.0
+    version: 29.8.1
   # Pinned so each bare-metal node downloads the kubeaid-storagectl binary
   # that matches the kubeaid-cli release that bootstrapped it. Empty on
   # dev builds, which makes the chart fall back to `latest`.
