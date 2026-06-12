@@ -1,3 +1,19 @@
 cert-manager:
   prometheus:
     enabled: false
+
+issuer:
+  enabled: true
+  name: letsencrypt
+  issuerEmail: klavs@obmondo.com
+  production: true
+  secret: kbm-letsencrypt-key
+  solvers:
+    - type: dns
+      cloudProvider: cloudflare
+      issuerEmail: klavs@obmondo.com
+      cloudProviderSecretRef:
+        name: cloudflare-api-token-secret
+        key: api-token
+      dnsZones:
+        - kbm.obmondo.com
