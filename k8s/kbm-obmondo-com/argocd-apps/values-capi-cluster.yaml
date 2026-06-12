@@ -1,6 +1,6 @@
 global:
   clusterName: kbm-obmondo-com
-  customerid: 
+  customerid:
   kubernetes:
     version: v1.35.5
   kubeaid:

@@ -369,8 +369,8 @@ gitRepos:
     - p45k4z2vfh # (web pros)
     - qd2xcggwag # (kilroy)
     - ebillet
-    - 7ejidqmfi9 #(gn) needs to be removed as they have github
-    - abbnoa6nlk #(hbk) needs to be removed as it's on their platform
+    - 7ejidqmfi9 # (gn) needs to be removed as they have github
+    - abbnoa6nlk # (hbk) needs to be removed as it's on their platform
   kubeaid:
     - enableit
     - niwyocdmk2 # (internal test customer)
