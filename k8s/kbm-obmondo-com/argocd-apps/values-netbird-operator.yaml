@@ -10,7 +10,7 @@ networkRouter:
   enabled: true
   # Existing DNS zone in NetBird Mgmt; the router publishes each
   # exposed Service as a record under it.
-  dnsZone: kbm.netbird
+  dnsZone: kbm.obmondo
   replicas: 1
 
 networkResources:
