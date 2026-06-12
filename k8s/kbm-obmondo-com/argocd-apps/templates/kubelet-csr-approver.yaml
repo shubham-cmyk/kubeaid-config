@@ -4,8 +4,14 @@ metadata:
   labels:
     kubeaid.io/version: 29.8.0
     kubeaid.io/managed-by: kubeaid
-    kubeaid.io/sync-order: "10"
-  name: ccm-hetzner
+    # Sync-order 5 lands the CSR approver before any app whose
+    # reconciliation depends on apiserver→kubelet streaming (port-
+    # forward, exec, logs — all of which fail with 401 when kubelet
+    # serves a stale cert). Without this, ArgoCD itself can struggle
+    # to expose the argocd-server UI until the next kubelet cert
+    # rotation cycle.
+    kubeaid.io/sync-order: "5"
+  name: kubelet-csr-approver
   namespace: argocd
 spec:
   destination:
@@ -14,11 +20,11 @@ spec:
   project: kubeaid
   sources:
     - repoURL: https://github.com/Obmondo/KubeAid.git
-      path: argocd-helm-charts/ccm-hetzner
+      path: argocd-helm-charts/kubelet-csr-approver
       targetRevision: 29.8.0
       helm:
         valueFiles:
-          - $values/k8s/kbm-obmondo-com/argocd-apps/values-ccm-hetzner.yaml
+          - $values/k8s/kbm-obmondo-com/argocd-apps/values-kubelet-csr-approver.yaml
     - repoURL: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
