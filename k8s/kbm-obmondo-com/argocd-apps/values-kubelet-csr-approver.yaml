@@ -1,0 +1,15 @@
+
+kubelet-csr-approver:
+  # Per-cluster CSR allow-list: vSwitch CIDR + one /32 per
+  # HetznerBareMetalHost (kubelet's serving-cert SAN list always
+  # contains both the private vSwitch IP and the node's public IP, so
+  # both have to be in providerIpPrefixes or every CSR is denied).
+  # Public IPs come from Robot API via TemplateValues.HetznerBareMetal
+  # HostPublicIPs, populated during getTemplateValues.
+  #
+  # Format note: single-line comma-separated, NO whitespace. The
+  # postfinance approver (internal/cmd/cmd.go) splits on `,` and feeds
+  # each entry to netip.ParsePrefix without TrimSpace — a stray space
+  # crashes the controller on startup.
+  providerIpPrefixes: "10.0.1.0/24,135.181.223.235/32,65.21.130.86/32,65.21.130.85/32,135.181.21.167/32,135.181.21.154/32,135.181.21.153/32"
+  bypassDnsResolution: true

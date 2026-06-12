@@ -10,7 +10,7 @@ global:
     # snapshot kubeaid-cli rendered locally, instead of letting them
     # drift to whatever the fork's default branch happens to be at
     # node bootstrap time.
-    version: 29.6.0
+    version: 29.8.0
   # Pinned so each bare-metal node downloads the kubeaid-storagectl binary
   # that matches the kubeaid-cli release that bootstrapped it. Empty on
   # dev builds, which makes the chart fall back to `latest`.
@@ -41,6 +41,73 @@ hetzner:
   controlPlane:
     regions:
       - hel1
+    apiServer:
+      extraArgs:
+        audit-log-maxage: "10"
+        audit-log-maxbackup: "1"
+        audit-log-maxsize: "100"
+        audit-log-path: /var/log/kubernetes/audit/audit.log
+        audit-policy-file: /etc/kubernetes/audit-policy.yaml
+        authentication-config: /etc/kubernetes/auth-config.yaml
+      extraVolumes:
+        - name: audit-policy-file
+          hostPath: /etc/kubernetes/audit-policy.yaml
+          mountPath: /etc/kubernetes/audit-policy.yaml
+          pathType: FileOrCreate
+          readOnly: true
+        - name: audit-log
+          hostPath: /var/log/kubernetes/audit
+          mountPath: /var/log/kubernetes/audit
+          pathType: DirectoryOrCreate
+          readOnly: false
+        - name: authentication-config
+          hostPath: /etc/kubernetes/auth-config.yaml
+          mountPath: /etc/kubernetes/auth-config.yaml
+          pathType: File
+          readOnly: true
+      files:
+        - path: /etc/kubernetes/audit-policy.yaml
+          content: |
+            apiVersion: audit.k8s.io/v1
+            kind: Policy
+            # Don't generate audit events for all requests in the RequestReceived stage.
+            omitStages:
+              - "RequestReceived"
+            rules:
+              # Log events with metadata (requesting user, timestamp, resource, verb, etc.) but not request or
+              # response body.
+              - level: Metadata
+                # Long-running requests like watches that fall under this rule will not generate an audit event
+                # in RequestReceived stage. We will omit those logs.
+                omitStages:
+                  - "RequestReceived"
+        - path: /etc/kubernetes/auth-config.yaml
+          content: |
+            apiVersion: apiserver.config.k8s.io/v1
+            jwt:
+            - claimMappings:
+                groups:
+                  claim: groups
+                  prefix: ""
+                username:
+                  claim: email
+                  prefix: ""
+              issuer:
+                audiences:
+                - kubernetes-kbm-obmondo-com
+                url: https://keycloak.vpn.obmondo.com/auth/realms/obmondo
+            - claimMappings:
+                groups:
+                  claim: groups
+                  prefix: ""
+                username:
+                  claim: email
+                  prefix: ""
+              issuer:
+                audiences:
+                - kbm-obmondo-com
+                url: https://keycloak.obmondo.com/realms/obmondo
+            kind: AuthenticationConfiguration
     endpoint:
       host: "95.216.30.44"
     bareMetal:
