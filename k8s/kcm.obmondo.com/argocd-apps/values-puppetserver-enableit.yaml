@@ -28,7 +28,7 @@ gfetch:
       cpu: "400m"
       memory: "550Mi"
     limits:
-      memory: "650Mi"
+      memory: "1Gi"
   repos:
     enableit:
       url: ssh://git@gitea.obmondo.com:2223/EnableIT/linuxaid-config-enableit.git
