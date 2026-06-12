@@ -37,7 +37,6 @@ gitea:
     - name: harbor-registry-secret
   resources:
     limits:
-      cpu: 250m
       memory: 500Mi
     requests:
       cpu: 100m
