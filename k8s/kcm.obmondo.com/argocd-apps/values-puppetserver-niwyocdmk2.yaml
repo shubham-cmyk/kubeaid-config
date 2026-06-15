@@ -3,6 +3,8 @@ puppetserver:
   global:
     extraEnv:
       OBMONDO_ENV: "beta"
+      AUTOSIGN_CLIENT_CERT: /etc/puppetlabs/puppet/ssl/certs/puppet.puppetserver-niwyocdmk2.svc.cluster.local.pem
+      AUTOSIGN_CLIENT_KEY: /etc/puppetlabs/puppet/ssl/private_keys/puppet.puppetserver-niwyocdmk2.svc.cluster.local.pem
   puppetserver:
     masters:
       fqdns:
