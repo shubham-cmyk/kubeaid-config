@@ -1,7 +1,4 @@
 rook-ceph-cluster:
-  cephImage:
-    repository: quay.io/ceph/ceph
-    tag: v19.2.3
   cephBlockPools:
     - name: replicapool
       spec:

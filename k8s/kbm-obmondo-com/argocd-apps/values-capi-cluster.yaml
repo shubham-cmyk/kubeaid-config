@@ -1,6 +1,6 @@
 global:
   clusterName: kbm-obmondo-com
-  customerid:
+  customerid: 
   kubernetes:
     version: v1.35.5
   kubeaid:
@@ -10,7 +10,7 @@ global:
     # snapshot kubeaid-cli rendered locally, instead of letting them
     # drift to whatever the fork's default branch happens to be at
     # node bootstrap time.
-    version: 29.8.1
+    version: 29.9.0
   # Pinned so each bare-metal node downloads the kubeaid-storagectl binary
   # that matches the kubeaid-cli release that bootstrapped it. Empty on
   # dev builds, which makes the chart fall back to `latest`.
@@ -29,7 +29,7 @@ hetzner:
   sshKeyPair:
     name: cluster
   bareMetal:
-    wipeDisks: false
+    wipeDisks: true
     installImage:
       imagePath: /root/.oldroot/nfs/images/Ubuntu-2604-resolute-amd64-base.tar.zst
       vg0:
@@ -106,7 +106,7 @@ hetzner:
               issuer:
                 audiences:
                 - kbm-obmondo-com
-                url: https://keycloak.obmondo.com/realms/obmondo
+                url: https://keycloak.obmondo.com/auth/realms/Obmondo
             kind: AuthenticationConfiguration
     endpoint:
       host: "95.216.30.44"

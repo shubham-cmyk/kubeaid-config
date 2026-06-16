@@ -1,23 +1,23 @@
 cert-manager:
   prometheus:
     enabled: false
-
 issuer:
   enabled: true
-  name: letsencrypt
+  name: letsencrypt-prod
   issuerEmail: klavs@obmondo.com
   production: true
-  secret: kbm-letsencrypt-key
+  secret: letsencrypt-prod-account-key
+  preferredChain: ""
   solvers:
     - type: http
       http01:
         ingress:
-          ingressClassName: traefik-cert-manager
+          ingressClassName: traefik
     - type: dns
       cloudProvider: cloudflare
       issuerEmail: klavs@obmondo.com
       cloudProviderSecretRef:
-        name: cloudflare-api-token-secret
+        name: cloudflare-api-token
         key: api-token
       dnsZones:
         - kbm.obmondo.com

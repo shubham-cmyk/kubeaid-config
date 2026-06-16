@@ -6,7 +6,7 @@ git:
 forkURLs:
     kubeaid:
         url: https://github.com/Obmondo/KubeAid.git
-        version: 29.8.1
+        version: 29.9.0
     kubeaidConfig:
         url: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
         directory:
@@ -15,6 +15,11 @@ cluster:
     name: kbm-obmondo-com
     k8sVersion: v1.35.5
     enableAuditLogging: false
+    acmeEmail: klavs@obmondo.com
+    acmeDNS01:
+        provider: cloudflare
+        dnsZones:
+            - kbm.obmondo.com
     apiServer:
         extraArgs: {}
         extraVolumes: []
@@ -41,7 +46,7 @@ cloud:
             name: kbm-obmondo-com
             privateKeyFilePath: /tmp/ssh-priv
         bareMetal:
-            wipeDisks: false
+            wipeDisks: true
             installImage:
                 imagePath: /root/.oldroot/nfs/images/Ubuntu-2604-resolute-amd64-base.tar.zst
                 vg0:
@@ -89,7 +94,7 @@ cloud:
                     size: 220
 obmondo:
     monitoring: true
-    certPath: /home/ashish/kubeaid-config/enableit/k8s/outputs.ori/configs/kbm.enableit.pem
-    keyPath: /home/ashish/kubeaid-config/enableit/k8s/outputs.ori/configs/kbm.enableit.key
+    certPath: /home/ashish/projects/outputs/kbm.cert
+    keyPath: /home/ashish/projects/outputs/kbm.key
     teleportAgent: false
 

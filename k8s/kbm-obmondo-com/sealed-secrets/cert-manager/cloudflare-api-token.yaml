@@ -1,0 +1,18 @@
+# kubeaid-sha256: f3ca8adf0a32a48b17a6d3e685df642895ad2083406ae247f2833b0b9187dc44
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: cloudflare-api-token
+  namespace: cert-manager
+spec:
+  encryptedData:
+    api-token: AgB2gakswPpRQe9Z4vJiKMKAO6UGFpZJB0onOBXcIrOavacFFh/rQ4SFolKYWUH16iqTOQy6eHzZnfos/kcekSmsr5EVc0OM8imZL3QGYznussA3wZZvOmmxUlDp/fIJriiZ3f6grnQCZ9riwqQV+4L32Gq1MOkV5VYzUnDZEeY28GToHGQeDjw85i8Ue74qJ8Ep5hHizt5+N69uLT6KMQ72FpkrJxffKmCkeuoCoyGX41Kojw2C5CbMKjzjkvSCy0dhUesDSIA4+YqkbgniMk6vFghgHm86VZJdHyNGlf5VzD/RA7WGjikNc0JqjMqzBLscEQy7kCneNYGfjSOBVUIXnDsV+YYYUN5jOz6aDSvl1FXWvo6phWQ0dXaV6Qxa+aQyMAZPUcNDFy/ofXYBhOQj0EZKhiwJKpzZxsI9hI1aFx0FO4UrM0A31hw857jAaUayJ4swG+nCFoe2tqZytEZzWF7qPDzpQmy3ncn0pDwHaA4Tg9SmQDq7ZWnWFUxteycnNASM8gRQ/kEQM3RNejezG+Nd2qnKXJPUYndVyUgfBrXMnWr3csLkzG+aIrCHTHVLXt9EXgzdsrzZHw3qFgFH2A+2/80LvG3CYJyyVjvlCjblMTF+sdQ1fHXGYrWS+knZX4w74evHwpiavjcVRuHU76VbbHjkkywAKjcA7V7keLlls5AS5RYgaBOozJsGD/LEQXnEwuMuJ3VR13ZLF2BVqMmiVuHOQjL+qF6qXVnHrplwSv3+ToKi
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        kubeaid.io/managed-by: kubeaid
+      name: cloudflare-api-token
+      namespace: cert-manager
