@@ -2,18 +2,20 @@ zfs-localpv:
   zfsNode:
     nodeSelector:
       disk: nvme
-    tolerations: []
+    tolerations:
+      - operator: "Exists" # Daemonsets can run on nodes during cordon
     securityContext: {}
     labels: {}
     priorityClass:
       create: true
       name: zfs-csi-node-critical
-  # zfsController contains the configurables for
-  # the zfs controller statefulset
   zfsController:
     nodeSelector:
       disk: nvme
-    tolerations: []
+    tolerations:
+      - key: node-role.kubernetes.io/control-plane
+        operator: Exists
+        effect: NoSchedule
     securityContext: {}
     priorityClass:
       create: true
@@ -21,12 +23,4 @@ zfs-localpv:
 
 storageClass:
   enabled: true
-  zfs-localpv:
-    poolName: mypool
-    dedup: "off"
-    allowVolumeExpansion: true
-  openebs-zfspv-shared:
-    poolName: mypool
-    shared: "yes"
-    thinprovision: "no"
-    allowVolumeExpansion: true
+  poolName: primary
