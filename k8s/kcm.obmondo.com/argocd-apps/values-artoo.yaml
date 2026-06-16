@@ -14,6 +14,7 @@ image:
 
 pem:
   enabled: true
+  secretName: "artoo-pem"
 
 imagePullSecrets:
   - name: harbor-registry-secret
@@ -24,9 +25,12 @@ extraEnvFrom:
 
 mattermost:
   url: "https://mattermost-staging.kcm.obmondo.com"
+  team: "obmondo-kcm"
+  botDisplayName: "R2"
 
 gitea:
   url: "https://gitea-staging.kcm.obmondo.com"
+  org: "EnableIT"
 
 obmondo:
   apiUrl: "https://api-beta.obmondo.com"
