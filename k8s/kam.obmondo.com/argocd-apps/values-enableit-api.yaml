@@ -142,7 +142,7 @@ gfetch:
   enabled: true
   image:
     repository: harbor.obmondo.com/obmondo/gfetch
-    tag: v1.1.1
+    tag: v1.2.0
     pullPolicy: Always
 ci:
   enabled: false
