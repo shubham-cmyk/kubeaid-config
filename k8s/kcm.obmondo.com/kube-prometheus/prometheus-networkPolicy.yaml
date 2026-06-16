@@ -74,6 +74,9 @@ spec:
           values:
           - obmondo-k8s-agent
           - kubeaid-agent
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: kubeaid-agent
     ports:
     - port: 9090
       protocol: TCP
