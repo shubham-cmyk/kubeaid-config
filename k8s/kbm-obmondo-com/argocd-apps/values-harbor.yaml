@@ -1,0 +1,47 @@
+harbor:
+  externalURL: https://harbor.kbm.obmondo.com
+  expose:
+    type: ingress
+    tls:
+      enabled: true
+      certSource: secret
+      secret:
+        secretName: harbor-ingress-tls
+    ingress:
+      hosts:
+        core: harbor.kbm.obmondo.com
+      className: traefik-cert-manager
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+  updateStrategy:
+    type: Recreate
+
+  database:
+    external:
+      coreDatabase: harbor
+
+  persistence:
+    persistentVolumeClaim:
+      registry:
+        size: 270Gi
+        storageClass: rook-ceph-block
+      jobservice:
+        jobLog:
+          size: 3Gi
+          storageClass: zfs-localpv
+
+global:
+  blackbox:
+    enabled: true
+    probes:
+      - module: http_2xx
+        interval: 30m
+        urls:
+          - https://harbor.kbm.obmondo.com
+
+  postgresql:
+    enabled: true
+    instanceName: harbor
+    size: 6Gi
+    monitoring:
+      enablePodMonitor: false # we don't need barman backup alerts
