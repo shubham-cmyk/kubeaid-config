@@ -119,7 +119,7 @@ gfetch:
   enabled: true
   image:
     repository: harbor.obmondo.com/obmondo/gfetch
-    tag: v1.1.1
+    tag: v1.2.0
     pullPolicy: Always
   # KCM (beta) uses the staging gitea inside the cluster, not the prod
   # gitea.obmondo.com:2223. Override host + port; org stays EnableIT.
