@@ -53,3 +53,12 @@ syncSecrets:
       excludeNamespaces:
         - kyverno
         - argocd
+
+resourceQuotaLimitRangeGenerator:
+  generateExisting: false
+  defaultResourceQuotaRuleEnabled: false
+  excludeNamespaces:
+    resourceQuota:
+      - openobserve
+    limitRange:
+      - openobserve
