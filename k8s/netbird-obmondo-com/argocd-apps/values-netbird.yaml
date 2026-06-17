@@ -210,6 +210,16 @@ netbird:
               pathType: ImplementationSpecific
 
 coturn:
+  # Bind coturn to the node's host network so STUN/TURN (UDP 3478, TLS 5349)
+  # and the relay port range (49152-65535) are reachable at the node's public
+  # IP directly — a ClusterIP/NodePort/LoadBalancer can't sanely front the wide
+  # UDP relay range. Requires coturn chart >= 9.5.0 (vendored 9.7.1 here).
+  # NOTE: open those UDP ports on the Hetzner firewall, and make sure the node
+  # coturn lands on actually owns the IP STUN_SERVER/TURN_SERVER point at
+  # (204.168.160.120).
+  deployment:
+    hostNetwork: true
+    dnsPolicy: ClusterFirstWithHostNet
   coturn:
     realm: "turn.vpn.obmondo.com"
     auth:
