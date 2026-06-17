@@ -20,24 +20,24 @@ networkResources:
   - name: kube-api
     namespace: default
     service: kubernetes
-    groups: ["k8s-vpn-obmondo-com"]
+    groups: ["k8s-netbird-obmondo-com"]
   - name: argocd
     namespace: argocd
     service: argocd-server
-    groups: ["k8s-vpn-obmondo-com"]
+    groups: ["k8s-netbird-obmondo-com"]
   - name: prometheus
     namespace: monitoring
     service: prometheus-k8s
-    groups: ["k8s-vpn-obmondo-com"]
+    groups: ["k8s-netbird-obmondo-com"]
   - name: alertmanager
     namespace: monitoring
     service: alertmanager-main
-    groups: ["k8s-vpn-obmondo-com"]
+    groups: ["k8s-netbird-obmondo-com"]
   - name: grafana
     namespace: monitoring
     service: grafana
-    groups: ["k8s-vpn-obmondo-com"]
+    groups: ["k8s-netbird-obmondo-com"]
   - name: netbird
     namespace: netbird
     service: netbird-dashboard
-    groups: ["k8s-vpn-obmondo-com"]
+    groups: ["k8s-netbird-obmondo-com"]
