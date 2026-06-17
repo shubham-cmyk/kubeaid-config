@@ -22,22 +22,18 @@ networkResources:
     service: kubernetes
     groups: ["k8s-netbird-obmondo-com"]
   - name: argocd
-    namespace: argocd
-    service: argocd-server
+    namespace: traefik
+    service: traefik-internal
     groups: ["k8s-netbird-obmondo-com"]
   - name: prometheus
-    namespace: monitoring
-    service: prometheus-k8s
+    namespace: traefik
+    service: traefik-internal
     groups: ["k8s-netbird-obmondo-com"]
   - name: alertmanager
-    namespace: monitoring
-    service: alertmanager-main
+    namespace: traefik
+    service: traefik-internal
     groups: ["k8s-netbird-obmondo-com"]
   - name: grafana
-    namespace: monitoring
-    service: grafana
-    groups: ["k8s-netbird-obmondo-com"]
-  - name: netbird
-    namespace: netbird
-    service: netbird-dashboard
+    namespace: traefik
+    service: traefik-internal
     groups: ["k8s-netbird-obmondo-com"]
