@@ -8,3 +8,12 @@ cilium:
     enabled: true
   extraArgs:
     - "--devices=eth+,enp+,eno+"
+
+  # With full-coverage socket LB, ClusterIP translation only happens at
+  # connect() — packets FORWARDED by a pod (the netbird-operator's
+  # NetworkRouter routing mesh traffic to 10.96.0.1) never touch a
+  # socket, leave still addressed to the VIP, and blackhole. Hostns-only
+  # scopes socket LB to the host namespace so pod traffic (including
+  # forwarded flows) gets per-packet service translation instead.
+  socketLB:
+    hostNamespaceOnly: true
