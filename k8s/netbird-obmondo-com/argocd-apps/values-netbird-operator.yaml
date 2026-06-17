@@ -42,5 +42,3 @@ networkResources:
 clusterProxy:
   enabled: true
   clusterName: netbird-obmondo-com
-  groups:
-    - k8s-netbird-obmondo-com
