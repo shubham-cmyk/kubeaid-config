@@ -31,3 +31,7 @@ networkResources:
     namespace: traefik
     service: traefik-internal
     groups: ["k8s-kbm-obmondo-com"]
+
+clusterProxy:
+  enabled: true
+  clusterName: kbm-obmondo-com
