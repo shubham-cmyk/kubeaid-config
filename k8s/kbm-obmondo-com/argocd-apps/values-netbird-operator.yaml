@@ -28,12 +28,12 @@ networkResources:
   - name: prometheus
     namespace: monitoring
     service: prometheus-k8s
-    groups: ["k8s-vpn-obmondo-com"]
+    groups: ["k8s-kbm-obmondo-com"]
   - name: alertmanager
     namespace: monitoring
     service: alertmanager-main
-    groups: ["k8s-vpn-obmondo-com"]
+    groups: ["k8s-kbm-obmondo-com"]
   - name: grafana
     namespace: monitoring
     service: grafana
-    groups: ["k8s-vpn-obmondo-com"]
+    groups: ["k8s-kbm-obmondo-com"]
