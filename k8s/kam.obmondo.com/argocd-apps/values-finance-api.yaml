@@ -2,7 +2,7 @@ namespace: finance
 replicaCount: 1
 image:
     repository: harbor.obmondo.com/obmondo/finance-api
-    tag: v0.15.6
+    tag: v0.15.7
     pullPolicy: Always
 
 
@@ -168,3 +168,7 @@ prometheusRule:
 extraEnv:
   - name: ACCESS_LIST_CERTNAMES
     value: "svc-bridge.enableit,financeapi-client,obmondo-api.enableit"
+  - name: READONLY_CERTNAMES
+    value: "artoo.enableit"
+  - name: ARTOO_PROMETHEUS_URL
+    value: http://artoo-prometheus.artoo.svc.cluster.local:9090
