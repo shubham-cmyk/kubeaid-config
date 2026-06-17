@@ -35,3 +35,8 @@ networkResources:
 clusterProxy:
   enabled: true
   clusterName: kbm-obmondo-com
+  # Grant the NetBird "Operations" group cluster-admin via the proxy's
+  # impersonation.
+  rbac:
+    - group: Operations
+      clusterRole: cluster-admin

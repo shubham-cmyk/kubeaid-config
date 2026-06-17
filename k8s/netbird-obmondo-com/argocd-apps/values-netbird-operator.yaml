@@ -42,3 +42,8 @@ networkResources:
 clusterProxy:
   enabled: true
   clusterName: netbird-obmondo-com
+  # Grant the NetBird "Operations" group cluster-admin via the proxy's
+  # impersonation (GitOps's the ClusterRoleBinding applied here by hand).
+  rbac:
+    - group: Operations
+      clusterRole: cluster-admin
