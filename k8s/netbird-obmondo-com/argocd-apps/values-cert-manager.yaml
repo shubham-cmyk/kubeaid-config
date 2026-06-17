@@ -13,3 +13,12 @@ issuer:
       http01:
         ingress:
           ingressClassName: traefik
+    - type: dns
+      cloudProvider: cloudflare
+      issuerEmail: klavs@obmondo.com
+      cloudProviderSecretRef:
+        name: cloudflare-api-token
+        key: api-token
+      dnsZones:
+        - vpn.obmondo.com
+        - netbird.obmondo.com
