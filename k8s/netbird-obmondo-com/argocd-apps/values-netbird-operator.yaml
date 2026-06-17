@@ -14,15 +14,6 @@ networkRouter:
   replicas: 1
 
 networkResources:
-  # kube-apiserver over the mesh: routes the `kubernetes` Service and
-  # publishes it as kubernetes.vpn.obmondo.com (resource name = DNS label),
-  # which is what kubeaid-cli expects for `login`. The apiserver cert SANs
-  # must include that name (controlPlane.extraCertSANs). Mesh access is
-  # granted by the Mgmt policy targeting the group below.
-  - name: kubernetes
-    namespace: default
-    service: kubernetes
-    groups: ["k8s-netbird-obmondo-com"]
   - name: argocd
     namespace: argocd
     service: argocd-server
