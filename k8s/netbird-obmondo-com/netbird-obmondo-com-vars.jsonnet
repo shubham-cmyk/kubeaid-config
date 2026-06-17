@@ -5,7 +5,7 @@
   connect_obmondo: false,
   connect_keda: false,
   grafana_keycloak_enable: false,
-  grafana_root_url: "",
+  grafana_root_url: "https://grafana.vpn.obmondo.com",
   kube_prometheus_version: "v0.17.0",
   enable_custom_metrics_apiservice: true,
   prometheus_operator_resources+: {
@@ -28,6 +28,26 @@
     requests: { cpu: "100m", memory: "150Mi" },
   },
   prometheus_adapter_replicas: 1,
+  // Traefik ingresses for the monitoring UIs. TLS via the cluster's
+  // letsencrypt-prod ClusterIssuer (kube-prometheus defaults the
+  // annotation to "letsencrypt", which doesn't exist here); ingress
+  // class set via annotation since the kube-prometheus ingress template
+  // doesn't accept a className.
+  prometheus_ingress_host: "prometheus.vpn.obmondo.com",
+  grafana_ingress_host: "grafana.vpn.obmondo.com",
+  alertmanager_ingress_host: "alertmanager.vpn.obmondo.com",
+  prometheus_ingress_annotations: {
+    "cert-manager.io/cluster-issuer": "letsencrypt-prod",
+    "kubernetes.io/ingress.class": "traefik",
+  },
+  grafana_ingress_annotations: {
+    "cert-manager.io/cluster-issuer": "letsencrypt-prod",
+    "kubernetes.io/ingress.class": "traefik",
+  },
+  alertmanager_ingress_annotations: {
+    "cert-manager.io/cluster-issuer": "letsencrypt-prod",
+    "kubernetes.io/ingress.class": "traefik",
+  },
   prometheus_scrape_namespaces: [],
   prometheus_scrape_default_namespaces: [
     "argocd",

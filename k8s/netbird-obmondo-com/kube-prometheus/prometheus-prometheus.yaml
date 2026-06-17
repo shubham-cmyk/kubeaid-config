@@ -19,7 +19,7 @@ spec:
   enableFeatures: []
   externalLabels:
     product: kubeaid
-  externalUrl: ""
+  externalUrl: https://prometheus.vpn.obmondo.com
   image: quay.io/prometheus/prometheus:v3.10.0
   nodeSelector:
     kubernetes.io/os: linux
