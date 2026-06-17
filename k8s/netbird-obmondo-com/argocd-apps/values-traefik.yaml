@@ -3,6 +3,26 @@ traefik:
     annotations:
       load-balancer.hetzner.cloud/network-zone: eu-central
       load-balancer.hetzner.cloud/uses-proxyprotocol: "true"
+    # ClusterIP Service for the NetBird mesh path. NetworkResources can
+    # only reference ClusterIP-type Services, but the main traefik Service
+    # is a LoadBalancer — so mesh peers get host-routed ingress (TLS) via
+    # this service: traefik-internal.traefik.svc on web/websecure.
+    additionalServices:
+      internal:
+        enabled: true
+        spec:
+          type: ClusterIP
+  # Ports are opt-in per service via expose.<name>; expose web/websecure on
+  # the internal ClusterIP service too (keep default for the LoadBalancer).
+  ports:
+    web:
+      expose:
+        default: true
+        internal: true
+    websecure:
+      expose:
+        default: true
+        internal: true
   providers:
     kubernetesCRD:
       enabled: true
