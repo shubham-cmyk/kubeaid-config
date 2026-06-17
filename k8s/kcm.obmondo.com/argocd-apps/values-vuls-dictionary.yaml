@@ -37,10 +37,10 @@ ingress:
 resources:
   requests:
     cpu: 100m
-    memory: 256Mi
+    memory: 500Mi
   limits:
     cpu: 500m
-    memory: 512Mi
+    memory: 6Gi
 
 vulsExporter:
   enabled: true
@@ -54,9 +54,9 @@ vulsServer:
   resources:
     requests:
       cpu: 100m
-      memory: 1Gi
+      memory: 500Mi
     limits:
       cpu: 500m
-      memory: 3Gi
+      memory: 6Gi
   resultsStorage:
     size: 15Gi
