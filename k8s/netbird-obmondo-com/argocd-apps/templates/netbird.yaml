@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   labels:
-    kubeaid.io/version: 29.0.9
+    kubeaid.io/version: HEAD
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "25"
   name: netbird
