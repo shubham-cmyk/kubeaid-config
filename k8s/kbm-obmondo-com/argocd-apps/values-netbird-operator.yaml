@@ -13,10 +13,11 @@ networkRouter:
   dnsZone: kbm.obmondo.com
   replicas: 1
 
+
 networkResources:
-  # kube-apiserver over the mesh: routes the `kubernetes` Service
-  # (10.96.0.1) and publishes it in the kbm.obmondo.com zone. Mesh access
-  # is granted by the Mgmt policy targeting the group below.
+  # kube-apiserver over the mesh: routes the `kubernetes` Service and
+  # publishes it in the vpn.obmondo.com zone. Mesh access is granted by
+  # the Mgmt policy targeting the group below.
   - name: kube-api
     namespace: default
     service: kubernetes
@@ -26,14 +27,14 @@ networkResources:
     service: argocd-server
     groups: ["k8s-kbm-obmondo-com"]
   - name: prometheus
-    namespace: monitoring
-    service: prometheus-k8s
+    namespace: traefik
+    service: traefik-internal
     groups: ["k8s-kbm-obmondo-com"]
   - name: alertmanager
-    namespace: monitoring
-    service: alertmanager-main
+    namespace: traefik
+    service: traefik-internal
     groups: ["k8s-kbm-obmondo-com"]
   - name: grafana
-    namespace: monitoring
-    service: grafana
+    namespace: traefik
+    service: traefik-internal
     groups: ["k8s-kbm-obmondo-com"]

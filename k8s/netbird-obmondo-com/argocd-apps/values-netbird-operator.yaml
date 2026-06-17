@@ -22,8 +22,8 @@ networkResources:
     service: kubernetes
     groups: ["k8s-netbird-obmondo-com"]
   - name: argocd
-    namespace: traefik
-    service: traefik-internal
+    namespace: argocd
+    service: argocd-server
     groups: ["k8s-netbird-obmondo-com"]
   - name: prometheus
     namespace: traefik
