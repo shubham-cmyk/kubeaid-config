@@ -33,6 +33,11 @@ hetzner:
       - hel1
     endpoint:
       host: api.vpn.obmondo.com
+    # Extra kube-apiserver cert SANs — lets clients validate the apiserver
+    # cert under alternate names. The NetBird-mesh form here means kubectl
+    # works over the mesh against kubernetes.vpn.obmondo.com (no x509 error).
+    extraCertSANs:
+      - kubernetes.vpn.obmondo.com
     loadBalancer:
       privateIP: 10.0.0.3
       bootstrapPublicIP: 95.217.168.170
