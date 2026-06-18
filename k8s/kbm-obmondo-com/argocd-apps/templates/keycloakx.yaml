@@ -16,7 +16,7 @@ spec:
       targetRevision: v1.0.0
       helm:
         valueFiles:
-          - $values/k8s/kbm.obmondo.com/argocd-apps/values-keycloakx.yaml
+          - $values/k8s/kbm-obmondo-com/argocd-apps/values-keycloakx.yaml
     - repoURL: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values

@@ -14,7 +14,7 @@ spec:
       targetRevision: HEAD
       helm:
         valueFiles:
-          - $values/k8s/kbm.obmondo.com/argocd-apps/values-zfs-localpv.yaml
+          - $values/k8s/kbm-obmondo-com/argocd-apps/values-zfs-localpv.yaml
     - repoURL: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
