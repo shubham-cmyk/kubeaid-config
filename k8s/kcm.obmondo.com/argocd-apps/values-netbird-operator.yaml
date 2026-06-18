@@ -1,0 +1,42 @@
+netbird-operator:
+  managementURL: "https://netbird.vpn.obmondo.com"
+
+# Mesh exposure of this cluster (NetworkRouter + NetworkResource,
+# consumed by the netbird-operator wrapper chart). Declarative twin of
+# the CRs first applied by hand from /tmp/kbm-netbird-network.yaml —
+# same names, so ArgoCD adopts them in place on the first sync from a
+# chart revision that renders these values.
+networkRouter:
+  enabled: true
+  # Existing DNS zone in NetBird Mgmt; the router publishes each
+  # exposed Service as a record under it.
+  dnsZone: kcm.obmondo.com
+  replicas: 1
+
+
+networkResources:
+  - name: argocd
+    namespace: argocd
+    service: argocd-server
+    groups: ["k8s-kcm-obmondo-com"]
+  - name: prometheus
+    namespace: traefik
+    service: traefik-internal
+    groups: ["k8s-kcm-obmondo-com"]
+  - name: alertmanager
+    namespace: traefik
+    service: traefik-internal
+    groups: ["k8s-kcm-obmondo-com"]
+  - name: grafana
+    namespace: traefik
+    service: traefik-internal
+    groups: ["k8s-kcm-obmondo-com"]
+
+clusterProxy:
+  enabled: true
+  clusterName: kcm-obmondo-com
+  # Grant the NetBird "Operations" group cluster-admin via the proxy's
+  # impersonation.
+  rbac:
+    - group: Operations
+      clusterRole: cluster-admin

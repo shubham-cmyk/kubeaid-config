@@ -1,0 +1,15 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: netbird-mgmt-api-key
+  namespace: netbird
+spec:
+  encryptedData:
+    NB_API_KEY: AgAy3vG6qIdtV7z0vHwHArPlHqk8ibY9LsHYZie8NPYEvMcwB9xK88n7xxs12UgTx+XYmYgdV74RbzcWAUH6Nbzhc5f/nb1qLFP9OkK7r//yg46+GUrWDv2gyLvQ1l0HhGQiBGtFA9Qy0S0vuiRlvW/y0tRGTvfI05YpH/miy2clse7ucaBqUqlAE3/dqnx5bgsHJ6b1/6M9ebFhsQeZ97Aiir7cOkx/c6B/23Eccad3ksi9d4NV9sbfpEGZs60KDhwk6pQmRxujwbvhPSPzJI5MlqMSQO+u3X7vvDMs15M5fiPdZNCblljgVqLCzOspcOpBiY2/4A5iogn/39UBMAlE2xcE9u1n/JgLJdQjF+gBWuG0SIWPHwEtfowLhu22i4iVB8ylWgIq/lz8FhR+r/ddz2M6npG0TYQLXJH3euUxrrtpIiIrGhhSlJWBunK7NRQP9wi0wdBZLNmtCkycrUw6ZThAvldndKbk70UAYTvS6nlzc3ObrgfbXfwSgUPjxX7fcPDAaLD3gaUWkdWMkbwBhaAoXyFhLR9oz9hlF8bkPDllWzDoHCe0tSqei1+hu9ocp9IHgBpAZ6z+U6wlS2TfC+OuOywV0bHz5+gaXJHd/Y0/elAuxuzFgpNmzpcxGnWG3gvuM6urCP3vHHh8KfMRU2VLoH/ucTEaswVTVg0zHX9D9NIwIt7m8ikSVTLyGzYU6Plb2a1Pngw7NyPYY+5krCpQLQXH6PIvVMQS2n+dfv22HGKSKB5i
+  template:
+    metadata:
+      creationTimestamp: null
+      name: netbird-mgmt-api-key
+      namespace: netbird
+
