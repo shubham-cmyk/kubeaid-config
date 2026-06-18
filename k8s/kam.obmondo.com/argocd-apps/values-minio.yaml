@@ -10,7 +10,7 @@ minio:
   accessMode: ReadWriteOnce
   persistence:
     enabled: true
-    size: 150Gi
+    size: 250Gi
   ingress:
     enabled: true
     ingressClassName: traefik-cert-manager
