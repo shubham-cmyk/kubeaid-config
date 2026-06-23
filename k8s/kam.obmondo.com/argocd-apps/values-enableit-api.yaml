@@ -362,22 +362,6 @@ extraEnv:
   - name: KUBEAID_AGENT_URL
     value: http://kubeaid-agent.obmondo.svc.cluster.local
 
-gitRepos:
-  linuxaid:
-    - enableit
-    - niwyocdmk2 # (internal test customer)
-    - p45k4z2vfh # (web pros)
-    - qd2xcggwag # (kilroy)
-    - ebillet
-    - 7ejidqmfi9 # (gn) needs to be removed as they have github
-    - abbnoa6nlk # (hbk) needs to be removed as it's on their platform
-  kubeaid:
-    - enableit
-    - niwyocdmk2 # (internal test customer)
-    - qd2xcggwag # (kilroy)
-    - rufvpto91t # (bw7)
-    - e1dfvonemm # (kirklarsen)
-
 prometheusRule:
   enabled: true
 
