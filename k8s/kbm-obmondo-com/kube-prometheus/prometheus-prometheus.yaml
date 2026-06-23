@@ -34,7 +34,7 @@ spec:
   externalLabels:
     certname: kbm.enableit
     product: kubeaid
-  externalUrl: ""
+  externalUrl: https://prometheus.kbm.obmondo.com
   image: quay.io/prometheus/prometheus:v3.10.0
   nodeSelector:
     kubernetes.io/os: linux
