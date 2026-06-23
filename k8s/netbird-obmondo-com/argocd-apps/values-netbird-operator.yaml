@@ -14,7 +14,7 @@ networkRouter:
   replicas: 1
 
 networkResources:
- - name: traefik
+  - name: traefik
     namespace: traefik
     service: traefik-internal
     groups: ["k8s-netbird-obmondo-com"]
