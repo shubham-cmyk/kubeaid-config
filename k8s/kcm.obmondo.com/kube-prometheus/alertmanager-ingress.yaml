@@ -4,21 +4,21 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     kubernetes.io/ingress.class: traefik
-  name: grafana
+  name: alertmanager
   namespace: monitoring
 spec:
   rules:
-  - host: grafana.kcm.obmondo.com
+  - host: alertmanager.kcm.obmondo.com
     http:
       paths:
       - backend:
           service:
-            name: grafana
+            name: alertmanager-main
             port:
-              name: http
+              name: web
         path: /
         pathType: Prefix
   tls:
   - hosts:
-    - grafana.kcm.obmondo.com
-    secretName: kube-prometheus-grafana-tls
+    - alertmanager.kcm.obmondo.com
+    secretName: kube-prometheus-alertmanager-tls

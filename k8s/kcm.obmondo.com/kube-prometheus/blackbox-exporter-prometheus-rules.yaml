@@ -90,12 +90,3 @@ spec:
       labels:
         alert_id: blackbox_dns_slow
         severity: warning
-    - alert: BlackboxIpFlapping
-      annotations:
-        description: Resolved IP for **{{ .Labels.instance }}** is changing frequently (DNS instability).
-        summary: IP address flapping detected.
-      expr: changes(probe_ip_addr_hash[5m]) > 3
-      for: 5m
-      labels:
-        alert_id: blackbox_ip_flapping
-        severity: critical
