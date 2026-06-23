@@ -10,8 +10,14 @@ traefik:
   ports:
     websecure:
       hostPort: 443
+      expose:
+        default: true
+        internal: true
     web:
       hostPort: 80
+      expose:
+        default: true
+        internal: true
     gitea-ssh:
       port: 2222
       hostPort: 2222
@@ -61,17 +67,6 @@ traefik:
         enabled: true
         spec:
           type: ClusterIP
-  # Ports are opt-in per service via expose.<name>; expose web/websecure on
-  # the internal ClusterIP service too (keep default for the LoadBalancer).
-  ports:
-    web:
-      expose:
-        default: true
-        internal: true
-    websecure:
-      expose:
-        default: true
-        internal: true
   experimental:
     plugins:
       jwt:
