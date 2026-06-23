@@ -9,7 +9,6 @@
   grafana_root_url: 'https://grafana.kcm.obmondo.com',
   grafana_keycloak_url: 'https://keycloak.obmondo.com',
   grafana_keycloak_realm: 'Obmondo',
-  grafana_ingress_host: 'grafana.kcm.obmondo.com',
   kube_prometheus_version: 'v0.17.0',
   enable_custom_metrics_apiservice: true,
   addMixins: {
@@ -37,7 +36,19 @@
     limits: { memory: '2Gi' },
     requests: { cpu: '200m', memory: '2Gi' },
   },
+  prometheus_ingress_host: 'prometheus.kcm.obmondo.com',
+  grafana_ingress_host: 'grafana.kcm.obmondo.com',
+  alertmanager_ingress_host: 'alertmanager.kcm.obmondo.com',
+  prometheus_ingress_annotations: {
+    'cert-manager.io/cluster-issuer': 'letsencrypt-prod',
+    'kubernetes.io/ingress.class': 'traefik',
+  },
   grafana_ingress_annotations: {
+    'cert-manager.io/cluster-issuer': 'letsencrypt-prod',
+    'kubernetes.io/ingress.class': 'traefik',
+  },
+  alertmanager_ingress_annotations: {
+    'cert-manager.io/cluster-issuer': 'letsencrypt-prod',
     'kubernetes.io/ingress.class': 'traefik',
   },
   prometheus_scrape_namespaces: [
