@@ -14,19 +14,7 @@ networkRouter:
   replicas: 1
 
 networkResources:
-  - name: argocd
-    namespace: argocd
-    service: argocd-server
-    groups: ["k8s-netbird-obmondo-com"]
-  - name: prometheus
-    namespace: traefik
-    service: traefik-internal
-    groups: ["k8s-netbird-obmondo-com"]
-  - name: alertmanager
-    namespace: traefik
-    service: traefik-internal
-    groups: ["k8s-netbird-obmondo-com"]
-  - name: grafana
+ - name: traefik
     namespace: traefik
     service: traefik-internal
     groups: ["k8s-netbird-obmondo-com"]
@@ -45,5 +33,7 @@ clusterProxy:
   # Grant the NetBird "Operations" group cluster-admin via the proxy's
   # impersonation (GitOps's the ClusterRoleBinding applied here by hand).
   rbac:
-    - group: Operations
+    - group: Management
       clusterRole: cluster-admin
+    - group: Operations
+      clusterRole: view

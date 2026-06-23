@@ -15,19 +15,7 @@ networkRouter:
 
 
 networkResources:
-  - name: argocd
-    namespace: argocd
-    service: argocd-server
-    groups: ["k8s-kbm-obmondo-com"]
-  - name: prometheus
-    namespace: traefik
-    service: traefik-internal
-    groups: ["k8s-kbm-obmondo-com"]
-  - name: alertmanager
-    namespace: traefik
-    service: traefik-internal
-    groups: ["k8s-kbm-obmondo-com"]
-  - name: grafana
+  - name: traefik
     namespace: traefik
     service: traefik-internal
     groups: ["k8s-kbm-obmondo-com"]
@@ -40,3 +28,5 @@ clusterProxy:
   rbac:
     - group: Operations
       clusterRole: cluster-admin
+    - group: Junior
+      clusterRole: view
