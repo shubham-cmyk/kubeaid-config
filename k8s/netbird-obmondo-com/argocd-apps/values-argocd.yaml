@@ -4,6 +4,27 @@ argo-cd:
     ssh:
       extraHosts: |
         [gitea.obmondo.com]:2223 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFDZKKX5kDl8liLAp6+pkvzcbAODbJ9x2iZlBwUCedH0SiiFB8J8GFBnR/WwwL57tUTtMv+bdvSPx4HyAPIc7e4=
+    params:
+      server.insecure: true
+    rbac:
+      policy.csv: |
+        p, role:kubeaid-apps, applications, get, kubeaid/*, allow
+        p, role:kubeaid-apps, applications, list, kubeaid/*, allow
+        p, role:kubeaid-apps, applications, sync, kubeaid/*, allow
+        p, role:kubeaid-apps, applications, health, kubeaid/*, allow
+        p, role:kubeaid-apps, applications, status, kubeaid/*, allow
+        g, kubeaid-agent, role:kubeaid-apps
+        g, ArgoCDAdmins, role:admin
+        g, ArgoCDDevs, role:readonly
+      scopes: '[groups, email]'
+    cm:
+      accounts.kubeaid-agent: apiKey
+      oidc.config: |
+        name: Keycloak
+        issuer: https://keycloak.vpn.obmondo.com/auth/realms/obmondo
+        clientID: argocd
+        clientSecret: $oidc.keycloak.clientSecret
+        requestedScopes: ["openid", "profile", "email", "groups"]
   server:
     ingress:
       enabled: true
