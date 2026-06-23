@@ -45,6 +45,22 @@ traefik:
     type: NodePort
     externalIPs:
       - 176.9.67.43
+    additionalServices:
+      internal:
+        enabled: true
+        spec:
+          type: ClusterIP
+  # Ports are opt-in per service via expose.<name>; expose web/websecure on
+  # the internal ClusterIP service too (keep default for the LoadBalancer).
+  ports:
+    web:
+      expose:
+        default: true
+        internal: true
+    websecure:
+      expose:
+        default: true
+        internal: true
   experimental:
     plugins:
       jwt:
