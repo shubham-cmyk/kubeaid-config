@@ -54,9 +54,9 @@ vulsServer:
   resources:
     requests:
       cpu: 100m
-      memory: 256Mi
+      memory: 1Gi
     limits:
       cpu: 500m
-      memory: 512Mi
+      memory: 3Gi
   resultsStorage:
     size: 15Gi
