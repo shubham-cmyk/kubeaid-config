@@ -64,6 +64,7 @@ spec:
       values:
       - argocd
       - cert-manager
+      - cloudnative-pg
       - monitoring
       - obmondo
       - sealed-secrets
@@ -88,5 +89,5 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 20Gi
+            storage: 60Gi
   version: 3.10.0
