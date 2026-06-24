@@ -52,10 +52,10 @@ spec:
   replicas: 1
   resources:
     limits:
-      memory: 1Gi
+      memory: 2Gi
     requests:
       cpu: 200m
-      memory: 500Mi
+      memory: 1Gi
   retention: 15d
   ruleNamespaceSelector:
     matchExpressions:
@@ -88,5 +88,5 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 10Gi
+            storage: 20Gi
   version: 3.10.0
