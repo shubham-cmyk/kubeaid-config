@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mail
+  namespace: argocd
+spec:
+  destination:
+    namespace: system
+    server: 'https://kubernetes.default.svc'
+  sources:
+    - repoURL: https://github.com/Obmondo/KubeAid.git
+      path: argocd-helm-charts/mail
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+          - $values/k8s/kbm-obmondo-com/argocd-apps/values-mail.yaml
+    - repoURL: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
+      targetRevision: HEAD
+      ref: values
+  project: default
+  syncPolicy:
+    automated: null
+    managedNamespaceMetadata:
+      labels:
+        kubernetes.io/metadata.name: system
+        pod-security.kubernetes.io/audit: restricted
+        pod-security.kubernetes.io/audit-version: latest
+        pod-security.kubernetes.io/enforce: baseline
+        pod-security.kubernetes.io/enforce-version: v1.24
+        pod-security.kubernetes.io/warn: baseline
+        pod-security.kubernetes.io/warn-version: latest
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
