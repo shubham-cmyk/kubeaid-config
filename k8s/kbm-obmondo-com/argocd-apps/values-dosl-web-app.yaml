@@ -1,4 +1,7 @@
 replicaCount: 1
+# kbm runs Cilium, not Calico -> chart's projectcalico.org/v3 NetworkPolicy
+# has no API to apply against. Disable it here.
+networkPolicy: false
 image:
   tag: v1.1.3
   pullPolicy: Always
