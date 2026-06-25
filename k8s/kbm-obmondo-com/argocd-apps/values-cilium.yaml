@@ -24,12 +24,13 @@ cilium:
 # on a live cluster — a bad rule set here repeats the 2026-06-24 etcd outage.
 hostNetworkPolicy:
   enabled: true
-  # SSH (22/TCP) source allow-list (bare IPs treated as /32): two admin IPs
-  # plus the cluster's own node public IPs (operators jump between nodes).
+  # SSH (22/TCP) source allow-list (bare IPs treated as /32): our three jump
+  # hosts plus the cluster's own node public IPs (operators jump between nodes).
   # Non-empty, so 22 is NOT exposed to the world.
   allowSshFrom:
-    - 95.216.10.96/32     # admin
-    - 144.76.69.71/32     # admin
+    - 95.216.10.96/32     # atat
+    - 144.76.69.71/32     # banta
+    - 87.61.101.67/32     # r2d2
     - 135.181.21.167/32   # cp-1
     - 135.181.21.154/32   # cp-2
     - 135.181.21.153/32   # cp-3
