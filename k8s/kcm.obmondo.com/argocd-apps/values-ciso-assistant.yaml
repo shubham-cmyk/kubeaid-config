@@ -11,6 +11,13 @@ global:
 ciso-assistant:
   global:
     domain: ciso.obmondo.com
+  backend:
+    config:
+      smtp:
+        host: mail.system
+        port: 587
+        useTls: false
+        defaultFrom: no-reply@ciso.obmondo.com
   ingress:
     enabled: true
     tls:
