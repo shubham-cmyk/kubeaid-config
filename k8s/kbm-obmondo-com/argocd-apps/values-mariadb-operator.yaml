@@ -1,1 +1,9 @@
----
+mariadb-operator:
+  crds:
+    enabled: true
+  webhook:
+    cert:
+      certManager:
+        enabled: true
+  metrics:
+    enabled: true
