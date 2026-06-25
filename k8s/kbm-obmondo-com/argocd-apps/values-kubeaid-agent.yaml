@@ -1,4 +1,13 @@
 ---
 appConfig:
+  argocd:
+    authTokenSecretName: kubeaid-argocd-auth
+    plainText: true
+    url: argocd-server.argocd:80
+  obmondoAPI:
+    url: https://api.obmondo.com/api
   kubeaidConfig:
     clusterName: kbm-obmondo-com
+  puppetConfigDetails:
+    runKubeAidPuppetSync: false
+    url: ""

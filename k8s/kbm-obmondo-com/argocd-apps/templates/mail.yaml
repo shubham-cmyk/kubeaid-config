@@ -3,6 +3,10 @@ kind: Application
 metadata:
   name: mail
   namespace: argocd
+  labels:
+    kubeaid.io/version: 29.9.0
+    kubeaid.io/managed-by: kubeaid
+    kubeaid.io/priority: default
 spec:
   destination:
     namespace: system
@@ -10,14 +14,14 @@ spec:
   sources:
     - repoURL: https://github.com/Obmondo/KubeAid.git
       path: argocd-helm-charts/mail
-      targetRevision: HEAD
+      targetRevision: 29.9.0
       helm:
         valueFiles:
           - $values/k8s/kbm-obmondo-com/argocd-apps/values-mail.yaml
     - repoURL: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
-  project: default
+  project: kubeaid
   syncPolicy:
     automated: null
     managedNamespaceMetadata:

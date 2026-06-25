@@ -4,6 +4,10 @@ kind: Application
 metadata:
   name: redis-operator
   namespace: argocd
+  labels:
+    kubeaid.io/version: 29.9.0
+    kubeaid.io/managed-by: kubeaid
+    kubeaid.io/priority: default
 spec:
   destination:
     namespace: redis-operator
@@ -11,14 +15,14 @@ spec:
   sources:
     - repoURL: https://github.com/Obmondo/KubeAid.git
       path: argocd-helm-charts/redis-operator
-      targetRevision: HEAD
+      targetRevision: 29.9.0
       helm:
         valueFiles:
           - $values/k8s/kbm-obmondo-com/argocd-apps/values-redis-operator.yaml
     - repoURL: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
-  project: default
+  project: kubeaid
   syncPolicy:
     automated:
     syncOptions: [CreateNamespace=true, ApplyOutOfSyncOnly=true, ServerSideApply=true]

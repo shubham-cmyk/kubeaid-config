@@ -3,6 +3,10 @@ kind: Application
 metadata:
   name: postgres-operator
   namespace: argocd
+  labels:
+    kubeaid.io/version: 29.9.0
+    kubeaid.io/managed-by: kubeaid
+    kubeaid.io/priority: default
 spec:
   destination:
     namespace: system
@@ -10,14 +14,14 @@ spec:
   sources:
     - repoURL: https://github.com/Obmondo/KubeAid.git
       path: argocd-helm-charts/postgres-operator
-      targetRevision: HEAD
+      targetRevision: 29.9.0
       helm:
         valueFiles:
           - $values/k8s/kbm-obmondo-com/argocd-apps/values-postgres-operator.yaml
     - repoURL: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
-  project: default
+  project: kubeaid
   syncPolicy:
     automated: null
     syncOptions:

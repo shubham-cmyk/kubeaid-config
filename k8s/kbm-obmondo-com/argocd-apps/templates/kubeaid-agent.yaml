@@ -2,9 +2,10 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   labels:
-    kubeaid.io/version: 29.9.0
+    kubeaid.io/version: 30.0.0
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "10"
+    kubeaid.io/priority: default
   name: kubeaid-agent
   namespace: argocd
   finalizers:
@@ -12,12 +13,12 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: obmondo
+    namespace: monitoring
   project: kubeaid
   sources:
     - repoURL: https://github.com/Obmondo/KubeAid.git
       path: argocd-helm-charts/kubeaid-agent
-      targetRevision: 29.9.0
+      targetRevision: 30.0.0
       helm:
         valueFiles:
           - $values/k8s/kbm-obmondo-com/argocd-apps/values-kubeaid-agent.yaml
