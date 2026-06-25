@@ -17,3 +17,33 @@ cilium:
   # forwarded flows) gets per-packet service translation instead.
   socketLB:
     hostNamespaceOnly: true
+
+# Host-firewall lockdown policy — renders the "host-lockdown"
+# CiliumClusterwideNetworkPolicy. Staged disabled: turn it on with
+# `kubeaid-cli cluster lockdown` (canary-verified), NOT by flipping this by hand
+# on a live cluster — a bad rule set here repeats the 2026-06-24 etcd outage.
+hostNetworkPolicy:
+  enabled: true
+  # SSH (22/TCP) source allow-list (bare IPs treated as /32): two admin IPs
+  # plus the cluster's own node public IPs (operators jump between nodes).
+  # Non-empty, so 22 is NOT exposed to the world.
+  allowSshFrom:
+    - 95.216.10.96/32     # admin
+    - 144.76.69.71/32     # admin
+    - 135.181.21.167/32   # cp-1
+    - 135.181.21.154/32   # cp-2
+    - 135.181.21.153/32   # cp-3
+    - 135.181.223.235/32  # worker-1
+    - 65.21.130.86/32     # worker-2
+    - 65.21.130.85/32     # worker-3
+  # HTTP/HTTPS served on the 95.216.30.44 failover VIP via Traefik.
+  publicPorts: [80, 443]
+  # 6443/TCP is reachable only from the node public IPs: every kubelet dials the
+  # failover VIP over the public NIC, so each node (CP + worker) must be listed.
+  apiserverSourceCIDRs:
+    - 135.181.21.167/32   # cp-1
+    - 135.181.21.154/32   # cp-2
+    - 135.181.21.153/32   # cp-3
+    - 135.181.223.235/32  # worker-1
+    - 65.21.130.86/32     # worker-2
+    - 65.21.130.85/32     # worker-3
