@@ -39,7 +39,6 @@ resources:
     cpu: 100m
     memory: 500Mi
   limits:
-    cpu: 500m
     memory: 6Gi
 
 vulsExporter:
@@ -56,7 +55,6 @@ vulsServer:
       cpu: 100m
       memory: 500Mi
     limits:
-      cpu: 500m
       memory: 6Gi
   resultsStorage:
     size: 15Gi
