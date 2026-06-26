@@ -22,8 +22,8 @@
     requests: { cpu: '10m', memory: '20Mi' },
   },
   prometheus_resources+: {
-    limits: { memory: '1Gi' },
-    requests: { cpu: '200m', memory: '500Mi' },
+    limits: { memory: '2Gi' },
+    requests: { cpu: '200m', memory: '1Gi' },
   },
   prometheus_ingress_host: 'prometheus.kbm.obmondo.com',
   grafana_ingress_host: 'grafana.kbm.obmondo.com',
@@ -40,7 +40,9 @@
     'cert-manager.io/cluster-issuer': 'letsencrypt-prod',
     'kubernetes.io/ingress.class': 'traefik',
   },
-  prometheus_scrape_namespaces: [],
+  prometheus_scrape_namespaces: [
+  'cloudnative-pg',
+  ],
   prometheus_scrape_default_namespaces: [
     'argocd',
     'sealed-secrets',
@@ -48,7 +50,7 @@
   ],
   prometheus+: {
     storage: {
-      size: '10Gi',
+      size: '60Gi',
     },
     retention: '15d',
   },

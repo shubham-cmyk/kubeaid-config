@@ -4854,7 +4854,7 @@ items:
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
-                              "barWidthFactor": 0.6,
+                              "barWidthFactor": 0.59999999999999998,
                               "drawStyle": "line",
                               "fillOpacity": 10,
                               "gradientMode": "none",
@@ -4958,7 +4958,7 @@ items:
                               "axisLabel": "",
                               "axisPlacement": "auto",
                               "barAlignment": 0,
-                              "barWidthFactor": 0.6,
+                              "barWidthFactor": 0.59999999999999998,
                               "drawStyle": "line",
                               "fillOpacity": 10,
                               "gradientMode": "none",
@@ -20469,11 +20469,11 @@ items:
                                   },
                                   {
                                       "color": "yellow",
-                                      "value": 0.8
+                                      "value": 0.80000000000000004
                                   },
                                   {
                                       "color": "red",
-                                      "value": 0.9
+                                      "value": 0.90000000000000002
                                   }
                               ]
                           },
@@ -21218,11 +21218,11 @@ items:
                                   },
                                   {
                                       "color": "yellow",
-                                      "value": 0.8
+                                      "value": 0.80000000000000004
                                   },
                                   {
                                       "color": "red",
-                                      "value": 0.9
+                                      "value": 0.90000000000000002
                                   }
                               ]
                           },
@@ -21959,11 +21959,11 @@ items:
                                   },
                                   {
                                       "color": "yellow",
-                                      "value": 0.8
+                                      "value": 0.80000000000000004
                                   },
                                   {
                                       "color": "red",
-                                      "value": 0.9
+                                      "value": 0.90000000000000002
                                   }
                               ]
                           },
