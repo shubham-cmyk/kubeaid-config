@@ -7,6 +7,7 @@ metadata:
     kubeaid.io/version: 29.9.0
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "10"
+    kubeaid.io/priority: default
 spec:
   destination:
     namespace: harbor

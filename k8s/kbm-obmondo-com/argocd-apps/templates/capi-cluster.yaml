@@ -5,6 +5,7 @@ metadata:
     kubeaid.io/version: 30.1.0
     kubeaid.io/managed-by: kubeaid
     kubeaid.io/sync-order: "10"
+    kubeaid.io/priority: default
   name: capi-cluster
   namespace: argocd
 spec:
