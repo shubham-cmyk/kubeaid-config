@@ -43,6 +43,8 @@ argo-cd:
   configs:
     secret:
       createSecret: false     # managed by sealed-secrets now
+    params:
+      server.insecure: true
     rbac:
       policy.csv: |
         p, role:kubeaid-apps, applications, get, kubeaid/*, allow
