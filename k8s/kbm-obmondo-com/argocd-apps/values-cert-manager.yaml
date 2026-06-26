@@ -1,6 +1,6 @@
 cert-manager:
   prometheus:
-    enabled: false
+    enabled: true
 issuer:
   enabled: true
   name: letsencrypt-prod
