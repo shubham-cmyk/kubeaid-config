@@ -9,7 +9,7 @@ backfill:
   from: "2025-01-01"
 
 image:
-  tag: "v0.2.12"
+  tag: "v0.2.13"
 
 pem:
   enabled: true
