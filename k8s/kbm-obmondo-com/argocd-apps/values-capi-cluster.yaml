@@ -29,7 +29,7 @@ hetzner:
   sshKeyPair:
     name: cluster
   bareMetal:
-    wipeDisks: true
+    wipeDisks: false
     installImage:
       imagePath: /root/.oldroot/nfs/images/Ubuntu-2604-resolute-amd64-base.tar.zst
       vg0:
