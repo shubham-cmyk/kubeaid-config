@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  labels:
+    kubeaid.io/version: 31.0.0
+    kubeaid.io/managed-by: kubeaid
+    kubeaid.io/sync-order: "10"
+    kubeaid.io/priority: default
+  name: rustfs
+  namespace: argocd
+  finalizers:
+    - argocd.argoproj.io/resources-finalizer
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: rustfs
+  project: kubeaid
+  sources:
+    - repoURL: https://github.com/Obmondo/KubeAid.git
+      path: argocd-helm-charts/rustfs
+      targetRevision: 31.0.0
+      helm:
+        valueFiles:
+          - $values/k8s/kbm-obmondo-com/argocd-apps/values-rustfs.yaml
+    - repoURL: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
+      targetRevision: HEAD
+      ref: values
+  syncPolicy:
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true
+      - ServerSideApply=true
