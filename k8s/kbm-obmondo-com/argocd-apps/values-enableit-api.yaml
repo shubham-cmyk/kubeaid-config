@@ -108,7 +108,7 @@ api:
     image:
       repository: harbor.obmondo.com/obmondo/enableit-go-api
       pullPolicy: Always
-      tag: v0.8.9
+      tag: v0.9.2
   server:
     internal_ips_for_readonly_auth: "172.20.0.0/16"
   redis:
@@ -382,7 +382,7 @@ prometheusRule:
 # Update the version here as we use the same install script
 # for setting up the server
 # Ref: https://gitea.obmondo.com/EnableIT/go-scripts/src/branch/main/cmd/obmondo-install-setup/Makefile#L3
-obmondoInstallScript: v1.5.0
+obmondoInstallScript: v1.6.0
 
 sendNotification:
   mail: true
