@@ -52,7 +52,7 @@ traefik:
   service:
     type: NodePort
     externalIPs:
-      - 176.9.67.43
+      - 95.216.30.44
     additionalServices:
       internal:
         enabled: true
@@ -67,7 +67,7 @@ traefik:
         moduleName: github.com/omar-shrbajy-arive/headerauthentication
         version: v1.0.3
   additionalArguments:
-    - '--providers.kubernetesingress.ingressclass=traefik-cert-manager'
+    - '--providers.kubernetesingress.ingressclass=traefik'
     - '--entrypoints.websecure.http.tls'
     - '--metrics.prometheus=true'
   # https://github.com/argoproj/argo-cd/issues/1704#issuecomment-904741817
