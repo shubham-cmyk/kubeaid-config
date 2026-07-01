@@ -23,7 +23,7 @@ ingress:
         - path: /
           pathType: ImplementationSpecific
   tls:
-    - secretName: k8id-io-tls
+    - secretName: kubeaid-io-tls
       hosts:
         - www.kubeaid.io
         - www.kube-aid.io
