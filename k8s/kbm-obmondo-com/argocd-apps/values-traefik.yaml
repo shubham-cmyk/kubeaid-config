@@ -53,8 +53,8 @@ traefik:
     enabled: true
     spec:
       type: NodePort
-    externalIPs:
-      - 95.216.30.44
+      externalIPs:
+        - 95.216.30.44
     additionalServices:
       internal:
         enabled: true
