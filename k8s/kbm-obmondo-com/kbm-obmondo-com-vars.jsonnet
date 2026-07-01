@@ -14,7 +14,7 @@
   kube_prometheus_version: 'v0.17.0',
   enable_custom_metrics_apiservice: true,
   prometheus_operator_resources+: {
-    limits: { memory: '80Mi' },
+    limits: { memory: '100Mi' },
     requests: { cpu: '10m', memory: '30Mi' },
   },
   alertmanager_resources+: {
@@ -22,8 +22,8 @@
     requests: { cpu: '10m', memory: '20Mi' },
   },
   prometheus_resources+: {
-    limits: { memory: '2Gi' },
-    requests: { cpu: '200m', memory: '1Gi' },
+    limits: { memory: '3Gi' },
+    requests: { cpu: '250m', memory: '2Gi' },
   },
   prometheus_ingress_host: 'prometheus.kbm.obmondo.com',
   grafana_ingress_host: 'grafana.kbm.obmondo.com',
