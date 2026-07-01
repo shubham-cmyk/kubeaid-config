@@ -18,3 +18,5 @@ ingress:
       hosts:
         - enableit.dk
         - www.enableit.dk
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
