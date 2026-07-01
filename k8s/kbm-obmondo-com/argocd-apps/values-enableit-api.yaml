@@ -133,8 +133,15 @@ persistence:
   reposAndSSH:
     size: 5Gi
     accessMode: ReadWriteMany
-    storageClass: zfs-localpv-shared
+    # cluster-wide RWX cephfs, not node-local. zfs-localpv-shared pins the pod
+    # to the CP node holding the volume, which is tainted NoSchedule.
+    storageClass: ceph-filesystem
   enabled: true
+
+# Chart default is disk=nvme, which on kbm only matches tainted control-plane
+# nodes. With reposAndSSH on cephfs the pod no longer needs node-local storage.
+# null (not {}) is required to actually clear the chart default map in Helm.
+nodeSelector: null
 
 gfetch:
   enabled: true
