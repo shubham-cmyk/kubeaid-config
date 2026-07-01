@@ -4,6 +4,7 @@ image:
   pullPolicy: Always
 middleware: true
 ingress:
+  ingressClassName: traefik
   hosts:
     - host: obmondo.com
       paths:
@@ -40,5 +41,4 @@ ingress:
         - www.obmondo.dk
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-obmondo-web-app-redirect@kubernetescrd
