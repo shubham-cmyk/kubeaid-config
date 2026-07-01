@@ -31,7 +31,7 @@ gitea:
   image:
     registry: harbor.obmondo.com
     repository: obmondo/gitea
-    tag: v1.26.11-obmondo
+    tag: v1.26.40-obmondo
     rootless: false
   imagePullSecrets:
     - name: harbor-registry-secret
