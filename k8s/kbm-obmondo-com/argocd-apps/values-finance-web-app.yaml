@@ -13,5 +13,5 @@ ingress:
       hosts:
         - finance.obmondo.com
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt
-    kubernetes.io/ingress.class: traefik-cert-manager
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: traefik
