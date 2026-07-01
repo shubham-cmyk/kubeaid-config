@@ -1,0 +1,20 @@
+replicaCount: 1
+image:
+  tag: enableit-v4.4.1
+  pullPolicy: Always
+ingress:
+  className: traefik
+  hosts:
+    - host: enableit.dk
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+    - host: www.enableit.dk
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: enableit-dk-tls
+      hosts:
+        - enableit.dk
+        - www.enableit.dk
