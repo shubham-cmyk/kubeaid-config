@@ -3,7 +3,7 @@ image:
   tag: finance-v5.1.5
   pullPolicy: Always
 ingress:
-  ingressClassName: traefik
+  className: traefik
   hosts:
     - host: finance.obmondo.com
       paths:

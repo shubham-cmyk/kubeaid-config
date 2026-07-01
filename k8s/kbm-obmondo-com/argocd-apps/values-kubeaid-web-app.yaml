@@ -5,7 +5,7 @@ image:
   pullPolicy: Always
 middleware: true
 ingress:
-  ingressClassName: traefik
+  className: traefik
   hosts:
     - host: www.kubeaid.io
       paths:
