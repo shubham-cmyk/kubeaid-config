@@ -1,0 +1,392 @@
+---
+namespace: obmondo-website
+admins:
+  - "klavs@obmondo.com"
+  - "lisbeth@obmondo.com"
+  - "ashish@obmondo.com"
+  - "aman@obmondo.com"
+  - "emilhp@obmondo.com"
+  - "deepak@obmondo.com"
+  - "ketan@obmondo.com"
+  - "faizan@obmondo.com"
+  - "divyam@obmondo.com"
+  - "suwarna@obmondo.com"
+  - "rehan@obmondo.com"
+  - "basit@obmondo.com"
+  - "rishikesh@obmondo.com"
+  - "hritik@obmondo.com"
+  - "victorine@obmondo.com"
+  - "sanskar@obmondo.com"
+  - "anantharam@obmondo.com"
+  - "archisman@obmondo.com"
+  - "sgupta@obmondo.com"
+  - "bhavishya@obmondo.com"
+  - "mayank@obmondo.com"
+  - "sidharth@obmondo.com"
+  - "vitamax@obmondo.com"
+  - "esther@obmondo.com"
+  - "kanha@obmondo.com"
+  - "mdasif@obmondo.com"
+  - "timothy@obmondo.com"
+  - "bhavishya@obmondo.com"
+  - "smahar@obmondo.com"
+  - "yulian@obmondo.com"
+  - "olayinka@obmondo.com"
+  - "nmalang@obmondo.com"
+  - "sankhadeep@obmondo.com"
+  - "deep@obmondo.com"
+  - "onkar@obmondo.com"
+  - "kenneth@obmondo.com"
+  - "mwarid@obmondo.com"
+  - "shivam@obmondo.com"
+  - "gaurav@obmondo.com"
+  - "torben@obmondo.com"
+  - "shubh@obmondo.com"
+  - "klaes@obmondo.com"
+  - "rishi@obmondo.com"
+  - "fasuto@obmondo.com"
+masters:
+  - "klavs@obmondo.com"
+  - "ashish@obmondo.com"
+  - "lisbeth@obmondo.com"
+approvers:
+  - "klavs@obmondo.com"
+  - "ashish@obmondo.com"
+  - "aman@obmondo.com"
+  - "lisbeth@obmondo.com"
+internalIpRanges:
+  - "135.181.21.167" # kbm01
+  - "135.181.21.154" # kbm02
+  - "135.181.21.153" # kbm03
+  - "135.181.223.235" # kbw01
+  - "65.21.130.86" # kbw02
+  - "65.21.130.85" # kbw03
+  - "78.46.72.21" # kam01
+  - "176.9.124.207" # kam02
+  - "85.10.211.48" # kam03
+  - "138.201.82.121" # kaw01
+  - "138.201.224.126" # kaw02
+  - "172.20.0.0/16" # Internal service ip range k8s
+trustedProxies:
+  - 172.20.0.0/16
+image:
+  pullPolicy: Always
+api:
+  mode: prod
+  email:
+    info: info@obmondo.com
+    overview: '["klavs.klavsen@enableit.dk"]'
+  website: https://obmondo.com
+  domain: api.obmondo.com
+  giteaRepoCreation: true
+  goApiUrl: '"http://localhost:8080/api/"'
+  config:
+    startSchedular: true
+    addDevPrefixes: false
+    allowTestData: false
+  puppetdb:
+    url: "http://puppet.enableit.dk:58080"
+  puppetserver:
+    url: "https://puppet.enableit.dk"
+  mattermost:
+    channel: enableit
+    enabled: true
+    overviewRecipient: "klavs"
+  chat:
+    teamid: iu94xkqsgjgj5ne4eeie1harcr
+    userid: dpg87od6hpy5zpnhjw99qhbw3r
+  oncall:
+    api_url: https://oncall.kcm.obmondo.com/api
+    webhook_url: "https://oncall.kcm.obmondo.com/integrations/v1/webhook/GIWu31k10fk5nyhfIYwdCZriy/"
+    schedule_id: "SLK3BQXNE4FSB"
+  clojure:
+    image:
+      repository: harbor.obmondo.com/obmondo/clojure-api/api
+      pullPolicy: Always
+      tag: v4.0.7
+  go:
+    image:
+      repository: harbor.obmondo.com/obmondo/enableit-go-api
+      pullPolicy: Always
+      tag: v0.8.9
+  server:
+    internal_ips_for_readonly_auth: "172.20.0.0/16"
+  redis:
+    url: redis://redis-cluster-enableit-api-leader:6379
+  prometheus_customer_url:
+    - enableit;https://enableit.prometheus.obmondo.com
+    - 7ejidqmfi9;https://prometheus.hearing.corp-ad.com/7ejidqmfi9 # these are now on internal ip ranges.might need to remove.
+    - abbnoa6nlk;https://prometheus.corp.hbkworld.com/abbnoa6nlk # these are now on internal ip ranges.might need to remove
+    - ebillet;https://ebillet.prometheus.obmondo.com
+
+redis:
+  replicas: 3
+  resources:
+    requests:
+      cpu: 101m
+      memory: 512Mi
+    limits:
+      cpu: 101m
+      memory: 1Gi
+
+persistence:
+  reposAndSSH:
+    size: 5Gi
+    accessMode: ReadWriteMany
+    storageClass: zfs-localpv-shared
+  enabled: true
+
+gfetch:
+  enabled: true
+  image:
+    repository: harbor.obmondo.com/obmondo/gfetch
+    tag: v1.2.0
+    pullPolicy: Always
+ci:
+  enabled: false
+pgdump:
+  enabled: false
+
+additionalKnownHost: "[gitea.obmondo.com]:2223 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBFDZKKX5kDl8liLAp6+pkvzcbAODbJ9x2iZlBwUCedH0SiiFB8J8GFBnR/WwwL57tUTtMv+bdvSPx4HyAPIc7e4="
+
+# API ports guide for ingress
+# This section defines the servicePort used by different language APIs in our environments.
+# - Port 8080: Used by Go API
+# - Port 8088: Used by Clojure API
+# - Port 8100: Used by Webtee
+# KAM uses the Clojure API by default
+ingress:
+  hosts:
+    - host: api.obmondo.com
+      paths:
+        - path: /api/customer/ssh
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/customer/gen-ssh-key
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/customer/issues
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/customer/billing
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/customer/settings
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/products
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/instance_counts/certname
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/customer/puppetserver
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/customer/grafana
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/leave
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/servers/cve-report
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/servers/puppet
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/servers/ping-and-get-noop
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/servers/statistics/os/customer/
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/ping
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/notify
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/window
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/tag
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/user-location
+          pathType: Prefix
+          servicePort: 8080
+        - path: /swagger/go
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/timereg
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/report/error
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/invoice/
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/servers/tags
+          pathType: Prefix
+          servicePort: 8088
+        - path: /api/servers/csv/customer
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/servers/environment
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/servers/customer
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/servers/alert_ids
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/servers/cve_details
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/servers/facts
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/servers/install-link
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/servers/install
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/customer_details
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/subscription_transactions
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/count
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/feature
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/config
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/v2/subscriptions
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/orders
+          pathType: Prefix
+          servicePort: 8080
+        - path: /Webtee
+          pathType: Prefix
+          serviceName: enableit-api-grpc
+          servicePort: 8100
+        - path: /api/webhook
+          pathType: Prefix
+          servicePort: 8080
+        - path: /
+          pathType: ImplementationSpecific
+          servicePort: 8088
+        - path: /api/v1/users
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/v1/customer
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/v1/cluster
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/leave
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/v1/invoice-data
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/v1/contacts
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/version
+          pathType: Prefix
+          servicePort: 8080
+        - path: /api/performance
+          pathType: Prefix
+          servicePort: 8080
+
+  tls:
+    - secretName: api-obmondo-com-tls
+      hosts:
+        - api.obmondo.com
+  className: traefik
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.tls.options: traefik-api-puppet-agent-tls-auth@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-cn-header-enableit-api@kubernetescrd
+
+postgresql:
+  instances: 2
+  size: 6Gi
+  logicalBackup:
+    enabled: true
+    s3bucket: kam-postgres-logical-backup
+    s3endpoint: https://s3.obmondo.com
+    s3region: dummy
+    s3accesskeyid: kam
+    s3accesssecretkey: aws-secret-token
+    retention: "7 days"
+
+serviceMonitor:
+  enabled: true
+
+extraEnv:
+  - name: PUPPET_API
+    value: http://puppet.enableit.dk:58080
+  - name: PUPPET_TIMEOUT
+    value: 30
+  - name: DELETION_OF_TAG_BASED_WINDOWS_ALLOWED
+    value: true
+  - name: CONFIG_REPOS_PATH
+    value: /opt/obmondo/repos
+  - name: PUPPET_PKCS7_CERT_PATH
+    value: /opt/obmondo/puppet-pkcs7-cert.pem
+  - name: ACCESS_LIST_CERTNAMES
+    value: "finance-api.enableit,opsmondo.enableit,internal-api01.enableit,kcm.enableit,obmondo-api.enableit"
+  - name: READONLY_CERTNAMES
+    value: "artoo.enableit"
+  - name: FINANCE_API_URL
+    value: "https://finance-api.obmondo.com/"
+  - name: ARTOO_PROMETHEUS_URL
+    value: http://artoo-prometheus.artoo.svc.cluster.local:9090
+  - name: KUBEAID_AGENT_URL
+    value: http://kubeaid-agent.obmondo.svc.cluster.local
+
+gitRepos:
+  linuxaid:
+    - enableit
+    - niwyocdmk2 # (internal test customer)
+    - p45k4z2vfh # (web pros)
+    - qd2xcggwag # (kilroy)
+    - ebillet
+    - 7ejidqmfi9 # (gn) needs to be removed as they have github
+    - abbnoa6nlk # (hbk) needs to be removed as it's on their platform
+  kubeaid:
+    - enableit
+    - niwyocdmk2 # (internal test customer)
+    - qd2xcggwag # (kilroy)
+    - rufvpto91t # (bw7)
+    - e1dfvonemm # (kirklarsen)
+
+prometheusRule:
+  enabled: true
+
+# Update the version here as we use the same install script
+# for setting up the server
+# Ref: https://gitea.obmondo.com/EnableIT/go-scripts/src/branch/main/cmd/obmondo-install-setup/Makefile#L3
+obmondoInstallScript: v1.5.0
+
+sendNotification:
+  mail: true
+  customers:
+    - 7ejidqmfi9
+    - abbnoa6nlk
+    - qd2xcggwag
