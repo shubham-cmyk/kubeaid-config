@@ -39,6 +39,6 @@ ingress:
         - www.obmondo.in
         - www.obmondo.dk
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt
-    kubernetes.io/ingress.class: traefik-cert-manager
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-obmondo-web-app-redirect@kubernetescrd
