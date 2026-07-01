@@ -30,6 +30,15 @@ ingress:
       paths:
         - path: /
           pathType: ImplementationSpecific
+    - host: obmondo.net
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+    - host: obmondo.io
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+
   tls:
     - secretName: obmondo-com-tls
       hosts:
