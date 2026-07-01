@@ -1,5 +1,10 @@
 ---
 traefik:
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
   deployment:
     kind: DaemonSet
   ports:
@@ -13,9 +18,6 @@ traefik:
       expose:
         default: true
         internal: true
-  logs:
-    general:
-      level: INFO
   # https://doc.traefik.io/traefik/https/tls/#tls-options
   tlsOptions:
     api-puppet-agent-tls-auth:
