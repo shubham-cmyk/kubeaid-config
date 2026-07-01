@@ -3,6 +3,7 @@ image:
   tag: finance-v5.1.5
   pullPolicy: Always
 ingress:
+  ingressClassName: traefik
   hosts:
     - host: finance.obmondo.com
       paths:
@@ -14,4 +15,3 @@ ingress:
         - finance.obmondo.com
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    kubernetes.io/ingress.class: traefik

@@ -5,6 +5,7 @@ image:
   pullPolicy: Always
 middleware: true
 ingress:
+  ingressClassName: traefik
   hosts:
     - host: www.kubeaid.io
       paths:
@@ -31,5 +32,4 @@ ingress:
         - kube-aid.io
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/router.middlewares: obmondo-website-kubeaid-web-app-redirect@kubernetescrd
