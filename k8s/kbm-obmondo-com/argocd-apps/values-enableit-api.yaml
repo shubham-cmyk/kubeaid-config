@@ -133,15 +133,17 @@ persistence:
   reposAndSSH:
     size: 5Gi
     accessMode: ReadWriteMany
-    # cluster-wide RWX cephfs, not node-local. zfs-localpv-shared pins the pod
-    # to the CP node holding the volume, which is tainted NoSchedule.
-    storageClass: ceph-filesystem
+    storageClass: zfs-localpv-shared
   enabled: true
 
-# Chart default is disk=nvme, which on kbm only matches tainted control-plane
-# nodes. With reposAndSSH on cephfs the pod no longer needs node-local storage.
-# null (not {}) is required to actually clear the chart default map in Helm.
-nodeSelector: null
+# On kbm the only nvme nodes (disk=nvme, where zfs-localpv lives) are the
+# control-plane nodes, which carry the NoSchedule taint. Tolerate it so the
+# pod can run on them.
+tolerations:
+  - key: node-role.kubernetes.io/control-plane
+    effect: NoSchedule
+  - key: node-role.kubernetes.io/master
+    effect: NoSchedule
 
 gfetch:
   enabled: true
