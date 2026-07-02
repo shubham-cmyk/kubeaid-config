@@ -30,15 +30,15 @@
   alertmanager_ingress_host: 'alertmanager.kbm.obmondo.com',
   prometheus_ingress_annotations: {
     'cert-manager.io/cluster-issuer': 'letsencrypt-prod',
-    'kubernetes.io/ingress.class': 'traefik',
+    'kubernetes.io/ingress.class': 'traefik-internal',
   },
   grafana_ingress_annotations: {
     'cert-manager.io/cluster-issuer': 'letsencrypt-prod',
-    'kubernetes.io/ingress.class': 'traefik',
+    'kubernetes.io/ingress.class': 'traefik-internal',
   },
   alertmanager_ingress_annotations: {
     'cert-manager.io/cluster-issuer': 'letsencrypt-prod',
-    'kubernetes.io/ingress.class': 'traefik',
+    'kubernetes.io/ingress.class': 'traefik-internal',
   },
   prometheus_scrape_namespaces: [
   'cloudnative-pg',
