@@ -9,7 +9,7 @@
   grafana_root_url: 'https://grafana.kcm.obmondo.com',
   grafana_keycloak_url: 'https://keycloak.obmondo.com',
   grafana_keycloak_realm: 'Obmondo',
-  kube_prometheus_version: 'v0.17.0',
+  kube_prometheus_version: 'v0.18.0',
   enable_custom_metrics_apiservice: true,
   addMixins: {
     velero: true,
@@ -41,15 +41,15 @@
   alertmanager_ingress_host: 'alertmanager.kcm.obmondo.com',
   prometheus_ingress_annotations: {
     'cert-manager.io/cluster-issuer': 'letsencrypt-prod',
-    'kubernetes.io/ingress.class': 'traefik',
+    'kubernetes.io/ingress.class': 'traefik-internal',
   },
   grafana_ingress_annotations: {
     'cert-manager.io/cluster-issuer': 'letsencrypt-prod',
-    'kubernetes.io/ingress.class': 'traefik',
+    'kubernetes.io/ingress.class': 'traefik-internal',
   },
   alertmanager_ingress_annotations: {
     'cert-manager.io/cluster-issuer': 'letsencrypt-prod',
-    'kubernetes.io/ingress.class': 'traefik',
+    'kubernetes.io/ingress.class': 'traefik-internal',
   },
   prometheus_scrape_namespaces: [
     'cloudnative-pg',

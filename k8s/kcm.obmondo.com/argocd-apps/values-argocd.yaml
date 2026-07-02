@@ -111,17 +111,15 @@ argo-cd:
         memory: 128Mi
     ingress:
       enabled: true
+      ingressClassName: traefik-internal
       annotations:
-        kubernetes.io/ingress.class: traefik-cert-manager
-        # necessary for bare-metal only - for unknown reason.
-        cert-manager.io/cluster-issuer: letsencrypt
+        cert-manager.io/cluster-issuer: letsencrypt-prod          # DNS-01, served by the internal Traefik
       hosts:
       - argocd.kcm.obmondo.com
       tls:
       - secretName: argocd-ssl
         hosts:
         - argocd.kcm.obmondo.com
-      ingressClassName: traefik-cert-manager
   controller:
     resources:
       limits:

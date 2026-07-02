@@ -62,11 +62,6 @@ traefik:
     type: NodePort
     externalIPs:
       - 65.108.24.157
-    additionalServices:
-      internal:
-        enabled: true
-        spec:
-          type: ClusterIP
   experimental:
     plugins:
       jwt:
