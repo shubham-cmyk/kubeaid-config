@@ -1,0 +1,28 @@
+---
+# Second, ClusterIP-only Traefik instance that serves the NetBird-private admin
+# ingresses (ingressClassName: traefik-internal). No hostPort / NodePort /
+# LoadBalancer — reachable only in-cluster and over the mesh via the
+# traefik-internal ClusterIP Service (published by the netbird-operator).
+middleware:
+  jwt:
+    enabled: false
+traefik:
+  # Name the Service/Deployment/SA/IngressClass exactly "traefik-internal" so the
+  # existing netbird NetworkResource (service: traefik-internal) keeps resolving.
+  fullnameOverride: traefik-internal
+  instanceLabelOverride: traefik-internal
+  deployment:
+    kind: Deployment
+    replicas: 2
+  service:
+    spec:
+      type: ClusterIP
+    additionalServices: {}
+  ingressClass:
+    enabled: true
+    name: traefik-internal
+    isDefaultClass: false
+  additionalArguments:
+    - '--providers.kubernetesingress.ingressclass=traefik-internal'
+    - '--entrypoints.websecure.http.tls'
+    - '--metrics.prometheus=true'

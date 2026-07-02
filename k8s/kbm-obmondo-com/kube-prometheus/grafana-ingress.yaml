@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
-    kubernetes.io/ingress.class: traefik
+    kubernetes.io/ingress.class: traefik-internal
   name: grafana
   namespace: monitoring
 spec:

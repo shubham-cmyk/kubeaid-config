@@ -16,7 +16,7 @@ rustfs:
       region: us-east-1
   ingress:
     enabled: true
-    className: traefik
+    className: traefik-internal
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod
     hosts:
