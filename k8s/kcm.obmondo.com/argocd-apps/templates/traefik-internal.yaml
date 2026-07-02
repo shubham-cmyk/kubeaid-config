@@ -9,16 +9,16 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: traefik
-  project: kubeaid
+  project: default
   sources:
-    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid.git
+    - repoURL: https://github.com/Obmondo/KubeAid.git
       path: argocd-helm-charts/traefik
       targetRevision: HEAD
       helm:
         releaseName: traefik-internal
         valueFiles:
           - $values/k8s/kcm.obmondo.com/argocd-apps/values-traefik-internal.yaml
-    - repoURL: https://gitea.obmondo.com/EnableIT/kubeaid-config-enableit.git
+    - repoURL: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
       targetRevision: HEAD
       ref: values
   syncPolicy:
