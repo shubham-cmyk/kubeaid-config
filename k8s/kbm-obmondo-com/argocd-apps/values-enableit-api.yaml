@@ -133,17 +133,18 @@ persistence:
   reposAndSSH:
     size: 5Gi
     accessMode: ReadWriteMany
-    storageClass: zfs-localpv-shared
+    # cluster-wide RWX cephfs. Must match the app's other PVCs (invoices,
+    # webtee, install-script are cephfs) so the pod can run on the worker
+    # nodes, which are the only ones with the rook-ceph CSI driver. zfs-localpv
+    # lives only on the control-plane nodes, which have no ceph CSI, so mixing
+    # zfs + cephfs is unschedulable on any single node.
+    storageClass: ceph-filesystem
   enabled: true
 
-# On kbm the only nvme nodes (disk=nvme, where zfs-localpv lives) are the
-# control-plane nodes, which carry the NoSchedule taint. Tolerate it so the
-# pod can run on them.
-tolerations:
-  - key: node-role.kubernetes.io/control-plane
-    effect: NoSchedule
-  - key: node-role.kubernetes.io/master
-    effect: NoSchedule
+# Clear chart default disk=nvme (only on control-plane nodes) so the pod runs
+# on the untainted workers where the ceph CSI driver and volumes are available.
+# null (not {}) is required to override the chart's map default in Helm.
+nodeSelector: null
 
 gfetch:
   enabled: true
