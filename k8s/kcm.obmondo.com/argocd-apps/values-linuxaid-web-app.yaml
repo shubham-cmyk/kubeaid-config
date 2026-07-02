@@ -9,7 +9,7 @@ global:
 
 replicaCount: 1
 image:
-  tag: beta-linuxaid-v4.8.1
+  tag: beta-linuxaid-v5.2.5
   pullPolicy: Always
 middleware: true
 ingress:

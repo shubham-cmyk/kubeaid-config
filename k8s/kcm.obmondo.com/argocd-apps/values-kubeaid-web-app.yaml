@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  tag: beta-kubeaid-v4.9.9
+  tag: beta-kubeaid-v5.2.5
   pullPolicy: Always
 middleware: true
 ingress:
