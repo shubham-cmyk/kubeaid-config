@@ -18,6 +18,18 @@ traefik:
       expose:
         default: true
         internal: true
+    # Internal-only HTTPS entrypoint: expose.internal attaches it to the
+    # additionalServices.internal ClusterIP Service (traefik-internal, which the
+    # netbird-operator exposes over the mesh); default:false keeps it off the
+    # public NodePort/hostPort. asDefault:false → only ingresses opting in via
+    # traefik.ingress.kubernetes.io/router.entrypoints=websecure-internal use it.
+    websecure-internal:
+      port: 9443
+      exposedPort: 8443
+      expose:
+        default: false
+        internal: true
+      asDefault: false
   # https://doc.traefik.io/traefik/https/tls/#tls-options
   tlsOptions:
     api-puppet-agent-tls-auth:
@@ -71,6 +83,7 @@ traefik:
   additionalArguments:
     - '--providers.kubernetesingress.ingressclass=traefik'
     - '--entrypoints.websecure.http.tls'
+    - '--entrypoints.websecure-internal.http.tls'
     - '--metrics.prometheus=true'
   # https://github.com/argoproj/argo-cd/issues/1704#issuecomment-904741817
   providers:

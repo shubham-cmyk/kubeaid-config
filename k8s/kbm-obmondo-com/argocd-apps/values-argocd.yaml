@@ -36,9 +36,11 @@ argo-cd:
   server:
     ingress:
       enabled: true
+      ingressClassName: traefik
       annotations:
-        cert-manager.io/cluster-issuer: letsencrypt
-        kubernetes.io/ingress.class: traefik-cert-manager
+        cert-manager.io/cluster-issuer: letsencrypt-prod          # DNS-01 (mesh-only ⇒ no HTTP-01)
+        # mesh-only: bind to the internal entrypoint, off the public web/websecure (LB) path
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure-internal
       hosts:
       - argocd.kbm.obmondo.com
       tls:
