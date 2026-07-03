@@ -1,0 +1,13 @@
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: chat-token
+  namespace: finance
+spec:
+  encryptedData:
+    token: AgA20Z3IzTgogCxHcjDHsPNVi3o0QV3P/yh/hPm4oi86BaLInUZzVP91W+H4qn8LZITFxj3VgfjCxN7+mRosKZ2qmL7ULTbt0HP5tcbcfFasrht9SmGQF/s0so09W51Ikl3OCzq4WLle3jjdsrREwI1yM6ngJxPKWvz/JPwcBJZUHqfXsx0YiNVmad+IF4pgGc13nSlFFBAtsiopVxZWbjzpHrwqX0E1Te5tvbEXMyUAlu3xTDSTGgXmAitj6u6zCYhC/Olm4H/CLW/fMfMOkJe77/zgM+Z7TriU3e3SAix2VyBmZP/0111LCcVfnOZMxXK9KCfL6gTl55yxq+ZT5LUI+RDfMkMZECBbDbP07hkmX2B5kqIoeQ5hTTDs21LORRgP2ykpykghkfgOEcqWTQJOi4Ddz/zkw5rvrTbXsuZjJJ5nzCHZLhhtidJStk4DkEm3jTHyU4HhrIzG1IDM8ud/GcqFL3tUc4YePpbRGIXLl13F7KEwu7RVWt7c15L01a8UL+YYvNoR4AajiWHBlMBsbnNZ5vIeR9hO72HGL7eTuYNr8KYX0VpeMmdpWKHem8cF23oM3SO99tfaqDcC3wETYkpHEvF/unBxtTIVkeovG7o/TAfBdnW9logTaTdaD+iATYBRdASl5sdg1S/qcvw2PIqRS7sWeizZMo96XIa/u3i6g9EiKxQqz2QEe3JeA/gwSxONJuTHg2L0Usre2hV3ZtX12+pv3kxRuA==
+  template:
+    metadata:
+      name: chat-token
+      namespace: finance
