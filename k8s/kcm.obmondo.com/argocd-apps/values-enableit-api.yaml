@@ -68,6 +68,10 @@ api:
     startSchedular: true
     addDevPrefixes: true
     allowTestData: true
+  mail:
+    # RCA: wiki procedures/postmortems/02.07.2026-beta-e2e-mail-bounce-flood.md
+    host: "mailhog.open-xchange.svc.cluster.local"
+    port: 1025
   puppetdb:
     url: "http://puppet.enableit.dk:58080"
   puppetserver:
