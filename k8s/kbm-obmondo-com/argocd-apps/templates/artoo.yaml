@@ -10,7 +10,7 @@ spec:
   project: default
   sources:
     - repoURL: https://gitea.obmondo.com/EnableIT/artoo.git
-      path: argocd-helm-charts/artoo
+      path: chart/artoo
       targetRevision: HEAD
       helm:
         valueFiles:
