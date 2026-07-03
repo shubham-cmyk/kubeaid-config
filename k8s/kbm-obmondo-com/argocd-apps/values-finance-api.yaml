@@ -84,7 +84,7 @@ service_cert:
 
 keycloak:
   url: "https://keycloak.vpn.obmondo.com/auth/realms"
-  realm: "Obmondo"
+  realm: "obmondo"
   client_id: "finance-api"
   owner_role: "finance-admin"
   client_secret:
