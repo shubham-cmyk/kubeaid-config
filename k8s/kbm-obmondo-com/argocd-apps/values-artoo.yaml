@@ -1,0 +1,30 @@
+channels:
+  award: "artoo-test"
+  standup: "artoo-test"
+  management: "artoo-test"
+  review: "artoo-test"
+  internalAlert: "artoo-test"
+
+backfill:
+  from: "2025-01-01"
+
+image:
+  tag: "v0.2.12"
+
+pem:
+  enabled: true
+
+imagePullSecrets:
+  - name: harbor-registry-secret
+
+resources:
+  requests:
+    cpu: 200m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 1Gi
+
+extraEnvFrom:
+  - secretRef:
+      name: artoo-tokens
