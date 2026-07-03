@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  tag: finance-v5.2.5
+  tag: finance-v5.2.6
   pullPolicy: Always
 ingress:
   className: traefik
