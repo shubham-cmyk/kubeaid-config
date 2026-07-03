@@ -9,7 +9,7 @@ global:
 
 replicaCount: 1
 image:
-  tag: beta-finance-v5.1.9
+  tag: beta-finance-v5.2.5
   pullPolicy: Always
 ingress:
   hosts:
