@@ -1,0 +1,108 @@
+---
+global:
+  postgresql:
+    enabled: true
+    instanceName: openobserve
+    instances: 1
+    size: 20Gi
+    storageClass: rook-ceph-block
+    monitoring:
+      enablePodMonitor: false
+    backups:
+      enabled: false
+    logicalbackup:
+      enabled: false
+
+openobserve:
+  externalSecret:
+    enabled: true
+    name: openobserve-credentials
+
+  # this is set to directly point to pgsql secret so that we don't have to manage secret value changes in the future
+  extraEnv:
+    - name: ZO_META_POSTGRES_DSN
+      valueFrom:
+        secretKeyRef:
+          name: openobserve-pgsql-app
+          key: fqdn-uri
+
+  config:
+    RUST_LOG: "error"
+    RUST_BACKTRACE: "full"
+    ZO_ACTIX_REQ_TIMEOUT: "120"
+    ZO_LOCAL_MODE_STORAGE: "s3"
+    ZO_S3_PROVIDER: "s3"
+    ZO_S3_SERVER_URL: "https://s3.obmondo.com"
+    ZO_S3_REGION_NAME: "us-east-1"
+    ZO_S3_BUCKET_NAME: "openobserve"
+    ZO_S3_FEATURE_FORCE_HOSTED_STYLE: "false" # Zenko uses path-style addressing
+
+  ingester:
+    persistence:
+      enabled: true
+      size: 50Gi
+      storageClass: rook-ceph-block
+
+  resources:
+    ingester:
+      requests:
+        cpu: 100m
+        memory: 2Gi
+
+  # We manage this via kubeaid-addons
+  postgres:
+    enabled: false
+
+  ingress:
+    enabled: true
+    className: traefik
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      cert-manager.io/issuer: null
+    hosts:
+      - host: openobserve.obmondo.com
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls:
+      - secretName: openobserve-tls
+        hosts:
+          - openobserve.obmondo.com
+
+  enterprise:
+    enabled: false
+
+openobserve-collector:
+  k8sCluster: "kbm"
+
+  gateway:
+    tolerations:
+      - key: node-role.kubernetes.io/control-plane
+        operator: Exists
+        effect: NoSchedule
+    resources:
+      requests:
+        cpu: 200m
+        memory: 512Mi
+      limits:
+        memory: 1500Mi
+  agent:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 256Mi
+      limits:
+        memory: 512Mi
+
+  exporters:
+    otlphttp/openobserve:
+      endpoint: http://openobserve-router.openobserve.svc.cluster.local:5080/api/default
+      headers:
+        # both follows the format ZO_ROOT_USER_EMAIL:ZO_ROOT_USER_PASSWORD turned into base64
+        # Please note that helm chart do not supports feeding this value as secret. so we're setting it up here
+        Authorization: Basic aW5mb0BvYm1vbmRvLmNvbTo3UzNSN2Z4cTE4NnQ=
+    otlphttp/openobserve_k8s_events:
+      endpoint: http://openobserve-router.openobserve.svc.cluster.local:5080/api/default
+      headers:
+        Authorization: Basic aW5mb0BvYm1vbmRvLmNvbTo3UzNSN2Z4cTE4NnQ=
+        stream-name: default
