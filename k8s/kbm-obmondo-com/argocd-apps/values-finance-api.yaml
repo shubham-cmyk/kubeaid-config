@@ -63,6 +63,15 @@ postgresql:
     limits:
       memory: 512Mi
       cpu: 600m
+  logicalBackup:
+    enabled: true
+    schedule: "30 00 * * *"
+    s3bucket: kbm-finance-postgres-logical-backup
+    s3endpoint: https://s3.obmondo.com
+    s3region: dummy
+    s3accesskeyid: kbm
+    s3accesssecretkey: aws-secret-token
+    retention: "7 days"
 
 tls:
   secret: finance-api-puppet-cert
