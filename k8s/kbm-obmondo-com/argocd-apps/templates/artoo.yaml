@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: artoo
+  namespace: argocd
+spec:
+  destination:
+    namespace: artoo
+    server: https://kubernetes.default.svc
+  project: default
+  sources:
+    - repoURL: https://gitea.obmondo.com/EnableIT/artoo.git
+      path: argocd-helm-charts/artoo
+      targetRevision: HEAD
+      helm:
+        valueFiles:
+          - $values/k8s/kbm-obmondo-com/argocd-apps/values-artoo.yaml
+    - repoURL: ssh://git@gitea.obmondo.com:2223/EnableIT/kubeaid-config-enableit.git
+      targetRevision: HEAD
+      ref: values
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+    automated:
+      prune: true
+      selfHeal: true
