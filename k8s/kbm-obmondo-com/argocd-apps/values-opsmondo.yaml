@@ -90,3 +90,17 @@ opsmondo:
       mattermost_url: https://chat.obmondo.com/api/v4/system/ping
       oncall_url: https://oncall.kcm.obmondo.com/api/internal/v1/health/
     forward_alertmanager_requests_to_urls: []
+
+# KBM: zfs-localpv only exists on tainted control-plane nvme nodes, so its
+# volumes can't be scheduled by these pods. Use replicated rook-ceph-block
+# (available on all nodes, no node affinity) instead.
+postgresql:
+  storageClass: rook-ceph-block
+
+redis:
+  master:
+    persistence:
+      storageClass: rook-ceph-block
+  replica:
+    persistence:
+      storageClass: rook-ceph-block
