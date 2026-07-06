@@ -1,0 +1,106 @@
+opsmondo:
+  config:
+    server:
+      own_certname: kbm.enableit
+      # KAM Nodes, KCM Nodes and KBM pod CIDR
+      permitted_cidrs: |
+        78.46.72.21/32, 176.9.124.207/32, 85.10.211.48/32,
+        65.21.232.119/32, 65.108.70.52/32, 65.108.70.176/32,
+        95.217.201.29/32, 144.76.102.62/32, 148.251.135.184/32,
+        10.244.0.0/24, 10.244.1.0/24, 10.244.2.0/24,
+        10.244.4.0/24, 10.244.5.0/24, 10.244.6.0/24
+    alerts:
+      low_priority_alerts:
+        - VeleroUnsuccessfulBackup
+        - KubeAggregatedAPIErrors
+        - monitor::system::service::down
+      high_priority_alerts:
+        - monitor::system::ntp::sync
+        - HighStorageUsage
+        - KubePersistentVolumeFillingUp
+        - KubePersistentVolumeInodesFillingUp
+        ## -- CEPH related alerts --
+        - CephHealthError
+        - CephHealthWarning
+        - CephMonDownQuorumAtRisk
+        - CephMonDown
+        - CephMonClockSkew
+        - CephOSDDownHigh
+        - CephOSDHostDown
+        - CephOSDDown
+        - CephOSDNearFull
+        - CephOSDFull
+        - CephOSDBackfillFull
+        - CephOSDTooManyRepairs
+        - CephOSDTimeoutsPublicNetwork
+        - CephOSDTimeoutsClusterNetwork
+        - CephDeviceFailurePredicted
+        - CephDeviceFailurePredictionTooHigh
+        - CephDeviceFailureRelocationIncomplete
+        - CephOSDFlapping
+        - CephOSDReadErrors
+        - CephPGImbalance
+        - CephFilesystemDamaged
+        - CephFilesystemOffline
+        - CephFilesystemDegraded
+        - CephFilesystemMDSRanksLow
+        - CephFilesystemInsufficientStandby
+        - CephFilesystemFailureNoStandby
+        - CephFilesystemReadOnly
+        - CephMgrModuleCrash
+        - CephMgrPrometheusModuleInactive
+        - CephPGsInactive
+        - CephPGsUnclean
+        - CephPGsDamaged
+        - CephPGRecoveryAtRisk
+        - CephPGUnavailableBlockingIO
+        - CephPGBackfillAtRisk
+        - CephPGNotScrubbed
+        - CephPGsHighPerOSD
+        - CephPGNotDeepScrubbed
+        - CephNodeRootFilesystemFull
+        - CephNodeNetworkPacketDrops
+        - CephNodeNetworkPacketErrors
+        - CephNodeNetworkBondDegraded
+        - CephNodeDiskspaceWarning
+        - CephNodeInconsistentMTU
+        - CephPoolGrowthWarning
+        - CephPoolBackfillFull
+        - CephPoolFull
+        - CephPoolNearFull
+        - CephSlowOps
+        - CephDaemonSlowOps
+        - CephadmUpgradeFailed
+        - CephadmDaemonFailed
+        - CephadmPaused
+        - CephObjectMissing
+        - CephDaemonCrash
+        - CephRBDMirrorImagesPerDaemonHigh
+        - CephRBDMirrorImagesNotInSync
+        - CephRBDMirrorImagesNotInSyncVeryHigh
+        - CephRBDMirrorImageTransferBandwidthHigh
+        - AlertmanagerFailedToSendAlerts
+      high_priority_if_severity_critical:
+        - monitor::system::disk::usage
+        - CephMonDiskspaceCritical
+        - CephMonDiskspaceLow
+        - CephOSDInternalDiskSizeMismatch
+    health:
+      gitea_url: https://gitea.obmondo.com/api/healthz
+      mattermost_url: https://chat.obmondo.com/api/v4/system/ping
+      oncall_url: https://oncall.kcm.obmondo.com/api/internal/v1/health/
+    forward_alertmanager_requests_to_urls: []
+
+# KBM: zfs-localpv only exists on tainted control-plane nvme nodes, so its
+# volumes can't be scheduled by these pods. Use replicated rook-ceph-block
+# (available on all nodes, no node affinity) instead.
+postgresql:
+  storageClass: rook-ceph-block
+
+redis:
+  master:
+    persistence:
+      storageClass: rook-ceph-block
+  replica:
+    persistence:
+      storageClass: rook-ceph-block
