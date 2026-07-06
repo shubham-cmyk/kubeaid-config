@@ -1,25 +1,37 @@
 harbor:
-  externalURL: https://harbor.kbm.obmondo.com
   expose:
-    type: ingress
     tls:
-      enabled: true
       certSource: secret
       secret:
         secretName: harbor-ingress-tls
     ingress:
       hosts:
         core: harbor.kbm.obmondo.com
-      className: traefik-cert-manager
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-prod
-  updateStrategy:
-    type: Recreate
-
-  database:
-    external:
-      coreDatabase: harbor
-
+        kubernetes.io/ingress.class: traefik
+  externalURL: https://harbor.kbm.obmondo.com
+  core:
+    existingSecret: harbor-core-custom
+    livenessProbe:
+      timeoutSeconds: 5
+      failureThreshold: 5
+    readinessProbe:
+      timeoutSeconds: 5
+    secretName: harbor-core-custom
+    existingXsrfSecret: harbor-core-custom
+    extraEnvVars:
+      - name: CONFIG_OVERWRITE_JSON
+        valueFrom:
+          secretKeyRef:
+            name: harbor-core-custom
+            key: oidc-config
+  jobservice:
+    existingSecret: harbor-core-custom
+  registry:
+    existingSecret: harbor-core-custom
+    credentials:
+      existingSecret: harbor-core-custom
   persistence:
     persistentVolumeClaim:
       registry:
@@ -28,7 +40,20 @@ harbor:
       jobservice:
         jobLog:
           size: 3Gi
-          storageClass: zfs-localpv
+          # rook-ceph-block (not node-local zfs) so the pod isn't pinned to a
+          # control-plane nvme node and can schedule on any worker.
+          storageClass: rook-ceph-block
+
+postgres:
+  size: 6Gi
+  backup:
+    enabled: true
+    schedule: "30 00 * * *"
+    s3bucket: "kbm-postgres-logical-backup"
+    s3bucketscopesuffix: "harbor"
+    provider: "s3"
+    s3endpoint: "https://s3.obmondo.com"
+    retention: "30"
 
 global:
   blackbox:
@@ -38,10 +63,13 @@ global:
         interval: 30m
         urls:
           - https://harbor.kbm.obmondo.com
-
   postgresql:
     enabled: true
     instanceName: harbor
+    # cluster is harbor-pgsql (matches chart's hardcoded refs) but the database
+    # stays registry (harbor's coreDatabase), owner harbor — same as KAM.
+    database: registry
+    owner: harbor
     size: 6Gi
     monitoring:
-      enablePodMonitor: false # we don't need barman backup alerts
+      enablePodMonitor: false
