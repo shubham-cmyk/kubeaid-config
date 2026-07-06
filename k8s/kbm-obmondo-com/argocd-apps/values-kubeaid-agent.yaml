@@ -11,3 +11,6 @@ appConfig:
   puppetConfigDetails:
     runKubeAidPuppetSync: false
     url: ""
+
+extraSecretReaderNamespaces:
+  - obmondo-website
