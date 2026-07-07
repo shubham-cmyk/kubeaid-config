@@ -1,0 +1,17 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: customer-ssh-key.rufvpto91t.kubeaid
+  namespace: obmondo-website
+spec:
+  encryptedData:
+    ssh-privatekey: AgBWm02hA4mBKjyzzzPwB4ILeAhtC6JeSrzWm8qL1/Dkc045PoByct1KSLeF7VRrjJkJyqi7RaoUqC+tpK+dfWgsn6/+qUiJoFex6+1rloLiVo7UGnh5HP14X8E/CMKvRrEkXetIU6swtzFoKYcXL8MlJEhYhkMVOz03N+Gb4lQ+a+XSAaFvXr9nvf5iRQoFKlRas2Gq/iQSXt/JLFxmF5QW+g/k6nl27zoTfccpljFe9gqdXiqUNpXWV+0pvLsPQ1tBZzzu7GFj8rZRKLjJ05lJwV2M56SPZwaltrIi/LgllumyQHyg8ijcTCpS4SUZzf6PSs2q7IM/L+I9wI5MzEOO47+PliTKJf+vjM7LW5eNSKNAcLzV5BnjTWHqVh6SVhpM5pGMdlEPe5eTCl7I2s0XB+NeagOrLYnt7Z8QuWrlHhndNNH8ZTRrz5hXfuVQO4npvWj3GUVlGh/NXE2rPvbvmh9DYCoFOdNGlI4tSXZ+7Ty+tJbSpHB6JjSDp0wSKT6sts76D4n8IDWnK1qqkXKcRaLaOrItPDDm7FTrM7baDnPFJE+UrnG6XWm2Eqz2NiL0OQGZ15tpD8tJbH6k7toL3ff4BZ6KF45HHy3yYS9+FBYysdLj4hccKLGNAnluuEKe/GZWwddfj5d/oyoVqJStt8KRZG0LKUU6VsM3UvXsFYewzi7pNzeGwDkowzCI4ci9u4JMDqacnFMURPFBwu4v69nzOlD7Ol8zo8LC1wYaCWRwamZvJHd2Wp/eFFRB8kYy3fO3pEhl0cAtYbk71djY9sQbNLZJYgTUbAu0oggGIKYeDm6J8X38NehluiJCs9KAfbnHvOjED+c9CwFazfvDQh27vsbH9ck+N3h16dtha+1jJFc2IieubbsqLU6n5u3nf/Uuq0z8JApzuZDLyka8raUCjIoxjt8lGPfKAhdhQBXKqi067zugRn8v6W9BUYwxvtDv1CEtXPrqh4DhrK7C5Y7Phq37hAnWinaxNt1Qz4oCZzV/rd4STMuR3u5Etcec7+mTEF3XiXzzGPiE45bpHgBMe/9nw9YMG4yHZ2o2Sum/cHoq/BCIBIY4yvOxIjt1dH1JzKMMIHJX9guTipd11mgIqUDeuKg41Nui9HQNM+nmIcpbcSano17O27Zy5JmSvEkjzstEiN32oIIZmeIGcZL8dBxcg0EaQQVzlYlZl3Z7t75HpC8GsCypmZz2jLtPbzA=
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/managed-by: kubeaid-agent
+      name: customer-ssh-key.rufvpto91t.kubeaid
+      namespace: obmondo-website
+    type: kubernetes.io/ssh-auth
