@@ -1,0 +1,17 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: customer-ssh-key.ebillet.kubeaid
+  namespace: obmondo-website
+spec:
+  encryptedData:
+    ssh-privatekey: AgCokFiidCnrw6VODQ1dzCXshr/lKwoNNgK2MlppibHspCjsRRJ8jLgdeYXdnMDMPdjco4J/cP3GLTdgGNyggQw5u8OfxiN/WVaHkgwt91+lY9GKya6iAkbWZclUJKX1IP7RvJTWb6Om4DSNnL1svIkUulJSq+t16ke7z+kyPsEpkGS7HTd17CfoVhP0vIDv+CMcHSGn+rGjSriKy2+BJKg1DU8mn2kAFm7R5ZYWxaP6GDSHRizI6Oy4tciw4y0KJlXqhfST3myhzoIdcmy7osgKZjaEpEWvthLT+iOIvwQpa0zFgsXNO13+0Psn6plGBe1lPKf9YiIoGMzv9kmKoGc5W/Olo4SFPqBKO+k+piJ+sZgHjHDmatj6LCHMmM0LGUd6vzpKMjgHFyRUA92YuFTPLyvuHA0R6OP4yr0Ugj14VqN9yAy5ntNUaG8YYCX7IuYaovPsqX0yel9fgPaS8Pa+NXwZKpMn5HmWSe719Ne1Wb2iM3PefNbNOHDqdF28VuU8jezO2WRuXlB1wMnfDnnuPf7uZcawBpIj+Xe1+Fp+Sl3H991mzPsN2QimnTHrScpFnVT/QNKT276haMeP5NAbxRLS4nGtKcbSqFVMpgXtaD4E7bX/xnTotdX2TGz4WCVxozbmRf5KrYSPQUyeWsYyGNuLrm3rd89HdRqUJ5xDDIOYbKTZvTuecd+R6AudOSNqPNJB1gfLjU1T80/aVBUGvK2u5lbXV2wC2nWoAxJRbBipU4T6UFDugWqbb0nXCnpEYIVHdtTnmj5ChnvgyvWps48S9UlI9jo4+RrhJ5yQt6mc2sYJgYMvsu16KtYu3ye84GQICDWrPxZihqvUhugDcEZwHx+yc13A98sMGrGPl+TaG7EsacAwplgKbpMThaguyZFIRlUBoAiC/Nu6OPMba34J8D6yY/mh4RmOiDPinOIbE3dPs2fwcDjUs1sGAMPcXiF3h6/ebE4nIO8VG39QHbopOj9PlOcGFOuqicyPt5dUJvMj9X5+XcUVPiaP6U/RwRv60E1DUTQrS380mDd7Vg/aEhaQwGg6E31EhwZDp40vMpUhhge1V8V9ikA7UcumnKpaIXgL/eW9gd2VDQOhrRLkLaFX2SBFDnbfGTYCWbWeKgL7KW3zR6NtfoxuZLQZ9VDTF1xDnY7e/Vr0R10+l1ji6zzyS/tqz0uH4DWaJqZUARTHTH8e2QXpKVJtKnHH3oc=
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/managed-by: kubeaid-agent
+      name: customer-ssh-key.ebillet.kubeaid
+      namespace: obmondo-website
+    type: kubernetes.io/ssh-auth
