@@ -1,6 +1,6 @@
 replicaCount: 1
 image:
-  tag: beta-obmondo-v5.2.5
+  tag: beta-obmondo-v5.3.0
   pullPolicy: Always
 middleware: true
 ingress:
