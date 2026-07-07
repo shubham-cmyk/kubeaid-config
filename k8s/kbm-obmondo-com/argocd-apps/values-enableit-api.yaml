@@ -368,7 +368,7 @@ extraEnv:
   - name: ARTOO_PROMETHEUS_URL
     value: http://artoo-prometheus.artoo.svc.cluster.local:9090
   - name: KUBEAID_AGENT_URL
-    value: http://kubeaid-agent.obmondo.svc.cluster.local
+    value: http://kubeaid-agent.monitoring.svc.cluster.local
 
 gitRepos:
   linuxaid:
