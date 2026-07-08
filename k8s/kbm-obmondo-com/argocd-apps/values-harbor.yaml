@@ -10,6 +10,9 @@ harbor:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-prod
         kubernetes.io/ingress.class: traefik
+  # required: harbor builds the OIDC redirect_uri and registry token realm from
+  # this; without it harbor defaults to https://core.harbor.domain
+  externalURL: https://harbor.obmondo.com
   core:
     existingSecret: harbor-core-custom
     livenessProbe:
