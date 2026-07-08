@@ -331,6 +331,8 @@ extraEnv:
     value: http://puppet.enableit.dk:58080
   - name: PUPPET_TIMEOUT
     value: 30
+  - name: PUPPET_DEFAULT_OWNER
+    value: niwyocdmk2
   - name: DELETION_OF_TAG_BASED_WINDOWS_ALLOWED
     value: true
   - name: CONFIG_REPOS_PATH
