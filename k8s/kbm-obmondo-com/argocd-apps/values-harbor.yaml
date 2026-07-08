@@ -6,11 +6,10 @@ harbor:
         secretName: harbor-ingress-tls
     ingress:
       hosts:
-        core: harbor.kbm.obmondo.com
+        core: harbor.obmondo.com
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-prod
         kubernetes.io/ingress.class: traefik
-  externalURL: https://harbor.kbm.obmondo.com
   core:
     existingSecret: harbor-core-custom
     livenessProbe:
@@ -62,7 +61,7 @@ global:
       - module: http_2xx
         interval: 30m
         urls:
-          - https://harbor.kbm.obmondo.com
+          - https://harbor.obmondo.com
   postgresql:
     enabled: true
     instanceName: harbor
