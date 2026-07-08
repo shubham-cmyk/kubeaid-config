@@ -7,7 +7,7 @@ rustfs:
   storageclass:
     name: rook-ceph-block
     dataStorageSize: 250Gi
-    logStorageSize: 10Gi
+    logStorageSize: 50Gi
   secret:
     existingSecret: rustfs-secret
   config:
