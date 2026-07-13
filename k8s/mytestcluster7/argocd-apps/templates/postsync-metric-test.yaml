@@ -16,7 +16,7 @@ spec:
   project: kubeaid
   source:
     path: k8s/mytestcluster7/postsync-metric-test
-    repoURL: git@github.com:Obmondo/kubeaid-config.git
+    repoURL: git@github.com:shubham-cmyk/kubeaid-config.git
     targetRevision: HEAD
     directory:
       recurse: true
