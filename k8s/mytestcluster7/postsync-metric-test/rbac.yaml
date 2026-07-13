@@ -1,0 +1,55 @@
+# Grants the Prometheus (kube-prometheus) ServiceAccount read access to this
+# namespace so its ServiceMonitor service-discovery can find the target.
+# kube-prometheus scopes Prometheus RBAC per-namespace, so every scraped
+# namespace needs its own prometheus-k8s Role + RoleBinding.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: prometheus-k8s
+  namespace: postsync-test
+  labels:
+    app: postsync-metric-test
+    kubeaid.io/managed-by: kubeaid
+rules:
+  - apiGroups:
+      - discovery.k8s.io
+    resources:
+      - endpointslices
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - ""
+    resources:
+      - services
+      - pods
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - networking.k8s.io
+    resources:
+      - ingresses
+    verbs:
+      - get
+      - list
+      - watch
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: prometheus-k8s
+  namespace: postsync-test
+  labels:
+    app: postsync-metric-test
+    kubeaid.io/managed-by: kubeaid
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: prometheus-k8s
+subjects:
+  - kind: ServiceAccount
+    name: prometheus-k8s
+    namespace: monitoring

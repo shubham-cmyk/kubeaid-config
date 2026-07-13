@@ -8,7 +8,7 @@ metadata:
     kubeaid.io/managed-by: kubeaid
 spec:
   replicas: 1
-  progressDeadlineSeconds: 60
+  progressDeadlineSeconds: 120
   selector:
     matchLabels:
       app: postsync-metric-test
@@ -22,6 +22,65 @@ spec:
         seccompProfile:
           type: RuntimeDefault
       containers:
-        - name: metric-test
-          # Non-existent image -> ImagePullBackOff -> never Ready.
-          image: fake:latest
+        # Simple nginx web server (unprivileged image -> runs as uid 101, listens on :8080).
+        - name: nginx
+          image: nginxinc/nginx-unprivileged:stable-alpine
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: stub
+              containerPort: 8081
+          volumeMounts:
+            - name: nginx-stub-config
+              mountPath: /etc/nginx/conf.d/stub_status.conf
+              subPath: stub_status.conf
+              readOnly: true
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 2
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 10m
+              memory: 16Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+        # Converts nginx stub_status into Prometheus metrics on :9113/metrics.
+        - name: metrics-exporter
+          image: nginx/nginx-prometheus-exporter:1.3.0
+          args:
+            - --nginx.scrape-uri=http://localhost:8081/stub_status
+          ports:
+            - name: metrics
+              containerPort: 9113
+          readinessProbe:
+            httpGet:
+              path: /metrics
+              port: metrics
+            initialDelaySeconds: 2
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 10m
+              memory: 16Mi
+            limits:
+              cpu: 50m
+              memory: 32Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+      volumes:
+        - name: nginx-stub-config
+          configMap:
+            name: postsync-metric-test-nginx

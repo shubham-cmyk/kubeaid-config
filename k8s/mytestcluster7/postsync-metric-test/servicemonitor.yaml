@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: postsync-metric-test
+  namespace: postsync-test
+  labels:
+    app: postsync-metric-test
+    kubeaid.io/managed-by: kubeaid
+spec:
+  selector:
+    matchLabels:
+      app: postsync-metric-test
+  endpoints:
+    - port: metrics
+      path: /metrics
+      interval: 30s
