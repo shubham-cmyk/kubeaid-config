@@ -4,10 +4,10 @@ git:
 
 forkURLs:
   kubeaid:
-    url: https://github.com/Obmondo/KubeAid.git
-    version: 31.1.1
+    url: https://github.com/shubham-cmyk/KubeAid.git
+    version: "v1.0.0"
   kubeaidConfig:
-    url: git@github.com:Obmondo/kubeaid-config.git
+    url: git@github.com:shubham-cmyk/kubeaid-config.git
     directory:
 
 cluster:
