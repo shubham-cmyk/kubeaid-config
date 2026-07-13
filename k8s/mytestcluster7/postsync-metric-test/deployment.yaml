@@ -24,7 +24,7 @@ spec:
       containers:
         - name: metric-test
           # Non-existent image -> ImagePullBackOff -> never Ready.
-          image: registry.invalid/postsync-metric-test:404
+          image: nginx:latest
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
