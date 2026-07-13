@@ -1,7 +1,7 @@
 ---
 appConfig:
   argocd:
-    url: "argocd-server.argocd.svc.cluster.local:443"
+    url: "argocd-server.argocd.svc.cluster.local:80"
   kubeaidConfig:
     clusterName: mytestcluster7
   obmondoAPI:
