@@ -24,4 +24,4 @@ spec:
       containers:
         - name: metric-test
           # Non-existent image -> ImagePullBackOff -> never Ready.
-          image: nginx:latest
+          image: fake:latest
