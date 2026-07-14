@@ -16,5 +16,5 @@ appConfig:
 deployment:
   image:
     repository: harbor.obmondo.com/obmondo/kubeaid-agent
-    tag: "update"
+    tag: "servicewindow"
     pullPolicy: Always
