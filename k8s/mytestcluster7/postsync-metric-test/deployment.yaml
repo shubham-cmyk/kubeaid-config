@@ -24,7 +24,7 @@ spec:
       containers:
         # Simple nginx web server (unprivileged image -> runs as uid 101, listens on :8080).
         - name: nginx
-          image: fake:tag #nginxinc/nginx-unprivileged:stable-alpine
+          image: nginxinc/nginx-unprivileged:stable-alpine
           ports:
             - name: http
               containerPort: 8080
