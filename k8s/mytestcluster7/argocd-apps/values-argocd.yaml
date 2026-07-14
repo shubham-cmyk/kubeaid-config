@@ -1,1 +1,10 @@
 ---
+argo-cd:
+  configs:
+    params:
+      # kubeaid-agent always dials ArgoCD in plaintext: its `plainText` config key
+      # cannot be set to false, because defaults.Set() overwrites the explicit
+      # false with the `default:"true"` struct tag. argocd-server must therefore
+      # not require TLS, or the agent's gRPC dial blocks forever on startup.
+      # Safe here: argocd-server is ClusterIP-only with no ingress.
+      server.insecure: true

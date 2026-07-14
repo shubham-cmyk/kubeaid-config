@@ -1,7 +1,10 @@
 ---
 appConfig:
-  # argocd:
-  #   url: "argocd-server.argocd.svc.cluster.local:443"
+  argocd:
+    # Must be set explicitly: the agent's built-in default is
+    # "argo-cd-argocd-server.argocd:80", which only resolves when the ArgoCD Helm
+    # release is named "argo-cd". This cluster's release is named "argocd".
+    url: "argocd-server.argocd.svc.cluster.local:80"
   kubeaidConfig:
     clusterName: mytestcluster7
   obmondoAPI:
