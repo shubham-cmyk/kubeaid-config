@@ -17,7 +17,7 @@ spec:
   sources:
     - repoURL: https://github.com/shubham-cmyk/KubeAid.git
       path: argocd-helm-charts/kubeaid-agent
-      targetRevision: v2.0.0
+      targetRevision: v1.0.0
       helm:
         valueFiles:
           - $values/k8s/mytestcluster7/argocd-apps/values-kubeaid-agent.yaml
