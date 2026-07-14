@@ -1,7 +1,7 @@
 ---
 appConfig:
   argocd:
-    url: "argocd-server.argocd.svc.cluster.local:80"
+    url: "argocd-server.argocd.svc.cluster.local:443"
   kubeaidConfig:
     clusterName: mytestcluster7
   obmondoAPI:
@@ -13,5 +13,5 @@ appConfig:
 deployment:
   image:
     repository: harbor.obmondo.com/obmondo/kubeaid-agent
-    tag: "update-1"
+    tag: "update"
     pullPolicy: Always
